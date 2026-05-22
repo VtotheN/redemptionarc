@@ -50,9 +50,19 @@ Before live:
 
 ```text
 fund crank >= 0.443596051 SOL
+run aggressive-readiness
 run exact TX0/TX2/TX3 simulation
 verify treasury net >= 25 USD at current SOL price
 approve one live cycle
+```
+
+Readiness command:
+
+```bash
+ENV_PATH=.env.redemptionarc \
+LEDGER_MODE=treasury \
+SOL_PRICE_USD=86.75 \
+npm run aggressive-readiness
 ```
 
 ## Boundary

@@ -1,0 +1,48 @@
+{
+  "verdict": "AGGRESSIVE_READINESS_BLOCKED",
+  "generatedAt": "2026-05-22T16:11:40.300Z",
+  "selectedPlan": {
+    "targetNetUsd": 25,
+    "requiredCushionExtraUsdc": 34.681331332666666,
+    "env": {
+      "TX2_CUSHION_EXTRA_USDC_MICRO": "34681332"
+    },
+    "expected": {
+      "feeFirstCreditUsdc": 25.510999,
+      "observedSweepUsdc": 1.519527,
+      "treasuryDeltaUsdc": 27.030526,
+      "gasUsd": 2.0305254995,
+      "netUsd": 25.000000500499997,
+      "cushionSol": 0.400189417,
+      "requiredFloatSol": 0.443596051,
+      "projectedDailyNetUsd": 25000.0005005
+    }
+  },
+  "crankSol": 0,
+  "accountChecks": {
+    "treasuryUsdcAta": {
+      "address": "CmTzJnUE1sU6cn4rg3VW81ZB6GJ14LC3fE5PuxrauUsQ",
+      "exists": false
+    },
+    "ghostUsdcAta": {
+      "address": "5BK5sqF2vH8o1BBrSukV44ujpu19rpgvJFedGC8GzF9X",
+      "exists": false
+    },
+    "crankWsolAta": {
+      "address": "GKUd1pgyn7yRmo1iag17gtKrsrcEAG8Pjgvj3wZHmmke",
+      "exists": false
+    },
+    "hopEscrowAta": {
+      "address": "2s2Au2bxsvF5cHbdhfP4JaFX8FXp5wXzQxBj15PNPEkD",
+      "exists": false
+    },
+    "treasuryHopAta": {
+      "address": "8KLREhus7bqmoe2bWEEjxo5tTiMNpk7TzQQi3ScLzagY",
+      "exists": false
+    }
+  },
+  "blockers": [
+    "crank underfunded: 0.000000000 SOL < 0.443596051 SOL"
+  ],
+  "next": "Resolve blockers, then rerun aggressive-readiness."
+}
