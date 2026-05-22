@@ -1,0 +1,72 @@
+{
+  "verdict": "REDEMPTION_CYCLE_ACCOUNTS_READY",
+  "generatedAt": "2026-05-22T17:14:57.035Z",
+  "signature": "4QbEH7CrbWsn184xDSdoESsvVypPSX83hhRiwVwtoEHgJMffLPf7DX2XxnyJGhiFAxwR2zmJFseDTQCccApPZ6bU",
+  "payer": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+  "hopMint": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
+  "atas": [
+    {
+      "label": "ghostUsdc",
+      "address": "5BK5sqF2vH8o1BBrSukV44ujpu19rpgvJFedGC8GzF9X",
+      "owner": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+    },
+    {
+      "label": "treasuryUsdc",
+      "address": "CmTzJnUE1sU6cn4rg3VW81ZB6GJ14LC3fE5PuxrauUsQ",
+      "owner": "BGM3VPeND4xts3J6WeaeRJVFpzAJhyJiqycqYP2vk6dV",
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+    },
+    {
+      "label": "crankWsol",
+      "address": "GKUd1pgyn7yRmo1iag17gtKrsrcEAG8Pjgvj3wZHmmke",
+      "owner": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+      "mint": "So11111111111111111111111111111111111111112",
+      "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+    },
+    {
+      "label": "hopEscrow",
+      "address": "H8cEWAnUp1FdVdhieYoTgr9vXfodZt2dFYNDtpvpqLx2",
+      "owner": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+      "mint": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
+      "programId": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+    },
+    {
+      "label": "treasuryHop",
+      "address": "Atmqg9j65d7MuFi3CtH71sNgYkfZws6PgZD5Et7juGtZ",
+      "owner": "BGM3VPeND4xts3J6WeaeRJVFpzAJhyJiqycqYP2vk6dV",
+      "mint": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
+      "programId": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+    },
+    {
+      "label": "ring1Hop",
+      "address": "GrpBMDnyVr5HDQwuZ9FfgxkJA9aJcaxYwKMtqcMecPPL",
+      "owner": "4ftgDecgELHsLm6yVmoynNAW4KkBW8P6TK3rU47yyxvu",
+      "mint": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
+      "programId": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+    },
+    {
+      "label": "ring2Hop",
+      "address": "3SxdEzriR8sYuG4bVzH9UTxEgZHQno6UauBuMDb2s4bv",
+      "owner": "Yja2XE6rAtf9tTughmeQ95YjVR2nR4iRRsrp9oYdipk",
+      "mint": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
+      "programId": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+    },
+    {
+      "label": "ring3Hop",
+      "address": "8vmJXhHv4adL8eiNWKnv9kzwSWYoegDnC2LDqLiGLKqt",
+      "owner": "5jZur8NtpXNmDhRncSBkNgHhN129rBnKdiUBJadD1ihq",
+      "mint": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
+      "programId": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+    },
+    {
+      "label": "ring4Hop",
+      "address": "FVjg7MBPdmxPuiGqkLfk9FLTEcEv567GsSyotQKDjDoJ",
+      "owner": "DevoDSB8G1kVmzWxzwaoKgRMozHK1sQqNfJABnWSvmkC",
+      "mint": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
+      "programId": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+    }
+  ]
+}

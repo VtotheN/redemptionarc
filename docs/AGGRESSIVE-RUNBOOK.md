@@ -65,6 +65,12 @@ ENV_PATH=.env.redemptionarc npm run init-hop-mint
 
 Then set `.env.redemptionarc` `HOP_MINT` to the receipt's `nextEnv` value.
 
+Initialize cycle token accounts:
+
+```bash
+ENV_PATH=.env.redemptionarc npm run init-cycle-accounts
+```
+
 Readiness command:
 
 ```bash

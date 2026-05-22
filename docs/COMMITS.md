@@ -42,3 +42,10 @@ RedemptionArc-owned HOP mint.
 - transfer fee `690 bps`
 - initial supply minted to RedemptionArc crank ATA
 - `.env.redemptionarc` updated locally to use this mint
+
+## pending
+
+Cycle token accounts initialized.
+
+- signature `4QbEH7CrbWsn184xDSdoESsvVypPSX83hhRiwVwtoEHgJMffLPf7DX2XxnyJGhiFAxwR2zmJFseDTQCccApPZ6bU`
+- created/idempotently verified ghost USDC, treasury USDC, WSOL, hop escrow, treasury HOP, ring HOP ATAs
