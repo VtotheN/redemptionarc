@@ -170,6 +170,24 @@ Marginfi empty raw flash simulation.
 
 ## pending
 
+Marginfi raw borrow/repay simulation.
+
+- added `npm run marginfi-raw-borrow-repay-sim`
+- uses raw IDL discriminators for start flash, USDC borrow, USDC repay, end flash
+- candidate USDC bank `2s37akK2eyBbp8DZgCm7RtsaEz8eJP3Nxd4urLHQv7yB`
+- candidate liquidity vault `7jaiZR5Sk8hdYN9MxTpczTcwbWpb5WEoxSANuUwveuat`
+
+## pending
+
+Kamino baseline preserved.
+
+- added `docs/KAMINO-BASELINE.md`
+- keeps the `$25 treasury-positive` profile and micro near-breakeven profile
+- best total-system Kamino micro result remains cycle 006: `-$0.008151`
+- best treasury-positive aggressive result remains cycle 003: `+34.712398 USDC`, system `-$0.015346`
+
+## pending
+
 Excluded salvage cash recovery.
 
 - source: one-time rent recovery from empty crank WSOL ATA

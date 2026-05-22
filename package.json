@@ -23,6 +23,7 @@
     "marginfi-account-setup": "tsx src/scripts/marginfi-account-setup.ts",
     "marginfi-raw-flash-plan": "tsx src/scripts/marginfi-raw-flash-plan.ts",
     "marginfi-raw-flash-sim": "tsx src/scripts/marginfi-raw-flash-sim.ts",
+    "marginfi-raw-borrow-repay-sim": "tsx src/scripts/marginfi-raw-borrow-repay-sim.ts",
     "pinocchio-marginfi-plan": "tsx src/scripts/pinocchio-marginfi-plan.ts",
     "refill-crank": "tsx src/scripts/refill-crank.ts",
     "preflight": "tsx src/gates/preflight.ts",
