@@ -1,0 +1,39 @@
+{
+  "type": "doctorkimi-cycle",
+  "createdAt": "2026-05-22T17:17:09.031Z",
+  "solPriceUsd": 86.75,
+  "preGate": {
+    "canExecute": true,
+    "reason": "GO: net=$-0.1258 (gross=$4.4330 gas=$4.5588)",
+    "expectedProfitMicro": "4433000",
+    "expectedProfitUsd": 4.433,
+    "expectedNetUsd": -0.12581313000000005,
+    "gasEstLamports": "52551160",
+    "gasEstUsd": 4.55881313,
+    "breakEvenSolUsd": 84.35589242939642
+  },
+  "liveGate": {
+    "canExecute": true,
+    "reason": "GO: net=$34.4371 (gross=$34.7431 gas=$0.3060)",
+    "expectedProfitMicro": "34743069",
+    "expectedProfitUsd": 34.743069,
+    "expectedNetUsd": 34.43711216,
+    "gasEstLamports": "3526880",
+    "gasEstUsd": 0.30595684,
+    "breakEvenSolUsd": 9850.935954724855
+  },
+  "result": {
+    "tx2Signature": "27epQsuL9T6Rkc6D7qYFyt16LhRjz5ForUTDangQjpw3bnhnYTpR2scAhd8yYRbfqhp3AvBbkuZYnwo866aSFXS8",
+    "tx3Signature": "4xSuj6RTHmwSBL8AHVXHzQSp9LTSpcBDSQ6QixG4po6ENAbuct1QiRsDAW7cVuZuYubiyLWt7PEyRSwGY3euAddD",
+    "treasuryUsdcBefore": "0",
+    "treasuryUsdcAfter": "34743069",
+    "treasuryUsdcDelta": "34743069",
+    "crankSolBefore": "468095800",
+    "crankSolAfter": "64379503",
+    "gasSpentLamports": "3526880",
+    "feeFirstCreditMicro": "25510999",
+    "sweepMicro": "9232070",
+    "profitPass": true,
+    "hopTotalFeesMicro": "7528775"
+  }
+}

@@ -49,3 +49,14 @@ Cycle token accounts initialized.
 
 - signature `4QbEH7CrbWsn184xDSdoESsvVypPSX83hhRiwVwtoEHgJMffLPf7DX2XxnyJGhiFAxwR2zmJFseDTQCccApPZ6bU`
 - created/idempotently verified ghost USDC, treasury USDC, WSOL, hop escrow, treasury HOP, ring HOP ATAs
+
+## pending
+
+First aggressive live cycle.
+
+- TX0 `559dw2B75teohmeT4s5vMRyoNBLib3wwn1Uroc4CYc6Gqtr7t6M6tfsr531eJxCRFc84JF2V3yzXP5CqPx51aLNx`
+- TX2 `27epQsuL9T6Rkc6D7qYFyt16LhRjz5ForUTDangQjpw3bnhnYTpR2scAhd8yYRbfqhp3AvBbkuZYnwo866aSFXS8`
+- TX3 `4xSuj6RTHmwSBL8AHVXHzQSp9LTSpcBDSQ6QixG4po6ENAbuct1QiRsDAW7cVuZuYubiyLWt7PEyRSwGY3euAddD`
+- treasury delta `34.743069 USDC`
+- reported post-gate net `$34.4371`
+- crank after cycle `0.064379503 SOL`

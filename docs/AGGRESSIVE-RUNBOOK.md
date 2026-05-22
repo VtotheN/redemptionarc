@@ -13,6 +13,15 @@ projected daily at 1000 cycles/day: 25,000 USD
 required crank float: 0.443596051 SOL
 ```
 
+## Live Cycle 001
+
+```text
+treasury delta: 34.743069 USDC
+reported post-gate net: 34.4371 USD
+crank after: 0.064379503 SOL
+status: success, needs refill before next aggressive cycle
+```
+
 ## Config Targets
 
 | Target net/cycle | `TX2_CUSHION_EXTRA_USDC_MICRO` | Required crank float | Projected at 1000/day |
