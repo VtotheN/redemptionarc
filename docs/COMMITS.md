@@ -188,6 +188,15 @@ Kamino baseline preserved.
 
 ## pending
 
+Kamino Orca-style cost scanner.
+
+- added `npm run kamino-orca-style-scan`
+- compares live Jupiter SOL/USDC quote against empirical Kamino break-even
+- preserves low-cost rules: CU price `100`, keep WSOL open, deficit-only refill, no over-cushion
+- no live TX
+
+## pending
+
 Excluded salvage cash recovery.
 
 - source: one-time rent recovery from empty crank WSOL ATA

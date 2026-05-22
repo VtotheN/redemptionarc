@@ -19,6 +19,7 @@
     "kimi-proof": "tsx src/scripts/import-kimi-proof.ts",
     "kimi-cushion-audit": "tsx src/scripts/kimi-cushion-audit.ts",
     "kimi-style-plan": "tsx src/scripts/kimi-style-plan.ts",
+    "kamino-orca-style-scan": "tsx src/scripts/kamino-orca-style-scan.ts",
     "marginfi-adapter-scan": "tsx src/scripts/marginfi-adapter-scan.ts",
     "marginfi-account-setup": "tsx src/scripts/marginfi-account-setup.ts",
     "marginfi-raw-flash-plan": "tsx src/scripts/marginfi-raw-flash-plan.ts",

@@ -1,0 +1,81 @@
+{
+  "verdict": "KAMINO_ORCA_STYLE_WINDOW_OPEN_NO_SEND",
+  "generatedAt": "2026-05-22T18:41:01.212Z",
+  "currentJupiterSolUsdc": 85.927277,
+  "rule": "For Kamino baseline, only consider live when current SOL/USDC quote is below the empirical break-even of the selected profile and no-send simulation passes.",
+  "orcaStyleCostControls": {
+    "tx2CuPriceMicroLamports": 100,
+    "keepWsolAtaOpen": true,
+    "closeEmptyAtaOnlyOutsideLoop": true,
+    "refillPolicy": "deficit-only; never convert a fixed large USDC amount after every cycle",
+    "cushionPolicy": "use empirical min cushion profile; do not over-cushion for treasury-only optics",
+    "slippagePolicy": "quote immediately before TX0 and reject if quote moved past break-even"
+  },
+  "profiles": [
+    {
+      "id": "003",
+      "label": "aggressive treasury-positive",
+      "env": {
+        "SOL_PRICE_USD": "86.75",
+        "ROUTE_VOLUME_USDC": "39",
+        "HOPS": "2",
+        "TX2_CUSHION_EXTRA_USDC_MICRO": "34681332",
+        "TX2_MIN_CUSHION_SOL_LAMPORTS": "10000000",
+        "TX2_CU_PRICE_MICRO_LAMPORTS": "100"
+      },
+      "tx2": "43CTQaWcUqxeLLhkVaWDZDYYfPRQMPVpC1dRRe9MHwbEa4J3WMHCz7g1ed9F5RyEgb2SY2bgeAyeLsvST8tEEjT",
+      "tx3": "4XTPUT6WuMsdtqt5nLFgaQ7yvaVCPcf2DRMvU5dkoPuBz7h8QTt4LeyL8WvMRP27cA31jdipBEMvBG5AFxDTnpeV",
+      "treasuryUsdcDelta": 34.712398,
+      "solCost": 0.400319817,
+      "netAtReceiptPrice": -0.015346124750003298,
+      "receiptSolPriceUsd": 86.75,
+      "breakEvenSolUsd": 86.71166533831624,
+      "feeFirstUsdc": 25.510999,
+      "sweepUsdc": 9.201399
+    },
+    {
+      "id": "006",
+      "label": "micro near-breakeven",
+      "env": {
+        "SOL_PRICE_USD": "86.75",
+        "ROUTE_VOLUME_USDC": "39",
+        "HOPS": "2",
+        "TX2_CUSHION_EXTRA_USDC_MICRO": "0",
+        "TX2_MIN_CUSHION_SOL_LAMPORTS": "9800000",
+        "TX2_CU_PRICE_MICRO_LAMPORTS": "100"
+      },
+      "tx2": "3QhmiEPohjdTVHEDctf5w5DQcumHkHHfkWvMpDRdZhKh25VEMN2V9BmNzxomtumHLNQVZbRfnQWxiUCpHKZxA5mg",
+      "tx3": "ET7s73iix5Kj1TJr1y2h8pDufkCgyfGW9bbiXksR5SJgu1ACy4yswWC1w6Uj9Vju4W2HN7NaDfp73ZPzhci6ngY",
+      "treasuryUsdcDelta": 0.85328,
+      "solCost": 0.00993004,
+      "netAtReceiptPrice": -0.008150969999999869,
+      "receiptSolPriceUsd": 86.75,
+      "breakEvenSolUsd": 85.9291604062018,
+      "feeFirstUsdc": 0,
+      "sweepUsdc": 0.85328
+    }
+  ],
+  "selected": {
+    "id": "006",
+    "label": "micro near-breakeven",
+    "env": {
+      "SOL_PRICE_USD": "86.75",
+      "ROUTE_VOLUME_USDC": "39",
+      "HOPS": "2",
+      "TX2_CUSHION_EXTRA_USDC_MICRO": "0",
+      "TX2_MIN_CUSHION_SOL_LAMPORTS": "9800000",
+      "TX2_CU_PRICE_MICRO_LAMPORTS": "100"
+    },
+    "tx2": "3QhmiEPohjdTVHEDctf5w5DQcumHkHHfkWvMpDRdZhKh25VEMN2V9BmNzxomtumHLNQVZbRfnQWxiUCpHKZxA5mg",
+    "tx3": "ET7s73iix5Kj1TJr1y2h8pDufkCgyfGW9bbiXksR5SJgu1ACy4yswWC1w6Uj9Vju4W2HN7NaDfp73ZPzhci6ngY",
+    "treasuryUsdcDelta": 0.85328,
+    "solCost": 0.00993004,
+    "netAtReceiptPrice": -0.008150969999999869,
+    "receiptSolPriceUsd": 86.75,
+    "breakEvenSolUsd": 85.9291604062018,
+    "feeFirstUsdc": 0,
+    "sweepUsdc": 0.85328
+  },
+  "liveWindow": true,
+  "next": "Run exact no-send TX0/TX2/TX3 sim for selected profile, then one live cycle only if total-system cash gate is positive."
+}

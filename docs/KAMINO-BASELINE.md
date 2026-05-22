@@ -82,9 +82,30 @@ break_even_SOL_price: 85.929160
 - The aggressive profile is useful if the goal is treasury USDC growth, but it
   does not pass total-system accounting at current observed price.
 
+## Orca-Style Cost Controls For Kamino
+
+Use the same discipline people use around Orca route execution:
+
+```text
+quote immediately
+set low CU price
+avoid ATA churn
+avoid WSOL close/reopen inside the loop
+use deficit-only refill
+reject if live quote is outside break-even
+```
+
+Scanner:
+
+```bash
+ENV_PATH=.env.redemptionarc npm run kamino-orca-style-scan
+```
+
+It does not send transactions. It checks the live SOL/USDC quote and compares it
+against empirical break-even from the preserved Kamino receipts.
+
 ## Why Marginfi Remains Active
 
 The Marginfi track is not a replacement for this baseline. It exists because
 removing Kamino flash fee/friction is the clearest path to turn the near-breakeven
 micro profile into repeatable total-system profit.
-
