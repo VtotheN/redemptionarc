@@ -143,11 +143,30 @@ Marginfi read-only adapter scanner.
 
 ## pending
 
-First confirmed RedemptionArc profit TX.
+Marginfi account setup planner.
+
+- added `npm run marginfi-account-setup`
+- no-send by default
+- generates ignored `keys/marginfi-account.json`
+- builds create-account + `marginfi_account_initialize`
+- live setup requires `ALLOW_LIVE=true DRY_RUN=false`
+
+## pending
+
+Marginfi account live setup and raw flash plan.
+
+- created Marginfi account `9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz`
+- setup sig `YxWAGmcjQQeVxFuqqFuXtW34rqYfrht5cCTuUR3M4qxoBjGi7mBkjUQzPgtBxK5X9ofb5tZnm5YiagFybazKGG4`
+- fixed setup builder to let Marginfi allocate the account internally
+- added `npm run marginfi-raw-flash-plan`
+
+## pending
+
+Excluded salvage cash recovery.
 
 - source: one-time rent recovery from empty crank WSOL ATA
 - signature `27YnrugN4DYYoEwbKmRvNitioaWeqTQKQn63Y8iqE2M8141osvSubxdaokqeLoLZ5dfxZyaV8NjYL2LCrLbqW15X`
 - crank SOL before `0.369478173`
 - crank SOL after `0.371512453`
 - net `+0.00203428 SOL`, about `+$0.176474` at SOL `86.75`
-- classification: real spendable cash, one-time salvage, not repeatable loop
+- classification: real spendable cash, one-time salvage, excluded from RedemptionArc loop success

@@ -97,6 +97,8 @@ async function main() {
   let usdcBank: any = null;
   let authorityAccounts: any[] = [];
   let rawFallbackBanks: Awaited<ReturnType<typeof rawUsdcBankFallback>> = [];
+  const localMarginfiAccountPath = process.env.MARGINFI_ACCOUNT_KEYPAIR_PATH || "keys/marginfi-account.json";
+  let localMarginfiAccount: Record<string, unknown> | null = null;
   try {
     client = await MarginfiClient.fetch(marginfiConfig, wallet as any, connection as any, {
       readOnly: true
@@ -125,12 +127,34 @@ async function main() {
   }
 
   if (authorityAccounts.length === 0) {
-    blockers.push("RedemptionArc crank has no Marginfi account yet");
+    if (fs.existsSync(localMarginfiAccountPath)) {
+      const localKeypair = loadKeypair(localMarginfiAccountPath);
+      const info = await connection.getAccountInfo(localKeypair.publicKey, "confirmed");
+      localMarginfiAccount = {
+        address: localKeypair.publicKey.toBase58(),
+        exists: Boolean(info),
+        owner: info?.owner.toBase58() ?? null,
+        lamports: info?.lamports ?? null,
+        dataLength: info?.data.length ?? null
+      };
+      if (!info) blockers.push("local Marginfi account keypair exists but account is missing on-chain");
+    } else {
+      blockers.push("RedemptionArc crank has no Marginfi account yet");
+    }
+  }
+
+  const sdkFetchFailed = blockers.find((blocker) => blocker.startsWith("Marginfi fetch failed:"));
+  if (
+    sdkFetchFailed &&
+    localMarginfiAccount?.exists === true &&
+    rawFallbackBanks.length > 0
+  ) {
+    blockers.splice(blockers.indexOf(sdkFetchFailed), 1);
   }
 
   const receipt = {
     verdict: blockers.length === 0
-      ? "MARGINFI_ADAPTER_SCAN_READY_FOR_NO_SEND_BUILD"
+      ? "MARGINFI_ADAPTER_SCAN_READY_RAW_PATH"
       : "MARGINFI_ADAPTER_SCAN_NEEDS_ACCOUNT_OR_FIX",
     generatedAt: new Date().toISOString(),
     mode: "read-only; no transaction sent",
@@ -147,6 +171,7 @@ async function main() {
       address: pubkeyOf(account.address) ?? null,
       authority: pubkeyOf(account.authority) ?? null
     })),
+    localMarginfiAccount,
     adapterShape: [
       "create/fetch RedemptionArc Marginfi account",
       "build begin flashloan ix with endIndex",
@@ -156,7 +181,7 @@ async function main() {
     ],
     blockers,
     next: blockers.length === 0
-      ? "Implement buildFlashLoanTx no-send around the current RedemptionArc body."
+      ? "Implement raw Marginfi flash wrapper no-send around the current RedemptionArc body."
       : "Create a RedemptionArc-owned Marginfi account in a separate exact approved setup tx, or fix client fetch."
   };
 

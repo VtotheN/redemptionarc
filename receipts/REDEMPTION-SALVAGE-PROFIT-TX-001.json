@@ -1,5 +1,5 @@
 {
-  "verdict": "REDEMPTION_SALVAGE_PROFIT_CONFIRMED",
+  "verdict": "REDEMPTION_SALVAGE_CASH_RECOVERY_EXCLUDED_FROM_LOOP",
   "generatedAt": "2026-05-22T18:03:00.000Z",
   "sourceClass": "one-time rent recovery",
   "transaction": {
@@ -17,6 +17,7 @@
   },
   "classification": {
     "repeatable": false,
-    "reason": "Closing an empty ATA recovers rent once. It is real spendable SOL profit for this transaction, but not a recurring loop source."
+    "countsForRedemptionArcLoop": false,
+    "reason": "Closing an empty ATA recovers rent once. It is real spendable SOL, but it is excluded from the RedemptionArc repeatable-loop objective."
   }
 }

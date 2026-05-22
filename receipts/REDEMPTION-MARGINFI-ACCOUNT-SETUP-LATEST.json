@@ -1,0 +1,15 @@
+{
+  "verdict": "MARGINFI_ACCOUNT_CREATED",
+  "generatedAt": "2026-05-22T18:07:54.505Z",
+  "mode": "live",
+  "marginfiProgram": "MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA",
+  "marginfiGroup": "4qp6Fx6tnZkY5Wropq9wUYgtFxXKwE6viZxFHg3rdAG8",
+  "authority": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+  "marginfiAccount": "9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz",
+  "rentLamports": 16926720,
+  "crankBeforeSol": 0.371512453,
+  "accountAlreadyExists": false,
+  "signature": "YxWAGmcjQQeVxFuqqFuXtW34rqYfrht5cCTuUR3M4qxoBjGi7mBkjUQzPgtBxK5X9ofb5tZnm5YiagFybazKGG4",
+  "crankAfterSol": 0.354520053,
+  "setupCostSol": 0.0169924
+}

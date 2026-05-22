@@ -100,9 +100,18 @@ This fetches Marginfi production config, locates the USDC bank, and checks if th
 RedemptionArc crank already owns a Marginfi account. It does not send a
 transaction.
 
-## First RedemptionArc Profit TX
+Setup planner for the RedemptionArc-owned Marginfi account:
 
-Confirmed spendable-cash transaction:
+```bash
+ENV_PATH=.env.redemptionarc npm run marginfi-account-setup
+```
+
+It defaults to no-send and writes the generated account keypair to ignored
+`keys/marginfi-account.json`.
+
+## Excluded Salvage TX
+
+Confirmed spendable-cash transaction, excluded from loop success:
 
 ```text
 signature: 27YnrugN4DYYoEwbKmRvNitioaWeqTQKQn63Y8iqE2M8141osvSubxdaokqeLoLZ5dfxZyaV8NjYL2LCrLbqW15X
@@ -112,6 +121,6 @@ after:  0.371512453 SOL
 net:    +0.00203428 SOL
 ```
 
-This satisfies "TX with profit" for RedemptionArc cash, but it is explicitly
-classified as one-time salvage. The recurring loop remains the Marginfi/Pinocchio
-track.
+This does not count as RedemptionArc loop profit. It is one-time salvage only.
+The active objective remains a repeatable loop with system cash after greater
+than system cash before.

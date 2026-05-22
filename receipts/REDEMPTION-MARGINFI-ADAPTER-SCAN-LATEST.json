@@ -1,6 +1,6 @@
 {
-  "verdict": "MARGINFI_ADAPTER_SCAN_NEEDS_ACCOUNT_OR_FIX",
-  "generatedAt": "2026-05-22T17:57:14.175Z",
+  "verdict": "MARGINFI_ADAPTER_SCAN_READY_RAW_PATH",
+  "generatedAt": "2026-05-22T18:10:33.391Z",
   "mode": "read-only; no transaction sent",
   "marginfi": {
     "environment": "production",
@@ -16,7 +16,7 @@
       "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
       "group": "4qp6Fx6tnZkY5Wropq9wUYgtFxXKwE6viZxFHg3rdAG8",
       "liquidityVault": "7jaiZR5Sk8hdYN9MxTpczTcwbWpb5WEoxSANuUwveuat",
-      "liquidityUsdc": 447026.71444
+      "liquidityUsdc": 447127.708834
     },
     {
       "address": "27Cpv49jQ3hav8zF3qZjp7T78ATdUTZN4m9x389Z8uH4",
@@ -62,6 +62,13 @@
     }
   ],
   "authorityAccounts": [],
+  "localMarginfiAccount": {
+    "address": "9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz",
+    "exists": true,
+    "owner": "MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA",
+    "lamports": 16982400,
+    "dataLength": 2312
+  },
   "adapterShape": [
     "create/fetch RedemptionArc Marginfi account",
     "build begin flashloan ix with endIndex",
@@ -69,9 +76,6 @@
     "build end flashloan ix with projected active balances",
     "simulate exact v0 transaction with total-system post balances"
   ],
-  "blockers": [
-    "Marginfi fetch failed: Cannot read properties of null (reading 'property')",
-    "RedemptionArc crank has no Marginfi account yet"
-  ],
-  "next": "Create a RedemptionArc-owned Marginfi account in a separate exact approved setup tx, or fix client fetch."
+  "blockers": [],
+  "next": "Implement raw Marginfi flash wrapper no-send around the current RedemptionArc body."
 }
