@@ -1,6 +1,6 @@
 {
   "verdict": "AGGRESSIVE_READINESS_READY_FOR_EXACT_SIM",
-  "generatedAt": "2026-05-22T17:20:12.440Z",
+  "generatedAt": "2026-05-22T17:22:38.761Z",
   "selectedPlan": {
     "targetNetUsd": 25,
     "requiredCushionExtraUsdc": 34.681331332666666,
@@ -18,7 +18,7 @@
       "projectedDailyNetUsd": 25000.0005005
     }
   },
-  "crankSol": 0.459625769,
+  "crankSol": 0.458872541,
   "accountChecks": {
     "treasuryUsdcAta": {
       "address": "CmTzJnUE1sU6cn4rg3VW81ZB6GJ14LC3fE5PuxrauUsQ",

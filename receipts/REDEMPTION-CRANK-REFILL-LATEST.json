@@ -1,15 +1,15 @@
 {
   "verdict": "REDEMPTION_CRANK_REFILLED",
-  "generatedAt": "2026-05-22T17:20:08.353Z",
-  "usdcAmount": 4,
-  "quoteOutSol": 0.046154052,
-  "swapSignature": "CXffhedrYPK1phmt7cXLXraRr7fgTaXhLYQ7W5dw1u4kGWA9RN78ayyUCVYvN2k31TE4uaBgTMMg7QHrMhkMuLR",
-  "transferSignature": "5MUYAaTDCeZTxvwXEkPxUF7xNzwFxxEM5GGK4rZH6zy1fibMcN495P3NaGMrZPgKRJbuEsX6q7eJaXzhNWj44Mj5",
-  "transferSol": 0.084240903,
+  "generatedAt": "2026-05-22T17:22:29.538Z",
+  "usdcAmount": 35,
+  "quoteOutSol": 0.404130394,
+  "swapSignature": "37x5DQz1RgCXPdvfz58SZyKATFjj2NMc1gDGHMBhNmegFgYycyXeay599np4dCLzK2fFQDVi15rZdJ7JvyowVsuq",
+  "transferSignature": "4oGujSTyrVUMRVk77WuA3qjgqfCrk6SNua6WeiYiYdkMJsC2airTuKfHoKmLbnDf1NNxyfo8tzVAQ6Th6rtqK3wP",
+  "transferSol": 0.399566589,
   "balances": {
-    "preTreasurySol": 0.044551152,
-    "preCrankSol": 0.375384866,
-    "postTreasurySol": 0.006428732,
-    "postCrankSol": 0.459625769
+    "preTreasurySol": 0.006428732,
+    "preCrankSol": 0.059305952,
+    "postTreasurySol": 0.010149421,
+    "postCrankSol": 0.458872541
   }
 }

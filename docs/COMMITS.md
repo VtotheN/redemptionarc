@@ -79,3 +79,12 @@ Second aggressive live cycle.
 - TX3 `4cNn9Q9m6hoGVSJ9S8NsDmLmvNY7CjfR6tgfSiHqxaBtb3C9UsQGBjiwFEdVLXnNXDyviKcF5WXpJE5jWaVN5gnp`
 - treasury delta `34.678876 USDC`
 - reported post-gate net `$34.6676`
+
+## pending
+
+Refill after cycle 002.
+
+- swapped `35 USDC`
+- transferred `0.399567 SOL` to crank
+- crank after refill `0.458872541 SOL`
+- readiness restored
