@@ -1,0 +1,14 @@
+{
+  "verdict": "REDEMPTION_HOP_MINT_CREATED",
+  "generatedAt": "2026-05-22T17:13:23.596Z",
+  "signature": "4Q46Y14mhHJ74KC8uV6ifrMVaxrBDc1VHUB1bvKgMRJW2S3KT58TdraB1gdRBMSsnTptrQfrz2twR3UdzwZmTWAX",
+  "mint": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
+  "escrowAta": "H8cEWAnUp1FdVdhieYoTgr9vXfodZt2dFYNDtpvpqLx2",
+  "decimals": 6,
+  "transferFeeBps": 690,
+  "maxFee": "18446744073709551615",
+  "initialSupplyMicro": "10000000000000",
+  "authority": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+  "withdrawAuthority": "4J3QuZt1fPbkPJST4rd9sZyQLrKAzv6FLgWpvXumn57Y",
+  "nextEnv": "HOP_MINT=AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA"
+}

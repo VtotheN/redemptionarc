@@ -49,12 +49,21 @@ HOPS=2
 Before live:
 
 ```text
+initialize RedemptionArc-owned HOP mint
 fund crank >= 0.443596051 SOL
 run aggressive-readiness
 run exact TX0/TX2/TX3 simulation
 verify treasury net >= 25 USD at current SOL price
 approve one live cycle
 ```
+
+Initialize project-owned HOP mint:
+
+```bash
+ENV_PATH=.env.redemptionarc npm run init-hop-mint
+```
+
+Then set `.env.redemptionarc` `HOP_MINT` to the receipt's `nextEnv` value.
 
 Readiness command:
 

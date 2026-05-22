@@ -1,6 +1,6 @@
 {
   "verdict": "AGGRESSIVE_READINESS_READY_FOR_EXACT_SIM",
-  "generatedAt": "2026-05-22T17:11:28.295Z",
+  "generatedAt": "2026-05-22T17:13:48.715Z",
   "selectedPlan": {
     "targetNetUsd": 25,
     "requiredCushionExtraUsdc": 34.681331332666666,
@@ -18,7 +18,7 @@
       "projectedDailyNetUsd": 25000.0005005
     }
   },
-  "crankSol": 0.49,
+  "crankSol": 0.48500664,
   "accountChecks": {
     "treasuryUsdcAta": {
       "address": "CmTzJnUE1sU6cn4rg3VW81ZB6GJ14LC3fE5PuxrauUsQ",
@@ -33,11 +33,11 @@
       "exists": false
     },
     "hopEscrowAta": {
-      "address": "2s2Au2bxsvF5cHbdhfP4JaFX8FXp5wXzQxBj15PNPEkD",
-      "exists": false
+      "address": "H8cEWAnUp1FdVdhieYoTgr9vXfodZt2dFYNDtpvpqLx2",
+      "exists": true
     },
     "treasuryHopAta": {
-      "address": "8KLREhus7bqmoe2bWEEjxo5tTiMNpk7TzQQi3ScLzagY",
+      "address": "Atmqg9j65d7MuFi3CtH71sNgYkfZws6PgZD5Et7juGtZ",
       "exists": false
     }
   },

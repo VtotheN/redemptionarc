@@ -11,6 +11,7 @@
     "exact-sim": "tsx src/scripts/exact-sim.ts",
     "cycle-plan": "tsx src/scripts/cycle-plan.ts",
     "hop-holder-scan": "tsx src/scripts/hop-holder-scan.ts",
+    "init-hop-mint": "tsx src/scripts/init-hop-mint.ts",
     "init-wallets": "tsx src/scripts/init-wallets.ts",
     "kimi-proof": "tsx src/scripts/import-kimi-proof.ts",
     "kimi-cushion-audit": "tsx src/scripts/kimi-cushion-audit.ts",

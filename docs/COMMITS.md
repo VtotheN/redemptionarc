@@ -32,3 +32,13 @@ Live internal transfer:
 - `0.49 SOL` treasury -> crank
 - signature `5Eshg5FGhaD2NBCb8U4Q4dChXVSfRuyrZ6F8vZn3wgvZFsMvwbZ9f4RR64yu1tTBXF3oCDSVWpq2VD1Jwshqz9GM`
 - readiness now `AGGRESSIVE_READINESS_READY_FOR_EXACT_SIM`
+
+## pending
+
+RedemptionArc-owned HOP mint.
+
+- mint `AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA`
+- create signature `4Q46Y14mhHJ74KC8uV6ifrMVaxrBDc1VHUB1bvKgMRJW2S3KT58TdraB1gdRBMSsnTptrQfrz2twR3UdzwZmTWAX`
+- transfer fee `690 bps`
+- initial supply minted to RedemptionArc crank ATA
+- `.env.redemptionarc` updated locally to use this mint
