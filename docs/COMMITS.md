@@ -162,6 +162,14 @@ Marginfi account live setup and raw flash plan.
 
 ## pending
 
+Marginfi empty raw flash simulation.
+
+- added `npm run marginfi-raw-flash-sim`
+- simulates start/end flashloan wrappers with no body
+- next: insert RedemptionArc body only if empty wrapper sim passes
+
+## pending
+
 Excluded salvage cash recovery.
 
 - source: one-time rent recovery from empty crank WSOL ATA
