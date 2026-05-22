@@ -11,3 +11,14 @@ Includes:
 - Kimi proof import,
 - aggressive `$25/cycle` planner,
 - no-live receipts and docs.
+
+## 71e4364
+
+Aggressive readiness gate.
+
+Adds:
+
+- `npm run aggressive-readiness`,
+- crank float check for the selected `$25/cycle` profile,
+- ATA existence checks,
+- blocked receipt while crank is unfunded.

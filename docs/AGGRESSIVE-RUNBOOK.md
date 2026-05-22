@@ -65,6 +65,14 @@ SOL_PRICE_USD=86.75 \
 npm run aggressive-readiness
 ```
 
+Exact sim command:
+
+```bash
+npm run exact-sim
+```
+
+It stays blocked until `aggressive-readiness` is ready.
+
 ## Boundary
 
 This runbook intentionally follows Kimi's treasury-ledger model. It does not

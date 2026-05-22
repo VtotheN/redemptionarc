@@ -1,0 +1,43 @@
+{
+  "verdict": "EXACT_SIM_BLOCKED_BY_READINESS",
+  "generatedAt": "2026-05-22T16:12:30.887Z",
+  "selectedPlan": {
+    "targetNetUsd": 25,
+    "requiredCushionExtraUsdc": 34.681331332666666,
+    "env": {
+      "TX2_CUSHION_EXTRA_USDC_MICRO": "34681332"
+    },
+    "expected": {
+      "feeFirstCreditUsdc": 25.510999,
+      "observedSweepUsdc": 1.519527,
+      "treasuryDeltaUsdc": 27.030526,
+      "gasUsd": 2.0305254995,
+      "netUsd": 25.000000500499997,
+      "cushionSol": 0.400189417,
+      "requiredFloatSol": 0.443596051,
+      "projectedDailyNetUsd": 25000.0005005
+    }
+  },
+  "readinessVerdict": "AGGRESSIVE_READINESS_BLOCKED",
+  "blockers": [
+    "readiness not ready: AGGRESSIVE_READINESS_BLOCKED"
+  ],
+  "transactionSkeleton": [
+    {
+      "tx": "TX0",
+      "purpose": "wrap SOL and Jupiter SOL->USDC cushion into ghost USDC ATA",
+      "status": "blocked"
+    },
+    {
+      "tx": "TX2",
+      "purpose": "Kamino borrow + Token-2022 hop ring + feeFirst transfer + Kamino repay",
+      "status": "blocked"
+    },
+    {
+      "tx": "TX3",
+      "purpose": "sweep ghost USDC to treasury and harvest/withdraw HOP fees",
+      "status": "blocked"
+    }
+  ],
+  "next": "Fund crank and rerun aggressive-readiness."
+}
