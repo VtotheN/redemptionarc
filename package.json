@@ -1,5 +1,5 @@
 {
-  "name": "redemtionarc",
+  "name": "redemptionarc",
   "version": "0.1.0",
   "description": "Independent cash-settled Solana loop engine with hard no-live gates.",
   "private": true,

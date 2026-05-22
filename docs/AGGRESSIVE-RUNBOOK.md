@@ -40,7 +40,7 @@ ENV_PATH=.env.redemptionarc REFILL_USDC_AMOUNT=30 npm run refill-crank
 ## Commands
 
 ```bash
-cd /Users/velon/Desktop/redemtionarc
+cd /Users/velon/Desktop/redemptionarc
 
 ENV_PATH=.env.redemptionarc \
 LEDGER_MODE=treasury \
