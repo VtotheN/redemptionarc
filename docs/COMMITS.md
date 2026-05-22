@@ -88,3 +88,23 @@ Refill after cycle 002.
 - transferred `0.399567 SOL` to crank
 - crank after refill `0.458872541 SOL`
 - readiness restored
+
+## pending
+
+Third aggressive live cycle.
+
+- TX0 `674SRi1ySzBwBnjEZ2HyNir83vrUHZMf7xzwT35PvE7P1TmL6BbhHtk8VRcxjdFwRQSADEhZeUSniVMF3RXkmgKZ`
+- TX2 `43CTQaWcUqxeLLhkVaWDZDYYfPRQMPVpC1dRRe9MHwbEa4J3WMHCz7g1ed9F5RyEgb2SY2bgeAyeLsvST8tEEjT`
+- TX3 `4XTPUT6WuMsdtqt5nLFgaQ7yvaVCPcf2DRMvU5dkoPuBz7h8QTt4LeyL8WvMRP27cA31jdipBEMvBG5AFxDTnpeV`
+- treasury delta `34.712398 USDC`
+- reported post-gate net `$34.7011`
+- crank after cycle `0.058552724 SOL`
+
+## pending
+
+Refill after cycle 003.
+
+- swapped `35 USDC`
+- transferred `0.362309 SOL` to crank
+- crank after refill `0.420861472 SOL`
+- readiness blocked for `$25/cycle` profile: needs `0.443596051 SOL`
