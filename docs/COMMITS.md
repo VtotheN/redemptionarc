@@ -108,3 +108,14 @@ Refill after cycle 003.
 - transferred `0.362309 SOL` to crank
 - crank after refill `0.420861472 SOL`
 - readiness blocked for `$25/cycle` profile: needs `0.443596051 SOL`
+
+## pending
+
+RedemptionArc lab sweep.
+
+- added `npm run arc-lab`
+- added `npm run flash-provider-scan`
+- cycle 004: `cushionExtra=1 USDC`, `CU price=100`, system net `-$0.008590`
+- cycle 005: `cushionExtra=0`, `minCushion=0.0100 SOL`, system net `-$0.008921`
+- cycle 006: `cushionExtra=0`, `minCushion=0.0098 SOL`, system net `-$0.008151`
+- provider scan says native Marginfi 0 bps would model `+$0.026179`, below the normal `$0.25` gate but positive directionally

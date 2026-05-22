@@ -1,7 +1,7 @@
 {
   "verdict": "SETTLEMENT_ROUTE_BLOCKED_TOKEN_NOT_TRADABLE",
-  "generatedAt": "2026-05-22T15:53:58.635Z",
-  "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+  "generatedAt": "2026-05-22T17:36:19.862Z",
+  "inputMint": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
   "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
   "amounts": [
     "1000000",
@@ -16,7 +16,7 @@
       "ok": false,
       "status": 400,
       "json": {
-        "error": "The token HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3 is not tradable",
+        "error": "The token AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA is not tradable",
         "errorCode": "TOKEN_NOT_TRADABLE"
       }
     },
@@ -26,7 +26,7 @@
       "ok": false,
       "status": 400,
       "json": {
-        "error": "The token HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3 is not tradable",
+        "error": "The token AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA is not tradable",
         "errorCode": "TOKEN_NOT_TRADABLE"
       }
     },
@@ -36,7 +36,7 @@
       "ok": false,
       "status": 400,
       "json": {
-        "error": "The token HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3 is not tradable",
+        "error": "The token AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA is not tradable",
         "errorCode": "TOKEN_NOT_TRADABLE"
       }
     },
@@ -44,10 +44,10 @@
       "baseUrl": "https://api.jup.ag/swap/v1",
       "amount": "1000000000",
       "ok": false,
-      "status": 429,
+      "status": 400,
       "json": {
-        "code": 429,
-        "message": "[API Gateway] Too many requests"
+        "error": "The token AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA is not tradable",
+        "errorCode": "TOKEN_NOT_TRADABLE"
       }
     },
     {
@@ -56,7 +56,7 @@
       "ok": false,
       "status": 400,
       "json": {
-        "error": "The token HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3 is not tradable",
+        "error": "The token AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA is not tradable",
         "errorCode": "TOKEN_NOT_TRADABLE"
       }
     },
@@ -66,7 +66,7 @@
       "ok": false,
       "status": 400,
       "json": {
-        "error": "The token HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3 is not tradable",
+        "error": "The token AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA is not tradable",
         "errorCode": "TOKEN_NOT_TRADABLE"
       }
     },
@@ -76,7 +76,7 @@
       "ok": false,
       "status": 400,
       "json": {
-        "error": "The token HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3 is not tradable",
+        "error": "The token AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA is not tradable",
         "errorCode": "TOKEN_NOT_TRADABLE"
       }
     },
@@ -86,7 +86,7 @@
       "ok": false,
       "status": 400,
       "json": {
-        "error": "The token HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3 is not tradable",
+        "error": "The token AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA is not tradable",
         "errorCode": "TOKEN_NOT_TRADABLE"
       }
     }

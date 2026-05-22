@@ -1,0 +1,186 @@
+{
+  "verdict": "ARC_LAB_POSITIVE_CONFIG_FOUND_NO_LIVE",
+  "generatedAt": "2026-05-22T17:41:07.023Z",
+  "source": "RedemptionArc live receipts only; no Kimi wallet copying.",
+  "solPriceUsd": 86.75,
+  "routeVolumeUsdc": 39,
+  "minNetUsd": 0.25,
+  "observations": {
+    "cycles": 3,
+    "sweepCases": {
+      "min": 9.167877,
+      "p50": 9.201399,
+      "avg": 9.200448666666666,
+      "last": 9.201399
+    },
+    "minObservedGasLamports": "130400"
+  },
+  "best": {
+    "cushionExtraUsdc": 1,
+    "flashFeeBps": 0,
+    "cuPriceMicroLamports": 100,
+    "feeFirstUsdc": 0.25,
+    "cushionCostUsdc": 1,
+    "modeledGasUsd": 0.01131567,
+    "nets": {
+      "min": 8.40656133,
+      "p50": 8.44008333,
+      "avg": 8.439132996666666,
+      "last": 8.44008333
+    }
+  },
+  "topPositive": [
+    {
+      "cushionExtraUsdc": 1,
+      "flashFeeBps": 0,
+      "cuPriceMicroLamports": 100,
+      "feeFirstUsdc": 0.25,
+      "cushionCostUsdc": 1,
+      "modeledGasUsd": 0.01131567,
+      "nets": {
+        "min": 8.40656133,
+        "p50": 8.44008333,
+        "avg": 8.439132996666666,
+        "last": 8.44008333
+      }
+    },
+    {
+      "cushionExtraUsdc": 1,
+      "flashFeeBps": 0,
+      "cuPriceMicroLamports": 500,
+      "feeFirstUsdc": 0.25,
+      "cushionCostUsdc": 1,
+      "modeledGasUsd": 0.01132955,
+      "nets": {
+        "min": 8.406547450000001,
+        "p50": 8.440069450000001,
+        "avg": 8.439119116666667,
+        "last": 8.440069450000001
+      }
+    },
+    {
+      "cushionExtraUsdc": 1,
+      "flashFeeBps": 0,
+      "cuPriceMicroLamports": 1000,
+      "feeFirstUsdc": 0.25,
+      "cushionCostUsdc": 1,
+      "modeledGasUsd": 0.0113469,
+      "nets": {
+        "min": 8.406530100000001,
+        "p50": 8.4400521,
+        "avg": 8.439101766666667,
+        "last": 8.4400521
+      }
+    },
+    {
+      "cushionExtraUsdc": 1,
+      "flashFeeBps": 3,
+      "cuPriceMicroLamports": 100,
+      "feeFirstUsdc": 0.25,
+      "cushionCostUsdc": 1.0117,
+      "modeledGasUsd": 0.01131567,
+      "nets": {
+        "min": 8.394861330000001,
+        "p50": 8.42838333,
+        "avg": 8.427432996666667,
+        "last": 8.42838333
+      }
+    },
+    {
+      "cushionExtraUsdc": 1,
+      "flashFeeBps": 3,
+      "cuPriceMicroLamports": 500,
+      "feeFirstUsdc": 0.25,
+      "cushionCostUsdc": 1.0117,
+      "modeledGasUsd": 0.01132955,
+      "nets": {
+        "min": 8.394847450000002,
+        "p50": 8.428369450000002,
+        "avg": 8.427419116666668,
+        "last": 8.428369450000002
+      }
+    },
+    {
+      "cushionExtraUsdc": 1,
+      "flashFeeBps": 3,
+      "cuPriceMicroLamports": 1000,
+      "feeFirstUsdc": 0.25,
+      "cushionCostUsdc": 1.0117,
+      "modeledGasUsd": 0.0113469,
+      "nets": {
+        "min": 8.394830100000002,
+        "p50": 8.428352100000001,
+        "avg": 8.427401766666668,
+        "last": 8.428352100000001
+      }
+    },
+    {
+      "cushionExtraUsdc": 1,
+      "flashFeeBps": 5,
+      "cuPriceMicroLamports": 100,
+      "feeFirstUsdc": 0.25,
+      "cushionCostUsdc": 1.0195,
+      "modeledGasUsd": 0.01131567,
+      "nets": {
+        "min": 8.38706133,
+        "p50": 8.42058333,
+        "avg": 8.419632996666666,
+        "last": 8.42058333
+      }
+    },
+    {
+      "cushionExtraUsdc": 1,
+      "flashFeeBps": 5,
+      "cuPriceMicroLamports": 500,
+      "feeFirstUsdc": 0.25,
+      "cushionCostUsdc": 1.0195,
+      "modeledGasUsd": 0.01132955,
+      "nets": {
+        "min": 8.38704745,
+        "p50": 8.42056945,
+        "avg": 8.419619116666667,
+        "last": 8.42056945
+      }
+    },
+    {
+      "cushionExtraUsdc": 1,
+      "flashFeeBps": 5,
+      "cuPriceMicroLamports": 1000,
+      "feeFirstUsdc": 0.25,
+      "cushionCostUsdc": 1.0195,
+      "modeledGasUsd": 0.0113469,
+      "nets": {
+        "min": 8.3870301,
+        "p50": 8.4205521,
+        "avg": 8.419601766666666,
+        "last": 8.4205521
+      }
+    },
+    {
+      "cushionExtraUsdc": 1,
+      "flashFeeBps": 9,
+      "cuPriceMicroLamports": 100,
+      "feeFirstUsdc": 0.25,
+      "cushionCostUsdc": 1.0351,
+      "modeledGasUsd": 0.01131567,
+      "nets": {
+        "min": 8.37146133,
+        "p50": 8.40498333,
+        "avg": 8.404032996666666,
+        "last": 8.40498333
+      }
+    }
+  ],
+  "flashLoanProviderRead": {
+    "canReplaceKamino": true,
+    "reason": "Flash fee is modeled as bps. Provider replacement helps only if it lowers fee/CU or changes instruction geometry; the current dominant variable is cushion/refill geometry.",
+    "testedFeeBps": [
+      0,
+      3,
+      5,
+      9,
+      30
+    ]
+  },
+  "next": "Run a single no-keeper live experiment with the best config only if current float is enough."
+}

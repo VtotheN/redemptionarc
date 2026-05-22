@@ -1,0 +1,62 @@
+{
+  "verdict": "FLASH_PROVIDER_SCAN_NO_PROVIDER_CROSSES_GATE",
+  "generatedAt": "2026-05-22T17:45:24.485Z",
+  "basis": "Latest RedemptionArc live cycle total-system cash, adjusted only for flash-loan fee bps.",
+  "solPriceUsd": 86.75,
+  "routeVolumeUsdc": 39,
+  "currentFeeBps": 9,
+  "minNetUsd": 0.25,
+  "baseline": {
+    "treasuryUsdcDelta": 0.86986,
+    "crankSolDelta": -0.01013004,
+    "baselineNetUsd": -0.008920970000000028
+  },
+  "best": {
+    "name": "marginfi",
+    "modeledFeeBps": 0,
+    "integration": "sdk-required",
+    "notes": "Docs/support state flash loans do not incur fees; needs exact SDK instruction builder and account path.",
+    "feeSavingsUsd": 0.0351,
+    "modeledNetUsd": 0.02617902999999997,
+    "passesMinNet": false
+  },
+  "table": [
+    {
+      "name": "marginfi",
+      "modeledFeeBps": 0,
+      "integration": "sdk-required",
+      "notes": "Docs/support state flash loans do not incur fees; needs exact SDK instruction builder and account path.",
+      "feeSavingsUsd": 0.0351,
+      "modeledNetUsd": 0.02617902999999997,
+      "passesMinNet": false
+    },
+    {
+      "name": "vaea",
+      "modeledFeeBps": 2,
+      "integration": "aggregator-sdk",
+      "notes": "Public SDK aggregator advertises 2 bps flat flash-loan fee across Marginfi/Kamino/Jupiter Lend.",
+      "feeSavingsUsd": 0.0273,
+      "modeledNetUsd": 0.018379029999999973,
+      "passesMinNet": false
+    },
+    {
+      "name": "kamino-current",
+      "modeledFeeBps": 9,
+      "integration": "existing",
+      "notes": "Current live path.",
+      "feeSavingsUsd": 0,
+      "modeledNetUsd": -0.008920970000000028,
+      "passesMinNet": false
+    },
+    {
+      "name": "save-solend",
+      "modeledFeeBps": 10,
+      "integration": "sdk-required",
+      "notes": "Save/Solend docs describe common origination fees around 10 bps; not better for this edge.",
+      "feeSavingsUsd": 0,
+      "modeledNetUsd": -0.008920970000000028,
+      "passesMinNet": false
+    }
+  ],
+  "next": "Provider fee alone is not enough; continue with source/route redesign."
+}
