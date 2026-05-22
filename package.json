@@ -1,0 +1,36 @@
+{
+  "name": "redemtionarc",
+  "version": "0.1.0",
+  "description": "Independent cash-settled Solana loop engine with hard no-live gates.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc --noEmit",
+    "aggressive-plan": "tsx src/scripts/aggressive-plan.ts",
+    "cycle-plan": "tsx src/scripts/cycle-plan.ts",
+    "hop-holder-scan": "tsx src/scripts/hop-holder-scan.ts",
+    "init-wallets": "tsx src/scripts/init-wallets.ts",
+    "kimi-proof": "tsx src/scripts/import-kimi-proof.ts",
+    "kimi-cushion-audit": "tsx src/scripts/kimi-cushion-audit.ts",
+    "kimi-style-plan": "tsx src/scripts/kimi-style-plan.ts",
+    "preflight": "tsx src/gates/preflight.ts",
+    "scale-model": "tsx src/scripts/scale-model.ts",
+    "settlement-gap": "tsx src/scripts/settlement-gap.ts",
+    "settlement-options": "tsx src/scripts/settlement-options.ts",
+    "settlement-route-scan": "tsx src/scripts/settlement-route-scan.ts",
+    "target-design": "tsx src/scripts/target-design.ts",
+    "token2022-cap-scan": "tsx src/scripts/token2022-cap-scan.ts",
+    "snapshot": "tsx src/scripts/treasury-snapshot.ts",
+    "dry-run": "DRY_RUN=true tsx src/gates/preflight.ts && DRY_RUN=true tsx src/scripts/treasury-snapshot.ts"
+  },
+  "dependencies": {
+    "@solana/spl-token": "^0.4.13",
+    "@solana/web3.js": "^1.98.2",
+    "dotenv": "^16.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "verdict": "SETTLEMENT_GAP_UNPRICED_NEEDS_HOP_TO_USDC_ROUTE",
+  "generatedAt": "2026-05-22T15:53:54.585Z",
+  "proof": {
+    "avgNetUsd": 1.9612886590281338,
+    "avgTreasuryDeltaUsdc": 3.9308113246268648,
+    "latestHopFeesUnits": 4.853582,
+    "source": "imported-proof"
+  },
+  "targetNetPerCycle": 1000,
+  "currentCashNet": 1.9612886590281338,
+  "missingCashUsd": 998.0387113409719,
+  "hopSettlement": {
+    "assumedHopToUsdcRate": 0,
+    "hopUnitsNeededAtAssumedRate": null,
+    "requiredProof": [
+      "controlled withdraw authority can collect withheld HOP",
+      "HOP has an executable route to USDC/SOL at target size",
+      "settlement route includes slippage, gas, priority fee, and ATA/rent",
+      "post-settlement treasury SOL+USDC exceeds pre-cycle by target"
+    ]
+  },
+  "conclusion": "Route volume is not the cash multiplier unless HOP fees settle into SOL/USDC."
+}

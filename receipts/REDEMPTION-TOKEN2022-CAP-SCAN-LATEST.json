@@ -1,0 +1,63 @@
+{
+  "verdict": "TOKEN2022_CAP_SCAN_COMPLETE",
+  "generatedAt": "2026-05-22T15:53:51.274Z",
+  "hopMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+  "decimals": 6,
+  "epoch": "975",
+  "activeFee": {
+    "basisPoints": 690,
+    "maximumFeeMicro": "18446744073709551615",
+    "maximumFeeUsdcUnits": 18446744073709.55,
+    "capStartsAtUsdc": 267344117010283.38
+  },
+  "hops": 4,
+  "maxGrossPerRingUsdc": 92233720368547.77,
+  "table": [
+    {
+      "volumeUsdc": 39,
+      "totalFeeUsdc": 11.72197,
+      "finalAmountUsdc": 29.29971,
+      "cappedLegs": 0,
+      "effectiveFeeBps": 3005
+    },
+    {
+      "volumeUsdc": 100,
+      "totalFeeUsdc": 30.056332,
+      "finalAmountUsdc": 75.127463,
+      "cappedLegs": 0,
+      "effectiveFeeBps": 3005
+    },
+    {
+      "volumeUsdc": 1000,
+      "totalFeeUsdc": 300.563319,
+      "finalAmountUsdc": 751.274631,
+      "cappedLegs": 0,
+      "effectiveFeeBps": 3005
+    },
+    {
+      "volumeUsdc": 10000,
+      "totalFeeUsdc": 3005.633185,
+      "finalAmountUsdc": 7512.746311,
+      "cappedLegs": 0,
+      "effectiveFeeBps": 3005
+    },
+    {
+      "volumeUsdc": 100000,
+      "totalFeeUsdc": 30056.331843,
+      "finalAmountUsdc": 75127.463112,
+      "cappedLegs": 0,
+      "effectiveFeeBps": 3005
+    },
+    {
+      "volumeUsdc": 1000000,
+      "totalFeeUsdc": 300563.318427,
+      "finalAmountUsdc": 751274.631121,
+      "cappedLegs": 0,
+      "effectiveFeeBps": 3005
+    }
+  ],
+  "scaleRead": {
+    "canGetThousandsPerSingleRingByRaisingVolume": true,
+    "reason": "Fee cap allows large single-ring gross; next blocker is liquidity/settlement/CU."
+  }
+}

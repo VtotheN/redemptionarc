@@ -1,0 +1,15 @@
+{
+  "verdict": "REDEMPTION_TREASURY_SNAPSHOT",
+  "generatedAt": "2026-05-22T15:53:41.786Z",
+  "treasury": "BGM3VPeND4xts3J6WeaeRJVFpzAJhyJiqycqYP2vk6dV",
+  "cash": {
+    "sol": 0,
+    "usdc": 0,
+    "solPriceUsd": null,
+    "spendableUsd": null
+  },
+  "nonCash": {
+    "trackedHopOrCustomUnits": 0
+  },
+  "tokenAccounts": []
+}

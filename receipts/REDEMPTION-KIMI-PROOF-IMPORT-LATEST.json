@@ -1,0 +1,36 @@
+{
+  "verdict": "KIMI_PROOF_IMPORTED_READ_ONLY",
+  "generatedAt": "2026-05-22T15:58:48.419Z",
+  "receiptsDir": "/Users/velon/Desktop/DOCTORKIMI-ENGINE/receipts",
+  "cycleCount": 269,
+  "positiveCount": 262,
+  "stats": {
+    "totalNetUsd": 531.1689292175398,
+    "avgNetUsd": 1.974605684823568,
+    "medianNetUsd": 1.9926490274300006,
+    "p10NetUsd": 0.4862870274300004,
+    "p90NetUsd": 3.4977120274300004,
+    "avgTreasuryDeltaUsdc": 3.93684708921933,
+    "avgGasSol": 0.022517549193308572
+  },
+  "latest": {
+    "file": "dk-cycle-2026-05-22T15-54-01-695Z.json",
+    "createdAt": "2026-05-22T15:54:01.696Z",
+    "solPriceUsd": 86.63,
+    "treasuryDeltaUsdc": 5.554432,
+    "gasSol": 0.0001254,
+    "gasUsd": 0.010863402000000001,
+    "netUsd": 5.543568598,
+    "feeFirstUsdc": 2.5,
+    "sweepUsdc": 3.054432,
+    "hopTotalFeesUnits": 4.856738,
+    "profitPass": true,
+    "tx2Signature": "3vZRz6cw8ztEFuepkMEaejEEYYKFJnbG6QJjDRabWDUXXYF6fVXPBjsZfXbnquxTDaZhJgcLQfRNVwKgYQjnkLLE",
+    "tx3Signature": "4mK9AJARp488B7jnrEdR8F12VKvSvALx6AwPpAEg5mW8QDj4Vjs8rsVW2ywf2Bh1gbMRaW7s6tnuEoAHz5zPkB2h"
+  },
+  "classification": {
+    "cashCounted": "treasury USDC delta minus crank SOL gas valued at receipt SOL price",
+    "nonCashNotCounted": "HOP/custom token units are evidence only until settled to SOL/USDC",
+    "executionUse": "read-only evidence; forbidden as wallet source for RedemptionArc"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "verdict": "SETTLEMENT_OPTIONS_REQUIRE_BUILD",
+  "generatedAt": "2026-05-22T15:54:13.511Z",
+  "inputs": {
+    "routeVerdict": "SETTLEMENT_ROUTE_BLOCKED_TOKEN_NOT_TRADABLE",
+    "holderVerdict": "HOP_HOLDER_SCAN_PARTIAL_SUPPLY_ONLY",
+    "capVerdict": "TOKEN2022_CAP_SCAN_COMPLETE"
+  },
+  "options": [
+    {
+      "id": "external_jupiter_or_dex_route",
+      "status": "blocked",
+      "cashTruth": "valid only if quote and swap instructions settle HOP to USDC/SOL with post-balance proof",
+      "blocker": "SETTLEMENT_ROUTE_BLOCKED_TOKEN_NOT_TRADABLE"
+    },
+    {
+      "id": "owned_pool_self_funded",
+      "status": "rejected_as_profit",
+      "cashTruth": "swapping HOP into our own USDC pool moves our inventory; it is not profit unless third-party/protocol cash replenishes USDC",
+      "blocker": "self-funded USDC side"
+    },
+    {
+      "id": "owned_venue_external_flow",
+      "status": "build_candidate",
+      "cashTruth": "valid if external orderflow/protocol rewards pay fees in USDC/SOL to RedemptionArc",
+      "blocker": "needs fee-paying external/protocol flow proof"
+    },
+    {
+      "id": "protocol_paid_source",
+      "status": "build_candidate",
+      "cashTruth": "valid if deterministic claim/collect instruction pays SOL/USDC under RedemptionArc authority",
+      "blocker": "needs source scanner"
+    },
+    {
+      "id": "direct_usdc_fee_mint_or_program",
+      "status": "design_candidate",
+      "cashTruth": "valid only if program-owned fee rights accrue USDC from non-self-funded flow",
+      "blocker": "requires deploy/design and capital/rent"
+    }
+  ],
+  "nextBuild": "build source scanner and/or owned venue external-flow proof; do not execute self-funded pool as profit",
+  "selectedForNext": "owned_venue_external_flow"
+}

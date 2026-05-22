@@ -1,0 +1,23 @@
+{
+  "verdict": "HOP_HOLDER_SCAN_PARTIAL_SUPPLY_ONLY",
+  "generatedAt": "2026-05-22T15:54:11.588Z",
+  "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+  "supply": {
+    "amount": "720060832356",
+    "decimals": 6,
+    "uiAmount": 720060.832356,
+    "uiAmountString": "720060.832356"
+  },
+  "holders": [],
+  "holderSummary": {
+    "count": 0,
+    "redemptionOwned": 0,
+    "forbiddenLegacyOwned": 0,
+    "externalOwned": 0
+  },
+  "settlementRead": "No external settlement market proven by holder scan.",
+  "errors": [
+    "getTokenLargestAccounts: 429 Too Many Requests:  {\"jsonrpc\":\"2.0\",\"error\":{\"code\": 429, \"message\":\"Too many requests for a specific RPC call\"}, \"id\": \"81cd84fd-a22c-4304-8e77-1c2a81ad68f9\" } \r\n",
+    "getProgramAccountsFallback: failed to get accounts owned by program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb: TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb excluded from account secondary indexes; this RPC method unavailable for key. If you're trying to query the Token Program, please refer to: https://docs.triton.one/chains/solana/token-program"
+  ]
+}

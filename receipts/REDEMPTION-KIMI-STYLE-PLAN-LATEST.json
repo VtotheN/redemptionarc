@@ -1,0 +1,36 @@
+{
+  "verdict": "KIMI_STYLE_PLAN_READY_NO_LIVE",
+  "generatedAt": "2026-05-22T16:03:45.962Z",
+  "ledgerMode": "treasury",
+  "solPriceUsd": 86.75,
+  "params": {
+    "routeVolumeUsdc": 39,
+    "hops": 2,
+    "cushionExtraUsdc": 34.681332,
+    "minProfitUsd": 0.25
+  },
+  "estimates": {
+    "kaminoFlashFeeUsdc": 0.0351,
+    "cushionSol": 0.400189417,
+    "cushionUsd": 34.71643192475,
+    "feeFirstCreditUsdc": 25.510999,
+    "observedSweepUsdc": 1.519527,
+    "expectedTreasuryDeltaUsdc": 27.030526,
+    "observedBurnedGasSol": 0.023406634,
+    "observedBurnedGasUsd": 2.0305254995,
+    "priorityFeeLamports": "400",
+    "treasuryLedgerNetUsd": 25.000000500499997,
+    "totalSystemNetUsd": -9.71643142425,
+    "requiredCrankFloatSol": 0.443596051
+  },
+  "next": {
+    "canRunLiveNow": false,
+    "reason": "No live TX from planner. Fund RedemptionArc crank and run exact transaction simulation first.",
+    "requiredBeforeLive": [
+      "RedemptionArc crank funded above requiredCrankFloatSol",
+      "Treasury/crank/ring ATAs exist or are included idempotently",
+      "Exact TX0/TX2/TX3 simulation succeeds",
+      "Velon explicitly approves live micro-cycle"
+    ]
+  }
+}

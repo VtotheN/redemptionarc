@@ -1,0 +1,101 @@
+{
+  "verdict": "AGGRESSIVE_PLAN_READY_NO_LIVE",
+  "generatedAt": "2026-05-22T16:03:44.041Z",
+  "ledgerMode": "treasury",
+  "solPriceUsd": 86.75,
+  "routeVolumeUsdc": 39,
+  "cyclesPerDay": 1000,
+  "plans": [
+    {
+      "targetNetUsd": 10,
+      "requiredCushionExtraUsdc": 14.681331332666666,
+      "env": {
+        "TX2_CUSHION_EXTRA_USDC_MICRO": "14681332"
+      },
+      "expected": {
+        "feeFirstCreditUsdc": 10.510999,
+        "observedSweepUsdc": 1.519527,
+        "treasuryDeltaUsdc": 12.030526,
+        "gasUsd": 2.0305254995,
+        "netUsd": 10.0000005005,
+        "cushionSol": 0.169641867,
+        "requiredFloatSol": 0.213048501,
+        "projectedDailyNetUsd": 10000.0005005
+      }
+    },
+    {
+      "targetNetUsd": 25,
+      "requiredCushionExtraUsdc": 34.681331332666666,
+      "env": {
+        "TX2_CUSHION_EXTRA_USDC_MICRO": "34681332"
+      },
+      "expected": {
+        "feeFirstCreditUsdc": 25.510999,
+        "observedSweepUsdc": 1.519527,
+        "treasuryDeltaUsdc": 27.030526,
+        "gasUsd": 2.0305254995,
+        "netUsd": 25.000000500499997,
+        "cushionSol": 0.400189417,
+        "requiredFloatSol": 0.443596051,
+        "projectedDailyNetUsd": 25000.0005005
+      }
+    },
+    {
+      "targetNetUsd": 50,
+      "requiredCushionExtraUsdc": 68.014664666,
+      "env": {
+        "TX2_CUSHION_EXTRA_USDC_MICRO": "68014665"
+      },
+      "expected": {
+        "feeFirstCreditUsdc": 50.510998,
+        "observedSweepUsdc": 1.519527,
+        "treasuryDeltaUsdc": 52.030525,
+        "gasUsd": 2.0305254995,
+        "netUsd": 49.999999500499996,
+        "cushionSol": 0.784435331,
+        "requiredFloatSol": 0.827841965,
+        "projectedDailyNetUsd": 49999.999500499995
+      }
+    },
+    {
+      "targetNetUsd": 100,
+      "requiredCushionExtraUsdc": 134.68133133266667,
+      "env": {
+        "TX2_CUSHION_EXTRA_USDC_MICRO": "134681332"
+      },
+      "expected": {
+        "feeFirstCreditUsdc": 100.510999,
+        "observedSweepUsdc": 1.519527,
+        "treasuryDeltaUsdc": 102.030526,
+        "gasUsd": 2.0305254995,
+        "netUsd": 100.0000005005,
+        "cushionSol": 1.55292717,
+        "requiredFloatSol": 1.596333804,
+        "projectedDailyNetUsd": 100000.0005005
+      }
+    }
+  ],
+  "selected": {
+    "targetNetUsd": 25,
+    "requiredCushionExtraUsdc": 34.681331332666666,
+    "env": {
+      "TX2_CUSHION_EXTRA_USDC_MICRO": "34681332"
+    },
+    "expected": {
+      "feeFirstCreditUsdc": 25.510999,
+      "observedSweepUsdc": 1.519527,
+      "treasuryDeltaUsdc": 27.030526,
+      "gasUsd": 2.0305254995,
+      "netUsd": 25.000000500499997,
+      "cushionSol": 0.400189417,
+      "requiredFloatSol": 0.443596051,
+      "projectedDailyNetUsd": 25000.0005005
+    }
+  },
+  "liveBoundary": [
+    "No live TX from this planner.",
+    "Fund RedemptionArc crank to selected.expected.requiredFloatSol or higher.",
+    "Run exact TX0/TX2/TX3 simulation with selected env.",
+    "Only then approve one live cycle."
+  ]
+}

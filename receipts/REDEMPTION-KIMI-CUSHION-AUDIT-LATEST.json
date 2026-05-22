@@ -1,0 +1,30 @@
+{
+  "verdict": "KIMI_CUSHION_AUDIT_COMPLETE",
+  "generatedAt": "2026-05-22T15:58:51.237Z",
+  "receiptsDir": "/Users/velon/Desktop/DOCTORKIMI-ENGINE/receipts",
+  "cycleCount": 269,
+  "model": {
+    "treasuryLedgerNetUsd": "treasury USDC delta - real burned SOL gas",
+    "totalSystemNetUsdEstimate": "treasury USDC delta - real burned SOL gas - estimated TX0 SOL cushion converted to USDC",
+    "limitation": "Kimi receipts do not persist exact cushionSolLamports, so cushion is estimated from route config."
+  },
+  "stats": {
+    "avgTreasuryLedgerNetUsd": 1.974605684823568,
+    "positiveTreasuryLedgerCycles": 262,
+    "avgTotalSystemNetUsdEstimate": -2.060494315176431,
+    "positiveTotalSystemEstimateCycles": 4,
+    "avgCushionUsdEstimate": 4.03510000000003
+  },
+  "latest": {
+    "file": "dk-cycle-2026-05-22T15-54-01-695Z.json",
+    "createdAt": "2026-05-22T15:54:01.696Z",
+    "solPriceUsd": 86.63,
+    "treasuryDeltaUsdc": 5.554432,
+    "gasUsd": 0.010863402000000001,
+    "cushionUsdEstimate": 4.0351,
+    "treasuryLedgerNetUsd": 5.543568598,
+    "totalSystemNetUsdEstimate": 1.5084685980000003,
+    "hopFeesUnits": 4.856738
+  },
+  "conclusion": "Kimi demonstrates treasury USDC growth. RedemptionArc must separately prove total-system growth before scaling."
+}

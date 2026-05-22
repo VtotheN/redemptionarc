@@ -1,0 +1,37 @@
+{
+  "verdict": "TARGET_DESIGN_BLOCKED_TOTAL_SYSTEM_NEGATIVE",
+  "generatedAt": "2026-05-22T15:58:55.767Z",
+  "observedUnitEconomics": {
+    "observedRouteVolumeUsdc": 39,
+    "treasuryLedgerNetUsd": 1.974605684823568,
+    "totalSystemNetUsdEstimate": -2.060494315176431,
+    "avgTreasuryDeltaUsdc": 3.93684708921933,
+    "avgNetUsd": -2.060494315176431,
+    "avgGasSol": 0.022517549193308572,
+    "cashYieldBps": 1009.4479715947,
+    "netYieldBps": -528.3318756862643
+  },
+  "targets": {
+    "targetNetPerCycle": 1000,
+    "targetNetPerDay": 1000000,
+    "targetCyclesPerDay": 1000,
+    "requiredNetPerCycleForDayTarget": 1000
+  },
+  "theoreticalVolumeRequirements": {
+    "requiredVolumeForTargetCycle": null,
+    "requiredVolumeForDayPlan": null,
+    "tokenFeeCapAllows": true
+  },
+  "nextProofBeforeLive": {
+    "routeVolumeUsdc": null,
+    "requiredReceipt": "exact no-send TX0/TX2/TX3 or Jito bundle simulation showing spendable SOL+USDC net positive",
+    "blockers": [
+      "Must prove total-system ledger is positive after counting TX0 cushion as inventory conversion.",
+      "Must prove new RedemptionArc wallets can control the fee/withdraw/settlement authority.",
+      "Must prove hop escrow/liquidity can support required route volume without draining controlled inventory.",
+      "Must prove Jupiter/Orca can settle any SOL/USDC leg at target size and slippage.",
+      "Must prove TX0/TX2/TX3 CU and v0 bytes at target size, or split into bundle lanes.",
+      "Must prove the same cash yield holds at size; observed 39 USDC route cannot be linearly assumed."
+    ]
+  }
+}

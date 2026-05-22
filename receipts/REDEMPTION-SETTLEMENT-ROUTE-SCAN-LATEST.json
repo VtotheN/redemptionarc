@@ -1,0 +1,95 @@
+{
+  "verdict": "SETTLEMENT_ROUTE_BLOCKED_TOKEN_NOT_TRADABLE",
+  "generatedAt": "2026-05-22T15:53:58.635Z",
+  "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+  "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+  "amounts": [
+    "1000000",
+    "10000000",
+    "100000000",
+    "1000000000"
+  ],
+  "results": [
+    {
+      "baseUrl": "https://api.jup.ag/swap/v1",
+      "amount": "1000000",
+      "ok": false,
+      "status": 400,
+      "json": {
+        "error": "The token HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3 is not tradable",
+        "errorCode": "TOKEN_NOT_TRADABLE"
+      }
+    },
+    {
+      "baseUrl": "https://api.jup.ag/swap/v1",
+      "amount": "10000000",
+      "ok": false,
+      "status": 400,
+      "json": {
+        "error": "The token HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3 is not tradable",
+        "errorCode": "TOKEN_NOT_TRADABLE"
+      }
+    },
+    {
+      "baseUrl": "https://api.jup.ag/swap/v1",
+      "amount": "100000000",
+      "ok": false,
+      "status": 400,
+      "json": {
+        "error": "The token HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3 is not tradable",
+        "errorCode": "TOKEN_NOT_TRADABLE"
+      }
+    },
+    {
+      "baseUrl": "https://api.jup.ag/swap/v1",
+      "amount": "1000000000",
+      "ok": false,
+      "status": 429,
+      "json": {
+        "code": 429,
+        "message": "[API Gateway] Too many requests"
+      }
+    },
+    {
+      "baseUrl": "https://lite-api.jup.ag/swap/v1",
+      "amount": "1000000",
+      "ok": false,
+      "status": 400,
+      "json": {
+        "error": "The token HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3 is not tradable",
+        "errorCode": "TOKEN_NOT_TRADABLE"
+      }
+    },
+    {
+      "baseUrl": "https://lite-api.jup.ag/swap/v1",
+      "amount": "10000000",
+      "ok": false,
+      "status": 400,
+      "json": {
+        "error": "The token HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3 is not tradable",
+        "errorCode": "TOKEN_NOT_TRADABLE"
+      }
+    },
+    {
+      "baseUrl": "https://lite-api.jup.ag/swap/v1",
+      "amount": "100000000",
+      "ok": false,
+      "status": 400,
+      "json": {
+        "error": "The token HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3 is not tradable",
+        "errorCode": "TOKEN_NOT_TRADABLE"
+      }
+    },
+    {
+      "baseUrl": "https://lite-api.jup.ag/swap/v1",
+      "amount": "1000000000",
+      "ok": false,
+      "status": 400,
+      "json": {
+        "error": "The token HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3 is not tradable",
+        "errorCode": "TOKEN_NOT_TRADABLE"
+      }
+    }
+  ],
+  "conclusion": "HOP cannot currently be treated as cash. Need owned pool/venue route, direct market creation, or a different cash-settled source."
+}

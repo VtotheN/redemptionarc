@@ -1,0 +1,65 @@
+{
+  "verdict": "REDEMPTION_CYCLE_PLAN_BLOCKED_NO_CASH_SETTLEMENT",
+  "generatedAt": "2026-05-22T15:54:20.411Z",
+  "dryRun": true,
+  "allowLive": false,
+  "accounts": {
+    "treasury": "BGM3VPeND4xts3J6WeaeRJVFpzAJhyJiqycqYP2vk6dV",
+    "crank": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+    "withdrawAuthority": "4J3QuZt1fPbkPJST4rd9sZyQLrKAzv6FLgWpvXumn57Y",
+    "treasuryUsdcAta": "CmTzJnUE1sU6cn4rg3VW81ZB6GJ14LC3fE5PuxrauUsQ",
+    "ghostUsdcAta": "5BK5sqF2vH8o1BBrSukV44ujpu19rpgvJFedGC8GzF9X",
+    "crankWsolAta": "GKUd1pgyn7yRmo1iag17gtKrsrcEAG8Pjgvj3wZHmmke",
+    "hopEscrowAta": "2s2Au2bxsvF5cHbdhfP4JaFX8FXp5wXzQxBj15PNPEkD",
+    "treasuryHopAta": "8KLREhus7bqmoe2bWEEjxo5tTiMNpk7TzQQi3ScLzagY",
+    "ringAtas": [
+      "6y8Q9u9psmrwfiAhV4NwR34ap7GZhU4Vc78PpRequijn",
+      "Fq9x3SMf7DLHTVo3yhApFUsM1KibGodbEvcDuGFkiUMJ",
+      "DsKieWX5AtrHpefetBe8kxueQXx7TwEH1R2ScCnDN9Jn",
+      "GWHLY4R3wVmn7263YwjcQyMoKzpRoUUc2kLUscTU872v"
+    ],
+    "ringOwners": [
+      "4ftgDecgELHsLm6yVmoynNAW4KkBW8P6TK3rU47yyxvu",
+      "Yja2XE6rAtf9tTughmeQ95YjVR2nR4iRRsrp9oYdipk",
+      "5jZur8NtpXNmDhRncSBkNgHhN129rBnKdiUBJadD1ihq",
+      "DevoDSB8G1kVmzWxzwaoKgRMozHK1sQqNfJABnWSvmkC"
+    ]
+  },
+  "plannedTxs": [
+    {
+      "name": "TX0_CUSHION",
+      "role": "optional SOL/WSOL to USDC float for ghost account",
+      "liveStatus": "disabled"
+    },
+    {
+      "name": "TX2_HOP_RING",
+      "role": "Kamino borrow + Token-2022 hop ring + repay",
+      "liveStatus": "disabled"
+    },
+    {
+      "name": "TX3_SETTLE_SWEEP",
+      "role": "withdraw/settle fees to SOL/USDC, sweep cash to treasury",
+      "liveStatus": "blocked until settlement route exists"
+    }
+  ],
+  "floatEstimates": {
+    "microCycle": {
+      "routeVolumeUsdc": 39,
+      "minCrankSol": 0.08
+    },
+    "targetCycle": {
+      "targetVolumeUsdc": 20633,
+      "targetFloatSol": 1,
+      "note": "rough placeholder; must be replaced by exact no-send TX simulation"
+    }
+  },
+  "blockers": [
+    "cash settlement route not ready: SETTLEMENT_ROUTE_BLOCKED_TOKEN_NOT_TRADABLE"
+  ],
+  "nextRequiredProof": [
+    "settlement-route-scan returns READY",
+    "exact TX0/TX2/TX3 simulation succeeds with RedemptionArc accounts",
+    "receipt shows spendable SOL+USDC after > before",
+    "Velon explicitly approves one live micro-cycle"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "verdict": "SCALE_BLOCKED_NEGATIVE_TEMPLATE",
+  "generatedAt": "2026-05-22T15:58:53.019Z",
+  "observed": {
+    "avgNetUsd": -2.060494315176431,
+    "avgTreasuryDeltaUsdc": 3.93684708921933,
+    "avgGasSol": 0.022517549193308572,
+    "source": "receipt_observed_total_system_average"
+  },
+  "targets": {
+    "targetPerCycle": 1000,
+    "targetPerDay": 1000000,
+    "maxCyclesPerDay": 20000
+  },
+  "rawRepetitionMath": {
+    "cyclesNeededForTargetPerCycle": null,
+    "cyclesNeededForTargetPerDay": null,
+    "netUsdPerDayAtMaxCycles": -41209.88630352862,
+    "parallelLanesNeededAtMaxCycles": null
+  },
+  "requiredMultiplier": {
+    "perCycleMultiplierForTarget": null,
+    "perDayMultiplierAtMaxCycles": null
+  },
+  "engineeringConclusion": [
+    "The observed Kimi treasury ledger is positive, but RedemptionArc scales only total-system profit.",
+    "Thousands per cycle or millions per day require a multiplier: scalable fee source, batched independent lanes, larger controlled venue, or a new cash-settled source.",
+    "Do not increase volume blindly until Token-2022 fee caps, hop liquidity, Jupiter settlement, CU, and wallet float are proven by exact no-send receipts."
+  ],
+  "nextBuildModules": [
+    "source-autopsy: decode exactly who pays each treasury USDC delta",
+    "route-cap-scanner: read Token-2022 fee caps and liquidity depth",
+    "batch-simulator: estimate CU/tx bytes for N lanes",
+    "redemption-cycle-builder: TX0/TX2/TX3 under new wallets only"
+  ]
+}
