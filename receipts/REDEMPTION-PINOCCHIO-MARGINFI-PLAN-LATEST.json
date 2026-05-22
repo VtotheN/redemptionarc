@@ -1,0 +1,43 @@
+{
+  "verdict": "PINOCCHIO_MARGINFI_PLAN_BLOCKED_TOOLCHAIN",
+  "generatedAt": "2026-05-22T17:51:29.993Z",
+  "objective": "Replace Kamino fee/friction with Marginfi 0 bps path, then reduce callback CU with Pinocchio.",
+  "config": {
+    "routeVolumeUsdc": 39,
+    "hops": 2,
+    "tx2CuPriceMicroLamports": 1000,
+    "minNetUsd": 0.25
+  },
+  "dependencies": {
+    "marginfiClientV2": "6.4.1",
+    "mrgnCommon": "2.0.7",
+    "pinocchioManifest": "programs/pinocchio-arc/Cargo.toml",
+    "rustc": false,
+    "cargo": false,
+    "solana": true
+  },
+  "marginfiAdapterShape": {
+    "sdkTypesFound": [
+      "MarginfiAccountWrapper.makeBeginFlashLoanIx(endIndex, authority)",
+      "MarginfiAccountWrapper.makeEndFlashLoanIx(projectedActiveBalances, authority)",
+      "MarginfiAccountWrapper.buildFlashLoanTx({ ixs, signers, addressLookupTableAccounts })"
+    ],
+    "requiredInputs": [
+      "production Marginfi config",
+      "RedemptionArc-owned marginfi account",
+      "USDC bank address and projected active balances",
+      "existing TX0/TX2/TX3 instructions rewritten as flash body",
+      "exact no-send simulation with total-system cash gate"
+    ]
+  },
+  "pinocchioPath": {
+    "crate": "programs/pinocchio-arc",
+    "v0": "read-only callback baseline",
+    "next": "move Token-2022 hop/settle CPI only after v0 CU is measured"
+  },
+  "blockers": [
+    "rustc not installed",
+    "cargo not installed"
+  ],
+  "next": "Install Rust/Cargo, then build Pinocchio SBF; in parallel derive Marginfi account/bank inputs."
+}

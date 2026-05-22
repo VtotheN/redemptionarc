@@ -119,3 +119,14 @@ RedemptionArc lab sweep.
 - cycle 005: `cushionExtra=0`, `minCushion=0.0100 SOL`, system net `-$0.008921`
 - cycle 006: `cushionExtra=0`, `minCushion=0.0098 SOL`, system net `-$0.008151`
 - provider scan says native Marginfi 0 bps would model `+$0.026179`, below the normal `$0.25` gate but positive directionally
+
+## pending
+
+Pinocchio + Marginfi track.
+
+- installed `@mrgnlabs/marginfi-client-v2@6.4.1`
+- installed `@mrgnlabs/mrgn-common@2.0.7`
+- added `programs/pinocchio-arc` read-only callback scaffold
+- added `npm run pinocchio-marginfi-plan`
+- local blocker: no `rustc`, `cargo`, or `rustup` installed
+- adapter target: Marginfi begin flashloan -> RedemptionArc body -> Marginfi end flashloan -> total-system cash receipt

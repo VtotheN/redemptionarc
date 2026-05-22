@@ -19,6 +19,7 @@
     "kimi-proof": "tsx src/scripts/import-kimi-proof.ts",
     "kimi-cushion-audit": "tsx src/scripts/kimi-cushion-audit.ts",
     "kimi-style-plan": "tsx src/scripts/kimi-style-plan.ts",
+    "pinocchio-marginfi-plan": "tsx src/scripts/pinocchio-marginfi-plan.ts",
     "refill-crank": "tsx src/scripts/refill-crank.ts",
     "preflight": "tsx src/gates/preflight.ts",
     "scale-model": "tsx src/scripts/scale-model.ts",
@@ -31,6 +32,8 @@
     "dry-run": "DRY_RUN=true tsx src/gates/preflight.ts && DRY_RUN=true tsx src/scripts/treasury-snapshot.ts"
   },
   "dependencies": {
+    "@mrgnlabs/marginfi-client-v2": "^6.4.1",
+    "@mrgnlabs/mrgn-common": "^2.0.7",
     "@solana/spl-token": "^0.4.13",
     "@solana/web3.js": "^1.98.2",
     "dotenv": "^16.6.1"

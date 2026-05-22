@@ -48,3 +48,44 @@ Marginfi adapter
 
 VAEA is also worth testing as an aggregator path, but its advertised 2 bps fee is
 a smaller improvement than native Marginfi 0 bps.
+
+## Pinocchio + Marginfi Track
+
+Pinocchio is not the cash source. It is the low-CU shell for the callback once a
+better flash route exists.
+
+Current module:
+
+```text
+programs/pinocchio-arc
+```
+
+Current planner:
+
+```bash
+npm run pinocchio-marginfi-plan
+```
+
+Known blocker on this machine:
+
+```text
+Solana CLI exists.
+rustc/cargo/rustup do not exist yet.
+```
+
+Marginfi SDK is installed and exposes:
+
+```text
+makeBeginFlashLoanIx(endIndex, authority)
+makeEndFlashLoanIx(projectedActiveBalances, authority)
+buildFlashLoanTx({ ixs, signers, addressLookupTableAccounts })
+```
+
+Next hard proof:
+
+```text
+Marginfi flash body
+-> same RedemptionArc hop/sweep body
+-> no-send sim
+-> total-system cash receipt
+```
