@@ -60,3 +60,12 @@ First aggressive live cycle.
 - treasury delta `34.743069 USDC`
 - reported post-gate net `$34.4371`
 - crank after cycle `0.064379503 SOL`
+
+## pending
+
+Treasury refill to crank.
+
+- first refill swapped `30 USDC`, transferred `0.311005 SOL`
+- second refill swapped `4 USDC`, transferred `0.084241 SOL`
+- crank after refill `0.459625769 SOL`
+- readiness restored to `AGGRESSIVE_READINESS_READY_FOR_EXACT_SIM`

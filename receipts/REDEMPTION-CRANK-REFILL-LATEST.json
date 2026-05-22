@@ -1,0 +1,15 @@
+{
+  "verdict": "REDEMPTION_CRANK_REFILLED",
+  "generatedAt": "2026-05-22T17:20:08.353Z",
+  "usdcAmount": 4,
+  "quoteOutSol": 0.046154052,
+  "swapSignature": "CXffhedrYPK1phmt7cXLXraRr7fgTaXhLYQ7W5dw1u4kGWA9RN78ayyUCVYvN2k31TE4uaBgTMMg7QHrMhkMuLR",
+  "transferSignature": "5MUYAaTDCeZTxvwXEkPxUF7xNzwFxxEM5GGK4rZH6zy1fibMcN495P3NaGMrZPgKRJbuEsX6q7eJaXzhNWj44Mj5",
+  "transferSol": 0.084240903,
+  "balances": {
+    "preTreasurySol": 0.044551152,
+    "preCrankSol": 0.375384866,
+    "postTreasurySol": 0.006428732,
+    "postCrankSol": 0.459625769
+  }
+}

@@ -17,6 +17,7 @@
     "kimi-proof": "tsx src/scripts/import-kimi-proof.ts",
     "kimi-cushion-audit": "tsx src/scripts/kimi-cushion-audit.ts",
     "kimi-style-plan": "tsx src/scripts/kimi-style-plan.ts",
+    "refill-crank": "tsx src/scripts/refill-crank.ts",
     "preflight": "tsx src/gates/preflight.ts",
     "scale-model": "tsx src/scripts/scale-model.ts",
     "settlement-gap": "tsx src/scripts/settlement-gap.ts",

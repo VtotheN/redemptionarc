@@ -1,6 +1,6 @@
 {
-  "verdict": "AGGRESSIVE_READINESS_BLOCKED",
-  "generatedAt": "2026-05-22T17:17:30.052Z",
+  "verdict": "AGGRESSIVE_READINESS_READY_FOR_EXACT_SIM",
+  "generatedAt": "2026-05-22T17:20:12.440Z",
   "selectedPlan": {
     "targetNetUsd": 25,
     "requiredCushionExtraUsdc": 34.681331332666666,
@@ -18,7 +18,7 @@
       "projectedDailyNetUsd": 25000.0005005
     }
   },
-  "crankSol": 0.064379503,
+  "crankSol": 0.459625769,
   "accountChecks": {
     "treasuryUsdcAta": {
       "address": "CmTzJnUE1sU6cn4rg3VW81ZB6GJ14LC3fE5PuxrauUsQ",
@@ -41,8 +41,6 @@
       "exists": true
     }
   },
-  "blockers": [
-    "crank underfunded: 0.064379503 SOL < 0.443596051 SOL"
-  ],
-  "next": "Resolve blockers, then rerun aggressive-readiness."
+  "blockers": [],
+  "next": "Build exact TX0/TX2/TX3 transaction simulation for selected aggressive profile."
 }

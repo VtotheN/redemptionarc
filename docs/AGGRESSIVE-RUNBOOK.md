@@ -22,6 +22,12 @@ crank after: 0.064379503 SOL
 status: success, needs refill before next aggressive cycle
 ```
 
+Refill command:
+
+```bash
+ENV_PATH=.env.redemptionarc REFILL_USDC_AMOUNT=30 npm run refill-crank
+```
+
 ## Config Targets
 
 | Target net/cycle | `TX2_CUSHION_EXTRA_USDC_MICRO` | Required crank float | Projected at 1000/day |
