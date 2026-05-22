@@ -1,6 +1,6 @@
 {
-  "verdict": "EXACT_SIM_BLOCKED_BY_READINESS",
-  "generatedAt": "2026-05-22T16:12:30.887Z",
+  "verdict": "EXACT_SIM_READY_TO_BUILD_TRANSACTIONS",
+  "generatedAt": "2026-05-22T17:11:29.907Z",
   "selectedPlan": {
     "targetNetUsd": 25,
     "requiredCushionExtraUsdc": 34.681331332666666,
@@ -18,26 +18,24 @@
       "projectedDailyNetUsd": 25000.0005005
     }
   },
-  "readinessVerdict": "AGGRESSIVE_READINESS_BLOCKED",
-  "blockers": [
-    "readiness not ready: AGGRESSIVE_READINESS_BLOCKED"
-  ],
+  "readinessVerdict": "AGGRESSIVE_READINESS_READY_FOR_EXACT_SIM",
+  "blockers": [],
   "transactionSkeleton": [
     {
       "tx": "TX0",
       "purpose": "wrap SOL and Jupiter SOL->USDC cushion into ghost USDC ATA",
-      "status": "blocked"
+      "status": "next_implementation"
     },
     {
       "tx": "TX2",
       "purpose": "Kamino borrow + Token-2022 hop ring + feeFirst transfer + Kamino repay",
-      "status": "blocked"
+      "status": "next_implementation"
     },
     {
       "tx": "TX3",
       "purpose": "sweep ghost USDC to treasury and harvest/withdraw HOP fees",
-      "status": "blocked"
+      "status": "next_implementation"
     }
   ],
-  "next": "Fund crank and rerun aggressive-readiness."
+  "next": "Implement real transaction builders and simulate with sigVerify=false."
 }

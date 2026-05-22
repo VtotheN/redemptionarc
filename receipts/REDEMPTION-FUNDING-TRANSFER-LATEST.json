@@ -1,0 +1,13 @@
+{
+  "verdict": "REDEMPTION_CRANK_FUNDED",
+  "generatedAt": "2026-05-22T00:00:00.000Z",
+  "signature": "5Eshg5FGhaD2NBCb8U4Q4dChXVSfRuyrZ6F8vZn3wgvZFsMvwbZ9f4RR64yu1tTBXF3oCDSVWpq2VD1Jwshqz9GM",
+  "from": "BGM3VPeND4xts3J6WeaeRJVFpzAJhyJiqycqYP2vk6dV",
+  "to": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+  "amountSol": 0.49,
+  "postBalances": {
+    "treasurySol": 0.009995,
+    "crankSol": 0.49
+  },
+  "purpose": "Move user-funded RedemptionArc float from treasury to crank for aggressive readiness."
+}
