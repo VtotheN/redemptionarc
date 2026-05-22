@@ -69,3 +69,13 @@ Treasury refill to crank.
 - second refill swapped `4 USDC`, transferred `0.084241 SOL`
 - crank after refill `0.459625769 SOL`
 - readiness restored to `AGGRESSIVE_READINESS_READY_FOR_EXACT_SIM`
+
+## pending
+
+Second aggressive live cycle.
+
+- TX0 `5QiMnxJ5uTm8kmALxpz9btpFzDEt7hukpvG8zLFxJQBj3r1eVTBeMYDvxyJTUr1YEiGpTVvJ9tPEg9MTAYMrzGrN`
+- TX2 `2F2QtXmK3TwvpKCS763wXhpPzW86McynQPvkQGv42fFvZ5pv8gCjB2sgZVYxXwCvHn14FavC4HHsRQaUyTe7YfDd`
+- TX3 `4cNn9Q9m6hoGVSJ9S8NsDmLmvNY7CjfR6tgfSiHqxaBtb3C9UsQGBjiwFEdVLXnNXDyviKcF5WXpJE5jWaVN5gnp`
+- treasury delta `34.678876 USDC`
+- reported post-gate net `$34.6676`
