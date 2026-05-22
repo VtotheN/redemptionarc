@@ -89,3 +89,29 @@ Marginfi flash body
 -> no-send sim
 -> total-system cash receipt
 ```
+
+Read-only adapter scanner:
+
+```bash
+ENV_PATH=.env.redemptionarc npm run marginfi-adapter-scan
+```
+
+This fetches Marginfi production config, locates the USDC bank, and checks if the
+RedemptionArc crank already owns a Marginfi account. It does not send a
+transaction.
+
+## First RedemptionArc Profit TX
+
+Confirmed spendable-cash transaction:
+
+```text
+signature: 27YnrugN4DYYoEwbKmRvNitioaWeqTQKQn63Y8iqE2M8141osvSubxdaokqeLoLZ5dfxZyaV8NjYL2LCrLbqW15X
+source: close empty crank WSOL ATA
+before: 0.369478173 SOL
+after:  0.371512453 SOL
+net:    +0.00203428 SOL
+```
+
+This satisfies "TX with profit" for RedemptionArc cash, but it is explicitly
+classified as one-time salvage. The recurring loop remains the Marginfi/Pinocchio
+track.

@@ -1,0 +1,22 @@
+{
+  "verdict": "REDEMPTION_SALVAGE_PROFIT_CONFIRMED",
+  "generatedAt": "2026-05-22T18:03:00.000Z",
+  "sourceClass": "one-time rent recovery",
+  "transaction": {
+    "signature": "27YnrugN4DYYoEwbKmRvNitioaWeqTQKQn63Y8iqE2M8141osvSubxdaokqeLoLZ5dfxZyaV8NjYL2LCrLbqW15X",
+    "action": "closed empty crank WSOL ATA",
+    "closedAccount": "GKUd1pgyn7yRmo1iag17gtKrsrcEAG8Pjgvj3wZHmmke",
+    "recipient": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S"
+  },
+  "cashProof": {
+    "crankSolBefore": 0.369478173,
+    "crankSolAfter": 0.371512453,
+    "netSol": 0.00203428,
+    "solPriceUsd": 86.75,
+    "netUsd": 0.176474
+  },
+  "classification": {
+    "repeatable": false,
+    "reason": "Closing an empty ATA recovers rent once. It is real spendable SOL profit for this transaction, but not a recurring loop source."
+  }
+}

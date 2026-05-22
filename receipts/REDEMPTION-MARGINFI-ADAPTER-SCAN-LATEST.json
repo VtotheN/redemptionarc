@@ -1,0 +1,77 @@
+{
+  "verdict": "MARGINFI_ADAPTER_SCAN_NEEDS_ACCOUNT_OR_FIX",
+  "generatedAt": "2026-05-22T17:57:14.175Z",
+  "mode": "read-only; no transaction sent",
+  "marginfi": {
+    "environment": "production",
+    "groupPk": "4qp6Fx6tnZkY5Wropq9wUYgtFxXKwE6viZxFHg3rdAG8",
+    "programId": "MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA"
+  },
+  "redemptionAuthority": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+  "usdcMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+  "usdcBank": null,
+  "rawFallbackTopUsdcBanks": [
+    {
+      "address": "2s37akK2eyBbp8DZgCm7RtsaEz8eJP3Nxd4urLHQv7yB",
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "group": "4qp6Fx6tnZkY5Wropq9wUYgtFxXKwE6viZxFHg3rdAG8",
+      "liquidityVault": "7jaiZR5Sk8hdYN9MxTpczTcwbWpb5WEoxSANuUwveuat",
+      "liquidityUsdc": 447026.71444
+    },
+    {
+      "address": "27Cpv49jQ3hav8zF3qZjp7T78ATdUTZN4m9x389Z8uH4",
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "group": "4qp6Fx6tnZkY5Wropq9wUYgtFxXKwE6viZxFHg3rdAG8",
+      "liquidityVault": "ESVxo7J4gPiWaoRr5DJmQJQHAbCexerfaxvAQ8Z9aUts",
+      "liquidityUsdc": 0.000123
+    },
+    {
+      "address": "6LoPoNHJKmQFE5ugVma19uGoM3kF1RsQUfGcem9UMLAk",
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "group": "4qp6Fx6tnZkY5Wropq9wUYgtFxXKwE6viZxFHg3rdAG8",
+      "liquidityVault": "3oCFv2K36uu3DqUaAif6WgrT9ezRtW9sSUh3v8KDndqX",
+      "liquidityUsdc": 0.000004
+    },
+    {
+      "address": "VnVjbrytWcxTi6nCASMryKm4vHwpVZvwJetE2W1w5gB",
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "group": "4qp6Fx6tnZkY5Wropq9wUYgtFxXKwE6viZxFHg3rdAG8",
+      "liquidityVault": "66kvQZbAswWz8yBXzPHtYHTeUqMZET9TXtCT3FZ6kpuD",
+      "liquidityUsdc": 0
+    },
+    {
+      "address": "EwURhaBfL9ahMqPHrJYpjaNsbXBWmwDxyLNXeudncF8N",
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "group": "4qp6Fx6tnZkY5Wropq9wUYgtFxXKwE6viZxFHg3rdAG8",
+      "liquidityVault": "FxCcvhSvHw1jP3AadSwvupwm7KnfuvgYfV5ZBMF1p5Qa",
+      "liquidityUsdc": 0
+    },
+    {
+      "address": "Be5LNsgq7Zs3LJkCnqW4j3bs7GsZksNNmqEiyEhbsugn",
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "group": "4qp6Fx6tnZkY5Wropq9wUYgtFxXKwE6viZxFHg3rdAG8",
+      "liquidityVault": "CjVf9j6Cwr3MFAvnGwCzZiUVXzgw56vUxZsgaWNZ7mQz",
+      "liquidityUsdc": 0
+    },
+    {
+      "address": "5GZmPEr6czroe3ax29D2FHyKuT64ixj5evB2NqWjUk1d",
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "group": "4qp6Fx6tnZkY5Wropq9wUYgtFxXKwE6viZxFHg3rdAG8",
+      "liquidityVault": "BBTQJ9hb5wnE6A5yjkkPyDvRhG98K8NEzHRKmYniW35p",
+      "liquidityUsdc": 0
+    }
+  ],
+  "authorityAccounts": [],
+  "adapterShape": [
+    "create/fetch RedemptionArc Marginfi account",
+    "build begin flashloan ix with endIndex",
+    "insert RedemptionArc TX body",
+    "build end flashloan ix with projected active balances",
+    "simulate exact v0 transaction with total-system post balances"
+  ],
+  "blockers": [
+    "Marginfi fetch failed: Cannot read properties of null (reading 'property')",
+    "RedemptionArc crank has no Marginfi account yet"
+  ],
+  "next": "Create a RedemptionArc-owned Marginfi account in a separate exact approved setup tx, or fix client fetch."
+}

@@ -19,6 +19,7 @@
     "kimi-proof": "tsx src/scripts/import-kimi-proof.ts",
     "kimi-cushion-audit": "tsx src/scripts/kimi-cushion-audit.ts",
     "kimi-style-plan": "tsx src/scripts/kimi-style-plan.ts",
+    "marginfi-adapter-scan": "tsx src/scripts/marginfi-adapter-scan.ts",
     "pinocchio-marginfi-plan": "tsx src/scripts/pinocchio-marginfi-plan.ts",
     "refill-crank": "tsx src/scripts/refill-crank.ts",
     "preflight": "tsx src/gates/preflight.ts",

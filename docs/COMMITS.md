@@ -130,3 +130,24 @@ Pinocchio + Marginfi track.
 - added `npm run pinocchio-marginfi-plan`
 - local blocker: no `rustc`, `cargo`, or `rustup` installed
 - adapter target: Marginfi begin flashloan -> RedemptionArc body -> Marginfi end flashloan -> total-system cash receipt
+
+## pending
+
+Marginfi read-only adapter scanner.
+
+- added `npm run marginfi-adapter-scan`
+- fetches Marginfi production config/client read-only
+- locates USDC bank
+- checks whether RedemptionArc crank already owns a Marginfi account
+- sends no transactions
+
+## pending
+
+First confirmed RedemptionArc profit TX.
+
+- source: one-time rent recovery from empty crank WSOL ATA
+- signature `27YnrugN4DYYoEwbKmRvNitioaWeqTQKQn63Y8iqE2M8141osvSubxdaokqeLoLZ5dfxZyaV8NjYL2LCrLbqW15X`
+- crank SOL before `0.369478173`
+- crank SOL after `0.371512453`
+- net `+0.00203428 SOL`, about `+$0.176474` at SOL `86.75`
+- classification: real spendable cash, one-time salvage, not repeatable loop
