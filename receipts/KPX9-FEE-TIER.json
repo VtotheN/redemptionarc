@@ -1,0 +1,20 @@
+{
+  "config": "KPX9QQP4GLWiRkh4pGpkagwoPGaGixarRQs1LQKb9dt",
+  "feeTier": "6AEKZMiH6vKHQGqxAXLZWQJTQQRmyYZXk9az8nJmbmdU",
+  "tickSpacing": 64,
+  "feeRate": 3000,
+  "funder": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+  "feeAuthority": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+  "dryRun": false,
+  "signature": "61MQMRg8HiP5Jq6CGkSEopvCxWhDc41bW18Nqq7CqZTCBZ7iNynKEwZGbBYTmFT3btBLmLM6zqGHC6UJjZzVMTq8",
+  "verdict": "FEE_TIER_EXECUTED",
+  "simErr": null,
+  "simLogs": [
+    "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc invoke [1]",
+    "Program log: Instruction: InitializeFeeTier",
+    "Program 11111111111111111111111111111111 invoke [2]",
+    "Program 11111111111111111111111111111111 success",
+    "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc consumed 9783 of 200000 compute units",
+    "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc success"
+  ]
+}

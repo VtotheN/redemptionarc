@@ -1,9 +1,9 @@
 {
-  "verdict": "SIM_OK",
-  "timestamp": "2026-05-23T14:28:28.665Z",
+  "verdict": "CASH_PROOF_FAILED",
+  "timestamp": "2026-05-23T17:52:12.965Z",
   "dryRun": true,
   "flashUsdc": 2,
-  "nBundles": 10,
+  "nBundles": 1,
   "poolSqrtPrice": "1844674407370955161600",
   "poolLiquidity": "78627479083",
   "feeRate": 300,
@@ -12,16 +12,22 @@
   "swap1HopOut": "19943286677",
   "swap2HopIn": "18567199896",
   "swap2UsdcEstOut": "1861210",
-  "protocolFeePerBundle": "0.167122",
+  "protocolFeeUsdcPerBundle": "0.000018",
+  "protocolFeeHopPerBundle": "0.167104",
   "protocolFeeOwedABefore": 0,
   "protocolFeeOwedBBefore": 0,
-  "simUnitsConsumed": 319414,
+  "walletUsdcDeltaBeforeCollect": "-0.138790",
+  "collectableProtocolUsdc": "0.000018",
+  "estimatedGasUsdc": "0.002251",
+  "cashNetUsdc": "-0.141023",
+  "cashProofPass": false,
+  "simUnitsConsumed": 333965,
   "simErr": null,
   "simLogs": [
     "Program 11111111111111111111111111111111 success",
     "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA invoke [1]",
     "Program log: Instruction: LendingAccountEndFlashloan",
-    "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA consumed 4482 of 85068 compute units",
+    "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA consumed 4482 of 70517 compute units",
     "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA success"
   ],
   "bundlesSent": 0,
@@ -32,5 +38,5 @@
   "feesCollectedHop": null,
   "gasCostSol": null,
   "netUsdc": null,
-  "verdict2": "PENDING"
+  "verdict2": "NO_GO"
 }

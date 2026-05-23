@@ -50,7 +50,7 @@ import { writeReceipt } from "../utils/receipt.js";
 
 const WHIRLPOOL_PROGRAM  = new PublicKey("GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h");
 const WHIRLPOOL          = new PublicKey("8aoWgf7ycbeKv6BTFCdUj4JR7Y4mXWuPZWEUhmuzN5ZL");
-const WHIRLPOOLS_CONFIG  = new PublicKey("9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmY");
+const WHIRLPOOLS_CONFIG  = new PublicKey("9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ");
 const TOKEN_VAULT_A      = new PublicKey("4QD4GgnjRvjETqWLT5e3x7SHtJSzs9kShUPLfyHcTu7d");
 const TOKEN_VAULT_B      = new PublicKey("Qv51R47g7pMDxa3UofXaz8cNr8pwRSXaNufgnEWX8Yk");
 const TICK_ARRAY_84480   = new PublicKey("be9QKj4mYB8erh6r4ZDrKxxSvSYSUNRfpTxqJUgd3jG");
@@ -379,10 +379,11 @@ async function main() {
   const jitoTip      = BigInt(process.env.JITO_TIP_LAMPORTS || "10000");
   const cuLimit      = Number(process.env.CU_LIMIT || "400000");
   const cuPrice      = Number(process.env.CU_PRICE || "1000");
+  const solPriceUsd  = Number(process.env.SOL_PRICE_USD || "150");
 
   const connection   = new Connection(rpcUrl, "confirmed");
   const crank        = loadKeypair("keys/crank.json");
-  const withdrawAuth = loadKeypair("keys/withdraw-authority.json");
+  const withdrawAuth = loadKeypair(process.env.WITHDRAW_AUTHORITY_KEYPAIR_PATH || "keys/crank.json");
 
   const crankUsdcAta  = getAssociatedTokenAddressSync(USDC_MINT, crank.publicKey, false, TOKEN_PROGRAM_ID);
   const crankHopAta   = getAssociatedTokenAddressSync(HOP_MINT,  crank.publicKey, false, TOKEN_2022_PROGRAM_ID);
@@ -436,16 +437,23 @@ async function main() {
   const { usdcOut } = computeSwapBToA(sqrtP1, liquidity, hopSwap2, feeRate);
 
   const totalFeeUsdcSwap1 = (flashMicro * BigInt(feeRate) + 999_999n) / 1_000_000n;
-  const totalFeeUsdcSwap2 = (hopSwap2 * BigInt(feeRate) + 999_999n) / 1_000_000n;
-  const protocolFeeSwap1 = (totalFeeUsdcSwap1 * BigInt(protocolFeeRate)) / 10_000n;
-  const protocolFeeSwap2 = (totalFeeUsdcSwap2 * BigInt(protocolFeeRate)) / 10_000n;
+  const totalFeeHopSwap2 = (hopSwap2 * BigInt(feeRate) + 999_999n) / 1_000_000n;
+  const protocolFeeUsdcSwap1 = (totalFeeUsdcSwap1 * BigInt(protocolFeeRate)) / 10_000n;
+  const protocolFeeHopSwap2 = (totalFeeHopSwap2 * BigInt(protocolFeeRate)) / 10_000n;
+  const walletUsdcDeltaBeforeCollect = usdcOut - flashMicro;
+  const collectableProtocolUsdc = protocolFeeUsdcSwap1;
+  const estimatedLamportsPerBundle = 5_000n + jitoTip;
+  const estimatedGasUsdcMicro = BigInt(Math.ceil((Number(estimatedLamportsPerBundle) / 1e9) * solPriceUsd * 1e6));
+  const cashNetUsdcMicro = walletUsdcDeltaBeforeCollect + collectableProtocolUsdc - estimatedGasUsdcMicro;
+  const cashProofPass = cashNetUsdcMicro > 0n;
 
   console.log(`Swap 1 (USDC→HOP): $${flashUsdc} → ${Number(hopOut)/1e6} HOP`);
   console.log(`  T22 withheld: ${Number(t22FeeOnHopOut)/1e6} HOP (${t22Bps}bps)`);
   console.log(`  HOP for swap2: ${Number(hopSwap2)/1e6} (net after T22)`);
   console.log(`Swap 2 (HOP→USDC): ${Number(hopSwap2)/1e6} HOP → ~$${Number(usdcOut)/1e6}`);
-  console.log(`Protocol fees/bundle: ${Number(protocolFeeSwap1+protocolFeeSwap2)/1e6} USDC`);
-  console.log(`Gas/bundle: ~$0.002`);
+  console.log(`Protocol fees/bundle: ${Number(protocolFeeUsdcSwap1)/1e6} USDC + ${Number(protocolFeeHopSwap2)/1e6} HOP`);
+  console.log(`Wallet USDC delta before collect: ${Number(walletUsdcDeltaBeforeCollect)/1e6}`);
+  console.log(`Cash proof net after USDC protocol fee + gas: ${Number(cashNetUsdcMicro)/1e6} USDC`);
   console.log();
 
   // ─── Build TX ────────────────────────────────────────────────────────────
@@ -524,9 +532,15 @@ async function main() {
     swap1HopOut: hopOut.toString(),
     swap2HopIn: hopSwap2.toString(),
     swap2UsdcEstOut: usdcOut.toString(),
-    protocolFeePerBundle: (Number(protocolFeeSwap1 + protocolFeeSwap2) / 1e6).toFixed(6),
+    protocolFeeUsdcPerBundle: (Number(protocolFeeUsdcSwap1) / 1e6).toFixed(6),
+    protocolFeeHopPerBundle: (Number(protocolFeeHopSwap2) / 1e6).toFixed(6),
     protocolFeeOwedABefore: Number(protocolFeeOwedA) / 1e6,
     protocolFeeOwedBBefore: Number(protocolFeeOwedB) / 1e6,
+    walletUsdcDeltaBeforeCollect: (Number(walletUsdcDeltaBeforeCollect) / 1e6).toFixed(6),
+    collectableProtocolUsdc: (Number(collectableProtocolUsdc) / 1e6).toFixed(6),
+    estimatedGasUsdc: (Number(estimatedGasUsdcMicro) / 1e6).toFixed(6),
+    cashNetUsdc: (Number(cashNetUsdcMicro) / 1e6).toFixed(6),
+    cashProofPass,
     simUnitsConsumed: sim.value.unitsConsumed ?? null,
     simErr: sim.value.err ?? null,
     simLogs: simLogs.slice(-5),
@@ -544,6 +558,15 @@ async function main() {
   if (!simOk) {
     writeReceipt("FLYWHEEL-RUN-001.json", receipt);
     console.error("SIM_FAILED — fix before sending");
+    process.exitCode = 1;
+    return;
+  }
+
+  if (!cashProofPass) {
+    receipt.verdict = "CASH_PROOF_FAILED";
+    receipt.verdict2 = "NO_GO";
+    writeReceipt("FLYWHEEL-RUN-001.json", receipt);
+    console.error("CASH_PROOF_FAILED — live send blocked because spendable USDC/SOL net is not positive");
     process.exitCode = 1;
     return;
   }
@@ -592,8 +615,8 @@ async function main() {
   receipt.protocolFeeOwedAAfter = Number(poolAfter.protocolFeeOwedA) / 1e6;
   receipt.protocolFeeOwedBAfter = Number(poolAfter.protocolFeeOwedB) / 1e6;
 
-  const feeADelta = poolAfter.protocolFeeOwedA;
-  const feeBDelta = poolAfter.protocolFeeOwedB;
+  const feeADelta = poolAfter.protocolFeeOwedA > protocolFeeOwedA ? poolAfter.protocolFeeOwedA - protocolFeeOwedA : 0n;
+  const feeBDelta = poolAfter.protocolFeeOwedB > protocolFeeOwedB ? poolAfter.protocolFeeOwedB - protocolFeeOwedB : 0n;
 
   if (feeADelta > 0n || feeBDelta > 0n) {
     try {
@@ -643,7 +666,7 @@ async function main() {
 
   // ─── STEP 5: Write receipt ────────────────────────────────────────────────
 
-  const feesUsd    = Number(receipt.feesCollectedUsdc ?? 0) + Number(receipt.feesCollectedHop ?? 0) * 0.0001;
+  const feesUsd    = Number(receipt.feesCollectedUsdc ?? 0);
   const gasCostUsd = Number(receipt.gasCostSol ?? 0) * 150;
   const netUsdc    = feesUsd - gasCostUsd;
   receipt.netUsdc = netUsdc;
@@ -651,7 +674,7 @@ async function main() {
 
   // ─── STEP 6: Projection ───────────────────────────────────────────────────
 
-  const protocolFeePerBundleUsdc = Number(protocolFeeSwap1 + protocolFeeSwap2) / 1e6;
+  const protocolFeePerBundleUsdc = Number(protocolFeeUsdcSwap1) / 1e6;
   const gasPerBundleSol = Number(gasCostLamports) / 1e9 / nBundles;
   const gasPerBundleUsd = gasPerBundleSol * 150;
   const netPerBundle    = protocolFeePerBundleUsdc - gasPerBundleUsd;

@@ -1,0 +1,1087 @@
+{
+  "verdict": "ENDOGENOUS_ONLY_REQUIRES_CONTROLLED_ACTUATOR",
+  "generatedAt": "2026-05-23T18:32:37.966Z",
+  "noSend": true,
+  "baseRule": "No organic/Jupiter/external orderflow is allowed as the base-case source. Controlled bot volume must pass total-system wallet SOL/USDC accounting.",
+  "conclusion": {
+    "singleKpx9OrForkPool": "NO_GO_INTERNAL_FEE_TRANSFER",
+    "kpx9OfficialHopUsdc": "BLOCKED_FOR_HOP_TOKEN2022_BADGE_6066",
+    "currentForkHopPool": "ACTIVE_BUT_SINGLE_POOL_SELF_VOLUME_IS_NEGATIVE_OR_INTERNAL",
+    "minimumEngine": "TWO_CONTROLLED_VENUES_PLUS_ACTUATOR",
+    "staccObservedEngine": "MULTI_POOL_MESH_AROUND_36_POOLS_PLUS_ACTUATOR",
+    "correctEngine": "CONTROLLED_MULTI_POOL_MESH_PLUS_ACTUATOR"
+  },
+  "observedMeshScale": {
+    "userCorrection": "STACC used roughly 36 pools; treat two pools only as the mathematical minimum, not the operating ceiling.",
+    "targetMeshPoolCount": 36,
+    "currentScan": {
+      "configCount": 400,
+      "poolCount": 763,
+      "activePoolCount": 256,
+      "claimableProtocolFeePoolCount": 41
+    },
+    "controlClassReach": [
+      {
+        "controlClass": "local_signer",
+        "configs": 2,
+        "pools": 2,
+        "active": 1,
+        "cashTvlUsd": 290
+      },
+      {
+        "controlClass": "stacc_partner_observed_not_local",
+        "configs": 223,
+        "pools": 567,
+        "active": 219,
+        "cashTvlUsd": 11596.001983074628
+      },
+      {
+        "controlClass": "screenshot_authority_unverified",
+        "configs": 36,
+        "pools": 194,
+        "active": 36,
+        "cashTvlUsd": 7.600835456947139
+      }
+    ],
+    "candidateMeshBasket": [
+      {
+        "whirlpool": "FnfJEV3FgH3H2kxYkvhJLkywXF8dvXJZCYBp4LHGV4jr",
+        "programLabel": "official-orca",
+        "config": "HDE78Mg7ukJht34qd9yifnDGkdZoAFu5K5dSGQiHDDRq",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 50,
+        "protocolFeeRate": 2500,
+        "protocolCaptureRate": 0.0000125,
+        "cashTvlUsd": 6139.389283,
+        "tokenA": "XEEu6i2pqjsZn63spYuyDCd5yizaE1pJ7iPbNPW1oMo",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "EtC1kqNNKBU1e2XYiUr5RWxpYvJoPCd1jmZrzcdwTjPX",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 922.664625,
+        "tokenA": "AHdVQs56QpEEkRx6m8yiYYEiqM2sKjQxVd6mGH12pump",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "BSddxwYW73as8852ZTHRH13pbZEmZ96NBjayc5mSVtkZ",
+        "programLabel": "official-orca",
+        "config": "CuRxokDVEuCjovsSNkvUbkpTW3fCTYMbuFqPf3kpZgEz",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 100,
+        "protocolFeeRate": 2500,
+        "protocolCaptureRate": 0.000025,
+        "cashTvlUsd": 618.2193387837156,
+        "tokenA": "So11111111111111111111111111111111111111112",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "FqQesD6AyRCQz9bpdHyaKbfg7sbQeEMnwkwwp9hPy273",
+        "programLabel": "official-orca",
+        "config": "8hdTW4eVCHC2hJ29kf1HkU6MiBR6XsZ1ryi4VrjGg32F",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 3000,
+        "protocolFeeRate": 666,
+        "protocolCaptureRate": 0.00019980000000000003,
+        "cashTvlUsd": 477.137658,
+        "tokenA": "7C95pQAtX8M2U97Txut8JSKUp7VLJVyPVEL7xknUAWFy",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "B9jiKecdvVtfBC4kkMnokKKhKXZrPrZA4eQpWVTtPduZ",
+        "programLabel": "official-orca",
+        "config": "HGYCRq6asBGsmY6bip7GTpRAhmsrWPmsm7yAxoGPRnku",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 3000,
+        "protocolFeeRate": 666,
+        "protocolCaptureRate": 0.00019980000000000003,
+        "cashTvlUsd": 339.1307016421386,
+        "tokenA": "So11111111111111111111111111111111111111112",
+        "tokenB": "7C95pQAtX8M2U97Txut8JSKUp7VLJVyPVEL7xknUAWFy"
+      },
+      {
+        "whirlpool": "ABLZh4bMtC9DaZXC54TtrMaSJnqGYtbNERjKDtFC6BCf",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 305.356043,
+        "tokenA": "ENS6gbdvhmCGPscuCu47Jjk2KkPP2iUNJfkqKDV2UY3w",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "CdvDD8WMKjXzXs3LCshha2QnnhPsd3WZ9nyU6sv7C7RM",
+        "programLabel": "official-orca",
+        "config": "2LDbdSNMyuRQ9gCgUKjWm4Znq1US1X2R9aoSenuwkTqP",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 300,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 0.000008999999999999999,
+        "cashTvlUsd": 301.08485,
+        "tokenA": "CaLyryATQhnVZaau425zAJ9fNf4uNWVa1GKD6JN94AX9",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "3BFV8sBLVF4xUUdTwDC7JogLnadVbtAsGZK86VvPhsJ4",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 300.362538,
+        "tokenA": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "tokenB": "ErbakSHZWeLnq1hsqFvNz8FvxSzggrfyNGB6TEGSSgNE"
+      },
+      {
+        "whirlpool": "8aoWgf7ycbeKv6BTFCdUj4JR7Y4mXWuPZWEUhmuzN5ZL",
+        "programLabel": "redemption-fork",
+        "config": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
+        "controlStatus": "local_signer",
+        "feeRate": 300,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 0.000008999999999999999,
+        "cashTvlUsd": 290,
+        "tokenA": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "tokenB": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3"
+      },
+      {
+        "whirlpool": "CpcJAQgj4jmxuhYucenooeHrH88t1NhTZGfxw3DALBEb",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 265.636142,
+        "tokenA": "EA6zg6e9RcqWDgUpkhRu2YZn7LamGTNntivL7h5qpump",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "BgfmCb3B5TCtiwgRPDhp1aJ7KTX6oRdE2vzK8ZwRQ2HV",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 174.495673,
+        "tokenA": "92kxUXDsBQLy5ptGxtmH9CDYd5E6ZQynzf2eFPiUpump",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "5NeesqTGyySawoiR9Yv4asrXpDh42yHYEyVKt7VMWy1D",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 156.636627,
+        "tokenA": "4Zs7SmwrCrRAP1gBaNAE4n6LzarU2JzEsJSuj4Mwmoon",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "BHSWtSAmWWDVyngeJqoUDp9bVptWYjYXwAVvnkviGKwC",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 148.813265,
+        "tokenA": "iHjJCRDSLqah8eb37CPaFbj4r9Rzb52MvhyvAPBpump",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "25MnZCxYmi1rYMB2mGfeu9zg5ssHySDotHYyw6FSFL3H",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 144.442776,
+        "tokenA": "CboMcTUYUcy9E6B3yGdFn6aEsGUnYV6yWeoeukw6pump",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "HnCdv3T6acHvwKRCnW8PwzQSNdMQuD8VAcCUz2Cm6JTV",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 144.206262,
+        "tokenA": "57jzy6cY4JxwfvoNyUiPR5auuc6J5NjzC5BrjC1ymoon",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "9Brj8VjGn1a6ZaSupnS3q6UfU9zwD8einKqjkuUPeekk",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 95.839831,
+        "tokenA": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "BQeXvMMRWWjfY57AgXVoR4FHWSSfpNEfUXCmfT1nFW2x",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 89.893641,
+        "tokenA": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "tokenB": "J95XcNkdkBy2DCuUybKHyHqXPJJqC4rye7tgYJBcpump"
+      },
+      {
+        "whirlpool": "7g3uaag9BgSTHfdGn6sinANT7UaBUbadEPyXQHF1mhw3",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 75.424781,
+        "tokenA": "84R6wZHapPTGobXfsgmBRpoL7C9dHJj16ahRBjxx2637",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "9YBEStkTPU6PrwPCv633UGsh9Lz7rv2mwGfyMXJEBgZQ",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 75.277632,
+        "tokenA": "23t3rXSGzyoeEvNwYojgbpnStRaLPQwmUfrnPMrEpump",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "HcBitVcatsvP1BCYzCtxh1aFVo5QQk3aczYadQf4R2Lv",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 67.942167,
+        "tokenA": "4pLWhMQrnPqGZu6RaE9rsjPNBfBDfLB99f5fF86Tpump",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "BmVvuN3i9nAULs5S8yPygwYqSLtPw3URPTtwCg4r6Tfj",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 65.455649,
+        "tokenA": "71WsPPm44SUTWDfcCdLKsDezw4ZBXDrPjHz2rea7Lo97",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "41uPwcrSWgjMVsRjinzGS1zUpQnxfxwYaMks3peKUBys",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 63.477302,
+        "tokenA": "DyT6mdhiAYbHPML2AVXviGVxMQbc6Z3VmPZ2MQG6pump",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "9QhM7pJdHmjQ9LWgD7F9biFzqY3775YTQwCkZ2RxTx4N",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 62.098211,
+        "tokenA": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "tokenB": "FybftdRgR1PcNirPu7GB6iejAuZbMLyMBFTTU6MMmoon"
+      },
+      {
+        "whirlpool": "CFD6vHugXYDGxvo8bcwrj5FUU7LehVv6zmx6uS4xKk6G",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 61.18281,
+        "tokenA": "6Xx8p2WmY1Uk2GD35uxhEyuniNrVEeSu3CUThb8Upump",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "BD1NZPQ7ezLK3FKnxcaPDkrqsy3CSQbQs4SA8ogAnrWb",
+        "programLabel": "official-orca",
+        "config": "Cc7KdAPTFnb4h6TNRxura2BUABpLMT24MpKYKqATHPv2",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 3000,
+        "protocolFeeRate": 666,
+        "protocolCaptureRate": 0.00019980000000000003,
+        "cashTvlUsd": 59.850749,
+        "tokenA": "DZVfZHdtS266p4qpTR7vFXxXbrBku18nt9Uxp4KD9bsi",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "GFzZmaPpP6Yu6SkAURQ1VyHZQm5zTyHf9MtRcjongGXJ",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 59.362237,
+        "tokenA": "BJB5tHWAHboMAwti5AHbCNX17F3jL8ehkh4zuTUx99Zn",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "BqDLkFqYn1u1ccdjxGSBhC81UPShqRGNyRimvDbTz1qk",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 49.574399,
+        "tokenA": "CTg3ZgYx79zrE1MteDVkmkcGniiFrK1hJ6yiabropump",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "4GF3B8qvrnYGoCiUAha9UH5S9qnhK9CCcSRSrSERvz54",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 46.805862,
+        "tokenA": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "tokenB": "EUxS8Kqvbe8zDr8bG1RYtgjVNzEhMTG6B6H3WwrCHfwA"
+      },
+      {
+        "whirlpool": "FQRC4L1ugWtC468HhsxJ9C9RmTzmJdw8bPqS8p613JNV",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 43.054096,
+        "tokenA": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "tokenB": "GJVNVCfovYFWVQC62J2stXyCrawR5fAsC5HVpmZiaMkY"
+      },
+      {
+        "whirlpool": "CS3HVePPfQ8sHSeKAauYRutvJdRgcWY7iCVWUfTJ3xgv",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 37.150095,
+        "tokenA": "8aZuUoqr9rBLjikz7kvpajm1JRqhoWiLMnrNtnRNpump",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "2R4zNZtRybeLBDQtjY6VvEVc74S95crMtQyySZDUiDD6",
+        "programLabel": "official-orca",
+        "config": "9zKyYNHxyG8ZrtjZ6qx1eTFqYJ3d7B1JB4w9DJzgDkU2",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 33.414384,
+        "tokenA": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "Gg25ww6Dr4hXYrCKpg94vavNCkamsxf4vyu1YkkLVjZu",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 32.630432,
+        "tokenA": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "tokenB": "GACpABn18xqiSJbD9ZEyArJDT9RHRMUut5nK9Z9Spump"
+      },
+      {
+        "whirlpool": "GVPT4aoeLXGq9SxkGjn2fpixHmrawJtGuPx4TNik7soD",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 25.923477,
+        "tokenA": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "tokenB": "H8tB7pNB1k42hc7gqqXbojZGCgA2oqjdw9CqrgBjpump"
+      },
+      {
+        "whirlpool": "3q66iEEE6vWBfuwxcz6HbmJpsqzAH5htteexPSoTkCUV",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 25.564833,
+        "tokenA": "7w9gX1WBAYs6KnTd5oZdNNDS887YcBo4yScj66dUpump",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "EgWR6jqiTwSCKz4AVyq3f1BJVNy6x4sgEquxS48gatk",
+        "programLabel": "official-orca",
+        "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 1,
+        "protocolFeeRate": 300,
+        "protocolCaptureRate": 3e-8,
+        "cashTvlUsd": 18.441474,
+        "tokenA": "ASEHcnTfsfpFe6CohpPeX5gvNeerAynxmmBMXfCqzaSd",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      },
+      {
+        "whirlpool": "EEEEBfiPZbNDNnzwAgJJSHqsWz7u4iuDfTWfpzfZqgzT",
+        "programLabel": "official-orca",
+        "config": "HDE78Mg7ukJht34qd9yifnDGkdZoAFu5K5dSGQiHDDRq",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 50,
+        "protocolFeeRate": 2500,
+        "protocolCaptureRate": 0.0000125,
+        "cashTvlUsd": 14.998749,
+        "tokenA": "v62Jv9pwMTREWV9f6TetZfMafV254vo99p7HSF25BPr",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      }
+    ],
+    "localGap": {
+      "localActivePools": 1,
+      "targetMeshPoolCount": 36,
+      "missingActiveControlledPools": 35
+    }
+  },
+  "proofFromReceipts": {
+    "sourceScan": {
+      "generatedAt": "2026-05-23T18:18:54.005Z",
+      "summary": {
+        "configCount": 400,
+        "poolCount": 763,
+        "activePoolCount": 256,
+        "claimableProtocolFeePoolCount": 41,
+        "directLocalCollectableCashPoolCount": 0,
+        "directLocalCollectableCashUsd": 0,
+        "partnerOrUnverifiedClaimableCashUsd": 0.004602916405768,
+        "topCashClaimablePools": [
+          {
+            "whirlpool": "BSddxwYW73as8852ZTHRH13pbZEmZ96NBjayc5mSVtkZ",
+            "programLabel": "official-orca",
+            "config": "CuRxokDVEuCjovsSNkvUbkpTW3fCTYMbuFqPf3kpZgEz",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "executionClass": "PARTNER_OR_UNVERIFIED_CLAIMABLE_CASH",
+            "cashClaimableUsd": 0.004531462460716,
+            "tokenA": "wSOL",
+            "tokenAFeesUi": 0.000028268,
+            "tokenB": "USDC",
+            "tokenBFeesUi": 0.002136
+          },
+          {
+            "whirlpool": "B9jiKecdvVtfBC4kkMnokKKhKXZrPrZA4eQpWVTtPduZ",
+            "programLabel": "official-orca",
+            "config": "HGYCRq6asBGsmY6bip7GTpRAhmsrWPmsm7yAxoGPRnku",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "executionClass": "PARTNER_OR_UNVERIFIED_CLAIMABLE_CASH",
+            "cashClaimableUsd": 0.000067453945052,
+            "tokenA": "wSOL",
+            "tokenAFeesUi": 7.96e-7,
+            "tokenB": "UNKNOWN",
+            "tokenBFeesUi": 0
+          },
+          {
+            "whirlpool": "CdvDD8WMKjXzXs3LCshha2QnnhPsd3WZ9nyU6sv7C7RM",
+            "programLabel": "official-orca",
+            "config": "2LDbdSNMyuRQ9gCgUKjWm4Znq1US1X2R9aoSenuwkTqP",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "executionClass": "PARTNER_OR_UNVERIFIED_CLAIMABLE_CASH",
+            "cashClaimableUsd": 0.000003,
+            "tokenA": "UNKNOWN",
+            "tokenAFeesUi": 2.495579052,
+            "tokenB": "USDC",
+            "tokenBFeesUi": 0.000003
+          },
+          {
+            "whirlpool": "EEEEBfiPZbNDNnzwAgJJSHqsWz7u4iuDfTWfpzfZqgzT",
+            "programLabel": "official-orca",
+            "config": "HDE78Mg7ukJht34qd9yifnDGkdZoAFu5K5dSGQiHDDRq",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "executionClass": "PARTNER_OR_UNVERIFIED_CLAIMABLE_CASH",
+            "cashClaimableUsd": 0.000001,
+            "tokenA": "UNKNOWN",
+            "tokenAFeesUi": 0.624360484,
+            "tokenB": "USDC",
+            "tokenBFeesUi": 0.000001
+          }
+        ],
+        "topActiveFeeSources": [
+          {
+            "whirlpool": "FnfJEV3FgH3H2kxYkvhJLkywXF8dvXJZCYBp4LHGV4jr",
+            "programLabel": "official-orca",
+            "config": "HDE78Mg7ukJht34qd9yifnDGkdZoAFu5K5dSGQiHDDRq",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "feeRate": 50,
+            "protocolFeeRate": 2500,
+            "cashTvlUsd": 6139.389283,
+            "tokenA": "XEEu6i2pqjsZn63spYuyDCd5yizaE1pJ7iPbNPW1oMo",
+            "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+          },
+          {
+            "whirlpool": "EtC1kqNNKBU1e2XYiUr5RWxpYvJoPCd1jmZrzcdwTjPX",
+            "programLabel": "official-orca",
+            "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "feeRate": 1,
+            "protocolFeeRate": 300,
+            "cashTvlUsd": 922.664625,
+            "tokenA": "AHdVQs56QpEEkRx6m8yiYYEiqM2sKjQxVd6mGH12pump",
+            "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+          },
+          {
+            "whirlpool": "BSddxwYW73as8852ZTHRH13pbZEmZ96NBjayc5mSVtkZ",
+            "programLabel": "official-orca",
+            "config": "CuRxokDVEuCjovsSNkvUbkpTW3fCTYMbuFqPf3kpZgEz",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "feeRate": 100,
+            "protocolFeeRate": 2500,
+            "cashTvlUsd": 618.2193387837156,
+            "tokenA": "So11111111111111111111111111111111111111112",
+            "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+          },
+          {
+            "whirlpool": "FqQesD6AyRCQz9bpdHyaKbfg7sbQeEMnwkwwp9hPy273",
+            "programLabel": "official-orca",
+            "config": "8hdTW4eVCHC2hJ29kf1HkU6MiBR6XsZ1ryi4VrjGg32F",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "feeRate": 3000,
+            "protocolFeeRate": 666,
+            "cashTvlUsd": 477.137658,
+            "tokenA": "7C95pQAtX8M2U97Txut8JSKUp7VLJVyPVEL7xknUAWFy",
+            "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+          },
+          {
+            "whirlpool": "B9jiKecdvVtfBC4kkMnokKKhKXZrPrZA4eQpWVTtPduZ",
+            "programLabel": "official-orca",
+            "config": "HGYCRq6asBGsmY6bip7GTpRAhmsrWPmsm7yAxoGPRnku",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "feeRate": 3000,
+            "protocolFeeRate": 666,
+            "cashTvlUsd": 339.1307016421386,
+            "tokenA": "So11111111111111111111111111111111111111112",
+            "tokenB": "7C95pQAtX8M2U97Txut8JSKUp7VLJVyPVEL7xknUAWFy"
+          },
+          {
+            "whirlpool": "ABLZh4bMtC9DaZXC54TtrMaSJnqGYtbNERjKDtFC6BCf",
+            "programLabel": "official-orca",
+            "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "feeRate": 1,
+            "protocolFeeRate": 300,
+            "cashTvlUsd": 305.356043,
+            "tokenA": "ENS6gbdvhmCGPscuCu47Jjk2KkPP2iUNJfkqKDV2UY3w",
+            "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+          },
+          {
+            "whirlpool": "CdvDD8WMKjXzXs3LCshha2QnnhPsd3WZ9nyU6sv7C7RM",
+            "programLabel": "official-orca",
+            "config": "2LDbdSNMyuRQ9gCgUKjWm4Znq1US1X2R9aoSenuwkTqP",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "feeRate": 300,
+            "protocolFeeRate": 300,
+            "cashTvlUsd": 301.08485,
+            "tokenA": "CaLyryATQhnVZaau425zAJ9fNf4uNWVa1GKD6JN94AX9",
+            "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+          },
+          {
+            "whirlpool": "3BFV8sBLVF4xUUdTwDC7JogLnadVbtAsGZK86VvPhsJ4",
+            "programLabel": "official-orca",
+            "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "feeRate": 1,
+            "protocolFeeRate": 300,
+            "cashTvlUsd": 300.362538,
+            "tokenA": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+            "tokenB": "ErbakSHZWeLnq1hsqFvNz8FvxSzggrfyNGB6TEGSSgNE"
+          },
+          {
+            "whirlpool": "8aoWgf7ycbeKv6BTFCdUj4JR7Y4mXWuPZWEUhmuzN5ZL",
+            "programLabel": "redemption-fork",
+            "config": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
+            "controlStatus": "local_signer",
+            "feeRate": 300,
+            "protocolFeeRate": 300,
+            "cashTvlUsd": 290,
+            "tokenA": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+            "tokenB": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3"
+          },
+          {
+            "whirlpool": "CpcJAQgj4jmxuhYucenooeHrH88t1NhTZGfxw3DALBEb",
+            "programLabel": "official-orca",
+            "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "feeRate": 1,
+            "protocolFeeRate": 300,
+            "cashTvlUsd": 265.636142,
+            "tokenA": "EA6zg6e9RcqWDgUpkhRu2YZn7LamGTNntivL7h5qpump",
+            "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+          },
+          {
+            "whirlpool": "BgfmCb3B5TCtiwgRPDhp1aJ7KTX6oRdE2vzK8ZwRQ2HV",
+            "programLabel": "official-orca",
+            "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "feeRate": 1,
+            "protocolFeeRate": 300,
+            "cashTvlUsd": 174.495673,
+            "tokenA": "92kxUXDsBQLy5ptGxtmH9CDYd5E6ZQynzf2eFPiUpump",
+            "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+          },
+          {
+            "whirlpool": "5NeesqTGyySawoiR9Yv4asrXpDh42yHYEyVKt7VMWy1D",
+            "programLabel": "official-orca",
+            "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "feeRate": 1,
+            "protocolFeeRate": 300,
+            "cashTvlUsd": 156.636627,
+            "tokenA": "4Zs7SmwrCrRAP1gBaNAE4n6LzarU2JzEsJSuj4Mwmoon",
+            "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+          },
+          {
+            "whirlpool": "BHSWtSAmWWDVyngeJqoUDp9bVptWYjYXwAVvnkviGKwC",
+            "programLabel": "official-orca",
+            "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "feeRate": 1,
+            "protocolFeeRate": 300,
+            "cashTvlUsd": 148.813265,
+            "tokenA": "iHjJCRDSLqah8eb37CPaFbj4r9Rzb52MvhyvAPBpump",
+            "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+          },
+          {
+            "whirlpool": "25MnZCxYmi1rYMB2mGfeu9zg5ssHySDotHYyw6FSFL3H",
+            "programLabel": "official-orca",
+            "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "feeRate": 1,
+            "protocolFeeRate": 300,
+            "cashTvlUsd": 144.442776,
+            "tokenA": "CboMcTUYUcy9E6B3yGdFn6aEsGUnYV6yWeoeukw6pump",
+            "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+          },
+          {
+            "whirlpool": "HnCdv3T6acHvwKRCnW8PwzQSNdMQuD8VAcCUz2Cm6JTV",
+            "programLabel": "official-orca",
+            "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "feeRate": 1,
+            "protocolFeeRate": 300,
+            "cashTvlUsd": 144.206262,
+            "tokenA": "57jzy6cY4JxwfvoNyUiPR5auuc6J5NjzC5BrjC1ymoon",
+            "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+          },
+          {
+            "whirlpool": "9Brj8VjGn1a6ZaSupnS3q6UfU9zwD8einKqjkuUPeekk",
+            "programLabel": "official-orca",
+            "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "feeRate": 1,
+            "protocolFeeRate": 300,
+            "cashTvlUsd": 95.839831,
+            "tokenA": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+            "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+          },
+          {
+            "whirlpool": "BQeXvMMRWWjfY57AgXVoR4FHWSSfpNEfUXCmfT1nFW2x",
+            "programLabel": "official-orca",
+            "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "feeRate": 1,
+            "protocolFeeRate": 300,
+            "cashTvlUsd": 89.893641,
+            "tokenA": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+            "tokenB": "J95XcNkdkBy2DCuUybKHyHqXPJJqC4rye7tgYJBcpump"
+          },
+          {
+            "whirlpool": "7g3uaag9BgSTHfdGn6sinANT7UaBUbadEPyXQHF1mhw3",
+            "programLabel": "official-orca",
+            "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "feeRate": 1,
+            "protocolFeeRate": 300,
+            "cashTvlUsd": 75.424781,
+            "tokenA": "84R6wZHapPTGobXfsgmBRpoL7C9dHJj16ahRBjxx2637",
+            "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+          },
+          {
+            "whirlpool": "9YBEStkTPU6PrwPCv633UGsh9Lz7rv2mwGfyMXJEBgZQ",
+            "programLabel": "official-orca",
+            "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "feeRate": 1,
+            "protocolFeeRate": 300,
+            "cashTvlUsd": 75.277632,
+            "tokenA": "23t3rXSGzyoeEvNwYojgbpnStRaLPQwmUfrnPMrEpump",
+            "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+          },
+          {
+            "whirlpool": "HcBitVcatsvP1BCYzCtxh1aFVo5QQk3aczYadQf4R2Lv",
+            "programLabel": "official-orca",
+            "config": "Dm916rGvBmSGY5S61Rpggue2HBrXk487r6g2bUJmcPmQ",
+            "controlStatus": "stacc_partner_observed_not_local",
+            "feeRate": 1,
+            "protocolFeeRate": 300,
+            "cashTvlUsd": 67.942167,
+            "tokenA": "4pLWhMQrnPqGZu6RaE9rsjPNBfBDfLB99f5fF86Tpump",
+            "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+          }
+        ]
+      }
+    },
+    "controlledBotCycle": {
+      "verdict": "OWNED_FEE_MULTI_BOT_CYCLE_NO_GO",
+      "selected": {
+        "whirlpool": "3gw45dU6ZGcKK3HcXFUr8zTmceeiQj3AJwhNx4So5LVC",
+        "programLabel": "official-orca",
+        "program": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+        "config": "DHzSzuwgJvGdAibU97SZ4L2dGMEeFKtdPzsEaGGuNwQq",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "collectProtocolFeesAuthority": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+        "directLocalCollect": false,
+        "tokenA": {
+          "mint": "v62Jv9pwMTREWV9f6TetZfMafV254vo99p7HSF25BPr",
+          "symbol": "UNKNOWN",
+          "existingFeeUi": 0,
+          "existingFeeCashUsd": null
+        },
+        "tokenB": {
+          "mint": "BQpGv6LVWG1JRm1NdjerNSFdChMdAULJr3x9t2Swpump",
+          "symbol": "UNKNOWN",
+          "existingFeeUi": 0,
+          "existingFeeCashUsd": null
+        },
+        "activeCashTvlUsd": 0,
+        "feeRate": 30000,
+        "protocolFeeRate": 2500,
+        "multiBotTraffic": {
+          "botCount": 4,
+          "rounds": 10,
+          "tradeNotionalUsd": 10,
+          "grossVolumeUsd": 400,
+          "botCounterpartyMode": "controlled",
+          "externalFlowShare": 0,
+          "controlledFlowShare": 1
+        },
+        "feeMath": {
+          "protocolCaptureRate": 0.0075,
+          "requiredExternalVolumeUsdForMinNet": 33.393782011060004,
+          "swapFeeUsd": 12,
+          "protocolFeeUsd": 3,
+          "lpFeeUsd": 9,
+          "externalProtocolFeeUsd": 0,
+          "controlledProtocolSelfTransferUsd": 3,
+          "controlledSwapFeePaidUsd": 12,
+          "controlledExternalLpLeakageUsd": 9,
+          "ownedFullLp": false,
+          "ownedLpFeeAccrualUsd": 0,
+          "ownedLpCashCreditUsd": 0,
+          "countOwnedLpFeesAsCash": false
+        },
+        "costs": {
+          "ownedBotTxCost": {
+            "txCount": 40,
+            "lamportsPerTx": 5350,
+            "totalLamports": 214000,
+            "usd": 0.018134603317999997
+          },
+          "collectTxCost": {
+            "txCount": 1,
+            "lamportsPerTx": 5350,
+            "totalLamports": 5350,
+            "usd": 0.00045336508294999996
+          },
+          "inventoryRiskUsd": null,
+          "inventoryRiskBps": null,
+          "inventoryRiskBlocksCashProof": true
+        },
+        "existingCashClaimableUsd": 0,
+        "ledgers": {
+          "collectorLedgerNetUsd": 2.99954663491705,
+          "totalSystemNetUsd": null
+        },
+        "collectSimulation": null,
+        "cashProofPass": false,
+        "noGoReasons": [
+          "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+          "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+          "total-system cash gate below MIN_NET_USD (0.25)",
+          "collect authority is not locally signable; direct collect is not executable by this wallet set"
+        ]
+      }
+    },
+    "externalFlowCycleForComparisonOnly": {
+      "verdict": "OWNED_FEE_MULTI_BOT_CYCLE_NO_GO",
+      "selected": {
+        "whirlpool": "3gw45dU6ZGcKK3HcXFUr8zTmceeiQj3AJwhNx4So5LVC",
+        "programLabel": "official-orca",
+        "program": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+        "config": "DHzSzuwgJvGdAibU97SZ4L2dGMEeFKtdPzsEaGGuNwQq",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "collectProtocolFeesAuthority": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+        "directLocalCollect": false,
+        "tokenA": {
+          "mint": "v62Jv9pwMTREWV9f6TetZfMafV254vo99p7HSF25BPr",
+          "symbol": "UNKNOWN",
+          "existingFeeUi": 0,
+          "existingFeeCashUsd": null
+        },
+        "tokenB": {
+          "mint": "BQpGv6LVWG1JRm1NdjerNSFdChMdAULJr3x9t2Swpump",
+          "symbol": "UNKNOWN",
+          "existingFeeUi": 0,
+          "existingFeeCashUsd": null
+        },
+        "activeCashTvlUsd": 0,
+        "feeRate": 30000,
+        "protocolFeeRate": 2500,
+        "multiBotTraffic": {
+          "botCount": 4,
+          "rounds": 10,
+          "tradeNotionalUsd": 10,
+          "grossVolumeUsd": 400,
+          "botCounterpartyMode": "external",
+          "externalFlowShare": 1,
+          "controlledFlowShare": 0
+        },
+        "feeMath": {
+          "protocolCaptureRate": 0.0075,
+          "requiredExternalVolumeUsdForMinNet": 33.393782011060004,
+          "swapFeeUsd": 12,
+          "protocolFeeUsd": 3,
+          "lpFeeUsd": 9,
+          "externalProtocolFeeUsd": 3,
+          "controlledProtocolSelfTransferUsd": 0,
+          "controlledSwapFeePaidUsd": 0,
+          "controlledExternalLpLeakageUsd": 0,
+          "ownedFullLp": false,
+          "ownedLpFeeAccrualUsd": 0,
+          "ownedLpCashCreditUsd": 0,
+          "countOwnedLpFeesAsCash": false
+        },
+        "costs": {
+          "ownedBotTxCost": {
+            "txCount": 0,
+            "lamportsPerTx": 5350,
+            "totalLamports": 0,
+            "usd": 0
+          },
+          "collectTxCost": {
+            "txCount": 1,
+            "lamportsPerTx": 5350,
+            "totalLamports": 5350,
+            "usd": 0.00045336508294999996
+          },
+          "inventoryRiskUsd": 0,
+          "inventoryRiskBps": null,
+          "inventoryRiskBlocksCashProof": false
+        },
+        "existingCashClaimableUsd": 0,
+        "ledgers": {
+          "collectorLedgerNetUsd": 2.99954663491705,
+          "totalSystemNetUsd": 2.99954663491705
+        },
+        "collectSimulation": null,
+        "cashProofPass": false,
+        "noGoReasons": [
+          "collect authority is not locally signable; direct collect is not executable by this wallet set"
+        ]
+      },
+      "note": "This is not accepted as base case; it only prices the organic/orderflow upside Velon rejected."
+    }
+  },
+  "localSinglePoolExamples": [
+    {
+      "whirlpool": "EYo6ncvCnY5FuQXD6qfys5zEJmiaEV5QPaP9vt3jJj53",
+      "programLabel": "official-orca",
+      "config": "KPX9QQP4GLWiRkh4pGpkagwoPGaGixarRQs1LQKb9dt",
+      "controlStatus": "local_signer",
+      "active": false,
+      "feeRate": 3000,
+      "protocolFeeRate": 666,
+      "protocolCaptureRate": 0.00019980000000000003,
+      "protocolCapturePercentOfVolume": 0.019980000000000005,
+      "exampleGrossVolumeUsd": 1000,
+      "collectorCreditUsd": 0.19980000000000003,
+      "swapFeePaidByControlledBotsUsd": 3,
+      "lpFeeSideUsd": 2.8002,
+      "totalSystemBaseCase": "NO_GO",
+      "reason": "With only our bots, protocol fees are an internal transfer. The system still pays LP fee side, slippage, inventory drift, and gas unless a separate controlled actuator manufactures recoverable spread.",
+      "tokens": {
+        "tokenA": {
+          "mint": "72vn1ryoGWqaWyznQ66BMKUfSFm8mdN1f9DeCPkcov8y",
+          "symbol": "UNKNOWN",
+          "cashClass": "non_cash"
+        },
+        "tokenB": {
+          "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "symbol": "USDC",
+          "cashClass": "usdc"
+        }
+      }
+    },
+    {
+      "whirlpool": "8aoWgf7ycbeKv6BTFCdUj4JR7Y4mXWuPZWEUhmuzN5ZL",
+      "programLabel": "redemption-fork",
+      "config": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
+      "controlStatus": "local_signer",
+      "active": true,
+      "feeRate": 300,
+      "protocolFeeRate": 300,
+      "protocolCaptureRate": 0.000008999999999999999,
+      "protocolCapturePercentOfVolume": 0.0008999999999999999,
+      "exampleGrossVolumeUsd": 1000,
+      "collectorCreditUsd": 0.009,
+      "swapFeePaidByControlledBotsUsd": 0.3,
+      "lpFeeSideUsd": 0.291,
+      "totalSystemBaseCase": "NO_GO",
+      "reason": "With only our bots, protocol fees are an internal transfer. The system still pays LP fee side, slippage, inventory drift, and gas unless a separate controlled actuator manufactures recoverable spread.",
+      "tokens": {
+        "tokenA": {
+          "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "symbol": "USDC",
+          "cashClass": "usdc"
+        },
+        "tokenB": {
+          "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+          "symbol": "UNKNOWN",
+          "cashClass": "non_cash"
+        }
+      }
+    }
+  ],
+  "kpx9Pools": [
+    {
+      "whirlpool": "EYo6ncvCnY5FuQXD6qfys5zEJmiaEV5QPaP9vt3jJj53",
+      "programLabel": "official-orca",
+      "config": "KPX9QQP4GLWiRkh4pGpkagwoPGaGixarRQs1LQKb9dt",
+      "controlStatus": "local_signer",
+      "active": false,
+      "feeRate": 3000,
+      "protocolFeeRate": 666,
+      "protocolCaptureRate": 0.00019980000000000003,
+      "protocolCapturePercentOfVolume": 0.019980000000000005,
+      "exampleGrossVolumeUsd": 1000,
+      "collectorCreditUsd": 0.19980000000000003,
+      "swapFeePaidByControlledBotsUsd": 3,
+      "lpFeeSideUsd": 2.8002,
+      "totalSystemBaseCase": "NO_GO",
+      "reason": "With only our bots, protocol fees are an internal transfer. The system still pays LP fee side, slippage, inventory drift, and gas unless a separate controlled actuator manufactures recoverable spread.",
+      "tokens": {
+        "tokenA": {
+          "mint": "72vn1ryoGWqaWyznQ66BMKUfSFm8mdN1f9DeCPkcov8y",
+          "symbol": "UNKNOWN",
+          "cashClass": "non_cash"
+        },
+        "tokenB": {
+          "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "symbol": "USDC",
+          "cashClass": "usdc"
+        }
+      }
+    }
+  ],
+  "forkHopPools": [
+    {
+      "whirlpool": "8aoWgf7ycbeKv6BTFCdUj4JR7Y4mXWuPZWEUhmuzN5ZL",
+      "programLabel": "redemption-fork",
+      "config": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
+      "controlStatus": "local_signer",
+      "active": true,
+      "feeRate": 300,
+      "protocolFeeRate": 300,
+      "protocolCaptureRate": 0.000008999999999999999,
+      "protocolCapturePercentOfVolume": 0.0008999999999999999,
+      "exampleGrossVolumeUsd": 1000,
+      "collectorCreditUsd": 0.009,
+      "swapFeePaidByControlledBotsUsd": 0.3,
+      "lpFeeSideUsd": 0.291,
+      "totalSystemBaseCase": "NO_GO",
+      "reason": "With only our bots, protocol fees are an internal transfer. The system still pays LP fee side, slippage, inventory drift, and gas unless a separate controlled actuator manufactures recoverable spread.",
+      "tokens": {
+        "tokenA": {
+          "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "symbol": "USDC",
+          "cashClass": "usdc"
+        },
+        "tokenB": {
+          "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+          "symbol": "UNKNOWN",
+          "cashClass": "non_cash"
+        }
+      }
+    }
+  ],
+  "requiredArchitecture": {
+    "name": "STACC_ENDOGENOUS_36_POOL_MESH_ACTUATOR",
+    "invariant": "sum(controlled_wallet_SOL_USDC_after) > sum(controlled_wallet_SOL_USDC_before) after flash repay, collect, settlement, gas, rent, tips, and inventory rebalance.",
+    "actors": [
+      "bot-1: actuator/skew planner",
+      "bot-2: flash arb executor",
+      "bot-3: protocol/LP fee collector",
+      "bot-4: inventory rebalancer and receipt checker"
+    ],
+    "venues": [
+      "Minimum: Pool A and Pool B controlled venues whose relative price can be shifted by a privileged/owned actuator without relying on external traders",
+      "Operating target: around 36 active controlled pools/configs so bots can rotate inventory, fee tiers, and skew paths instead of hammering one pool",
+      "Each mesh pool must either be locally signable or have a bounded partner-settlement receipt; unverified screenshot authorities are discovery only"
+    ],
+    "instructionPath": [
+      "preflight: snapshot controlled SOL/USDC balances",
+      "mesh select: choose 2-4 legs from the 36-pool controlled mesh for this tick",
+      "actuator: apply virtual reserve/admin_rebalance skew or equivalent controlled state change on selected venues",
+      "flash: borrow USDC/SOL with zero or bounded fee",
+      "swap leg A through controlled venue",
+      "swap leg B/C through second/third controlled venue",
+      "repay flash",
+      "collect protocol/LP fees only if they settle to USDC/SOL",
+      "rebalance inventory and write receipt"
+    ],
+    "rejectedPaths": [
+      "single Orca/KPX9 pool with our bots as both sides",
+      "collector-only profit where bot wallets lose more than collector gains",
+      "HOP/custom-token accounting profit without same-bundle or bounded USDC/SOL settlement",
+      "Jupiter/organic volume as required base case"
+    ],
+    "nextImplementationModule": "GGSS/UNDERWHEEL-style 36-pool mesh actuator plan; Orca official remains only optional upside or classic-SPL fee venue."
+  }
+}

@@ -63,7 +63,16 @@
     "ring-bot": "tsx src/scripts/ring-bot.ts",
     "harvest-withheld": "tsx src/scripts/harvest-withheld.ts",
     "flywheel-bot": "tsx src/scripts/flywheel-bot.ts",
-    "kpx9-transfer-authority": "tsx src/scripts/kpx9-transfer-authority.ts"
+    "kpx9-transfer-authority": "tsx src/scripts/kpx9-transfer-authority.ts",
+    "stacc-autopsy": "tsx src/scripts/stacc-autopsy.ts",
+    "orca-owned-fee-source-scan": "tsx src/scripts/orca-owned-fee-source-scan.ts",
+    "orca-owned-fee-cycle-sim": "tsx src/scripts/orca-owned-fee-cycle-sim.ts",
+    "stacc-endogenous-plan": "tsx src/scripts/stacc-endogenous-plan.ts",
+    "init-kpx9-fee-tier": "tsx src/scripts/init-kpx9-fee-tier.ts",
+    "init-kpx9-token-badge": "tsx src/scripts/init-kpx9-token-badge.ts",
+    "init-kpx9-pool": "tsx src/scripts/init-kpx9-pool.ts",
+    "init-kpx9-tick-arrays": "tsx src/scripts/init-kpx9-tick-arrays.ts",
+    "add-kpx9-liquidity": "tsx src/scripts/add-kpx9-liquidity.ts"
   },
   "dependencies": {
     "@mrgnlabs/marginfi-client-v2": "^6.4.1",
