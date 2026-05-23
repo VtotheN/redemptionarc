@@ -144,7 +144,15 @@ async function main() {
   }
 
   // SDK available — create pool
-  const { Raydium, BN } = sdk;
+  const {
+    Raydium,
+    CREATE_CPMM_POOL_PROGRAM,
+    CREATE_CPMM_POOL_FEE_ACC,
+    getCpmmPdaAmmConfigId,
+  } = sdk;
+  // BN must come from bn.js directly (SDK doesn't re-export the constructor)
+  const BNModule = await import("bn.js");
+  const BN = BNModule.default ?? BNModule;
   console.log("Raydium SDK loaded. Initializing...");
 
   const raydium = await Raydium.load({
@@ -159,9 +167,14 @@ async function main() {
       ? [HOP_MINT, USDC_MINT, TOKEN_2022_PROGRAM_ID, TOKEN_PROGRAM_ID, seedHopUnits, seedUsdcMicro]
       : [USDC_MINT, HOP_MINT, TOKEN_PROGRAM_ID, TOKEN_2022_PROGRAM_ID, seedUsdcMicro, seedHopUnits];
 
+  // Derive correct AMM config PDA for this program + index
+  const configPda = getCpmmPdaAmmConfigId(CREATE_CPMM_POOL_PROGRAM, ammConfigIndex);
+  const configPubkey = configPda.publicKey ?? configPda;
+  console.log(`AMM Config PDA (index ${ammConfigIndex}): ${configPubkey.toBase58()}`);
+
   const { execute, extInfo } = await raydium.cpmm.createPool({
-    programId: new PublicKey("CPMDWBwJDtYax9qW7AyRuVC19Cc4L4Vcy4n2BHAbHkCW"),
-    poolFeeAccount: new PublicKey("DNXgeM9EiiaAbaWvwjHj9fQQLAX5ZsfHyvmYUNRAdNC8"),
+    programId: CREATE_CPMM_POOL_PROGRAM,
+    poolFeeAccount: CREATE_CPMM_POOL_FEE_ACC,
     mintA: {
       address: mint0.toBase58(),
       decimals: mint0.equals(HOP_MINT) ? HOP_DECIMALS : USDC_DECIMALS,
@@ -175,7 +188,7 @@ async function main() {
     mintAAmount: new BN(amount0.toString()),
     mintBAmount: new BN(amount1.toString()),
     startTime: new BN(0),
-    feeConfig: { id: new PublicKey(ammConfig.pubkey) },
+    feeConfig: { id: configPubkey },
     associatedOnly: false,
     ownerInfo: { feePayer: crank.publicKey },
     txVersion: 0,
