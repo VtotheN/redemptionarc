@@ -22,6 +22,7 @@
  *   DRY_RUN=true
  *   ALLOW_LIVE=false
  *   JITO_TIP_LAMPORTS=200000  (0.0002 SOL, same as not stacc)
+ *   CU_LIMIT=300000           (MarginFi borrow/repay needs ~200k CU in sim)
  */
 
 import "dotenv/config";
@@ -59,6 +60,7 @@ if (process.env.ENV_PATH) {
 
 const HOP_MINT = new PublicKey("HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3");
 const HOP_DECIMALS = 6;
+const TARGET_ACTIVE_FEE_BPS = 1;
 // Fee bps is read dynamically from on-chain mint (newerTransferFee activates at a future epoch)
 
 const USDC_MINT = new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v");
@@ -176,8 +178,10 @@ async function main() {
   const flashAmountUsdc = Number(process.env.FLASH_AMOUNT_USDC || "1");
   const hopAmountPerHop = BigInt(Math.floor(Number(process.env.HOP_AMOUNT_PER_HOP || "1000") * 10 ** HOP_DECIMALS));
   const jitoTipLamports = BigInt(process.env.JITO_TIP_LAMPORTS || "200000");
-  const cuLimit = Number(process.env.CU_LIMIT || "80000");
+  const cuLimit = Number(process.env.CU_LIMIT || "300000");
   const cuPrice = Number(process.env.CU_PRICE || "1000");
+  const settlementConfirmed = process.env.SETTLEMENT_CONFIRMED === "true";
+  const settlementPath = process.env.SETTLEMENT_PATH || null;
 
   const connection = new Connection(rpcUrl, "confirmed");
 
@@ -236,15 +240,12 @@ async function main() {
     return raw / 10_000n + (raw % 10_000n > 0n ? 1n : 0n);
   };
 
-  const feePerHop = calcFee(hopAmountPerHop);
-
   console.log("=== NOT STACC REPLICATE ===");
   console.log(`crank:         ${walletA.toBase58()}`);
   console.log(`marginfi acct: ${mfAccount.toBase58()}`);
   console.log(`flash amount:  $${flashAmountUsdc} USDC`);
   console.log(`hop amount:    ${Number(hopAmountPerHop) / 10 ** HOP_DECIMALS} HOP per hop`);
   console.log(`active fee:    ${activeFeeBps} bps (1bps active epoch ${feeConfig.newerTransferFee.epoch}, current ${epochInfo.epoch})`);
-  console.log(`fee per hop:   ${Number(feePerHop) / 10 ** HOP_DECIMALS} HOP (${activeFeeBps} bps)`);
   console.log(`ring:          ${walletA.toBase58().slice(0, 8)} → ${walletB.toBase58().slice(0, 8)} → ${walletC.toBase58().slice(0, 8)} → ${walletD.toBase58().slice(0, 8)} → A`);
   console.log(`dry run:       ${dryRun}`);
   console.log();
@@ -252,9 +253,36 @@ async function main() {
   // ─── Build instructions ───────────────────────────────────────────────────
 
   const hop1Amount = hopAmountPerHop;
-  const hop2Amount = hop1Amount - calcFee(hop1Amount);
-  const hop3Amount = hop2Amount - calcFee(hop2Amount);
-  const hop4Amount = hop3Amount - calcFee(hop3Amount);
+  const hop1Fee = calcFee(hop1Amount);
+  const hop2Amount = hop1Amount - hop1Fee;
+  const hop2Fee = calcFee(hop2Amount);
+  const hop3Amount = hop2Amount - hop2Fee;
+  const hop3Fee = calcFee(hop3Amount);
+  const hop4Amount = hop3Amount - hop3Fee;
+  const hop4Fee = calcFee(hop4Amount);
+  const totalWithheldHop = hop1Fee + hop2Fee + hop3Fee + hop4Fee;
+  const cashGateReasons = [
+    activeFeeBps !== TARGET_ACTIVE_FEE_BPS ? `active HOP fee is ${activeFeeBps}bps, target is ${TARGET_ACTIVE_FEE_BPS}bps` : null,
+    !settlementConfirmed ? "withheld fees settle as HOP, not spendable USDC/SOL" : null,
+    !settlementConfirmed ? "FLASH_AMOUNT_USDC is only the MarginFi wrapper amount; it does not determine HOP fee revenue" : null,
+  ].filter((x): x is string => Boolean(x));
+  const cashGate = {
+    targetActiveFeeBps: TARGET_ACTIVE_FEE_BPS,
+    activeFeeOk: activeFeeBps === TARGET_ACTIVE_FEE_BPS,
+    currentEpoch: epochInfo.epoch,
+    newerFeeBps: feeConfig.newerTransferFee.transferFeeBasisPoints,
+    newerFeeEpoch: Number(feeConfig.newerTransferFee.epoch),
+    settlementConfirmed,
+    settlementPath,
+    feeToken: HOP_MINT.toBase58(),
+    outputCashToken: settlementConfirmed ? "USDC/SOL via declared settlement path" : null,
+    flashAmountIsRevenueSource: false,
+    canExecuteLive: cashGateReasons.length === 0,
+    reasons: cashGateReasons,
+  };
+
+  console.log(`fees withheld: ${Number(totalWithheldHop) / 10 ** HOP_DECIMALS} HOP total (${activeFeeBps} bps active)`);
+  if (!cashGate.canExecuteLive) console.log(`cash gate:     BLOCKED — ${cashGateReasons.join("; ")}`);
 
   // endIndex = position of endFlashLoan instruction (IX[13] = index 13)
   const END_IX_INDEX = 13n;
@@ -267,16 +295,16 @@ async function main() {
     startFlashIx(mfAccount, walletA, END_IX_INDEX),
     // IX[3-6] T22 ring — crank is authority for ALL hops (owner of ataA, delegate on ataB/C/D)
     createTransferCheckedWithFeeInstruction(
-      ataA, HOP_MINT, ataB, walletA, hop1Amount, HOP_DECIMALS, calcFee(hop1Amount), [], TOKEN_2022_PROGRAM_ID
+      ataA, HOP_MINT, ataB, walletA, hop1Amount, HOP_DECIMALS, hop1Fee, [], TOKEN_2022_PROGRAM_ID
     ),
     createTransferCheckedWithFeeInstruction(
-      ataB, HOP_MINT, ataC, walletA, hop2Amount, HOP_DECIMALS, calcFee(hop2Amount), [], TOKEN_2022_PROGRAM_ID
+      ataB, HOP_MINT, ataC, walletA, hop2Amount, HOP_DECIMALS, hop2Fee, [], TOKEN_2022_PROGRAM_ID
     ),
     createTransferCheckedWithFeeInstruction(
-      ataC, HOP_MINT, ataD, walletA, hop3Amount, HOP_DECIMALS, calcFee(hop3Amount), [], TOKEN_2022_PROGRAM_ID
+      ataC, HOP_MINT, ataD, walletA, hop3Amount, HOP_DECIMALS, hop3Fee, [], TOKEN_2022_PROGRAM_ID
     ),
     createTransferCheckedWithFeeInstruction(
-      ataD, HOP_MINT, ataA, walletA, hop4Amount, HOP_DECIMALS, calcFee(hop4Amount), [], TOKEN_2022_PROGRAM_ID
+      ataD, HOP_MINT, ataA, walletA, hop4Amount, HOP_DECIMALS, hop4Fee, [], TOKEN_2022_PROGRAM_ID
     ),
     // IX[7] harvest withheld → mint
     createHarvestWithheldTokensToMintInstruction(HOP_MINT, [ataA, ataB, ataC, ataD], TOKEN_2022_PROGRAM_ID),
@@ -313,17 +341,35 @@ async function main() {
     flashAmountUsdc,
     hopAmountPerHop: Number(hopAmountPerHop) / 10 ** HOP_DECIMALS,
     feeBpsPerHop: activeFeeBps,
-    totalFeeBps: activeFeeBps * 4,
-    expectedFeeHop: Number(feePerHop) / 10 ** HOP_DECIMALS,
+    expectedFeeHopPerLeg: [
+      Number(hop1Fee) / 10 ** HOP_DECIMALS,
+      Number(hop2Fee) / 10 ** HOP_DECIMALS,
+      Number(hop3Fee) / 10 ** HOP_DECIMALS,
+      Number(hop4Fee) / 10 ** HOP_DECIMALS,
+    ],
+    expectedTotalWithheldHop: Number(totalWithheldHop) / 10 ** HOP_DECIMALS,
     jitoTipLamports: Number(jitoTipLamports),
+    cashGate,
     dryRun,
     signature: null,
   };
 
+  if (!dryRun && allowLive && !cashGate.canExecuteLive) {
+    receipt.verdict = "LIVE_BLOCKED_CASH_GATE";
+    writeReceipt("not-stacc-replicate", receipt);
+    console.error(`LIVE_BLOCKED_CASH_GATE: ${cashGateReasons.join("; ")}`);
+    process.exitCode = 1;
+    return;
+  }
+
   if (dryRun || !allowLive) {
     tx.partialSign(...signers);
     const sim = await connection.simulateTransaction(tx);
-    receipt.verdict = sim.value.err ? "SIM_FAILED" : "SIM_OK";
+    receipt.verdict = sim.value.err
+      ? "SIM_FAILED"
+      : cashGate.canExecuteLive
+        ? "SIM_OK_LIVE_GATE_READY"
+        : "SIM_OK_CASH_GATE_BLOCKED";
     receipt.err = sim.value.err ?? null;
     receipt.unitsConsumed = sim.value.unitsConsumed ?? null;
     receipt.logs = (sim.value.logs ?? []).slice(-10);
@@ -337,7 +383,7 @@ async function main() {
     receipt.verdict = "EXECUTED";
     receipt.signature = sig;
     console.log(`EXECUTED: ${sig}`);
-    console.log(`Net: ~${(Number(hopAmountPerHop) / 10 ** HOP_DECIMALS * 0.0004).toFixed(6)} HOP fees harvested`);
+    console.log(`Withheld: ~${(Number(totalWithheldHop) / 10 ** HOP_DECIMALS).toFixed(6)} HOP harvested`);
     console.log(`Gas: ~$0.004`);
   }
 

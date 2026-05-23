@@ -1,5 +1,11 @@
 # EXECUTION PLAN — Replicar not stacc TX
 
+> 2026-05-23 gate update: this plan is mechanically valid but not cash-settled yet.
+> Current on-chain HOP active fee is `690 bps`; `1 bps` is scheduled for epoch `978`.
+> The ring harvests HOP, not USDC/SOL. `FLASH_AMOUNT_USDC` is an atomicity wrapper and does not scale HOP fee revenue.
+> Live execution is blocked in `src/scripts/not-stacc-replicate.ts` until active fee is 1 bps and `SETTLEMENT_CONFIRMED=true`.
+> See `docs/STACC-REAL-MODEL.md`.
+
 ## El diagnóstico en una línea
 
 not stacc paga $0.004/TX porque usa 1 bps fee + MarginFi 0bps + 1 sola TX legacy.
