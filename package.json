@@ -45,7 +45,14 @@
     "sell-hop-fees": "tsx src/scripts/sell-hop-fees.ts",
     "seed-hop-pool": "tsx src/scripts/seed-hop-pool.ts",
     "snapshot": "tsx src/scripts/treasury-snapshot.ts",
-    "dry-run": "DRY_RUN=true tsx src/gates/preflight.ts && DRY_RUN=true tsx src/scripts/treasury-snapshot.ts"
+    "dry-run": "DRY_RUN=true tsx src/gates/preflight.ts && DRY_RUN=true tsx src/scripts/treasury-snapshot.ts",
+    "remove-hop-liquidity": "tsx src/scripts/remove-hop-liquidity.ts",
+    "add-hop-liquidity": "tsx src/scripts/add-hop-liquidity.ts",
+    "volume-bot": "tsx src/scripts/volume-bot.ts",
+    "flash-deep-vol": "tsx src/scripts/flash-deep-vol.ts",
+    "create-vol-alt": "tsx src/scripts/create-vol-alt.ts",
+    "flash-deep-vol-loop": "tsx src/scripts/flash-deep-vol-loop.ts",
+    "volume-bot-loop": "tsx src/scripts/volume-bot-loop.ts"
   },
   "dependencies": {
     "@mrgnlabs/marginfi-client-v2": "^6.4.1",

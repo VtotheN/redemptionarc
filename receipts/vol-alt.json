@@ -1,0 +1,129 @@
+{
+  "altAddress": "7bdFfzqrpYxB4bzd6NmzWi5SRK5XMYVMg8RXu7X2Jpfp",
+  "totalAccounts": 28,
+  "accounts": [
+    {
+      "index": 0,
+      "pubkey": "MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA"
+    },
+    {
+      "index": 1,
+      "pubkey": "4qp6Fx6tnZkY5Wropq9wUYgtFxXKwE6viZxFHg3rdAG8"
+    },
+    {
+      "index": 2,
+      "pubkey": "2s37akK2eyBbp8DZgCm7RtsaEz8eJP3Nxd4urLHQv7yB"
+    },
+    {
+      "index": 3,
+      "pubkey": "7jaiZR5Sk8hdYN9MxTpczTcwbWpb5WEoxSANuUwveuat"
+    },
+    {
+      "index": 4,
+      "pubkey": "3uxNepDbmkDNq6JhRja5Z8QwbTrfmkKP8AKZV5chYDGG"
+    },
+    {
+      "index": 5,
+      "pubkey": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C"
+    },
+    {
+      "index": 6,
+      "pubkey": "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV"
+    },
+    {
+      "index": 7,
+      "pubkey": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL"
+    },
+    {
+      "index": 8,
+      "pubkey": "AB2294LtqL6yjtxBoDjXumcPFsma91Lf2kFfNGbCRXDu"
+    },
+    {
+      "index": 9,
+      "pubkey": "ERPG4gb5QhC3hGxEwqk7FyJcsDuLofSD1yNdwsN7jLGu"
+    },
+    {
+      "index": 10,
+      "pubkey": "9fScKmwXbxKG5tY93DH4qby8uAc3qM7Ky5evZpCeKEw8"
+    },
+    {
+      "index": 11,
+      "pubkey": "5wGiJ9FZw5zwpGT3f8X7bigeZJLsyD8DqCpoZ5dirjEe"
+    },
+    {
+      "index": 12,
+      "pubkey": "E64NGkDLLCdQ2yFNPcavaKptrEgmiQaNykUuLC1Qgwyp"
+    },
+    {
+      "index": 13,
+      "pubkey": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+    },
+    {
+      "index": 14,
+      "pubkey": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3"
+    },
+    {
+      "index": 15,
+      "pubkey": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S"
+    },
+    {
+      "index": 16,
+      "pubkey": "2s2Au2bxsvF5cHbdhfP4JaFX8FXp5wXzQxBj15PNPEkD"
+    },
+    {
+      "index": 17,
+      "pubkey": "5BK5sqF2vH8o1BBrSukV44ujpu19rpgvJFedGC8GzF9X"
+    },
+    {
+      "index": 18,
+      "pubkey": "CjQi6oQd2FoJ1GxyPZct1XFF2AMwGApfjRWtnxjj24Ka"
+    },
+    {
+      "index": 19,
+      "pubkey": "9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz"
+    },
+    {
+      "index": 20,
+      "pubkey": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+    },
+    {
+      "index": 21,
+      "pubkey": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+    },
+    {
+      "index": 22,
+      "pubkey": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+    },
+    {
+      "index": 23,
+      "pubkey": "11111111111111111111111111111111"
+    },
+    {
+      "index": 24,
+      "pubkey": "ComputeBudget111111111111111111111111111111"
+    },
+    {
+      "index": 25,
+      "pubkey": "Sysvar1nstructions1111111111111111111111111"
+    },
+    {
+      "index": 26,
+      "pubkey": "96gYZGLnJYVFmbjzopPSU6QiEV5fGqZNyN9nmNhvrZU5"
+    },
+    {
+      "index": 27,
+      "pubkey": "Dpw1EAVrSB1ibxiDQyTAW6Zip3J4Btk2x4SgApQCeFbX"
+    }
+  ],
+  "derivedPdas": {
+    "liquidityVaultAuth": "3uxNepDbmkDNq6JhRja5Z8QwbTrfmkKP8AKZV5chYDGG",
+    "raydiumAuthority": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+    "lpMint": "AB2294LtqL6yjtxBoDjXumcPFsma91Lf2kFfNGbCRXDu",
+    "vaultA": "ERPG4gb5QhC3hGxEwqk7FyJcsDuLofSD1yNdwsN7jLGu",
+    "vaultB": "9fScKmwXbxKG5tY93DH4qby8uAc3qM7Ky5evZpCeKEw8",
+    "observationId": "5wGiJ9FZw5zwpGT3f8X7bigeZJLsyD8DqCpoZ5dirjEe",
+    "crankUsdcAta": "5BK5sqF2vH8o1BBrSukV44ujpu19rpgvJFedGC8GzF9X",
+    "crankLpAta": "CjQi6oQd2FoJ1GxyPZct1XFF2AMwGApfjRWtnxjj24Ka",
+    "oraclePubkey": "Dpw1EAVrSB1ibxiDQyTAW6Zip3J4Btk2x4SgApQCeFbX"
+  }
+}
