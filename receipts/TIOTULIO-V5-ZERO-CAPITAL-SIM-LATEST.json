@@ -1,0 +1,146 @@
+{
+  "verdict": "TIOTULIO_V5_MODEL_PASS_EXACT_TX_BLOCKED",
+  "generatedAt": "2026-05-23T23:58:31.644Z",
+  "noSend": true,
+  "source": {
+    "presentation": "/Users/velon/Desktop/VELON-PRESENTACION.html",
+    "slideModel": "extract = flash * (1 - (1 - feeRate)^hops) * protocolSplit - flashFee - ilProxy - gas",
+    "sourceClass": "owned_fee_sink_model",
+    "eligibilityProof": [
+      "PHANTOM-TREASURY or configured authority owns the fee sink",
+      "GHOST-LP principal is flash-funded inside the bundle",
+      "Velon wallet is not a required signer or capital source",
+      "fee output must settle to wallet-controlled SOL/USDC before live"
+    ]
+  },
+  "config": {
+    "flashUsd": 200000,
+    "startHops": 4,
+    "targetHops": 8,
+    "effectiveFeeBps": 10,
+    "tokenTransferFeeBps": 10,
+    "protocolSplitBps": 5000,
+    "flashFeeBps": 0,
+    "ilProxyBps": 0,
+    "gasUsd": 0,
+    "jitoTipUsd": 0,
+    "crankRewardBps": 1,
+    "cyclesPerDay": 96,
+    "minDailyUsd": 10000,
+    "ghostLpSource": "flash",
+    "gasPayer": "phantom_treasury_or_sponsor",
+    "deployPayer": "lazy_or_treasury",
+    "settlementPath": "UNCONFIRMED"
+  },
+  "phaseScale": {
+    "phase4": {
+      "hops": 4,
+      "flashUsd": 200000,
+      "effectiveFeeBps": 10,
+      "protocolSplitBps": 5000,
+      "compoundedFeeUsd": 798.8008,
+      "grossExtractUsd": 399.4004,
+      "flashFeeUsd": 0,
+      "ilProxyUsd": 0,
+      "gasUsd": 0,
+      "jitoTipUsd": 0,
+      "crankRewardUsd": 0.03994,
+      "netToTreasuryUsd": 399.36046,
+      "dailyNetUsd": 38338.604147
+    },
+    "phase5": {
+      "hops": 8,
+      "flashUsd": 200000,
+      "effectiveFeeBps": 10,
+      "protocolSplitBps": 5000,
+      "compoundedFeeUsd": 1594.411186,
+      "grossExtractUsd": 797.205593,
+      "flashFeeUsd": 0,
+      "ilProxyUsd": 0,
+      "gasUsd": 0,
+      "jitoTipUsd": 0,
+      "crankRewardUsd": 0.079721,
+      "netToTreasuryUsd": 797.125872,
+      "dailyNetUsd": 76524.083755
+    },
+    "netMultiplier": 1.996006,
+    "dailyMultiplier": 1.996006
+  },
+  "zeroCapitalGate": {
+    "pass": true,
+    "velonCapitalRequiredUsd": 0,
+    "velonUsdcSpentUsd": 0,
+    "velonSolOngoingUsd": 0,
+    "reasons": []
+  },
+  "modelGate": {
+    "pass": true,
+    "reasons": []
+  },
+  "cashProofGate": {
+    "pass": false,
+    "settlementConfirmed": false,
+    "exactTxReceiptConfirmed": false,
+    "feeSinkOwned": true,
+    "rejectionReasons": [
+      "SETTLEMENT_CONFIRMED=false: fee output is not proven spendable SOL/USDC",
+      "EXACT_TX_RECEIPT_CONFIRMED=false: no exact no-send TX/bundle receipt yet"
+    ]
+  },
+  "instructionPathTarget": [
+    "TX0_PREPARE: create/extend ALT and idempotent ATAs only if paid by treasury/sponsor",
+    "TX1_BORROW: multi-flash borrow USDC",
+    "TX1_FLASH_BIRTH: create or select ephemeral owned venue",
+    "TX1_GHOST_LP_ADD: add flash-funded liquidity, not Velon principal",
+    "TX1_PHANTOM_LITE: execute 8 fee hops with FEE-FIRST extraction",
+    "TX1_GHOST_LP_REMOVE: remove flash-funded LP before repay",
+    "TX1_VENUE_DEATH: zero ephemeral state",
+    "TX1_REPAY: repay flash principal plus fee",
+    "TX1_CREDIT: credit PHANTOM-TREASURY and crank reward",
+    "TX2_SETTLE: prove treasury SOL/USDC after is greater than before"
+  ],
+  "phaseRoadmap": [
+    {
+      "phase": 0,
+      "deliverable": "phantom-sim.ts + GO/NO-GO",
+      "costVelonUsd": 0,
+      "status": "implemented_by_tiotulio_v5_sim"
+    },
+    {
+      "phase": 1,
+      "deliverable": "TS PHANTOM-LITE orchestrator",
+      "costVelonUsd": 0,
+      "status": "next_exact_builder"
+    },
+    {
+      "phase": 2,
+      "deliverable": "first bundle to treasury",
+      "costVelonUsd": 0,
+      "status": "blocked_until_exact_tx_cash_proof"
+    },
+    {
+      "phase": 3,
+      "deliverable": "velon-core deploy",
+      "costVelonUsd": 0,
+      "status": "treasury_or_lazy_deploy_only"
+    },
+    {
+      "phase": 4,
+      "deliverable": "SWARM-200 autonomy",
+      "costVelonUsd": 0,
+      "status": "requires_phase2_cash_receipt"
+    },
+    {
+      "phase": 5,
+      "deliverable": "scale 4 to 8 hops",
+      "costVelonUsd": 0,
+      "status": "model_pass"
+    }
+  ],
+  "nextRequiredBuild": [
+    "Replace the economic model with exact TX0/TX1/TX2 account and instruction receipts.",
+    "Prove GHOST-LP add/remove uses flash principal and leaves no Velon inventory liability.",
+    "Prove fee output settles to SOL/USDC; do not count HOP/custom tokens as profit.",
+    "Only after exact receipt passes, request explicit Velon approval for any live send."
+  ]
+}

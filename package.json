@@ -66,6 +66,7 @@
     "fork-readiness": "tsx src/scripts/fork-readiness.ts",
     "fee-singularity-plan": "tsx src/scripts/fee-singularity-plan.ts",
     "bundle-womb-lite-plan": "tsx src/scripts/bundle-womb-lite-plan.ts",
+    "tiotulio-v5-sim": "tsx src/scripts/tiotulio-v5-sim.ts",
     "kpx9-transfer-authority": "tsx src/scripts/kpx9-transfer-authority.ts",
     "stacc-autopsy": "tsx src/scripts/stacc-autopsy.ts",
     "orca-owned-fee-source-scan": "tsx src/scripts/orca-owned-fee-source-scan.ts",
