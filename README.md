@@ -15,11 +15,12 @@ Forked from Orca, stripped to 12 instructions, deployed mainnet.
 | FeeTier (tick_spacing=64) | `7v5Rhe37P5BrPTtEeumH1oa6aBQg2tTzFN3r58Sfe4m7` |
 | HOP TokenBadge | `HVcso86ZCfodDrGhSxiwuegx1K8xJqWso1M7Hs6UcwsE` |
 | USDC/HOP Pool | `8aoWgf7ycbeKv6BTFCdUj4JR7Y4mXWuPZWEUhmuzN5ZL` |
-| LP Position | `ErgQU48egJMNBLZeVkdjrtZrSWUQJCky3deh2B4U1YPQ` |
+| LP Position A | `ErgQU48egJMNBLZeVkdjrtZrSWUQJCky3deh2B4U1YPQ` |
+| LP Position B | `3Qx4NtMhd9vDKWbcdUAu2qrwpypbXEGy95N4cYgdyaGk` |
 
 Pool: USDC (tokenA) / HOP (tokenB), price = $0.0001/HOP, tick_spacing = 64.
 Tick arrays initialized: [84480, 90112, 95744]. Position range: [84480, 101312].
-LP seeded: 290 USDC + 2.49M HOP, liquidity = 78,627,479,083.
+LP seeded total: ~290.45 USDC + ~6.32M HOP, liquidity ≈ 78,748,145,963.
 
 ### T22 Ring + MarginFi Flash
 
@@ -102,10 +103,21 @@ Files to build:
 2. `initialize_token_badge` feature flag check removed from handler — config flag not set on our fork.
 3. `is_admin_key` constraint removed to allow crank as fee authority.
 
+## KPX9 Official Orca — CLOSED
+
+Config `KPX9QQP4GL...` was acquired and all authorities transferred to crank.
+Pool and position deployed, then closed: `set_config_feature_flag` is governance-only
+(hardcoded Orca admin keys), so HOP token badge could not be created and swaps
+would fail. LP position `59LWLWVU...` removed 2026-05-23; 0.445 USDC + 3562 HOP
+recovered and redeployed to fork pool as Position B.
+
 ## Pending
 
-- [ ] Flash-deep-vol loop on our Orca Whirlpool
+- [ ] flywheel-bot.ts: sim clean + cash proof receipt → live at $1k flash
+- [ ] flywheel-bot-loop.ts: keeper loop
+- [ ] flash-deep-vol-orca.ts: atomic flash+addLiq+swap+removeLiq on OUR Whirlpool
+- [ ] flash-deep-vol-orca-loop.ts: keeper loop
+- [ ] collect-protocol-fees-keeper.ts: auto-collect when threshold met
+- [ ] Scale pool TVL to $50k+ (more SOL → swap → add liquidity)
 - [ ] Jupiter indexing of our pool (pool too new, non-standard program)
-- [ ] Epoch 977: HOP fee → 1bps active
-- [ ] collect-protocol-fees keeper script
-- [ ] Scale: test $500k flash
+- [ ] Epoch 977: HOP fee → 1bps active — monitor T22 transfer fee epoch
