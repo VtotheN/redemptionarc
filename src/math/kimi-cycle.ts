@@ -41,3 +41,18 @@ export function microToUsdc(value: bigint): number {
 export function lamportsToSol(value: bigint): number {
   return Number(value) / 1e9;
 }
+
+// MarginFi flash loan fee = 0bps
+export function estimateMarginfiFlashFeeMicro(_routeVolumeMicro: bigint): bigint {
+  return 0n;
+}
+
+// MarginFi requires no SOL cushion for flash fee (fee=0)
+export function estimateCushionSolLamportsMarginfi(): bigint {
+  return 0n;
+}
+
+// Savings vs Kamino 9bps per routeVolume
+export function marginfiFlashFeeSavingsMicro(routeVolumeMicro: bigint): bigint {
+  return (routeVolumeMicro * 9n) / 10_000n;
+}

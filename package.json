@@ -40,21 +40,23 @@
     "settlement-route-scan": "tsx src/scripts/settlement-route-scan.ts",
     "target-design": "tsx src/scripts/target-design.ts",
     "token2022-cap-scan": "tsx src/scripts/token2022-cap-scan.ts",
+    "marginfi-cycle-plan": "tsx src/scripts/marginfi-cycle-plan.ts",
     "collect-hop-fees": "tsx src/scripts/collect-hop-fees.ts",
     "sell-hop-fees": "tsx src/scripts/sell-hop-fees.ts",
     "seed-hop-pool": "tsx src/scripts/seed-hop-pool.ts",
-    "settlement-route-scan": "tsx src/scripts/settlement-route-scan.ts",
     "snapshot": "tsx src/scripts/treasury-snapshot.ts",
     "dry-run": "DRY_RUN=true tsx src/gates/preflight.ts && DRY_RUN=true tsx src/scripts/treasury-snapshot.ts"
   },
   "dependencies": {
     "@mrgnlabs/marginfi-client-v2": "^6.4.1",
     "@mrgnlabs/mrgn-common": "^2.0.7",
+    "@raydium-io/raydium-sdk-v2": "^0.2.49-alpha",
     "@solana/spl-token": "^0.4.13",
     "@solana/web3.js": "^1.98.2",
     "dotenv": "^16.6.1"
   },
   "devDependencies": {
+    "@types/bn.js": "^5.2.0",
     "@types/node": "^22.15.21",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3"

@@ -1,0 +1,36 @@
+{
+  "verdict": "MARGINFI_CYCLE_PLAN_PROFITABLE",
+  "generatedAt": "2026-05-23T06:25:26.017Z",
+  "baseline": {
+    "source": "cycle-008",
+    "solPriceUsd": 90,
+    "routeVolumeUsdc": 39,
+    "kamino": {
+      "flashFeeMicro": "35100",
+      "flashFeeUsdc": 0.0351,
+      "gasLamports": "11631151",
+      "gasSol": 0.011631151,
+      "netMicro": "995422",
+      "netUsdc": 0.995422
+    }
+  },
+  "marginfi": {
+    "flashFeeMicro": "0",
+    "flashFeeUsdc": 0,
+    "flashFeeSavingsMicro": "35100",
+    "flashFeeSavingsUsdc": 0.0351,
+    "estimatedGasLamports": "11631051",
+    "estimatedGasSol": 0.011631051,
+    "gasSavingsLamports": "100",
+    "gasSavingUsdcMicro": "9",
+    "netMicro": "1030531",
+    "netUsdc": 1.030531,
+    "cushionSolLamports": "0"
+  },
+  "economics": {
+    "totalSavingsPerCycleMicro": "35109",
+    "totalSavingsPerCycleUsdc": 0.035109,
+    "breakEvenSolPrice": 88.60170933821888,
+    "projectedDailyAtOneCyclePerSec": 89037.8784
+  }
+}
