@@ -54,6 +54,7 @@
     "flash-deep-vol-loop": "tsx src/scripts/flash-deep-vol-loop.ts",
     "volume-bot-loop": "tsx src/scripts/volume-bot-loop.ts",
     "volume-bot-atomic": "tsx src/scripts/volume-bot-atomic.ts",
+    "init-official-orca": "tsx src/scripts/init-official-orca.ts",
     "init-orca-config": "tsx src/scripts/init-orca-config.ts",
     "init-hop-token-badge": "tsx src/scripts/init-hop-token-badge.ts",
     "init-pool": "tsx src/scripts/init-pool.ts",
