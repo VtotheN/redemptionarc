@@ -1,0 +1,105 @@
+{
+  "verdict": "BUNDLE_WOMB_LITE_NO_GO",
+  "generatedAt": "2026-05-23T23:43:38.929Z",
+  "noSend": true,
+  "dryRun": true,
+  "allowLive": false,
+  "liveTxApproved": false,
+  "jitoBundleShape": [
+    "TX0_PREPARE",
+    "TX1_FEE_SINGULARITY_CORE",
+    "TX2_SETTLE_AND_ACCOUNT"
+  ],
+  "tx0": {
+    "name": "TX0_PREPARE",
+    "purpose": "Prepare accounts and optional cushions before the flash core.",
+    "noSend": true,
+    "plannedInstructions": [
+      "create missing ATAs idempotently",
+      "extend ALT with MarginFi, fork Whirlpool, ring, mint, and vault accounts if needed",
+      "fund explicit USDC cushion only if approved and accounted as cost"
+    ],
+    "requiredBecause": [
+      "TX1 must stay under packet limit",
+      "MarginFi repay cannot depend on unpriced wallet dust",
+      "ring delegates and HOP ATAs must exist before the flash core"
+    ]
+  },
+  "tx1": {
+    "name": "TX1_FEE_SINGULARITY_CORE",
+    "purpose": "Single atomic flash/swap/4-hop/settle/repay transaction.",
+    "noSend": true,
+    "sourceReceipt": "receipts/FEE-SINGULARITY-PLAN-LATEST.json",
+    "receiptVerdict": "FEE_SINGULARITY_NO_GO",
+    "serializedLength": 1109,
+    "instructionCount": 16,
+    "endFlashIndex": 15,
+    "simErr": null,
+    "unitsConsumed": 351592,
+    "requiredCrankUsdcCushionMicro": "0",
+    "extraHopInventoryRaw": "821060121",
+    "walletCashNetUsd": 0.0064445,
+    "totalSystemNetUsd": -0.08273641535448864
+  },
+  "tx2": {
+    "name": "TX2_SETTLE_AND_ACCOUNT",
+    "purpose": "Collect/settle only after TX1 proves real cash surplus.",
+    "noSend": true,
+    "plannedInstructions": [
+      "collect protocol fees only if owed in USDC/SOL and locally authorized",
+      "sell non-cash HOP only through a real route with exact quote/sim",
+      "write post-bundle treasury snapshot"
+    ],
+    "blockedWhen": [
+      "HOP has no external USDC/SOL route",
+      "claimable fees are zero",
+      "cash proof uses owned inventory conversion"
+    ]
+  },
+  "forkReadinessSummary": {
+    "verdict": "FORK_LIVE_TX_BLOCKED",
+    "hopTransferFee": {
+      "currentEpoch": 976,
+      "slotsUntilNextEpoch": 331295,
+      "targetFeeEpoch": 978,
+      "slotsUntilTargetFeeEpoch": 763295,
+      "activeBps": 690,
+      "targetBps": 1,
+      "olderBps": 690,
+      "olderEpoch": "974",
+      "newerBps": 1,
+      "newerEpoch": "978",
+      "mintWithheldAmount": "0"
+    },
+    "crank": {
+      "pubkey": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+      "sol": 4.518579926,
+      "usdc": 0,
+      "hopTrackedNonCash": 89890298.308828
+    },
+    "protocolFees": {
+      "usdc": 0,
+      "hop": 0
+    }
+  },
+  "approvalGate": {
+    "requiresExactTx0Tx1Tx2Receipts": true,
+    "requiresWalletCashNetPositive": true,
+    "requiresTotalSystemNetPositive": true,
+    "requiresNoInventoryConversionAsProfit": true,
+    "requiresVelonExplicitApproval": true
+  },
+  "blockers": [
+    "TX1 cash proof is not passing",
+    "TX1 uses HOP inventory cushion; not profit",
+    "active HOP fee is 690bps until epoch 978",
+    "repay uses HOP inventory conversion; do not count as profit",
+    "wallet cash net 0.006444 below MIN_NET_USD 0.25",
+    "total-system net -0.082736 below MIN_NET_USD 0.25",
+    "fork readiness: HOP active transfer fee is 690bps until epoch 978",
+    "fork readiness: crank has 0 USDC; current flash route cannot repay round-trip loss",
+    "fork readiness: fork pool has 0 claimable USDC protocol fees",
+    "fork readiness: latest flywheel cash proof is not passing",
+    "fork readiness: latest flywheel simulation has an error"
+  ]
+}
