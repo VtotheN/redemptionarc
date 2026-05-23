@@ -1,0 +1,2145 @@
+{
+  "verdict": "STACC_MESH_BUILD_PLAN_READY_NO_SEND",
+  "generatedAt": "2026-05-23T18:49:44.721Z",
+  "noSend": true,
+  "liveExecution": "BLOCKED_UNTIL_EXPLICIT_APPROVAL",
+  "writeKeypairs": false,
+  "warning": "Simulation used ephemeral signer keypairs. Re-run with MESH_WRITE_KEYPAIRS=true only after approving the plan for a reusable live run.",
+  "config": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
+  "program": "GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h",
+  "params": {
+    "targetPoolCount": 36,
+    "currentKnownPool": "8aoWgf7ycbeKv6BTFCdUj4JR7Y4mXWuPZWEUhmuzN5ZL",
+    "tickSpacings": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      64
+    ],
+    "feeRate": 3000,
+    "requestedProtocolFeeRate": 2500,
+    "currentDefaultProtocolFeeRate": 300,
+    "effectiveProtocolFeeRate": 300,
+    "protocolCaptureRate": 0.00009,
+    "adminFeeUpdates": {
+      "included": false,
+      "reason": "Deployed fork returned InstructionFallbackNotFound for set_default_protocol_fee_rate during no-send simulation; new pools use the config default protocol fee rate."
+    },
+    "seedUsdcUi": 0.01,
+    "hopPriceUsdc": 0.0001,
+    "tokenBPerTokenA": 10000,
+    "initialSqrtPrice": "1844674407370955161600",
+    "currentTick": 92108,
+    "slippagePct": 25,
+    "oneTickArrayPerPool": true,
+    "cuLimit": 900000,
+    "cuPriceMicroLamports": 1000
+  },
+  "balances": {
+    "funder": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+    "solLamports": "4748405406",
+    "solUi": 4.748405406,
+    "usdcRaw": "445054",
+    "usdcUi": 0.445054,
+    "hopRaw": "89894955589892",
+    "hopUi": 89894955.589892
+  },
+  "costModel": {
+    "missingPoolCount": 35,
+    "plannedSetupTxCount": 35,
+    "plannedLiquidityTxCount": 35,
+    "simulatedCount": 35,
+    "failedSimulationCount": 0,
+    "totalRentLamports": "3046705200",
+    "totalRentSol": 3.0467052,
+    "estimatedTxFeeLamports": "413000",
+    "estimatedTxFeeSol": 0.000413,
+    "totalLamportsNeeded": "3047118200",
+    "totalSolNeeded": 3.0471182,
+    "totalSeedUsdcRaw": "350000",
+    "totalSeedUsdcUi": 0.35,
+    "totalRequiredHopRawApprox": "11430544535",
+    "totalRequiredHopUiApprox": 11430.544535,
+    "rentUnitLamports": {
+      "feeTier": 1197120,
+      "whirlpool": 5435760,
+      "tickArray": 70407360,
+      "tokenVaultClassic": 2039280,
+      "tokenVaultToken2022": 2074080,
+      "position": 2394240,
+      "positionMint": 1461600,
+      "positionTokenAccount": 2039280
+    }
+  },
+  "plans": [
+    {
+      "index": 0,
+      "tickSpacing": 1,
+      "whirlpool": "AVw3WMweY7QVRmanS3gFjGFxSDJtF5vVvu3HdurCQmJL",
+      "feeTier": "87aNh6kLBQjqtaUk6x9ibUtKZrMxcqsJoaDRcKDxBQuh",
+      "tickArrayStart": 92048,
+      "tickArray": "4JE6GDXoPBXGNV5uY2jQtQ2UjtstAqT4CWbksXLMkjnU",
+      "tickLower": 92107,
+      "tickUpper": 92109,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "F774hbRFSAzVGVrE8rbvkiGFg4TEnSUm4EDDgt4kR2Fo",
+      "tokenVaultB": "W4FPVFqQYNFUbKpRHosTLYtSHvKtLGKiCviP834QRQg",
+      "positionMint": "h3D8woAqkwuCRKCkSa3byjWp6Naz2mwAESpw48UYVqt",
+      "position": "3XcP3x2Yf6HgyjzQErWGZgrryGE6VpmQnZcfKggRgS9G",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 101.778269,
+      "liquidity": "20179340323",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 103363,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 825900 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uWNIo1FrqU8jsy4relo4twZI8vhtDuof5RSjhUJ4eeuBXx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5gEABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 73898 of 884241 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 13706 of 810343 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 1,
+      "tickSpacing": 2,
+      "whirlpool": "GvUMag6LHKsMTZFJneC8JDNAaDfYqmrKbA2qudcFqKwz",
+      "feeTier": "AwXS8BVW1Vm44KPetZhznXY1YhWrhyWe2JiNAPjvqMuW",
+      "tickArrayStart": 92048,
+      "tickArray": "FKiM2HD6cs4MRiAJMjFzVxNrzX4gdWuu6VfEGvBUzhoZ",
+      "tickLower": 92106,
+      "tickUpper": 92110,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "AzfGQoKz1raLtUzwVCAeaV9nFMEwNT96J3CzeX2i6zjB",
+      "tokenVaultB": "8gtbUvnhhpgJfegpQShEVqEytxRJB4WLCct5uv3C5Ztc",
+      "positionMint": "XTFxy6LTWicuagq3sDwJQTZQEFhE6ReXetdKEjPCaHE",
+      "position": "EVJzNJCuXV5eGo4TWY2w7nyMQwtB8snMej9iegMfDMVY",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 100.885177,
+      "liquidity": "10045263298",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 97356,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 831900 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uXskgRZcl8soE66ZNnkBaNkeb9tVuP39yE/QCYxDm0tPXx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5gIABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 70898 of 887241 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 13699 of 816343 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 2,
+      "tickSpacing": 3,
+      "whirlpool": "9x1gAPLXvRBUFmKiHaBXCqzwWyi6jzDgJtgroWdAq2ZX",
+      "feeTier": "DSz7zjLFR9z6CMPzYYJWha4CYZmu2JYpAB8pLuhuG1HW",
+      "tickArrayStart": 91872,
+      "tickArray": "DszzJSTR3s5rKJ6a9CnmCT68G77BvRdFMRBENqbx4SgJ",
+      "tickLower": 92103,
+      "tickUpper": 92109,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "4HPcKqzMKyLJo3Ui6FrCcaWevYmEnqD6fobomUThrVkR",
+      "tokenVaultB": "D1C9BLRBLfotRB9NqH7h8psnQjRmevQpq5W89CeJT4Q3",
+      "positionMint": "2rPhR58t3vNPMjmnAAAneCCYyFKpkvfiawhbjkeC9iAS",
+      "position": "Bm9LAjHXCEhdp2DTGe4cyG2s2YS1w4ZtLrwEEpobnAF4",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 505.284193,
+      "liquidity": "20179340323",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 97351,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 831900 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uWE9TQPvTfSVcXB5AUJYOa7KzPwwM7/CfTXDOJy7IN/Unx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5gMABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 72398 of 888741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 13694 of 816343 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 3,
+      "tickSpacing": 4,
+      "whirlpool": "AxQX8pL9HDNXMuxCKR1a9vWoRDGGU9HhchD2CAeb7oSu",
+      "feeTier": "AJeDNpoCmDqa1JJSTQqQq3iZ7ChiFGVX8cTpdCX8B2tU",
+      "tickArrayStart": 91872,
+      "tickArray": "EwXbxY7LGoxPG3NrJtmzyYCo131ZWdVCMUWdGKRjg2xB",
+      "tickLower": 92104,
+      "tickUpper": 92112,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "3RVfPcWohFckmcBxmAdeFw1czsbkn6zmigpNSXgXDWvT",
+      "tokenVaultB": "2mKuqECyeTpEuXyrcj1db6D9xBaJsgjN3ysMb4Z76khd",
+      "positionMint": "95SBzxvVne4veetz4zzdHv4f2379fKfAPu65g7Uc5eKB",
+      "position": "DcdZhWCPE15E9tBfWxHoQnRRbYgnjREcgKr274UFeFm3",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 100.441589,
+      "liquidity": "5011791401",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 100347,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 830400 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uWT6rhyOvVFPOGSzyAiwm1J7UiX12le9Yd34l51eyAYRnx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5gQABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 72398 of 887241 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 15190 of 814843 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 4,
+      "tickSpacing": 5,
+      "whirlpool": "Ge8PZTJrtcYZwQyoj5LmMTEMN28pKo5vXe8d6jJW83xj",
+      "feeTier": "5gqqkdqhs66R5AhixFPCwZGAtmioiQzLSu1cVKDESvmn",
+      "tickArrayStart": 91960,
+      "tickArray": "6EzhADr2VdWBqYhrkYq2P6jwjQZPahvra8Htc9JMyyko",
+      "tickLower": 92100,
+      "tickUpper": 92110,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "AELGUNfE8cZtrzuuQLEeTZHqTA7kbxHaAsphVAtsq4Gs",
+      "tokenVaultB": "9cNPBe5U6fGxmgs3Bf7JRytVNNnyK1UEbCry5BGmeRvg",
+      "positionMint": "3b82n2oG7NVAb29QQMPQqug9ReN9XmrLnRSDGxgyU9sH",
+      "position": "4AqUSu3gZ1dao398MsQMCFZNXpL77RwqQ9Rex42AqeLv",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 402.152555,
+      "liquidity": "10045263298",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 95841,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 833400 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uXoYiYHgyjr9fCbc+XS8nG7s6izTlwextVP1a/6gGpxcHx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5gUABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 70898 of 888741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 13684 of 817843 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 5,
+      "tickSpacing": 6,
+      "whirlpool": "3WyAh69CsFigLWUoZf1XzY4y65iEPCDQUDbtaqAYPoDw",
+      "feeTier": "CdkwgsDzxWGp1U8jKPqjhxRnexaPoHExBX2VJc4dcfzt",
+      "tickArrayStart": 91872,
+      "tickArray": "4utKq2xLc6uRqKYiNszzqLNYTwUHxN7cbL2XTwtvemdg",
+      "tickLower": 92100,
+      "tickUpper": 92112,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "Aqbi1cpuFJguRiwE4o4Q3R3UDd9MghN4aDiM69xUva5U",
+      "tokenVaultB": "RakaKPjTD8pSQu4tJyN9hh6Hovy8nHFiJcrf6PqzJ59",
+      "positionMint": "GierUSyzncjFbJfC57WESbFiTDmK1UuobVfy6Ah9FWBK",
+      "position": "D177edGJMJFJuF9d9y1Bc8ivgermkHdF2XgCZQWedmia",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 200.642298,
+      "liquidity": "5011791401",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 97344,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 831900 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uUlZLnD9LwhPLkRIpFrlO1W7BRh6N+hFaBAb1pXToK75nx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5gYABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 70898 of 887241 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 13687 of 816343 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 6,
+      "tickSpacing": 7,
+      "whirlpool": "fqhtFwAFxvgKKu8AoXMSPxVfQk6wnmMCXqWVUTywDcG",
+      "feeTier": "3AjiWjVd9SzaaFo2B6dwkdj4TLYgEJY95PbEV1aWR3bX",
+      "tickArrayStart": 91784,
+      "tickArray": "Eu4PXG2r3RCmURohiRvB9cKp8onFd7ksz4zWb3X8dNMG",
+      "tickLower": 92099,
+      "tickUpper": 92113,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "6CJroypyAGybBBSVoavH2SJvLizWy31idgAv3Lc7K4Hf",
+      "tokenVaultB": "GywnjKgFkospsjYFiN6xNBJVqkLnzf6tJM25uAfWX6VU",
+      "positionMint": "B7GgMA55Rgt1vVEkEG2qtmCStn14V76MX45oWSsyhYz",
+      "position": "3325ykykHF6foi5scsaLPJJDEcjAEbRm6QJAVWtsLDTY",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 180.476285,
+      "liquidity": "4007763387",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 97342,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 833400 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uUJ8yQ8GeN+AlT+rgNMYhuloej3khXjgACLa/VJ2wpznXx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5gcABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 70898 of 888741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 15185 of 817843 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 7,
+      "tickSpacing": 8,
+      "whirlpool": "2Tqk2ss5HDcssizcbjcNCnoCSZKw7hKraoJU5boSFSFX",
+      "feeTier": "CMtoeS2GjFy6fRsLRrJBfmByxGMPNyQxkPYeQiAk82RM",
+      "tickArrayStart": 91520,
+      "tickArray": "9BnLK6vfL2rzKYYKx1gL6FiNcYtnaxRAzkfb8j8p3Tk8",
+      "tickLower": 92096,
+      "tickUpper": 92112,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "CNWp1ETfYLSCHjq4naFHVQTpcXBxbB4BgEWviDHAkYSd",
+      "tokenVaultB": "6Tt8X9EtekqwZk6Y96aMva8HvDAAAf8b3mfTxbdkwi2X",
+      "positionMint": "4UzQxYSZS7GNZ59iQ8ZkVDCatUmPbLFkBLM4Bx56pZpa",
+      "position": "3giSgoxpL5w5CzdAHzpaoucbMk9oYKVnTRZAHEeVKT9a",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 300.82297,
+      "liquidity": "5011791401",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 95838,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 833400 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uUVu+aQxFruVJMkJ4ZRmajujuFRotvfb+xa3Ox1XcRGznx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5ggABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 70898 of 888741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 13681 of 817843 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 8,
+      "tickSpacing": 9,
+      "whirlpool": "CFHaQLKehVNLXEzDVAPmqnaGRPM1Ciegh1F4h5uwjKiv",
+      "feeTier": "GFA5w2stiwKSyufFVJ9RUqoN9pHpe6Vdqf7Zs2oi5C2E",
+      "tickArrayStart": 91872,
+      "tickArray": "HSVukc3xc4bC5LztbC4sZZ97Jo8Ds7o2vzjLd7XwsBW1",
+      "tickLower": 92097,
+      "tickUpper": 92115,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "5wxcetZdFnmGyDuL7e8S44q8zPRiavSDKhBWqpkA7Zk2",
+      "tokenVaultB": "G9BuEpYNazT1awWCTKMKxzyDm6MLn6sZbYECMBJU7u2p",
+      "positionMint": "2d52ALwWhEX7Acn4eMx2w3GjQxVbbnZC7dC733gjJpSH",
+      "position": "FaELDTuUfsj3KYTJVvw9GKnqXhji4ArMM4r4RjEUTJvv",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 157.451202,
+      "liquidity": "2861387683",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 101834,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 828900 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uWnGW4RHak/RmB0tQYsUnnsvyvmgwshvkfpx5ZovpjCd3x2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5gkABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 72398 of 885741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 15177 of 813343 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 9,
+      "tickSpacing": 10,
+      "whirlpool": "HHN6eE28LHcwFez3odaBWmcN7aoaGuvffRz6thDuPTXs",
+      "feeTier": "2uzS9UYTm7PNjQHnDANik4H7CeoFG6ZAA9Edor68YHK6",
+      "tickArrayStart": 91520,
+      "tickArray": "4UurocfJ2N3F9Qh6VV1j45uEpKEva9a67TUdw3LMy7R3",
+      "tickLower": 92090,
+      "tickUpper": 92110,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "4NFeo8BvSaXHv3XKPPtkDjT6KGxxGFvua1axBTvTvEvt",
+      "tokenVaultB": "FdF64tvAoBYTnuJ2UZQcvkgHUVTmBG6VR3E6ucimTZAh",
+      "positionMint": "H7jL7DQ4BigNE1PnaVWs8RRyWUhLquG2cH3KEcwoW613",
+      "position": "2bPbwv71w9KutT4VaBQQKXzpxw5d6VpzmGNf1nuUs7BH",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 904.06406,
+      "liquidity": "10045263298",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 95832,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 833400 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uXx7CN2oCFrpiRsVvIRNfTHeIyt4y+46PnBogdV6eoXVnx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5goABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 70898 of 888741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 13675 of 817843 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 10,
+      "tickSpacing": 11,
+      "whirlpool": "5cPLNr31uPWnoF8v8o3deZPryw7CEkepDu4SmRX6bSRg",
+      "feeTier": "GE9XBfMwJ6KxvDLSvgTwUMGmFAdg7VCPHBKLC3Hjr9t2",
+      "tickArrayStart": 91960,
+      "tickArray": "AqnUfjugSe9oJGsPb7Tuy7qPNGn9aqnddwb35vF28uBm",
+      "tickLower": 92092,
+      "tickUpper": 92114,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "49ZrqcHhrAzhm43ysE4s188MsroAuBz7Dq7cQB7LQe3t",
+      "tokenVaultB": "FRNnDDWVcWsdWZHxDjVpT4QmuZCsswpLNsVRjmDPxjRj",
+      "positionMint": "HGbzsUqUtRpymmqh4fvAxnTzKuGYSWrUupSryN7NKnex",
+      "position": "grQA58LpBaUrswdMy74hWPGUzwL48rvjy7PfsWk7pUB",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 267.139142,
+      "liquidity": "3338903697",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 100338,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 828900 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uVEf1RJlzJnmKz05qjK51IiJDt0+JcxtOg/tiMtIJ28e3x2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5gsABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 75398 of 888741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 13681 of 813343 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 11,
+      "tickSpacing": 12,
+      "whirlpool": "3q2zRk5UZyA6uFxjjF4zkbmtVs7Aaepr9hyicxZnHcEi",
+      "feeTier": "42amyter7gUe56Z6n6jv1zVY7uALkjR6x1oZVwkjvdLD",
+      "tickArrayStart": 91872,
+      "tickArray": "5S6vqShfxKU4z3u9KHEkhzpcmbL45hT38oni7Rbw1NhK",
+      "tickLower": 92088,
+      "tickUpper": 92112,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "At9L6wUmzEodEQofM2RLNZB1KVX8uE8T8WZsXu3N5dau",
+      "tokenVaultB": "3gLybUFDmmzmq9foRLWZPeMtiBbmvBz5aj3rAu7v4V4e",
+      "positionMint": "4KscRA8YxYA2NgfWwAMEBaQJdYYm4W37LWhfoNzmUNom",
+      "position": "FA6LSbAuj2C7RQJhtxefJAHBJY6gGsYrYhx2ZB7gFy6G",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 501.124219,
+      "liquidity": "5011791401",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 106337,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 822900 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uUqBYC/LRYYT1KiCLeNQ6iCc+1lrpm9KaZ0ObYJOMahl3x2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5gwABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 78398 of 885741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 13680 of 807343 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 12,
+      "tickSpacing": 13,
+      "whirlpool": "GUu6spCXrDpsERM9QHyAZA4q7sXkrA6DN9m4S53m2KB4",
+      "feeTier": "gXg2tk4EcTJnUqNJ6gFs4ixtANMVTpyXdiR5XcuyW3Q",
+      "tickArrayStart": 91520,
+      "tickArray": "CHe1Z1A9AbBWhgJscdDx972qVsmydgrgj19ngRr9GAJA",
+      "tickLower": 92092,
+      "tickUpper": 92118,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "CZrXAPiJ1kPrhWyTcsAAohMjjjeBQr8fSLemCzsPWXbx",
+      "tokenVaultB": "CA9yfzzVGRwRUKRqt8QDxG4H8Ve66o8GqQ8XxwEXE2cf",
+      "positionMint": "AzcHArFAqoAqv1LuS5nAyqNTFWDr9vwSzs8tiVBcjTCx",
+      "position": "EVgkLKMFPaMzQu7GhbV4Yg5VmVezdwqHXJ55ckMdF2hK",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 160.205246,
+      "liquidity": "2002364324",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 104831,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 831900 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uXmBOWaCYRum0ADOhmY4AJJQj4yIRDF32rTWcSRcew1d3x2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5g0ABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 72398 of 888741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 21174 of 816343 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 13,
+      "tickSpacing": 14,
+      "whirlpool": "2zJwMJAxBtgbEWyE8cRS1uk9eoWfxNRsPPnZWB8TSGWy",
+      "feeTier": "GHYoEJcb6eokaiw6iVuNE4cmWRoYQvnCqWq7KLipTJcK",
+      "tickArrayStart": 91168,
+      "tickArray": "Dx847BbDqFYsWzGPqLWM1DuMLPZXEjhng5bsWZi2CUZy",
+      "tickLower": 92092,
+      "tickUpper": 92120,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "9K5J2dmiwsijLTx7RStpjX8QzbA4aQNgJktq47rZcYff",
+      "tokenVaultB": "HpafKXEpFSwkZ1mSGcejuu5dyWr4xNn1ymq7BhfwBYjF",
+      "positionMint": "Bihuhg3iKcba4dGbJ86GH4K2Ex5PfoWPUoTgi6ZfDk7o",
+      "position": "DPh8cha3Lk4CLgjmXqvcebBSnWsJJ7UNqYPRdAFA4Fuw",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 133.49142,
+      "liquidity": "1668475066",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 103333,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 830400 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uUdihMVw5v02dOk1Eja6ij1qinMlo/GRaNmKRJRUCANznx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5g4ABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 73898 of 888741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 18176 of 814843 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 14,
+      "tickSpacing": 15,
+      "whirlpool": "8NuM7FBkQENRMLZDehhSRL3AuuyWjqpQV7uHdbAUjkHE",
+      "feeTier": "xhTGuS8VVqHLZquLbKvp55eYcCeDTgigoqSLTKXCYCD",
+      "tickArrayStart": 91080,
+      "tickArray": "De6TpjRsF4eghbU8udnP92fDqLJzcCJAkmL53TJDPwmg",
+      "tickLower": 92085,
+      "tickUpper": 92115,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "J5eWdtBpmqyamoGVLSD7X6At6ckYQNttmVi5eNJkbSJr",
+      "tokenVaultB": "AfsqXP3UGKgmqaSQh4Kgq4fsZKeY5bEdHnWGvbyYrS5H",
+      "positionMint": "7gDcmzRiEj88V574B5DJfABvbXdL6hYeebAKom6QBafx",
+      "position": "68PLEsvrw98nVNkqs58wYBEvU5EEFw5KkSbvRuWygWZC",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 328.979952,
+      "liquidity": "2861387683",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 101833,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 827400 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uVtnjGt3Sipf0EqXivRfguI1SzAlD0ikl+H2HR/fFlVGXx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5g8ABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 76898 of 888741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 13676 of 811843 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 15,
+      "tickSpacing": 16,
+      "whirlpool": "4MdZrNCXvXu5dEHwVkiQcMW6PSvMsAkeabKHX5RQYmDw",
+      "feeTier": "6HHoYiqc3GE7QJHtYiDx5t11Sbk3x5uquh6d4kvPxraM",
+      "tickArrayStart": 91520,
+      "tickArray": "7d9yTM5Fih7NgCSbm1QVCXD7qadzPuGiwEEfLRb5gEzu",
+      "tickLower": 92080,
+      "tickUpper": 92112,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "2WCzfCxzXLQFc78MxHHwtYAp4GdVR5jWXEkt4Qzxo3iV",
+      "tokenVaultB": "E8Q4mh9oQdzmjh8tcPi1L2XDYxy11cYSVsvpimDJ5M3z",
+      "positionMint": "CPS8sXrhmshaFvbnf5ego6xmmD88VCiRaWwoFLWuVxwJ",
+      "position": "2EwQeYcw2uHz1ccYqhG5kwzkiHG2o6eEsUbCC39rpBnA",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 701.345368,
+      "liquidity": "5011791401",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 98831,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 830400 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uUx3AXQ8Xq4ObtfXcsTHiKyL/ISKfCq2aaTToVTMWS7Znx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5hAABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 70898 of 885741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 13674 of 814843 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 16,
+      "tickSpacing": 17,
+      "whirlpool": "J9t5GYEqomgFU7a46hEAt3NarJwWAXfikmatETSCLrxq",
+      "feeTier": "DhH59P88dSCFk9GCtd9yzjXHJkPvRkQyYHrQxakYyRQX",
+      "tickArrayStart": 91256,
+      "tickArray": "3cfdACb4mTDU53SeyyqLVYWnUzMAjin7UtvE21iDkxJH",
+      "tickLower": 92089,
+      "tickUpper": 92123,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "4GHeTTWx5gi7NxQSpndKpuP524rAh8yYbUjW1JqL4p4r",
+      "tokenVaultB": "3cHDucNWaabJ9Ns8c7YFRwvKBoRNzSY1FvAAKBzqrot3",
+      "positionMint": "EmP7pqoioPmhAPgc3b2D3zaw2yrkDZ5e6wqbpps5zSWL",
+      "position": "24BgMvxWAyFKEdfVeRKUsXPA1TrzEPDTEpXByGwyFc2n",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 126.787189,
+      "liquidity": "1334683957",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 98829,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 831900 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uX+3RLEPB55mb+4ijjgrh0vscqxlJqj8UfyBe4taa9d0nx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5hEABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 72398 of 888741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 15172 of 816343 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 17,
+      "tickSpacing": 18,
+      "whirlpool": "GyTDpgM2QSgTPnNkV9Fg5vhnM4gfnHQb6pqpjfXaJTZA",
+      "feeTier": "H9yFBe6xyi9jUsHDXRSEAZpYSLzK2GiVbASsGzoq5uh2",
+      "tickArrayStart": 91872,
+      "tickArray": "GTdVzmD2JmH3nURYmbytzaridzvGnQZJV92nWq9JvFEt",
+      "tickLower": 92088,
+      "tickUpper": 92124,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "2EVZYRt14JyChLtfEbKmfAa3Qekjb6TkpD62v9mt1b3S",
+      "tokenVaultB": "5qrmfHh7M7pZ5C8gvrvGpuYWTZJU8byqje9iHcpqNG3A",
+      "positionMint": "5Zk8p6d1JBAa9PY18fgPzbSqQG7EhjEYBmQW8tDcwU92",
+      "position": "6a28Qn7ieDWXXjKjTA8zEEFxuaqa8jScXB9sjNfkM3tY",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 125.111439,
+      "liquidity": "1251251511",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 97327,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 833400 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uXtVXo66m2ukED3yW5YWWqSK00afhCc3aosnuhf5B+K6Xx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5hIABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 70898 of 888741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 15170 of 817843 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 18,
+      "tickSpacing": 19,
+      "whirlpool": "BrT4CfA5Lp6vMFPWhisKc97azM3p6MwjTjZDMo1EpcoJ",
+      "feeTier": "6RvumeNcGiSrRmyFSg4fSRt5U1GqtKjUXPfsttqgUm1q",
+      "tickArrayStart": 91960,
+      "tickArray": "2AsQSyxQ39L13AgGQX9UhsH1v4DsMjVsVhcpksCHnapG",
+      "tickLower": 92074,
+      "tickUpper": 92112,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "ANufHNpfmyemZsS8mXokPicE6aYmHwfdtjaDxtBRgzQg",
+      "tokenVaultB": "3qeQR3ASSdYuHcN81mm78TaXKkgALFSSxWfUrhAca3Um",
+      "positionMint": "8eLuy7Dqaq68HNRhfjkvjdS65ceFAT4GyV8XV9AivENw",
+      "position": "CVHQMN2j4kyX6nTmrt3ApvVLTWh8ji1aEcSEyF6vyd2A",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 851.458683,
+      "liquidity": "5011791401",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 98829,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 831900 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uWhP8ojjgQY//wwYJxBJxt6vw9EL7xdCYWNLSh9DsljEXx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5hMABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 70898 of 887241 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 15172 of 816343 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 19,
+      "tickSpacing": 20,
+      "whirlpool": "CYR8rUQeeHZRwV9MrLwVGLcGGCsfJw6ZX2dzomdDakV5",
+      "feeTier": "AVsvvG8RTMgBu6mp9iQwKyKj32SLXHtQvSGr2hPW1aNB",
+      "tickArrayStart": 91520,
+      "tickArray": "5D7R2GGfn7SvbP7GnR6EWJzU5J8VgpNpUAum8iqv2c8t",
+      "tickLower": 92080,
+      "tickUpper": 92120,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "7Lo6xBVQauRiYejhQCk6ue5j8xP3RXW87T7vrC8NtxGn",
+      "tokenVaultB": "Cdkz6EqdbczxmMm1H5zyyJKbDJjrZUEaGTFaGFLTL144",
+      "positionMint": "EnibZYgNWDBL9VktpcYj19FvmApKtwGNCcGk3Y9Manss",
+      "position": "2qkJ7hkPLLapLys9iyE4phKKNNGM1WQkT5weNpVWSMPm",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 233.484829,
+      "liquidity": "1668475066",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 110825,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 819900 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uWrfNnrjyLxEBWi3rn8v8qJzn8J+y0gprTawr+KvZbM0Hx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5hQABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 75398 of 879741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 15168 of 804343 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 20,
+      "tickSpacing": 21,
+      "whirlpool": "dfoxfUXbqfAZ3MiJfHicbDfifk3usE7uNj4kBLgXqpA",
+      "feeTier": "HjnQubbPNQnGKwACegNvv7g8iuxZ4cQobF2TccNhbTWZ",
+      "tickArrayStart": 90552,
+      "tickArray": "6ZcBWMU5jEMw6it3vvDqXh6CJpMUqSYtWWru4Zk29JE3",
+      "tickLower": 92085,
+      "tickUpper": 92127,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "FnwFugDxayxQ1awRNgknZXouaYQ3spgjEDGMCWbfk5j5",
+      "tokenVaultB": "3ydUXiL8J3tS8tpxFayGwQbgg2AteXcCs4Y93vniAuB4",
+      "positionMint": "FxToz1LmVotUjZdffk5WraU2sgK47vrRVeW412ctmsPH",
+      "position": "FGqjwR2rEx1pxdX6K2Wqcx9LXP6q3hMfg7RbEdXhFTVe",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 121.143049,
+      "liquidity": "1053672806",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 97325,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 833400 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uUJZMqVImLshH9QJhcP/iTkShWpABmlfSuOpeTrU7vHb3x2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5hUABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 70898 of 888741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 15168 of 817843 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 21,
+      "tickSpacing": 22,
+      "whirlpool": "3pSRFBBCJhMTh6G2URspsuKkvhNCn8YkzkmabMt8KQvL",
+      "feeTier": "9pKvVi5jBsxohF8XNSrKt65th3MwgMYrqVynwL9UP3rQ",
+      "tickArrayStart": 90992,
+      "tickArray": "HpPZzyxd82QqaodP9BSiAE5RGq2BQz3a3MrVu3wKjAz5",
+      "tickLower": 92070,
+      "tickUpper": 92114,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "Fxj6z6ph2Rtxg4PTtQNsZSVrojVSHFv4im1A1DuVzXh4",
+      "tokenVaultB": "6exzs86wiasBnmJPCc4UA8HF45rD7ji8NQ6uzWSwGvee",
+      "positionMint": "778BygPgyXtZnWgLGX9sV4quXU1xeqKgoqHg9fpAGkCw",
+      "position": "2kXwQL4vtwfecsCFEtVsJB2wH3jRrnzvwGk5m1yvzZbM",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 633.9046,
+      "liquidity": "3338903697",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 101829,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 827400 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uUp3mmAIOszCZXPBQAXWX8CGQcyVRixjewLeoco8YxacXx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5hYABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 70898 of 882741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 13672 of 811843 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 22,
+      "tickSpacing": 23,
+      "whirlpool": "CE1GpsmbtgzACe74Wg1PRmZCNZLomceVHFpoB8UKJZmg",
+      "feeTier": "CzWimpvuZmdKU5XKf4d3ceV64MMaGBk16sMQbzaYVohL",
+      "tickArrayStart": 91080,
+      "tickArray": "FnLAWkQQ2vuD81fx3ZPVogiE5wCqnuwXK7ANHVfBPEsf",
+      "tickLower": 92069,
+      "tickUpper": 92115,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "5WTt3Xq23qgGfzEk3BGYV1nwmpHoHuUhAyt1H7YT3RMf",
+      "tokenVaultB": "EVkcbxsF6k4zr1A6zopz3pcJTPwLSn3WqwbLTSAAn3kN",
+      "positionMint": "8bB2tYVFFiU8ghgzWVNDCbtziXjaDpte71p5wYu6TmjU",
+      "position": "GtbMeudS3RHbrgXWVShuwzUS7wFFXWKo5jr9U1HWxVnU",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 557.524926,
+      "liquidity": "2861387683",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 101827,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 827400 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uWmxWpMDd8rM/A/K/Pd5SKU6pwyKq7R/5wbrg6L52w/B3x2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5hcABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 75398 of 887241 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 13670 of 811843 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 23,
+      "tickSpacing": 24,
+      "whirlpool": "AjP3qFhffyozzNSFYGquY3dEFqWnENHCsD8PQVy9wMAV",
+      "feeTier": "69A2RajUGbMVXPR4tv4Jr3kXLQanKm3pnN9H5gSNbT2Q",
+      "tickArrayStart": 90816,
+      "tickArray": "2JaNuRYNgFtR7PZYoNgh7xDi2KkopGaFWmKuonTmzhJ3",
+      "tickLower": 92064,
+      "tickUpper": 92112,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "Av4cqZmEF9Cv5Q2XN1ZWgareEdSD1wEcnMB9idrnGDwW",
+      "tokenVaultB": "W9CX535gHxs7CBcQ5PumBoiPGypvEf1HYpHFze5tAmG",
+      "positionMint": "6MyTr6WfEadXBrQb8qaEW2cJycnVymtpsWhRwG4Lrg8j",
+      "position": "BWyQYeiZ9ChWuKAPkqk2jxZEr2QPLqSXCeLJT59DXDhP",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 1101.547492,
+      "liquidity": "5011791401",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 109328,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 827400 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uWQlIHLKkczs/lLSbYyxuFOhNUp8ckBtgDXufTDLWONZnx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5hgABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 72398 of 884241 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 21171 of 811843 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 24,
+      "tickSpacing": 25,
+      "whirlpool": "Bu8efd46wiBbAysQLVK8eBGWZgZAoMPdDUCfFDCFF4H8",
+      "feeTier": "GRmmvSNDUSa4PvKGuUeQp2b9mx835S91ummdMQSceZzm",
+      "tickArrayStart": 90200,
+      "tickArray": "ENX4VRFKteAo29kdCshsuVbTx9qKJaPk4dJj6EYUuvCn",
+      "tickLower": 92075,
+      "tickUpper": 92125,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "3Yq9h3mnzN4Z2Rb5oeB7QtJW1eEtkh34dCn411QTQMCb",
+      "tokenVaultB": "HCJtZ8QSWEwuBGxiHfnU5aNVYF1RGfHDr8ZoSMrdDEvc",
+      "positionMint": "HdAjJnBAa7uzCpBSED7ZMoWj9VGC4sNzC74WREeMLfsF",
+      "position": "6XoPfFaqkEiSwgWEWZWqFi2jHPKuMMAY35WxVBKFeyLU",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 194.192445,
+      "liquidity": "1177639739",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 97326,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 833400 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uWh77h2Kc2NkFAgrEWtcuV9bWf5bgpwbtwYewwKgHYMA3x2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5hkABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 70898 of 888741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 15169 of 817843 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 25,
+      "tickSpacing": 26,
+      "whirlpool": "5wHGnSL6hPT6uGDLfnKmDtdSnpRqWTrdkeCjQj5r7zX5",
+      "feeTier": "FFixgaTsnPJMaRY95n7oVGKe7LHJ8cw1ja5qTB8feT6N",
+      "tickArrayStart": 91520,
+      "tickArray": "Am4Vn29pZnLCNaKCWHw43jQERVfExjAqbjFs1BkHgsTC",
+      "tickLower": 92066,
+      "tickUpper": 92118,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "AhvYrNayj9y3cCLQ9kiqwWkNBjUDYJdHZXqTV5GifrXP",
+      "tokenVaultB": "Fozc7mg7SX3LV8tyGw2f5zUFcVXK4HAdtjAV3PmYsTcB",
+      "positionMint": "A6ZW5SjPNC2aF3rCPnbf7RmHx42Kg7Nx92avN3hNzFbP",
+      "position": "5cgonekhiC3yt9hpQqV2LetBwGQ2CXQWxrMFUNx9R1BH",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 420.122363,
+      "liquidity": "2002364324",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 97324,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 831900 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uVJVoKmNPfjJbM8TxLynAvALm8Mjcs0C9sWlRBoPptTVHx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5hoABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 70898 of 887241 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 13667 of 816343 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 26,
+      "tickSpacing": 27,
+      "whirlpool": "AQ7iy9dAqM1ew3XWVmcnzTzyrtJaFkAU389KbhJKf1HC",
+      "feeTier": "vDGHMLbjpxurXwRjvR2v5KnJrHE83rzHp5FdCeqfWg2",
+      "tickArrayStart": 90288,
+      "tickArray": "5m8KVe1fMWwEZ3BWrsFjherUdc4wWV8xAzUeDz2m3TTd",
+      "tickLower": 92070,
+      "tickUpper": 92124,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "7F43Wq1R3ohmAswsMtNAQF1BTaTFmenuJvdUxhGE2zch",
+      "tokenVaultB": "GrtH4Wg7jWJA3XzVszv87iYbNxG2rVpeiu9u9QnAMXKN",
+      "positionMint": "Ga1T8GeoPL7YYgg8Gbi8SaBfLmLCkfpfD2XfrKaawErH",
+      "position": "87sC4JcKZyZ5HPqcfbLbyAH5Znh7yveU7sbx5EgGTW2e",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 237.555245,
+      "liquidity": "1251251511",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 97326,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 833400 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uWLpSSxUPo5BjCQvRCWfelmQmbsZGmGn0bAgUmzk/t9W3x2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5hsABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 70898 of 888741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 15169 of 817843 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 27,
+      "tickSpacing": 28,
+      "whirlpool": "6tMV8WGsr44DFJACVutTjubscrdgkwJ8KYVVvaJb6NeP",
+      "feeTier": "9i3Qrs77m9TVKkiBBEdXsqCVZXpJP6DDCfyQYafYkBMF",
+      "tickArrayStart": 91168,
+      "tickArray": "HWycmh2xFxWj4GZ9XwUcz3uzLXF6fuopqk2vs3KWWkCT",
+      "tickLower": 92064,
+      "tickUpper": 92120,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "8CeELAPUbGJMKYjs91uXv8wxUMPRaPjWuZDoUDCWcyYx",
+      "tokenVaultB": "GqE1t1t6PvCTg2EvCanQafsJ9uCDsEJa1weAUMkVbihP",
+      "positionMint": "9cy78xLpevqZ96szW4dedjxV9r6ZqrS1pP1kkBK6Y3K1",
+      "position": "A9eoF7eCyC1X53Zj1KEZed4LS4osKE7rhq34izaHfTS9",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 366.716085,
+      "liquidity": "1668475066",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 95826,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 833400 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uVXcjflhz284QlQDaRuD+D0nUIowD+a0ePvU3KrueV1tHx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5hwABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 70898 of 888741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 13669 of 817843 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 28,
+      "tickSpacing": 29,
+      "whirlpool": "4c1anctGeZGfKgcBV9K3kdNVk3t4xsEHwGwaFUigZ4pj",
+      "feeTier": "7XhxnTTyCsBsafwoeJE2crRfGddgQjpujm6J7KrHYETX",
+      "tickArrayStart": 91872,
+      "tickArray": "EgFWAoCoNZUpSbxCYCKdHohbB43i6moGZj5X1B9kxQpv",
+      "tickLower": 92075,
+      "tickUpper": 92133,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "5xGVkoKzUgHSuE4w13deQr8gi2KqjYb12pLwUBBt8U1N",
+      "tokenVaultB": "6K2bFLrnowvuAtxv99FRQ698sahyTR3167xk4zyzQRYV",
+      "positionMint": "4QLVbr5idhJJjS6KogAja2CoZUna1xRETh3yJz5tu6VL",
+      "position": "CpDT1QLjxGsiFPC52A4NJSoXcvWvZkMnJ1asaz7cVAX5",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 132.055351,
+      "liquidity": "800822239",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 100324,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 830400 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uU1iww6Fl/ArMO/VLb/UkiZA2pKRhEqX0AkXBEYSEdwDHx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5h0ABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 73898 of 888741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 15167 of 814843 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 29,
+      "tickSpacing": 30,
+      "whirlpool": "7e7Q4H8G4dfRUXGvushG9Pm25w3MAsC5z2wmZyi7atVN",
+      "feeTier": "B6i9c6C9x6rKM9B8NEPFKV17dNZJzoPQH88194pzP8dR",
+      "tickArrayStart": 89760,
+      "tickArray": "86yuMdZjUTcYqDbqhecXKKiT2bx6HEMKTH2TmrW1Qn7T",
+      "tickLower": 92070,
+      "tickUpper": 92130,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "4f3d9aaCDPSDS8zSC71eRjKobWoQRLxUZDCPnujNAG1r",
+      "tokenVaultB": "CAbq9cWhK5j7NeZDtpQ66XZkCTheZ7gX8NAA8AzcyHRw",
+      "positionMint": "CuGpm3Fz2dcDaiHxRMXK77nBF5dq3MittEvxcMdjFXDi",
+      "position": "2meuUiPrr2jFWudrY2z6JpimjsKTzfn6dRfNRPpeGJQk",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 172.767394,
+      "liquidity": "910000800",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 103324,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 825900 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uVip9hfA2UnXQD+ckwVz1IBnB3sz+Ml//UVDBfHJ2hKwXx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5h4ABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 78398 of 888741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 13667 of 810343 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 30,
+      "tickSpacing": 31,
+      "whirlpool": "D7dhBQWkjHiQTNrLDtL3k1Tw7o5ZrAeFRMyXjgB5rGEN",
+      "feeTier": "4LtQEn1uKtANEVJeUpMKAsfk7arygQeYFEfB9sF8pnHg",
+      "tickArrayStart": 90024,
+      "tickArray": "79Nxzx5DSMox3WdZvo4GfUfnVA4M1ELpmcc8Wkz96nGy",
+      "tickLower": 92070,
+      "tickUpper": 92132,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "6UjEZy6j8FSHmSowzmgupBrt88jqL9ADsmqTQdks4v94",
+      "tokenVaultB": "7khXS1yKspBspouPoz6Dcy8tuvBox9HV76HddrwbVMyY",
+      "positionMint": "GiqgdrwJPXhcRkm6JmdxvjnmgJyKD7fbRpcGNkDhc4LT",
+      "position": "88mSYYrfgFfZEae7QhVtAE2M3UH2YrGbpWKbBP4xjqvu",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 158.372739,
+      "liquidity": "834181241",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 104824,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 830400 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uWz/zdyq7x3Mp+jThdiSDKLQOtvR+sm5IdMgnDjM7UhC3x2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5h8ABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 73898 of 888741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 19667 of 814843 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 31,
+      "tickSpacing": 32,
+      "whirlpool": "5U7MEb9SUkTfBSMt6DrFPboZidQtxrLTg1EUmURjHf6H",
+      "feeTier": "5GrhGSh5zyMnr9muCVcaaHEXEbkwnn1aCnr3rLoZrrT8",
+      "tickArrayStart": 90112,
+      "tickArray": "Cth6a4Ls5zvknJiGgXyAEK8qQTUYKrBdSBdhv7WHt9cP",
+      "tickLower": 92064,
+      "tickUpper": 92128,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "84ZPBjeetRXSDuSLZyWRmHVjbAx78QgxYqjgMPc1ANjG",
+      "tokenVaultB": "J5dKXG71Y7aGB1iwTqK6CZ5MKrMh3h7BrbyxPYYDpoF8",
+      "positionMint": "ATtRNxmAQ4oatDfE5RxuJGncKyeuLCNhQj9Xfgp9v2nF",
+      "position": "7bGofuQYpaRQHsUUJ62ZDuwZU8sJtXkVrV7EfqVyMEW",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 220.008973,
+      "liquidity": "1000990959",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 97274,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 833400 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uVCYJu1cD/v+LUVk20iuJvpdB2YsbbLcB5SpZhgvOHeanx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5iAABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 70898 of 888741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 15117 of 817843 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 32,
+      "tickSpacing": 33,
+      "whirlpool": "EaZdjNBodL2iLYxuUijnetCY9RPLXUvkwo3Pv8SSKLcK",
+      "feeTier": "DLj3bh1Zo9Sce5djnS96TDrLNotTatL9Ciupykh6BEQK",
+      "tickArrayStart": 90024,
+      "tickArray": "CBSQtebtViDARWtT5rnYhniN55Pa2TcvVQrwkzYAYZAw",
+      "tickLower": 92070,
+      "tickUpper": 92136,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "SPcC6kVqCSJ1ypB1s5n4pS1C2GNGqFatWvJF4vGufv9",
+      "tokenVaultB": "2nWEZJ7Nm66xkZ1ewSExsGm2vf1xJcURRWxZcmnA8Y7u",
+      "positionMint": "BgvtBnsBTb3xjfof2dJn2SDFRbn8hEDVCLsxK25TJXVd",
+      "position": "7qeSSSswpvpUGHKwDZgfBjohTkzC4eBpSpsxBrSabHiE",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 135.75451,
+      "liquidity": "715046453",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 100322,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 828900 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uXJwP7M2KZan5SIKzdDMTs0McQ/AuENhxEfhwckS/tV7Hx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5iEABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 75398 of 888741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 13665 of 813343 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 33,
+      "tickSpacing": 34,
+      "whirlpool": "4SnzSPKd1SPS4hwhB8m1MKFWw6r9cUjrbJ5CKKWYkb2L",
+      "feeTier": "9i1gRwtZd4pkEBQNj5xq4HStpKGjsf9yLExmxBrUz5TZ",
+      "tickArrayStart": 89760,
+      "tickArray": "FVwkK3sna4J9kUdQWM3QHxWK6hHBKD6uSByHHyfdALpN",
+      "tickLower": 92072,
+      "tickUpper": 92140,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "DqSnMntbBsRJyBndMtcXAv3Z5SSsmAwf3aGbyLbVgddG",
+      "tokenVaultB": "zHH52jak1KJ9mvoN4movFPQuZZ3JiQ5yUvrmrgaZvqg",
+      "positionMint": "FWAPQQSgtnF851sJjEiRez4nvzjQmSpe2qUHGidV9mPP",
+      "position": "AVjAc9FmdbijSRVHanHgbZ1zvWgKSCQiAFgFFw6ThiKq",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 112.54724,
+      "liquidity": "625703571",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 100320,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 831900 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uUzLpUYxLL/fNyYD2k0W2AUqn768IhTMbR9WyMWuWcQXXx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5iIABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 72398 of 888741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 16663 of 816343 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 34,
+      "tickSpacing": 35,
+      "whirlpool": "F4AtkzTMkyfGj2KW4Wc1By4AevJ8ct4i3PdBKkBNLLgb",
+      "feeTier": "DtNoRQf5JmPXa5KnBonjHWXfUB2mzseF2nQPr32XsegD",
+      "tickArrayStart": 89320,
+      "tickArray": "5d4o87DrC4eBycwQsn7hsYf7svizE3jRMHmbdU3bsbjJ",
+      "tickLower": 92050,
+      "tickUpper": 92120,
+      "exists": {
+        "feeTier": false,
+        "whirlpool": false,
+        "tickArray": false
+      },
+      "tokenVaultA": "4zWr2oa1GcR7m3yC1Her3we9cKrAaXJzSCmMZLAMXiwM",
+      "tokenVaultB": "EW7sy5S7BjPoLageaGjifDdyWkkCNtNjB8j3qbG4nZqV",
+      "positionMint": "HQSueqGCoHiL5EFbzYfrpHQ3fG2PosFZWn25T9cjueqm",
+      "position": "J2aZCCoTiPhomF2TdRvUtFn5akrmQHU9nRPmFibxNaBj",
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 483.206038,
+      "liquidity": "1668475066",
+      "missingRentLamports": "87048720",
+      "setupInstructionCount": 5,
+      "liquidityInstructionCount": 4,
+      "txPlan": [
+        "setup",
+        "liquidity_after_setup"
+      ],
+      "setupSimulation": {
+        "skipped": false,
+        "reason": null,
+        "err": null,
+        "unitsConsumed": 103320,
+        "logsTail": [
+          "Program log: Instruction: InitializeAccount3",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 825900 compute units",
+          "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+          "Program data: ZHatVwzG/uXQ04t1AD4bF6wt5lOR1g9g+h9qfp0KbX2Uvz6EpffR7Hx2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5iMABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 78398 of 888741 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+          "Program log: Instruction: InitializeTickArray",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 13663 of 810343 compute units",
+          "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+        ]
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "requires setup transaction to land before simulation can see the new pool accounts",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "SETUP_SIM_OK_LIQUIDITY_PENDING"
+    },
+    {
+      "index": 35,
+      "tickSpacing": 64,
+      "whirlpool": "8aoWgf7ycbeKv6BTFCdUj4JR7Y4mXWuPZWEUhmuzN5ZL",
+      "feeTier": "7v5Rhe37P5BrPTtEeumH1oa6aBQg2tTzFN3r58Sfe4m7",
+      "tickArrayStart": 90112,
+      "tickArray": "CDMSB5e6WUgtoSLrybvYm4j58Jue3eqpzHQVLmgVkAe4",
+      "tickLower": 92032,
+      "tickUpper": 92160,
+      "exists": {
+        "feeTier": true,
+        "whirlpool": true,
+        "tickArray": true
+      },
+      "tokenVaultA": null,
+      "tokenVaultB": null,
+      "positionMint": null,
+      "position": null,
+      "seedUsdcUi": 0.01,
+      "requiredHopUi": 146.107868,
+      "liquidity": "385200032",
+      "missingRentLamports": "0",
+      "setupInstructionCount": 2,
+      "liquidityInstructionCount": 2,
+      "txPlan": [],
+      "setupSimulation": {
+        "skipped": true,
+        "reason": "no setup instructions",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "liquiditySimulation": {
+        "skipped": true,
+        "reason": "existing pool liquidity top-up is not part of this build step",
+        "err": null,
+        "unitsConsumed": null,
+        "logsTail": []
+      },
+      "verdict": "POOL_ALREADY_EXISTS"
+    }
+  ],
+  "next": "If Velon approves, rerun with MESH_WRITE_KEYPAIRS=true to persist signer keypairs, then execute in small batches with exact receipts."
+}
