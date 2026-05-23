@@ -1,0 +1,9 @@
+{
+  "kpx9Config": "KPX9QQP4GLWiRkh4pGpkagwoPGaGixarRQs1LQKb9dt",
+  "kpx9Extension": "GgGRBg8kKd4h5KZcDSLMnHL84g3cEdJRaAfRmushev6A",
+  "fromAuthority": "7Wg8aXuPijrmH4svDmqArMeMAWF3ZusgrznJ6ymprBAN",
+  "toAuthority": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+  "dryRun": false,
+  "signature": "t616jKTkUAKPMGVKJbL7q8cSuZKaWE9nsWJKLk2jdiuTYDCBjNNZib1SNZFf4NCAFTrpqZ2Xf8697M47HtiWZxT",
+  "verdict": "EXECUTED"
+}

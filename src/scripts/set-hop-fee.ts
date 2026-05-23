@@ -53,33 +53,36 @@ async function main() {
   const feeConfig = getTransferFeeConfig(mintInfo);
   if (!feeConfig) throw new Error("HOP has no TransferFeeConfig extension");
 
-  const currentFee = feeConfig.newerTransferFee.transferFeeBasisPoints;
+  const epochInfo = await connection.getEpochInfo();
+  const currentEpoch = epochInfo.epoch;
+  const activeFeeConfig = currentEpoch >= Number(feeConfig.newerTransferFee.epoch)
+    ? feeConfig.newerTransferFee : feeConfig.olderTransferFee;
+  const activeFee = activeFeeConfig.transferFeeBasisPoints;
   const feeConfigAuthority = feeConfig.transferFeeConfigAuthority;
   const withdrawAuthority = feeConfig.withdrawWithheldAuthority;
 
   console.log("=== HOP TOKEN STATE ===");
   console.log(`mint:                     ${HOP_MINT.toBase58()}`);
-  console.log(`currentFeeBps:            ${currentFee}`);
+  console.log(`currentEpoch:             ${currentEpoch}`);
+  console.log(`activeFee (current):      ${activeFee} bps`);
+  console.log(`olderFee:                 ${feeConfig.olderTransferFee.transferFeeBasisPoints} bps @ epoch ${feeConfig.olderTransferFee.epoch}`);
+  console.log(`newerFee:                 ${feeConfig.newerTransferFee.transferFeeBasisPoints} bps @ epoch ${feeConfig.newerTransferFee.epoch}`);
   console.log(`transferFeeConfigAuth:    ${feeConfigAuthority?.toBase58() ?? "None"}`);
   console.log(`withdrawWithheldAuth:     ${withdrawAuthority?.toBase58() ?? "None"}`);
   console.log(`withheldAmount:           ${feeConfig.withheldAmount}`);
   console.log(`targetFeeBps:             ${TARGET_FEE_BPS}`);
 
   if (verify) {
-    const ok = currentFee === TARGET_FEE_BPS;
-    console.log(`\nVERIFY: fee=${currentFee} target=${TARGET_FEE_BPS} → ${ok ? "OK ✅" : "NOT SET ❌"}`);
-    writeReceipt("set-hop-fee-verify", { mint: HOP_MINT.toBase58(), currentFee, targetFee: TARGET_FEE_BPS, ok });
+    const ok = activeFee === TARGET_FEE_BPS;
+    console.log(`\nVERIFY: activeFee=${activeFee} target=${TARGET_FEE_BPS} → ${ok ? "OK ✅" : "NOT SET ❌"}`);
+    writeReceipt("set-hop-fee-verify", { mint: HOP_MINT.toBase58(), activeFee, targetFee: TARGET_FEE_BPS, ok });
     return;
   }
 
-  if (currentFee === TARGET_FEE_BPS) {
-    console.log(`\nFee already ${TARGET_FEE_BPS} bps. Nothing to do.`);
-    writeReceipt("set-hop-fee", { verdict: "ALREADY_SET", currentFee, targetFee: TARGET_FEE_BPS });
+  if (activeFee === TARGET_FEE_BPS) {
+    console.log(`\nActive fee already ${TARGET_FEE_BPS} bps. Nothing to do.`);
+    writeReceipt("set-hop-fee", { verdict: "ALREADY_SET", activeFee, targetFee: TARGET_FEE_BPS });
     return;
-  }
-
-  if (currentFee !== EXPECTED_CURRENT_FEE_BPS) {
-    throw new Error(`Unexpected current fee ${currentFee} bps (expected ${EXPECTED_CURRENT_FEE_BPS}). Aborting.`);
   }
 
   if (!feeConfigAuthority) throw new Error("No transferFeeConfigAuthority on mint");
@@ -101,6 +104,10 @@ async function main() {
     );
   }
 
+  // crank pays the fee (authority has 0 SOL)
+  const crankKeyPath = process.env.CRANK_KEY_PATH || "keys/crank.json";
+  const crank = loadKeypair(crankKeyPath);
+
   const ix = createSetTransferFeeInstruction(
     HOP_MINT,
     authority.publicKey,
@@ -112,13 +119,13 @@ async function main() {
 
   const tx = new Transaction().add(ix);
   tx.recentBlockhash = (await connection.getLatestBlockhash("confirmed")).blockhash;
-  tx.feePayer = authority.publicKey;
+  tx.feePayer = crank.publicKey;
 
   const receipt = {
     verdict: "",
     mint: HOP_MINT.toBase58(),
     authority: authority.publicKey.toBase58(),
-    fromFeeBps: currentFee,
+    fromFeeBps: activeFee,
     toFeeBps: TARGET_FEE_BPS,
     dryRun,
     signature: null as string | null,
@@ -131,11 +138,11 @@ async function main() {
     if (sim.value.err) console.log("err:", sim.value.err);
     console.log("logs:", sim.value.logs?.slice(-5));
   } else {
-    const sig = await sendAndConfirmTransaction(connection, tx, [authority], { commitment: "confirmed" });
+    const sig = await sendAndConfirmTransaction(connection, tx, [crank, authority], { commitment: "confirmed" });
     receipt.verdict = "EXECUTED";
     receipt.signature = sig;
     console.log(`\nEXECUTED: ${sig}`);
-    console.log(`HOP fee changed: ${currentFee} → ${TARGET_FEE_BPS} bps`);
+    console.log(`HOP fee changed: ${activeFee} → ${TARGET_FEE_BPS} bps`);
   }
 
   writeReceipt("set-hop-fee", receipt);

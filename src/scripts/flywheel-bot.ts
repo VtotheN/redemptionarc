@@ -29,8 +29,10 @@
 
 import "dotenv/config";
 import fs from "node:fs";
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const bs58 = require("bs58") as { encode: (b: Uint8Array) => string };
+import { createRequire } from "module";
+const _require = createRequire(import.meta.url);
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+const _bs58 = _require("bs58") as { encode: (b: Buffer) => string };
 import {
   Connection, Keypair, PublicKey, Transaction, TransactionInstruction,
   SystemProgram, ComputeBudgetProgram, SYSVAR_INSTRUCTIONS_PUBKEY,
@@ -39,7 +41,7 @@ import {
 import {
   TOKEN_2022_PROGRAM_ID, TOKEN_PROGRAM_ID,
   getAssociatedTokenAddressSync,
-  createAssociatedTokenAccountIdempotentInstruction,
+  createAssociatedTokenAccountIdempotentInstruction as createIdempotentAta,
   getMint, getTransferFeeConfig,
 } from "@solana/spl-token";
 import { writeReceipt } from "../utils/receipt.js";
@@ -308,7 +310,7 @@ function swapV2Ix(args: {
       { pubkey: args.tickArray0,        isSigner: false, isWritable: true  },
       { pubkey: args.tickArray1,        isSigner: false, isWritable: true  },
       { pubkey: args.tickArray2,        isSigner: false, isWritable: true  },
-      { pubkey: ORACLE,                 isSigner: false, isWritable: false },
+      { pubkey: ORACLE,                 isSigner: false, isWritable: true  },
     ],
     data: Buffer.concat([
       SWAP_V2_DISC,
@@ -429,7 +431,7 @@ async function main() {
   // HOP received in our T22 ATA: withheld fee applies on transfer to us
   const t22FeeOnHopOut = (hopOut * BigInt(t22Bps) + 9_999n) / 10_000n;
   const hopAvailForSwap2 = hopOut > t22FeeOnHopOut ? hopOut - t22FeeOnHopOut : 0n;
-  const hopSwap2 = (hopAvailForSwap2 * 90n) / 100n; // 90% buffer vs expected
+  const hopSwap2 = hopAvailForSwap2; // use all available HOP (no haircut)
 
   const { usdcOut } = computeSwapBToA(sqrtP1, liquidity, hopSwap2, feeRate);
 
@@ -440,7 +442,7 @@ async function main() {
 
   console.log(`Swap 1 (USDC→HOP): $${flashUsdc} → ${Number(hopOut)/1e6} HOP`);
   console.log(`  T22 withheld: ${Number(t22FeeOnHopOut)/1e6} HOP (${t22Bps}bps)`);
-  console.log(`  HOP for swap2: ${Number(hopSwap2)/1e6} (90% of ${Number(hopAvailForSwap2)/1e6})`);
+  console.log(`  HOP for swap2: ${Number(hopSwap2)/1e6} (net after T22)`);
   console.log(`Swap 2 (HOP→USDC): ${Number(hopSwap2)/1e6} HOP → ~$${Number(usdcOut)/1e6}`);
   console.log(`Protocol fees/bundle: ${Number(protocolFeeSwap1+protocolFeeSwap2)/1e6} USDC`);
   console.log(`Gas/bundle: ~$0.002`);
@@ -448,15 +450,12 @@ async function main() {
 
   // ─── Build TX ────────────────────────────────────────────────────────────
 
-  const END_IX = 9n;
+  const END_IX = 8n;
 
   const ixs: TransactionInstruction[] = [
     ComputeBudgetProgram.setComputeUnitLimit({ units: cuLimit }),
     ComputeBudgetProgram.setComputeUnitPrice({ microLamports: cuPrice }),
     startFlashIx(MF_ACCOUNT, crank.publicKey, END_IX),
-    createAssociatedTokenAccountIdempotentInstruction(
-      crank.publicKey, crankUsdcAta, crank.publicKey, USDC_MINT
-    ),
     borrowIx(MF_ACCOUNT, crank.publicKey, crankUsdcAta, flashMicro),
     // swap USDC→HOP (a_to_b=true, price goes down)
     swapV2Ix({
@@ -569,7 +568,7 @@ async function main() {
       freshTx.sign(crank);
 
       const serialized = freshTx.serialize();
-      const txBase58   = bs58.encode(serialized);
+      const txBase58   = _bs58.encode(serialized);
       const bundleId   = await sendJitoBundle(txBase58);
       bundleIds.push(bundleId);
       gasCostLamports += 5000n + jitoTip; // base fee + tip estimate
@@ -603,12 +602,12 @@ async function main() {
 
       // Create dest ATAs for withdraw-auth if needed
       collectTx.add(
-        createAssociatedTokenAccountIdempotentInstruction(
+        createIdempotentAta(
           crank.publicKey, authUsdcAta, withdrawAuth.publicKey, USDC_MINT
         )
       );
       collectTx.add(
-        createAssociatedTokenAccountIdempotentInstruction(
+        createIdempotentAta(
           crank.publicKey, authHopAta, withdrawAuth.publicKey, HOP_MINT, TOKEN_2022_PROGRAM_ID
         )
       );

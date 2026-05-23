@@ -1,0 +1,25 @@
+{
+  "backup_date": "2026-05-23",
+  "source_tx": "wgPa7zLDVKMp6hXQwQgXZE1tP3UPpr69npgXgym7L1f4rhHny5uWQGZbcAdkBJNuv1NfoxyotaFAhduMxFnD7uv",
+  "note": "Authority transfer TX. All 5 authorities transferred to gas-station-admin (7Wg8). Keypair at ~/.keys/gas-station-admin.json",
+
+  "WhirlpoolsConfig": {
+    "address": "KPX9QQP4GLWiRkh4pGpkagwoPGaGixarRQs1LQKb9dt",
+    "fee_authority": "7Wg8aXuPijrmH4svDmqArMeMAWF3ZusgrznJ6ymprBAN",
+    "collect_protocol_fees_authority": "7Wg8aXuPijrmH4svDmqArMeMAWF3ZusgrznJ6ymprBAN",
+    "reward_emissions_super_authority": "7Wg8aXuPijrmH4svDmqArMeMAWF3ZusgrznJ6ymprBAN",
+    "default_protocol_fee_rate": 666
+  },
+
+  "WhirlpoolsConfigExtension": {
+    "address": "GgGRBg8kKd4h5KZcDSLMnHL84g3cEdJRaAfRmushev6A",
+    "whirlpools_config": "KPX9QQP4GLWiRkh4pGpkagwoPGaGixarRQs1LQKb9dt",
+    "config_extension_authority": "7Wg8aXuPijrmH4svDmqArMeMAWF3ZusgrznJ6ymprBAN",
+    "token_badge_authority": "7Wg8aXuPijrmH4svDmqArMeMAWF3ZusgrznJ6ymprBAN"
+  },
+
+  "authority_keypair": {
+    "pubkey": "7Wg8aXuPijrmH4svDmqArMeMAWF3ZusgrznJ6ymprBAN",
+    "keypair_path": "~/.keys/gas-station-admin.json"
+  }
+}
