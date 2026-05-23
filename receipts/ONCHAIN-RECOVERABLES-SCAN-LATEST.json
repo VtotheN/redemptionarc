@@ -1,0 +1,1083 @@
+{
+  "summary": {
+    "generatedAt": "2026-05-23T12:10:15.443Z",
+    "rpc": "https://mainnet.helius-rpc.com/?api-key=<redacted>",
+    "controlledPubkeysScanned": 41,
+    "spendableSol": 0.164895004,
+    "solPriceUsd": 82.26036975626016,
+    "spendableSolUsd": 13.564324,
+    "usdcRaw": "511586659",
+    "usdcUi": 511.586659,
+    "quotedTokenUsdIncludingUsdc": 511.586659,
+    "tokenQuoteCount": 1,
+    "emptyTokenAccountRentSol": 0.03189072,
+    "emptyTokenAccountRentUsdApprox": 2.623342418993361,
+    "nonEmptyTokenAccountRentSolAfterCleanup": 0.01259064,
+    "nonEmptyTokenAccountRentUsdApproxAfterCleanup": 1.0357107018679594,
+    "nonSystemAccountLamportsSolLocked": 0.05013288,
+    "hopWithheldUi": 722396.824011,
+    "hopWithheldCanWithdraw": true,
+    "hopWithheldQuoteUsd": null,
+    "conservativeCashNowUsd": 525.150983,
+    "convertibleTokensUsdQuoted": 0,
+    "immediateRecoverableWithEmptyRentUsdApprox": 527.7743254189934,
+    "broaderRecoverableQuotedUsdApprox": 528.8100361208614
+  },
+  "solQuote": {
+    "outAmount": "13564324",
+    "usd": 13.564324,
+    "priceImpactPct": "0",
+    "source": "jupiter",
+    "route": [
+      "GoonFi V2",
+      "SolFi V2"
+    ]
+  },
+  "owners": [
+    {
+      "pubkey": "3pytadruqrd4yygPQ9uF8BDDLhPpygQmXwDrHHvB4YcG",
+      "labels": [
+        "~/.keys/tiotulio-prime-treasury.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "3TUioqNLgZskQa8UAhxLoFHZ9bc2e1FZs2bYFjWPrSyW",
+      "labels": [
+        "~/.keys/underwheel-marginfi-account.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": true,
+      "ownerProgram": "MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA",
+      "lamports": 16982400,
+      "sol": 0.0169824,
+      "solClassification": "locked_non_system_account_rent"
+    },
+    {
+      "pubkey": "4E9Y6JQfMLKUcafycdtVPXKkVmmxTLUeUcD6jRhapAAE",
+      "labels": [
+        "~/.keys/tiotulio-prime-ring-3.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "4ftgDecgELHsLm6yVmoynNAW4KkBW8P6TK3rU47yyxvu",
+      "labels": [
+        "~/Desktop/redemptionarc/keys/ring1.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "4J3QuZt1fPbkPJST4rd9sZyQLrKAzv6FLgWpvXumn57Y",
+      "labels": [
+        "~/Desktop/redemptionarc/keys/withdraw-authority.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "5jZur8NtpXNmDhRncSBkNgHhN129rBnKdiUBJadD1ihq",
+      "labels": [
+        "~/Desktop/redemptionarc/keys/ring3.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "5KqJ7NjQyCbqJhbXSYRn2SmuGtmoPdgG4kb4yKs8qGEU",
+      "labels": [
+        "~/.keys/tiotulio-prime-ring-1.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "6T3oSSG3QsmYqFhJt1QN5BtugUNcvZjxNiRu4gakM3Yu",
+      "labels": [
+        "~/.keys/nawebona-vladimir-admin.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "75vwRvoUsSRws6nAjqyw6kYjkGyAXv8aAPUJyC2umKPt",
+      "labels": [
+        "~/.keys/phantom-hop-4.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": true,
+      "ownerProgram": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "lamports": 2825760,
+      "sol": 0.00282576,
+      "solClassification": "locked_non_system_account_rent"
+    },
+    {
+      "pubkey": "8EwaiE1tXUAM4fGZXHHwoJnfCggrvvHiaBZsD7asci57",
+      "labels": [
+        "~/.keys/phantom-ring-4.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+      "labels": [
+        "~/Desktop/redemptionarc/keys/crank.json",
+        "env:REDEMPTION_CRANK",
+        "env:REDEMPTION_WITHDRAW_AUTHORITY"
+      ],
+      "sourceTypes": [
+        "local_keypair",
+        "env_controlled"
+      ],
+      "accountExists": true,
+      "ownerProgram": "11111111111111111111111111111111",
+      "lamports": 111882676,
+      "sol": 0.111882676,
+      "solClassification": "spendable_system_wallet"
+    },
+    {
+      "pubkey": "8ytXBomj5jrE3PosJTA6fnsvDDfuAQfreVJKPGBsPoQs",
+      "labels": [
+        "~/Desktop/redemptionarc/keys/bot-2.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "98a3z7NS9piL7YBqo3WtFu4mJQWLonwc6Jxip5mLeim7",
+      "labels": [
+        "~/.keys/phantom-owned-usdc-fee-vault.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": true,
+      "ownerProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "lamports": 2039280,
+      "sol": 0.00203928,
+      "solClassification": "locked_non_system_account_rent"
+    },
+    {
+      "pubkey": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
+      "labels": [
+        "~/Desktop/redemptionarc/keys/orca-config.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz",
+      "labels": [
+        "~/Desktop/redemptionarc/keys/marginfi-account.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": true,
+      "ownerProgram": "MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA",
+      "lamports": 16982400,
+      "sol": 0.0169824,
+      "solClassification": "locked_non_system_account_rent"
+    },
+    {
+      "pubkey": "9vnbNsvbKbweEvLMud1y5DjjJYShk9N1rcKJbJt62yHd",
+      "labels": [
+        "~/.keys/tiotulio-prime-admin.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "A7Bb8icHUfBrkEZJ9PY8pHipaJg2P1u5V8Sfb6F5gC9y",
+      "labels": [
+        "~/.keys/nawebona-vladimir-ring-4.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "AdXpCSoUyY472rf6Tr3yuUuEZo4enRfoqzQWYU8cNXNJ",
+      "labels": [
+        "~/.keys/nawebona-vladimir-ring-3.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
+      "labels": [
+        "~/Desktop/redemptionarc/keys/redemption-hop-mint.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": true,
+      "ownerProgram": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "lamports": 2825760,
+      "sol": 0.00282576,
+      "solClassification": "locked_non_system_account_rent"
+    },
+    {
+      "pubkey": "APUSE85XDsJ1MKj9Rwy2CJuxTSKfY6bZaBhRNtSEUi6f",
+      "labels": [
+        "~/Desktop/redemptionarc/keys/bot-4.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "BGM3VPeND4xts3J6WeaeRJVFpzAJhyJiqycqYP2vk6dV",
+      "labels": [
+        "~/Desktop/redemptionarc/keys/treasury.json",
+        "env:REDEMPTION_TREASURY"
+      ],
+      "sourceTypes": [
+        "local_keypair",
+        "env_controlled"
+      ],
+      "accountExists": true,
+      "ownerProgram": "11111111111111111111111111111111",
+      "lamports": 50251528,
+      "sol": 0.050251528,
+      "solClassification": "spendable_system_wallet"
+    },
+    {
+      "pubkey": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+      "labels": [
+        "~/.config/solana/id.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": true,
+      "ownerProgram": "11111111111111111111111111111111",
+      "lamports": 2760800,
+      "sol": 0.0027608,
+      "solClassification": "spendable_system_wallet"
+    },
+    {
+      "pubkey": "BxJMJLxXJhKvuhvvxY57wYY69CAs9RCQWBv9JPCtm9Kx",
+      "labels": [
+        "~/Desktop/atom_ickk/target/deploy/atom_ickk-keypair.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "CegzNEdsaBHndXuCNrDF4qDZRwqsu3HjvaEX8yw4iFby",
+      "labels": [
+        "~/.keys/nawebona-vladimir-ring-2.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "CsrAPSwJiEpDfTCQiSQJX5NV9etv8Y1Bbcph1bhr8MtA",
+      "labels": [
+        "~/.keys/tiotulio-prime-ring-2.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "DevoDSB8G1kVmzWxzwaoKgRMozHK1sQqNfJABnWSvmkC",
+      "labels": [
+        "~/Desktop/redemptionarc/keys/ring4.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "EYSkQkFgW1q1TUSCn4EzeSvEQFvh4YGy4y63xiR9M1Ta",
+      "labels": [
+        "~/Desktop/redemptionarc/keys/bot-3.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "FdPYAFnJ5P9X1QLtoydEbFoNgNz4XeRnyTq6EPuZrHMp",
+      "labels": [
+        "~/.keys/phantom-ring-2.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "FHftfNtujuzJyn323U2WNfSWcJFXg94JUqCVhxLQRBaQ",
+      "labels": [
+        "~/.keys/tiotulio-prime-ring-4.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "FLuXmSjhRPd3EeUiUuvr8ouLR5knuh9XzMqKrZRnJ85d",
+      "labels": [
+        "~/.keys/nawebona-vladimir-crank.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "fzBFYiDyvu5kNexJuBZDmoG1gL76ZWXEL8YE1y7NtwM",
+      "labels": [
+        "~/.keys/nawebona-vladimir-treasury.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "G9K8WAprCVdZKYhq2DzuT6V4zAt2V6x2YLa4rJcnz6kL",
+      "labels": [
+        "~/.keys/tiotulio-prime-crank.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "GB2zDSh8jphhJn7EcE3Mf3RCHv2SQVJVQfR18qMhte6r",
+      "labels": [
+        "~/Desktop/redemptionarc/keys/bot-1.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "Ge5fCyRkNy4gPTAbTvr7i3XDDkZ8FiEAihh83wD9oi9q",
+      "labels": [
+        "~/.keys/phantom-ring-1.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "gPaEVBZyTpM6GACSo2Lnc2oABdDgGfLyBSHC9fESdAB",
+      "labels": [
+        "~/.keys/phantom-hop-3.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": true,
+      "ownerProgram": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "lamports": 2825760,
+      "sol": 0.00282576,
+      "solClassification": "locked_non_system_account_rent"
+    },
+    {
+      "pubkey": "GqW1n2EGdaqVjcnMsm1XuN8p71NbyAhk1kpkig9wWPsa",
+      "labels": [
+        "~/.keys/phantom-ring-3.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "GTcUiKCywte2LQankT3pNwP4HBfgjp854EPzB38QCb1B",
+      "labels": [
+        "~/.keys/nawebona-vladimir-ring-1.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h",
+      "labels": [
+        "/tmp/redemptionarc-whirlpool-keypair.json",
+        "/tmp/stacc-whirlpools/target/deploy/whirlpool-keypair.json",
+        "receipt:OUR-WHIRLPOOL-DEPLOY-PLAN.program_id"
+      ],
+      "sourceTypes": [
+        "local_keypair",
+        "program_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    },
+    {
+      "pubkey": "HLyJtPmLy1a8ozovtURsV6nW9gTXAdHo8u9FvzXe1gdp",
+      "labels": [
+        "~/.keys/phantom-hop-2.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": true,
+      "ownerProgram": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "lamports": 2825760,
+      "sol": 0.00282576,
+      "solClassification": "locked_non_system_account_rent"
+    },
+    {
+      "pubkey": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+      "labels": [
+        "~/.keys/phantom-hop-1.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": true,
+      "ownerProgram": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "lamports": 2825760,
+      "sol": 0.00282576,
+      "solClassification": "locked_non_system_account_rent"
+    },
+    {
+      "pubkey": "Yja2XE6rAtf9tTughmeQ95YjVR2nR4iRRsrp9oYdipk",
+      "labels": [
+        "~/Desktop/redemptionarc/keys/ring2.json"
+      ],
+      "sourceTypes": [
+        "local_keypair"
+      ],
+      "accountExists": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "sol": 0,
+      "solClassification": "none"
+    }
+  ],
+  "tokenAccounts": [
+    {
+      "owner": "4ftgDecgELHsLm6yVmoynNAW4KkBW8P6TK3rU47yyxvu",
+      "ownerLabels": [
+        "~/Desktop/redemptionarc/keys/ring1.json"
+      ],
+      "account": "6y8Q9u9psmrwfiAhV4NwR34ap7GZhU4Vc78PpRequijn",
+      "tokenProgram": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+      "raw": "0",
+      "uiAmountString": "0",
+      "decimals": 6,
+      "lamports": 2157600,
+      "rentSol": 0.0021576,
+      "empty": true
+    },
+    {
+      "owner": "4ftgDecgELHsLm6yVmoynNAW4KkBW8P6TK3rU47yyxvu",
+      "ownerLabels": [
+        "~/Desktop/redemptionarc/keys/ring1.json"
+      ],
+      "account": "GrpBMDnyVr5HDQwuZ9FfgxkJA9aJcaxYwKMtqcMecPPL",
+      "tokenProgram": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "mint": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
+      "raw": "0",
+      "uiAmountString": "0",
+      "decimals": 6,
+      "lamports": 2157600,
+      "rentSol": 0.0021576,
+      "empty": true
+    },
+    {
+      "owner": "5jZur8NtpXNmDhRncSBkNgHhN129rBnKdiUBJadD1ihq",
+      "ownerLabels": [
+        "~/Desktop/redemptionarc/keys/ring3.json"
+      ],
+      "account": "8vmJXhHv4adL8eiNWKnv9kzwSWYoegDnC2LDqLiGLKqt",
+      "tokenProgram": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "mint": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
+      "raw": "0",
+      "uiAmountString": "0",
+      "decimals": 6,
+      "lamports": 2157600,
+      "rentSol": 0.0021576,
+      "empty": true
+    },
+    {
+      "owner": "5jZur8NtpXNmDhRncSBkNgHhN129rBnKdiUBJadD1ihq",
+      "ownerLabels": [
+        "~/Desktop/redemptionarc/keys/ring3.json"
+      ],
+      "account": "DsKieWX5AtrHpefetBe8kxueQXx7TwEH1R2ScCnDN9Jn",
+      "tokenProgram": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+      "raw": "0",
+      "uiAmountString": "0",
+      "decimals": 6,
+      "lamports": 2157600,
+      "rentSol": 0.0021576,
+      "empty": true
+    },
+    {
+      "owner": "8EwaiE1tXUAM4fGZXHHwoJnfCggrvvHiaBZsD7asci57",
+      "ownerLabels": [
+        "~/.keys/phantom-ring-4.json"
+      ],
+      "account": "Co1KHBqo43DNJNq1vtgBSY9cD2Knu7J6JQLShmbp74Xn",
+      "tokenProgram": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+      "raw": "0",
+      "uiAmountString": "0",
+      "decimals": 6,
+      "lamports": 2157600,
+      "rentSol": 0.0021576,
+      "empty": true
+    },
+    {
+      "owner": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+      "ownerLabels": [
+        "~/Desktop/redemptionarc/keys/crank.json",
+        "env:REDEMPTION_CRANK",
+        "env:REDEMPTION_WITHDRAW_AUTHORITY"
+      ],
+      "account": "5BK5sqF2vH8o1BBrSukV44ujpu19rpgvJFedGC8GzF9X",
+      "tokenProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "raw": "504399998",
+      "uiAmountString": "504.399998",
+      "decimals": 6,
+      "lamports": 2039280,
+      "rentSol": 0.00203928,
+      "empty": false
+    },
+    {
+      "owner": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+      "ownerLabels": [
+        "~/Desktop/redemptionarc/keys/crank.json",
+        "env:REDEMPTION_CRANK",
+        "env:REDEMPTION_WITHDRAW_AUTHORITY"
+      ],
+      "account": "CjQi6oQd2FoJ1GxyPZct1XFF2AMwGApfjRWtnxjj24Ka",
+      "tokenProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "mint": "AB2294LtqL6yjtxBoDjXumcPFsma91Lf2kFfNGbCRXDu",
+      "raw": "0",
+      "uiAmountString": "0",
+      "decimals": 9,
+      "lamports": 2039280,
+      "rentSol": 0.00203928,
+      "empty": true
+    },
+    {
+      "owner": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+      "ownerLabels": [
+        "~/Desktop/redemptionarc/keys/crank.json",
+        "env:REDEMPTION_CRANK",
+        "env:REDEMPTION_WITHDRAW_AUTHORITY"
+      ],
+      "account": "GKUd1pgyn7yRmo1iag17gtKrsrcEAG8Pjgvj3wZHmmke",
+      "tokenProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "mint": "So11111111111111111111111111111111111111112",
+      "raw": "0",
+      "uiAmountString": "0",
+      "decimals": 9,
+      "lamports": 2039280,
+      "rentSol": 0.00203928,
+      "empty": true
+    },
+    {
+      "owner": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+      "ownerLabels": [
+        "~/Desktop/redemptionarc/keys/crank.json",
+        "env:REDEMPTION_CRANK",
+        "env:REDEMPTION_WITHDRAW_AUTHORITY"
+      ],
+      "account": "2s2Au2bxsvF5cHbdhfP4JaFX8FXp5wXzQxBj15PNPEkD",
+      "tokenProgram": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+      "raw": "99433804991016",
+      "uiAmountString": "99433804.991016",
+      "decimals": 6,
+      "lamports": 2157600,
+      "rentSol": 0.0021576,
+      "empty": false
+    },
+    {
+      "owner": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+      "ownerLabels": [
+        "~/Desktop/redemptionarc/keys/crank.json",
+        "env:REDEMPTION_CRANK",
+        "env:REDEMPTION_WITHDRAW_AUTHORITY"
+      ],
+      "account": "H8cEWAnUp1FdVdhieYoTgr9vXfodZt2dFYNDtpvpqLx2",
+      "tokenProgram": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "mint": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
+      "raw": "9999917183475",
+      "uiAmountString": "9999917.183475",
+      "decimals": 6,
+      "lamports": 2157600,
+      "rentSol": 0.0021576,
+      "empty": false
+    },
+    {
+      "owner": "BGM3VPeND4xts3J6WeaeRJVFpzAJhyJiqycqYP2vk6dV",
+      "ownerLabels": [
+        "~/Desktop/redemptionarc/keys/treasury.json",
+        "env:REDEMPTION_TREASURY"
+      ],
+      "account": "CmTzJnUE1sU6cn4rg3VW81ZB6GJ14LC3fE5PuxrauUsQ",
+      "tokenProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "raw": "7186661",
+      "uiAmountString": "7.186661",
+      "decimals": 6,
+      "lamports": 2039280,
+      "rentSol": 0.00203928,
+      "empty": false
+    },
+    {
+      "owner": "BGM3VPeND4xts3J6WeaeRJVFpzAJhyJiqycqYP2vk6dV",
+      "ownerLabels": [
+        "~/Desktop/redemptionarc/keys/treasury.json",
+        "env:REDEMPTION_TREASURY"
+      ],
+      "account": "Atmqg9j65d7MuFi3CtH71sNgYkfZws6PgZD5Et7juGtZ",
+      "tokenProgram": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "mint": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
+      "raw": "82816525",
+      "uiAmountString": "82.816525",
+      "decimals": 6,
+      "lamports": 2157600,
+      "rentSol": 0.0021576,
+      "empty": false
+    },
+    {
+      "owner": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+      "ownerLabels": [
+        "~/.config/solana/id.json"
+      ],
+      "account": "9AdFNSB6WZKs1trbhJRRNSj6m1n2UTQsMEyziAkfec8",
+      "tokenProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "mint": "DHYv1GnjJuJnvKggmncifHXByhnJqk5am7aLGwfW2NSz",
+      "raw": "80000000",
+      "uiAmountString": "0.08",
+      "decimals": 9,
+      "lamports": 2039280,
+      "rentSol": 0.00203928,
+      "empty": false
+    },
+    {
+      "owner": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+      "ownerLabels": [
+        "~/.config/solana/id.json"
+      ],
+      "account": "BmdrgkiRCCeTXZjzF29Zgq3g8pcHMc3pg2Qbr2yCuzj6",
+      "tokenProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "raw": "0",
+      "uiAmountString": "0",
+      "decimals": 6,
+      "lamports": 2039280,
+      "rentSol": 0.00203928,
+      "empty": true
+    },
+    {
+      "owner": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+      "ownerLabels": [
+        "~/.config/solana/id.json"
+      ],
+      "account": "CekFBwG8ayBvDoTRo9gKYK3tkDLzSoLBeeT1V2hTXunL",
+      "tokenProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "mint": "So11111111111111111111111111111111111111112",
+      "raw": "0",
+      "uiAmountString": "0",
+      "decimals": 9,
+      "lamports": 2039280,
+      "rentSol": 0.00203928,
+      "empty": true
+    },
+    {
+      "owner": "DevoDSB8G1kVmzWxzwaoKgRMozHK1sQqNfJABnWSvmkC",
+      "ownerLabels": [
+        "~/Desktop/redemptionarc/keys/ring4.json"
+      ],
+      "account": "FVjg7MBPdmxPuiGqkLfk9FLTEcEv567GsSyotQKDjDoJ",
+      "tokenProgram": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "mint": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
+      "raw": "0",
+      "uiAmountString": "0",
+      "decimals": 6,
+      "lamports": 2157600,
+      "rentSol": 0.0021576,
+      "empty": true
+    },
+    {
+      "owner": "FdPYAFnJ5P9X1QLtoydEbFoNgNz4XeRnyTq6EPuZrHMp",
+      "ownerLabels": [
+        "~/.keys/phantom-ring-2.json"
+      ],
+      "account": "9KQ7RnkbKEm11yXfhzxBaY7ufs73yTYWqStSgZWbxsKo",
+      "tokenProgram": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+      "raw": "0",
+      "uiAmountString": "0",
+      "decimals": 6,
+      "lamports": 2157600,
+      "rentSol": 0.0021576,
+      "empty": true
+    },
+    {
+      "owner": "Ge5fCyRkNy4gPTAbTvr7i3XDDkZ8FiEAihh83wD9oi9q",
+      "ownerLabels": [
+        "~/.keys/phantom-ring-1.json"
+      ],
+      "account": "CoJAGvT6cNdCGpUWX3Sx4aMQaQkqVK6BUHV4vuEiCKXv",
+      "tokenProgram": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+      "raw": "0",
+      "uiAmountString": "0",
+      "decimals": 6,
+      "lamports": 2157600,
+      "rentSol": 0.0021576,
+      "empty": true
+    },
+    {
+      "owner": "GqW1n2EGdaqVjcnMsm1XuN8p71NbyAhk1kpkig9wWPsa",
+      "ownerLabels": [
+        "~/.keys/phantom-ring-3.json"
+      ],
+      "account": "2SJhbe98KuhCV1Uiy47xfgXynaW27o58NV6qDSqyyXWd",
+      "tokenProgram": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+      "raw": "0",
+      "uiAmountString": "0",
+      "decimals": 6,
+      "lamports": 2157600,
+      "rentSol": 0.0021576,
+      "empty": true
+    },
+    {
+      "owner": "Yja2XE6rAtf9tTughmeQ95YjVR2nR4iRRsrp9oYdipk",
+      "ownerLabels": [
+        "~/Desktop/redemptionarc/keys/ring2.json"
+      ],
+      "account": "3SxdEzriR8sYuG4bVzH9UTxEgZHQno6UauBuMDb2s4bv",
+      "tokenProgram": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "mint": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
+      "raw": "0",
+      "uiAmountString": "0",
+      "decimals": 6,
+      "lamports": 2157600,
+      "rentSol": 0.0021576,
+      "empty": true
+    },
+    {
+      "owner": "Yja2XE6rAtf9tTughmeQ95YjVR2nR4iRRsrp9oYdipk",
+      "ownerLabels": [
+        "~/Desktop/redemptionarc/keys/ring2.json"
+      ],
+      "account": "Fq9x3SMf7DLHTVo3yhApFUsM1KibGodbEvcDuGFkiUMJ",
+      "tokenProgram": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+      "raw": "0",
+      "uiAmountString": "0",
+      "decimals": 6,
+      "lamports": 2157600,
+      "rentSol": 0.0021576,
+      "empty": true
+    }
+  ],
+  "tokenTotals": [
+    {
+      "mint": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
+      "raw": "10000000000000",
+      "ui": 10000000,
+      "decimals": 6,
+      "accounts": 2,
+      "tokenPrograms": [
+        "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+      ],
+      "quote": {
+        "error": "{\"error\":\"The token AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA is not tradable\",\"errorCode\":\"TOKEN_NOT_TRADABLE\"}",
+        "status": 400
+      }
+    },
+    {
+      "mint": "DHYv1GnjJuJnvKggmncifHXByhnJqk5am7aLGwfW2NSz",
+      "raw": "80000000",
+      "ui": 0.08,
+      "decimals": 9,
+      "accounts": 1,
+      "tokenPrograms": [
+        "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+      ],
+      "quote": {
+        "error": "{\"error\":\"The token DHYv1GnjJuJnvKggmncifHXByhnJqk5am7aLGwfW2NSz is not tradable\",\"errorCode\":\"TOKEN_NOT_TRADABLE\"}",
+        "status": 400
+      }
+    },
+    {
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "raw": "511586659",
+      "ui": 511.586659,
+      "decimals": 6,
+      "accounts": 2,
+      "tokenPrograms": [
+        "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+      ],
+      "quote": {
+        "outAmount": "511586659",
+        "usd": 511.586659,
+        "source": "identity"
+      }
+    },
+    {
+      "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+      "raw": "99433804991016",
+      "ui": 99433804.991016,
+      "decimals": 6,
+      "accounts": 1,
+      "tokenPrograms": [
+        "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+      ],
+      "quote": {
+        "error": "{\"error\":\"Cannot compute other amount threshold, with amount 1 and slippageBps 100\",\"errorCode\":\"CANNOT_COMPUTE_OTHER_AMOUNT_THRESHOLD\"}",
+        "status": 400
+      }
+    }
+  ],
+  "hopWithheld": {
+    "status": "checked",
+    "withdrawAuthority": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+    "canWithdraw": true,
+    "accountsWithWithheld": 9,
+    "raw": "722396824011",
+    "ui": 722396.824011,
+    "samples": [
+      {
+        "account": "2SJhbe98KuhCV1Uiy47xfgXynaW27o58NV6qDSqyyXWd",
+        "owner": "GqW1n2EGdaqVjcnMsm1XuN8p71NbyAhk1kpkig9wWPsa",
+        "amount": "0",
+        "withheld": "11961301800"
+      },
+      {
+        "account": "2s2Au2bxsvF5cHbdhfP4JaFX8FXp5wXzQxBj15PNPEkD",
+        "owner": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+        "amount": "99433804991016",
+        "withheld": "321194999335"
+      },
+      {
+        "account": "3oJnqdGS2TPjQBNjSFSmAP5DRWb4sKKXV6GpbJoXtUj4",
+        "owner": "6drpPSeF7VwYgqZcfGGjUszM2PQoMXq5BN7QBAbgYs1u",
+        "amount": "93100000000",
+        "withheld": "6900000000"
+      },
+      {
+        "account": "9fScKmwXbxKG5tY93DH4qby8uAc3qM7Ky5evZpCeKEw8",
+        "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+        "amount": "9649",
+        "withheld": "345000000000"
+      },
+      {
+        "account": "AKKT9qDFodRonYbLkCEG8EyNpPz5qZRiggHbMxydzChT",
+        "owner": "Gw8fmV7kzMPupZkKGo297N7kuPxfsU35fusNtrKvjqWD",
+        "amount": "80695449100",
+        "withheld": "5980650900"
+      },
+      {
+        "account": "CKXtdhc6MhABpPNF51VU21R6Ktqcp7F3rggr1ntFcQux",
+        "owner": "7wLcMcxB1SiD5WBHfNR8eWyPzXW26UE5C5Lz5Twuv5g6",
+        "amount": "0",
+        "withheld": "6900000000"
+      },
+      {
+        "account": "Co1KHBqo43DNJNq1vtgBSY9cD2Knu7J6JQLShmbp74Xn",
+        "owner": "8EwaiE1tXUAM4fGZXHHwoJnfCggrvvHiaBZsD7asci57",
+        "amount": "0",
+        "withheld": "11135971976"
+      },
+      {
+        "account": "HBbnNMCR2vJZedSZwbzoBZP6VcgAMtTHUV7HFbAA7syF",
+        "owner": "4YDnJGniZp86hgtHsLWBFkraSS7ignaQS6V36Bn2QwH7",
+        "amount": "93100000000",
+        "withheld": "6900000000"
+      },
+      {
+        "account": "J8PeV9xZdMoCSVaePTR7y9WCvqKZ9fsfWzFoi8Sw3TAD",
+        "owner": "BWifJHcMM7di57rkfxFRRJz9Kw48QhmiGujErPxvrvi7",
+        "amount": "0",
+        "withheld": "6423900000"
+      }
+    ]
+  },
+  "hopWithheldQuote": {
+    "error": "{\"error\":\"Cannot compute other amount threshold, with amount 1 and slippageBps 100\",\"errorCode\":\"CANNOT_COMPUTE_OTHER_AMOUNT_THRESHOLD\"}",
+    "status": 400
+  },
+  "notes": [
+    "Cash now counts system-wallet SOL plus USDC only.",
+    "Custom/HOP/long-tail token values use Jupiter quote when available; not counted as profit until settled to SOL/USDC.",
+    "Empty token account rent is recoverable if owner/close authority signs and account is not recreated.",
+    "Non-empty token account rent is only recoverable after moving/selling/closing the token account.",
+    "Non-system account lamports include mint/program/rent-locked accounts and are not spendable cash."
+  ]
+}

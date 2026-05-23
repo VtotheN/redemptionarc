@@ -1,0 +1,112 @@
+{
+  "generatedAt": "2026-05-23T12:13:05.369Z",
+  "authorities": [
+    {
+      "authority": "3pytadruqrd4yygPQ9uF8BDDLhPpygQmXwDrHHvB4YcG",
+      "buffers": {
+        "buffers": []
+      },
+      "programs": {
+        "programs": []
+      }
+    },
+    {
+      "authority": "4J3QuZt1fPbkPJST4rd9sZyQLrKAzv6FLgWpvXumn57Y",
+      "buffers": {
+        "buffers": []
+      },
+      "programs": {
+        "programs": []
+      }
+    },
+    {
+      "authority": "6T3oSSG3QsmYqFhJt1QN5BtugUNcvZjxNiRu4gakM3Yu",
+      "buffers": {
+        "buffers": []
+      },
+      "programs": {
+        "programs": []
+      }
+    },
+    {
+      "authority": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+      "buffers": {
+        "buffers": []
+      },
+      "programs": {
+        "programs": []
+      }
+    },
+    {
+      "authority": "9vnbNsvbKbweEvLMud1y5DjjJYShk9N1rcKJbJt62yHd",
+      "buffers": {
+        "buffers": []
+      },
+      "programs": {
+        "programs": []
+      }
+    },
+    {
+      "authority": "BGM3VPeND4xts3J6WeaeRJVFpzAJhyJiqycqYP2vk6dV",
+      "buffers": {
+        "buffers": []
+      },
+      "programs": {
+        "programs": []
+      }
+    },
+    {
+      "authority": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+      "buffers": {
+        "buffers": []
+      },
+      "programs": {
+        "programs": [
+          {
+            "programId": "Q9FMc5YLqjJe96geFtg43ocfyrpJYM2WDHkQEqh8aNv",
+            "owner": "BPFLoaderUpgradeab1e11111111111111111111111",
+            "programdataAddress": "FXVduXj6jBz9E3PqY4mNsbNLLsEfBRQH9FozdfhomcWy",
+            "authority": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+            "lastDeploySlot": 420917531,
+            "dataLen": 0,
+            "lamports": 303379440
+          }
+        ]
+      }
+    },
+    {
+      "authority": "FLuXmSjhRPd3EeUiUuvr8ouLR5knuh9XzMqKrZRnJ85d",
+      "buffers": {
+        "buffers": []
+      },
+      "programs": {
+        "programs": []
+      }
+    },
+    {
+      "authority": "fzBFYiDyvu5kNexJuBZDmoG1gL76ZWXEL8YE1y7NtwM",
+      "buffers": {
+        "buffers": []
+      },
+      "programs": {
+        "programs": []
+      }
+    },
+    {
+      "authority": "G9K8WAprCVdZKYhq2DzuT6V4zAt2V6x2YLa4rJcnz6kL",
+      "buffers": {
+        "buffers": []
+      },
+      "programs": {
+        "programs": []
+      }
+    }
+  ],
+  "summary": {
+    "programsControlled": 1,
+    "buffersControlled": 0,
+    "programCloseRecoverableSolApprox": 0.30452088,
+    "programCloseRecoverableUsdApprox": 25.05000018730173,
+    "note": "Includes Q9FM program account rent plus ProgramData lamports. Recoverable only by closing/abandoning the upgradeable program with upgrade authority."
+  }
+}

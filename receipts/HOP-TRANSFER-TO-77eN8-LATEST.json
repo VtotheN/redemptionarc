@@ -1,0 +1,210 @@
+{
+  "verdict": "HOP_TRANSFER_SIM_READY_LIVE_BLOCKED_BY_ENV",
+  "generatedAt": "2026-05-23T12:42:17.252Z",
+  "dryRun": "true",
+  "allowLive": "false",
+  "liveTxApproved": null,
+  "hopMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+  "sourceOwner": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+  "sourceAta": "2s2Au2bxsvF5cHbdhfP4JaFX8FXp5wXzQxBj15PNPEkD",
+  "recipientOwner": "J7jVVwfP9czbXAaBc2oeKTbAhRTCGXYUxcVAD6u77eN8",
+  "recipientAta": "7FXckPfzzp3vGJT9vNzXwc9wr3vDXMzufw4puPgb31gM",
+  "recipientAtaExistsBefore": false,
+  "transferGrossRaw": "99433804991016",
+  "transferGrossHop": 99433804.991016,
+  "transferFeeRaw": "6860932544381",
+  "transferFeeHop": 6860932.544381,
+  "recipientSpendableHopWithoutWithdraw": 92572872.446635,
+  "withdrawWithheldToRecipientInSameTx": true,
+  "recipientExpectedSpendableHopAfterTx": 99433804.991016,
+  "epoch": 976,
+  "feeConfig": {
+    "basisPoints": 690,
+    "maximumFeeRaw": "18446744073709551615"
+  },
+  "estimatedCost": {
+    "baseFeeLamports": "5000",
+    "priorityFeeLamports": "140",
+    "createAtaRentLamports": "2157600",
+    "totalLamports": "2162740",
+    "totalSol": 0.00216274
+  },
+  "simulationBase": {
+    "err": null,
+    "unitsConsumed": 22168,
+    "logs": [
+      "Program ComputeBudget111111111111111111111111111111 invoke [1]",
+      "Program ComputeBudget111111111111111111111111111111 success",
+      "Program ComputeBudget111111111111111111111111111111 invoke [1]",
+      "Program ComputeBudget111111111111111111111111111111 success",
+      "Program ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL invoke [1]",
+      "Program log: CreateIdempotent",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb invoke [2]",
+      "Program log: Instruction: GetAccountDataSize",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 1352 of 132858 compute units",
+      "Program return: TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb tgAAAAAAAAA=",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+      "Program 11111111111111111111111111111111 invoke [2]",
+      "Program 11111111111111111111111111111111 success",
+      "Program log: Initialize the associated token account",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb invoke [2]",
+      "Program log: Instruction: InitializeImmutableOwner",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 674 of 126684 compute units",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb invoke [2]",
+      "Program log: Instruction: InitializeAccount3",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 123673 compute units",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+      "Program ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL consumed 18654 of 139700 compute units",
+      "Program ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL success",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb invoke [1]",
+      "Program log: TransferFeeInstruction: TransferCheckedWithFee",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 3214 of 121046 compute units",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success"
+    ]
+  },
+  "simulationWithWithdraw": {
+    "err": null,
+    "unitsConsumed": 23832,
+    "logs": [
+      "Program ComputeBudget111111111111111111111111111111 invoke [1]",
+      "Program ComputeBudget111111111111111111111111111111 success",
+      "Program ComputeBudget111111111111111111111111111111 invoke [1]",
+      "Program ComputeBudget111111111111111111111111111111 success",
+      "Program ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL invoke [1]",
+      "Program log: CreateIdempotent",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb invoke [2]",
+      "Program log: Instruction: GetAccountDataSize",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 1352 of 132860 compute units",
+      "Program return: TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb tgAAAAAAAAA=",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+      "Program 11111111111111111111111111111111 invoke [2]",
+      "Program 11111111111111111111111111111111 success",
+      "Program log: Initialize the associated token account",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb invoke [2]",
+      "Program log: Instruction: InitializeImmutableOwner",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 674 of 126686 compute units",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb invoke [2]",
+      "Program log: Instruction: InitializeAccount3",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 123676 compute units",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+      "Program ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL consumed 18651 of 139700 compute units",
+      "Program ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL success",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb invoke [1]",
+      "Program log: TransferFeeInstruction: TransferCheckedWithFee",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 3214 of 121049 compute units",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb invoke [1]",
+      "Program log: TransferFeeInstruction: WithdrawWithheldTokensFromAccounts",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 1667 of 117835 compute units",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success"
+    ]
+  },
+  "chosenInstructionSet": "transfer_plus_withdraw_withheld_to_recipient",
+  "instructions": [
+    {
+      "programId": "ComputeBudget111111111111111111111111111111",
+      "keys": [],
+      "data": "AuAiAgA="
+    },
+    {
+      "programId": "ComputeBudget111111111111111111111111111111",
+      "keys": [],
+      "data": "A+gDAAAAAAAA"
+    },
+    {
+      "programId": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+      "keys": [
+        {
+          "pubkey": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+          "isSigner": true,
+          "isWritable": true
+        },
+        {
+          "pubkey": "7FXckPfzzp3vGJT9vNzXwc9wr3vDXMzufw4puPgb31gM",
+          "isSigner": false,
+          "isWritable": true
+        },
+        {
+          "pubkey": "J7jVVwfP9czbXAaBc2oeKTbAhRTCGXYUxcVAD6u77eN8",
+          "isSigner": false,
+          "isWritable": false
+        },
+        {
+          "pubkey": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+          "isSigner": false,
+          "isWritable": false
+        },
+        {
+          "pubkey": "11111111111111111111111111111111",
+          "isSigner": false,
+          "isWritable": false
+        },
+        {
+          "pubkey": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+          "isSigner": false,
+          "isWritable": false
+        }
+      ],
+      "data": "AQ=="
+    },
+    {
+      "programId": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "keys": [
+        {
+          "pubkey": "2s2Au2bxsvF5cHbdhfP4JaFX8FXp5wXzQxBj15PNPEkD",
+          "isSigner": false,
+          "isWritable": true
+        },
+        {
+          "pubkey": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+          "isSigner": false,
+          "isWritable": false
+        },
+        {
+          "pubkey": "7FXckPfzzp3vGJT9vNzXwc9wr3vDXMzufw4puPgb31gM",
+          "isSigner": false,
+          "isWritable": true
+        },
+        {
+          "pubkey": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+          "isSigner": true,
+          "isWritable": false
+        }
+      ],
+      "data": "GgEoCqA8b1oAAAZ9d3JvPQYAAA=="
+    },
+    {
+      "programId": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "keys": [
+        {
+          "pubkey": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+          "isSigner": false,
+          "isWritable": true
+        },
+        {
+          "pubkey": "7FXckPfzzp3vGJT9vNzXwc9wr3vDXMzufw4puPgb31gM",
+          "isSigner": false,
+          "isWritable": true
+        },
+        {
+          "pubkey": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+          "isSigner": true,
+          "isWritable": false
+        },
+        {
+          "pubkey": "7FXckPfzzp3vGJT9vNzXwc9wr3vDXMzufw4puPgb31gM",
+          "isSigner": false,
+          "isWritable": true
+        }
+      ],
+      "data": "GgMB"
+    }
+  ],
+  "sendGate": {
+    "canSend": false,
+    "required": "Set DRY_RUN=false, ALLOW_LIVE=true, LIVE_TX_APPROVED=true only after reviewing this receipt."
+  },
+  "note": "No live transaction sent by this receipt builder."
+}

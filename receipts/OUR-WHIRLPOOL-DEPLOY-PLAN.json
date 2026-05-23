@@ -1,0 +1,21 @@
+{
+  "program_id": "GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h",
+  "so_size_bytes": 1621272,
+  "so_sha256": "0f78551a94a80bcc7257b1c866de6c6f8a9d3e306e9e48f1c72e92580c0bda66",
+  "estimated_deploy_sol": 0.013159675324675326,
+  "rent_exempt_minimum_sol": 11.284944,
+  "patch_applied": "removed is_admin_key constraint from initialize_config",
+  "build_status": "ANCHOR_BUILD_COMPLETED",
+  "simulate_status": "CLI_UNSUPPORTED",
+  "simulate_command": "solana program deploy --simulate target/deploy/whirlpool.so --keypair /tmp/redemptionarc-whirlpool-keypair.json --url mainnet-beta",
+  "simulate_output_first_20_lines": [
+    "error: Found argument '--simulate' which wasn't expected, or isn't valid in this context",
+    "",
+    "USAGE:",
+    "    solana program deploy [FLAGS] [OPTIONS] [PROGRAM_FILEPATH]",
+    "",
+    "For more information try --help"
+  ],
+  "next_step": "fund deployer wallet with at least 11.284944 SOL rent plus 0.013159675 SOL deploy write fees and safety margin, then: solana program deploy target/deploy/whirlpool.so --program-id /tmp/redemptionarc-whirlpool-keypair.json --url mainnet-beta",
+  "status": "READY_TO_DEPLOY"
+}
