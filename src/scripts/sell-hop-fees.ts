@@ -9,7 +9,7 @@
  *   SELL_HOP_AMOUNT=0          (0 = sell all withheld; else exact units)
  *   SELL_HOP_MIN_USD=1.0       (skip if Jupiter quote < this)
  *   SLIPPAGE_BPS=100
- *   JUPITER_API=https://quote-api.jup.ag/v6
+ *   JUPITER_API=https://lite-api.jup.ag/swap/v1
  *   PRIORITY_FEE_MICRO=1000
  */
 import "dotenv/config";
@@ -101,7 +101,7 @@ async function main() {
   const allowLive = process.env.ALLOW_LIVE === "true";
   const slippageBps = Number(process.env.SLIPPAGE_BPS || "100");
   const minUsd = Number(process.env.SELL_HOP_MIN_USD || "1.0");
-  const jupiterApi = process.env.JUPITER_API || "https://quote-api.jup.ag/v6";
+  const jupiterApi = process.env.JUPITER_API || "https://lite-api.jup.ag/swap/v1";
   const priorityFeeMicro = Number(process.env.PRIORITY_FEE_MICRO || "1000");
 
   const conn = new Connection(rpc, "confirmed");

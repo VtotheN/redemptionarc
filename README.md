@@ -11,15 +11,24 @@ Forked from Orca, stripped to 12 instructions, deployed mainnet.
 | Component | Address |
 |-----------|---------|
 | Program | `GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h` |
-| WhirlpoolsConfig | `9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmY` |
+| WhirlpoolsConfig | `9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ` |
 | FeeTier (tick_spacing=64) | `7v5Rhe37P5BrPTtEeumH1oa6aBQg2tTzFN3r58Sfe4m7` |
 | HOP TokenBadge | `HVcso86ZCfodDrGhSxiwuegx1K8xJqWso1M7Hs6UcwsE` |
 | USDC/HOP Pool | `8aoWgf7ycbeKv6BTFCdUj4JR7Y4mXWuPZWEUhmuzN5ZL` |
-| LP Position | `ErgQU48egJMNBLZeVkdjrtZrSWUQJCky3deh2B4U1YPQ` |
+| LP Position 1 | `ErgQU48egJMNBLZeVkdjrtZrSWUQJCky3deh2B4U1YPQ` |
+| LP Position 2 | `3Qx4NtMhd9vDKWbcdUAu2qrwpypbXEGy95N4cYgdyaGk` |
 
 Pool: USDC (tokenA) / HOP (tokenB), price = $0.0001/HOP, tick_spacing = 64.
 Tick arrays initialized: [84480, 90112, 95744]. Position range: [84480, 101312].
-LP seeded: 290 USDC + 2.49M HOP, liquidity = 78,627,479,083.
+LP seeded: 290.445053 USDC + HOP inventory, current pool liquidity = 78,748,145,963.
+
+Official KPX9 position `59LWLWVULsY2QszQZJurs2yvkjwvfpZNnbA5jBqQpMbd` was withdrawn and closed; recovered `0.445053 USDC` plus HOP inventory was moved into the fork position `3Qx4NtMhd9vDKWbcdUAu2qrwpypbXEGy95N4cYgdyaGk`.
+
+Current live-send blockers:
+- HOP Token-2022 active fee is still 690 bps until the scheduled 1 bps config becomes active at epoch 978.
+- The fork pool currently has 0 claimable USDC protocol fees.
+- The crank currently has 0 USDC, so the existing flash round-trip cannot repay MarginFi after swap loss.
+- HOP balances are tracked non-cash until settled into wallet-controlled SOL/USDC.
 
 ### T22 Ring + MarginFi Flash
 
@@ -68,6 +77,9 @@ SOLANA_RPC_URL=<rpc> FLASH_AMOUNT_USDC=100000 npm run keeper-loop
 
 # Snapshot
 npm run snapshot
+
+# Fork read-only readiness gate
+npm run fork-readiness
 ```
 
 ## Program Instructions (active in GxRHMB9a...)

@@ -1,0 +1,6 @@
+{
+  "verdict": "NO_ROUTE",
+  "hopBalanceUi": 89890298.308828,
+  "sellAmountUi": 1,
+  "conclusion": "HOP has no Jupiter route yet — seed a HOP/USDC pool first (run seed-hop-pool)"
+}

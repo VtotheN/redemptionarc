@@ -1,10 +1,10 @@
 {
   "verdict": "OWNED_FEE_MULTI_BOT_CYCLE_NO_GO",
-  "generatedAt": "2026-05-23T18:32:19.209Z",
+  "generatedAt": "2026-05-23T23:21:07.817Z",
   "noSend": true,
   "scanReceipt": "receipts/ORCA-OWNED-FEE-SOURCE-SCAN-LATEST.json",
-  "scanGeneratedAt": "2026-05-23T18:18:54.005Z",
-  "solPriceUsd": 84.741137,
+  "scanGeneratedAt": "2026-05-23T23:20:45.370Z",
+  "solPriceUsd": 85.739607,
   "minNetUsd": 0.25,
   "botWallets": [
     {
@@ -76,7 +76,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0075,
-        "requiredExternalVolumeUsdForMinNet": 33.393782011060004,
+        "requiredExternalVolumeUsdForMinNet": 33.39449425299333,
         "swapFeeUsd": 12,
         "protocolFeeUsd": 3,
         "lpFeeUsd": 9,
@@ -94,13 +94,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -108,7 +108,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 2.99954663491705,
+        "collectorLedgerNetUsd": 2.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -154,7 +154,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0075,
-        "requiredExternalVolumeUsdForMinNet": 33.393782011060004,
+        "requiredExternalVolumeUsdForMinNet": 33.39449425299333,
         "swapFeeUsd": 12,
         "protocolFeeUsd": 3,
         "lpFeeUsd": 9,
@@ -172,13 +172,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -186,7 +186,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 2.99954663491705,
+        "collectorLedgerNetUsd": 2.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -218,7 +218,7 @@
         "existingFeeUi": 0,
         "existingFeeCashUsd": null
       },
-      "activeCashTvlUsd": 0.694877408141137,
+      "activeCashTvlUsd": 0.703064863139607,
       "feeRate": 10000,
       "protocolFeeRate": 0,
       "multiBotTraffic": {
@@ -250,13 +250,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -264,7 +264,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": -0.00045336508294999996,
+        "collectorLedgerNetUsd": -0.00045870689745,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -310,7 +310,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -328,13 +328,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -342,7 +342,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -388,7 +388,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0003,
-        "requiredExternalVolumeUsdForMinNet": 834.8445502765002,
+        "requiredExternalVolumeUsdForMinNet": 834.8623563248333,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 0.12,
         "lpFeeUsd": 3.88,
@@ -406,13 +406,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -420,7 +420,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.11954663491704999,
+        "collectorLedgerNetUsd": 0.11954129310254999,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -466,7 +466,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -484,13 +484,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -498,7 +498,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -544,7 +544,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -562,13 +562,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -576,7 +576,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -622,7 +622,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -640,13 +640,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -654,7 +654,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -700,7 +700,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -718,13 +718,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -732,7 +732,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -778,7 +778,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -796,13 +796,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -810,7 +810,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -856,7 +856,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -874,13 +874,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -888,7 +888,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -934,7 +934,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -952,13 +952,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -966,7 +966,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -1012,7 +1012,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -1030,13 +1030,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -1044,7 +1044,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -1090,7 +1090,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -1108,13 +1108,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -1122,7 +1122,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -1168,7 +1168,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -1186,13 +1186,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -1200,7 +1200,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -1246,7 +1246,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -1264,13 +1264,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -1278,7 +1278,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -1324,7 +1324,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -1342,13 +1342,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -1356,7 +1356,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -1402,7 +1402,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -1420,13 +1420,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -1434,7 +1434,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -1480,7 +1480,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -1498,13 +1498,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -1512,7 +1512,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -1558,7 +1558,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -1576,13 +1576,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -1590,7 +1590,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -1636,7 +1636,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -1654,13 +1654,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -1668,7 +1668,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -1714,7 +1714,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -1732,13 +1732,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -1746,7 +1746,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -1792,7 +1792,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -1810,13 +1810,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -1824,7 +1824,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -1870,7 +1870,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -1888,13 +1888,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -1902,7 +1902,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -1948,7 +1948,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -1966,13 +1966,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -1980,7 +1980,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -2026,7 +2026,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -2044,13 +2044,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -2058,7 +2058,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -2104,7 +2104,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -2122,13 +2122,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -2136,7 +2136,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -2182,7 +2182,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -2200,13 +2200,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -2214,7 +2214,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -2260,7 +2260,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -2278,13 +2278,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -2292,7 +2292,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -2338,7 +2338,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -2356,13 +2356,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -2370,7 +2370,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -2416,7 +2416,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -2434,13 +2434,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -2448,7 +2448,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -2494,7 +2494,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -2512,13 +2512,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -2526,7 +2526,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -2572,7 +2572,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -2590,13 +2590,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -2604,7 +2604,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -2650,7 +2650,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -2668,13 +2668,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -2682,7 +2682,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -2728,7 +2728,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -2746,13 +2746,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -2760,7 +2760,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -2806,7 +2806,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
@@ -2824,13 +2824,13 @@
           "txCount": 40,
           "lamportsPerTx": 5350,
           "totalLamports": 214000,
-          "usd": 0.018134603317999997
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
         "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
@@ -2838,7 +2838,7 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
+        "collectorLedgerNetUsd": 0.99954129310255,
         "totalSystemNetUsd": null
       },
       "collectSimulation": null,
@@ -2885,7 +2885,7 @@
     },
     "feeMath": {
       "protocolCaptureRate": 0.0075,
-      "requiredExternalVolumeUsdForMinNet": 33.393782011060004,
+      "requiredExternalVolumeUsdForMinNet": 33.39449425299333,
       "swapFeeUsd": 12,
       "protocolFeeUsd": 3,
       "lpFeeUsd": 9,
@@ -2903,13 +2903,13 @@
         "txCount": 40,
         "lamportsPerTx": 5350,
         "totalLamports": 214000,
-        "usd": 0.018134603317999997
+        "usd": 0.018348275898
       },
       "collectTxCost": {
         "txCount": 1,
         "lamportsPerTx": 5350,
         "totalLamports": 5350,
-        "usd": 0.00045336508294999996
+        "usd": 0.00045870689745
       },
       "inventoryRiskUsd": null,
       "inventoryRiskBps": null,
@@ -2917,7 +2917,7 @@
     },
     "existingCashClaimableUsd": 0,
     "ledgers": {
-      "collectorLedgerNetUsd": 2.99954663491705,
+      "collectorLedgerNetUsd": 2.99954129310255,
       "totalSystemNetUsd": null
     },
     "collectSimulation": null,

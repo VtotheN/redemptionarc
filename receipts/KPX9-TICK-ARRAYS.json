@@ -1,0 +1,42 @@
+{
+  "verdict": "TICK_ARRAYS_EXECUTED",
+  "whirlpool": "2FhggxytqRvUrxEru2BTLkZfz3w8AcBUu4cqZzU2pFww",
+  "currentTick": 92108,
+  "tickArrayStarts": [
+    84480,
+    90112,
+    95744
+  ],
+  "tickArrays": [
+    {
+      "start": 84480,
+      "address": "BeSBk5tVuSmxVngVeKMN17WC78u9UUAscpcaKFfuXAEw",
+      "existed": false
+    },
+    {
+      "start": 90112,
+      "address": "5kHznkPmu1wsRKfnp6jPjej9xZ9fJZd8NifadjiPFRB6",
+      "existed": false
+    },
+    {
+      "start": 95744,
+      "address": "8UenmB2NrQfPVVcnBpP6XkTNAq8LFp8vomwAHkQdJwE",
+      "existed": false
+    }
+  ],
+  "tickLower": 84480,
+  "tickUpper": 101312,
+  "dryRun": false,
+  "signature": "5F8hFfjoiXwWZC11Ut7eyRdhaLq9LUnjQ7WxmYrhkMzf5e2xWSnRHcT8ZA2nPpsCDKBkHrFjYrGof5h3NCaW3Ca6",
+  "simErr": null,
+  "simLogs": [
+    "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc consumed 10860 of 592100 compute units",
+    "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc success",
+    "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc invoke [1]",
+    "Program log: Instruction: InitializeTickArray",
+    "Program 11111111111111111111111111111111 invoke [2]",
+    "Program 11111111111111111111111111111111 success",
+    "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc consumed 18404 of 581240 compute units",
+    "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc success"
+  ]
+}

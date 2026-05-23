@@ -1,10 +1,10 @@
 {
   "verdict": "OWNED_FEE_MULTI_BOT_CYCLE_NO_GO",
-  "generatedAt": "2026-05-23T18:32:29.260Z",
+  "generatedAt": "2026-05-23T23:21:07.817Z",
   "noSend": true,
   "scanReceipt": "receipts/ORCA-OWNED-FEE-SOURCE-SCAN-LATEST.json",
-  "scanGeneratedAt": "2026-05-23T18:18:54.005Z",
-  "solPriceUsd": 84.741137,
+  "scanGeneratedAt": "2026-05-23T23:20:45.370Z",
+  "solPriceUsd": 85.739607,
   "minNetUsd": 0.25,
   "botWallets": [
     {
@@ -31,8 +31,8 @@
     "defaultCounterpartyMode": "controlled"
   },
   "assumptions": {
-    "mode": "external",
-    "externalFlowShare": 1,
+    "mode": "controlled",
+    "externalFlowShare": 0,
     "ownedFullLp": false,
     "countOwnedLpFeesAsCash": false,
     "assumePriceNeutralBots": false,
@@ -70,20 +70,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0075,
-        "requiredExternalVolumeUsdForMinNet": 33.393782011060004,
+        "requiredExternalVolumeUsdForMinNet": 33.39449425299333,
         "swapFeeUsd": 12,
         "protocolFeeUsd": 3,
         "lpFeeUsd": 9,
-        "externalProtocolFeeUsd": 3,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 3,
+        "controlledSwapFeePaidUsd": 12,
+        "controlledExternalLpLeakageUsd": 9,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -91,29 +91,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 2.99954663491705,
-        "totalSystemNetUsd": 2.99954663491705
+        "collectorLedgerNetUsd": 2.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -145,20 +148,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0075,
-        "requiredExternalVolumeUsdForMinNet": 33.393782011060004,
+        "requiredExternalVolumeUsdForMinNet": 33.39449425299333,
         "swapFeeUsd": 12,
         "protocolFeeUsd": 3,
         "lpFeeUsd": 9,
-        "externalProtocolFeeUsd": 3,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 3,
+        "controlledSwapFeePaidUsd": 12,
+        "controlledExternalLpLeakageUsd": 9,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -166,29 +169,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 2.99954663491705,
-        "totalSystemNetUsd": 2.99954663491705
+        "collectorLedgerNetUsd": 2.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -212,7 +218,7 @@
         "existingFeeUi": 0,
         "existingFeeCashUsd": null
       },
-      "activeCashTvlUsd": 0.694877408141137,
+      "activeCashTvlUsd": 0.703064863139607,
       "feeRate": 10000,
       "protocolFeeRate": 0,
       "multiBotTraffic": {
@@ -220,9 +226,9 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0,
@@ -232,8 +238,8 @@
         "lpFeeUsd": 4,
         "externalProtocolFeeUsd": 0,
         "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 4,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -241,29 +247,31 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": -0.00045336508294999996,
-        "totalSystemNetUsd": -0.00045336508294999996
+        "collectorLedgerNetUsd": -0.00045870689745,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
         "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
@@ -296,20 +304,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -317,29 +325,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -371,20 +382,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0003,
-        "requiredExternalVolumeUsdForMinNet": 834.8445502765002,
+        "requiredExternalVolumeUsdForMinNet": 834.8623563248333,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 0.12,
         "lpFeeUsd": 3.88,
-        "externalProtocolFeeUsd": 0.12,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 0.12,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3.88,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -392,29 +403,31 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.11954663491704999,
-        "totalSystemNetUsd": 0.11954663491704999
+        "collectorLedgerNetUsd": 0.11954129310254999,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
         "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
@@ -447,20 +460,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -468,29 +481,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -522,20 +538,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -543,29 +559,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -597,20 +616,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -618,29 +637,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -672,20 +694,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -693,29 +715,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -747,20 +772,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -768,29 +793,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -822,20 +850,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -843,29 +871,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -897,20 +928,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -918,29 +949,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -972,20 +1006,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -993,29 +1027,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -1047,20 +1084,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -1068,29 +1105,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -1122,20 +1162,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -1143,29 +1183,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -1197,20 +1240,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -1218,29 +1261,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -1272,20 +1318,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -1293,29 +1339,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -1347,20 +1396,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -1368,29 +1417,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -1422,20 +1474,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -1443,29 +1495,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -1497,20 +1552,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -1518,29 +1573,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -1572,20 +1630,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -1593,29 +1651,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -1647,20 +1708,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -1668,29 +1729,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -1722,20 +1786,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -1743,29 +1807,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -1797,20 +1864,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -1818,29 +1885,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -1872,20 +1942,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -1893,29 +1963,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -1947,20 +2020,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -1968,29 +2041,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -2022,20 +2098,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -2043,29 +2119,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -2097,20 +2176,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -2118,29 +2197,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -2172,20 +2254,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -2193,29 +2275,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -2247,20 +2332,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -2268,29 +2353,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -2322,20 +2410,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -2343,29 +2431,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -2397,20 +2488,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -2418,29 +2509,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -2472,20 +2566,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -2493,29 +2587,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -2547,20 +2644,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -2568,29 +2665,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -2622,20 +2722,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -2643,29 +2743,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     },
@@ -2697,20 +2800,20 @@
         "rounds": 10,
         "tradeNotionalUsd": 10,
         "grossVolumeUsd": 400,
-        "botCounterpartyMode": "external",
-        "externalFlowShare": 1,
-        "controlledFlowShare": 0
+        "botCounterpartyMode": "controlled",
+        "externalFlowShare": 0,
+        "controlledFlowShare": 1
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18134603318,
+        "requiredExternalVolumeUsdForMinNet": 100.18348275897999,
         "swapFeeUsd": 4,
         "protocolFeeUsd": 1,
         "lpFeeUsd": 3,
-        "externalProtocolFeeUsd": 1,
-        "controlledProtocolSelfTransferUsd": 0,
-        "controlledSwapFeePaidUsd": 0,
-        "controlledExternalLpLeakageUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 1,
+        "controlledSwapFeePaidUsd": 4,
+        "controlledExternalLpLeakageUsd": 3,
         "ownedFullLp": false,
         "ownedLpFeeAccrualUsd": 0,
         "ownedLpCashCreditUsd": 0,
@@ -2718,29 +2821,32 @@
       },
       "costs": {
         "ownedBotTxCost": {
-          "txCount": 0,
+          "txCount": 40,
           "lamportsPerTx": 5350,
-          "totalLamports": 0,
-          "usd": 0
+          "totalLamports": 214000,
+          "usd": 0.018348275898
         },
         "collectTxCost": {
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045336508294999996
+          "usd": 0.00045870689745
         },
-        "inventoryRiskUsd": 0,
+        "inventoryRiskUsd": null,
         "inventoryRiskBps": null,
-        "inventoryRiskBlocksCashProof": false
+        "inventoryRiskBlocksCashProof": true
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": 0.99954663491705,
-        "totalSystemNetUsd": 0.99954663491705
+        "collectorLedgerNetUsd": 0.99954129310255,
+        "totalSystemNetUsd": null
       },
       "collectSimulation": null,
       "cashProofPass": false,
       "noGoReasons": [
+        "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+        "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+        "total-system cash gate below MIN_NET_USD (0.25)",
         "collect authority is not locally signable; direct collect is not executable by this wallet set"
       ]
     }
@@ -2773,20 +2879,20 @@
       "rounds": 10,
       "tradeNotionalUsd": 10,
       "grossVolumeUsd": 400,
-      "botCounterpartyMode": "external",
-      "externalFlowShare": 1,
-      "controlledFlowShare": 0
+      "botCounterpartyMode": "controlled",
+      "externalFlowShare": 0,
+      "controlledFlowShare": 1
     },
     "feeMath": {
       "protocolCaptureRate": 0.0075,
-      "requiredExternalVolumeUsdForMinNet": 33.393782011060004,
+      "requiredExternalVolumeUsdForMinNet": 33.39449425299333,
       "swapFeeUsd": 12,
       "protocolFeeUsd": 3,
       "lpFeeUsd": 9,
-      "externalProtocolFeeUsd": 3,
-      "controlledProtocolSelfTransferUsd": 0,
-      "controlledSwapFeePaidUsd": 0,
-      "controlledExternalLpLeakageUsd": 0,
+      "externalProtocolFeeUsd": 0,
+      "controlledProtocolSelfTransferUsd": 3,
+      "controlledSwapFeePaidUsd": 12,
+      "controlledExternalLpLeakageUsd": 9,
       "ownedFullLp": false,
       "ownedLpFeeAccrualUsd": 0,
       "ownedLpCashCreditUsd": 0,
@@ -2794,29 +2900,32 @@
     },
     "costs": {
       "ownedBotTxCost": {
-        "txCount": 0,
+        "txCount": 40,
         "lamportsPerTx": 5350,
-        "totalLamports": 0,
-        "usd": 0
+        "totalLamports": 214000,
+        "usd": 0.018348275898
       },
       "collectTxCost": {
         "txCount": 1,
         "lamportsPerTx": 5350,
         "totalLamports": 5350,
-        "usd": 0.00045336508294999996
+        "usd": 0.00045870689745
       },
-      "inventoryRiskUsd": 0,
+      "inventoryRiskUsd": null,
       "inventoryRiskBps": null,
-      "inventoryRiskBlocksCashProof": false
+      "inventoryRiskBlocksCashProof": true
     },
     "existingCashClaimableUsd": 0,
     "ledgers": {
-      "collectorLedgerNetUsd": 2.99954663491705,
-      "totalSystemNetUsd": 2.99954663491705
+      "collectorLedgerNetUsd": 2.99954129310255,
+      "totalSystemNetUsd": null
     },
     "collectSimulation": null,
     "cashProofPass": false,
     "noGoReasons": [
+      "controlled bot volume leaks the LP fee share outside the controlled system unless we own the active LP",
+      "controlled bot inventory drift/price impact is unpriced; set INVENTORY_RISK_BPS or prove exact neutral route",
+      "total-system cash gate below MIN_NET_USD (0.25)",
       "collect authority is not locally signable; direct collect is not executable by this wallet set"
     ]
   },

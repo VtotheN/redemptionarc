@@ -1,22 +1,22 @@
 {
   "verdict": "REDEMPTION_TREASURY_SNAPSHOT",
-  "generatedAt": "2026-05-23T10:31:01.611Z",
+  "generatedAt": "2026-05-23T23:17:46.764Z",
   "treasury": "BGM3VPeND4xts3J6WeaeRJVFpzAJhyJiqycqYP2vk6dV",
   "cash": {
     "sol": 0.050251528,
-    "usdc": 7.186661,
+    "usdc": 0,
     "solPriceUsd": null,
     "spendableUsd": null
   },
   "nonCash": {
-    "trackedHopOrCustomUnits": 82.816525
+    "trackedHopOrCustomUnits": 0
   },
   "tokenAccounts": [
     {
       "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
       "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
       "account": "CmTzJnUE1sU6cn4rg3VW81ZB6GJ14LC3fE5PuxrauUsQ",
-      "amountUi": 7.186661,
+      "amountUi": 0,
       "decimals": 6,
       "classification": "cash_usdc"
     },
@@ -26,7 +26,7 @@
       "account": "Atmqg9j65d7MuFi3CtH71sNgYkfZws6PgZD5Et7juGtZ",
       "amountUi": 82.816525,
       "decimals": 6,
-      "classification": "tracked_non_cash"
+      "classification": "other_non_cash"
     }
   ]
 }

@@ -1,0 +1,29 @@
+{
+  "verdict": "POOL_EXECUTED",
+  "hopPriceUsdc": 0.0001,
+  "price": 10000,
+  "initialSqrtPrice": "1844674407370955161600",
+  "whirlpool": "2FhggxytqRvUrxEru2BTLkZfz3w8AcBUu4cqZzU2pFww",
+  "tokenMintA": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+  "tokenMintB": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+  "tokenVaultA": "7etFhsHcyX2zwJa6fJzLkCBx1fzVMgwxaFoPG8PgaRwX",
+  "tokenVaultB": "7JDkeT6N5zAvF1w4SPcnLcr8nR5Px2RdLniNrMCyB3bR",
+  "feeTier": "6AEKZMiH6vKHQGqxAXLZWQJTQQRmyYZXk9az8nJmbmdU",
+  "oracle": "3UrtMPzJUqWfeo8TmEsyWXzhdJKbvrUMamsxVfh27j9H",
+  "tickSpacing": 64,
+  "dryRun": false,
+  "signature": "5AaTUcMMKDmeHksyyyLkcN8DXgRFsZGpd3xdfnnoUhgcXKN8N379scirLsFCUcAkXP8Rsqex9nCJvdBncnVZ2vKV",
+  "simErr": null,
+  "simLogs": [
+    "Program log: Instruction: InitializeImmutableOwner",
+    "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 674 of 166461 compute units",
+    "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+    "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb invoke [2]",
+    "Program log: Instruction: InitializeAccount3",
+    "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 163917 compute units",
+    "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+    "Program data: ZHatVwzG/uUSn9H0ILDvqa+Dmo0oM2hCy3dVn0egMpDrwxjumPz08gS16u9Msj0+pZZMAV1UmBMB55bMU0EX7FQWLbJOeB4Lxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5kAABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+    "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc consumed 45450 of 200000 compute units",
+    "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc success"
+  ]
+}

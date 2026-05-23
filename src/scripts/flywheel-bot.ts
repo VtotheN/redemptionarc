@@ -59,6 +59,13 @@ const TICK_ARRAY_84480   = new PublicKey("be9QKj4mYB8erh6r4ZDrKxxSvSYSUNRfpTxqJU
 const TICK_ARRAY_90112   = new PublicKey("CDMSB5e6WUgtoSLrybvYm4j58Jue3eqpzHQVLmgVkAe4");
 const TICK_ARRAY_95744   = new PublicKey("MXd8HXPjcH9ZCuyr4uKKyN7GkJ5YizZQkgUndB6J8Gz");
 const ORACLE             = new PublicKey("5qhXANMqTNNzdp1N1PrMzWzSzjHTZxuLPELcmpog6bp5");
+
+// LP position for fee collection
+const POSITION           = new PublicKey("ErgQU48egJMNBLZeVkdjrtZrSWUQJCky3deh2B4U1YPQ");
+const POSITION_MINT      = new PublicKey("21GvQjZagJKZT9nVwAKnXQpSicnNj5X6UvBjZY3SRu8R");
+const POSITION_TOKEN_ACCOUNT = new PublicKey("GgLpt3VY9vWKLnNa5Dj3FKvBn3JEDL4KTKpabCAfL54Q");
+const TICK_ARRAY_LOWER   = TICK_ARRAY_84480;
+const TICK_ARRAY_UPPER   = TICK_ARRAY_95744;
 const SPL_MEMO           = new PublicKey("MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr");
 
 const USDC_MINT = new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v");
@@ -83,7 +90,8 @@ const IX_END    = Buffer.from([105, 124, 201, 106, 153, 2, 8, 156]);
 const IX_BORROW = Buffer.from([4, 126, 116, 53, 48, 5, 212, 31]);
 const IX_REPAY  = Buffer.from([79, 209, 172, 177, 222, 51, 173, 151]);
 const SWAP_V2_DISC = Buffer.from([0x2b, 0x04, 0xed, 0x0b, 0x1a, 0xc9, 0x1e, 0x62]);
-const COLLECT_FEES_V2_DISC = Buffer.from([0x67, 0x80, 0xde, 0x86, 0x72, 0xc8, 0x16, 0xc8]);
+const COLLECT_PROTOCOL_FEES_V2_DISC = Buffer.from([0x67, 0x80, 0xde, 0x86, 0x72, 0xc8, 0x16, 0xc8]);
+const COLLECT_FEES_V2_DISC = Buffer.from([0xcf, 0x75, 0x5f, 0xbf, 0xe5, 0xb4, 0xe2, 0x0f]);
 
 // Bank oracle offset in MarginFi bank account data
 const BANK_ORACLE_OFFSET = 610;
@@ -356,6 +364,34 @@ function collectProtocolFeesV2Ix(args: {
       { pubkey: TOKEN_VAULT_B,        isSigner: false, isWritable: true  },
       { pubkey: args.destA,           isSigner: false, isWritable: true  },
       { pubkey: args.destB,           isSigner: false, isWritable: true  },
+      { pubkey: TOKEN_PROGRAM_ID,     isSigner: false, isWritable: false },
+      { pubkey: TOKEN_2022_PROGRAM_ID, isSigner: false, isWritable: false },
+      { pubkey: SPL_MEMO,             isSigner: false, isWritable: false },
+    ],
+    data: Buffer.concat([COLLECT_PROTOCOL_FEES_V2_DISC, Buffer.from([0x00])]),
+  });
+}
+
+function collectFeesV2Ix(args: {
+  positionAuthority: PublicKey;
+  tokenOwnerAccountA: PublicKey;
+  tokenOwnerAccountB: PublicKey;
+}): TransactionInstruction {
+  return new TransactionInstruction({
+    programId: WHIRLPOOL_PROGRAM,
+    keys: [
+      { pubkey: WHIRLPOOLS_CONFIG,    isSigner: false, isWritable: false },
+      { pubkey: WHIRLPOOL,            isSigner: false, isWritable: true  },
+      { pubkey: args.positionAuthority, isSigner: true, isWritable: false },
+      { pubkey: POSITION,             isSigner: false, isWritable: true  },
+      { pubkey: POSITION_TOKEN_ACCOUNT, isSigner: false, isWritable: false },
+      { pubkey: args.tokenOwnerAccountA, isSigner: false, isWritable: true },
+      { pubkey: TOKEN_VAULT_A,        isSigner: false, isWritable: true  },
+      { pubkey: args.tokenOwnerAccountB, isSigner: false, isWritable: true },
+      { pubkey: TOKEN_VAULT_B,        isSigner: false, isWritable: true  },
+      { pubkey: TICK_ARRAY_LOWER,     isSigner: false, isWritable: false },
+      { pubkey: TICK_ARRAY_UPPER,     isSigner: false, isWritable: false },
+      { pubkey: ORACLE,               isSigner: false, isWritable: false },
       { pubkey: TOKEN_PROGRAM_ID,     isSigner: false, isWritable: false },
       { pubkey: TOKEN_2022_PROGRAM_ID, isSigner: false, isWritable: false },
       { pubkey: SPL_MEMO,             isSigner: false, isWritable: false },
@@ -702,6 +738,15 @@ async function main() {
         })
       );
 
+      // Collect LP position fees (crank is position authority)
+      collectTx.add(
+        collectFeesV2Ix({
+          positionAuthority: crank.publicKey,
+          tokenOwnerAccountA: crankUsdcAta,
+          tokenOwnerAccountB: crankHopAta,
+        })
+      );
+
       collectTx.recentBlockhash = (await connection.getLatestBlockhash("confirmed")).blockhash;
       collectTx.feePayer = crank.publicKey;
 
@@ -710,7 +755,7 @@ async function main() {
       );
       receipt.feesCollectedUsdc = Number(feeADelta) / 1e6;
       receipt.feesCollectedHop  = Number(feeBDelta) / 1e6;
-      console.log(`Collected: ${Number(feeADelta)/1e6} USDC + ${Number(feeBDelta)/1e6} HOP | sig=${collectSig}`);
+      console.log(`Collected protocol: ${Number(feeADelta)/1e6} USDC + ${Number(feeBDelta)/1e6} HOP | sig=${collectSig}`);
     } catch (e) {
       const msg = e instanceof Error ? e.message : String(e);
       console.error(`Collect failed: ${msg}`);
@@ -734,15 +779,18 @@ async function main() {
   // ─── STEP 6: Projection ───────────────────────────────────────────────────
 
   const protocolFeePerBundleUsdc = Number(protocolFeeUsdcSwap1) / 1e6;
+  const lpFeePerBundleUsdc = Number(totalFeeUsdcSwap1 - protocolFeeUsdcSwap1) / 1e6;
+  const lpFeePerBundleHop  = Number(totalFeeHopSwap2 - protocolFeeHopSwap2) / 1e6;
   const gasPerBundleSol = Number(gasCostLamports) / 1e9 / nBundles;
   const gasPerBundleUsd = gasPerBundleSol * 150;
-  const netPerBundle    = protocolFeePerBundleUsdc - gasPerBundleUsd;
+  const netPerBundle    = protocolFeePerBundleUsdc + lpFeePerBundleUsdc - gasPerBundleUsd;
 
   console.log("\n=== PROJECTION ===");
   console.log(`Protocol fee/bundle: $${protocolFeePerBundleUsdc.toFixed(6)}`);
-  console.log(`Gas/bundle: ~$${gasPerBundleUsd.toFixed(5)}`);
-  console.log(`Net/bundle: $${netPerBundle.toFixed(6)}`);
-  console.log(`At 25 TPS: ~$${(netPerBundle * 25 * 3600).toFixed(2)}/hr (needs deeper pool)`);
+  console.log(`LP fee/bundle:       $${lpFeePerBundleUsdc.toFixed(6)} USDC + ${lpFeePerBundleHop.toFixed(6)} HOP`);
+  console.log(`Gas/bundle:          ~$${gasPerBundleUsd.toFixed(5)}`);
+  console.log(`Net/bundle:          $${netPerBundle.toFixed(6)}`);
+  console.log(`At 25 TPS:           ~$${(netPerBundle * 25 * 3600).toFixed(2)}/hr (needs deeper pool)`);
   console.log(`Current pool $290 TVL → recommend scaling liquidity to $50k+ for meaningful yield`);
 
   receipt.projNetPerBundle  = netPerBundle;

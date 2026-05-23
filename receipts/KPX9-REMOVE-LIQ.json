@@ -1,0 +1,62 @@
+{
+  "verdict": "REMOVE_LIQ_EXECUTED",
+  "whirlpool": "2FhggxytqRvUrxEru2BTLkZfz3w8AcBUu4cqZzU2pFww",
+  "position": "59LWLWVULsY2QszQZJurs2yvkjwvfpZNnbA5jBqQpMbd",
+  "positionMint": "BajtYir7NtMgmLYJDu3Sy4GH1x55MyQqjhczkYw59T3R",
+  "liquidity": "120667151",
+  "tickArrayLower": "BeSBk5tVuSmxVngVeKMN17WC78u9UUAscpcaKFfuXAEw",
+  "tickArrayUpper": "8UenmB2NrQfPVVcnBpP6XkTNAq8LFp8vomwAHkQdJwE",
+  "tokenMintA": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+  "tokenMintB": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+  "tokenVaultA": "7etFhsHcyX2zwJa6fJzLkCBx1fzVMgwxaFoPG8PgaRwX",
+  "tokenVaultB": "7JDkeT6N5zAvF1w4SPcnLcr8nR5Px2RdLniNrMCyB3bR",
+  "tokenOwnerAccountA": "5BK5sqF2vH8o1BBrSukV44ujpu19rpgvJFedGC8GzF9X",
+  "tokenOwnerAccountB": "2s2Au2bxsvF5cHbdhfP4JaFX8FXp5wXzQxBj15PNPEkD",
+  "before": {
+    "solLamports": "4520056526",
+    "tokenA": "0",
+    "tokenB": "89890845874032",
+    "usdc": "0",
+    "hop": "89890845874032"
+  },
+  "dryRun": false,
+  "signature": "5rp8dTCCH4bbVh32wv14QavyAhSHt3Kd8vMsNHPjAkKTLdaeC2928ZbamEyKhrJYkUUrUkf8kqjgMj7jdLjcb1GV",
+  "simErr": null,
+  "simLogs": [
+    "Program MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr invoke [2]",
+    "Program log: Memo (len 30): \"TFe: 690, 18446744073709551615\"",
+    "Program MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr consumed 12236 of 447537 compute units",
+    "Program MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr success",
+    "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb invoke [2]",
+    "Program log: Instruction: TransferChecked",
+    "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2677 of 432127 compute units",
+    "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+    "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc consumed 32893 of 460955 compute units",
+    "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc success",
+    "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc invoke [1]",
+    "Program log: Instruction: ClosePosition",
+    "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [2]",
+    "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 138 of 420082 compute units",
+    "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success",
+    "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [2]",
+    "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 120 of 417826 compute units",
+    "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success",
+    "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc consumed 10854 of 428062 compute units",
+    "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc success"
+  ],
+  "unitsConsumed": 82792,
+  "after": {
+    "solLamports": "4526044086",
+    "tokenA": "445053",
+    "tokenB": "89894408015458",
+    "usdc": "445053",
+    "hop": "89894408015458"
+  },
+  "delta": {
+    "solLamports": "5987560",
+    "tokenA": "445053",
+    "tokenB": "3562141426",
+    "usdc": "445053",
+    "hop": "3562141426"
+  }
+}

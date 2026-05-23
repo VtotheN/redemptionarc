@@ -1,0 +1,28 @@
+{
+  "verdict": "ADD_LIQ_EXECUTED",
+  "whirlpool": "2FhggxytqRvUrxEru2BTLkZfz3w8AcBUu4cqZzU2pFww",
+  "tickLower": 84480,
+  "tickUpper": 101312,
+  "liquidity": "120667151",
+  "usdcBalanceUi": 0.445054,
+  "hopBalanceUi": 89894955.589892,
+  "positionMint": "BajtYir7NtMgmLYJDu3Sy4GH1x55MyQqjhczkYw59T3R",
+  "position": "59LWLWVULsY2QszQZJurs2yvkjwvfpZNnbA5jBqQpMbd",
+  "tokenMaxA": "534064",
+  "tokenMaxB": "4591374556",
+  "dryRun": false,
+  "signature": "4nivtRi2NWWx3ZQKZw6t6Mxr3MBWLWHsRZjArnqakVKALvAEGNmFTfb69H4LYDkp3vE9n3sr5ajPGBULs4fNYEeg",
+  "simErr": null,
+  "simLogs": [
+    "Program log: Memo (len 30): \"TFe: 690, 18446744073709551615\"",
+    "Program MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr consumed 12236 of 342791 compute units",
+    "Program MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr success",
+    "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb invoke [2]",
+    "Program log: Instruction: TransferChecked",
+    "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 3084 of 329399 compute units",
+    "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+    "Program data: HgeQtWb+m6ESn9H0ILDvqa+Dmo0oM2hCy3dVn0egMpDrwxjumPz08j2Rcw+DZH13vXETHjLu5QIp8drPb0I4fK707bIMYrvwAEoBAMCLAQAPPDEHAAAAAAAAAAAAAAAAfsoGAAAAAACUSfX0AAAAAAAAAAAAAAAA2/DmEAAAAAA=",
+    "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc consumed 30827 of 356685 compute units",
+    "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc success"
+  ]
+}

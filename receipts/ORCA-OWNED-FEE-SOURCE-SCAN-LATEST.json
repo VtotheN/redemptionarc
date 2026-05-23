@@ -1,9 +1,9 @@
 {
   "verdict": "ORCA_OWNED_FEE_SOURCE_SCAN_READ_ONLY",
-  "generatedAt": "2026-05-23T18:18:54.005Z",
+  "generatedAt": "2026-05-23T23:20:45.370Z",
   "rpcUrlRedacted": "https://mainnet.helius-rpc.com/?api-key=<redacted>",
   "noSend": true,
-  "solPriceUsd": 84.741137,
+  "solPriceUsd": 85.739607,
   "programs": [
     {
       "label": "official-orca",
@@ -92,7 +92,7 @@
         "defaultProtocolFeeRate": 666
       },
       "controlStatus": "local_signer",
-      "poolCount": 1
+      "poolCount": 2
     },
     {
       "program": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
@@ -7281,6 +7281,66 @@
     {
       "program": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
       "programLabel": "official-orca",
+      "whirlpool": "2FhggxytqRvUrxEru2BTLkZfz3w8AcBUu4cqZzU2pFww",
+      "config": "KPX9QQP4GLWiRkh4pGpkagwoPGaGixarRQs1LQKb9dt",
+      "configSource": "gifted-kpx9",
+      "collectProtocolFeesAuthority": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+      "controlStatus": "local_signer",
+      "directLocalCollect": true,
+      "tickSpacing": 64,
+      "feeRate": 3000,
+      "feeRatePercent": 0.3,
+      "protocolFeeRate": 666,
+      "protocolFeeRatePercentOfSwapFee": 6.66,
+      "liquidity": "0",
+      "sqrtPrice": "1844674407370955161600",
+      "tickCurrentIndex": 92108,
+      "active": true,
+      "tokenA": {
+        "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "vault": "7etFhsHcyX2zwJa6fJzLkCBx1fzVMgwxaFoPG8PgaRwX",
+        "mintMeta": {
+          "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "exists": true,
+          "ownerProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+          "decimals": 6,
+          "symbol": "USDC",
+          "cashClass": "usdc"
+        },
+        "vaultRaw": "1",
+        "vaultUi": 0.000001,
+        "vaultCashUsd": 0.000001,
+        "protocolFeeOwedRaw": "0",
+        "protocolFeeOwedUi": 0,
+        "protocolFeeOwedCashUsd": 0
+      },
+      "tokenB": {
+        "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+        "vault": "7JDkeT6N5zAvF1w4SPcnLcr8nR5Px2RdLniNrMCyB3bR",
+        "mintMeta": {
+          "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+          "exists": true,
+          "ownerProgram": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+          "decimals": 6,
+          "symbol": "UNKNOWN",
+          "cashClass": "non_cash"
+        },
+        "vaultRaw": "1",
+        "vaultUi": 0.000001,
+        "vaultCashUsd": null,
+        "protocolFeeOwedRaw": "0",
+        "protocolFeeOwedUi": 0,
+        "protocolFeeOwedCashUsd": null
+      },
+      "cashClaimableUsd": 0,
+      "cashTvlUsd": 0.000001,
+      "hasClaimableProtocolFees": false,
+      "hasUnknownClaimable": false,
+      "executionClass": "ACTIVE_FEE_SOURCE"
+    },
+    {
+      "program": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+      "programLabel": "official-orca",
       "whirlpool": "EYo6ncvCnY5FuQXD6qfys5zEJmiaEV5QPaP9vt3jJj53",
       "config": "KPX9QQP4GLWiRkh4pGpkagwoPGaGixarRQs1LQKb9dt",
       "configSource": "gifted-kpx9",
@@ -10652,7 +10712,7 @@
       "feeRatePercent": 0.03,
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
-      "liquidity": "78627479083",
+      "liquidity": "78748145963",
       "sqrtPrice": "1844674407370955161600",
       "tickCurrentIndex": 92108,
       "active": true,
@@ -10667,9 +10727,9 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "290000000",
-        "vaultUi": 290,
-        "vaultCashUsd": 290,
+        "vaultRaw": "290445053",
+        "vaultUi": 290.445053,
+        "vaultCashUsd": 290.445053,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -10685,15 +10745,15 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "2493140593627",
-        "vaultUi": 2493140.593627,
+        "vaultRaw": "2496966730499",
+        "vaultUi": 2496966.730499,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": null
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 290,
+      "cashTvlUsd": 290.445053,
       "hasClaimableProtocolFees": false,
       "hasUnknownClaimable": false,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -11481,6 +11541,126 @@
     {
       "program": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
       "programLabel": "official-orca",
+      "whirlpool": "82N1DGJ9mN2L2Vhf1gs7vLCRdi6ouMKY6ntQtK3XXot6",
+      "config": "kgXo7PkoqG6Gvak5VQxf8SoP8t1ktqQnbD7xUPx7SSh",
+      "configSource": "collect-authority:WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+      "collectProtocolFeesAuthority": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+      "controlStatus": "stacc_partner_observed_not_local",
+      "directLocalCollect": false,
+      "tickSpacing": 16,
+      "feeRate": 200,
+      "feeRatePercent": 0.02,
+      "protocolFeeRate": 138,
+      "protocolFeeRatePercentOfSwapFee": 1.38,
+      "liquidity": "0",
+      "sqrtPrice": "419244183493398900",
+      "tickCurrentIndex": -75688,
+      "active": false,
+      "tokenA": {
+        "mint": "So11111111111111111111111111111111111111112",
+        "vault": "5ia58ojGJWTtR4t1xoK4k5FHMFNZySS5d4SUawM1Qhvf",
+        "mintMeta": {
+          "mint": "So11111111111111111111111111111111111111112",
+          "exists": true,
+          "ownerProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+          "decimals": 9,
+          "symbol": "wSOL",
+          "cashClass": "sol"
+        },
+        "vaultRaw": "0",
+        "vaultUi": 0,
+        "vaultCashUsd": 0,
+        "protocolFeeOwedRaw": "0",
+        "protocolFeeOwedUi": 0,
+        "protocolFeeOwedCashUsd": 0
+      },
+      "tokenB": {
+        "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+        "vault": "5o7qNyej5E3QTX1AUNpeWZc881sVHgbVPMiGkZWAkWny",
+        "mintMeta": {
+          "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+          "exists": true,
+          "ownerProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+          "decimals": 5,
+          "symbol": "UNKNOWN",
+          "cashClass": "non_cash"
+        },
+        "vaultRaw": "0",
+        "vaultUi": 0,
+        "vaultCashUsd": null,
+        "protocolFeeOwedRaw": "0",
+        "protocolFeeOwedUi": 0,
+        "protocolFeeOwedCashUsd": null
+      },
+      "cashClaimableUsd": 0,
+      "cashTvlUsd": 0,
+      "hasClaimableProtocolFees": false,
+      "hasUnknownClaimable": false,
+      "executionClass": "INACTIVE_OR_EMPTY"
+    },
+    {
+      "program": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+      "programLabel": "official-orca",
+      "whirlpool": "By7XiUhFiz5hkh2Mkqcz1bXAXG7RpQFdSe5yDxC4QRJi",
+      "config": "kgXo7PkoqG6Gvak5VQxf8SoP8t1ktqQnbD7xUPx7SSh",
+      "configSource": "collect-authority:WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+      "collectProtocolFeesAuthority": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+      "controlStatus": "stacc_partner_observed_not_local",
+      "directLocalCollect": false,
+      "tickSpacing": 8,
+      "feeRate": 50,
+      "feeRatePercent": 0.005,
+      "protocolFeeRate": 138,
+      "protocolFeeRatePercentOfSwapFee": 1.38,
+      "liquidity": "0",
+      "sqrtPrice": "419244183493398900",
+      "tickCurrentIndex": -75688,
+      "active": false,
+      "tokenA": {
+        "mint": "So11111111111111111111111111111111111111112",
+        "vault": "BrmET4zKuZjv7qsi5c58ruQkUUc5orBqpkxYf7w6T9wU",
+        "mintMeta": {
+          "mint": "So11111111111111111111111111111111111111112",
+          "exists": true,
+          "ownerProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+          "decimals": 9,
+          "symbol": "wSOL",
+          "cashClass": "sol"
+        },
+        "vaultRaw": "0",
+        "vaultUi": 0,
+        "vaultCashUsd": 0,
+        "protocolFeeOwedRaw": "0",
+        "protocolFeeOwedUi": 0,
+        "protocolFeeOwedCashUsd": 0
+      },
+      "tokenB": {
+        "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+        "vault": "E7MHcfEcA71nkq9jfkqjcLDnGjNRaXBi3LEDky3Qg1UN",
+        "mintMeta": {
+          "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+          "exists": true,
+          "ownerProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+          "decimals": 5,
+          "symbol": "UNKNOWN",
+          "cashClass": "non_cash"
+        },
+        "vaultRaw": "0",
+        "vaultUi": 0,
+        "vaultCashUsd": null,
+        "protocolFeeOwedRaw": "0",
+        "protocolFeeOwedUi": 0,
+        "protocolFeeOwedCashUsd": null
+      },
+      "cashClaimableUsd": 0,
+      "cashTvlUsd": 0,
+      "hasClaimableProtocolFees": false,
+      "hasUnknownClaimable": false,
+      "executionClass": "INACTIVE_OR_EMPTY"
+    },
+    {
+      "program": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+      "programLabel": "official-orca",
       "whirlpool": "EofYg1AmKQcgkCNGaapVwf626fMzCPRMCvq7Fzf15V55",
       "config": "kgXo7PkoqG6Gvak5VQxf8SoP8t1ktqQnbD7xUPx7SSh",
       "configSource": "collect-authority:WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
@@ -11577,126 +11757,6 @@
       "tokenB": {
         "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
         "vault": "8W8NhYMrJugYLnm9d5HYRcoJxshyz9tkE3BVRopS1YNL",
-        "mintMeta": {
-          "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
-          "exists": true,
-          "ownerProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-          "decimals": 5,
-          "symbol": "UNKNOWN",
-          "cashClass": "non_cash"
-        },
-        "vaultRaw": "0",
-        "vaultUi": 0,
-        "vaultCashUsd": null,
-        "protocolFeeOwedRaw": "0",
-        "protocolFeeOwedUi": 0,
-        "protocolFeeOwedCashUsd": null
-      },
-      "cashClaimableUsd": 0,
-      "cashTvlUsd": 0,
-      "hasClaimableProtocolFees": false,
-      "hasUnknownClaimable": false,
-      "executionClass": "INACTIVE_OR_EMPTY"
-    },
-    {
-      "program": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
-      "programLabel": "official-orca",
-      "whirlpool": "By7XiUhFiz5hkh2Mkqcz1bXAXG7RpQFdSe5yDxC4QRJi",
-      "config": "kgXo7PkoqG6Gvak5VQxf8SoP8t1ktqQnbD7xUPx7SSh",
-      "configSource": "collect-authority:WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
-      "collectProtocolFeesAuthority": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
-      "controlStatus": "stacc_partner_observed_not_local",
-      "directLocalCollect": false,
-      "tickSpacing": 8,
-      "feeRate": 50,
-      "feeRatePercent": 0.005,
-      "protocolFeeRate": 138,
-      "protocolFeeRatePercentOfSwapFee": 1.38,
-      "liquidity": "0",
-      "sqrtPrice": "419244183493398900",
-      "tickCurrentIndex": -75688,
-      "active": false,
-      "tokenA": {
-        "mint": "So11111111111111111111111111111111111111112",
-        "vault": "BrmET4zKuZjv7qsi5c58ruQkUUc5orBqpkxYf7w6T9wU",
-        "mintMeta": {
-          "mint": "So11111111111111111111111111111111111111112",
-          "exists": true,
-          "ownerProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-          "decimals": 9,
-          "symbol": "wSOL",
-          "cashClass": "sol"
-        },
-        "vaultRaw": "0",
-        "vaultUi": 0,
-        "vaultCashUsd": 0,
-        "protocolFeeOwedRaw": "0",
-        "protocolFeeOwedUi": 0,
-        "protocolFeeOwedCashUsd": 0
-      },
-      "tokenB": {
-        "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
-        "vault": "E7MHcfEcA71nkq9jfkqjcLDnGjNRaXBi3LEDky3Qg1UN",
-        "mintMeta": {
-          "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
-          "exists": true,
-          "ownerProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-          "decimals": 5,
-          "symbol": "UNKNOWN",
-          "cashClass": "non_cash"
-        },
-        "vaultRaw": "0",
-        "vaultUi": 0,
-        "vaultCashUsd": null,
-        "protocolFeeOwedRaw": "0",
-        "protocolFeeOwedUi": 0,
-        "protocolFeeOwedCashUsd": null
-      },
-      "cashClaimableUsd": 0,
-      "cashTvlUsd": 0,
-      "hasClaimableProtocolFees": false,
-      "hasUnknownClaimable": false,
-      "executionClass": "INACTIVE_OR_EMPTY"
-    },
-    {
-      "program": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
-      "programLabel": "official-orca",
-      "whirlpool": "82N1DGJ9mN2L2Vhf1gs7vLCRdi6ouMKY6ntQtK3XXot6",
-      "config": "kgXo7PkoqG6Gvak5VQxf8SoP8t1ktqQnbD7xUPx7SSh",
-      "configSource": "collect-authority:WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
-      "collectProtocolFeesAuthority": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
-      "controlStatus": "stacc_partner_observed_not_local",
-      "directLocalCollect": false,
-      "tickSpacing": 16,
-      "feeRate": 200,
-      "feeRatePercent": 0.02,
-      "protocolFeeRate": 138,
-      "protocolFeeRatePercentOfSwapFee": 1.38,
-      "liquidity": "0",
-      "sqrtPrice": "419244183493398900",
-      "tickCurrentIndex": -75688,
-      "active": false,
-      "tokenA": {
-        "mint": "So11111111111111111111111111111111111111112",
-        "vault": "5ia58ojGJWTtR4t1xoK4k5FHMFNZySS5d4SUawM1Qhvf",
-        "mintMeta": {
-          "mint": "So11111111111111111111111111111111111111112",
-          "exists": true,
-          "ownerProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-          "decimals": 9,
-          "symbol": "wSOL",
-          "cashClass": "sol"
-        },
-        "vaultRaw": "0",
-        "vaultUi": 0,
-        "vaultCashUsd": 0,
-        "protocolFeeOwedRaw": "0",
-        "protocolFeeOwedUi": 0,
-        "protocolFeeOwedCashUsd": 0
-      },
-      "tokenB": {
-        "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
-        "vault": "5o7qNyej5E3QTX1AUNpeWZc881sVHgbVPMiGkZWAkWny",
         "mintMeta": {
           "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
           "exists": true,
@@ -14313,8 +14373,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "1130082074103",
-      "sqrtPrice": "1173878133160892",
-      "tickCurrentIndex": -193257,
+      "sqrtPrice": "1189756312661109",
+      "tickCurrentIndex": -192988,
       "active": true,
       "tokenA": {
         "mint": "CaLyryATQhnVZaau425zAJ9fNf4uNWVa1GKD6JN94AX9",
@@ -14327,8 +14387,8 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "17788517367813723",
-        "vaultUi": 17788517.367813725,
+        "vaultRaw": "17551516800682400",
+        "vaultUi": 17551516.8006824,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "2495579052",
         "protocolFeeOwedUi": 2.495579052,
@@ -14345,15 +14405,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "301084850",
-        "vaultUi": 301.08485,
-        "vaultCashUsd": 301.08485,
-        "protocolFeeOwedRaw": "3",
-        "protocolFeeOwedUi": 0.000003,
-        "protocolFeeOwedCashUsd": 0.000003
+        "vaultRaw": "302057871",
+        "vaultUi": 302.057871,
+        "vaultCashUsd": 302.057871,
+        "protocolFeeOwedRaw": "10",
+        "protocolFeeOwedUi": 0.00001,
+        "protocolFeeOwedCashUsd": 0.00001
       },
-      "cashClaimableUsd": 0.000003,
-      "cashTvlUsd": 301.08485,
+      "cashClaimableUsd": 0.00001,
+      "cashTvlUsd": 302.057871,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "PARTNER_OR_UNVERIFIED_CLAIMABLE_CASH"
@@ -14629,7 +14689,7 @@
         },
         "vaultRaw": "63",
         "vaultUi": 6.3e-8,
-        "vaultCashUsd": 0.000005338691630999999,
+        "vaultCashUsd": 0.000005401595241,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -14653,7 +14713,7 @@
         "protocolFeeOwedCashUsd": null
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 0.000005338691630999999,
+      "cashTvlUsd": 0.000005401595241,
       "hasClaimableProtocolFees": false,
       "hasUnknownClaimable": false,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -15349,7 +15409,7 @@
         },
         "vaultRaw": "17",
         "vaultUi": 1.7e-8,
-        "vaultCashUsd": 0.0000014405993289999998,
+        "vaultCashUsd": 0.0000014575733190000001,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -15373,7 +15433,7 @@
         "protocolFeeOwedCashUsd": null
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 0.0000014405993289999998,
+      "cashTvlUsd": 0.0000014575733190000001,
       "hasClaimableProtocolFees": false,
       "hasUnknownClaimable": false,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -16429,7 +16489,7 @@
         },
         "vaultRaw": "11",
         "vaultUi": 1.1e-8,
-        "vaultCashUsd": 9.321525069999999e-7,
+        "vaultCashUsd": 9.431356770000001e-7,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -16453,7 +16513,7 @@
         "protocolFeeOwedCashUsd": null
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 9.321525069999999e-7,
+      "cashTvlUsd": 9.431356770000001e-7,
       "hasClaimableProtocolFees": false,
       "hasUnknownClaimable": false,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -20569,7 +20629,7 @@
         },
         "vaultRaw": "77",
         "vaultUi": 7.7e-8,
-        "vaultCashUsd": 0.0000065250675489999995,
+        "vaultCashUsd": 0.000006601949739,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -20593,7 +20653,7 @@
         "protocolFeeOwedCashUsd": null
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 0.0000065250675489999995,
+      "cashTvlUsd": 0.000006601949739,
       "hasClaimableProtocolFees": false,
       "hasUnknownClaimable": false,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -25173,8 +25233,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "4292434580",
-      "sqrtPrice": "143444287134545037",
-      "tickCurrentIndex": -97139,
+      "sqrtPrice": "144050172771646733",
+      "tickCurrentIndex": -97055,
       "active": true,
       "tokenA": {
         "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
@@ -25187,11 +25247,11 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "552019786349",
-        "vaultUi": 5520197.86349,
+        "vaultRaw": "549698045994",
+        "vaultUi": 5496980.45994,
         "vaultCashUsd": null,
-        "protocolFeeOwedRaw": "936",
-        "protocolFeeOwedUi": 0.00936,
+        "protocolFeeOwedRaw": "1471",
+        "protocolFeeOwedUi": 0.01471,
         "protocolFeeOwedCashUsd": null
       },
       "tokenB": {
@@ -25205,15 +25265,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "33414384",
-        "vaultUi": 33.414384,
-        "vaultCashUsd": 33.414384,
+        "vaultRaw": "33555386",
+        "vaultUi": 33.555386,
+        "vaultCashUsd": 33.555386,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 33.414384,
+      "cashTvlUsd": 33.555386,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -27529,7 +27589,7 @@
         },
         "vaultRaw": "59",
         "vaultUi": 5.9e-8,
-        "vaultCashUsd": 0.000004999727083,
+        "vaultCashUsd": 0.000005058636813000001,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -27553,7 +27613,7 @@
         "protocolFeeOwedCashUsd": null
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 0.000004999727083,
+      "cashTvlUsd": 0.000005058636813000001,
       "hasClaimableProtocolFees": false,
       "hasUnknownClaimable": false,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -27633,8 +27693,8 @@
       "protocolFeeRate": 2500,
       "protocolFeeRatePercentOfSwapFee": 25,
       "liquidity": "1026380348",
-      "sqrtPrice": "5373220274850315920",
-      "tickCurrentIndex": -24671,
+      "sqrtPrice": "5401349912268434205",
+      "tickCurrentIndex": -24567,
       "active": true,
       "tokenA": {
         "mint": "So11111111111111111111111111111111111111112",
@@ -27647,12 +27707,12 @@
           "symbol": "wSOL",
           "cashClass": "sol"
         },
-        "vaultRaw": "3629282019",
-        "vaultUi": 3.629282019,
-        "vaultCashUsd": 307.54948478371557,
-        "protocolFeeOwedRaw": "28268",
-        "protocolFeeOwedUi": 0.000028268,
-        "protocolFeeOwedCashUsd": 0.0023954624607159998
+        "vaultRaw": "3610969092",
+        "vaultUi": 3.610969092,
+        "vaultCashUsd": 309.6030708372269,
+        "protocolFeeOwedRaw": "37607",
+        "protocolFeeOwedUi": 0.000037607,
+        "protocolFeeOwedCashUsd": 0.0032244094004490005
       },
       "tokenB": {
         "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
@@ -27665,15 +27725,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "310669854",
-        "vaultUi": 310.669854,
-        "vaultCashUsd": 310.669854,
-        "protocolFeeOwedRaw": "2136",
-        "protocolFeeOwedUi": 0.002136,
-        "protocolFeeOwedCashUsd": 0.002136
+        "vaultRaw": "312238555",
+        "vaultUi": 312.238555,
+        "vaultCashUsd": 312.238555,
+        "protocolFeeOwedRaw": "2906",
+        "protocolFeeOwedUi": 0.002906,
+        "protocolFeeOwedCashUsd": 0.002906
       },
-      "cashClaimableUsd": 0.004531462460716,
-      "cashTvlUsd": 618.2193387837156,
+      "cashClaimableUsd": 0.006130409400449,
+      "cashTvlUsd": 621.841625837227,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": false,
       "executionClass": "PARTNER_OR_UNVERIFIED_CLAIMABLE_CASH"
@@ -28009,7 +28069,7 @@
         },
         "vaultRaw": "33",
         "vaultUi": 3.3e-8,
-        "vaultCashUsd": 0.0000027964575209999998,
+        "vaultCashUsd": 0.000002829407031,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -28033,7 +28093,7 @@
         "protocolFeeOwedCashUsd": null
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 0.0000027964575209999998,
+      "cashTvlUsd": 0.000002829407031,
       "hasClaimableProtocolFees": false,
       "hasUnknownClaimable": false,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -28413,8 +28473,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "5294259600",
-      "sqrtPrice": "27003308836181344",
-      "tickCurrentIndex": -130541,
+      "sqrtPrice": "27274257801246048",
+      "tickCurrentIndex": -130341,
       "active": true,
       "tokenA": {
         "mint": "ASEHcnTfsfpFe6CohpPeX5gvNeerAynxmmBMXfCqzaSd",
@@ -28427,8 +28487,8 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "3616687221943",
-        "vaultUi": 3616687.221943,
+        "vaultRaw": "3580758437263",
+        "vaultUi": 3580758.437263,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "1500",
         "protocolFeeOwedUi": 0.0015,
@@ -28445,15 +28505,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "18441474",
-        "vaultUi": 18.441474,
-        "vaultCashUsd": 18.441474,
+        "vaultRaw": "18519238",
+        "vaultUi": 18.519238,
+        "vaultCashUsd": 18.519238,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 18.441474,
+      "cashTvlUsd": 18.519238,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -28713,8 +28773,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "702786617",
-      "sqrtPrice": "422550156661292979",
-      "tickCurrentIndex": -75531,
+      "sqrtPrice": "421527599834040444",
+      "tickCurrentIndex": -75579,
       "active": true,
       "tokenA": {
         "mint": "CboMcTUYUcy9E6B3yGdFn6aEsGUnYV6yWeoeukw6pump",
@@ -28727,11 +28787,11 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "30681683730",
-        "vaultUi": 30681.68373,
+        "vaultRaw": "30756110416",
+        "vaultUi": 30756.110416,
         "vaultCashUsd": null,
-        "protocolFeeOwedRaw": "13",
-        "protocolFeeOwedUi": 0.000013,
+        "protocolFeeOwedRaw": "24",
+        "protocolFeeOwedUi": 0.000024,
         "protocolFeeOwedCashUsd": null
       },
       "tokenB": {
@@ -28745,15 +28805,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "144442776",
-        "vaultUi": 144.442776,
-        "vaultCashUsd": 144.442776,
+        "vaultRaw": "144403822",
+        "vaultUi": 144.403822,
+        "vaultCashUsd": 144.403822,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 144.442776,
+      "cashTvlUsd": 144.403822,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -29193,8 +29253,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "1442626832575",
-      "sqrtPrice": "88602687721125571447630",
-      "tickCurrentIndex": 169549,
+      "sqrtPrice": "88082223145225069672760",
+      "tickCurrentIndex": 169431,
       "active": true,
       "tokenA": {
         "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
@@ -29207,9 +29267,9 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "300362538",
-        "vaultUi": 300.362538,
-        "vaultCashUsd": 300.362538,
+        "vaultRaw": "302137265",
+        "vaultUi": 302.137265,
+        "vaultCashUsd": 302.137265,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -29225,15 +29285,15 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "6929247127204943",
-        "vaultUi": 69292471272.04942,
+        "vaultRaw": "6888544258868091",
+        "vaultUi": 68885442588.68091,
         "vaultCashUsd": null,
-        "protocolFeeOwedRaw": "3644466",
-        "protocolFeeOwedUi": 36.44466,
+        "protocolFeeOwedRaw": "4892365",
+        "protocolFeeOwedUi": 48.92365,
         "protocolFeeOwedCashUsd": null
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 300.362538,
+      "cashTvlUsd": 302.137265,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -29253,8 +29313,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "2961111498",
-      "sqrtPrice": "8489762155704221",
-      "tickCurrentIndex": -153684,
+      "sqrtPrice": "8591797901871618",
+      "tickCurrentIndex": -153445,
       "active": true,
       "tokenA": {
         "mint": "Av6qVigkb7USQyPXJkUvAEm4f599WTRvd75PUWBA9eNm",
@@ -29267,8 +29327,8 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "6434021399343",
-        "vaultUi": 6434.021399343,
+        "vaultRaw": "6357611918043",
+        "vaultUi": 6357.611918043,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "4738",
         "protocolFeeOwedUi": 0.000004738,
@@ -29285,15 +29345,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "1364006",
-        "vaultUi": 1.364006,
-        "vaultCashUsd": 1.364006,
+        "vaultRaw": "1380386",
+        "vaultUi": 1.380386,
+        "vaultCashUsd": 1.380386,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 1.364006,
+      "cashTvlUsd": 1.380386,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -29373,8 +29433,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "619901757",
-      "sqrtPrice": "57051512843116374",
-      "tickCurrentIndex": -115580,
+      "sqrtPrice": "57942096149912807",
+      "tickCurrentIndex": -115270,
       "active": true,
       "tokenA": {
         "mint": "7w9gX1WBAYs6KnTd5oZdNNDS887YcBo4yScj66dUpump",
@@ -29387,8 +29447,8 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "200437012502",
-        "vaultUi": 200437.012502,
+        "vaultRaw": "197356267359",
+        "vaultUi": 197356.267359,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "162",
         "protocolFeeOwedUi": 0.000162,
@@ -29405,15 +29465,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "25564833",
-        "vaultUi": 25.564833,
-        "vaultCashUsd": 25.564833,
+        "vaultRaw": "25594762",
+        "vaultUi": 25.594762,
+        "vaultCashUsd": 25.594762,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 25.564833,
+      "cashTvlUsd": 25.594762,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -29433,8 +29493,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "1107074066",
-      "sqrtPrice": "52236928957547110",
-      "tickCurrentIndex": -117343,
+      "sqrtPrice": "52815288171679815",
+      "tickCurrentIndex": -117123,
       "active": true,
       "tokenA": {
         "mint": "DyT6mdhiAYbHPML2AVXviGVxMQbc6Z3VmPZ2MQG6pump",
@@ -29447,8 +29507,8 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "390951454983",
-        "vaultUi": 390951.454983,
+        "vaultRaw": "386670341223",
+        "vaultUi": 386670.341223,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "269",
         "protocolFeeOwedUi": 0.000269,
@@ -29465,15 +29525,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "63477302",
-        "vaultUi": 63.477302,
-        "vaultCashUsd": 63.477302,
+        "vaultRaw": "63512013",
+        "vaultUi": 63.512013,
+        "vaultCashUsd": 63.512013,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 63.477302,
+      "cashTvlUsd": 63.512013,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -29493,8 +29553,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "31739337947",
-      "sqrtPrice": "160791404146630754325607",
-      "tickCurrentIndex": 181468,
+      "sqrtPrice": "157187048218742881577486",
+      "tickCurrentIndex": 181015,
       "active": true,
       "tokenA": {
         "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
@@ -29507,9 +29567,9 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "46805862",
-        "vaultUi": 46.805862,
-        "vaultCashUsd": 46.805862,
+        "vaultRaw": "46889360",
+        "vaultUi": 46.88936,
+        "vaultCashUsd": 46.88936,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -29525,15 +29585,15 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "276660290428803",
-        "vaultUi": 276660.290428803,
+        "vaultRaw": "270458661001986",
+        "vaultUi": 270458.661001986,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "122842",
         "protocolFeeOwedUi": 0.000122842,
         "protocolFeeOwedCashUsd": null
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 46.805862,
+      "cashTvlUsd": 46.88936,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -29673,8 +29733,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "303751829435",
-      "sqrtPrice": "766088085020991",
-      "tickCurrentIndex": -201793,
+      "sqrtPrice": "772578992100476",
+      "tickCurrentIndex": -201624,
       "active": true,
       "tokenA": {
         "mint": "B8eCpSkYqkW95QAXDjwJDQNUuAaLzZ1Ez55cfQ3X5FNh",
@@ -29687,8 +29747,8 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "7314117956355567",
-        "vaultUi": 7314117.956355567,
+        "vaultRaw": "7252667881772075",
+        "vaultUi": 7252667.881772075,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "3061879",
         "protocolFeeOwedUi": 0.003061879,
@@ -29705,15 +29765,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "12615374",
-        "vaultUi": 12.615374,
-        "vaultCashUsd": 12.615374,
+        "vaultRaw": "12722257",
+        "vaultUi": 12.722257,
+        "vaultCashUsd": 12.722257,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 12.615374,
+      "cashTvlUsd": 12.722257,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -29793,8 +29853,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "129941783721",
-      "sqrtPrice": "781960035420976",
-      "tickCurrentIndex": -201382,
+      "sqrtPrice": "789943672119735",
+      "tickCurrentIndex": -201179,
       "active": true,
       "tokenA": {
         "mint": "4Zs7SmwrCrRAP1gBaNAE4n6LzarU2JzEsJSuj4Mwmoon",
@@ -29807,8 +29867,8 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "3065409480396267",
-        "vaultUi": 3065409.480396267,
+        "vaultRaw": "3034428965584048",
+        "vaultUi": 3034428.965584048,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "1672785",
         "protocolFeeOwedUi": 0.001672785,
@@ -29825,15 +29885,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "156636627",
-        "vaultUi": 156.636627,
-        "vaultCashUsd": 156.636627,
+        "vaultRaw": "156692866",
+        "vaultUi": 156.692866,
+        "vaultCashUsd": 156.692866,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 156.636627,
+      "cashTvlUsd": 156.692866,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -30393,8 +30453,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "866804555",
-      "sqrtPrice": "55231106286443523",
-      "tickCurrentIndex": -116229,
+      "sqrtPrice": "55971185429090994",
+      "tickCurrentIndex": -115962,
       "active": true,
       "tokenA": {
         "mint": "84R6wZHapPTGobXfsgmBRpoL7C9dHJj16ahRBjxx2637",
@@ -30407,8 +30467,8 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "289508183072",
-        "vaultUi": 289508.183072,
+        "vaultRaw": "285680192806",
+        "vaultUi": 285680.192806,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "170",
         "protocolFeeOwedUi": 0.00017,
@@ -30425,15 +30485,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "75424781",
-        "vaultUi": 75.424781,
-        "vaultCashUsd": 75.424781,
+        "vaultRaw": "75459558",
+        "vaultUi": 75.459558,
+        "vaultCashUsd": 75.459558,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 75.424781,
+      "cashTvlUsd": 75.459558,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -30813,8 +30873,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "12293459955",
-      "sqrtPrice": "143484013978930244",
-      "tickCurrentIndex": -97134,
+      "sqrtPrice": "144219663343401303",
+      "tickCurrentIndex": -97031,
       "active": true,
       "tokenA": {
         "mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
@@ -30827,11 +30887,11 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "1578408939782",
-        "vaultUi": 15784089.39782,
+        "vaultRaw": "1572513606154",
+        "vaultUi": 15725136.06154,
         "vaultCashUsd": null,
-        "protocolFeeOwedRaw": "4080",
-        "protocolFeeOwedUi": 0.0408,
+        "protocolFeeOwedRaw": "5610",
+        "protocolFeeOwedUi": 0.0561,
         "protocolFeeOwedCashUsd": null
       },
       "tokenB": {
@@ -30845,15 +30905,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "95839831",
-        "vaultUi": 95.839831,
-        "vaultCashUsd": 95.839831,
+        "vaultRaw": "96198862",
+        "vaultUi": 96.198862,
+        "vaultCashUsd": 96.198862,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 95.839831,
+      "cashTvlUsd": 96.198862,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -30873,8 +30933,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "347776804148",
-      "sqrtPrice": "410258778552696213407160",
-      "tickCurrentIndex": 200203,
+      "sqrtPrice": "406526826927030361198526",
+      "tickCurrentIndex": 200020,
       "active": true,
       "tokenA": {
         "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
@@ -30887,9 +30947,9 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "62098211",
-        "vaultUi": 62.098211,
-        "vaultCashUsd": 62.098211,
+        "vaultRaw": "62241764",
+        "vaultUi": 62.241764,
+        "vaultCashUsd": 62.241764,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -30905,15 +30965,15 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "7734720114284224",
-        "vaultUi": 7734720.114284224,
+        "vaultRaw": "7664361561879372",
+        "vaultUi": 7664361.561879372,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "3253413",
         "protocolFeeOwedUi": 0.003253413,
         "protocolFeeOwedCashUsd": null
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 62.098211,
+      "cashTvlUsd": 62.241764,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -30933,8 +30993,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "2492573739",
-      "sqrtPrice": "26211912249629566",
-      "tickCurrentIndex": -131136,
+      "sqrtPrice": "26469226540743024",
+      "tickCurrentIndex": -130940,
       "active": true,
       "tokenA": {
         "mint": "23t3rXSGzyoeEvNwYojgbpnStRaLPQwmUfrnPMrEpump",
@@ -30947,8 +31007,8 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "1754176265426",
-        "vaultUi": 1754176.265426,
+        "vaultRaw": "1737123622876",
+        "vaultUi": 1737123.622876,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "1136",
         "protocolFeeOwedUi": 0.001136,
@@ -30965,15 +31025,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "75277632",
-        "vaultUi": 75.277632,
-        "vaultCashUsd": 75.277632,
+        "vaultRaw": "75312402",
+        "vaultUi": 75.312402,
+        "vaultCashUsd": 75.312402,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 75.277632,
+      "cashTvlUsd": 75.312402,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -31233,8 +31293,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "10193552998",
-      "sqrtPrice": "23731722080932784",
-      "tickCurrentIndex": -133124,
+      "sqrtPrice": "24050294346571373",
+      "tickCurrentIndex": -132857,
       "active": true,
       "tokenA": {
         "mint": "ENS6gbdvhmCGPscuCu47Jjk2KkPP2iUNJfkqKDV2UY3w",
@@ -31247,8 +31307,8 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "7923696866634",
-        "vaultUi": 7923696.866634,
+        "vaultRaw": "7818741748407",
+        "vaultUi": 7818741.748407,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "4045",
         "protocolFeeOwedUi": 0.004045,
@@ -31265,15 +31325,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "305356043",
-        "vaultUi": 305.356043,
-        "vaultCashUsd": 305.356043,
+        "vaultRaw": "305532086",
+        "vaultUi": 305.532086,
+        "vaultCashUsd": 305.532086,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 305.356043,
+      "cashTvlUsd": 305.532086,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -31413,8 +31473,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "2492769370",
-      "sqrtPrice": "27665456405964131",
-      "tickCurrentIndex": -130056,
+      "sqrtPrice": "28101440732041866",
+      "tickCurrentIndex": -129743,
       "active": true,
       "tokenA": {
         "mint": "7cPWZJ761yHXGuZVeNJb2m64M9C6dPA1Zh4nqP16pump",
@@ -31427,8 +31487,8 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "1662136829643",
-        "vaultUi": 1662136.829643,
+        "vaultRaw": "1636349505883",
+        "vaultUi": 1636349.505883,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "809",
         "protocolFeeOwedUi": 0.000809,
@@ -31445,15 +31505,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "3739231",
-        "vaultUi": 3.739231,
-        "vaultCashUsd": 3.739231,
+        "vaultRaw": "3798148",
+        "vaultUi": 3.798148,
+        "vaultCashUsd": 3.798148,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 3.739231,
+      "cashTvlUsd": 3.798148,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -31533,8 +31593,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "378414375",
-      "sqrtPrice": "202095608874794365",
-      "tickCurrentIndex": -90283,
+      "sqrtPrice": "202435338044277696",
+      "tickCurrentIndex": -90249,
       "active": true,
       "tokenA": {
         "mint": "4q3Z58YxrZEAVMLtMwnm7eHtodSD3LSpSNt3pDnqpump",
@@ -31547,11 +31607,11 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "34540972935",
-        "vaultUi": 34540.972935,
+        "vaultRaw": "34483006932",
+        "vaultUi": 34483.006932,
         "vaultCashUsd": null,
-        "protocolFeeOwedRaw": "18",
-        "protocolFeeOwedUi": 0.000018,
+        "protocolFeeOwedRaw": "32",
+        "protocolFeeOwedUi": 0.000032,
         "protocolFeeOwedCashUsd": null
       },
       "tokenB": {
@@ -31565,15 +31625,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "4150847",
-        "vaultUi": 4.150847,
-        "vaultCashUsd": 4.150847,
+        "vaultRaw": "4157818",
+        "vaultUi": 4.157818,
+        "vaultCashUsd": 4.157818,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 4.150847,
+      "cashTvlUsd": 4.157818,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -31593,8 +31653,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "131341158402",
-      "sqrtPrice": "770604803246945",
-      "tickCurrentIndex": -201675,
+      "sqrtPrice": "780443541777758",
+      "tickCurrentIndex": -201421,
       "active": true,
       "tokenA": {
         "mint": "iHjJCRDSLqah8eb37CPaFbj4r9Rzb52MvhyvAPBpump",
@@ -31607,8 +31667,8 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "3144118938268433",
-        "vaultUi": 3144118.938268433,
+        "vaultRaw": "3104483215584212",
+        "vaultUi": 3104483.215584212,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "1834523",
         "protocolFeeOwedUi": 0.001834523,
@@ -31625,15 +31685,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "148813265",
-        "vaultUi": 148.813265,
-        "vaultCashUsd": 148.813265,
+        "vaultRaw": "148883318",
+        "vaultUi": 148.883318,
+        "vaultCashUsd": 148.883318,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 148.813265,
+      "cashTvlUsd": 148.883318,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -31653,8 +31713,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "12992653279",
-      "sqrtPrice": "14044370395146936961063",
-      "tickCurrentIndex": 132708,
+      "sqrtPrice": "13933645816474148732244",
+      "tickCurrentIndex": 132550,
       "active": true,
       "tokenA": {
         "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
@@ -31667,9 +31727,9 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "89893641",
-        "vaultUi": 89.893641,
-        "vaultCashUsd": 89.893641,
+        "vaultRaw": "90029254",
+        "vaultUi": 90.029254,
+        "vaultCashUsd": 90.029254,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -31685,15 +31745,15 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "9892162818833",
-        "vaultUi": 9892162.818833,
+        "vaultRaw": "9814175890501",
+        "vaultUi": 9814175.890501,
         "vaultCashUsd": null,
-        "protocolFeeOwedRaw": "4342",
-        "protocolFeeOwedUi": 0.004342,
+        "protocolFeeOwedRaw": "6215",
+        "protocolFeeOwedUi": 0.006215,
         "protocolFeeOwedCashUsd": null
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 89.893641,
+      "cashTvlUsd": 90.029254,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -31773,8 +31833,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "13201095581",
-      "sqrtPrice": "64911903927646202",
-      "tickCurrentIndex": -112998,
+      "sqrtPrice": "65515090555629649",
+      "tickCurrentIndex": -112813,
       "active": true,
       "tokenA": {
         "mint": "92kxUXDsBQLy5ptGxtmH9CDYd5E6ZQynzf2eFPiUpump",
@@ -31787,11 +31847,11 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "3751565706125",
-        "vaultUi": 3751565.706125,
+        "vaultRaw": "3717026260906",
+        "vaultUi": 3717026.260906,
         "vaultCashUsd": null,
-        "protocolFeeOwedRaw": "1760",
-        "protocolFeeOwedUi": 0.00176,
+        "protocolFeeOwedRaw": "2599",
+        "protocolFeeOwedUi": 0.002599,
         "protocolFeeOwedCashUsd": null
       },
       "tokenB": {
@@ -31805,15 +31865,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "174495673",
-        "vaultUi": 174.495673,
-        "vaultCashUsd": 174.495673,
+        "vaultRaw": "174927338",
+        "vaultUi": 174.927338,
+        "vaultCashUsd": 174.927338,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 174.495673,
+      "cashTvlUsd": 174.927338,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -31833,8 +31893,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "59931756673",
-      "sqrtPrice": "2874431806644238",
-      "tickCurrentIndex": -175345,
+      "sqrtPrice": "2914492355753874",
+      "tickCurrentIndex": -175068,
       "active": true,
       "tokenA": {
         "mint": "71WsPPm44SUTWDfcCdLKsDezw4ZBXDrPjHz2rea7Lo97",
@@ -31847,8 +31907,8 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "384617767990113",
-        "vaultUi": 38461776.7990113,
+        "vaultRaw": "379331140651052",
+        "vaultUi": 37933114.0651052,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "198842",
         "protocolFeeOwedUi": 0.0198842,
@@ -31865,15 +31925,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "65455649",
-        "vaultUi": 65.455649,
-        "vaultCashUsd": 65.455649,
+        "vaultRaw": "65585804",
+        "vaultUi": 65.585804,
+        "vaultCashUsd": 65.585804,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 65.455649,
+      "cashTvlUsd": 65.585804,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -31893,8 +31953,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "571067120",
-      "sqrtPrice": "304702452672916878",
-      "tickCurrentIndex": -82071,
+      "sqrtPrice": "306836209080627688",
+      "tickCurrentIndex": -81931,
       "active": true,
       "tokenA": {
         "mint": "CTg3ZgYx79zrE1MteDVkmkcGniiFrK1hJ6yiabropump",
@@ -31907,8 +31967,8 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "34573260017",
-        "vaultUi": 34573.260017,
+        "vaultRaw": "34332840812",
+        "vaultUi": 34332.840812,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "12",
         "protocolFeeOwedUi": 0.000012,
@@ -31925,15 +31985,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "49574399",
-        "vaultUi": 49.574399,
-        "vaultCashUsd": 49.574399,
+        "vaultRaw": "49640456",
+        "vaultUi": 49.640456,
+        "vaultCashUsd": 49.640456,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 49.574399,
+      "cashTvlUsd": 49.640456,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -32133,8 +32193,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "4271656485",
-      "sqrtPrice": "66628379112402472",
-      "tickCurrentIndex": -112476,
+      "sqrtPrice": "67471652234968637",
+      "tickCurrentIndex": -112225,
       "active": true,
       "tokenA": {
         "mint": "6Xx8p2WmY1Uk2GD35uxhEyuniNrVEeSu3CUThb8Upump",
@@ -32147,11 +32207,11 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "1182664958017",
-        "vaultUi": 1182664.958017,
+        "vaultRaw": "1167883969163",
+        "vaultUi": 1167883.969163,
         "vaultCashUsd": null,
-        "protocolFeeOwedRaw": "1508",
-        "protocolFeeOwedUi": 0.001508,
+        "protocolFeeOwedRaw": "1731",
+        "protocolFeeOwedUi": 0.001731,
         "protocolFeeOwedCashUsd": null
       },
       "tokenB": {
@@ -32165,15 +32225,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "61182810",
-        "vaultUi": 61.18281,
-        "vaultCashUsd": 61.18281,
+        "vaultRaw": "61378088",
+        "vaultUi": 61.378088,
+        "vaultCashUsd": 61.378088,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 61.18281,
+      "cashTvlUsd": 61.378088,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -32313,8 +32373,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "13000730927",
-      "sqrtPrice": "52706789386815724",
-      "tickCurrentIndex": -117164,
+      "sqrtPrice": "53180465554328410",
+      "tickCurrentIndex": -116985,
       "active": true,
       "tokenA": {
         "mint": "8aZuUoqr9rBLjikz7kvpajm1JRqhoWiLMnrNtnRNpump",
@@ -32327,11 +32387,11 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "4550160412979",
-        "vaultUi": 4550160.412979,
+        "vaultRaw": "4509632883377",
+        "vaultUi": 4509632.883377,
         "vaultCashUsd": null,
-        "protocolFeeOwedRaw": "1948",
-        "protocolFeeOwedUi": 0.001948,
+        "protocolFeeOwedRaw": "2501",
+        "protocolFeeOwedUi": 0.002501,
         "protocolFeeOwedCashUsd": null
       },
       "tokenB": {
@@ -32345,15 +32405,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "37150095",
-        "vaultUi": 37.150095,
-        "vaultCashUsd": 37.150095,
+        "vaultRaw": "37483932",
+        "vaultUi": 37.483932,
+        "vaultCashUsd": 37.483932,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 37.150095,
+      "cashTvlUsd": 37.483932,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -32373,8 +32433,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "15163345436",
-      "sqrtPrice": "49356410145311264",
-      "tickCurrentIndex": -118478,
+      "sqrtPrice": "49816221364937778",
+      "tickCurrentIndex": -118292,
       "active": true,
       "tokenA": {
         "mint": "EA6zg6e9RcqWDgUpkhRu2YZn7LamGTNntivL7h5qpump",
@@ -32387,11 +32447,11 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "5667511425207",
-        "vaultUi": 5667511.425207,
+        "vaultRaw": "5615202023456",
+        "vaultUi": 5615202.023456,
         "vaultCashUsd": null,
-        "protocolFeeOwedRaw": "3083",
-        "protocolFeeOwedUi": 0.003083,
+        "protocolFeeOwedRaw": "3860",
+        "protocolFeeOwedUi": 0.00386,
         "protocolFeeOwedCashUsd": null
       },
       "tokenB": {
@@ -32405,15 +32465,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "265636142",
-        "vaultUi": 265.636142,
-        "vaultCashUsd": 265.636142,
+        "vaultRaw": "266014113",
+        "vaultUi": 266.014113,
+        "vaultCashUsd": 266.014113,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 265.636142,
+      "cashTvlUsd": 266.014113,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -32569,7 +32629,7 @@
         },
         "vaultRaw": "18",
         "vaultUi": 1.8e-8,
-        "vaultCashUsd": 0.0000015253404659999999,
+        "vaultCashUsd": 0.000001543312926,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -32593,7 +32653,7 @@
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 0.000018525340466,
+      "cashTvlUsd": 0.000018543312926,
       "hasClaimableProtocolFees": false,
       "hasUnknownClaimable": false,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -32793,8 +32853,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "611677960",
-      "sqrtPrice": "481016453193509561",
-      "tickCurrentIndex": -72939,
+      "sqrtPrice": "485501382645827989",
+      "tickCurrentIndex": -72753,
       "active": true,
       "tokenA": {
         "mint": "AHdVQs56QpEEkRx6m8yiYYEiqM2sKjQxVd6mGH12pump",
@@ -32807,11 +32867,11 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "23462856707",
-        "vaultUi": 23462.856707,
+        "vaultRaw": "23246162340",
+        "vaultUi": 23246.16234,
         "vaultCashUsd": null,
-        "protocolFeeOwedRaw": "12",
-        "protocolFeeOwedUi": 0.000012,
+        "protocolFeeOwedRaw": "14",
+        "protocolFeeOwedUi": 0.000014,
         "protocolFeeOwedCashUsd": null
       },
       "tokenB": {
@@ -32825,15 +32885,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "922664625",
-        "vaultUi": 922.664625,
-        "vaultCashUsd": 922.664625,
+        "vaultRaw": "922813344",
+        "vaultUi": 922.813344,
+        "vaultCashUsd": 922.813344,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 922.664625,
+      "cashTvlUsd": 922.813344,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -32853,8 +32913,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "2071385755",
-      "sqrtPrice": "4906637132102035589875",
-      "tickCurrentIndex": 111674,
+      "sqrtPrice": "4831665590327235879304",
+      "tickCurrentIndex": 111366,
       "active": true,
       "tokenA": {
         "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
@@ -32867,9 +32927,9 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "7789365",
-        "vaultUi": 7.789365,
-        "vaultCashUsd": 7.789365,
+        "vaultRaw": "7910203",
+        "vaultUi": 7.910203,
+        "vaultCashUsd": 7.910203,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -32885,15 +32945,15 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "550970440738",
-        "vaultUi": 550970.440738,
+        "vaultRaw": "542551882806",
+        "vaultUi": 542551.882806,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "316",
         "protocolFeeOwedUi": 0.000316,
         "protocolFeeOwedCashUsd": null
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 7.789365,
+      "cashTvlUsd": 7.910203,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -32973,8 +33033,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "116210343201",
-      "sqrtPrice": "236357585403627532748083",
-      "tickCurrentIndex": 189173,
+      "sqrtPrice": "234648612017140994452420",
+      "tickCurrentIndex": 189028,
       "active": true,
       "tokenA": {
         "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
@@ -32987,9 +33047,9 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "43054096",
-        "vaultUi": 43.054096,
-        "vaultCashUsd": 43.054096,
+        "vaultRaw": "43120153",
+        "vaultUi": 43.120153,
+        "vaultCashUsd": 43.120153,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -33005,15 +33065,15 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "1489018351833069",
-        "vaultUi": 1489018.351833069,
+        "vaultRaw": "1478252203456347",
+        "vaultUi": 1478252.203456347,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "897861",
         "protocolFeeOwedUi": 0.000897861,
         "protocolFeeOwedCashUsd": null
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 43.054096,
+      "cashTvlUsd": 43.120153,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -33273,8 +33333,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "2782182847",
-      "sqrtPrice": "166896014624396228",
-      "tickCurrentIndex": -94111,
+      "sqrtPrice": "168783035512590643",
+      "tickCurrentIndex": -93886,
       "active": true,
       "tokenA": {
         "mint": "BJB5tHWAHboMAwti5AHbCNX17F3jL8ehkh4zuTUx99Zn",
@@ -33287,11 +33347,11 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "307514836224",
-        "vaultUi": 307514.836224,
+        "vaultRaw": "304076826214",
+        "vaultUi": 304076.826214,
         "vaultCashUsd": null,
-        "protocolFeeOwedRaw": "136",
-        "protocolFeeOwedUi": 0.000136,
+        "protocolFeeOwedRaw": "183",
+        "protocolFeeOwedUi": 0.000183,
         "protocolFeeOwedCashUsd": null
       },
       "tokenB": {
@@ -33305,15 +33365,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "59362237",
-        "vaultUi": 59.362237,
-        "vaultCashUsd": 59.362237,
+        "vaultRaw": "59646847",
+        "vaultUi": 59.646847,
+        "vaultCashUsd": 59.646847,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 59.362237,
+      "cashTvlUsd": 59.646847,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -33453,8 +33513,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "6053693370",
-      "sqrtPrice": "14225928554599254306153",
-      "tickCurrentIndex": 132965,
+      "sqrtPrice": "14034728184705643710140",
+      "tickCurrentIndex": 132694,
       "active": true,
       "tokenA": {
         "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
@@ -33467,9 +33527,9 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "25923477",
-        "vaultUi": 25.923477,
-        "vaultCashUsd": 25.923477,
+        "vaultRaw": "26030419",
+        "vaultUi": 26.030419,
+        "vaultCashUsd": 26.030419,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -33485,15 +33545,15 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "4668571370421",
-        "vaultUi": 4668571.370421,
+        "vaultRaw": "4605824882101",
+        "vaultUi": 4605824.882101,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "3249",
         "protocolFeeOwedUi": 0.003249,
         "protocolFeeOwedCashUsd": null
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 25.923477,
+      "cashTvlUsd": 26.030419,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -33573,8 +33633,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "1071461697",
-      "sqrtPrice": "605874556947912113408",
-      "tickCurrentIndex": 69839,
+      "sqrtPrice": "600369785170463327423",
+      "tickCurrentIndex": 69656,
       "active": true,
       "tokenA": {
         "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
@@ -33587,9 +33647,9 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "32630432",
-        "vaultUi": 32.630432,
-        "vaultCashUsd": 32.630432,
+        "vaultRaw": "32929548",
+        "vaultUi": 32.929548,
+        "vaultCashUsd": 32.929548,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -33605,15 +33665,15 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "35193322396",
-        "vaultUi": 35193.322396,
+        "vaultRaw": "34873583088",
+        "vaultUi": 34873.583088,
         "vaultCashUsd": null,
-        "protocolFeeOwedRaw": "17",
-        "protocolFeeOwedUi": 0.000017,
+        "protocolFeeOwedRaw": "21",
+        "protocolFeeOwedUi": 0.000021,
         "protocolFeeOwedCashUsd": null
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 32.630432,
+      "cashTvlUsd": 32.929548,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -33813,8 +33873,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "6847611812",
-      "sqrtPrice": "27006020552274079",
-      "tickCurrentIndex": -130539,
+      "sqrtPrice": "27308943605529728",
+      "tickCurrentIndex": -130316,
       "active": true,
       "tokenA": {
         "mint": "4pLWhMQrnPqGZu6RaE9rsjPNBfBDfLB99f5fF86Tpump",
@@ -33827,8 +33887,8 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "4677382488592",
-        "vaultUi": 4677382.488592,
+        "vaultRaw": "4625499416204",
+        "vaultUi": 4625499.416204,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "3305",
         "protocolFeeOwedUi": 0.003305,
@@ -33845,15 +33905,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "67942167",
-        "vaultUi": 67.942167,
-        "vaultCashUsd": 67.942167,
+        "vaultRaw": "68054616",
+        "vaultUi": 68.054616,
+        "vaultCashUsd": 68.054616,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 67.942167,
+      "cashTvlUsd": 68.054616,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -33873,8 +33933,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "149749714883",
-      "sqrtPrice": "852492424634310",
-      "tickCurrentIndex": -199655,
+      "sqrtPrice": "864729876291205",
+      "tickCurrentIndex": -199370,
       "active": true,
       "tokenA": {
         "mint": "57jzy6cY4JxwfvoNyUiPR5auuc6J5NjzC5BrjC1ymoon",
@@ -33887,8 +33947,8 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "3240410527503193",
-        "vaultUi": 3240410.527503193,
+        "vaultRaw": "3194553518646973",
+        "vaultUi": 3194553.518646973,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "2690027",
         "protocolFeeOwedUi": 0.002690027,
@@ -33905,15 +33965,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "144206262",
-        "vaultUi": 144.206262,
-        "vaultCashUsd": 144.206262,
+        "vaultRaw": "144305606",
+        "vaultUi": 144.305606,
+        "vaultCashUsd": 144.305606,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 144.206262,
+      "cashTvlUsd": 144.305606,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -33933,8 +33993,8 @@
       "protocolFeeRate": 300,
       "protocolFeeRatePercentOfSwapFee": 3,
       "liquidity": "1044956202",
-      "sqrtPrice": "101928214158179234",
-      "tickCurrentIndex": -103973,
+      "sqrtPrice": "97209095684730903",
+      "tickCurrentIndex": -104921,
       "active": true,
       "tokenA": {
         "mint": "6DHUPxbG7evPY17zHSsmZWbc3wgQEPAdoH9KawBJvVHU",
@@ -33947,11 +34007,11 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "189145114742",
-        "vaultUi": 189145.114742,
+        "vaultRaw": "198325860449",
+        "vaultUi": 198325.860449,
         "vaultCashUsd": null,
-        "protocolFeeOwedRaw": "1391",
-        "protocolFeeOwedUi": 0.001391,
+        "protocolFeeOwedRaw": "1762",
+        "protocolFeeOwedUi": 0.001762,
         "protocolFeeOwedCashUsd": null
       },
       "tokenB": {
@@ -33965,15 +34025,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "5775020",
-        "vaultUi": 5.77502,
-        "vaultCashUsd": 5.77502,
+        "vaultRaw": "5507698",
+        "vaultUi": 5.507698,
+        "vaultCashUsd": 5.507698,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 5.77502,
+      "cashTvlUsd": 5.507698,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -35089,7 +35149,7 @@
         },
         "vaultRaw": "1",
         "vaultUi": 1e-9,
-        "vaultCashUsd": 8.4741137e-8,
+        "vaultCashUsd": 8.573960700000002e-8,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -35113,7 +35173,7 @@
         "protocolFeeOwedCashUsd": null
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 8.4741137e-8,
+      "cashTvlUsd": 8.573960700000002e-8,
       "hasClaimableProtocolFees": false,
       "hasUnknownClaimable": false,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -35209,7 +35269,7 @@
         },
         "vaultRaw": "17",
         "vaultUi": 1.7e-8,
-        "vaultCashUsd": 0.0000014405993289999998,
+        "vaultCashUsd": 0.0000014575733190000001,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -35233,7 +35293,7 @@
         "protocolFeeOwedCashUsd": null
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 0.0000014405993289999998,
+      "cashTvlUsd": 0.0000014575733190000001,
       "hasClaimableProtocolFees": false,
       "hasUnknownClaimable": false,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -35269,7 +35329,7 @@
         },
         "vaultRaw": "8200001",
         "vaultUi": 0.008200001,
-        "vaultCashUsd": 0.694877408141137,
+        "vaultCashUsd": 0.703064863139607,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -35293,7 +35353,7 @@
         "protocolFeeOwedCashUsd": null
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 0.694877408141137,
+      "cashTvlUsd": 0.703064863139607,
       "hasClaimableProtocolFees": false,
       "hasUnknownClaimable": false,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -35329,7 +35389,7 @@
         },
         "vaultRaw": "25",
         "vaultUi": 2.5e-8,
-        "vaultCashUsd": 0.000002118528425,
+        "vaultCashUsd": 0.000002143490175,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -35353,7 +35413,7 @@
         "protocolFeeOwedCashUsd": null
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 0.000002118528425,
+      "cashTvlUsd": 0.000002143490175,
       "hasClaimableProtocolFees": false,
       "hasUnknownClaimable": false,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -36889,7 +36949,7 @@
         },
         "vaultRaw": "67",
         "vaultUi": 6.7e-8,
-        "vaultCashUsd": 0.000005677656179,
+        "vaultCashUsd": 0.000005744553669,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -36913,7 +36973,7 @@
         "protocolFeeOwedCashUsd": null
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 0.000005677656179,
+      "cashTvlUsd": 0.000005744553669,
       "hasClaimableProtocolFees": false,
       "hasUnknownClaimable": false,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -38569,7 +38629,7 @@
         },
         "vaultRaw": "31863",
         "vaultUi": 0.000031863,
-        "vaultCashUsd": 0.002700106848231,
+        "vaultCashUsd": 0.0027319210978410005,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -38593,7 +38653,7 @@
         "protocolFeeOwedCashUsd": 0
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 0.028565106848231,
+      "cashTvlUsd": 0.028596921097841,
       "hasClaimableProtocolFees": false,
       "hasUnknownClaimable": false,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -39273,8 +39333,8 @@
       "protocolFeeRate": 2500,
       "protocolFeeRatePercentOfSwapFee": 25,
       "liquidity": "181690449251",
-      "sqrtPrice": "1495084523334322",
-      "tickCurrentIndex": -188419,
+      "sqrtPrice": "1512345877503572",
+      "tickCurrentIndex": -188190,
       "active": true,
       "tokenA": {
         "mint": "v62Jv9pwMTREWV9f6TetZfMafV254vo99p7HSF25BPr",
@@ -39287,8 +39347,8 @@
           "symbol": "UNKNOWN",
           "cashClass": "non_cash"
         },
-        "vaultRaw": "2242452955016509",
-        "vaultUi": 2242452.955016509,
+        "vaultRaw": "2216866518072705",
+        "vaultUi": 2216866.518072705,
         "vaultCashUsd": null,
         "protocolFeeOwedRaw": "624360484",
         "protocolFeeOwedUi": 0.624360484,
@@ -39305,15 +39365,15 @@
           "symbol": "USDC",
           "cashClass": "usdc"
         },
-        "vaultRaw": "14998749",
-        "vaultUi": 14.998749,
-        "vaultCashUsd": 14.998749,
-        "protocolFeeOwedRaw": "1",
-        "protocolFeeOwedUi": 0.000001,
-        "protocolFeeOwedCashUsd": 0.000001
+        "vaultRaw": "15168773",
+        "vaultUi": 15.168773,
+        "vaultCashUsd": 15.168773,
+        "protocolFeeOwedRaw": "3",
+        "protocolFeeOwedUi": 0.000003,
+        "protocolFeeOwedCashUsd": 0.000003
       },
-      "cashClaimableUsd": 0.000001,
-      "cashTvlUsd": 14.998749,
+      "cashClaimableUsd": 0.000003,
+      "cashTvlUsd": 15.168773,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": true,
       "executionClass": "PARTNER_OR_UNVERIFIED_CLAIMABLE_CASH"
@@ -40129,10 +40189,10 @@
         },
         "vaultRaw": "4001960720",
         "vaultUi": 4.00196072,
-        "vaultCashUsd": 339.1307016421386,
+        "vaultCashUsd": 343.12653936223705,
         "protocolFeeOwedRaw": "796",
         "protocolFeeOwedUi": 7.96e-7,
-        "protocolFeeOwedCashUsd": 0.000067453945052
+        "protocolFeeOwedCashUsd": 0.000068248727172
       },
       "tokenB": {
         "mint": "7C95pQAtX8M2U97Txut8JSKUp7VLJVyPVEL7xknUAWFy",
@@ -40152,8 +40212,8 @@
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": null
       },
-      "cashClaimableUsd": 0.000067453945052,
-      "cashTvlUsd": 339.1307016421386,
+      "cashClaimableUsd": 0.000068248727172,
+      "cashTvlUsd": 343.12653936223705,
       "hasClaimableProtocolFees": true,
       "hasUnknownClaimable": false,
       "executionClass": "PARTNER_OR_UNVERIFIED_CLAIMABLE_CASH"
@@ -40669,7 +40729,7 @@
         },
         "vaultRaw": "3",
         "vaultUi": 3e-9,
-        "vaultCashUsd": 2.54223411e-7,
+        "vaultCashUsd": 2.5721882100000003e-7,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -40693,7 +40753,7 @@
         "protocolFeeOwedCashUsd": null
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 2.54223411e-7,
+      "cashTvlUsd": 2.5721882100000003e-7,
       "hasClaimableProtocolFees": false,
       "hasUnknownClaimable": false,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -51349,7 +51409,7 @@
         },
         "vaultRaw": "147",
         "vaultUi": 1.47e-7,
-        "vaultCashUsd": 0.000012456947139,
+        "vaultCashUsd": 0.000012603722229000002,
         "protocolFeeOwedRaw": "0",
         "protocolFeeOwedUi": 0,
         "protocolFeeOwedCashUsd": 0
@@ -51373,7 +51433,7 @@
         "protocolFeeOwedCashUsd": null
       },
       "cashClaimableUsd": 0,
-      "cashTvlUsd": 0.000012456947139,
+      "cashTvlUsd": 0.000012603722229000002,
       "hasClaimableProtocolFees": false,
       "hasUnknownClaimable": false,
       "executionClass": "ACTIVE_FEE_SOURCE"
@@ -53061,12 +53121,12 @@
   ],
   "summary": {
     "configCount": 400,
-    "poolCount": 763,
-    "activePoolCount": 256,
+    "poolCount": 764,
+    "activePoolCount": 257,
     "claimableProtocolFeePoolCount": 41,
     "directLocalCollectableCashPoolCount": 0,
     "directLocalCollectableCashUsd": 0,
-    "partnerOrUnverifiedClaimableCashUsd": 0.004602916405768,
+    "partnerOrUnverifiedClaimableCashUsd": 0.006211658127621,
     "topCashClaimablePools": [
       {
         "whirlpool": "BSddxwYW73as8852ZTHRH13pbZEmZ96NBjayc5mSVtkZ",
@@ -53074,11 +53134,11 @@
         "config": "CuRxokDVEuCjovsSNkvUbkpTW3fCTYMbuFqPf3kpZgEz",
         "controlStatus": "stacc_partner_observed_not_local",
         "executionClass": "PARTNER_OR_UNVERIFIED_CLAIMABLE_CASH",
-        "cashClaimableUsd": 0.004531462460716,
+        "cashClaimableUsd": 0.006130409400449,
         "tokenA": "wSOL",
-        "tokenAFeesUi": 0.000028268,
+        "tokenAFeesUi": 0.000037607,
         "tokenB": "USDC",
-        "tokenBFeesUi": 0.002136
+        "tokenBFeesUi": 0.002906
       },
       {
         "whirlpool": "B9jiKecdvVtfBC4kkMnokKKhKXZrPrZA4eQpWVTtPduZ",
@@ -53086,7 +53146,7 @@
         "config": "HGYCRq6asBGsmY6bip7GTpRAhmsrWPmsm7yAxoGPRnku",
         "controlStatus": "stacc_partner_observed_not_local",
         "executionClass": "PARTNER_OR_UNVERIFIED_CLAIMABLE_CASH",
-        "cashClaimableUsd": 0.000067453945052,
+        "cashClaimableUsd": 0.000068248727172,
         "tokenA": "wSOL",
         "tokenAFeesUi": 7.96e-7,
         "tokenB": "UNKNOWN",
@@ -53098,11 +53158,11 @@
         "config": "2LDbdSNMyuRQ9gCgUKjWm4Znq1US1X2R9aoSenuwkTqP",
         "controlStatus": "stacc_partner_observed_not_local",
         "executionClass": "PARTNER_OR_UNVERIFIED_CLAIMABLE_CASH",
-        "cashClaimableUsd": 0.000003,
+        "cashClaimableUsd": 0.00001,
         "tokenA": "UNKNOWN",
         "tokenAFeesUi": 2.495579052,
         "tokenB": "USDC",
-        "tokenBFeesUi": 0.000003
+        "tokenBFeesUi": 0.00001
       },
       {
         "whirlpool": "EEEEBfiPZbNDNnzwAgJJSHqsWz7u4iuDfTWfpzfZqgzT",
@@ -53110,11 +53170,11 @@
         "config": "HDE78Mg7ukJht34qd9yifnDGkdZoAFu5K5dSGQiHDDRq",
         "controlStatus": "stacc_partner_observed_not_local",
         "executionClass": "PARTNER_OR_UNVERIFIED_CLAIMABLE_CASH",
-        "cashClaimableUsd": 0.000001,
+        "cashClaimableUsd": 0.000003,
         "tokenA": "UNKNOWN",
         "tokenAFeesUi": 0.624360484,
         "tokenB": "USDC",
-        "tokenBFeesUi": 0.000001
+        "tokenBFeesUi": 0.000003
       }
     ],
     "topActiveFeeSources": [
@@ -53136,7 +53196,7 @@
         "controlStatus": "stacc_partner_observed_not_local",
         "feeRate": 1,
         "protocolFeeRate": 300,
-        "cashTvlUsd": 922.664625,
+        "cashTvlUsd": 922.813344,
         "tokenA": "AHdVQs56QpEEkRx6m8yiYYEiqM2sKjQxVd6mGH12pump",
         "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
       },
@@ -53147,7 +53207,7 @@
         "controlStatus": "stacc_partner_observed_not_local",
         "feeRate": 100,
         "protocolFeeRate": 2500,
-        "cashTvlUsd": 618.2193387837156,
+        "cashTvlUsd": 621.841625837227,
         "tokenA": "So11111111111111111111111111111111111111112",
         "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
       },
@@ -53169,7 +53229,7 @@
         "controlStatus": "stacc_partner_observed_not_local",
         "feeRate": 3000,
         "protocolFeeRate": 666,
-        "cashTvlUsd": 339.1307016421386,
+        "cashTvlUsd": 343.12653936223705,
         "tokenA": "So11111111111111111111111111111111111111112",
         "tokenB": "7C95pQAtX8M2U97Txut8JSKUp7VLJVyPVEL7xknUAWFy"
       },
@@ -53180,19 +53240,8 @@
         "controlStatus": "stacc_partner_observed_not_local",
         "feeRate": 1,
         "protocolFeeRate": 300,
-        "cashTvlUsd": 305.356043,
+        "cashTvlUsd": 305.532086,
         "tokenA": "ENS6gbdvhmCGPscuCu47Jjk2KkPP2iUNJfkqKDV2UY3w",
-        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
-      },
-      {
-        "whirlpool": "CdvDD8WMKjXzXs3LCshha2QnnhPsd3WZ9nyU6sv7C7RM",
-        "programLabel": "official-orca",
-        "config": "2LDbdSNMyuRQ9gCgUKjWm4Znq1US1X2R9aoSenuwkTqP",
-        "controlStatus": "stacc_partner_observed_not_local",
-        "feeRate": 300,
-        "protocolFeeRate": 300,
-        "cashTvlUsd": 301.08485,
-        "tokenA": "CaLyryATQhnVZaau425zAJ9fNf4uNWVa1GKD6JN94AX9",
         "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
       },
       {
@@ -53202,9 +53251,20 @@
         "controlStatus": "stacc_partner_observed_not_local",
         "feeRate": 1,
         "protocolFeeRate": 300,
-        "cashTvlUsd": 300.362538,
+        "cashTvlUsd": 302.137265,
         "tokenA": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
         "tokenB": "ErbakSHZWeLnq1hsqFvNz8FvxSzggrfyNGB6TEGSSgNE"
+      },
+      {
+        "whirlpool": "CdvDD8WMKjXzXs3LCshha2QnnhPsd3WZ9nyU6sv7C7RM",
+        "programLabel": "official-orca",
+        "config": "2LDbdSNMyuRQ9gCgUKjWm4Znq1US1X2R9aoSenuwkTqP",
+        "controlStatus": "stacc_partner_observed_not_local",
+        "feeRate": 300,
+        "protocolFeeRate": 300,
+        "cashTvlUsd": 302.057871,
+        "tokenA": "CaLyryATQhnVZaau425zAJ9fNf4uNWVa1GKD6JN94AX9",
+        "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
       },
       {
         "whirlpool": "8aoWgf7ycbeKv6BTFCdUj4JR7Y4mXWuPZWEUhmuzN5ZL",
@@ -53213,7 +53273,7 @@
         "controlStatus": "local_signer",
         "feeRate": 300,
         "protocolFeeRate": 300,
-        "cashTvlUsd": 290,
+        "cashTvlUsd": 290.445053,
         "tokenA": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
         "tokenB": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3"
       },
@@ -53224,7 +53284,7 @@
         "controlStatus": "stacc_partner_observed_not_local",
         "feeRate": 1,
         "protocolFeeRate": 300,
-        "cashTvlUsd": 265.636142,
+        "cashTvlUsd": 266.014113,
         "tokenA": "EA6zg6e9RcqWDgUpkhRu2YZn7LamGTNntivL7h5qpump",
         "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
       },
@@ -53235,7 +53295,7 @@
         "controlStatus": "stacc_partner_observed_not_local",
         "feeRate": 1,
         "protocolFeeRate": 300,
-        "cashTvlUsd": 174.495673,
+        "cashTvlUsd": 174.927338,
         "tokenA": "92kxUXDsBQLy5ptGxtmH9CDYd5E6ZQynzf2eFPiUpump",
         "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
       },
@@ -53246,7 +53306,7 @@
         "controlStatus": "stacc_partner_observed_not_local",
         "feeRate": 1,
         "protocolFeeRate": 300,
-        "cashTvlUsd": 156.636627,
+        "cashTvlUsd": 156.692866,
         "tokenA": "4Zs7SmwrCrRAP1gBaNAE4n6LzarU2JzEsJSuj4Mwmoon",
         "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
       },
@@ -53257,7 +53317,7 @@
         "controlStatus": "stacc_partner_observed_not_local",
         "feeRate": 1,
         "protocolFeeRate": 300,
-        "cashTvlUsd": 148.813265,
+        "cashTvlUsd": 148.883318,
         "tokenA": "iHjJCRDSLqah8eb37CPaFbj4r9Rzb52MvhyvAPBpump",
         "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
       },
@@ -53268,7 +53328,7 @@
         "controlStatus": "stacc_partner_observed_not_local",
         "feeRate": 1,
         "protocolFeeRate": 300,
-        "cashTvlUsd": 144.442776,
+        "cashTvlUsd": 144.403822,
         "tokenA": "CboMcTUYUcy9E6B3yGdFn6aEsGUnYV6yWeoeukw6pump",
         "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
       },
@@ -53279,7 +53339,7 @@
         "controlStatus": "stacc_partner_observed_not_local",
         "feeRate": 1,
         "protocolFeeRate": 300,
-        "cashTvlUsd": 144.206262,
+        "cashTvlUsd": 144.305606,
         "tokenA": "57jzy6cY4JxwfvoNyUiPR5auuc6J5NjzC5BrjC1ymoon",
         "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
       },
@@ -53290,7 +53350,7 @@
         "controlStatus": "stacc_partner_observed_not_local",
         "feeRate": 1,
         "protocolFeeRate": 300,
-        "cashTvlUsd": 95.839831,
+        "cashTvlUsd": 96.198862,
         "tokenA": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
         "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
       },
@@ -53301,7 +53361,7 @@
         "controlStatus": "stacc_partner_observed_not_local",
         "feeRate": 1,
         "protocolFeeRate": 300,
-        "cashTvlUsd": 89.893641,
+        "cashTvlUsd": 90.029254,
         "tokenA": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
         "tokenB": "J95XcNkdkBy2DCuUybKHyHqXPJJqC4rye7tgYJBcpump"
       },
@@ -53312,7 +53372,7 @@
         "controlStatus": "stacc_partner_observed_not_local",
         "feeRate": 1,
         "protocolFeeRate": 300,
-        "cashTvlUsd": 75.424781,
+        "cashTvlUsd": 75.459558,
         "tokenA": "84R6wZHapPTGobXfsgmBRpoL7C9dHJj16ahRBjxx2637",
         "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
       },
@@ -53323,7 +53383,7 @@
         "controlStatus": "stacc_partner_observed_not_local",
         "feeRate": 1,
         "protocolFeeRate": 300,
-        "cashTvlUsd": 75.277632,
+        "cashTvlUsd": 75.312402,
         "tokenA": "23t3rXSGzyoeEvNwYojgbpnStRaLPQwmUfrnPMrEpump",
         "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
       },
@@ -53334,7 +53394,7 @@
         "controlStatus": "stacc_partner_observed_not_local",
         "feeRate": 1,
         "protocolFeeRate": 300,
-        "cashTvlUsd": 67.942167,
+        "cashTvlUsd": 68.054616,
         "tokenA": "4pLWhMQrnPqGZu6RaE9rsjPNBfBDfLB99f5fF86Tpump",
         "tokenB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
       }
