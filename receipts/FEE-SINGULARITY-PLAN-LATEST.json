@@ -1,6 +1,6 @@
 {
   "verdict": "FEE_SINGULARITY_NO_GO",
-  "generatedAt": "2026-05-23T23:37:42.662Z",
+  "generatedAt": "2026-05-23T23:41:31.313Z",
   "noSend": true,
   "dryRunOnly": true,
   "flashAmountUsdc": 1,
@@ -67,15 +67,21 @@
     "ringStartRaw": "9295406572",
     "ringWithheldRaw": "2312003430",
     "restoredHopForSwap2Raw": "9984324997",
-    "swap2UsdcOutRaw": "999400",
-    "walletUsdcDeltaMicro": "-600",
-    "requiredCrankUsdcCushionMicro": "600",
-    "repayCushionAvailable": false,
+    "extraHopInventoryRaw": "821060121",
+    "swap2HopInputRaw": "10805385118",
+    "swap2HopInputT22FeeRaw": "745571574",
+    "swap2HopNetToPoolRaw": "10059813544",
+    "swap2UsdcOutRaw": "1006946",
+    "walletUsdcDeltaMicro": "6946",
+    "requiredCrankUsdcCushionMicro": "0",
+    "repayCushionAvailable": true,
     "gasLamports": "5900",
     "gasUsd": 0.0005015,
-    "walletCashNetUsd": -0.0011015,
-    "ownPoolUsdcLiabilityUsd": 0,
-    "totalSystemNetUsd": -0.0011015
+    "walletCashNetUsd": 0.0064445,
+    "ownPoolUsdcLiabilityUsd": 0.006946,
+    "impliedHopPriceUsdc": 0.0001001569961214675,
+    "hopInventorySpentUsd": 0.08223491535448864,
+    "totalSystemNetUsd": -0.08273641535448864
   },
   "balancesBefore": {
     "crankSol": 4.518579926,
@@ -586,7 +592,7 @@
             "isWritable": true
           }
         ],
-        "dataHex": "2b04ed0b1ac91e6285b51c53020000000000000000000000af331ba8327fbb35b1c4feff00000000010000"
+        "dataHex": "2b04ed0b1ac91e629e170d84020000000000000000000000af331ba8327fbb35b1c4feff00000000010000"
       },
       {
         "programId": "MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA",
@@ -674,49 +680,42 @@
     ]
   },
   "simulation": {
-    "err": {
-      "InstructionError": [
-        13,
-        {
-          "Custom": 1
-        }
-      ]
-    },
-    "unitsConsumed": 306158,
+    "err": null,
+    "unitsConsumed": 351592,
     "logs": [
-      "Program MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr consumed 12236 of 636872 compute units",
-      "Program MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr success",
-      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb invoke [2]",
-      "Program log: Instruction: TransferChecked",
-      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 3084 of 620366 compute units",
-      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
       "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [2]",
-      "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 105 of 613326 compute units",
+      "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 105 of 617706 compute units",
       "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success",
-      "Program data: 4cpJr5MroJZwqpD0hZ9CMKYDRT3GGbvHh+t1gRwiv6J5ldEcrcdGOwCB4zsgQtGK32MAAAAAAAAAyrapS3xYwP1jAAAAAAAAAIW1HFMCAAAA2zIOAAAAAACZDxApAAAAAAAAAAAAAAAAREYpAAAAAADKRgEAAAAAAA==",
-      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 76991 of 685082 compute units",
+      "Program data: 4cpJr5MroJZwqpD0hZ9CMKYDRT3GGbvHh+t1gRwiv6J5ldEcrcdGOwCB4zsgQtGK32MAAAAAAAAAJLx1k8pPPABkAAAAAAAAAJ4XDYQCAAAAYl0PAAAAAAD2hHAsAAAAAAAAAAAAAAAAL6ssAAAAAACqYQEAAAAAAA==",
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 72416 of 684887 compute units",
       "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
       "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA invoke [1]",
       "Program log: Instruction: LendingAccountRepay",
       "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [2]",
-      "Program log: Error: insufficient funds",
-      "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 181 of 594023 compute units",
-      "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA failed: custom program error: 0x1",
-      "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA consumed 14249 of 608091 compute units",
-      "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA failed: custom program error: 0x1"
+      "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 76 of 598403 compute units",
+      "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success",
+      "Program data: ENw3bwdQEBkBdC0p1E2ib2PbJnEHbXeRNm43eQkYX3MsRFmk03qTUYkCKaFc7bpNllt56Q2l6U0fQjFobIhfDeXI4Tb52x8iPXQtKdRNom9j2yZxB213kTZuN3kJGF9zLERZpNN6k1GJORQvaC/YOISW7L1RBvFceUwkd0M4KPpmQtvr9yADSmEbrR36PLL4Xdf2pmepSE5oFsfHd+k0nVM8c0nc32/fisb6evO+2606PWXzaqvJdDGxu+TC0vbg5HymAgNFL11hQEIPAAAAAAAA",
+      "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA consumed 59431 of 612471 compute units",
+      "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA success",
+      "Program 11111111111111111111111111111111 invoke [1]",
+      "Program 11111111111111111111111111111111 success",
+      "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA invoke [1]",
+      "Program log: Instruction: LendingAccountEndFlashloan",
+      "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA consumed 4482 of 552890 compute units",
+      "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA success"
     ]
   },
   "cashProofGate": {
     "sourceClass": "self-routed-token2022-fee-plus-owned-fork-liquidity",
-    "walletCashNetUsd": -0.0011015,
-    "totalSystemNetUsd": -0.0011015,
+    "useHopInventoryCushion": true,
+    "walletCashNetUsd": 0.0064445,
+    "totalSystemNetUsd": -0.08273641535448864,
     "pass": false,
     "rejectionReasons": [
       "active HOP fee is 690bps until epoch 978",
-      "repay shortfall 600 micro-USDC; crank has 0",
-      "wallet cash net -0.001102 below MIN_NET_USD 0.25",
-      "total-system net -0.001102 below MIN_NET_USD 0.25",
-      "simulation failed: {\"InstructionError\":[13,{\"Custom\":1}]}"
+      "repay uses HOP inventory conversion; do not count as profit",
+      "wallet cash net 0.006444 below MIN_NET_USD 0.25",
+      "total-system net -0.082736 below MIN_NET_USD 0.25"
     ],
     "note": "Wallet cash can improve while owned fork LP loses value; total-system net blocks that as non-profit."
   }

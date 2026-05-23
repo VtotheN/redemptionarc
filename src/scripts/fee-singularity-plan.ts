@@ -299,6 +299,8 @@ async function main() {
   const jitoTipLamports = BigInt(process.env.JITO_TIP_LAMPORTS || "0");
   const solPriceUsd = config.solPriceUsd ?? Number(process.env.SOL_PRICE_USD || "85");
   const minNetUsd = Number(process.env.MIN_NET_USD || "0.01");
+  const useHopInventoryCushion = process.env.USE_HOP_INVENTORY_CUSHION === "true";
+  const extraHopSafetyBps = BigInt(process.env.EXTRA_HOP_SAFETY_BPS || "1000");
 
   const crankUsdcAta = getAssociatedTokenAddressSync(USDC_MINT, crank.publicKey, false, TOKEN_PROGRAM_ID);
   const ringAtas = ringWallets.map((owner) => getAssociatedTokenAddressSync(HOP_MINT, owner, false, TOKEN_2022_PROGRAM_ID));
@@ -362,16 +364,44 @@ async function main() {
   }
 
   const restoredHopForSwap2 = ring[3].delivered + ringWithheld + swap1HopT22Fee;
-  const swap2 = computeSwapBToA(pool, swap1.nextSqrtP, restoredHopForSwap2);
+  const outputUsdcForHopInput = (hopInput: bigint) => {
+    const hopInputTransferFee = transferFee(hopInput, activeHopFeeBps, maxHopFee);
+    const hopNetToPool = hopInput > hopInputTransferFee ? hopInput - hopInputTransferFee : 0n;
+    return computeSwapBToA(pool, swap1.nextSqrtP, hopNetToPool).usdcOut;
+  };
+  let extraHopInventoryRaw = 0n;
+  if (useHopInventoryCushion) {
+    let lo = 0n;
+    let hi = 1_000_000n;
+    while (outputUsdcForHopInput(restoredHopForSwap2 + hi) < flashMicro) {
+      hi *= 2n;
+      if (hi > 1_000_000_000_000n) throw new Error("Could not bound extra HOP inventory cushion");
+    }
+    while (lo < hi) {
+      const mid = (lo + hi) / 2n;
+      if (outputUsdcForHopInput(restoredHopForSwap2 + mid) >= flashMicro) hi = mid;
+      else lo = mid + 1n;
+    }
+    extraHopInventoryRaw = lo + (lo * extraHopSafetyBps) / 10_000n;
+  }
+  const swap2HopInput = restoredHopForSwap2 + extraHopInventoryRaw;
+  const swap2HopInputT22Fee = transferFee(swap2HopInput, activeHopFeeBps, maxHopFee);
+  const swap2HopNetToPool = swap2HopInput > swap2HopInputT22Fee ? swap2HopInput - swap2HopInputT22Fee : 0n;
+  const swap2 = computeSwapBToA(pool, swap1.nextSqrtP, swap2HopNetToPool);
   const walletUsdcDeltaMicro = swap2.usdcOut - flashMicro;
   const crankUsdcBeforeRaw = BigInt(beforeUsdc?.value.amount ?? "0");
+  const crankHopBeforeRaw = BigInt(beforeHop?.value.amount ?? "0");
   const requiredCrankUsdcCushionMicro = swap2.usdcOut >= flashMicro ? 0n : flashMicro - swap2.usdcOut;
   const repayCushionAvailable = crankUsdcBeforeRaw >= requiredCrankUsdcCushionMicro;
   const gasLamports = 5_000n + (BigInt(cuLimit) * BigInt(cuPrice)) / 1_000_000n + jitoTipLamports;
   const gasUsd = Number(gasLamports) / 1e9 * solPriceUsd;
   const walletCashNetUsd = Number(walletUsdcDeltaMicro) / 1e6 - gasUsd;
   const ownPoolUsdcLiabilityUsd = Math.max(0, Number(swap2.usdcOut - flashMicro) / 1e6);
-  const totalSystemNetUsd = walletCashNetUsd - ownPoolUsdcLiabilityUsd;
+  const impliedHopPriceUsdc = flashMicro > 0n && swap1.hopOut > 0n
+    ? Number(flashMicro) / 1e6 / (Number(swap1.hopOut) / 1e6)
+    : 0;
+  const hopInventorySpentUsd = Number(extraHopInventoryRaw) / 1e6 * impliedHopPriceUsdc;
+  const totalSystemNetUsd = walletCashNetUsd - ownPoolUsdcLiabilityUsd - hopInventorySpentUsd;
 
   const precheckBlockers = [
     activeHopFeeBps === TARGET_HOP_FEE_BPS ? null : `active HOP fee is ${activeHopFeeBps}bps until epoch ${feeConfig.newerTransferFee.epoch.toString()}`,
@@ -381,6 +411,8 @@ async function main() {
       if (index > 0 && state.delegate !== crank.publicKey.toBase58()) return [`ring ATA ${index} is not delegated to crank`];
       return [];
     }),
+    extraHopInventoryRaw <= crankHopBeforeRaw ? null : `extra HOP inventory cushion ${extraHopInventoryRaw.toString()} exceeds crank HOP balance ${crankHopBeforeRaw.toString()}`,
+    useHopInventoryCushion ? "repay uses HOP inventory conversion; do not count as profit" : null,
     repayCushionAvailable ? null : `repay shortfall ${requiredCrankUsdcCushionMicro.toString()} micro-USDC; crank has ${crankUsdcBeforeRaw.toString()}`,
     walletCashNetUsd > minNetUsd ? null : `wallet cash net ${walletCashNetUsd.toFixed(6)} below MIN_NET_USD ${minNetUsd}`,
     totalSystemNetUsd > minNetUsd ? null : `total-system net ${totalSystemNetUsd.toFixed(6)} below MIN_NET_USD ${minNetUsd}`,
@@ -425,7 +457,7 @@ async function main() {
       tickArray0: TICK_ARRAY_90112,
       tickArray1: TICK_ARRAY_95744,
       tickArray2: TICK_ARRAY_95744,
-      amount: restoredHopForSwap2,
+      amount: swap2HopInput,
       otherAmountThreshold: 0n,
       sqrtPriceLimit: MAX_SQRT_PRICE,
       amountSpecifiedIsInput: true,
@@ -538,6 +570,10 @@ async function main() {
       ringStartRaw: ringAmount.toString(),
       ringWithheldRaw: ringWithheld.toString(),
       restoredHopForSwap2Raw: restoredHopForSwap2.toString(),
+      extraHopInventoryRaw: extraHopInventoryRaw.toString(),
+      swap2HopInputRaw: swap2HopInput.toString(),
+      swap2HopInputT22FeeRaw: swap2HopInputT22Fee.toString(),
+      swap2HopNetToPoolRaw: swap2HopNetToPool.toString(),
       swap2UsdcOutRaw: swap2.usdcOut.toString(),
       walletUsdcDeltaMicro: walletUsdcDeltaMicro.toString(),
       requiredCrankUsdcCushionMicro: requiredCrankUsdcCushionMicro.toString(),
@@ -546,12 +582,14 @@ async function main() {
       gasUsd,
       walletCashNetUsd,
       ownPoolUsdcLiabilityUsd,
+      impliedHopPriceUsdc,
+      hopInventorySpentUsd,
       totalSystemNetUsd,
     },
     balancesBefore: {
       crankSol: beforeSol / 1e9,
       crankUsdc: Number(crankUsdcBeforeRaw) / 1e6,
-      crankHop: Number(beforeHop?.value.amount ?? "0") / 1e6,
+      crankHop: Number(crankHopBeforeRaw) / 1e6,
       marginfiUsdcAvailable: Number(marginfiVault?.value.amount ?? "0") / 1e6,
     },
     ringAccountStates: ringAccountStates.map((state, index) => ({
@@ -579,6 +617,7 @@ async function main() {
     },
     cashProofGate: {
       sourceClass: "self-routed-token2022-fee-plus-owned-fork-liquidity",
+      useHopInventoryCushion,
       walletCashNetUsd,
       totalSystemNetUsd,
       pass: liveBlockers.length === 0,
