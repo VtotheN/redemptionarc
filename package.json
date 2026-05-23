@@ -64,6 +64,7 @@
     "harvest-withheld": "tsx src/scripts/harvest-withheld.ts",
     "flywheel-bot": "tsx src/scripts/flywheel-bot.ts",
     "kpx9-transfer-authority": "tsx src/scripts/kpx9-transfer-authority.ts",
+    "kpx9-enable-token-badge-feature": "tsx src/scripts/kpx9-enable-token-badge-feature.ts",
     "stacc-autopsy": "tsx src/scripts/stacc-autopsy.ts",
     "orca-owned-fee-source-scan": "tsx src/scripts/orca-owned-fee-source-scan.ts",
     "orca-owned-fee-cycle-sim": "tsx src/scripts/orca-owned-fee-cycle-sim.ts",
