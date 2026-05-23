@@ -40,6 +40,10 @@
     "settlement-route-scan": "tsx src/scripts/settlement-route-scan.ts",
     "target-design": "tsx src/scripts/target-design.ts",
     "token2022-cap-scan": "tsx src/scripts/token2022-cap-scan.ts",
+    "collect-hop-fees": "tsx src/scripts/collect-hop-fees.ts",
+    "sell-hop-fees": "tsx src/scripts/sell-hop-fees.ts",
+    "seed-hop-pool": "tsx src/scripts/seed-hop-pool.ts",
+    "settlement-route-scan": "tsx src/scripts/settlement-route-scan.ts",
     "snapshot": "tsx src/scripts/treasury-snapshot.ts",
     "dry-run": "DRY_RUN=true tsx src/gates/preflight.ts && DRY_RUN=true tsx src/scripts/treasury-snapshot.ts"
   },
