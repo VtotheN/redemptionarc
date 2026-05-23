@@ -1,0 +1,14 @@
+{
+  "verdict": "OWNED_AMM_PATH_MODELED",
+  "gasPerTxUsd": 0.004257,
+  "t22FeeBps": 1,
+  "hops": 4,
+  "totalFeeBps": 4,
+  "breakEvenFlashUsd": 10.6425,
+  "notStaccProofTx": "2jgoM1pFSH7FRqnLixMs3GAYrNQWDiJyMf1G284FTBWNjXqFy7MAV9cA1uyg4KDLw3dQsYN9xKvTimmRbscMGaLe",
+  "notStaccToken": "DLYp3Fd5SQSyY4o33NgPBicnTtBfZr5NBk6vAFv5E9En",
+  "at30mFlashNetPerTx": 11999.995743,
+  "at1mFlashNetPerDay": 34559632.1952,
+  "settlementGap": "T22 fees in T22 token, not USDC — needs owned AMM or real market",
+  "nextStep": "replicate-not-stacc-tx-structure-then-scale-flash"
+}
