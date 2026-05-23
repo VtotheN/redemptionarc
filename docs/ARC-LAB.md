@@ -90,6 +90,21 @@ Marginfi flash body
 -> total-system cash receipt
 ```
 
+Current raw proof:
+
+```bash
+ENV_PATH=.env.redemptionarc npm run marginfi-raw-borrow-repay-sim
+```
+
+Latest result:
+
+```text
+verdict: MARGINFI_RAW_BORROW_REPAY_SIM_OK
+amount: 39 USDC
+CU: 164674
+fix: EndFlashloan includes projected active health metas: USDC bank + oracle
+```
+
 Read-only adapter scanner:
 
 ```bash

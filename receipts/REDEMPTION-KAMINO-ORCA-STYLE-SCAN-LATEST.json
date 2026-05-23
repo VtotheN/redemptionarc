@@ -1,8 +1,11 @@
 {
-  "verdict": "KAMINO_ORCA_STYLE_WINDOW_OPEN_NO_SEND",
-  "generatedAt": "2026-05-22T18:41:01.212Z",
-  "currentJupiterSolUsdc": 85.927277,
-  "rule": "For Kamino baseline, only consider live when current SOL/USDC quote is below the empirical break-even of the selected profile and no-send simulation passes.",
+  "verdict": "KAMINO_ORCA_STYLE_WINDOW_CLOSED",
+  "generatedAt": "2026-05-23T02:12:39.514Z",
+  "currentJupiterSolUsdc": 84.364594,
+  "minMarginUsd": 0.05,
+  "minFloatBufferSol": 0.02,
+  "crankSol": 0.320963276,
+  "rule": "For Kamino baseline, only consider live when projected net at the current SOL/USDC quote clears minMarginUsd and no-send simulation passes.",
   "orcaStyleCostControls": {
     "tx2CuPriceMicroLamports": 100,
     "keepWsolAtaOpen": true,
@@ -31,7 +34,10 @@
       "receiptSolPriceUsd": 86.75,
       "breakEvenSolUsd": 86.71166533831624,
       "feeFirstUsdc": 25.510999,
-      "sweepUsdc": 9.201399
+      "sweepUsdc": 9.201399,
+      "projectedNetAtCurrentQuote": 0.9395791686407051,
+      "minRequiredFloatSol": 0.42031981700000004,
+      "floatReady": false
     },
     {
       "id": "006",
@@ -52,7 +58,10 @@
       "receiptSolPriceUsd": 86.75,
       "breakEvenSolUsd": 85.9291604062018,
       "feeFirstUsdc": 0,
-      "sweepUsdc": 0.85328
+      "sweepUsdc": 0.85328,
+      "projectedNetAtCurrentQuote": 0.015536206996240143,
+      "minRequiredFloatSol": 0.029930039999999998,
+      "floatReady": true
     }
   ],
   "selected": {
@@ -74,8 +83,11 @@
     "receiptSolPriceUsd": 86.75,
     "breakEvenSolUsd": 85.9291604062018,
     "feeFirstUsdc": 0,
-    "sweepUsdc": 0.85328
+    "sweepUsdc": 0.85328,
+    "minRequiredFloatSol": 0.029930039999999998,
+    "floatReady": true,
+    "projectedNetAtCurrentQuote": 0.015536206996240143
   },
-  "liveWindow": true,
-  "next": "Run exact no-send TX0/TX2/TX3 sim for selected profile, then one live cycle only if total-system cash gate is positive."
+  "liveWindow": false,
+  "next": "Do not run Kamino loop now; preserve baseline and continue Marginfi/Pinocchio cost removal."
 }

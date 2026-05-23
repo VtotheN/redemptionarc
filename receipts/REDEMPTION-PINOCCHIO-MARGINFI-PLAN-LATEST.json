@@ -1,6 +1,6 @@
 {
   "verdict": "PINOCCHIO_MARGINFI_PLAN_BLOCKED_TOOLCHAIN",
-  "generatedAt": "2026-05-22T17:51:29.993Z",
+  "generatedAt": "2026-05-23T02:13:22.899Z",
   "objective": "Replace Kamino fee/friction with Marginfi 0 bps path, then reduce callback CU with Pinocchio.",
   "config": {
     "routeVolumeUsdc": 39,

@@ -102,7 +102,16 @@ ENV_PATH=.env.redemptionarc npm run kamino-orca-style-scan
 ```
 
 It does not send transactions. It checks the live SOL/USDC quote and compares it
-against empirical break-even from the preserved Kamino receipts.
+against empirical break-even from the preserved Kamino receipts. The live gate is
+now margin-based, not just break-even-based:
+
+```text
+projectedNetAtCurrentQuote >= KAMINO_WINDOW_MIN_MARGIN_USD
+default margin: 0.05 USD
+```
+
+This was added because cycles 009-011 proved that a tiny quote edge can be eaten
+by sweep variance.
 
 ## Why Marginfi Remains Active
 

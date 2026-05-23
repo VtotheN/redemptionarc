@@ -1,6 +1,6 @@
 {
   "verdict": "MARGINFI_ADAPTER_SCAN_READY_RAW_PATH",
-  "generatedAt": "2026-05-22T18:10:33.391Z",
+  "generatedAt": "2026-05-23T02:13:33.520Z",
   "mode": "read-only; no transaction sent",
   "marginfi": {
     "environment": "production",
@@ -16,7 +16,7 @@
       "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
       "group": "4qp6Fx6tnZkY5Wropq9wUYgtFxXKwE6viZxFHg3rdAG8",
       "liquidityVault": "7jaiZR5Sk8hdYN9MxTpczTcwbWpb5WEoxSANuUwveuat",
-      "liquidityUsdc": 447127.708834
+      "liquidityUsdc": 560800.758862
     },
     {
       "address": "27Cpv49jQ3hav8zF3qZjp7T78ATdUTZN4m9x389Z8uH4",

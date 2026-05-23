@@ -176,6 +176,8 @@ Marginfi raw borrow/repay simulation.
 - uses raw IDL discriminators for start flash, USDC borrow, USDC repay, end flash
 - candidate USDC bank `2s37akK2eyBbp8DZgCm7RtsaEz8eJP3Nxd4urLHQv7yB`
 - candidate liquidity vault `7jaiZR5Sk8hdYN9MxTpczTcwbWpb5WEoxSANuUwveuat`
+- fixed raw `EndFlashloan` remaining accounts by passing projected active health metas
+- no-send borrow/repay wrapper now simulates OK at `164674 CU`
 
 ## pending
 
@@ -194,6 +196,15 @@ Kamino Orca-style cost scanner.
 - compares live Jupiter SOL/USDC quote against empirical Kamino break-even
 - preserves low-cost rules: CU price `100`, keep WSOL open, deficit-only refill, no over-cushion
 - no live TX
+
+## pending
+
+Kamino window false-positive correction.
+
+- cycle 009 recreated WSOL and lost to ATA/rent churn
+- cycle 010 used micro profile with WSOL open but sweep variance kept it negative
+- cycle 011 used `cushionExtra=1 USDC` but sweep variance kept it negative
+- scanner now requires projected current-quote net to clear `KAMINO_WINDOW_MIN_MARGIN_USD`, default `$0.05`
 
 ## pending
 

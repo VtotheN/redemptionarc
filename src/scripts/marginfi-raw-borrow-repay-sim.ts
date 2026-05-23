@@ -2,6 +2,7 @@ import "dotenv/config";
 import dotenv from "dotenv";
 import fs from "node:fs";
 import {
+  AccountMeta,
   Keypair,
   PublicKey,
   TransactionInstruction,
@@ -26,6 +27,7 @@ const START = Buffer.from([14, 131, 33, 220, 81, 186, 180, 107]);
 const END = Buffer.from([105, 124, 201, 106, 153, 2, 8, 156]);
 const BORROW = Buffer.from([4, 126, 116, 53, 48, 5, 212, 31]);
 const REPAY = Buffer.from([79, 209, 172, 177, 222, 51, 173, 151]);
+const BANK_ORACLE_KEYS_OFFSET = 610;
 
 function loadKeypair(file: string): Keypair {
   return Keypair.fromSecretKey(Uint8Array.from(JSON.parse(fs.readFileSync(file, "utf8")) as number[]));
@@ -42,6 +44,20 @@ function marginfiAccount(): PublicKey {
   return new PublicKey(secret.slice(32, 64));
 }
 
+function pubkeyAt(data: Buffer, offset: number): PublicKey {
+  return new PublicKey(data.subarray(offset, offset + 32));
+}
+
+async function bankHealthMetas(connection: ReturnType<typeof connectionFor>, bank: PublicKey): Promise<AccountMeta[]> {
+  const info = await connection.getAccountInfo(bank, "confirmed");
+  if (!info) throw new Error(`Marginfi bank missing on-chain: ${bank.toBase58()}`);
+  const oracleKey = pubkeyAt(Buffer.from(info.data), BANK_ORACLE_KEYS_OFFSET);
+  return [
+    { pubkey: bank, isSigner: false, isWritable: false },
+    { pubkey: oracleKey, isSigner: false, isWritable: false }
+  ];
+}
+
 function startIx(account: PublicKey, authority: PublicKey, endIndex: bigint): TransactionInstruction {
   return new TransactionInstruction({
     programId: MARGINFI_PROGRAM,
@@ -54,12 +70,13 @@ function startIx(account: PublicKey, authority: PublicKey, endIndex: bigint): Tr
   });
 }
 
-function endIx(account: PublicKey, authority: PublicKey): TransactionInstruction {
+function endIx(account: PublicKey, authority: PublicKey, remainingAccounts: AccountMeta[]): TransactionInstruction {
   return new TransactionInstruction({
     programId: MARGINFI_PROGRAM,
     keys: [
       { pubkey: account, isSigner: false, isWritable: true },
-      { pubkey: authority, isSigner: true, isWritable: false }
+      { pubkey: authority, isSigner: true, isWritable: false },
+      ...remainingAccounts
     ],
     data: END
   });
@@ -115,10 +132,11 @@ async function main() {
     borrowIx({ account, authority: crank.publicKey, ghostUsdcAta, amount }),
     repayIx({ account, authority: crank.publicKey, ghostUsdcAta, amount })
   ];
+  const endHealthMetas = await bankHealthMetas(connection, USDC_BANK);
   const instructions = [
     startIx(account, crank.publicKey, 3n),
     ...body,
-    endIx(account, crank.publicKey)
+    endIx(account, crank.publicKey, endHealthMetas)
   ];
   const msg = new TransactionMessage({
     payerKey: crank.publicKey,
@@ -141,6 +159,11 @@ async function main() {
     marginfiAccount: account.toBase58(),
     usdcBank: USDC_BANK.toBase58(),
     liquidityVault: USDC_LIQUIDITY_VAULT.toBase58(),
+    endHealthMetas: endHealthMetas.map((meta) => ({
+      pubkey: meta.pubkey.toBase58(),
+      isWritable: meta.isWritable,
+      isSigner: meta.isSigner
+    })),
     ghostUsdcAta: ghostUsdcAta.toBase58(),
     err: sim.value.err,
     unitsConsumed: sim.value.unitsConsumed ?? null,

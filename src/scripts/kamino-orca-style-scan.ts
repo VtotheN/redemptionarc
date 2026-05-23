@@ -1,6 +1,9 @@
 import "dotenv/config";
 import dotenv from "dotenv";
 import fs from "node:fs";
+import { LAMPORTS_PER_SOL } from "@solana/web3.js";
+import { loadConfig } from "../config.js";
+import { connectionFor } from "../utils/rpc.js";
 import { writeReceipt } from "../utils/receipt.js";
 
 if (process.env.ENV_PATH) {
@@ -62,7 +65,14 @@ function analyze(id: string, label: string, env: Record<string, string>) {
 }
 
 async function main() {
+  const config = loadConfig();
+  const connection = connectionFor(config.rpcUrl);
   const currentQuote = await jupiterSolUsdc();
+  const minMarginUsd = Number(process.env.KAMINO_WINDOW_MIN_MARGIN_USD || "0.05");
+  const minFloatBufferSol = Number(process.env.KAMINO_WINDOW_MIN_FLOAT_BUFFER_SOL || "0.02");
+  const crankSol = config.crank
+    ? (await connection.getBalance(config.crank, "confirmed")) / LAMPORTS_PER_SOL
+    : null;
   const profiles = [
     analyze("003", "aggressive treasury-positive", {
       SOL_PRICE_USD: "86.75",
@@ -84,16 +94,27 @@ async function main() {
 
   const bestRepeatableCandidate = profiles
     .filter((profile: any) => profile.breakEvenSolUsd != null)
-    .sort((a: any, b: any) => b.netAtReceiptPrice - a.netAtReceiptPrice)[0] as any | undefined;
-  const liveWindow = bestRepeatableCandidate?.breakEvenSolUsd != null && currentQuote != null
-    ? currentQuote < bestRepeatableCandidate.breakEvenSolUsd
+    .map((profile: any) => ({
+      ...profile,
+      minRequiredFloatSol: profile.solCost + minFloatBufferSol,
+      floatReady: crankSol == null ? false : crankSol >= profile.solCost + minFloatBufferSol,
+      projectedNetAtCurrentQuote:
+        currentQuote == null ? null : profile.treasuryUsdcDelta - profile.solCost * currentQuote
+    }))
+    .filter((profile: any) => profile.floatReady)
+    .sort((a: any, b: any) => (b.projectedNetAtCurrentQuote ?? -Infinity) - (a.projectedNetAtCurrentQuote ?? -Infinity))[0] as any | undefined;
+  const liveWindow = bestRepeatableCandidate?.projectedNetAtCurrentQuote != null
+    ? bestRepeatableCandidate.projectedNetAtCurrentQuote >= minMarginUsd
     : false;
 
   const receipt = {
     verdict: liveWindow ? "KAMINO_ORCA_STYLE_WINDOW_OPEN_NO_SEND" : "KAMINO_ORCA_STYLE_WINDOW_CLOSED",
     generatedAt: new Date().toISOString(),
     currentJupiterSolUsdc: currentQuote,
-    rule: "For Kamino baseline, only consider live when current SOL/USDC quote is below the empirical break-even of the selected profile and no-send simulation passes.",
+    minMarginUsd,
+    minFloatBufferSol,
+    crankSol,
+    rule: "For Kamino baseline, only consider live when projected net at the current SOL/USDC quote clears minMarginUsd and no-send simulation passes.",
     orcaStyleCostControls: {
       tx2CuPriceMicroLamports: 100,
       keepWsolAtaOpen: true,
@@ -102,7 +123,14 @@ async function main() {
       cushionPolicy: "use empirical min cushion profile; do not over-cushion for treasury-only optics",
       slippagePolicy: "quote immediately before TX0 and reject if quote moved past break-even"
     },
-    profiles,
+    profiles: profiles.map((profile: any) => ({
+      ...profile,
+      projectedNetAtCurrentQuote:
+        currentQuote == null ? null : profile.treasuryUsdcDelta - profile.solCost * currentQuote
+      ,
+      minRequiredFloatSol: profile.solCost + minFloatBufferSol,
+      floatReady: crankSol == null ? false : crankSol >= profile.solCost + minFloatBufferSol
+    })),
     selected: bestRepeatableCandidate ?? null,
     liveWindow,
     next: liveWindow
