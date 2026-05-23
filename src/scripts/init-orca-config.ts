@@ -22,10 +22,6 @@ import {
 const TICK_SPACING = Number(process.env.ORCA_TICK_SPACING || "64");
 const DEFAULT_FEE_RATE = Number(process.env.ORCA_FEE_RATE || "300");
 const DEFAULT_PROTOCOL_FEE_RATE = Number(process.env.ORCA_PROTOCOL_FEE_RATE || "300");
-const MAINNET_INITIALIZE_CONFIG_ADMINS = new Set([
-  "GwH3Hiv5mACLX3ufTw1pFsrhSPon5tdw252DBs4Rx4PV",
-  "AqiJTdr9jLPDAk5prGhWFHtSM1qJszAsdZVV7oeinxhh"
-]);
 
 async function maybePush(ixs: TransactionInstruction[], exists: boolean, ix: TransactionInstruction): Promise<void> {
   if (!exists) ixs.push(ix);
@@ -126,20 +122,8 @@ async function main() {
       whirlpoolsConfigExtension: Boolean(extensionInfo),
       feeTier: Boolean(feeTierInfo)
     },
-    mainnetInitializeConfigAdmins: Array.from(MAINNET_INITIALIZE_CONFIG_ADMINS),
-    upstreamConstraint: "Current Orca mainnet initialize_config requires is_admin_key(funder.key).",
     instructions: ixs.map(serializableInstruction)
   };
-
-  if (!configInfo && !MAINNET_INITIALIZE_CONFIG_ADMINS.has(funder.publicKey.toBase58())) {
-    receipt.verdict = "ORCA_CONFIG_BLOCKED_NON_ADMIN_FUNDER";
-    receipt.blockedReason = "Canonical Orca Whirlpool mainnet does not allow arbitrary funders to initialize new WhirlpoolsConfig accounts.";
-    receipt.source = "orca-so/whirlpools programs/whirlpool/src/instructions/initialize_config.rs: #[account(mut, constraint = is_admin_key(funder.key))]";
-    const out = writeReceipt("REDEMPTION-ORCA-CONFIG.json", receipt);
-    console.log(`${receipt.verdict} funder=${funder.publicKey.toBase58()} receipt=${out}`);
-    process.exitCode = 1;
-    return;
-  }
 
   if (ixs.length === 0) {
     receipt.verdict = "ORCA_CONFIG_ALREADY_INITIALIZED";

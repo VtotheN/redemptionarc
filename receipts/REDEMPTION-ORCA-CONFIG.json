@@ -1,6 +1,6 @@
 {
-  "verdict": "ORCA_CONFIG_BLOCKED_NON_ADMIN_FUNDER",
-  "generatedAt": "2026-05-23T11:13:56.947Z",
+  "verdict": "ORCA_CONFIG_SIM_FAILED",
+  "generatedAt": "2026-05-23T11:21:24.883Z",
   "dryRun": true,
   "allowLive": false,
   "liveTxApproved": false,
@@ -27,11 +27,6 @@
     "whirlpoolsConfigExtension": false,
     "feeTier": false
   },
-  "mainnetInitializeConfigAdmins": [
-    "GwH3Hiv5mACLX3ufTw1pFsrhSPon5tdw252DBs4Rx4PV",
-    "AqiJTdr9jLPDAk5prGhWFHtSM1qJszAsdZVV7oeinxhh"
-  ],
-  "upstreamConstraint": "Current Orca mainnet initialize_config requires is_admin_key(funder.key).",
   "instructions": [
     {
       "programId": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
@@ -117,6 +112,24 @@
       "dataHex": "b74a9ca070022a1e40002c01"
     }
   ],
-  "blockedReason": "Canonical Orca Whirlpool mainnet does not allow arbitrary funders to initialize new WhirlpoolsConfig accounts.",
-  "source": "orca-so/whirlpools programs/whirlpool/src/instructions/initialize_config.rs: #[account(mut, constraint = is_admin_key(funder.key))]"
+  "simulation": {
+    "err": {
+      "InstructionError": [
+        0,
+        {
+          "Custom": 2003
+        }
+      ]
+    },
+    "unitsConsumed": 5730,
+    "logs": [
+      "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc invoke [1]",
+      "Program log: Instruction: InitializeConfig",
+      "Program 11111111111111111111111111111111 invoke [2]",
+      "Program 11111111111111111111111111111111 success",
+      "Program log: AnchorError caused by account: funder. Error Code: ConstraintRaw. Error Number: 2003. Error Message: A raw constraint was violated.",
+      "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc consumed 5730 of 600000 compute units",
+      "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc failed: custom program error: 0x7d3"
+    ]
+  }
 }
