@@ -64,6 +64,7 @@
     "harvest-withheld": "tsx src/scripts/harvest-withheld.ts",
     "flywheel-bot": "tsx src/scripts/flywheel-bot.ts",
     "fork-readiness": "tsx src/scripts/fork-readiness.ts",
+    "fee-singularity-plan": "tsx src/scripts/fee-singularity-plan.ts",
     "kpx9-transfer-authority": "tsx src/scripts/kpx9-transfer-authority.ts",
     "stacc-autopsy": "tsx src/scripts/stacc-autopsy.ts",
     "orca-owned-fee-source-scan": "tsx src/scripts/orca-owned-fee-source-scan.ts",
