@@ -1,0 +1,9 @@
+{
+  "verdict": "DRY_RUN",
+  "poolId": "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV",
+  "seedUsdcUi": 500,
+  "seedHopUi": 5000000,
+  "impliedPriceUsd": 0.0001,
+  "dryRun": true,
+  "signature": null
+}

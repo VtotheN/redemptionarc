@@ -1,6 +1,6 @@
 {
   "verdict": "AGGRESSIVE_READINESS_BLOCKED",
-  "generatedAt": "2026-05-23T02:12:39.574Z",
+  "generatedAt": "2026-05-23T10:32:06.036Z",
   "selectedPlan": {
     "targetNetUsd": 25,
     "requiredCushionExtraUsdc": 34.681331332666666,
@@ -18,7 +18,7 @@
       "projectedDailyNetUsd": 25000.0005005
     }
   },
-  "crankSol": 0.320963276,
+  "crankSol": 0.111882676,
   "accountChecks": {
     "treasuryUsdcAta": {
       "address": "CmTzJnUE1sU6cn4rg3VW81ZB6GJ14LC3fE5PuxrauUsQ",
@@ -42,7 +42,7 @@
     }
   },
   "blockers": [
-    "crank underfunded: 0.320963276 SOL < 0.443596051 SOL"
+    "crank underfunded: 0.111882676 SOL < 0.443596051 SOL"
   ],
   "next": "Resolve blockers, then rerun aggressive-readiness."
 }

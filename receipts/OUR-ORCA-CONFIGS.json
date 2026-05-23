@@ -1,0 +1,40 @@
+{
+  "verdict": "NO_OUR_ORCA_CONFIGS_FOUND",
+  "generatedAt": "2026-05-23T11:14:45.480Z",
+  "orcaWhirlpoolProgram": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+  "filters": {
+    "discriminator": [
+      11,
+      164,
+      58,
+      0,
+      171,
+      20,
+      87,
+      66
+    ],
+    "discriminatorBase58": "2wwMqs93EBT",
+    "feeAuthorityOffset": 8
+  },
+  "authorityScans": [
+    {
+      "envName": "REDEMPTION_TREASURY",
+      "authority": "BGM3VPeND4xts3J6WeaeRJVFpzAJhyJiqycqYP2vk6dV",
+      "count": 0,
+      "configs": []
+    },
+    {
+      "envName": "REDEMPTION_CRANK",
+      "authority": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+      "count": 0,
+      "configs": []
+    },
+    {
+      "envName": "REDEMPTION_WITHDRAW_AUTHORITY",
+      "authority": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+      "count": 0,
+      "configs": []
+    }
+  ],
+  "totalMatches": 0
+}

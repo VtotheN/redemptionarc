@@ -11,6 +11,9 @@
  *   T22_FEE_BPS=690
  *   MAX_CYCLES=0             (0 = infinite)
  *   SELL_EVERY_N_CYCLES=50   (trigger sell-hop-fees every N cycles, 0=never)
+ *   ATOMIC=false             (true = use volume-bot-atomic.ts single-TX flash loop)
+ *   FLASH_USDC=10000         (atomic mode only)
+ *   ADDLIQ_USDC=5000         (atomic mode only)
  */
 import "dotenv/config";
 import { execSync } from "child_process";
@@ -25,9 +28,19 @@ const maxCycles     = Number(process.env.MAX_CYCLES          || "0");
 const sellEveryN    = Number(process.env.SELL_EVERY_N_CYCLES || "0");
 const sellMinUsd    = process.env.SELL_HOP_MIN_USD || "1.0";
 const rpc           = process.env.SOLANA_RPC_URL || "https://api.mainnet-beta.solana.com";
+const atomic        = process.env.ATOMIC === "true";
 
-const ENV_PREFIX = `SOLANA_RPC_URL="${rpc}" DRY_RUN=false ALLOW_LIVE=true ` +
-  `SWAP_USDC=${swapUsdc} SLIPPAGE_BPS=${slippageBps} T22_FEE_BPS=${t22FeeBps}`;
+const ATOMIC_ENV = atomic
+  ? `SOLANA_RPC_URL="${rpc}" DRY_RUN=false ALLOW_LIVE=true ` +
+    `SWAP_USDC=${swapUsdc} SLIPPAGE_BPS=${slippageBps} ` +
+    `FLASH_USDC=${process.env.FLASH_USDC || "10000"} ` +
+    `ADDLIQ_USDC=${process.env.ADDLIQ_USDC || "5000"} ` +
+    `JITO_TIP_LAMPORTS=${process.env.JITO_TIP_LAMPORTS || "200000"} ` +
+    `CU_LIMIT=${process.env.CU_LIMIT || "600000"} ` +
+    `CU_PRICE=${process.env.CU_PRICE || "10000"} ` +
+    `ALT_ADDRESS=${process.env.ALT_ADDRESS || "7bdFfzqrpYxB4bzd6NmzWi5SRK5XMYVMg8RXu7X2Jpfp"}`
+  : `SOLANA_RPC_URL="${rpc}" DRY_RUN=false ALLOW_LIVE=true ` +
+    `SWAP_USDC=${swapUsdc} SLIPPAGE_BPS=${slippageBps} T22_FEE_BPS=${t22FeeBps}`;
 
 interface WorkerState {
   id: number;
@@ -41,9 +54,10 @@ let globalCycles = 0;
 const startTime = Date.now();
 
 function runVolumeBot(workerId: number): number {
+  const script = atomic ? "src/scripts/volume-bot-atomic.ts" : "src/scripts/volume-bot.ts";
   const out = execSync(
-    `${ENV_PREFIX} tsx src/scripts/volume-bot.ts 2>&1`,
-    { encoding: "utf8", timeout: 60000 }
+    `${ATOMIC_ENV} tsx ${script} 2>&1`,
+    { encoding: "utf8", timeout: 120000 }
   );
   const netLine = out.match(/Net round-trip:\s*([+-]?\$?[\d.]+)/);
   const net = netLine ? Number(netLine[1].replace("$", "")) : 0;
@@ -103,7 +117,11 @@ async function workerLoop(state: WorkerState) {
 
 (async () => {
   console.log("=== VOLUME BOT LOOP ===");
+  console.log(`mode: ${atomic ? "ATOMIC (flash+addLiq+swap+removeLiq)" : "STANDARD (2-TX swap)"}`);
   console.log(`workers: ${workers}  interval: ${intervalMs}ms  swap: $${swapUsdc}  slip: ${slippageBps}bps`);
+  if (atomic) {
+    console.log(`flash: $${process.env.FLASH_USDC || "10000"}  addLiq: $${process.env.ADDLIQ_USDC || "5000"}`);
+  }
   console.log(`maxCycles: ${maxCycles || "∞"}  sellEvery: ${sellEveryN || "never"}`);
   console.log();
 

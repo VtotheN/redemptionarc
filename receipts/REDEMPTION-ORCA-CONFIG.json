@@ -1,0 +1,122 @@
+{
+  "verdict": "ORCA_CONFIG_BLOCKED_NON_ADMIN_FUNDER",
+  "generatedAt": "2026-05-23T11:13:56.947Z",
+  "dryRun": true,
+  "allowLive": false,
+  "liveTxApproved": false,
+  "whirlpoolProgram": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+  "createdAccountAddresses": {
+    "whirlpoolsConfig": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
+    "whirlpoolsConfigExtension": "CdCCzcpVj1tqevHyo1ejNtjoc3QvYYmNw3PmHLLkLmGP",
+    "feeTier": "A6UUtGsJ5KnhYxDVitCjftNw8EWdh2xJiXDJjuCpwu8G"
+  },
+  "authorities": {
+    "funder": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+    "feeAuthority": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+    "collectProtocolFeesAuthority": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+    "rewardEmissionsSuperAuthority": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+    "tokenBadgeAuthority": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S"
+  },
+  "params": {
+    "tickSpacing": 64,
+    "defaultFeeRate": 300,
+    "defaultProtocolFeeRate": 300
+  },
+  "preExisting": {
+    "whirlpoolsConfig": false,
+    "whirlpoolsConfigExtension": false,
+    "feeTier": false
+  },
+  "mainnetInitializeConfigAdmins": [
+    "GwH3Hiv5mACLX3ufTw1pFsrhSPon5tdw252DBs4Rx4PV",
+    "AqiJTdr9jLPDAk5prGhWFHtSM1qJszAsdZVV7oeinxhh"
+  ],
+  "upstreamConstraint": "Current Orca mainnet initialize_config requires is_admin_key(funder.key).",
+  "instructions": [
+    {
+      "programId": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+      "keys": [
+        {
+          "pubkey": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
+          "isSigner": true,
+          "isWritable": true
+        },
+        {
+          "pubkey": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+          "isSigner": true,
+          "isWritable": true
+        },
+        {
+          "pubkey": "11111111111111111111111111111111",
+          "isSigner": false,
+          "isWritable": false
+        }
+      ],
+      "dataHex": "d07f1501c2bec446742d29d44da26f63db2671076d7791366e377909185f732c4459a4d37a935189742d29d44da26f63db2671076d7791366e377909185f732c4459a4d37a935189742d29d44da26f63db2671076d7791366e377909185f732c4459a4d37a9351892c01"
+    },
+    {
+      "programId": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+      "keys": [
+        {
+          "pubkey": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
+          "isSigner": false,
+          "isWritable": false
+        },
+        {
+          "pubkey": "CdCCzcpVj1tqevHyo1ejNtjoc3QvYYmNw3PmHLLkLmGP",
+          "isSigner": false,
+          "isWritable": true
+        },
+        {
+          "pubkey": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+          "isSigner": true,
+          "isWritable": true
+        },
+        {
+          "pubkey": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+          "isSigner": true,
+          "isWritable": false
+        },
+        {
+          "pubkey": "11111111111111111111111111111111",
+          "isSigner": false,
+          "isWritable": false
+        }
+      ],
+      "dataHex": "370935097239d134"
+    },
+    {
+      "programId": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+      "keys": [
+        {
+          "pubkey": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
+          "isSigner": false,
+          "isWritable": false
+        },
+        {
+          "pubkey": "A6UUtGsJ5KnhYxDVitCjftNw8EWdh2xJiXDJjuCpwu8G",
+          "isSigner": false,
+          "isWritable": true
+        },
+        {
+          "pubkey": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+          "isSigner": true,
+          "isWritable": true
+        },
+        {
+          "pubkey": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+          "isSigner": true,
+          "isWritable": false
+        },
+        {
+          "pubkey": "11111111111111111111111111111111",
+          "isSigner": false,
+          "isWritable": false
+        }
+      ],
+      "dataHex": "b74a9ca070022a1e40002c01"
+    }
+  ],
+  "blockedReason": "Canonical Orca Whirlpool mainnet does not allow arbitrary funders to initialize new WhirlpoolsConfig accounts.",
+  "source": "orca-so/whirlpools programs/whirlpool/src/instructions/initialize_config.rs: #[account(mut, constraint = is_admin_key(funder.key))]"
+}

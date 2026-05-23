@@ -1,7 +1,12 @@
 import "dotenv/config";
 import dotenv from "dotenv";
+import fs from "node:fs";
 import { PublicKey } from "@solana/web3.js";
 import { HOP_MINT_DEFAULT, USDC_MINT_DEFAULT } from "./constants.js";
+
+if (!process.env.ENV_PATH && fs.existsSync(".env.redemptionarc")) {
+  dotenv.config({ path: ".env.redemptionarc", override: false });
+}
 
 if (process.env.ENV_PATH) {
   dotenv.config({ path: process.env.ENV_PATH, override: true });

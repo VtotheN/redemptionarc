@@ -1,0 +1,116 @@
+{
+  "verdict": "MARGINFI_RECEIPTS_SUMMARIZED",
+  "generatedAt": "2026-05-23T10:47:57.567Z",
+  "files": [
+    "receipts/REDEMPTION-MARGINFI-ACCOUNT-SETUP-LATEST.json",
+    "receipts/REDEMPTION-MARGINFI-ADAPTER-SCAN-LATEST.json",
+    "receipts/REDEMPTION-MARGINFI-CYCLE-PLAN-LATEST.json",
+    "receipts/REDEMPTION-MARGINFI-RAW-BORROW-REPAY-SIM-LATEST.json",
+    "receipts/REDEMPTION-MARGINFI-RAW-FLASH-PLAN-LATEST.json",
+    "receipts/REDEMPTION-MARGINFI-RAW-FLASH-SIM-LATEST.json",
+    "receipts/REDEMPTION-MARGINFI-STATUS.json"
+  ],
+  "selected": {
+    "usdcBank": "2s37akK2eyBbp8DZgCm7RtsaEz8eJP3Nxd4urLHQv7yB",
+    "liquidityVault": "7jaiZR5Sk8hdYN9MxTpczTcwbWpb5WEoxSANuUwveuat",
+    "marginfiAccount": "9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz",
+    "authority": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+    "marginfiGroup": "4qp6Fx6tnZkY5Wropq9wUYgtFxXKwE6viZxFHg3rdAG8"
+  },
+  "extractedCandidates": {
+    "marginfiAccounts": [
+      "9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz"
+    ],
+    "usdcBanks": [
+      "2s37akK2eyBbp8DZgCm7RtsaEz8eJP3Nxd4urLHQv7yB"
+    ]
+  },
+  "topUsdcBankFromReceipt": {
+    "address": "2s37akK2eyBbp8DZgCm7RtsaEz8eJP3Nxd4urLHQv7yB",
+    "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "group": "4qp6Fx6tnZkY5Wropq9wUYgtFxXKwE6viZxFHg3rdAG8",
+    "liquidityVault": "7jaiZR5Sk8hdYN9MxTpczTcwbWpb5WEoxSANuUwveuat",
+    "liquidityUsdc": 560800.758862
+  },
+  "currentBorrowCapacity": {
+    "source": "selected USDC bank liquidity vault token balance; flash capacity proxy, not account-health borrow headroom",
+    "bank": "2s37akK2eyBbp8DZgCm7RtsaEz8eJP3Nxd4urLHQv7yB",
+    "liquidityVault": "7jaiZR5Sk8hdYN9MxTpczTcwbWpb5WEoxSANuUwveuat",
+    "amount": "555616020627",
+    "decimals": 6,
+    "uiAmount": 555616.020627,
+    "uiAmountString": "555616.020627"
+  },
+  "receiptSummaries": [
+    {
+      "file": "receipts/REDEMPTION-MARGINFI-ACCOUNT-SETUP-LATEST.json",
+      "verdict": "MARGINFI_ACCOUNT_CREATED",
+      "generatedAt": "2026-05-22T18:07:54.505Z",
+      "marginfiAccount": "9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz",
+      "usdcBank": null,
+      "liquidityVault": null,
+      "amountUsdc": null,
+      "unitsConsumed": null
+    },
+    {
+      "file": "receipts/REDEMPTION-MARGINFI-ADAPTER-SCAN-LATEST.json",
+      "verdict": "MARGINFI_ADAPTER_SCAN_READY_RAW_PATH",
+      "generatedAt": "2026-05-23T02:13:33.520Z",
+      "marginfiAccount": "9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz",
+      "usdcBank": "2s37akK2eyBbp8DZgCm7RtsaEz8eJP3Nxd4urLHQv7yB",
+      "liquidityVault": "7jaiZR5Sk8hdYN9MxTpczTcwbWpb5WEoxSANuUwveuat",
+      "amountUsdc": null,
+      "unitsConsumed": null
+    },
+    {
+      "file": "receipts/REDEMPTION-MARGINFI-CYCLE-PLAN-LATEST.json",
+      "verdict": "MARGINFI_CYCLE_PLAN_PROFITABLE",
+      "generatedAt": "2026-05-23T06:25:26.017Z",
+      "marginfiAccount": null,
+      "usdcBank": null,
+      "liquidityVault": null,
+      "amountUsdc": null,
+      "unitsConsumed": null
+    },
+    {
+      "file": "receipts/REDEMPTION-MARGINFI-RAW-BORROW-REPAY-SIM-LATEST.json",
+      "verdict": "MARGINFI_RAW_BORROW_REPAY_SIM_OK",
+      "generatedAt": "2026-05-23T06:24:31.732Z",
+      "marginfiAccount": "9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz",
+      "usdcBank": "2s37akK2eyBbp8DZgCm7RtsaEz8eJP3Nxd4urLHQv7yB",
+      "liquidityVault": "7jaiZR5Sk8hdYN9MxTpczTcwbWpb5WEoxSANuUwveuat",
+      "amountUsdc": 39,
+      "unitsConsumed": 163675
+    },
+    {
+      "file": "receipts/REDEMPTION-MARGINFI-RAW-FLASH-PLAN-LATEST.json",
+      "verdict": "MARGINFI_RAW_FLASH_PLAN_READY_NO_SEND",
+      "generatedAt": "2026-05-22T18:09:21.233Z",
+      "marginfiAccount": "9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz",
+      "usdcBank": null,
+      "liquidityVault": null,
+      "amountUsdc": null,
+      "unitsConsumed": null
+    },
+    {
+      "file": "receipts/REDEMPTION-MARGINFI-RAW-FLASH-SIM-LATEST.json",
+      "verdict": "MARGINFI_RAW_FLASH_EMPTY_SIM_OK",
+      "generatedAt": "2026-05-23T02:13:23.252Z",
+      "marginfiAccount": "9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz",
+      "usdcBank": null,
+      "liquidityVault": null,
+      "amountUsdc": null,
+      "unitsConsumed": 6577
+    },
+    {
+      "file": "receipts/REDEMPTION-MARGINFI-STATUS.json",
+      "verdict": "MARGINFI_RECEIPTS_SUMMARIZED",
+      "generatedAt": "2026-05-23T10:46:28.401Z",
+      "marginfiAccount": null,
+      "usdcBank": null,
+      "liquidityVault": null,
+      "amountUsdc": null,
+      "unitsConsumed": null
+    }
+  ]
+}

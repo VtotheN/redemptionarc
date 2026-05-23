@@ -1,0 +1,9 @@
+{
+  "verdict": "EXECUTED",
+  "poolId": "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV",
+  "lpRemoved": "48244170532",
+  "removePct": 100,
+  "estUsdcOut": 0,
+  "dryRun": false,
+  "signature": "3E5AuYTyGezntsmssedX9raMKUoJZ2HPRooScCabDzSGSwyVMsmtvytvp7daX3jU6wJoHVLucFPeiGda9yLgF5m1"
+}

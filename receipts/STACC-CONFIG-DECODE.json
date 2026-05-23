@@ -1,0 +1,29 @@
+{
+  "verdict": "STACC_CONFIG_DECODED_READ_ONLY",
+  "generatedAt": "2026-05-23T10:47:57.459Z",
+  "orcaWhirlpoolProgram": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+  "config": {
+    "address": "D8WBXfePEmWoK27pRoCKvzfsjZrWZJVmGN9tZguvnKBB",
+    "exists": true,
+    "owner": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+    "lamports": 1642560,
+    "dataLength": 108,
+    "discriminator": [
+      157,
+      20,
+      49,
+      224,
+      217,
+      87,
+      193,
+      254
+    ],
+    "discriminatorHex": "9d1431e0d957c1fe",
+    "isExpectedDiscriminator": false,
+    "feeAuthority": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+    "collectProtocolFeesAuthority": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+    "rewardEmissionsSuperAuthority": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+    "defaultProtocolFeeRate": 300,
+    "layoutAssumption": "Anchor WhirlpoolsConfig: disc[0..8], fee_authority[8..40], collect_protocol_fees_authority[40..72], reward_emissions_super_authority[72..104], default_protocol_fee_rate u16 LE at 104."
+  }
+}

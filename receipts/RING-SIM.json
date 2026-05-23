@@ -1,0 +1,102 @@
+{
+  "verdict": "RING_SIM_MODELED_NO_SEND",
+  "generatedAt": "2026-05-23T11:04:44.100Z",
+  "mode": "pure math plus prior on-chain CU observations; generated bot pubkeys are ephemeral and not saved",
+  "generatedBotPubkeys": [
+    "9kSe3FJSPSudm6N71wJaRZRdJPuGDJTGT26FHj3dKhey",
+    "HQepqqRbZ1oZgi2RThRZdc7RDJZBWs5ftKYhSVGpeFQh",
+    "GukRsNAgqz2Ns76H8n28nskZweqgGQEzqSUnbo1UJAeC",
+    "6X7u4WugqdEPa6uVNmuqGZKNmuxQVo4U5vn5YvSLdcUV"
+  ],
+  "mints": {
+    "hopFromPlan": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+    "hopFromEnv": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+    "envMismatch": false
+  },
+  "transferFeeBps": 690,
+  "startingHopRaw": "1000000",
+  "startingHopUi": 1,
+  "ring": {
+    "hops": [
+      {
+        "from": "bot1",
+        "to": "bot2",
+        "inputRaw": "1000000",
+        "feeRaw": "69000",
+        "deliveredRaw": "931000"
+      },
+      {
+        "from": "bot2",
+        "to": "bot3",
+        "inputRaw": "931000",
+        "feeRaw": "64239",
+        "deliveredRaw": "866761"
+      },
+      {
+        "from": "bot3",
+        "to": "bot4",
+        "inputRaw": "866761",
+        "feeRaw": "59807",
+        "deliveredRaw": "806954"
+      },
+      {
+        "from": "bot4",
+        "to": "bot1",
+        "inputRaw": "806954",
+        "feeRaw": "55680",
+        "deliveredRaw": "751274"
+      }
+    ],
+    "totalFeeRaw": "248726",
+    "endingRaw": "751274"
+  },
+  "expectedFromPrompt": {
+    "totalWithheldRaw": "248726",
+    "matches": true
+  },
+  "computeModel": {
+    "computeLimit": 1200000,
+    "perTransferCuObservedFromStaccTx": 3217,
+    "perRingCuObserved": 12868,
+    "fixedMarginfiBorrowRepayCuFromLocalReceipt": 163675,
+    "nRingsByCompute": 80,
+    "caveat": "Compute-only ceiling; Solana packet/message size may cap repeated ring instructions below this unless split across bundle transactions."
+  },
+  "bundleModel": {
+    "nRings": 80,
+    "withheldHopRaw": "19898080",
+    "withheldHopUi": 19.89808,
+    "gasLamports": "36200",
+    "gasSol": 0.0000362,
+    "gasUsd": 0.003258,
+    "baseFeeLamports": "25000",
+    "priorityFeeLamports": "1200",
+    "jitoTipLamports": "10000",
+    "signerCount": 5,
+    "cuPriceMicroLamports": "1000",
+    "breakEvenHopUsdc": 0.00016373439045375233
+  },
+  "oneRingBreakEven": {
+    "withheldHopRaw": "248726",
+    "withheldHopUi": 0.248726,
+    "breakEvenHopUsdc": 0.013098751236300187
+  },
+  "marketData": {
+    "solPriceUsd": {
+      "price": 90,
+      "source": "fallback env/default after Jupiter quote failure",
+      "quoteError": {
+        "ok": false,
+        "error": "fetch failed"
+      }
+    },
+    "hopToUsdcJupiterQuote": {
+      "unavailable": true,
+      "error": {
+        "ok": false,
+        "error": "fetch failed"
+      }
+    }
+  },
+  "cashProofGate": "Non-cash until withheld HOP is withdrawn by REDEMPTION_WITHDRAW_AUTHORITY and sold to spendable USDC/SOL after gas."
+}

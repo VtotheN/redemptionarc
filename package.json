@@ -52,7 +52,12 @@
     "flash-deep-vol": "tsx src/scripts/flash-deep-vol.ts",
     "create-vol-alt": "tsx src/scripts/create-vol-alt.ts",
     "flash-deep-vol-loop": "tsx src/scripts/flash-deep-vol-loop.ts",
-    "volume-bot-loop": "tsx src/scripts/volume-bot-loop.ts"
+    "volume-bot-loop": "tsx src/scripts/volume-bot-loop.ts",
+    "volume-bot-atomic": "tsx src/scripts/volume-bot-atomic.ts",
+    "init-orca-config": "tsx src/scripts/init-orca-config.ts",
+    "init-hop-token-badge": "tsx src/scripts/init-hop-token-badge.ts",
+    "ring-bot": "tsx src/scripts/ring-bot.ts",
+    "harvest-withheld": "tsx src/scripts/harvest-withheld.ts"
   },
   "dependencies": {
     "@mrgnlabs/marginfi-client-v2": "^6.4.1",

@@ -1,0 +1,44 @@
+{
+  "verdict": "HARVEST_WITHHELD_NO_SOURCE_ACCOUNTS",
+  "generatedAt": "2026-05-23T11:13:45.512Z",
+  "dryRun": true,
+  "allowLive": false,
+  "liveTxApproved": false,
+  "hopMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+  "withdrawAuthority": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+  "destinationAta": "2s2Au2bxsvF5cHbdhfP4JaFX8FXp5wXzQxBj15PNPEkD",
+  "hop_harvested": 0,
+  "harvestedRaw": "0",
+  "usdc_equivalent": null,
+  "jupiterQuote": null,
+  "sources": [
+    {
+      "bot": 1,
+      "owner": "GB2zDSh8jphhJn7EcE3Mf3RCHv2SQVJVQfR18qMhte6r",
+      "ata": "GWn9akYUAbYmXY2SNphc1APboCNf4rFRecJ7ZLmT6b6U",
+      "exists": false,
+      "error": ""
+    },
+    {
+      "bot": 2,
+      "owner": "8ytXBomj5jrE3PosJTA6fnsvDDfuAQfreVJKPGBsPoQs",
+      "ata": "AsRafRKmK4rY9FjVk5AywfzZL4xvgueigvvFY2iHjhgz",
+      "exists": false,
+      "error": ""
+    },
+    {
+      "bot": 3,
+      "owner": "EYSkQkFgW1q1TUSCn4EzeSvEQFvh4YGy4y63xiR9M1Ta",
+      "ata": "4kDyFrvEt7Mq5PDuduHgnGBtb6nMF2cnnvdvqMBNuxQb",
+      "exists": false,
+      "error": ""
+    },
+    {
+      "bot": 4,
+      "owner": "APUSE85XDsJ1MKj9Rwy2CJuxTSKfY6bZaBhRNtSEUi6f",
+      "ata": "3ZAmNycfPDRx6D69TuYWUVryek365kYZi8eXQ7hizUd9",
+      "exists": false,
+      "error": ""
+    }
+  ]
+}

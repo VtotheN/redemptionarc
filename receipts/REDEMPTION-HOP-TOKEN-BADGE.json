@@ -1,0 +1,62 @@
+{
+  "verdict": "HOP_TOKEN_BADGE_BLOCKED_MISSING_CONFIG",
+  "generatedAt": "2026-05-23T11:14:03.663Z",
+  "dryRun": true,
+  "allowLive": false,
+  "liveTxApproved": false,
+  "whirlpoolProgram": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+  "whirlpoolsConfig": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
+  "whirlpoolsConfigExtension": "CdCCzcpVj1tqevHyo1ejNtjoc3QvYYmNw3PmHLLkLmGP",
+  "hopMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+  "tokenBadge": "7mbhwo5T916Xkp1PduX1GzETZzkTZo5wbVBFRsuMe1NU",
+  "authorities": {
+    "funder": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+    "tokenBadgeAuthority": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S"
+  },
+  "preExisting": {
+    "whirlpoolsConfig": false,
+    "whirlpoolsConfigExtension": false,
+    "tokenBadge": false
+  },
+  "instruction": {
+    "programId": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+    "keys": [
+      {
+        "pubkey": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
+        "isSigner": false,
+        "isWritable": false
+      },
+      {
+        "pubkey": "CdCCzcpVj1tqevHyo1ejNtjoc3QvYYmNw3PmHLLkLmGP",
+        "isSigner": false,
+        "isWritable": false
+      },
+      {
+        "pubkey": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+        "isSigner": true,
+        "isWritable": false
+      },
+      {
+        "pubkey": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+        "isSigner": false,
+        "isWritable": false
+      },
+      {
+        "pubkey": "7mbhwo5T916Xkp1PduX1GzETZzkTZo5wbVBFRsuMe1NU",
+        "isSigner": false,
+        "isWritable": true
+      },
+      {
+        "pubkey": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+        "isSigner": true,
+        "isWritable": true
+      },
+      {
+        "pubkey": "11111111111111111111111111111111",
+        "isSigner": false,
+        "isWritable": false
+      }
+    ],
+    "dataHex": "fd4dcd5f1be059df"
+  }
+}

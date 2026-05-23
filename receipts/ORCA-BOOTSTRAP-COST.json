@@ -1,0 +1,131 @@
+{
+  "verdict": "ORCA_BOOTSTRAP_COST_ESTIMATED_READ_ONLY",
+  "generatedAt": "2026-05-23T11:04:43.775Z",
+  "rpcUrlRedacted": "https://mainnet.helius-rpc.com/?api-key=<redacted>",
+  "sourceOfSizes": "Orca generated client @orca-so/whirlpools-client@7.0.0 for account sizes; SPL Token getAccountLen for vaults.",
+  "accountSizes": {
+    "whirlpoolsConfigCurrent": 108,
+    "whirlpoolsConfigUserConservative": 278,
+    "whirlpoolsConfigExtension": 104,
+    "feeTier": 44,
+    "tokenBadgeCurrent": 73,
+    "tokenBadgeUserConservative": 200,
+    "whirlpool": 653,
+    "tokenVaultUsdc": 165,
+    "tokenVaultHopT22TransferFeeAmount": 178,
+    "fixedTickArray": 9988
+  },
+  "rentLines": [
+    {
+      "name": "InitializeConfig / WhirlpoolsConfig",
+      "bytes": 108,
+      "rentLamports": 1642560,
+      "rentSol": 0.00164256,
+      "conservativeBytesFromPlan": 278
+    },
+    {
+      "name": "InitializeConfigExtension / WhirlpoolsConfigExtension",
+      "bytes": 104,
+      "rentLamports": 1614720,
+      "rentSol": 0.00161472
+    },
+    {
+      "name": "InitializeFeeTier tick_spacing=64 fee_rate=300",
+      "bytes": 44,
+      "rentLamports": 1197120,
+      "rentSol": 0.00119712
+    },
+    {
+      "name": "InitializeTokenBadge HOP",
+      "bytes": 73,
+      "rentLamports": 1398960,
+      "rentSol": 0.00139896,
+      "conservativeBytesFromPlan": 200
+    },
+    {
+      "name": "InitializePoolV2 / Whirlpool",
+      "bytes": 653,
+      "rentLamports": 5435760,
+      "rentSol": 0.00543576
+    },
+    {
+      "name": "Pool token vault A / USDC SPL token account",
+      "bytes": 165,
+      "rentLamports": 2039280,
+      "rentSol": 0.00203928
+    },
+    {
+      "name": "Pool token vault B / HOP Token-2022 transfer-fee account",
+      "bytes": 178,
+      "rentLamports": 2129760,
+      "rentSol": 0.00212976
+    },
+    {
+      "name": "InitializeTickArray lower",
+      "bytes": 9988,
+      "rentLamports": 70407360,
+      "rentSol": 0.07040736
+    },
+    {
+      "name": "InitializeTickArray current",
+      "bytes": 9988,
+      "rentLamports": 70407360,
+      "rentSol": 0.07040736
+    },
+    {
+      "name": "InitializeTickArray upper",
+      "bytes": 9988,
+      "rentLamports": 70407360,
+      "rentSol": 0.07040736
+    }
+  ],
+  "rentTotal": {
+    "lamports": 226680240,
+    "sol": 0.22668024,
+    "usdAtSolPrice": 20.4012216
+  },
+  "conservativeRentTotalUsingUserLargerConfigAndBadge": {
+    "lamports": 230529120,
+    "sol": 0.23052912,
+    "usdAtSolPrice": 20.7476208,
+    "deltaLines": [
+      {
+        "name": "Conservative extra WhirlpoolsConfig bytes from user estimate",
+        "bytes": 170,
+        "rentLamports": 2074080,
+        "rentSol": 0.00207408
+      },
+      {
+        "name": "Conservative extra TokenBadge bytes from user estimate",
+        "bytes": 127,
+        "rentLamports": 1774800,
+        "rentSol": 0.0017748
+      }
+    ]
+  },
+  "liquiditySeed": {
+    "usdc": 200,
+    "hopSide": "equivalent HOP at chosen pool start price",
+    "nonRentBudgetUsdBeforeSlippage": 400
+  },
+  "totalBootstrapBudget": {
+    "rentSol": 0.22668024,
+    "rentUsdAtSolPrice": 20.4012216,
+    "liquidityBudgetUsd": 400,
+    "totalUsdApprox": 420.4012216
+  },
+  "solPriceUsd": {
+    "price": 90,
+    "source": "fallback env/default after Jupiter quote failure",
+    "quoteError": {
+      "ok": false,
+      "error": "fetch failed"
+    }
+  },
+  "mints": {
+    "usdc": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "hopFromPlan": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+    "hopFromEnv": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+    "envMismatch": false
+  }
+}
