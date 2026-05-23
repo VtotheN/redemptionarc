@@ -1,34 +1,56 @@
 {
-  "verdict": "CASH_PROOF_FAILED",
-  "timestamp": "2026-05-23T17:52:12.965Z",
+  "verdict": "SIM_FAILED_PRECHECK_BLOCKED",
+  "timestamp": "2026-05-23T19:34:12.792Z",
   "dryRun": true,
-  "flashUsdc": 2,
+  "flashUsdc": 1000,
   "nBundles": 1,
   "poolSqrtPrice": "1844674407370955161600",
   "poolLiquidity": "78627479083",
   "feeRate": 300,
   "protocolFeeRate": 300,
   "t22Bps": 690,
-  "swap1HopOut": "19943286677",
-  "swap2HopIn": "18567199896",
-  "swap2UsdcEstOut": "1861210",
-  "protocolFeeUsdcPerBundle": "0.000018",
-  "protocolFeeHopPerBundle": "0.167104",
+  "targetT22Bps": 1,
+  "marginfiUsdcBank": "2s37akK2eyBbp8DZgCm7RtsaEz8eJP3Nxd4urLHQv7yB",
+  "marginfiUsdcAvailable": 426894.683642,
+  "minFlashUsdc": 1000,
+  "breakEvenFlashUsdc": 222.22222222222226,
+  "positionTickLower": 84480,
+  "positionTickUpper": 101312,
+  "maxFlashUsdcInCurrentRange": 365.181615,
+  "protocolFeeRoundTripRate": 0.000017999999999999997,
+  "gasUsdFloor": 0.004,
+  "swap1HopOut": "4401175830860",
+  "swap2HopIn": "4097494698530",
+  "swap2UsdcEstOut": "967978843",
+  "protocolFeeUsdcPerBundle": "0.009000",
+  "protocolFeeHopPerBundle": "36.877452",
   "protocolFeeOwedABefore": 0,
   "protocolFeeOwedBBefore": 0,
-  "walletUsdcDeltaBeforeCollect": "-0.138790",
-  "collectableProtocolUsdc": "0.000018",
-  "estimatedGasUsdc": "0.002251",
-  "cashNetUsdc": "-0.141023",
+  "walletUsdcDeltaBeforeCollect": "-32.021157",
+  "collectableProtocolUsdc": "0.009000",
+  "estimatedGasUsdc": "0.004000",
+  "cashNetUsdc": "-32.016157",
   "cashProofPass": false,
-  "simUnitsConsumed": 333965,
-  "simErr": null,
+  "cashGateReasons": [
+    "FLASH_AMOUNT_USDC 1000 exceeds current LP range capacity 365.181615",
+    "HOP Token-2022 fee is 690bps; target active fee is 1bps",
+    "cashNetUsdc -32.016157 is not positive"
+  ],
+  "simUnitsConsumed": 149593,
+  "simErr": {
+    "InstructionError": [
+      4,
+      {
+        "Custom": 6038
+      }
+    ]
+  },
   "simLogs": [
-    "Program 11111111111111111111111111111111 success",
-    "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA invoke [1]",
-    "Program log: Instruction: LendingAccountEndFlashloan",
-    "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA consumed 4482 of 70517 compute units",
-    "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA success"
+    "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+    "Program log: Instruction: SwapV2",
+    "Program log: AnchorError occurred. Error Code: TickArraySequenceInvalidIndex. Error Number: 6038. Error Message: Invalid index for tick array sequence.",
+    "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 34990 of 285397 compute units",
+    "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h failed: custom program error: 0x1796"
   ],
   "bundlesSent": 0,
   "bundleIds": [],
@@ -38,5 +60,5 @@
   "feesCollectedHop": null,
   "gasCostSol": null,
   "netUsdc": null,
-  "verdict2": "NO_GO"
+  "verdict2": "PENDING"
 }

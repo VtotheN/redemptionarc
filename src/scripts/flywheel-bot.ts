@@ -18,7 +18,9 @@
  *
  * ENV:
  *   SOLANA_RPC_URL
- *   FLASH_AMOUNT_USDC=20      (flash borrow size = swap size)
+ *   FLASH_AMOUNT_USDC=1000    (flash borrow size = swap size)
+ *   MIN_FLASH_AMOUNT_USDC=1000
+ *   GAS_USD_FLOOR=0.004
  *   BUNDLES=10                (live bundles after sim passes)
  *   JITO_TIP_LAMPORTS=10000
  *   CU_LIMIT=400000
@@ -63,6 +65,7 @@ const USDC_MINT = new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v");
 const HOP_MINT  = new PublicKey("HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3");
 const HOP_DECIMALS = 6;
 const USDC_DECIMALS = 6;
+const TARGET_HOP_T22_BPS = 1;
 
 const MARGINFI_PROGRAM     = new PublicKey("MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA");
 const MARGINFI_GROUP       = new PublicKey("4qp6Fx6tnZkY5Wropq9wUYgtFxXKwE6viZxFHg3rdAG8");
@@ -97,6 +100,8 @@ const WP_PROTO_FEE_B_OFFSET    = 93;
 const MIN_SQRT_PRICE = 4295048016n;
 const MAX_SQRT_PRICE = 79226673515401279992447579055n;
 const Q64 = 1n << 64n;
+const POSITION_TICK_LOWER = 84480;
+const POSITION_TICK_UPPER = 101312;
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -159,6 +164,16 @@ function amountDeltaB(sqrtPLow: bigint, sqrtPHigh: bigint, liquidity: bigint): b
 // amount_a from liquidity and sqrt price range (round down)
 function amountDeltaA(sqrtPLow: bigint, sqrtPHigh: bigint, liquidity: bigint): bigint {
   return (liquidity * (sqrtPHigh - sqrtPLow) + sqrtPHigh - 1n) / sqrtPHigh * Q64 / sqrtPLow;
+}
+
+function amountDeltaARoundedUp(sqrtPLow: bigint, sqrtPHigh: bigint, liquidity: bigint): bigint {
+  const num = liquidity * (sqrtPHigh - sqrtPLow) * Q64;
+  const den = sqrtPHigh * sqrtPLow;
+  return (num + den - 1n) / den;
+}
+
+function tickToSqrtPriceX64(tick: number): bigint {
+  return BigInt(Math.floor(Math.sqrt(Math.pow(1.0001, tick)) * Number(Q64)));
 }
 
 function computeSwapAToB(sqrtP: bigint, liquidity: bigint, amountUsdc: bigint, feeRate: number): {
@@ -374,12 +389,14 @@ async function main() {
   const rpcUrl       = process.env.SOLANA_RPC_URL || process.env.RPC_URL || "https://api.mainnet-beta.solana.com";
   const dryRun       = process.env.DRY_RUN !== "false";
   const allowLive    = process.env.ALLOW_LIVE === "true";
-  const flashUsdc    = Number(process.env.FLASH_AMOUNT_USDC || "20");
+  const flashUsdc    = Number(process.env.FLASH_AMOUNT_USDC || "1000");
+  const minFlashUsdc = Number(process.env.MIN_FLASH_AMOUNT_USDC || "1000");
   const nBundles     = Number(process.env.BUNDLES || "10");
   const jitoTip      = BigInt(process.env.JITO_TIP_LAMPORTS || "10000");
   const cuLimit      = Number(process.env.CU_LIMIT || "400000");
   const cuPrice      = Number(process.env.CU_PRICE || "1000");
   const solPriceUsd  = Number(process.env.SOL_PRICE_USD || "150");
+  const gasUsdFloor  = Number(process.env.GAS_USD_FLOOR || "0.004");
 
   const connection   = new Connection(rpcUrl, "confirmed");
   const crank        = loadKeypair("keys/crank.json");
@@ -415,12 +432,17 @@ async function main() {
   const t22Bps = activeT22Config.transferFeeBasisPoints;
 
   const { feeRate, protocolFeeRate, liquidity, sqrtPrice, protocolFeeOwedA, protocolFeeOwedB } = poolState;
+  const marginfiVaultBalance = await connection.getTokenAccountBalance(USDC_LIQ_VAULT, "confirmed")
+    .then((balance) => BigInt(balance.value.amount))
+    .catch(() => 0n);
+  const marginfiAvailableUsdc = Number(marginfiVaultBalance) / 1e6;
 
   console.log(`Pool sqrtPrice:    ${sqrtPrice}`);
   console.log(`Pool liquidity:    ${liquidity}`);
   console.log(`fee_rate:          ${feeRate}/1e6 = ${(feeRate/10000).toFixed(4)}%`);
   console.log(`protocol_fee_rate: ${protocolFeeRate}/10000`);
   console.log(`HOP T22 fee:       ${t22Bps} bps`);
+  console.log(`MarginFi USDC:     ${marginfiAvailableUsdc} available`);
   console.log(`protocolFeeOwedA:  ${Number(protocolFeeOwedA)/1e6} USDC`);
   console.log(`protocolFeeOwedB:  ${Number(protocolFeeOwedB)/1e6} HOP`);
   console.log();
@@ -443,17 +465,43 @@ async function main() {
   const walletUsdcDeltaBeforeCollect = usdcOut - flashMicro;
   const collectableProtocolUsdc = protocolFeeUsdcSwap1;
   const estimatedLamportsPerBundle = 5_000n + jitoTip;
-  const estimatedGasUsdcMicro = BigInt(Math.ceil((Number(estimatedLamportsPerBundle) / 1e9) * solPriceUsd * 1e6));
+  const estimatedGasUsdcMicro = BigInt(Math.max(
+    Math.ceil((Number(estimatedLamportsPerBundle) / 1e9) * solPriceUsd * 1e6),
+    Math.ceil(gasUsdFloor * 1e6)
+  ));
   const cashNetUsdcMicro = walletUsdcDeltaBeforeCollect + collectableProtocolUsdc - estimatedGasUsdcMicro;
-  const cashProofPass = cashNetUsdcMicro > 0n;
+  const protocolFeeRoundTripRate = (feeRate / 1_000_000) * (protocolFeeRate / 10_000) * 2;
+  const breakEvenFlashUsdc = protocolFeeRoundTripRate > 0
+    ? (Number(estimatedGasUsdcMicro) / 1e6) / protocolFeeRoundTripRate
+    : Infinity;
+  const lowerSqrtPrice = tickToSqrtPriceX64(POSITION_TICK_LOWER);
+  const maxUsdcAfterFeeInRange = sqrtPrice > lowerSqrtPrice
+    ? amountDeltaARoundedUp(lowerSqrtPrice, sqrtPrice, liquidity)
+    : 0n;
+  const maxFlashMicroInRange = feeRate < 1_000_000
+    ? (maxUsdcAfterFeeInRange * 1_000_000n + BigInt(1_000_000 - feeRate - 1)) / BigInt(1_000_000 - feeRate)
+    : 0n;
+  const maxFlashUsdcInCurrentRange = Number(maxFlashMicroInRange) / 1e6;
+  const cashGateReasons = [
+    flashUsdc < minFlashUsdc ? `FLASH_AMOUNT_USDC ${flashUsdc} is below minimum ${minFlashUsdc}` : null,
+    flashUsdc <= breakEvenFlashUsdc ? `FLASH_AMOUNT_USDC ${flashUsdc} is at/below break-even ${breakEvenFlashUsdc.toFixed(6)}` : null,
+    flashMicro > maxFlashMicroInRange ? `FLASH_AMOUNT_USDC ${flashUsdc} exceeds current LP range capacity ${maxFlashUsdcInCurrentRange.toFixed(6)}` : null,
+    marginfiVaultBalance < flashMicro ? `MarginFi USDC liquidity ${marginfiAvailableUsdc} is below flash ${flashUsdc}` : null,
+    t22Bps !== TARGET_HOP_T22_BPS ? `HOP Token-2022 fee is ${t22Bps}bps; target active fee is ${TARGET_HOP_T22_BPS}bps` : null,
+    cashNetUsdcMicro <= 0n ? `cashNetUsdc ${Number(cashNetUsdcMicro) / 1e6} is not positive` : null,
+  ].filter((reason): reason is string => Boolean(reason));
+  const cashProofPass = cashGateReasons.length === 0;
 
   console.log(`Swap 1 (USDC→HOP): $${flashUsdc} → ${Number(hopOut)/1e6} HOP`);
   console.log(`  T22 withheld: ${Number(t22FeeOnHopOut)/1e6} HOP (${t22Bps}bps)`);
   console.log(`  HOP for swap2: ${Number(hopSwap2)/1e6} (net after T22)`);
   console.log(`Swap 2 (HOP→USDC): ${Number(hopSwap2)/1e6} HOP → ~$${Number(usdcOut)/1e6}`);
   console.log(`Protocol fees/bundle: ${Number(protocolFeeUsdcSwap1)/1e6} USDC + ${Number(protocolFeeHopSwap2)/1e6} HOP`);
+  console.log(`Break-even flash: $${breakEvenFlashUsdc.toFixed(6)} USDC`);
+  console.log(`Current LP range max flash: $${maxFlashUsdcInCurrentRange.toFixed(6)} USDC`);
   console.log(`Wallet USDC delta before collect: ${Number(walletUsdcDeltaBeforeCollect)/1e6}`);
   console.log(`Cash proof net after USDC protocol fee + gas: ${Number(cashNetUsdcMicro)/1e6} USDC`);
+  if (cashGateReasons.length > 0) console.log(`Cash gate blocked: ${cashGateReasons.join("; ")}`);
   console.log();
 
   // ─── Build TX ────────────────────────────────────────────────────────────
@@ -519,7 +567,7 @@ async function main() {
   const simOk = !sim.value.err;
 
   const receipt: Record<string, unknown> = {
-    verdict: simOk ? "SIM_OK" : "SIM_FAILED",
+    verdict: simOk ? "SIM_OK" : (cashGateReasons.length > 0 ? "SIM_FAILED_PRECHECK_BLOCKED" : "SIM_FAILED"),
     timestamp: new Date().toISOString(),
     dryRun,
     flashUsdc,
@@ -529,6 +577,16 @@ async function main() {
     feeRate,
     protocolFeeRate,
     t22Bps,
+    targetT22Bps: TARGET_HOP_T22_BPS,
+    marginfiUsdcBank: USDC_BANK.toBase58(),
+    marginfiUsdcAvailable: marginfiAvailableUsdc,
+    minFlashUsdc,
+    breakEvenFlashUsdc,
+    positionTickLower: POSITION_TICK_LOWER,
+    positionTickUpper: POSITION_TICK_UPPER,
+    maxFlashUsdcInCurrentRange,
+    protocolFeeRoundTripRate,
+    gasUsdFloor,
     swap1HopOut: hopOut.toString(),
     swap2HopIn: hopSwap2.toString(),
     swap2UsdcEstOut: usdcOut.toString(),
@@ -541,6 +599,7 @@ async function main() {
     estimatedGasUsdc: (Number(estimatedGasUsdcMicro) / 1e6).toFixed(6),
     cashNetUsdc: (Number(cashNetUsdcMicro) / 1e6).toFixed(6),
     cashProofPass,
+    cashGateReasons,
     simUnitsConsumed: sim.value.unitsConsumed ?? null,
     simErr: sim.value.err ?? null,
     simLogs: simLogs.slice(-5),
