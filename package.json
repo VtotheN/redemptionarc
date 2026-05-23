@@ -61,7 +61,8 @@
     "add-liquidity": "tsx src/scripts/add-liquidity.ts",
     "swap-sol-for-usdc": "tsx src/scripts/swap-sol-for-usdc.ts",
     "ring-bot": "tsx src/scripts/ring-bot.ts",
-    "harvest-withheld": "tsx src/scripts/harvest-withheld.ts"
+    "harvest-withheld": "tsx src/scripts/harvest-withheld.ts",
+    "flywheel-bot": "tsx src/scripts/flywheel-bot.ts"
   },
   "dependencies": {
     "@mrgnlabs/marginfi-client-v2": "^6.4.1",
