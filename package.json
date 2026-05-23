@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc --noEmit",
+    "owned-amm-plan": "tsx src/scripts/owned-amm-plan.ts",
     "aggressive-plan": "tsx src/scripts/aggressive-plan.ts",
     "aggressive-readiness": "tsx src/scripts/aggressive-readiness.ts",
     "arc-lab": "tsx src/scripts/arc-lab.ts",
