@@ -1,7 +1,7 @@
 {
-  "verdict": "SETTLEMENT_ROUTE_BLOCKED_TOKEN_NOT_TRADABLE",
-  "generatedAt": "2026-05-22T17:36:19.862Z",
-  "inputMint": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
+  "verdict": "SETTLEMENT_ROUTE_READY_JUPITER",
+  "generatedAt": "2026-05-23T07:33:54.588Z",
+  "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
   "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
   "amounts": [
     "1000000",
@@ -13,83 +13,379 @@
     {
       "baseUrl": "https://api.jup.ag/swap/v1",
       "amount": "1000000",
-      "ok": false,
-      "status": 400,
+      "ok": true,
+      "status": 200,
       "json": {
-        "error": "The token AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA is not tradable",
-        "errorCode": "TOKEN_NOT_TRADABLE"
+        "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+        "inAmount": "1000000",
+        "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "outAmount": "97",
+        "otherAmountThreshold": "97",
+        "swapMode": "ExactIn",
+        "slippageBps": 100,
+        "platformFee": null,
+        "priceImpactPct": "0.1918958350383999999999997525",
+        "routePlan": [
+          {
+            "swapInfo": {
+              "ammKey": "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV",
+              "label": "Raydium CP",
+              "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "inAmount": "1000000",
+              "outAmount": "97",
+              "updateContextSlot": "421590416"
+            },
+            "percent": 100,
+            "bps": null
+          }
+        ],
+        "contextSlot": 421590579,
+        "timeTaken": 0.000058996,
+        "swapUsdValue": "0.000097",
+        "mostReliableAmmsQuoteReport": {
+          "info": {
+            "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV": "97",
+            "BZtgQEyS6eXUXicYPHecYQ7PybqodXQMvkjUbP4R8mUU": "Not used RG: FullLiquidIntermediate, contains ALT: true"
+          }
+        },
+        "longtailMarketQuoteReport": null,
+        "useIncurredSlippageForQuoting": null,
+        "useRewards": null,
+        "otherRoutePlans": null,
+        "loadedLongtailToken": false,
+        "instructionVersion": null
       }
     },
     {
       "baseUrl": "https://api.jup.ag/swap/v1",
       "amount": "10000000",
-      "ok": false,
-      "status": 400,
+      "ok": true,
+      "status": 200,
       "json": {
-        "error": "The token AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA is not tradable",
-        "errorCode": "TOKEN_NOT_TRADABLE"
+        "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+        "inAmount": "10000000",
+        "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "outAmount": "979",
+        "otherAmountThreshold": "970",
+        "swapMode": "ExactIn",
+        "slippageBps": 100,
+        "platformFee": null,
+        "priceImpactPct": "0.1843979613428799999999997501",
+        "routePlan": [
+          {
+            "swapInfo": {
+              "ammKey": "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV",
+              "label": "Raydium CP",
+              "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "inAmount": "10000000",
+              "outAmount": "979",
+              "updateContextSlot": "421590416"
+            },
+            "percent": 100,
+            "bps": null
+          }
+        ],
+        "contextSlot": 421590579,
+        "timeTaken": 0.000046262,
+        "swapUsdValue": "0.000979",
+        "mostReliableAmmsQuoteReport": {
+          "info": {
+            "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV": "979",
+            "BZtgQEyS6eXUXicYPHecYQ7PybqodXQMvkjUbP4R8mUU": "Not used RG: FullLiquidIntermediate, contains ALT: true"
+          }
+        },
+        "longtailMarketQuoteReport": null,
+        "useIncurredSlippageForQuoting": null,
+        "useRewards": null,
+        "otherRoutePlans": null,
+        "loadedLongtailToken": false,
+        "instructionVersion": null
       }
     },
     {
       "baseUrl": "https://api.jup.ag/swap/v1",
       "amount": "100000000",
-      "ok": false,
-      "status": 400,
+      "ok": true,
+      "status": 200,
       "json": {
-        "error": "The token AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA is not tradable",
-        "errorCode": "TOKEN_NOT_TRADABLE"
+        "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+        "inAmount": "100000000",
+        "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "outAmount": "9799",
+        "otherAmountThreshold": "9702",
+        "swapMode": "ExactIn",
+        "slippageBps": 100,
+        "platformFee": null,
+        "priceImpactPct": "0.1836481739733279999999997499",
+        "routePlan": [
+          {
+            "swapInfo": {
+              "ammKey": "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV",
+              "label": "Raydium CP",
+              "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "inAmount": "100000000",
+              "outAmount": "9799",
+              "updateContextSlot": "421590416"
+            },
+            "percent": 100,
+            "bps": null
+          }
+        ],
+        "contextSlot": 421590580,
+        "timeTaken": 0.000058873,
+        "swapUsdValue": "0.009799",
+        "mostReliableAmmsQuoteReport": {
+          "info": {
+            "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV": "9799",
+            "BZtgQEyS6eXUXicYPHecYQ7PybqodXQMvkjUbP4R8mUU": "Not used RG: FullLiquidIntermediate, contains ALT: true"
+          }
+        },
+        "longtailMarketQuoteReport": null,
+        "useIncurredSlippageForQuoting": null,
+        "useRewards": null,
+        "otherRoutePlans": null,
+        "loadedLongtailToken": false,
+        "instructionVersion": null
       }
     },
     {
       "baseUrl": "https://api.jup.ag/swap/v1",
       "amount": "1000000000",
-      "ok": false,
-      "status": 400,
+      "ok": true,
+      "status": 200,
       "json": {
-        "error": "The token AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA is not tradable",
-        "errorCode": "TOKEN_NOT_TRADABLE"
+        "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+        "inAmount": "1000000000",
+        "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "outAmount": "97980",
+        "otherAmountThreshold": "97001",
+        "swapMode": "ExactIn",
+        "slippageBps": 100,
+        "platformFee": null,
+        "priceImpactPct": "0.18373148368105599999999975",
+        "routePlan": [
+          {
+            "swapInfo": {
+              "ammKey": "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV",
+              "label": "Raydium CP",
+              "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "inAmount": "1000000000",
+              "outAmount": "97980",
+              "updateContextSlot": "421590416"
+            },
+            "percent": 100,
+            "bps": null
+          }
+        ],
+        "contextSlot": 421590580,
+        "timeTaken": 0.000059895,
+        "swapUsdValue": "0.09798",
+        "mostReliableAmmsQuoteReport": {
+          "info": {
+            "BZtgQEyS6eXUXicYPHecYQ7PybqodXQMvkjUbP4R8mUU": "Not used RG: FullLiquidIntermediate, contains ALT: true",
+            "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV": "97980"
+          }
+        },
+        "longtailMarketQuoteReport": null,
+        "useIncurredSlippageForQuoting": null,
+        "useRewards": null,
+        "otherRoutePlans": null,
+        "loadedLongtailToken": false,
+        "instructionVersion": null
       }
     },
     {
       "baseUrl": "https://lite-api.jup.ag/swap/v1",
       "amount": "1000000",
-      "ok": false,
-      "status": 400,
+      "ok": true,
+      "status": 200,
       "json": {
-        "error": "The token AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA is not tradable",
-        "errorCode": "TOKEN_NOT_TRADABLE"
+        "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+        "inAmount": "1000000",
+        "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "outAmount": "97",
+        "otherAmountThreshold": "97",
+        "swapMode": "ExactIn",
+        "slippageBps": 100,
+        "platformFee": null,
+        "priceImpactPct": "0.1918958350383999999999997525",
+        "routePlan": [
+          {
+            "swapInfo": {
+              "ammKey": "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV",
+              "label": "Raydium CP",
+              "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "inAmount": "1000000",
+              "outAmount": "97",
+              "updateContextSlot": "421590416"
+            },
+            "percent": 100,
+            "bps": null
+          }
+        ],
+        "contextSlot": 421590580,
+        "timeTaken": 0.000077819,
+        "swapUsdValue": "0.000097",
+        "mostReliableAmmsQuoteReport": {
+          "info": {
+            "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV": "97",
+            "BZtgQEyS6eXUXicYPHecYQ7PybqodXQMvkjUbP4R8mUU": "Not used RG: FullLiquidIntermediate, contains ALT: true"
+          }
+        },
+        "longtailMarketQuoteReport": null,
+        "useIncurredSlippageForQuoting": null,
+        "useRewards": null,
+        "otherRoutePlans": null,
+        "loadedLongtailToken": false,
+        "instructionVersion": null
       }
     },
     {
       "baseUrl": "https://lite-api.jup.ag/swap/v1",
       "amount": "10000000",
-      "ok": false,
-      "status": 400,
+      "ok": true,
+      "status": 200,
       "json": {
-        "error": "The token AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA is not tradable",
-        "errorCode": "TOKEN_NOT_TRADABLE"
+        "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+        "inAmount": "10000000",
+        "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "outAmount": "979",
+        "otherAmountThreshold": "970",
+        "swapMode": "ExactIn",
+        "slippageBps": 100,
+        "platformFee": null,
+        "priceImpactPct": "0.1843979613428799999999997501",
+        "routePlan": [
+          {
+            "swapInfo": {
+              "ammKey": "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV",
+              "label": "Raydium CP",
+              "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "inAmount": "10000000",
+              "outAmount": "979",
+              "updateContextSlot": "421590416"
+            },
+            "percent": 100,
+            "bps": null
+          }
+        ],
+        "contextSlot": 421590580,
+        "timeTaken": 0.000057085,
+        "swapUsdValue": "0.000979",
+        "mostReliableAmmsQuoteReport": {
+          "info": {
+            "BZtgQEyS6eXUXicYPHecYQ7PybqodXQMvkjUbP4R8mUU": "Not used RG: FullLiquidIntermediate, contains ALT: true",
+            "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV": "979"
+          }
+        },
+        "longtailMarketQuoteReport": null,
+        "useIncurredSlippageForQuoting": null,
+        "useRewards": null,
+        "otherRoutePlans": null,
+        "loadedLongtailToken": false,
+        "instructionVersion": null
       }
     },
     {
       "baseUrl": "https://lite-api.jup.ag/swap/v1",
       "amount": "100000000",
-      "ok": false,
-      "status": 400,
+      "ok": true,
+      "status": 200,
       "json": {
-        "error": "The token AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA is not tradable",
-        "errorCode": "TOKEN_NOT_TRADABLE"
+        "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+        "inAmount": "100000000",
+        "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "outAmount": "9799",
+        "otherAmountThreshold": "9702",
+        "swapMode": "ExactIn",
+        "slippageBps": 100,
+        "platformFee": null,
+        "priceImpactPct": "0.1836481739733279999999997499",
+        "routePlan": [
+          {
+            "swapInfo": {
+              "ammKey": "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV",
+              "label": "Raydium CP",
+              "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "inAmount": "100000000",
+              "outAmount": "9799",
+              "updateContextSlot": "421590416"
+            },
+            "percent": 100,
+            "bps": null
+          }
+        ],
+        "contextSlot": 421590580,
+        "timeTaken": 0.000054089,
+        "swapUsdValue": "0.009799",
+        "mostReliableAmmsQuoteReport": {
+          "info": {
+            "BZtgQEyS6eXUXicYPHecYQ7PybqodXQMvkjUbP4R8mUU": "Not used RG: FullLiquidIntermediate, contains ALT: true",
+            "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV": "9799"
+          }
+        },
+        "longtailMarketQuoteReport": null,
+        "useIncurredSlippageForQuoting": null,
+        "useRewards": null,
+        "otherRoutePlans": null,
+        "loadedLongtailToken": false,
+        "instructionVersion": null
       }
     },
     {
       "baseUrl": "https://lite-api.jup.ag/swap/v1",
       "amount": "1000000000",
-      "ok": false,
-      "status": 400,
+      "ok": true,
+      "status": 200,
       "json": {
-        "error": "The token AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA is not tradable",
-        "errorCode": "TOKEN_NOT_TRADABLE"
+        "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+        "inAmount": "1000000000",
+        "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "outAmount": "97980",
+        "otherAmountThreshold": "97001",
+        "swapMode": "ExactIn",
+        "slippageBps": 100,
+        "platformFee": null,
+        "priceImpactPct": "0.18373148368105599999999975",
+        "routePlan": [
+          {
+            "swapInfo": {
+              "ammKey": "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV",
+              "label": "Raydium CP",
+              "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "inAmount": "1000000000",
+              "outAmount": "97980",
+              "updateContextSlot": "421590416"
+            },
+            "percent": 100,
+            "bps": null
+          }
+        ],
+        "contextSlot": 421590581,
+        "timeTaken": 0.000072697,
+        "swapUsdValue": "0.09798",
+        "mostReliableAmmsQuoteReport": {
+          "info": {
+            "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV": "97980",
+            "BZtgQEyS6eXUXicYPHecYQ7PybqodXQMvkjUbP4R8mUU": "Not used RG: FullLiquidIntermediate, contains ALT: true"
+          }
+        },
+        "longtailMarketQuoteReport": null,
+        "useIncurredSlippageForQuoting": null,
+        "useRewards": null,
+        "otherRoutePlans": null,
+        "loadedLongtailToken": false,
+        "instructionVersion": null
       }
     }
   ],
-  "conclusion": "HOP cannot currently be treated as cash. Need owned pool/venue route, direct market creation, or a different cash-settled source."
+  "conclusion": "Jupiter can quote HOP to USDC; next step is swap-instruction simulation."
 }
