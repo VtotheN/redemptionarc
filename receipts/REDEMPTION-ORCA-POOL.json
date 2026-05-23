@@ -1,0 +1,105 @@
+{
+  "verdict": "POOL_DEPLOYED",
+  "dryRun": false,
+  "hopPriceUsdc": 0.0001,
+  "price": 10000,
+  "initialSqrtPrice": "1844674407370955161600",
+  "whirlpool": "8aoWgf7ycbeKv6BTFCdUj4JR7Y4mXWuPZWEUhmuzN5ZL",
+  "tokenMintA": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+  "tokenMintB": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+  "tokenVaultA": "4QD4GgnjRvjETqWLT5e3x7SHtJSzs9kShUPLfyHcTu7d",
+  "tokenVaultB": "Qv51R47g7pMDxa3UofXaz8cNr8pwRSXaNufgnEWX8Yk",
+  "feeTier": "7v5Rhe37P5BrPTtEeumH1oa6aBQg2tTzFN3r58Sfe4m7",
+  "instruction": {
+    "programId": "GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h",
+    "keys": [
+      {
+        "pubkey": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
+        "isSigner": false,
+        "isWritable": false
+      },
+      {
+        "pubkey": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "isSigner": false,
+        "isWritable": false
+      },
+      {
+        "pubkey": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+        "isSigner": false,
+        "isWritable": false
+      },
+      {
+        "pubkey": "GDEgQMFGGteoFd7dxzB9RL5fd4nGTt6psNpYqn6FD19x",
+        "isSigner": false,
+        "isWritable": false
+      },
+      {
+        "pubkey": "HVcso86ZCfodDrGhSxiwuegx1K8xJqWso1M7Hs6UcwsE",
+        "isSigner": false,
+        "isWritable": false
+      },
+      {
+        "pubkey": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+        "isSigner": true,
+        "isWritable": true
+      },
+      {
+        "pubkey": "8aoWgf7ycbeKv6BTFCdUj4JR7Y4mXWuPZWEUhmuzN5ZL",
+        "isSigner": false,
+        "isWritable": true
+      },
+      {
+        "pubkey": "4QD4GgnjRvjETqWLT5e3x7SHtJSzs9kShUPLfyHcTu7d",
+        "isSigner": true,
+        "isWritable": true
+      },
+      {
+        "pubkey": "Qv51R47g7pMDxa3UofXaz8cNr8pwRSXaNufgnEWX8Yk",
+        "isSigner": true,
+        "isWritable": true
+      },
+      {
+        "pubkey": "7v5Rhe37P5BrPTtEeumH1oa6aBQg2tTzFN3r58Sfe4m7",
+        "isSigner": false,
+        "isWritable": false
+      },
+      {
+        "pubkey": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+        "isSigner": false,
+        "isWritable": false
+      },
+      {
+        "pubkey": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+        "isSigner": false,
+        "isWritable": false
+      },
+      {
+        "pubkey": "11111111111111111111111111111111",
+        "isSigner": false,
+        "isWritable": false
+      },
+      {
+        "pubkey": "SysvarRent111111111111111111111111111111111",
+        "isSigner": false,
+        "isWritable": false
+      }
+    ],
+    "dataHex": "cf2d57f21b3fcc43400000000000000000006400000000000000"
+  },
+  "simulation": {
+    "err": null,
+    "logs": [
+      "Program log: Instruction: InitializeImmutableOwner",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 674 of 144955 compute units",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb invoke [2]",
+      "Program log: Instruction: InitializeAccount3",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 2323 of 141658 compute units",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+      "Program data: ZHatVwzG/uVwqpD0hZ9CMKYDRT3GGbvHh+t1gRwiv6J5ldEcrcdGO3x2OrRHDxVeiHlUKCsK+gGNCAFxTRgvjJxlQ/YC+NOgxvp6877brTo9ZfNqq8l0MbG75MLS9uDkfKYCA0UvXWH1/X/AsERjfkZ33coymEY9nqinXHc+JAcwzNWW9Xbw5kAABt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKkG3fbh7nWP3hhCXbzkbM3athr8TYO5DSf+vfko2KGL/AYGAAAAAAAAAABkAAAAAAAAAA==",
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 73899 of 200000 compute units",
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+    ]
+  },
+  "signature": "2F8eXSzdRNqJyUYMRwtUEEUsYqcaJ4MjzekXeSxZJJYJoE6w3jfZLEmTK1aQne1H73C13VrgiJYbH3MQ9X8UbgMZ"
+}

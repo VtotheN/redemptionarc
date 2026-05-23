@@ -1,0 +1,8 @@
+{
+  "verdict": "SWAP_CONFIRMED",
+  "dryRun": false,
+  "inputSolLamports": 3500000000,
+  "quotedUsdcUi": 290.742119,
+  "signature": "87BX83MpKPQ7Tx9pU6ZaQJGhwNa8av9BUyDFaNgNevswbVdWyT9BSefaXKhepPtkFzYU5XT9DfShyPh82nDRaPF",
+  "receivedUsdcUi": 290.742119
+}

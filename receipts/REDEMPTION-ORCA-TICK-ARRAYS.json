@@ -1,0 +1,39 @@
+{
+  "verdict": "TICK_ARRAYS_DEPLOYED",
+  "dryRun": false,
+  "whirlpool": "8aoWgf7ycbeKv6BTFCdUj4JR7Y4mXWuPZWEUhmuzN5ZL",
+  "currentTick": 92108,
+  "tickArrayStarts": [
+    84480,
+    90112,
+    95744
+  ],
+  "tickArrays": [
+    {
+      "start": 84480,
+      "address": "be9QKj4mYB8erh6r4ZDrKxxSvSYSUNRfpTxqJUgd3jG",
+      "existed": false
+    },
+    {
+      "start": 90112,
+      "address": "CDMSB5e6WUgtoSLrybvYm4j58Jue3eqpzHQVLmgVkAe4",
+      "existed": false
+    },
+    {
+      "start": 95744,
+      "address": "MXd8HXPjcH9ZCuyr4uKKyN7GkJ5YizZQkgUndB6J8Gz",
+      "existed": false
+    }
+  ],
+  "simulation": {
+    "err": null,
+    "logs": [
+      "Program log: Instruction: InitializeTickArray",
+      "Program 11111111111111111111111111111111 invoke [2]",
+      "Program 11111111111111111111111111111111 success",
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 15161 of 568225 compute units",
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+    ]
+  },
+  "signature": "5kqGooWXD7urA9vScs6YmX4PVFVVdKAbtqJC4sqoGmhLughVykRRVwWRAYwUh88Z55ckAV1BKVGqVsencVfmSwsx"
+}

@@ -1,0 +1,10 @@
+{
+  "program_id": "GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h",
+  "program_data_address": "FAyrv4DKMjzDfQUKK9Zo5fAium3mhXJBtzcbgvakZG7M",
+  "deploy_signature": "2hQiqJch6TBkjwy7p5zjWfQv1Uvk5J12B9uPE7Tq84NiSai1HRFnf2SCQbFCDd2SF8Yqn2m6CsbqMq6XNWjBM3w",
+  "deployed_slot": 421640225,
+  "authority": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+  "so_size_bytes": 617408,
+  "status": "LIVE",
+  "next_step": "npm run init-orca-config"
+}

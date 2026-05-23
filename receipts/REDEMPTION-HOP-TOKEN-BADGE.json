@@ -1,25 +1,25 @@
 {
-  "verdict": "HOP_TOKEN_BADGE_BLOCKED_MISSING_CONFIG",
-  "generatedAt": "2026-05-23T11:14:03.663Z",
-  "dryRun": true,
-  "allowLive": false,
-  "liveTxApproved": false,
-  "whirlpoolProgram": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+  "verdict": "HOP_TOKEN_BADGE_EXECUTED",
+  "generatedAt": "2026-05-23T13:16:52.958Z",
+  "dryRun": false,
+  "allowLive": true,
+  "liveTxApproved": true,
+  "whirlpoolProgram": "GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h",
   "whirlpoolsConfig": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
-  "whirlpoolsConfigExtension": "CdCCzcpVj1tqevHyo1ejNtjoc3QvYYmNw3PmHLLkLmGP",
+  "whirlpoolsConfigExtension": "A16T3XXsXsEfgMnJaikZ9ah7PxYbfuxHJFGz96XyMbfR",
   "hopMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
-  "tokenBadge": "7mbhwo5T916Xkp1PduX1GzETZzkTZo5wbVBFRsuMe1NU",
+  "tokenBadge": "HVcso86ZCfodDrGhSxiwuegx1K8xJqWso1M7Hs6UcwsE",
   "authorities": {
     "funder": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
     "tokenBadgeAuthority": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S"
   },
   "preExisting": {
-    "whirlpoolsConfig": false,
-    "whirlpoolsConfigExtension": false,
+    "whirlpoolsConfig": true,
+    "whirlpoolsConfigExtension": true,
     "tokenBadge": false
   },
   "instruction": {
-    "programId": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+    "programId": "GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h",
     "keys": [
       {
         "pubkey": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
@@ -27,7 +27,7 @@
         "isWritable": false
       },
       {
-        "pubkey": "CdCCzcpVj1tqevHyo1ejNtjoc3QvYYmNw3PmHLLkLmGP",
+        "pubkey": "A16T3XXsXsEfgMnJaikZ9ah7PxYbfuxHJFGz96XyMbfR",
         "isSigner": false,
         "isWritable": false
       },
@@ -42,7 +42,7 @@
         "isWritable": false
       },
       {
-        "pubkey": "7mbhwo5T916Xkp1PduX1GzETZzkTZo5wbVBFRsuMe1NU",
+        "pubkey": "HVcso86ZCfodDrGhSxiwuegx1K8xJqWso1M7Hs6UcwsE",
         "isSigner": false,
         "isWritable": true
       },
@@ -58,5 +58,18 @@
       }
     ],
     "dataHex": "fd4dcd5f1be059df"
-  }
+  },
+  "simulation": {
+    "err": null,
+    "unitsConsumed": 19533,
+    "logs": [
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+      "Program log: Instruction: InitializeTokenBadge",
+      "Program 11111111111111111111111111111111 invoke [2]",
+      "Program 11111111111111111111111111111111 success",
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 19533 of 200000 compute units",
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+    ]
+  },
+  "signature": "21eumGvs1fo3WMYJwk1AEq8mZo39cGN1MpNFZEr4vyBe2nPYPNTGcxZhUikL7EgwqSikHLLfZqf4jqFS4gGKac1m"
 }

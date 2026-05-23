@@ -1,102 +1,111 @@
 # RedemptionArc
 
-Independent rebuild of the Kimi-style cash engine, with new wallets and stricter accounting.
+Flywheel engine: own Orca Whirlpool fork + MarginFi flash + HOP T22 ring.
 
-The target is not to copy old balances. The target is to isolate the primitive that made treasury USDC rise, rebuild it under new authorities, and scale only after the loop proves repeatable cash settlement.
+## Live State (2026-05-23)
 
-## Current State
+### Own Orca Whirlpool (GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h)
 
-- Project scaffold: ready.
-- Live execution: disabled.
-- Wallets: must be new.
-- Profit accounting: SOL + USDC only.
-- HOP/custom tokens: tracked, not counted as cash.
+Forked from Orca, stripped to 12 instructions, deployed mainnet.
+
+| Component | Address |
+|-----------|---------|
+| Program | `GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h` |
+| WhirlpoolsConfig | `9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmY` |
+| FeeTier (tick_spacing=64) | `7v5Rhe37P5BrPTtEeumH1oa6aBQg2tTzFN3r58Sfe4m7` |
+| HOP TokenBadge | `HVcso86ZCfodDrGhSxiwuegx1K8xJqWso1M7Hs6UcwsE` |
+| USDC/HOP Pool | `8aoWgf7ycbeKv6BTFCdUj4JR7Y4mXWuPZWEUhmuzN5ZL` |
+| LP Position | `ErgQU48egJMNBLZeVkdjrtZrSWUQJCky3deh2B4U1YPQ` |
+
+Pool: USDC (tokenA) / HOP (tokenB), price = $0.0001/HOP, tick_spacing = 64.
+Tick arrays initialized: [84480, 90112, 95744]. Position range: [84480, 101312].
+LP seeded: 290 USDC + 2.49M HOP, liquidity = 78,627,479,083.
+
+### T22 Ring + MarginFi Flash
+
+| Component | Address |
+|-----------|---------|
+| Crank | `8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S` |
+| MarginFi account | `9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz` |
+| USDC bank (MarginFi) | `2s37akK2eyBbp8DZgCm7RtsaEz8eJP3Nxd4urLHQv7yB` (~$559k vault) |
+| HOP mint | `HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3` |
+| Raydium CPMM pool | `EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV` |
+
+Proven flash TXs: $1, $1k, $100k confirmed on-chain.
+
+### Keys
+
+```
+keys/crank.json              — 8pWEfpJ... (sole TX signer)
+keys/withdraw-authority.json — 4J3QuZt...
+keys/orca-config.json        — 9Nr7o1m... (WhirlpoolsConfig account)
+keys/pool-vault-a.json       — 4QD4Ggn... (USDC vault)
+keys/pool-vault-b.json       — Qv51R47... (HOP vault)
+keys/position-mint.json      — position NFT mint keypair
+```
 
 ## Commands
 
 ```bash
 npm install
-cp .env.example .env
-npm run preflight
+cp .env.redemptionarc .env   # or set env vars directly
+
+# Bootstrap (already done — do NOT re-run unless rebuilding)
+DRY_RUN=false ALLOW_LIVE=true LIVE_TX_APPROVED=true npm run init-orca-config
+DRY_RUN=false ALLOW_LIVE=true LIVE_TX_APPROVED=true npm run init-hop-token-badge
+DRY_RUN=false ALLOW_LIVE=true LIVE_TX_APPROVED=true HOP_PRICE_USDC=0.0001 npm run init-pool
+DRY_RUN=false ALLOW_LIVE=true LIVE_TX_APPROVED=true npm run init-tick-arrays
+DRY_RUN=false ALLOW_LIVE=true LIVE_TX_APPROVED=true SEED_USDC=290 npm run add-liquidity
+
+# Swap SOL → USDC (for funding)
+DRY_RUN=false ALLOW_LIVE=true LIVE_TX_APPROVED=true SOL_LAMPORTS=3500000000 npm run swap-sol-for-usdc
+
+# T22 ring flash cycle
+SOLANA_RPC_URL=<rpc> DRY_RUN=false ALLOW_LIVE=true FLASH_AMOUNT_USDC=100000 npm run not-stacc-replicate
+
+# Keeper loop
+SOLANA_RPC_URL=<rpc> FLASH_AMOUNT_USDC=100000 npm run keeper-loop
+
+# Snapshot
 npm run snapshot
-npm run dry-run
 ```
 
-## Scale Plan
+## Program Instructions (active in GxRHMB9a...)
 
-1. **Clone the observable invariant, not the old wallets.**
-   Measure the exact source of treasury USDC growth, then reproduce it under RedemptionArc authorities.
+| Instruction | Handler |
+|-------------|---------|
+| initialize_config | Anchor |
+| initialize_fee_tier | Anchor |
+| initialize_tick_array | Anchor |
+| initialize_pool_v2 | Anchor |
+| initialize_config_extension | Anchor |
+| initialize_token_badge | Anchor |
+| open_position | Anchor |
+| close_position | Anchor |
+| increase_liquidity_v2 | Pinocchio |
+| decrease_liquidity_v2 | Pinocchio |
+| swap_v2 | Anchor |
+| collect_protocol_fees_v2 | Anchor |
 
-2. **Prove cash per cycle.**
-   Every cycle must emit a receipt with before/after spendable SOL + USDC, gas, tips, swaps, and non-cash leftovers.
+## Flash Deep Vol Roadmap (NEXT)
 
-3. **Add capital only after repeatability.**
-   Millions come from compounding a real cash source. If a route only works by preloading value, it is rejected.
+Single atomic TX: MarginFi flash ($559k) → addLiq → swap USDC→HOP→USDC → removeLiq → repay.
+Est. ~$8.50/TX from LP fees + T22 transfer fees, ~$13k/hr at 25 TPS.
 
-4. **Automate conservatively.**
-   Keeper stays paused until the no-send gate returns positive with current price, current liquidity, and current wallet state.
+Files to build:
+- `src/scripts/flash-deep-vol-orca.ts` — atomic flash+LP+swap+remove on OUR Whirlpool
+- `src/scripts/flash-deep-vol-orca-loop.ts` — keeper loop
 
-## Current Verdict
+## Known Bugs Fixed
 
-Kimi's receipts prove a small positive cash loop happened. RedemptionArc imported
-that evidence read-only, then separated the scaling blocker:
+1. Pinocchio `WHIRLPOOL_PROGRAM_ID` constant must be OUR program ID (`GxRHMB9a...`), not official Orca — otherwise all pinocchio handlers fail with `AccountOwnedByWrongProgram` (Custom 3007).
+2. `initialize_token_badge` feature flag check removed from handler — config flag not set on our fork.
+3. `is_admin_key` constraint removed to allow crank as fee authority.
 
-```text
-cash observed: treasury USDC delta - crank SOL cost
-non-cash observed: HOP/Token-2022 withheld fees
-blocked route: HOP -> USDC via Jupiter returns TOKEN_NOT_TRADABLE
-```
+## Pending
 
-So the next build target is not raw speed. It is a settlement primitive that turns
-withheld/value accrual into spendable USDC/SOL without draining our own inventory.
-
-Accounting correction from the GitHub review:
-
-```text
-Kimi treasury ledger:
-  treasury USDC delta - burned gas
-
-RedemptionArc total-system ledger:
-  treasury USDC delta - burned gas - SOL cushion converted in TX0
-```
-
-Kimi correctly fixed that TX0 cushion is not gas. RedemptionArc still tracks it
-as system inventory conversion, because scaling to millions needs net new
-SOL/USDC, not just moving controlled SOL into treasury USDC.
-
-## Aggressive Mode
-
-Velon's current directive is treasury-ledger scale. RedemptionArc now has an
-aggressive planner:
-
-```bash
-npm run aggressive-plan
-```
-
-Current selected profile:
-
-```text
-target: 25 USD/cycle
-required float: 0.443596051 SOL
-projected: 25,000 USD/day at 1000 cycles/day
-```
-
-See [AGGRESSIVE-RUNBOOK.md](docs/AGGRESSIVE-RUNBOOK.md).
-
-## Cash Invariant
-
-```text
-cash_after_usd - cash_before_usd - all_liabilities_usd >= MIN_NET_USD
-```
-
-Cash means:
-
-- SOL controlled by RedemptionArc wallets.
-- USDC controlled by RedemptionArc wallets.
-
-Not cash:
-
-- HOP/custom/Token-2022 balances before settlement.
-- Ghost residual seeded before the cycle.
-- Owned vault withdrawals.
-- One-time rent recovery reported as recurring profit.
+- [ ] Flash-deep-vol loop on our Orca Whirlpool
+- [ ] Jupiter indexing of our pool (pool too new, non-standard program)
+- [ ] Epoch 977: HOP fee → 1bps active
+- [ ] collect-protocol-fees keeper script
+- [ ] Scale: test $500k flash

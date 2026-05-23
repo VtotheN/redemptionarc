@@ -1,3 +1,7 @@
+import { PublicKey } from "@solana/web3.js";
+
+export const OUR_WHIRLPOOL_PROGRAM_ID = new PublicKey("GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h");
+
 export const USDC_MINT_DEFAULT = "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v";
 export const HOP_MINT_DEFAULT = "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3";
 

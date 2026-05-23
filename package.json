@@ -56,6 +56,10 @@
     "volume-bot-atomic": "tsx src/scripts/volume-bot-atomic.ts",
     "init-orca-config": "tsx src/scripts/init-orca-config.ts",
     "init-hop-token-badge": "tsx src/scripts/init-hop-token-badge.ts",
+    "init-pool": "tsx src/scripts/init-pool.ts",
+    "init-tick-arrays": "tsx src/scripts/init-tick-arrays.ts",
+    "add-liquidity": "tsx src/scripts/add-liquidity.ts",
+    "swap-sol-for-usdc": "tsx src/scripts/swap-sol-for-usdc.ts",
     "ring-bot": "tsx src/scripts/ring-bot.ts",
     "harvest-withheld": "tsx src/scripts/harvest-withheld.ts"
   },

@@ -1,14 +1,14 @@
 {
-  "verdict": "ORCA_CONFIG_SIM_FAILED",
-  "generatedAt": "2026-05-23T11:21:24.883Z",
-  "dryRun": true,
-  "allowLive": false,
-  "liveTxApproved": false,
-  "whirlpoolProgram": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+  "verdict": "ORCA_CONFIG_EXECUTED",
+  "generatedAt": "2026-05-23T13:15:10.002Z",
+  "dryRun": false,
+  "allowLive": true,
+  "liveTxApproved": true,
+  "whirlpoolProgram": "GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h",
   "createdAccountAddresses": {
     "whirlpoolsConfig": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
-    "whirlpoolsConfigExtension": "CdCCzcpVj1tqevHyo1ejNtjoc3QvYYmNw3PmHLLkLmGP",
-    "feeTier": "A6UUtGsJ5KnhYxDVitCjftNw8EWdh2xJiXDJjuCpwu8G"
+    "whirlpoolsConfigExtension": "A16T3XXsXsEfgMnJaikZ9ah7PxYbfuxHJFGz96XyMbfR",
+    "feeTier": "7v5Rhe37P5BrPTtEeumH1oa6aBQg2tTzFN3r58Sfe4m7"
   },
   "authorities": {
     "funder": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
@@ -29,7 +29,7 @@
   },
   "instructions": [
     {
-      "programId": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+      "programId": "GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h",
       "keys": [
         {
           "pubkey": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
@@ -50,7 +50,7 @@
       "dataHex": "d07f1501c2bec446742d29d44da26f63db2671076d7791366e377909185f732c4459a4d37a935189742d29d44da26f63db2671076d7791366e377909185f732c4459a4d37a935189742d29d44da26f63db2671076d7791366e377909185f732c4459a4d37a9351892c01"
     },
     {
-      "programId": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+      "programId": "GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h",
       "keys": [
         {
           "pubkey": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
@@ -58,7 +58,7 @@
           "isWritable": false
         },
         {
-          "pubkey": "CdCCzcpVj1tqevHyo1ejNtjoc3QvYYmNw3PmHLLkLmGP",
+          "pubkey": "A16T3XXsXsEfgMnJaikZ9ah7PxYbfuxHJFGz96XyMbfR",
           "isSigner": false,
           "isWritable": true
         },
@@ -81,7 +81,7 @@
       "dataHex": "370935097239d134"
     },
     {
-      "programId": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+      "programId": "GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h",
       "keys": [
         {
           "pubkey": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
@@ -89,7 +89,7 @@
           "isWritable": false
         },
         {
-          "pubkey": "A6UUtGsJ5KnhYxDVitCjftNw8EWdh2xJiXDJjuCpwu8G",
+          "pubkey": "7v5Rhe37P5BrPTtEeumH1oa6aBQg2tTzFN3r58Sfe4m7",
           "isSigner": false,
           "isWritable": true
         },
@@ -113,23 +113,28 @@
     }
   ],
   "simulation": {
-    "err": {
-      "InstructionError": [
-        0,
-        {
-          "Custom": 2003
-        }
-      ]
-    },
-    "unitsConsumed": 5730,
+    "err": null,
+    "unitsConsumed": 38127,
     "logs": [
-      "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc invoke [1]",
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
       "Program log: Instruction: InitializeConfig",
       "Program 11111111111111111111111111111111 invoke [2]",
       "Program 11111111111111111111111111111111 success",
-      "Program log: AnchorError caused by account: funder. Error Code: ConstraintRaw. Error Number: 2003. Error Message: A raw constraint was violated.",
-      "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc consumed 5730 of 600000 compute units",
-      "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc failed: custom program error: 0x7d3"
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 8498 of 600000 compute units",
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+      "Program log: Instruction: InitializeConfigExtension",
+      "Program 11111111111111111111111111111111 invoke [2]",
+      "Program 11111111111111111111111111111111 success",
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 14172 of 591502 compute units",
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+      "Program log: Instruction: InitializeFeeTier",
+      "Program 11111111111111111111111111111111 invoke [2]",
+      "Program 11111111111111111111111111111111 success",
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 15457 of 577330 compute units",
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
     ]
-  }
+  },
+  "signature": "3WhwE1B3373cLuUC7tTFBabE6okVwAzX114GGS7ktLZiwwGgqvPe2CqRPJLdnNJckcgXSiMU7oPGvAXftAmLNQcX"
 }
