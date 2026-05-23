@@ -1,0 +1,9 @@
+{
+  "verdict": "EXECUTED",
+  "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+  "authority": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+  "fromFeeBps": 690,
+  "toFeeBps": 1,
+  "dryRun": false,
+  "signature": "4QK6JaQnmCAVc8jwi8frhWecmw5NvYGKTpNQQMm5bD7mQEBgSSFU1DetHNi5YbgiCGid2TnDEzTc9UzNoN3spSGf"
+}

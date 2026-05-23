@@ -1,0 +1,11 @@
+{
+  "verdict": "EXECUTED",
+  "flashAmountUsdc": 100000,
+  "hopAmountPerHop": 10000000,
+  "feeBpsPerHop": 690,
+  "totalFeeBps": 2760,
+  "expectedFeeHop": 690000,
+  "jitoTipLamports": 200000,
+  "dryRun": false,
+  "signature": "59wPkEPjH96BDLw2K6ZxoehgAT8Bou788h65X79zaXSxPkvsVvicEqarnr7RfSCSSCGgXAve8CGZ3XBq68PXoyzg"
+}

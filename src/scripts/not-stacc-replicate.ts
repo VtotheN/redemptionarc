@@ -46,6 +46,8 @@ import {
   getAssociatedTokenAddressSync,
   createAssociatedTokenAccountIdempotentInstruction,
   TOKEN_PROGRAM_ID,
+  getMint,
+  getTransferFeeConfig,
 } from "@solana/spl-token";
 import { writeReceipt } from "../utils/receipt.js";
 
@@ -57,7 +59,7 @@ if (process.env.ENV_PATH) {
 
 const HOP_MINT = new PublicKey("HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3");
 const HOP_DECIMALS = 6;
-const HOP_FEE_BPS = 1; // MUST be set via set-hop-fee first
+// Fee bps is read dynamically from on-chain mint (newerTransferFee activates at a future epoch)
 
 const USDC_MINT = new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v");
 
@@ -185,13 +187,16 @@ async function main() {
   const mfAccountPath = process.env.MARGINFI_ACCOUNT_KEYPAIR_PATH || "keys/marginfi-account.json";
   const mfAccount = marginfiAccountPubkey(mfAccountPath);
 
-  // Ring wallets A, B, C, D (crank = wallet A, ring wallets B/C/D need separate keys)
-  // For now, crank is wallet A. B/C/D loaded from ring keypairs.
-  const ringBPath = process.env.RING_B_KEYPAIR_PATH || "keys/ring-b.json";
-  const ringCPath = process.env.RING_C_KEYPAIR_PATH || "keys/ring-c.json";
-  const ringDPath = process.env.RING_D_KEYPAIR_PATH || "keys/ring-d.json";
+  // Ring wallets A, B, C, D.
+  // crank = wallet A (owner of ataA).
+  // B/C/D: crank is DELEGATE (via init-ring-delegates) — no signing needed from B/C/D.
+  // This keeps the TX single-signer → fits in 1232 bytes.
+  const ringBPath = process.env.RING_B_KEYPAIR_PATH || "keys/ring1.json";
+  const ringCPath = process.env.RING_C_KEYPAIR_PATH || "keys/ring2.json";
+  const ringDPath = process.env.RING_D_KEYPAIR_PATH || "keys/ring3.json";
 
   const walletA = crank.publicKey;
+  // Only need pubkeys for ATA derivation — crank is delegate authority
   const walletB = loadKeypair(ringBPath).publicKey;
   const walletC = loadKeypair(ringCPath).publicKey;
   const walletD = loadKeypair(ringDPath).publicKey;
@@ -215,15 +220,31 @@ async function main() {
   // Get oracle for MarginFi end flash
   const oracle = await oracleForBank(connection, USDC_BANK);
 
-  // Calculate fee per hop (1 bps of hopAmountPerHop)
-  const feePerHop = hopAmountPerHop / 10_000n; // 1 bps
+  // Fetch active fee bps from on-chain mint (newer activates at epoch, older still valid until then)
+  const mintInfo = await getMint(connection, HOP_MINT, "confirmed", TOKEN_2022_PROGRAM_ID);
+  const feeConfig = getTransferFeeConfig(mintInfo);
+  if (!feeConfig) throw new Error("HOP has no TransferFeeConfig extension");
+  const epochInfo = await connection.getEpochInfo();
+  const activeFeeConfig = epochInfo.epoch >= Number(feeConfig.newerTransferFee.epoch)
+    ? feeConfig.newerTransferFee
+    : feeConfig.olderTransferFee;
+  const activeFeeBps = activeFeeConfig.transferFeeBasisPoints;
+
+  // T22 fee = ceil(amount * bps / 10_000)
+  const calcFee = (amount: bigint) => {
+    const raw = amount * BigInt(activeFeeBps);
+    return raw / 10_000n + (raw % 10_000n > 0n ? 1n : 0n);
+  };
+
+  const feePerHop = calcFee(hopAmountPerHop);
 
   console.log("=== NOT STACC REPLICATE ===");
   console.log(`crank:         ${walletA.toBase58()}`);
   console.log(`marginfi acct: ${mfAccount.toBase58()}`);
   console.log(`flash amount:  $${flashAmountUsdc} USDC`);
   console.log(`hop amount:    ${Number(hopAmountPerHop) / 10 ** HOP_DECIMALS} HOP per hop`);
-  console.log(`fee per hop:   ${Number(feePerHop) / 10 ** HOP_DECIMALS} HOP (1 bps)`);
+  console.log(`active fee:    ${activeFeeBps} bps (1bps active epoch ${feeConfig.newerTransferFee.epoch}, current ${epochInfo.epoch})`);
+  console.log(`fee per hop:   ${Number(feePerHop) / 10 ** HOP_DECIMALS} HOP (${activeFeeBps} bps)`);
   console.log(`ring:          ${walletA.toBase58().slice(0, 8)} → ${walletB.toBase58().slice(0, 8)} → ${walletC.toBase58().slice(0, 8)} → ${walletD.toBase58().slice(0, 8)} → A`);
   console.log(`dry run:       ${dryRun}`);
   console.log();
@@ -231,9 +252,9 @@ async function main() {
   // ─── Build instructions ───────────────────────────────────────────────────
 
   const hop1Amount = hopAmountPerHop;
-  const hop2Amount = hopAmountPerHop - feePerHop;
-  const hop3Amount = hop2Amount - (hop2Amount / 10_000n);
-  const hop4Amount = hop3Amount - (hop3Amount / 10_000n);
+  const hop2Amount = hop1Amount - calcFee(hop1Amount);
+  const hop3Amount = hop2Amount - calcFee(hop2Amount);
+  const hop4Amount = hop3Amount - calcFee(hop3Amount);
 
   // endIndex = position of endFlashLoan instruction (IX[13] = index 13)
   const END_IX_INDEX = 13n;
@@ -244,18 +265,18 @@ async function main() {
     ComputeBudgetProgram.setComputeUnitPrice({ microLamports: cuPrice }),
     // IX[2] MarginFi start flash
     startFlashIx(mfAccount, walletA, END_IX_INDEX),
-    // IX[3-6] T22 ring
+    // IX[3-6] T22 ring — crank is authority for ALL hops (owner of ataA, delegate on ataB/C/D)
     createTransferCheckedWithFeeInstruction(
-      ataA, HOP_MINT, ataB, walletA, hop1Amount, HOP_DECIMALS, feePerHop, [], TOKEN_2022_PROGRAM_ID
+      ataA, HOP_MINT, ataB, walletA, hop1Amount, HOP_DECIMALS, calcFee(hop1Amount), [], TOKEN_2022_PROGRAM_ID
     ),
     createTransferCheckedWithFeeInstruction(
-      ataB, HOP_MINT, ataC, walletB, hop2Amount, HOP_DECIMALS, hop2Amount / 10_000n, [], TOKEN_2022_PROGRAM_ID
+      ataB, HOP_MINT, ataC, walletA, hop2Amount, HOP_DECIMALS, calcFee(hop2Amount), [], TOKEN_2022_PROGRAM_ID
     ),
     createTransferCheckedWithFeeInstruction(
-      ataC, HOP_MINT, ataD, walletC, hop3Amount, HOP_DECIMALS, hop3Amount / 10_000n, [], TOKEN_2022_PROGRAM_ID
+      ataC, HOP_MINT, ataD, walletA, hop3Amount, HOP_DECIMALS, calcFee(hop3Amount), [], TOKEN_2022_PROGRAM_ID
     ),
     createTransferCheckedWithFeeInstruction(
-      ataD, HOP_MINT, ataA, walletD, hop4Amount, HOP_DECIMALS, hop4Amount / 10_000n, [], TOKEN_2022_PROGRAM_ID
+      ataD, HOP_MINT, ataA, walletA, hop4Amount, HOP_DECIMALS, calcFee(hop4Amount), [], TOKEN_2022_PROGRAM_ID
     ),
     // IX[7] harvest withheld → mint
     createHarvestWithheldTokensToMintInstruction(HOP_MINT, [ataA, ataB, ataC, ataD], TOKEN_2022_PROGRAM_ID),
@@ -284,18 +305,15 @@ async function main() {
   const tx = new Transaction({ recentBlockhash: blockhash, feePayer: walletA });
   tx.add(...ixs);
 
-  // Note: need all signers (crank + ring wallets B/C/D)
-  const ringB = loadKeypair(ringBPath);
-  const ringC = loadKeypair(ringCPath);
-  const ringD = loadKeypair(ringDPath);
-  const signers = [crank, ringB, ringC, ringD];
+  // Single signer — crank is delegate on ataB/C/D (set up by init-ring-delegates)
+  const signers = [crank];
 
   const receipt: Record<string, unknown> = {
     verdict: "",
     flashAmountUsdc,
     hopAmountPerHop: Number(hopAmountPerHop) / 10 ** HOP_DECIMALS,
-    feeBpsPerHop: HOP_FEE_BPS,
-    totalFeeBps: HOP_FEE_BPS * 4,
+    feeBpsPerHop: activeFeeBps,
+    totalFeeBps: activeFeeBps * 4,
     expectedFeeHop: Number(feePerHop) / 10 ** HOP_DECIMALS,
     jitoTipLamports: Number(jitoTipLamports),
     dryRun,
