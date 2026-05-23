@@ -1,0 +1,207 @@
+{
+  "verdict": "BZK_CASH_PATH_CONFIRMED_READ_ONLY",
+  "generatedAt": "2026-05-23T19:19:11.295Z",
+  "readOnly": true,
+  "files": {
+    "walletPath": "receipts/BZK_WALLET_TXS_2026-05-22_1425_to_2026-05-23_0614.json",
+    "poolPath": "receipts/BZK_POOL_TXS_2026-05-22_1425_to_2026-05-23_0614.json"
+  },
+  "constants": {
+    "wzma": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+    "bzkMint": "Bzkdz5AKApsqizBxzqMUqWGJbx4gHXVC6NJekmAY8Gq3",
+    "pumpAmm": "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA"
+  },
+  "pump": {
+    "txCount": 3,
+    "firstCashTx": {
+      "signature": "2AqqEuiCkTJCqWT69fEVbdVdKfqtkAzxM9SRowcDCMFdWwWTLvsBDfNrnPyHFJ2CfTkNqTgjSgWissDDQEL2QmVq",
+      "slot": 421476117,
+      "source": "PUMP_AMM",
+      "type": "UNKNOWN",
+      "feePayer": "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
+      "wzmaNativeGainLamports": 2081291788,
+      "wzmaNativeGainSol": 2.081291788,
+      "programIds": [
+        "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
+        "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P",
+        "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ"
+      ]
+    }
+  },
+  "walletNativeInflows": {
+    "positiveTxCount": 43,
+    "positiveSolTotal": 15.733164182,
+    "top10": [
+      {
+        "signature": "37c636P1u8Cg5jvPifsXAiGzEYj2raxubdVubwDC2u6SKjcYjxJ1PZAfHowXprkWHdE1D9VenqfhjAdGBrAfmg7D",
+        "slot": 421479203,
+        "source": "JUPITER",
+        "type": "SWAP",
+        "lamports": 9208495971,
+        "sol": 9.208495971,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4",
+          "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+          "11111111111111111111111111111111"
+        ]
+      },
+      {
+        "signature": "2AqqEuiCkTJCqWT69fEVbdVdKfqtkAzxM9SRowcDCMFdWwWTLvsBDfNrnPyHFJ2CfTkNqTgjSgWissDDQEL2QmVq",
+        "slot": 421476117,
+        "source": "PUMP_AMM",
+        "type": "UNKNOWN",
+        "lamports": 2081291788,
+        "sol": 2.081291788,
+        "programIds": [
+          "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
+          "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P",
+          "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ"
+        ]
+      },
+      {
+        "signature": "3k151Y13iDF3Dm9dFB2Tv67hGhoDAv45AhMEkC88QpGshXKtN9me2t2Ra3wUZQRYtXfMwtVYEHZpWkhqDaR3jxiS",
+        "slot": 421503188,
+        "source": "ASSOCIATED_TOKEN_PROGRAM",
+        "type": "INITIALIZE_ACCOUNT",
+        "lamports": 1259356210,
+        "sol": 1.25935621,
+        "programIds": [
+          "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+          "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ"
+        ]
+      },
+      {
+        "signature": "5xxGEWmkgMPiEEs1fdtGfZbSN8xqezKvUZnn8bHoxkSY35HSt7BQZJY83ixqcvNUsWaQvUFtWVDYTunojeV2hs5C",
+        "slot": 421490805,
+        "source": "SYSTEM_PROGRAM",
+        "type": "TRANSFER",
+        "lamports": 1142522774,
+        "sol": 1.142522774,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "11111111111111111111111111111111"
+        ]
+      },
+      {
+        "signature": "5M4kkZ4b6uNbcAbVqmW552RJcmoyke9QhbUqyecXR2kx8mLb5ThgdtXYSNPNkD8oR97o75nh15xM7arktoPSMmVN",
+        "slot": 421497862,
+        "source": "JUPITER",
+        "type": "SWAP",
+        "lamports": 978292957,
+        "sol": 0.978292957,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4",
+          "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+          "11111111111111111111111111111111"
+        ]
+      },
+      {
+        "signature": "5hq8XYUAc5i418pt62e81GeybmxivxSD8S8xDZW2fpTCariZWhB1wAFj7B8x744tfh6H8TTjdF3MRypNSaFcjjDo",
+        "slot": 421532627,
+        "source": "ASSOCIATED_TOKEN_PROGRAM",
+        "type": "INITIALIZE_ACCOUNT",
+        "lamports": 428958813,
+        "sol": 0.428958813,
+        "programIds": [
+          "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+          "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ"
+        ]
+      },
+      {
+        "signature": "36xS3ATb19MkSssBBzywmMrLNQhRP5xsMEhwCqd1FQkaEdsiSfvgGfXYE3UoefULsgkNAFqKWkmxpWpfnpURTpy8",
+        "slot": 421532552,
+        "source": "ASSOCIATED_TOKEN_PROGRAM",
+        "type": "INITIALIZE_ACCOUNT",
+        "lamports": 300964284,
+        "sol": 0.300964284,
+        "programIds": [
+          "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+          "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ"
+        ]
+      },
+      {
+        "signature": "5Mjve9UKuxtfm5AxFCQ8inAcvjthJrHRrvNfTrLwQzP7BaupX6UESALzhjbHExDp4SYbTy9dN7eY3Wds5fmdf9Wd",
+        "slot": 421535409,
+        "source": "ORCA",
+        "type": "DECREASE_LIQUIDITY",
+        "lamports": 10051800,
+        "sol": 0.0100518,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+          "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc"
+        ]
+      },
+      {
+        "signature": "4KU69hPMk4P6E17mM4vTTP651DTN5fq8oLRpvCzRt8raT9hMAL5B1n27nSPdLw4jkj7wYFU4sWXpzfhQBHaWFBuq",
+        "slot": 421535412,
+        "source": "ORCA",
+        "type": "DECREASE_LIQUIDITY",
+        "lamports": 10051800,
+        "sol": 0.0100518,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+          "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc"
+        ]
+      },
+      {
+        "signature": "2JydD1s6XNTHgnEEj6TawDbZsCTr5H1v3UNBfLHgpzxyA71BneyN2RrqYxQnQ68T2kgW8vuAsgigJ4ynM6iJMVqi",
+        "slot": 421535415,
+        "source": "ORCA",
+        "type": "DECREASE_LIQUIDITY",
+        "lamports": 10051800,
+        "sol": 0.0100518,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+          "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc"
+        ]
+      }
+    ]
+  },
+  "externalOrcaRouting": {
+    "externalSwapCount": 1,
+    "swaps": [
+      {
+        "signature": "25zGXkrQt1dmpZmrWP1Cchb82KGSUtcQyUwk9HyEUHyfAYHXsMecEYZR7BsSH9hXherJbbYFHRYZ1Uus8f7uzsqx",
+        "slot": 421497098,
+        "source": "RAYDIUM",
+        "type": "SWAP",
+        "feePayer": "HxjwdF326ZunmUwC1iXhfgL3ku78YsksN6n7Rfxzwr6b",
+        "description": "HxjwdF326ZunmUwC1iXhfgL3ku78YsksN6n7Rfxzwr6b swapped 0.124375 USDC for 0.001459042 SOL",
+        "feePayerNativeChangeLamports": -3573360,
+        "bzkTokenChanges": [
+          {
+            "userAccount": "HxjwdF326ZunmUwC1iXhfgL3ku78YsksN6n7Rfxzwr6b",
+            "tokenAccount": "EJk86bndYX3x3SZsV29s4yMKh2x7wDDZXAUv86Pm6ufN",
+            "rawTokenAmount": {
+              "tokenAmount": "2117740529",
+              "decimals": 6
+            },
+            "mint": "Bzkdz5AKApsqizBxzqMUqWGJbx4gHXVC6NJekmAY8Gq3"
+          }
+        ],
+        "programIds": [
+          "11111111111111111111111111111111",
+          "9GCBb4NsSDRuEkkGfQkN37oppmMVPops5sXDWhAKAvQQ",
+          "ComputeBudget111111111111111111111111111111"
+        ]
+      }
+    ]
+  },
+  "interpretation": {
+    "mechanisms": [
+      "Token-2022 ring: mechanically valid, HOP-denominated, separately cash-gated",
+      "Orca pool: can earn real LP/protocol fees only from external order flow",
+      "Pump.fun/PumpSwap sell: produced direct SOL inflow to WzMa in the first local BZK wallet tx"
+    ],
+    "rejected": [
+      "wash volume",
+      "fake activity intended to mislead external traders",
+      "treating self-seeded LP inventory as net cash profit"
+    ]
+  }
+}

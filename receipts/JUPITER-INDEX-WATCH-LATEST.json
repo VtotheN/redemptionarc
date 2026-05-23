@@ -1,0 +1,123 @@
+{
+  "verdict": "JUPITER_NO_ROUTE_FOUND_READ_ONLY",
+  "generatedAt": "2026-05-23T19:19:12.656Z",
+  "readOnly": true,
+  "tokenMint": "Bzkdz5AKApsqizBxzqMUqWGJbx4gHXVC6NJekmAY8Gq3",
+  "amountRaw": "1000000",
+  "apiKeyProvided": false,
+  "results": [
+    {
+      "baseUrl": "https://api.jup.ag/swap/v1/quote",
+      "inputMint": "Bzkdz5AKApsqizBxzqMUqWGJbx4gHXVC6NJekmAY8Gq3",
+      "outputMint": "So11111111111111111111111111111111111111112",
+      "amount": "1000000",
+      "ok": false,
+      "routeFound": false,
+      "status": 400,
+      "error": {
+        "error": "No routes found",
+        "errorCode": "NO_ROUTES_FOUND"
+      },
+      "routeSummary": null
+    },
+    {
+      "baseUrl": "https://api.jup.ag/swap/v1/quote",
+      "inputMint": "Bzkdz5AKApsqizBxzqMUqWGJbx4gHXVC6NJekmAY8Gq3",
+      "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "amount": "1000000",
+      "ok": false,
+      "routeFound": false,
+      "status": 400,
+      "error": {
+        "error": "No routes found",
+        "errorCode": "NO_ROUTES_FOUND"
+      },
+      "routeSummary": null
+    },
+    {
+      "baseUrl": "https://api.jup.ag/swap/v1/quote",
+      "inputMint": "So11111111111111111111111111111111111111112",
+      "outputMint": "Bzkdz5AKApsqizBxzqMUqWGJbx4gHXVC6NJekmAY8Gq3",
+      "amount": "1000000",
+      "ok": false,
+      "routeFound": false,
+      "status": 400,
+      "error": {
+        "error": "No routes found",
+        "errorCode": "NO_ROUTES_FOUND"
+      },
+      "routeSummary": null
+    },
+    {
+      "baseUrl": "https://api.jup.ag/swap/v1/quote",
+      "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "outputMint": "Bzkdz5AKApsqizBxzqMUqWGJbx4gHXVC6NJekmAY8Gq3",
+      "amount": "1000000",
+      "ok": false,
+      "routeFound": false,
+      "status": 400,
+      "error": {
+        "error": "No routes found",
+        "errorCode": "NO_ROUTES_FOUND"
+      },
+      "routeSummary": null
+    },
+    {
+      "baseUrl": "https://lite-api.jup.ag/swap/v1/quote",
+      "inputMint": "Bzkdz5AKApsqizBxzqMUqWGJbx4gHXVC6NJekmAY8Gq3",
+      "outputMint": "So11111111111111111111111111111111111111112",
+      "amount": "1000000",
+      "ok": false,
+      "routeFound": false,
+      "status": 400,
+      "error": {
+        "error": "No routes found",
+        "errorCode": "NO_ROUTES_FOUND"
+      },
+      "routeSummary": null
+    },
+    {
+      "baseUrl": "https://lite-api.jup.ag/swap/v1/quote",
+      "inputMint": "Bzkdz5AKApsqizBxzqMUqWGJbx4gHXVC6NJekmAY8Gq3",
+      "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "amount": "1000000",
+      "ok": false,
+      "routeFound": false,
+      "status": 400,
+      "error": {
+        "error": "No routes found",
+        "errorCode": "NO_ROUTES_FOUND"
+      },
+      "routeSummary": null
+    },
+    {
+      "baseUrl": "https://lite-api.jup.ag/swap/v1/quote",
+      "inputMint": "So11111111111111111111111111111111111111112",
+      "outputMint": "Bzkdz5AKApsqizBxzqMUqWGJbx4gHXVC6NJekmAY8Gq3",
+      "amount": "1000000",
+      "ok": false,
+      "routeFound": false,
+      "status": 400,
+      "error": {
+        "error": "No routes found",
+        "errorCode": "NO_ROUTES_FOUND"
+      },
+      "routeSummary": null
+    },
+    {
+      "baseUrl": "https://lite-api.jup.ag/swap/v1/quote",
+      "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "outputMint": "Bzkdz5AKApsqizBxzqMUqWGJbx4gHXVC6NJekmAY8Gq3",
+      "amount": "1000000",
+      "ok": false,
+      "routeFound": false,
+      "status": 400,
+      "error": {
+        "error": "No routes found",
+        "errorCode": "NO_ROUTES_FOUND"
+      },
+      "routeSummary": null
+    }
+  ],
+  "next": "No Jupiter route yet. Wait for DEX liquidity/indexing or use a different legitimate settlement path."
+}

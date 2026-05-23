@@ -15,7 +15,8 @@ Generated from local receipts and mainnet RPC on 2026-05-23.
 
 ## Correct Interpretation
 
-The ring is mechanically useful but not cash-settled today.
+The model has three distinct mechanisms. The ring is mechanically useful but
+not cash-settled today.
 
 ```text
 controlled HOP ring
@@ -28,6 +29,49 @@ controlled HOP ring
 That is not USDC/SOL profit until HOP has an externally funded settlement route. A self-seeded HOP/USDC pool alone does not create cash profit; selling HOP into our own LP vault moves our own USDC from LP inventory to treasury.
 
 MarginFi flash USDC is an atomicity wrapper in the observed TX shape. It does not determine the amount of HOP fee revenue. HOP fee revenue is controlled by `HOP_AMOUNT_PER_HOP`, active transfer-fee bps, ring balances, and settlement value.
+
+## BZK Cash Path
+
+Local receipt analysis:
+
+```bash
+npm run stacc-bzk-cash-analysis
+```
+
+Receipt: `receipts/STACC-BZK-CASH-MODEL-LATEST.json`
+
+Verified facts from `BZK_WALLET_TXS` and `BZK_POOL_TXS`:
+
+- First local BZK wallet tx:
+  - signature: `2AqqEuiCkTJCqWT69fEVbdVdKfqtkAzxM9SRowcDCMFdWwWTLvsBDfNrnPyHFJ2CfTkNqTgjSgWissDDQEL2QmVq`
+  - source: `PUMP_AMM`
+  - program: `pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA`
+  - WzMa native gain: `2.081291788 SOL`
+- BZK pool txs include one external pool swap:
+  - signature: `25zGXkrQt1dmpZmrWP1Cchb82KGSUtcQyUwk9HyEUHyfAYHXsMecEYZR7BsSH9hXherJbbYFHRYZ1Uus8f7uzsqx`
+  - fee payer: `HxjwdF326ZunmUwC1iXhfgL3ku78YsksN6n7Rfxzwr6b`
+  - source: `RAYDIUM`
+  - description: swapped `0.124375 USDC` for `0.001459042 SOL`
+  - BZK token balance changes appear in the external account data
+
+This means the BZK cash model is not the HOP ring. It is:
+
+```text
+Pump.fun / PumpSwap sale
+-> direct SOL into WzMa
+
+plus
+
+external routing through the BZK pool
+-> real LP/protocol fee potential
+```
+
+## Boundary
+
+We can measure and support legitimate launch/indexing/liquidity. We should not
+implement wash volume, fake activity, or deceptive signals intended to induce
+outside buyers. Those are not valid cash-settled sources and create legal and
+operational risk.
 
 ## Current Dry Run
 
@@ -71,4 +115,3 @@ mechanical sim: OK
 cash-settled profit: NOT PROVEN
 live send: BLOCKED
 ```
-

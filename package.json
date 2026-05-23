@@ -69,6 +69,8 @@
     "orca-owned-fee-cycle-sim": "tsx src/scripts/orca-owned-fee-cycle-sim.ts",
     "stacc-endogenous-plan": "tsx src/scripts/stacc-endogenous-plan.ts",
     "stacc-mesh-build-plan": "tsx src/scripts/stacc-mesh-build-plan.ts",
+    "stacc-bzk-cash-analysis": "tsx src/scripts/stacc-bzk-cash-analysis.ts",
+    "jupiter-index-watch": "tsx src/scripts/jupiter-index-watch.ts",
     "init-kpx9-fee-tier": "tsx src/scripts/init-kpx9-fee-tier.ts",
     "init-kpx9-token-badge": "tsx src/scripts/init-kpx9-token-badge.ts",
     "init-kpx9-pool": "tsx src/scripts/init-kpx9-pool.ts",
