@@ -1,7 +1,7 @@
 {
   "verdict": "STACC_BZK_LOOP_MONITORING_NO_LIVE",
-  "generatedAt": "2026-05-24T04:35:16.477Z",
-  "iteration": 2,
+  "generatedAt": "2026-05-24T05:17:58.177Z",
+  "iteration": 1,
   "noSend": true,
   "dryRun": true,
   "allowLive": false,
@@ -42,8 +42,8 @@
       "stdoutTail": [
         "> redemptionarc@0.1.0 stacc-social-fee-source-scan",
         "> tsx src/scripts/stacc-social-fee-source-scan.ts",
-        "STACC_SOCIAL_FEE_SOURCE_OBSERVED_NO_LIVE recentPositiveClaims=2 netSol=0.193582427 localAuthority=false receipt=/Users/velon/Desktop/redemptionarc/receipts/STACC-SOCIAL-FEE-SOURCE-LATEST.json",
-        "blocked=WzMa social-fee authority keypair is not locally configured | latest positive social-fee claim is not directly BZK-account linked | no live path: current unclaimed amount and exact claim accounts are not simulated"
+        "STACC_SOCIAL_FEE_SOURCE_OBSERVED_NO_LIVE recentPositiveClaims=2 netSol=0.149760726 localAuthority=false receipt=/Users/velon/Desktop/redemptionarc/receipts/STACC-SOCIAL-FEE-SOURCE-LATEST.json",
+        "blocked=Pump social-fee claim authority keypair is not locally configured: 2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM | latest positive social-fee claim is not directly BZK-account linked | no live path: current unclaimed amount and exact claim accounts are not simulated"
       ],
       "stderrTail": []
     },
@@ -148,38 +148,29 @@
     "sourceClass": "authority_exclusive_protocol_fee_claim",
     "sourceName": "pump_social_fee_claim_pda_v2",
     "payerClass": "external_protocol",
+    "recipient": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+    "authority": "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
+    "socialClaimAuthority": "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
+    "requiredClaimSignerPubkeys": [
+      "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM"
+    ],
     "authorityLocalSignerAvailable": false,
     "recent": {
       "scannedTxs": 50,
-      "claimLikeCount": 3,
+      "claimLikeCount": 2,
       "positiveClaimCount": 2,
-      "positiveNetSol": 0.193582427,
-      "positiveNetUsd": 16.633625598131548,
+      "positiveNetSol": 0.149760726,
+      "positiveNetUsd": 12.840764999319074,
       "claimSamples": [
+        {
+          "signature": "1nqq151qk2chsiqt6Psdh9aC7L1natbEPPif2z2GpAMJbo8LFgzQNhiUpMRvKeRDwf67smmCjHnAP2cuD6MRdfv",
+          "nativeDeltaSol": 0.115977324,
+          "bzkRelated": false,
+          "logHints": []
+        },
         {
           "signature": "3Torrzx8pD7CBUMJvoUh4BLdwxxt66hxJpmboGvRNp88uyaFW9Q9PW5DpiiNFREuczAcezPWTnCSrLKFQPmAsSfG",
           "nativeDeltaSol": 0.033783402,
-          "bzkRelated": false,
-          "logHints": [
-            "Program log: Instruction: ClaimSocialFeePdaV2",
-            "Program log: Instruction: ClaimSocialFeePdaV2",
-            "Program log: No fees available to claim"
-          ]
-        },
-        {
-          "signature": "23oMiSvvggGXoufCCBAe6mpJTUmA7ym4iJob5CMSwPG432wZf8mS6WhPaSwoQzi8FsGzDhhwpuxgkydJhQ67S2tj",
-          "nativeDeltaSol": -0.00001,
-          "bzkRelated": false,
-          "logHints": [
-            "Program log: Instruction: ClaimSocialFeePdaV2",
-            "Program log: No fees available to claim",
-            "Program log: Instruction: ClaimSocialFeePdaV2",
-            "Program log: No fees available to claim"
-          ]
-        },
-        {
-          "signature": "64FptZgrxxfQFbqY2qw56uRxyWEu5VxFCjQgtAbx5gDZgxTEe98mdAzXxMEigbh5cvFa18ML38GeaPtV1dnTNszE",
-          "nativeDeltaSol": 0.159799025,
           "bzkRelated": false,
           "logHints": [
             "Program log: Instruction: ClaimSocialFeePdaV2",
@@ -190,21 +181,22 @@
       ]
     },
     "latestPositiveClaim": {
-      "signature": "3Torrzx8pD7CBUMJvoUh4BLdwxxt66hxJpmboGvRNp88uyaFW9Q9PW5DpiiNFREuczAcezPWTnCSrLKFQPmAsSfG",
-      "slot": 421773201,
-      "blockTime": 1779594483,
-      "beforeRaw": "227088662",
-      "afterRaw": "260872064",
-      "netDeltaLamports": "33783402",
-      "netDeltaSol": 0.033783402,
-      "grossClaimSol": 0.033793402,
-      "feeSol": 0.00001,
-      "netCashUsd": 2.9028485126863735,
-      "grossClaimUsd": 2.903707765556374,
-      "feeUsd": 0.00085925287,
+      "signature": "1nqq151qk2chsiqt6Psdh9aC7L1natbEPPif2z2GpAMJbo8LFgzQNhiUpMRvKeRDwf67smmCjHnAP2cuD6MRdfv",
+      "slot": 421785513,
+      "blockTime": 1779599392,
+      "beforeRaw": "5316614",
+      "afterRaw": "121293938",
+      "netDeltaLamports": "115977324",
+      "netDeltaSol": 0.115977324,
+      "grossClaimSol": 0.115982324,
+      "feeSol": 0.000005,
+      "netCashUsd": 9.944112869310528,
+      "grossClaimUsd": 9.944541578670528,
+      "feeUsd": 0.00042870936,
       "bzkRelated": false,
       "programIds": [
-        "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+        "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
+        "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P",
         "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ"
       ],
       "socialFeeInstructions": [
@@ -212,136 +204,23 @@
           "index": 2,
           "programId": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
           "accountIndexes": [
-            0,
-            6,
-            8,
-            3,
             5,
-            14,
-            10,
-            11,
-            1,
-            9,
-            12,
-            13
-          ],
-          "accounts": [
-            {
-              "pubkey": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
-              "isSigner": true,
-              "isWritable": true
-            },
-            {
-              "pubkey": "HDLQmC6MAApKKbKb5cz4der2FLW1vsiwKjfQDz54UFt9",
-              "isSigner": false,
-              "isWritable": true
-            },
-            {
-              "pubkey": "So11111111111111111111111111111111111111112",
-              "isSigner": false,
-              "isWritable": true
-            },
-            {
-              "pubkey": "BXQvs49xhSnEvKAHhoKFc7J5kwX3pEp5ngPWJtoFL1ip",
-              "isSigner": false,
-              "isWritable": true
-            },
-            {
-              "pubkey": "FCfwoXBHHQxXGghjzxqRvYMwBpikwket6jGyjfwwzuyU",
-              "isSigner": false,
-              "isWritable": true
-            },
-            {
-              "pubkey": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-              "isSigner": false,
-              "isWritable": false
-            },
-            {
-              "pubkey": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
-              "isSigner": false,
-              "isWritable": false
-            },
-            {
-              "pubkey": "CHqnuTkj6sXDFknM652aEFPECZh9qVsBXWkhPohmV9dA",
-              "isSigner": false,
-              "isWritable": false
-            },
-            {
-              "pubkey": "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
-              "isSigner": true,
-              "isWritable": false
-            },
-            {
-              "pubkey": "11111111111111111111111111111111",
-              "isSigner": false,
-              "isWritable": false
-            },
-            {
-              "pubkey": "D6QxXDt6hhcCpto4HiZKkN2YQ2iZRF5R7S3caCHpUsML",
-              "isSigner": false,
-              "isWritable": false
-            },
-            {
-              "pubkey": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
-              "isSigner": false,
-              "isWritable": false
-            }
-          ],
-          "dataBase64": "EU3whjq8NZUIAAAAMjI4NDM2MDEC",
-          "dataHex": "114df0863abc359508000000323238343336303102"
-        },
-        {
-          "index": 3,
-          "programId": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
-          "accountIndexes": [
-            0,
-            6,
             4,
-            7,
-            2,
-            14,
-            10,
-            11,
-            1,
-            9,
-            12,
-            13
+            18,
+            0,
+            19,
+            17
           ],
           "accounts": [
             {
               "pubkey": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
-              "isSigner": true,
+              "isSigner": false,
               "isWritable": true
             },
             {
               "pubkey": "HDLQmC6MAApKKbKb5cz4der2FLW1vsiwKjfQDz54UFt9",
               "isSigner": false,
               "isWritable": true
-            },
-            {
-              "pubkey": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-              "isSigner": false,
-              "isWritable": true
-            },
-            {
-              "pubkey": "JAW3k28XCPEMvRzwEXGncDCRgideTXCvqqYMmcvNjMFq",
-              "isSigner": false,
-              "isWritable": true
-            },
-            {
-              "pubkey": "6Rp8rNgcuPWymJYtxxYDumZ18uAYhbtWsCB5VxGgyZW9",
-              "isSigner": false,
-              "isWritable": true
-            },
-            {
-              "pubkey": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-              "isSigner": false,
-              "isWritable": false
-            },
-            {
-              "pubkey": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
-              "isSigner": false,
-              "isWritable": false
             },
             {
               "pubkey": "CHqnuTkj6sXDFknM652aEFPECZh9qVsBXWkhPohmV9dA",
@@ -351,12 +230,7 @@
             {
               "pubkey": "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
               "isSigner": true,
-              "isWritable": false
-            },
-            {
-              "pubkey": "11111111111111111111111111111111",
-              "isSigner": false,
-              "isWritable": false
+              "isWritable": true
             },
             {
               "pubkey": "D6QxXDt6hhcCpto4HiZKkN2YQ2iZRF5R7S3caCHpUsML",
@@ -369,21 +243,20 @@
               "isWritable": false
             }
           ],
-          "dataBase64": "EU3whjq8NZUIAAAAMjI4NDM2MDEC",
-          "dataHex": "114df0863abc359508000000323238343336303102"
+          "dataBase64": "4RX7haEex+IIAAAAMjI4NDM2MDEC",
+          "dataHex": "e115fb85a11ec7e208000000323238343336303102"
         }
       ],
-      "logHints": [
-        "Program log: Instruction: ClaimSocialFeePdaV2",
-        "Program log: Instruction: ClaimSocialFeePdaV2",
-        "Program log: No fees available to claim"
-      ]
+      "requiredClaimSignerPubkeys": [
+        "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM"
+      ],
+      "logHints": []
     },
     "cashRelayCompatibility": {
       "pass": false,
       "reason": "Observed real SOL settlement, but not yet a fresh exact executable source receipt for this local signer set.",
       "wouldNeed": [
-        "Configure a local WzMa signer only if Velon owns/approves that authority.",
+        "Configure the Pump social-claim authority signer only if Velon owns/approves that authority.",
         "Derive current social-fee claim PDA/accounts before execution.",
         "Simulate exact claim transaction and prove afterRaw > beforeRaw after costs.",
         "Then feed the exact source receipt into RedemptionCashRelay before live approval."
@@ -394,84 +267,30 @@
     "owner": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
     "limit": 20,
     "fetched": 20,
-    "positiveCount": 2,
-    "positiveSolTotal": 0.097743192,
-    "positiveBzkRelatedCount": 0,
-    "positiveBzkRelatedSolTotal": 0,
+    "positiveCount": 3,
+    "positiveSolTotal": 0.599578324,
+    "positiveBzkRelatedCount": 1,
+    "positiveBzkRelatedSolTotal": 0.115977324,
     "latest": [
       {
-        "signature": "3mhX4MwYzUR1wbehgE19QTiU7iYr1H7y8LKCB3G866wFL6FwKkqNFNU9e8oQgHwPaDuTFhmXU8rRCuKzweUZtEcq",
-        "slot": 421780293,
+        "signature": "1nqq151qk2chsiqt6Psdh9aC7L1natbEPPif2z2GpAMJbo8LFgzQNhiUpMRvKeRDwf67smmCjHnAP2cuD6MRdfv",
+        "slot": 421785513,
         "err": null,
-        "blockTime": 1779597315,
-        "nativeDeltaLamports": -21991820,
-        "nativeDeltaSol": -0.02199182,
+        "blockTime": 1779599392,
+        "nativeDeltaLamports": 115977324,
+        "nativeDeltaSol": 0.115977324,
         "programIds": [
-          "ComputeBudget111111111111111111111111111111",
-          "11111111111111111111111111111111",
-          "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-          "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
-          "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s"
-        ],
-        "bzkRelated": false
-      },
-      {
-        "signature": "4XTDs5yyqNrZWWHTaRrtgHwK5aHUmxTPiH3bBmM3g9bAS9EbmZFRp6FTYkTFEs44cymR6iMqqTb9WRzX8PgM8APG",
-        "slot": 421779810,
-        "err": null,
-        "blockTime": 1779597123,
-        "nativeDeltaLamports": -5000,
-        "nativeDeltaSol": -0.000005,
-        "programIds": [
-          "ComputeBudget111111111111111111111111111111",
-          "SP12tWFxD9oJsVWNavTTBZvMbA6gkAmxtVgxdqvyvhY"
-        ],
-        "bzkRelated": false
-      },
-      {
-        "signature": "5BTxovjNqxq6FwMM9GtDHrJDFk9wseGHDfJBt6HgCCR6aBjb9zEiwnnyxyxCsoZCJ6vGkNApgVrK2kTNGH6HrH39",
-        "slot": 421779804,
-        "err": null,
-        "blockTime": 1779597121,
-        "nativeDeltaLamports": -5000,
-        "nativeDeltaSol": -0.000005,
-        "programIds": [
-          "ComputeBudget111111111111111111111111111111",
-          "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
-        ],
-        "bzkRelated": false
-      },
-      {
-        "signature": "2bDQDY4fQmZM2MX5GMW7JkC5Qsucfs88zrbMDVbGnLx2BvaW6RmBPyjmtSEAZdJ6CGGSWdVwV6c4JZ2DuRDghMzP",
-        "slot": 421779799,
-        "err": null,
-        "blockTime": 1779597119,
-        "nativeDeltaLamports": -5000,
-        "nativeDeltaSol": -0.000005,
-        "programIds": [
-          "ComputeBudget111111111111111111111111111111",
-          "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
-        ],
-        "bzkRelated": false
-      },
-      {
-        "signature": "3Torrzx8pD7CBUMJvoUh4BLdwxxt66hxJpmboGvRNp88uyaFW9Q9PW5DpiiNFREuczAcezPWTnCSrLKFQPmAsSfG",
-        "slot": 421773201,
-        "err": null,
-        "blockTime": 1779594483,
-        "nativeDeltaLamports": 33783402,
-        "nativeDeltaSol": 0.033783402,
-        "programIds": [
-          "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+          "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
+          "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P",
           "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ"
         ],
-        "bzkRelated": false
+        "bzkRelated": true
       },
       {
-        "signature": "4BBHYSBzM7VQ8j4LdUscUbKyAXqDbKVDFsHbQoX9Cg7dFR6kCt2XbJxbUuCNBdTQoSHseLfskbA8GzhzxrGMae2N",
-        "slot": 421773192,
+        "signature": "T5y5HnG35MYpDtUgbcrXw3NH73UC9ycSVuw12LCURznRcpCUpPP8F289sqDwnw9QMAzUz9C3Xem1Liaw79ETzam",
+        "slot": 421785502,
         "err": null,
-        "blockTime": 1779594479,
+        "blockTime": 1779599387,
         "nativeDeltaLamports": -5000,
         "nativeDeltaSol": -0.000005,
         "programIds": [
@@ -481,10 +300,23 @@
         "bzkRelated": true
       },
       {
-        "signature": "3ZnKB452aVatar8pZdDZh8dKyrXrxPBFKaXncoXNHf5PzTD6rrTGMaDYMpCsYDWN3SxoxPL9WHPauDYVe6FnxJi",
-        "slot": 421773033,
+        "signature": "3nDGgfjsNZjndxvjD2qyK8ArJnhYD6gSG71sTxDaeABvNEHFYjaSixshmN2YHu11kNqosKSCz5mUvhZD8Wo3hPEW",
+        "slot": 421785109,
         "err": null,
-        "blockTime": 1779594415,
+        "blockTime": 1779599232,
+        "nativeDeltaLamports": 10000,
+        "nativeDeltaSol": 0.00001,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "11111111111111111111111111111111"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "2hqzWt8yNgwdb3S2zPSwZDLBsHAJseWHUtYLrYfdqPqKdfLFjrej8iphKavkxxAGeMiinWShSXbL6XLgetgfySWw",
+        "slot": 421785107,
+        "err": null,
+        "blockTime": 1779599231,
         "nativeDeltaLamports": -5000,
         "nativeDeltaSol": -0.000005,
         "programIds": [
@@ -494,10 +326,10 @@
         "bzkRelated": false
       },
       {
-        "signature": "4GP2CWJBSW5yJ1yRCjC9Scju6disdZTBC5Qpt9EQtkDJYKoQnM2NK7JwtpGg6s222QDBxFC6SVNWduXkHobFGQZ",
-        "slot": 421773028,
+        "signature": "4ZifaQWmYjGzyCaJLguB6Jh6Fnek7YbVzNuidNKob6ugXUGvPKB6Cb4tcUGDCaXs3WWsQoJkLteF7QEAmrEM1edJ",
+        "slot": 421785101,
         "err": null,
-        "blockTime": 1779594413,
+        "blockTime": 1779599229,
         "nativeDeltaLamports": -5000,
         "nativeDeltaSol": -0.000005,
         "programIds": [
@@ -507,60 +339,134 @@
         "bzkRelated": false
       },
       {
-        "signature": "4DQuAxrQuU9bKF6hqRjXj7Pq2C3dWaCyyb8BJMK8Ad2P6iEfGVsETRFu8JggC7UjtQUUnZkck6nmgVaEtWozSbdT",
-        "slot": 421771513,
+        "signature": "5c112QfgYbqAhXXYWD89Y9kamKG3QAs4di4Eq5GMGQHfx9K4RNZC9jKE6tQoWfruNoEatCL8iJ4sk8Yyo9DuuXJJ",
+        "slot": 421785096,
         "err": null,
-        "blockTime": 1779593810,
-        "nativeDeltaLamports": -5000,
-        "nativeDeltaSol": -0.000005,
-        "programIds": [
-          "ComputeBudget111111111111111111111111111111",
-          "SP12tWFxD9oJsVWNavTTBZvMbA6gkAmxtVgxdqvyvhY"
-        ],
-        "bzkRelated": false
-      },
-      {
-        "signature": "FNSy3QwsLL6hbE4pWcoKSCDnwZTqmxUGsbNJmH1ma9HqGi7kBXEh6XPDgwpt44hHkNR69BhQbhkVdTAPhDmYqhY",
-        "slot": 421771508,
-        "err": null,
-        "blockTime": 1779593808,
+        "blockTime": 1779599227,
         "nativeDeltaLamports": -5000,
         "nativeDeltaSol": -0.000005,
         "programIds": [
           "ComputeBudget111111111111111111111111111111",
           "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "38rtgjRhKrqEnUikFbePG3s8nuuuEoYbPSA2YUPKncCKLDb9KSViUi43pbGyNy5hrhXhxFFRQ2zouMk222UVTkof",
+        "slot": 421785091,
+        "err": null,
+        "blockTime": 1779599224,
+        "nativeDeltaLamports": -630080000,
+        "nativeDeltaSol": -0.63008,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "11111111111111111111111111111111"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "31MiLRvKZhFc8xVrELUEY241kgBayVYKKazTfvusThK7RNSR1gF1a3VsV8am3csczWwEk3uNPzd6p7eKEVVobuGe",
+        "slot": 421785072,
+        "err": {
+          "InsufficientFundsForRent": {
+            "account_index": 0
+          }
+        },
+        "blockTime": 1779599217,
+        "nativeDeltaLamports": -80000,
+        "nativeDeltaSol": -0.00008,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "11111111111111111111111111111111"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "497zjsKym1eqZ1jEUsjuJqUXvDGvrcT6ZcU4fWGRsA1RghJMRUDkvRJBKigJa1APrGJKSUeiaG7Tk4FdYoPxZcgH",
+        "slot": 421784119,
+        "err": null,
+        "blockTime": 1779598841,
+        "nativeDeltaLamports": 483591000,
+        "nativeDeltaSol": 0.483591,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "TCMPhJdwDryooaGtiocG1u3xcYbRpiJzb283XfCZsDp"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "4qwXnkdhkDEfQn8v4BeycbAR8U9trMjvzbojtomuJGVJfr2L7GUTd4QQLzEg1fqNEjpuHqd7TrFdKqg6Y4KUFLcG",
+        "slot": 421783600,
+        "err": null,
+        "blockTime": 1779598636,
+        "nativeDeltaLamports": -8063800,
+        "nativeDeltaSol": -0.0080638,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "F9SixdqdmEBP5kprp2gZPZNeMmfHJRCTMFjN22dx3akf",
+          "11111111111111111111111111111111"
         ],
         "bzkRelated": false
       }
     ],
     "positive": [
       {
-        "signature": "3Torrzx8pD7CBUMJvoUh4BLdwxxt66hxJpmboGvRNp88uyaFW9Q9PW5DpiiNFREuczAcezPWTnCSrLKFQPmAsSfG",
-        "slot": 421773201,
+        "signature": "1nqq151qk2chsiqt6Psdh9aC7L1natbEPPif2z2GpAMJbo8LFgzQNhiUpMRvKeRDwf67smmCjHnAP2cuD6MRdfv",
+        "slot": 421785513,
         "err": null,
-        "blockTime": 1779594483,
-        "nativeDeltaLamports": 33783402,
-        "nativeDeltaSol": 0.033783402,
+        "blockTime": 1779599392,
+        "nativeDeltaLamports": 115977324,
+        "nativeDeltaSol": 0.115977324,
         "programIds": [
-          "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+          "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
+          "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P",
           "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ"
+        ],
+        "bzkRelated": true
+      },
+      {
+        "signature": "3nDGgfjsNZjndxvjD2qyK8ArJnhYD6gSG71sTxDaeABvNEHFYjaSixshmN2YHu11kNqosKSCz5mUvhZD8Wo3hPEW",
+        "slot": 421785109,
+        "err": null,
+        "blockTime": 1779599232,
+        "nativeDeltaLamports": 10000,
+        "nativeDeltaSol": 0.00001,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "11111111111111111111111111111111"
         ],
         "bzkRelated": false
       },
       {
-        "signature": "4pShT55qJFRQu84uCo4LsnV4ZLRnfvEv72SDx7j86uUHSJvJoQY1ddLdhS9sRQBctiwCzHEPT4UHau9mUPw497EK",
-        "slot": 421764661,
+        "signature": "497zjsKym1eqZ1jEUsjuJqUXvDGvrcT6ZcU4fWGRsA1RghJMRUDkvRJBKigJa1APrGJKSUeiaG7Tk4FdYoPxZcgH",
+        "slot": 421784119,
         "err": null,
-        "blockTime": 1779591081,
-        "nativeDeltaLamports": 63959790,
-        "nativeDeltaSol": 0.06395979,
+        "blockTime": 1779598841,
+        "nativeDeltaLamports": 483591000,
+        "nativeDeltaSol": 0.483591,
         "programIds": [
-          "11111111111111111111111111111111"
+          "ComputeBudget111111111111111111111111111111",
+          "TCMPhJdwDryooaGtiocG1u3xcYbRpiJzb283XfCZsDp"
         ],
         "bzkRelated": false
       }
     ],
-    "positiveBzkRelated": []
+    "positiveBzkRelated": [
+      {
+        "signature": "1nqq151qk2chsiqt6Psdh9aC7L1natbEPPif2z2GpAMJbo8LFgzQNhiUpMRvKeRDwf67smmCjHnAP2cuD6MRdfv",
+        "slot": 421785513,
+        "err": null,
+        "blockTime": 1779599392,
+        "nativeDeltaLamports": 115977324,
+        "nativeDeltaSol": 0.115977324,
+        "programIds": [
+          "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
+          "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P",
+          "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ"
+        ],
+        "bzkRelated": true
+      }
+    ]
   },
   "cycleSim": {
     "verdict": "OWNED_FEE_MULTI_BOT_CYCLE_NO_GO",
@@ -598,7 +504,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18388112854,
+        "requiredExternalVolumeUsdForMinNet": 100.18348381828,
         "swapFeeUsd": 0,
         "protocolFeeUsd": 0,
         "lpFeeUsd": 0,
@@ -622,7 +528,7 @@
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045970282134999993
+          "usd": 0.0004587095456999999
         },
         "inventoryRiskUsd": 0,
         "inventoryRiskBps": null,
@@ -630,8 +536,8 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": -0.00045970282134999993,
-        "totalSystemNetUsd": -0.00045970282134999993
+        "collectorLedgerNetUsd": -0.0004587095456999999,
+        "totalSystemNetUsd": -0.0004587095456999999
       },
       "collectSimulation": null,
       "cashProofPass": false,
@@ -655,14 +561,15 @@
     "BZK claimable cash fees 0.000000 below MIN_NET_USD 0.25",
     "no direct local signer cash-fee collect is currently ready",
     "no active route candidate for settlement simulation",
-    "social-fee SOL source observed (16.633626 USD net), but not executable by CashRelay yet",
+    "recent BZK/Pump/Jupiter-related WzMa SOL inflow detected; classify only after exact source receipt",
+    "social-fee SOL source observed (12.840765 USD net), but not executable by CashRelay yet",
     "social-fee source is not yet a fresh exact executable receipt",
     "cycle sim not cash-positive: total-system cash gate below MIN_NET_USD (0.25) | collect authority is not locally signable; direct collect is not executable by this wallet set"
   ],
   "nextRequiredExactBuild": [
     "Keep monitoring BZK route/indexing and protocol fees.",
     "If partner authority signs are available, configure OWNED_FEE_KEYPAIR_PATHS and rerun.",
-    "If WzMa social-fee authority is approved and local, configure SOCIAL_FEE_KEYPAIR_PATHS and build exact claim sim.",
+    "If the Pump social-claim authority signer is approved and local, configure SOCIAL_FEE_KEYPAIR_PATHS and build exact claim sim.",
     "If external flow appears, run settlement sim before any live action."
   ]
 }

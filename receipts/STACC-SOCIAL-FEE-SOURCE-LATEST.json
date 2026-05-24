@@ -1,6 +1,6 @@
 {
   "verdict": "STACC_SOCIAL_FEE_SOURCE_OBSERVED_NO_LIVE",
-  "generatedAt": "2026-05-24T04:34:52.190Z",
+  "generatedAt": "2026-05-24T05:17:39.759Z",
   "noSend": true,
   "dryRun": true,
   "allowLiveIgnored": false,
@@ -8,29 +8,60 @@
   "sourceClass": "authority_exclusive_protocol_fee_claim",
   "sourceName": "pump_social_fee_claim_pda_v2",
   "payerClass": "external_protocol",
-  "authority": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+  "recipient": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+  "authority": "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
+  "socialClaimAuthority": "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
+  "requiredClaimSignerPubkeys": [
+    "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM"
+  ],
   "authorityLocalSignerAvailable": false,
-  "localSignerPubkeys": [],
+  "localSignerPubkeys": [
+    "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+    "GvWfjcCh1JceUmcQpoQcVKS5Vxa2r4oncbveuWgUt2sh",
+    "GB2zDSh8jphhJn7EcE3Mf3RCHv2SQVJVQfR18qMhte6r",
+    "8ytXBomj5jrE3PosJTA6fnsvDDfuAQfreVJKPGBsPoQs",
+    "EYSkQkFgW1q1TUSCn4EzeSvEQFvh4YGy4y63xiR9M1Ta",
+    "APUSE85XDsJ1MKj9Rwy2CJuxTSKfY6bZaBhRNtSEUi6f",
+    "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+    "7Wg8aXuPijrmH4svDmqArMeMAWF3ZusgrznJ6ymprBAN",
+    "BajtYir7NtMgmLYJDu3Sy4GH1x55MyQqjhczkYw59T3R",
+    "7etFhsHcyX2zwJa6fJzLkCBx1fzVMgwxaFoPG8PgaRwX",
+    "7JDkeT6N5zAvF1w4SPcnLcr8nR5Px2RdLniNrMCyB3bR",
+    "9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz",
+    "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+    "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
+    "4QD4GgnjRvjETqWLT5e3x7SHtJSzs9kShUPLfyHcTu7d",
+    "Qv51R47g7pMDxa3UofXaz8cNr8pwRSXaNufgnEWX8Yk",
+    "2UkyZsHdx4ftkVi3xSoRCLAzF4FaRV7G5fCtW7FrDrHu",
+    "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
+    "4ftgDecgELHsLm6yVmoynNAW4KkBW8P6TK3rU47yyxvu",
+    "Yja2XE6rAtf9tTughmeQ95YjVR2nR4iRRsrp9oYdipk",
+    "5jZur8NtpXNmDhRncSBkNgHhN129rBnKdiUBJadD1ihq",
+    "DevoDSB8G1kVmzWxzwaoKgRMozHK1sQqNfJABnWSvmkC",
+    "BGM3VPeND4xts3J6WeaeRJVFpzAJhyJiqycqYP2vk6dV",
+    "4J3QuZt1fPbkPJST4rd9sZyQLrKAzv6FLgWpvXumn57Y"
+  ],
   "asset": "SOL",
   "decimals": 9,
-  "solPriceUsd": 85.925287,
+  "solPriceUsd": 85.741872,
   "minNetUsd": 0.25,
   "latestPositiveClaim": {
-    "signature": "3Torrzx8pD7CBUMJvoUh4BLdwxxt66hxJpmboGvRNp88uyaFW9Q9PW5DpiiNFREuczAcezPWTnCSrLKFQPmAsSfG",
-    "slot": 421773201,
-    "blockTime": 1779594483,
-    "beforeRaw": "227088662",
-    "afterRaw": "260872064",
-    "netDeltaLamports": "33783402",
-    "netDeltaSol": 0.033783402,
-    "grossClaimSol": 0.033793402,
-    "feeSol": 0.00001,
-    "netCashUsd": 2.9028485126863735,
-    "grossClaimUsd": 2.903707765556374,
-    "feeUsd": 0.00085925287,
+    "signature": "1nqq151qk2chsiqt6Psdh9aC7L1natbEPPif2z2GpAMJbo8LFgzQNhiUpMRvKeRDwf67smmCjHnAP2cuD6MRdfv",
+    "slot": 421785513,
+    "blockTime": 1779599392,
+    "beforeRaw": "5316614",
+    "afterRaw": "121293938",
+    "netDeltaLamports": "115977324",
+    "netDeltaSol": 0.115977324,
+    "grossClaimSol": 0.115982324,
+    "feeSol": 0.000005,
+    "netCashUsd": 9.944112869310528,
+    "grossClaimUsd": 9.944541578670528,
+    "feeUsd": 0.00042870936,
     "bzkRelated": false,
     "programIds": [
-      "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+      "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
+      "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P",
       "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ"
     ],
     "socialFeeInstructions": [
@@ -38,136 +69,23 @@
         "index": 2,
         "programId": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
         "accountIndexes": [
-          0,
-          6,
-          8,
-          3,
           5,
-          14,
-          10,
-          11,
-          1,
-          9,
-          12,
-          13
-        ],
-        "accounts": [
-          {
-            "pubkey": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
-            "isSigner": true,
-            "isWritable": true
-          },
-          {
-            "pubkey": "HDLQmC6MAApKKbKb5cz4der2FLW1vsiwKjfQDz54UFt9",
-            "isSigner": false,
-            "isWritable": true
-          },
-          {
-            "pubkey": "So11111111111111111111111111111111111111112",
-            "isSigner": false,
-            "isWritable": true
-          },
-          {
-            "pubkey": "BXQvs49xhSnEvKAHhoKFc7J5kwX3pEp5ngPWJtoFL1ip",
-            "isSigner": false,
-            "isWritable": true
-          },
-          {
-            "pubkey": "FCfwoXBHHQxXGghjzxqRvYMwBpikwket6jGyjfwwzuyU",
-            "isSigner": false,
-            "isWritable": true
-          },
-          {
-            "pubkey": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-            "isSigner": false,
-            "isWritable": false
-          },
-          {
-            "pubkey": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
-            "isSigner": false,
-            "isWritable": false
-          },
-          {
-            "pubkey": "CHqnuTkj6sXDFknM652aEFPECZh9qVsBXWkhPohmV9dA",
-            "isSigner": false,
-            "isWritable": false
-          },
-          {
-            "pubkey": "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
-            "isSigner": true,
-            "isWritable": false
-          },
-          {
-            "pubkey": "11111111111111111111111111111111",
-            "isSigner": false,
-            "isWritable": false
-          },
-          {
-            "pubkey": "D6QxXDt6hhcCpto4HiZKkN2YQ2iZRF5R7S3caCHpUsML",
-            "isSigner": false,
-            "isWritable": false
-          },
-          {
-            "pubkey": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
-            "isSigner": false,
-            "isWritable": false
-          }
-        ],
-        "dataBase64": "EU3whjq8NZUIAAAAMjI4NDM2MDEC",
-        "dataHex": "114df0863abc359508000000323238343336303102"
-      },
-      {
-        "index": 3,
-        "programId": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
-        "accountIndexes": [
-          0,
-          6,
           4,
-          7,
-          2,
-          14,
-          10,
-          11,
-          1,
-          9,
-          12,
-          13
+          18,
+          0,
+          19,
+          17
         ],
         "accounts": [
           {
             "pubkey": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
-            "isSigner": true,
+            "isSigner": false,
             "isWritable": true
           },
           {
             "pubkey": "HDLQmC6MAApKKbKb5cz4der2FLW1vsiwKjfQDz54UFt9",
             "isSigner": false,
             "isWritable": true
-          },
-          {
-            "pubkey": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-            "isSigner": false,
-            "isWritable": true
-          },
-          {
-            "pubkey": "JAW3k28XCPEMvRzwEXGncDCRgideTXCvqqYMmcvNjMFq",
-            "isSigner": false,
-            "isWritable": true
-          },
-          {
-            "pubkey": "6Rp8rNgcuPWymJYtxxYDumZ18uAYhbtWsCB5VxGgyZW9",
-            "isSigner": false,
-            "isWritable": true
-          },
-          {
-            "pubkey": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-            "isSigner": false,
-            "isWritable": false
-          },
-          {
-            "pubkey": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
-            "isSigner": false,
-            "isWritable": false
           },
           {
             "pubkey": "CHqnuTkj6sXDFknM652aEFPECZh9qVsBXWkhPohmV9dA",
@@ -177,12 +95,7 @@
           {
             "pubkey": "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
             "isSigner": true,
-            "isWritable": false
-          },
-          {
-            "pubkey": "11111111111111111111111111111111",
-            "isSigner": false,
-            "isWritable": false
+            "isWritable": true
           },
           {
             "pubkey": "D6QxXDt6hhcCpto4HiZKkN2YQ2iZRF5R7S3caCHpUsML",
@@ -195,47 +108,31 @@
             "isWritable": false
           }
         ],
-        "dataBase64": "EU3whjq8NZUIAAAAMjI4NDM2MDEC",
-        "dataHex": "114df0863abc359508000000323238343336303102"
+        "dataBase64": "4RX7haEex+IIAAAAMjI4NDM2MDEC",
+        "dataHex": "e115fb85a11ec7e208000000323238343336303102"
       }
     ],
-    "logHints": [
-      "Program log: Instruction: ClaimSocialFeePdaV2",
-      "Program log: Instruction: ClaimSocialFeePdaV2",
-      "Program log: No fees available to claim"
-    ]
+    "requiredClaimSignerPubkeys": [
+      "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM"
+    ],
+    "logHints": []
   },
   "recent": {
     "scannedTxs": 50,
-    "claimLikeCount": 3,
+    "claimLikeCount": 2,
     "positiveClaimCount": 2,
-    "positiveNetSol": 0.193582427,
-    "positiveNetUsd": 16.633625598131548,
+    "positiveNetSol": 0.149760726,
+    "positiveNetUsd": 12.840764999319074,
     "claimSamples": [
+      {
+        "signature": "1nqq151qk2chsiqt6Psdh9aC7L1natbEPPif2z2GpAMJbo8LFgzQNhiUpMRvKeRDwf67smmCjHnAP2cuD6MRdfv",
+        "nativeDeltaSol": 0.115977324,
+        "bzkRelated": false,
+        "logHints": []
+      },
       {
         "signature": "3Torrzx8pD7CBUMJvoUh4BLdwxxt66hxJpmboGvRNp88uyaFW9Q9PW5DpiiNFREuczAcezPWTnCSrLKFQPmAsSfG",
         "nativeDeltaSol": 0.033783402,
-        "bzkRelated": false,
-        "logHints": [
-          "Program log: Instruction: ClaimSocialFeePdaV2",
-          "Program log: Instruction: ClaimSocialFeePdaV2",
-          "Program log: No fees available to claim"
-        ]
-      },
-      {
-        "signature": "23oMiSvvggGXoufCCBAe6mpJTUmA7ym4iJob5CMSwPG432wZf8mS6WhPaSwoQzi8FsGzDhhwpuxgkydJhQ67S2tj",
-        "nativeDeltaSol": -0.00001,
-        "bzkRelated": false,
-        "logHints": [
-          "Program log: Instruction: ClaimSocialFeePdaV2",
-          "Program log: No fees available to claim",
-          "Program log: Instruction: ClaimSocialFeePdaV2",
-          "Program log: No fees available to claim"
-        ]
-      },
-      {
-        "signature": "64FptZgrxxfQFbqY2qw56uRxyWEu5VxFCjQgtAbx5gDZgxTEe98mdAzXxMEigbh5cvFa18ML38GeaPtV1dnTNszE",
-        "nativeDeltaSol": 0.159799025,
         "bzkRelated": false,
         "logHints": [
           "Program log: Instruction: ClaimSocialFeePdaV2",
@@ -260,14 +157,14 @@
     "pass": false,
     "reason": "Observed real SOL settlement, but not yet a fresh exact executable source receipt for this local signer set.",
     "wouldNeed": [
-      "Configure a local WzMa signer only if Velon owns/approves that authority.",
+      "Configure the Pump social-claim authority signer only if Velon owns/approves that authority.",
       "Derive current social-fee claim PDA/accounts before execution.",
       "Simulate exact claim transaction and prove afterRaw > beforeRaw after costs.",
       "Then feed the exact source receipt into RedemptionCashRelay before live approval."
     ]
   },
   "rejectionReasons": [
-    "WzMa social-fee authority keypair is not locally configured",
+    "Pump social-fee claim authority keypair is not locally configured: 2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
     "latest positive social-fee claim is not directly BZK-account linked",
     "no live path: current unclaimed amount and exact claim accounts are not simulated"
   ]

@@ -1,0 +1,433 @@
+{
+  "verdict": "STACC_SIGNER_SEARCH_NO_MATCH",
+  "generatedAt": "2026-05-24T05:12:04.452Z",
+  "noSend": true,
+  "targetPubkeys": [
+    "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM"
+  ],
+  "searchRoots": [
+    "/Users/velon"
+  ],
+  "dirsScanned": 13182,
+  "filesSeen": 85879,
+  "candidateFiles": 6605,
+  "keypairLike": 197,
+  "uniqueDerived": 101,
+  "matchCount": 0,
+  "matches": [],
+  "targetMentionFiles": [
+    "/Users/velon/Desktop/redemptionarc/receipts/STACC-BZK-CASH-MODEL-LATEST.json",
+    "/Users/velon/Desktop/redemptionarc/receipts/STACC-BZK-LOOP-LATEST.json",
+    "/Users/velon/Desktop/redemptionarc/receipts/STACC-BZK-SECURITY-PLAN-LATEST.json",
+    "/Users/velon/Desktop/redemptionarc/receipts/STACC-SOCIAL-FEE-CLAIM-SIM-LATEST.json",
+    "/Users/velon/Desktop/redemptionarc/receipts/STACC-SOCIAL-FEE-SOURCE-LATEST.json",
+    "/Users/velon/Desktop/redemptionarc/src/scripts/stacc-signer-search.ts",
+    "/Users/velon/Desktop/redemptionlove/receipts/STACC-BZK-CASH-MODEL-LATEST.json"
+  ],
+  "sampleDerivedPubkeys": [
+    {
+      "file": "/Users/velon/.claude/paste-cache/4f5aacbda6565135.txt",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/paste-cache/4f5aacbda6565135.txt",
+      "pubkey": "CQXbE2AuXzoZtxMsk3pHDS7TVAxNGW681Sf9UGScQ1tY",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/f357ccf2-f555-4a96-aed3-44bb7dda8809/tool-results/blmcbrl0v.txt",
+      "pubkey": "mAGicPQYBMvcYveUZA5F5UNNwyHvfYh5xkLS2Fr1mev",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.config/solana/id.json",
+      "pubkey": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/gas-station-admin.json",
+      "pubkey": "7Wg8aXuPijrmH4svDmqArMeMAWF3ZusgrznJ6ymprBAN",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/nawebona-vladimir-admin.json",
+      "pubkey": "6T3oSSG3QsmYqFhJt1QN5BtugUNcvZjxNiRu4gakM3Yu",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/nawebona-vladimir-crank.json",
+      "pubkey": "FLuXmSjhRPd3EeUiUuvr8ouLR5knuh9XzMqKrZRnJ85d",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/nawebona-vladimir-ring-1.json",
+      "pubkey": "GTcUiKCywte2LQankT3pNwP4HBfgjp854EPzB38QCb1B",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/nawebona-vladimir-ring-2.json",
+      "pubkey": "CegzNEdsaBHndXuCNrDF4qDZRwqsu3HjvaEX8yw4iFby",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/nawebona-vladimir-ring-3.json",
+      "pubkey": "AdXpCSoUyY472rf6Tr3yuUuEZo4enRfoqzQWYU8cNXNJ",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/nawebona-vladimir-ring-4.json",
+      "pubkey": "A7Bb8icHUfBrkEZJ9PY8pHipaJg2P1u5V8Sfb6F5gC9y",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/nawebona-vladimir-treasury.json",
+      "pubkey": "fzBFYiDyvu5kNexJuBZDmoG1gL76ZWXEL8YE1y7NtwM",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/payer-candidate-2.json",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/phantom-crank.json",
+      "pubkey": "FvkP2XzbCK6PspjhZ44sae5vbQPZQGmVkCv1dUC2pAZ9",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/phantom-hop-1.json",
+      "pubkey": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/phantom-hop-2.json",
+      "pubkey": "HLyJtPmLy1a8ozovtURsV6nW9gTXAdHo8u9FvzXe1gdp",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/phantom-hop-3.json",
+      "pubkey": "gPaEVBZyTpM6GACSo2Lnc2oABdDgGfLyBSHC9fESdAB",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/phantom-hop-4.json",
+      "pubkey": "75vwRvoUsSRws6nAjqyw6kYjkGyAXv8aAPUJyC2umKPt",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/phantom-owned-usdc-fee-vault.json",
+      "pubkey": "98a3z7NS9piL7YBqo3WtFu4mJQWLonwc6Jxip5mLeim7",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/phantom-ring-1.json",
+      "pubkey": "Ge5fCyRkNy4gPTAbTvr7i3XDDkZ8FiEAihh83wD9oi9q",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/phantom-ring-2.json",
+      "pubkey": "FdPYAFnJ5P9X1QLtoydEbFoNgNz4XeRnyTq6EPuZrHMp",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/phantom-ring-3.json",
+      "pubkey": "GqW1n2EGdaqVjcnMsm1XuN8p71NbyAhk1kpkig9wWPsa",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/phantom-ring-4.json",
+      "pubkey": "8EwaiE1tXUAM4fGZXHHwoJnfCggrvvHiaBZsD7asci57",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/phantom-treasury.json",
+      "pubkey": "FdpruPJgPzyNefSxkU5JqifteeDPqwZPfBzcmNb7NNxY",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/tiotulio-prime-admin.json",
+      "pubkey": "9vnbNsvbKbweEvLMud1y5DjjJYShk9N1rcKJbJt62yHd",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/tiotulio-prime-crank.json",
+      "pubkey": "G9K8WAprCVdZKYhq2DzuT6V4zAt2V6x2YLa4rJcnz6kL",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/tiotulio-prime-ring-1.json",
+      "pubkey": "5KqJ7NjQyCbqJhbXSYRn2SmuGtmoPdgG4kb4yKs8qGEU",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/tiotulio-prime-ring-2.json",
+      "pubkey": "CsrAPSwJiEpDfTCQiSQJX5NV9etv8Y1Bbcph1bhr8MtA",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/tiotulio-prime-ring-3.json",
+      "pubkey": "4E9Y6JQfMLKUcafycdtVPXKkVmmxTLUeUcD6jRhapAAE",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/tiotulio-prime-ring-4.json",
+      "pubkey": "FHftfNtujuzJyn323U2WNfSWcJFXg94JUqCVhxLQRBaQ",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/tiotulio-prime-treasury.json",
+      "pubkey": "3pytadruqrd4yygPQ9uF8BDDLhPpygQmXwDrHHvB4YcG",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/underwheel-marginfi-account.json",
+      "pubkey": "3TUioqNLgZskQa8UAhxLoFHZ9bc2e1FZs2bYFjWPrSyW",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/arc-mint.json",
+      "pubkey": "GvWfjcCh1JceUmcQpoQcVKS5Vxa2r4oncbveuWgUt2sh",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/bot-1.json",
+      "pubkey": "GB2zDSh8jphhJn7EcE3Mf3RCHv2SQVJVQfR18qMhte6r",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/bot-2.json",
+      "pubkey": "8ytXBomj5jrE3PosJTA6fnsvDDfuAQfreVJKPGBsPoQs",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/bot-3.json",
+      "pubkey": "EYSkQkFgW1q1TUSCn4EzeSvEQFvh4YGy4y63xiR9M1Ta",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/bot-4.json",
+      "pubkey": "APUSE85XDsJ1MKj9Rwy2CJuxTSKfY6bZaBhRNtSEUi6f",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/crank.json",
+      "pubkey": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/kpx9-authority.json",
+      "pubkey": "7Wg8aXuPijrmH4svDmqArMeMAWF3ZusgrznJ6ymprBAN",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/kpx9-position-mint.json",
+      "pubkey": "BajtYir7NtMgmLYJDu3Sy4GH1x55MyQqjhczkYw59T3R",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/kpx9-vault-a.json",
+      "pubkey": "7etFhsHcyX2zwJa6fJzLkCBx1fzVMgwxaFoPG8PgaRwX",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/kpx9-vault-b.json",
+      "pubkey": "7JDkeT6N5zAvF1w4SPcnLcr8nR5Px2RdLniNrMCyB3bR",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/marginfi-account.json",
+      "pubkey": "9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/old-fee-config-auth.json",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/orca-config.json",
+      "pubkey": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/pool-vault-a.json",
+      "pubkey": "4QD4GgnjRvjETqWLT5e3x7SHtJSzs9kShUPLfyHcTu7d",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/pool-vault-b.json",
+      "pubkey": "Qv51R47g7pMDxa3UofXaz8cNr8pwRSXaNufgnEWX8Yk",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/position-mint.json",
+      "pubkey": "2UkyZsHdx4ftkVi3xSoRCLAzF4FaRV7G5fCtW7FrDrHu",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/redemption-hop-mint.json",
+      "pubkey": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/ring1.json",
+      "pubkey": "4ftgDecgELHsLm6yVmoynNAW4KkBW8P6TK3rU47yyxvu",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/ring2.json",
+      "pubkey": "Yja2XE6rAtf9tTughmeQ95YjVR2nR4iRRsrp9oYdipk",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/ring3.json",
+      "pubkey": "5jZur8NtpXNmDhRncSBkNgHhN129rBnKdiUBJadD1ihq",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/ring4.json",
+      "pubkey": "DevoDSB8G1kVmzWxzwaoKgRMozHK1sQqNfJABnWSvmkC",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/treasury.json",
+      "pubkey": "BGM3VPeND4xts3J6WeaeRJVFpzAJhyJiqycqYP2vk6dV",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionarc/keys/withdraw-authority.json",
+      "pubkey": "4J3QuZt1fPbkPJST4rd9sZyQLrKAzv6FLgWpvXumn57Y",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/arc-mint.json",
+      "pubkey": "GvWfjcCh1JceUmcQpoQcVKS5Vxa2r4oncbveuWgUt2sh",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/bot-1.json",
+      "pubkey": "GB2zDSh8jphhJn7EcE3Mf3RCHv2SQVJVQfR18qMhte6r",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/bot-2.json",
+      "pubkey": "8ytXBomj5jrE3PosJTA6fnsvDDfuAQfreVJKPGBsPoQs",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/bot-3.json",
+      "pubkey": "EYSkQkFgW1q1TUSCn4EzeSvEQFvh4YGy4y63xiR9M1Ta",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/bot-4.json",
+      "pubkey": "APUSE85XDsJ1MKj9Rwy2CJuxTSKfY6bZaBhRNtSEUi6f",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/crank.json",
+      "pubkey": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/kpx9-authority.json",
+      "pubkey": "7Wg8aXuPijrmH4svDmqArMeMAWF3ZusgrznJ6ymprBAN",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/kpx9-position-mint.json",
+      "pubkey": "BajtYir7NtMgmLYJDu3Sy4GH1x55MyQqjhczkYw59T3R",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/kpx9-vault-a.json",
+      "pubkey": "7etFhsHcyX2zwJa6fJzLkCBx1fzVMgwxaFoPG8PgaRwX",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/kpx9-vault-b.json",
+      "pubkey": "7JDkeT6N5zAvF1w4SPcnLcr8nR5Px2RdLniNrMCyB3bR",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/marginfi-account.json",
+      "pubkey": "9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/old-fee-config-auth.json",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/orca-config.json",
+      "pubkey": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/pool-vault-a.json",
+      "pubkey": "4QD4GgnjRvjETqWLT5e3x7SHtJSzs9kShUPLfyHcTu7d",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/pool-vault-b.json",
+      "pubkey": "Qv51R47g7pMDxa3UofXaz8cNr8pwRSXaNufgnEWX8Yk",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/position-mint.json",
+      "pubkey": "2UkyZsHdx4ftkVi3xSoRCLAzF4FaRV7G5fCtW7FrDrHu",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/redemption-hop-mint.json",
+      "pubkey": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/ring1.json",
+      "pubkey": "4ftgDecgELHsLm6yVmoynNAW4KkBW8P6TK3rU47yyxvu",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/ring2.json",
+      "pubkey": "Yja2XE6rAtf9tTughmeQ95YjVR2nR4iRRsrp9oYdipk",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/ring3.json",
+      "pubkey": "5jZur8NtpXNmDhRncSBkNgHhN129rBnKdiUBJadD1ihq",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/ring4.json",
+      "pubkey": "DevoDSB8G1kVmzWxzwaoKgRMozHK1sQqNfJABnWSvmkC",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/treasury.json",
+      "pubkey": "BGM3VPeND4xts3J6WeaeRJVFpzAJhyJiqycqYP2vk6dV",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Desktop/redemptionlove/keys/withdraw-authority.json",
+      "pubkey": "4J3QuZt1fPbkPJST4rd9sZyQLrKAzv6FLgWpvXumn57Y",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Downloads/whirlpools-main/legacy-sdk/whirlpool/tests/preload_account/reset_position_range/owner_wallet_secret.json",
+      "pubkey": "4GQ4VQZKPt4fLxGCusfdBZia2ge5hUZpfwwr3pqxUrmf",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/Downloads/whirlpools-main/programs/whirlpool/src/auth/localnet/localnet-admin-keypair-0.json",
+      "pubkey": "tstYmkF9JHjZbSugJe1H3ygUTox1bqSxpn5QjxMwVrm",
+      "match": false
+    }
+  ],
+  "errors": 0,
+  "rejectionReasons": [
+    "no local keypair derived to any target signer pubkey"
+  ]
+}

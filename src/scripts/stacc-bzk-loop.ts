@@ -272,6 +272,10 @@ async function runOnce(iteration: number) {
       sourceClass: socialFee?.sourceClass ?? null,
       sourceName: socialFee?.sourceName ?? null,
       payerClass: socialFee?.payerClass ?? null,
+      recipient: socialFee?.recipient ?? null,
+      authority: socialFee?.authority ?? null,
+      socialClaimAuthority: socialFee?.socialClaimAuthority ?? null,
+      requiredClaimSignerPubkeys: socialFee?.requiredClaimSignerPubkeys ?? null,
       authorityLocalSignerAvailable: socialFee?.authorityLocalSignerAvailable ?? null,
       recent: socialFee?.recent ?? null,
       latestPositiveClaim: socialFee?.latestPositiveClaim ?? null,
@@ -300,7 +304,7 @@ async function runOnce(iteration: number) {
       : [
         "Keep monitoring BZK route/indexing and protocol fees.",
         "If partner authority signs are available, configure OWNED_FEE_KEYPAIR_PATHS and rerun.",
-        "If WzMa social-fee authority is approved and local, configure SOCIAL_FEE_KEYPAIR_PATHS and build exact claim sim.",
+        "If the Pump social-claim authority signer is approved and local, configure SOCIAL_FEE_KEYPAIR_PATHS and build exact claim sim.",
         "If external flow appears, run settlement sim before any live action."
       ]
   };

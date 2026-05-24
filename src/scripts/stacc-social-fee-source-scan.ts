@@ -16,6 +16,8 @@ const WZMA = "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb";
 const BZK_MINT = "Bzkdz5AKApsqizBxzqMUqWGJbx4gHXVC6NJekmAY8Gq3";
 const SOCIAL_FEE_PROGRAM = "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ";
 const CLAIM_LOG = "ClaimSocialFeePdaV2";
+const CLAIM_SOCIAL_FEE_PDA_DISC = "e115fb85a11ec7e2";
+const CLAIM_SOCIAL_FEE_PDA_V2_DISC = "114df0863abc3595";
 const HISTORICAL_FILES = [
   "receipts/BZK_WALLET_TXS_2026-05-22_1425_to_2026-05-23_0614.json",
   "receipts/BZK_POOL_TXS_2026-05-22_1425_to_2026-05-23_0614.json",
@@ -101,6 +103,8 @@ function historicalNativeDelta(tx: AnyRecord, owner: string): number {
 
 function signerPubkeysFromEnv(): Array<{ path: string; pubkey: string }> {
   const paths = [
+    `${process.env.HOME ?? ""}/.config/solana/id.json`,
+    ...(fs.existsSync("keys") ? fs.readdirSync("keys").map((name) => `keys/${name}`) : []),
     ...envCsv("SOCIAL_FEE_KEYPAIR_PATHS"),
     ...envCsv("OWNED_FEE_KEYPAIR_PATHS"),
     ...envCsv("KEEPER_AUTHORITY_KEYPAIR_PATHS"),
@@ -120,6 +124,22 @@ function signerPubkeysFromEnv(): Array<{ path: string; pubkey: string }> {
     }
   }
   return out;
+}
+
+function claimSignerPubkeysFromInstructions(instructions: unknown[]): string[] {
+  const signers = new Set<string>();
+  for (const ix of instructions.map(record)) {
+    const programId = string(ix.programId);
+    const dataHex = string(ix.dataHex) ?? "";
+    const accounts = array(ix.accounts).map(record);
+    if (programId !== SOCIAL_FEE_PROGRAM) continue;
+    if (dataHex.startsWith(CLAIM_SOCIAL_FEE_PDA_V2_DISC) && accounts[8]?.pubkey) {
+      signers.add(String(accounts[8].pubkey));
+    } else if (dataHex.startsWith(CLAIM_SOCIAL_FEE_PDA_DISC) && accounts[3]?.pubkey) {
+      signers.add(String(accounts[3].pubkey));
+    }
+  }
+  return [...signers];
 }
 
 async function jupiterSolUsdc(): Promise<number | null> {
@@ -216,7 +236,6 @@ async function main(): Promise<void> {
   const recentLimit = numberEnv("SOCIAL_FEE_RECENT_TX_LIMIT", 50);
   const localSigners = signerPubkeysFromEnv();
   const localSignerPubkeys = new Set(localSigners.map((entry) => entry.pubkey));
-  const localAuthorityAvailable = localSignerPubkeys.has(WZMA);
 
   const recent = await recentClaimRows(connection, WZMA, recentLimit);
   const recentClaims = recent.filter((row) => row.claimLike);
@@ -243,10 +262,16 @@ async function main(): Promise<void> {
     : 0;
   const latestFeeSol = latestPositiveClaim ? (latestPositiveClaim.feeLamports ?? 0) / 1_000_000_000 : 0;
   const latestNetSol = latestPositiveClaim?.nativeDeltaSol ?? 0;
+  const requiredClaimSignerPubkeys = latestPositiveClaim
+    ? claimSignerPubkeysFromInstructions(latestPositiveClaim.socialFeeInstructions)
+    : [];
+  const socialClaimAuthority = requiredClaimSignerPubkeys[0] ?? null;
+  const localAuthorityAvailable = requiredClaimSignerPubkeys.length > 0
+    && requiredClaimSignerPubkeys.every((pubkey) => localSignerPubkeys.has(pubkey));
 
   const rejectionReasons = [
     latestPositiveClaim ? null : "no positive recent social-fee claim observed",
-    localAuthorityAvailable ? null : "WzMa social-fee authority keypair is not locally configured",
+    localAuthorityAvailable ? null : `Pump social-fee claim authority keypair is not locally configured: ${requiredClaimSignerPubkeys.join(", ") || "unknown"}`,
     latestPositiveClaim?.bzkRelated ? null : "latest positive social-fee claim is not directly BZK-account linked",
     recentPositiveNetUsd == null ? "SOL price unavailable; USD gate recorded but not trusted" : null,
     recentPositiveNetUsd != null && recentPositiveNetUsd >= minNetUsd ? null : `recent positive social-fee net ${recentPositiveNetUsd?.toFixed(6) ?? "unknown"} USD below MIN_NET_USD ${minNetUsd}`,
@@ -265,7 +290,10 @@ async function main(): Promise<void> {
     sourceClass: "authority_exclusive_protocol_fee_claim",
     sourceName: "pump_social_fee_claim_pda_v2",
     payerClass: "external_protocol",
-    authority: WZMA,
+    recipient: WZMA,
+    authority: socialClaimAuthority,
+    socialClaimAuthority,
+    requiredClaimSignerPubkeys,
     authorityLocalSignerAvailable: localAuthorityAvailable,
     localSignerPubkeys: localSigners.map((entry) => entry.pubkey),
     asset: "SOL",
@@ -288,6 +316,7 @@ async function main(): Promise<void> {
       bzkRelated: latestPositiveClaim.bzkRelated,
       programIds: latestPositiveClaim.programIds,
       socialFeeInstructions: latestPositiveClaim.socialFeeInstructions,
+      requiredClaimSignerPubkeys,
       logHints: latestPositiveClaim.logHints,
     } : null,
     recent: {
@@ -315,7 +344,7 @@ async function main(): Promise<void> {
       pass: false,
       reason: "Observed real SOL settlement, but not yet a fresh exact executable source receipt for this local signer set.",
       wouldNeed: [
-        "Configure a local WzMa signer only if Velon owns/approves that authority.",
+        "Configure the Pump social-claim authority signer only if Velon owns/approves that authority.",
         "Derive current social-fee claim PDA/accounts before execution.",
         "Simulate exact claim transaction and prove afterRaw > beforeRaw after costs.",
         "Then feed the exact source receipt into RedemptionCashRelay before live approval.",

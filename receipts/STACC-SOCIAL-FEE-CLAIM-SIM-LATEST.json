@@ -1,13 +1,47 @@
 {
   "verdict": "STACC_SOCIAL_FEE_CLAIM_SIM_BLOCKED",
-  "generatedAt": "2026-05-24T04:32:26.337Z",
+  "generatedAt": "2026-05-24T05:10:05.643Z",
   "noSend": true,
   "dryRun": true,
-  "authority": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+  "authority": "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
+  "socialClaimAuthority": "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
   "authorityLocalSignerAvailable": false,
   "instructionCount": 2,
+  "requiredSignerPubkeys": [
+    "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM"
+  ],
+  "availableRequiredSignerPubkeys": [],
+  "missingSignerPubkeys": [
+    "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM"
+  ],
+  "configuredSignerPubkeys": [
+    "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+    "GvWfjcCh1JceUmcQpoQcVKS5Vxa2r4oncbveuWgUt2sh",
+    "GB2zDSh8jphhJn7EcE3Mf3RCHv2SQVJVQfR18qMhte6r",
+    "8ytXBomj5jrE3PosJTA6fnsvDDfuAQfreVJKPGBsPoQs",
+    "EYSkQkFgW1q1TUSCn4EzeSvEQFvh4YGy4y63xiR9M1Ta",
+    "APUSE85XDsJ1MKj9Rwy2CJuxTSKfY6bZaBhRNtSEUi6f",
+    "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+    "7Wg8aXuPijrmH4svDmqArMeMAWF3ZusgrznJ6ymprBAN",
+    "BajtYir7NtMgmLYJDu3Sy4GH1x55MyQqjhczkYw59T3R",
+    "7etFhsHcyX2zwJa6fJzLkCBx1fzVMgwxaFoPG8PgaRwX",
+    "7JDkeT6N5zAvF1w4SPcnLcr8nR5Px2RdLniNrMCyB3bR",
+    "9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz",
+    "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+    "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
+    "4QD4GgnjRvjETqWLT5e3x7SHtJSzs9kShUPLfyHcTu7d",
+    "Qv51R47g7pMDxa3UofXaz8cNr8pwRSXaNufgnEWX8Yk",
+    "2UkyZsHdx4ftkVi3xSoRCLAzF4FaRV7G5fCtW7FrDrHu",
+    "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
+    "4ftgDecgELHsLm6yVmoynNAW4KkBW8P6TK3rU47yyxvu",
+    "Yja2XE6rAtf9tTughmeQ95YjVR2nR4iRRsrp9oYdipk",
+    "5jZur8NtpXNmDhRncSBkNgHhN129rBnKdiUBJadD1ihq",
+    "DevoDSB8G1kVmzWxzwaoKgRMozHK1sQqNfJABnWSvmkC",
+    "BGM3VPeND4xts3J6WeaeRJVFpzAJhyJiqycqYP2vk6dV",
+    "4J3QuZt1fPbkPJST4rd9sZyQLrKAzv6FLgWpvXumn57Y"
+  ],
   "sourceReceipt": "receipts/STACC-SOCIAL-FEE-SOURCE-LATEST.json",
   "rejectionReasons": [
-    "matching authority keypair not found in SOCIAL_FEE_KEYPAIR_PATHS/OWNED_FEE_KEYPAIR_PATHS"
+    "missing required signer keypairs: 2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM"
   ]
 }
