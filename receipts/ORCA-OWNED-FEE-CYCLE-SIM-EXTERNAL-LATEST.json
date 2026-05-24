@@ -1,10 +1,10 @@
 {
   "verdict": "OWNED_FEE_MULTI_BOT_CYCLE_NO_GO",
-  "generatedAt": "2026-05-24T05:40:06.020Z",
+  "generatedAt": "2026-05-24T05:59:54.294Z",
   "noSend": true,
   "scanReceipt": "receipts/ORCA-OWNED-FEE-SOURCE-SCAN-LATEST.json",
-  "scanGeneratedAt": "2026-05-24T05:39:31.686Z",
-  "solPriceUsd": 85.574196,
+  "scanGeneratedAt": "2026-05-24T05:59:28.602Z",
+  "solPriceUsd": 86.064583,
   "minNetUsd": 0.25,
   "botWallets": [],
   "model": {
@@ -59,7 +59,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18312877944,
+        "requiredExternalVolumeUsdForMinNet": 100.18417820762,
         "swapFeeUsd": 0,
         "protocolFeeUsd": 0,
         "lpFeeUsd": 0,
@@ -83,7 +83,7 @@
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045782194859999995
+          "usd": 0.00046044551904999995
         },
         "inventoryRiskUsd": 0,
         "inventoryRiskBps": null,
@@ -91,8 +91,8 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": -0.00045782194859999995,
-        "totalSystemNetUsd": -0.00045782194859999995
+        "collectorLedgerNetUsd": -0.00046044551904999995,
+        "totalSystemNetUsd": -0.00046044551904999995
       },
       "collectSimulation": null,
       "cashProofPass": false,
@@ -136,7 +136,7 @@
     },
     "feeMath": {
       "protocolCaptureRate": 0.0025,
-      "requiredExternalVolumeUsdForMinNet": 100.18312877944,
+      "requiredExternalVolumeUsdForMinNet": 100.18417820762,
       "swapFeeUsd": 0,
       "protocolFeeUsd": 0,
       "lpFeeUsd": 0,
@@ -160,7 +160,7 @@
         "txCount": 1,
         "lamportsPerTx": 5350,
         "totalLamports": 5350,
-        "usd": 0.00045782194859999995
+        "usd": 0.00046044551904999995
       },
       "inventoryRiskUsd": 0,
       "inventoryRiskBps": null,
@@ -168,8 +168,8 @@
     },
     "existingCashClaimableUsd": 0,
     "ledgers": {
-      "collectorLedgerNetUsd": -0.00045782194859999995,
-      "totalSystemNetUsd": -0.00045782194859999995
+      "collectorLedgerNetUsd": -0.00046044551904999995,
+      "totalSystemNetUsd": -0.00046044551904999995
     },
     "collectSimulation": null,
     "cashProofPass": false,

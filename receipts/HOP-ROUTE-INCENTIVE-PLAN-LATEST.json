@@ -1,6 +1,6 @@
 {
   "verdict": "HOP_ROUTE_INCENTIVE_BLOCKED_NEEDS_CASH_PROOF",
-  "generatedAt": "2026-05-24T05:54:27.125Z",
+  "generatedAt": "2026-05-24T05:59:50.064Z",
   "readOnly": true,
   "noSend": true,
   "liveIntentIgnored": {
@@ -12,7 +12,7 @@
   "inputs": {
     "flowPath": "receipts/HOP-EXTERNAL-FLOW-WATCH-LATEST.json",
     "flowVerdict": "HOP_EXTERNAL_FLOW_DETECTED_READ_ONLY",
-    "flowGeneratedAt": "2026-05-24T05:53:30.815Z",
+    "flowGeneratedAt": "2026-05-24T05:59:40.482Z",
     "cashabilityPath": "receipts/HOP-CASHABILITY-GATE-LATEST.json",
     "cashabilityVerdict": "HOP_CASHABILITY_BLOCKED",
     "rewardToken": "USDC",

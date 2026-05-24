@@ -1,7 +1,7 @@
 {
   "verdict": "STACC_BZK_LOOP_MONITORING_NO_LIVE",
-  "generatedAt": "2026-05-24T05:40:06.685Z",
-  "iteration": 5,
+  "generatedAt": "2026-05-24T05:59:55.781Z",
+  "iteration": 1,
   "noSend": true,
   "dryRun": true,
   "allowLive": false,
@@ -44,6 +44,19 @@
         "> tsx src/scripts/stacc-social-fee-source-scan.ts",
         "STACC_SOCIAL_FEE_SOURCE_OBSERVED_NO_LIVE recentPositiveClaims=2 netSol=0.149760726 localAuthority=false receipt=/Users/velon/Desktop/redemptionarc/receipts/STACC-SOCIAL-FEE-SOURCE-LATEST.json",
         "blocked=Pump social-fee claim authority keypair is not locally configured: 2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM | latest positive social-fee claim is not directly BZK-account linked | no live path: current unclaimed amount and exact claim accounts are not simulated"
+      ],
+      "stderrTail": []
+    },
+    {
+      "name": "stacc-social-fee-claim-sim",
+      "command": "npm run stacc-social-fee-claim-sim",
+      "status": 1,
+      "signal": null,
+      "ok": false,
+      "stdoutTail": [
+        "> redemptionarc@0.1.0 stacc-social-fee-claim-sim",
+        "> tsx src/scripts/stacc-social-fee-claim-sim.ts",
+        "STACC_SOCIAL_FEE_CLAIM_SIM_BLOCKED authority=2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM missingSigners=1 ix=1 receipt=/Users/velon/Desktop/redemptionarc/receipts/STACC-SOCIAL-FEE-CLAIM-SIM-LATEST.json"
       ],
       "stderrTail": []
     },
@@ -95,7 +108,7 @@
       "stdoutTail": [
         "> redemptionarc@0.1.0 hop-cashability-gate",
         "> tsx src/scripts/hop-cashability-gate.ts",
-        "HOP_CASHABILITY_BLOCKED hop=93888532.126521 usdcOut=20.264471 net=20.264471 receipt=/Users/velon/Desktop/redemptionarc/receipts/HOP-CASHABILITY-GATE-LATEST.json"
+        "HOP_CASHABILITY_BLOCKED hop=93888532.126521 usdcOut=20.085656 net=20.085656 receipt=/Users/velon/Desktop/redemptionarc/receipts/HOP-CASHABILITY-GATE-LATEST.json"
       ],
       "stderrTail": []
     },
@@ -108,7 +121,7 @@
       "stdoutTail": [
         "> redemptionarc@0.1.0 hop-route-incentive-plan",
         "> tsx src/scripts/hop-route-incentive-plan.ts",
-        "HOP_ROUTE_INCENTIVE_BLOCKED_NEEDS_CASH_PROOF externalFlowUsd=6.543850 theoreticalRewardUsd=0.001635962 cashSafeRewardUsd=0.000000000 receipt=/Users/velon/Desktop/redemptionarc/receipts/HOP-ROUTE-INCENTIVE-PLAN-LATEST.json"
+        "HOP_ROUTE_INCENTIVE_BLOCKED_NEEDS_CASH_PROOF externalQuoteGrossUsd=8.033238 theoreticalRewardUsd=0.002008310 cashSafeRewardUsd=0.000000000 receipt=/Users/velon/Desktop/redemptionarc/receipts/HOP-ROUTE-INCENTIVE-PLAN-LATEST.json"
       ],
       "stderrTail": []
     },
@@ -188,7 +201,12 @@
       "externalEvents": 24,
       "affiliatedEvents": 1,
       "externalQuoteInUsd": 6.54385,
-      "externalEstimatedT22HopUi": 2838.650524,
+      "externalQuoteOutUsd": 1.489388,
+      "externalQuoteNetUsd": 5.054462,
+      "externalHopVaultInUi": 6548.283857,
+      "externalHopVaultOutUi": 35002.601979,
+      "externalHopVaultNetUi": -28454.318122,
+      "externalEstimatedT22HopUi": 2900.498099,
       "activePoolsWithExternalFlow": [
         "hop-usdc-raydium-cp"
       ],
@@ -207,10 +225,10 @@
         "error": null,
         "inputAmountRaw": "93888532126521",
         "inputAmountHop": 93888532.126521,
-        "outAmountRaw": "20264471",
-        "outAmountUi": 20.264471,
-        "outUsd": 20.264471,
-        "priceImpactPct": 0.999418522719073,
+        "outAmountRaw": "20085656",
+        "outAmountUi": 20.085656,
+        "outUsd": 20.085656,
+        "priceImpactPct": 0.9994148480867722,
         "routePlan": [
           {
             "label": "Raydium CP",
@@ -218,7 +236,7 @@
             "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
             "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
             "inAmount": "93888532126521",
-            "outAmount": "20264471",
+            "outAmount": "20085656",
             "percent": 100,
             "bps": null
           }
@@ -242,10 +260,10 @@
         "error": null,
         "inputAmountRaw": "93888532126521",
         "inputAmountHop": 93888532.126521,
-        "outAmountRaw": "236815916",
-        "outAmountUi": 0.236815916,
+        "outAmountRaw": "233329718",
+        "outAmountUi": 0.233329718,
         "outUsd": null,
-        "priceImpactPct": 0.99941856383906,
+        "priceImpactPct": 0.9994149315981636,
         "routePlan": [
           {
             "label": "Raydium CP",
@@ -253,35 +271,35 @@
             "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
             "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
             "inAmount": "93888532126521",
-            "outAmount": "20264471",
+            "outAmount": "20085656",
             "percent": 100,
             "bps": null
           },
           {
-            "label": "1DEX",
-            "ammKey": "DbuvwPuLvH8uy2B1sKuu18aCd2QpCvfZdfDtdRZztBd2",
+            "label": "Raydium",
+            "ammKey": "6a1CsrpeZubDjEJE9s1CMVheB6HWM5d7m1cj2jkhyXhj",
             "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-            "outputMint": "So11111111111111111111111111111111111111112",
-            "inAmount": "9773",
-            "outAmount": "114214",
-            "percent": 1,
+            "outputMint": "7dHbWXmci3dT8UFYWYZweBLXgycu7Y3iL6trKn1Y7ARj",
+            "inAmount": "20085656",
+            "outAmount": "191462659",
+            "percent": 100,
             "bps": null
           },
           {
-            "label": "ZeroFi",
-            "ammKey": "4otzWqybJZVrPWEXBJetK3hQEhFvGsip6n4bS24LEAgi",
-            "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+            "label": "Meteora",
+            "ammKey": "7EJSgV2pthhDfb4UiER9vzTqe2eojei9GEQAQnkqJ96e",
+            "inputMint": "7dHbWXmci3dT8UFYWYZweBLXgycu7Y3iL6trKn1Y7ARj",
             "outputMint": "So11111111111111111111111111111111111111112",
-            "inAmount": "20254698",
-            "outAmount": "236701702",
-            "percent": 99,
+            "inAmount": "191462659",
+            "outAmount": "233329718",
+            "percent": 100,
             "bps": null
           }
         ],
         "routeAmmKeys": [
           "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f",
-          "DbuvwPuLvH8uy2B1sKuu18aCd2QpCvfZdfDtdRZztBd2",
-          "4otzWqybJZVrPWEXBJetK3hQEhFvGsip6n4bS24LEAgi"
+          "6a1CsrpeZubDjEJE9s1CMVheB6HWM5d7m1cj2jkhyXhj",
+          "7EJSgV2pthhDfb4UiER9vzTqe2eojei9GEQAQnkqJ96e"
         ],
         "ownedAmmKeysHit": [
           "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f"
@@ -295,9 +313,9 @@
       }
     },
     "cashMath": {
-      "primaryOutUsd": 20.264471,
+      "primaryOutUsd": 20.085656,
       "cycleCostUsd": 0,
-      "primaryNetCashUsd": 20.264471,
+      "primaryNetCashUsd": 20.085656,
       "bestExternalHopRawAtImpact": "0",
       "bestExternalHopUiAtImpact": 0,
       "bestExternalOutUsdAtImpact": null,
@@ -313,8 +331,12 @@
     "observedFlow": {
       "externalEvents": 24,
       "affiliatedEvents": 1,
-      "externalFlowUsd": 6.54385,
-      "t22FeeHop": 2838.650524,
+      "externalQuoteInUsd": 6.54385,
+      "externalQuoteOutUsd": 1.489388,
+      "externalQuoteGrossUsd": 8.033238,
+      "externalQuoteNetUsd": 5.054462,
+      "externalHopVaultNetUi": -28454.318122,
+      "t22FeeHop": 2900.498099,
       "activePoolsWithExternalFlow": [
         "hop-usdc-raydium-cp"
       ],
@@ -335,25 +357,29 @@
           "quoteAsset": "USDC",
           "externalEvents": 24,
           "externalQuoteInUsd": 6.54385,
-          "externalEstimatedT22HopUi": 2838.650524
+          "externalQuoteOutUsd": 1.489388,
+          "externalQuoteNetUsd": 5.054462,
+          "externalHopVaultNetUi": -28454.318122,
+          "externalEstimatedT22HopUi": 2900.498099
         }
       ]
     },
     "economics": {
-      "lpFeeUsdEstimate": 0.016359625,
+      "lpFeeUsdEstimate": 0.020083095000000002,
       "t22SettlementUsd": 0,
       "externalCashabilityUsd": 0,
-      "theoreticalFeeBudgetUsd": 0.016359625,
-      "theoreticalMaxRewardUsd": 0.0016359624999999997,
+      "theoreticalFeeBudgetUsd": 0.020083095000000002,
+      "theoreticalMaxRewardUsd": 0.0020083095000000004,
       "confirmedCashBudgetUsd": 0,
       "cashSafeRewardUsd": 0,
       "rewardToken": "USDC",
-      "retainedTheoreticalFeeUsd": 0.0147236625
+      "retainedTheoreticalFeeUsd": 0.018074785500000003
     },
     "gate": {
       "cashRelayPass": false,
       "rewardAllowed": false,
       "rejectionReasons": [
+        "external USDC net inflow is paired with HOP inventory outflow; inventoryDrawUsd must be priced before rewards",
         "no confirmed spendable USDC/SOL fee budget for rewards",
         "cashSafeRewardUsd 0.000000000 below HOP_INCENTIVE_MIN_REWARD_USD 0.001",
         "only one configured HOP venue; route incentive should wait for N-pool path proof",
@@ -385,7 +411,7 @@
       "claimLikeCount": 2,
       "positiveClaimCount": 2,
       "positiveNetSol": 0.149760726,
-      "positiveNetUsd": 12.815589622235569,
+      "positiveNetUsd": 12.887774891210473,
       "claimSamples": [
         {
           "signature": "1nqq151qk2chsiqt6Psdh9aC7L1natbEPPif2z2GpAMJbo8LFgzQNhiUpMRvKeRDwf67smmCjHnAP2cuD6MRdfv",
@@ -415,9 +441,9 @@
       "netDeltaSol": 0.115977324,
       "grossClaimSol": 0.115982324,
       "feeSol": 0.000005,
-      "netCashUsd": 9.924616617236833,
-      "grossClaimUsd": 9.925044486076832,
-      "feeUsd": 0.00042786884000000004,
+      "netCashUsd": 9.98051815131413,
+      "grossClaimUsd": 9.980948430174129,
+      "feeUsd": 0.00043027886000000006,
       "bzkRelated": false,
       "programIds": [
         "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
@@ -486,6 +512,19 @@
         "Simulate exact claim transaction and prove afterRaw > beforeRaw after costs.",
         "Then feed the exact source receipt into RedemptionCashRelay before live approval."
       ]
+    },
+    "claimSim": {
+      "verdict": "STACC_SOCIAL_FEE_CLAIM_SIM_BLOCKED",
+      "authority": "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
+      "socialClaimAuthority": "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
+      "requiredSignerPubkeys": [
+        "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM"
+      ],
+      "missingSignerPubkeys": [
+        "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM"
+      ],
+      "simErr": null,
+      "cashProofGate": null
     }
   },
   "wzmaPulse": {
@@ -755,7 +794,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18312877944,
+        "requiredExternalVolumeUsdForMinNet": 100.18417820762,
         "swapFeeUsd": 0,
         "protocolFeeUsd": 0,
         "lpFeeUsd": 0,
@@ -779,7 +818,7 @@
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045782194859999995
+          "usd": 0.00046044551904999995
         },
         "inventoryRiskUsd": 0,
         "inventoryRiskBps": null,
@@ -787,8 +826,8 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": -0.00045782194859999995,
-        "totalSystemNetUsd": -0.00045782194859999995
+        "collectorLedgerNetUsd": -0.00046044551904999995,
+        "totalSystemNetUsd": -0.00046044551904999995
       },
       "collectSimulation": null,
       "cashProofPass": false,
@@ -813,8 +852,9 @@
     "no direct local signer cash-fee collect is currently ready",
     "no active route candidate for settlement simulation",
     "recent BZK/Pump/Jupiter-related WzMa SOL inflow detected; classify only after exact source receipt",
-    "social-fee SOL source observed (12.815590 USD net), but not executable by CashRelay yet",
+    "social-fee SOL source observed (12.887775 USD net), but not executable by CashRelay yet",
     "social-fee source is not yet a fresh exact executable receipt",
+    "social-fee claim sim is not OK for the local signer set",
     "HOP external flow observed (6.543850 USD), but no spendable USDC/SOL fee receipt yet",
     "HOP settlement route is not accepted as external cash",
     "HOP route incentive is disabled until confirmed spendable USDC/SOL fee budget exists",

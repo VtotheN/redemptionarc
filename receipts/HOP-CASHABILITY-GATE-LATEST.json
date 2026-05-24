@@ -1,6 +1,6 @@
 {
   "verdict": "HOP_CASHABILITY_BLOCKED",
-  "generatedAt": "2026-05-24T05:39:55.319Z",
+  "generatedAt": "2026-05-24T05:59:45.994Z",
   "readOnly": true,
   "noSend": true,
   "liveIntentIgnored": {
@@ -66,10 +66,10 @@
       "error": null,
       "inputAmountRaw": "93888532126521",
       "inputAmountHop": 93888532.126521,
-      "outAmountRaw": "20264471",
-      "outAmountUi": 20.264471,
-      "outUsd": 20.264471,
-      "priceImpactPct": 0.999418522719073,
+      "outAmountRaw": "20085656",
+      "outAmountUi": 20.085656,
+      "outUsd": 20.085656,
+      "priceImpactPct": 0.9994148480867722,
       "routePlan": [
         {
           "label": "Raydium CP",
@@ -77,7 +77,7 @@
           "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
           "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
           "inAmount": "93888532126521",
-          "outAmount": "20264471",
+          "outAmount": "20085656",
           "percent": 100,
           "bps": null
         }
@@ -101,10 +101,10 @@
       "error": null,
       "inputAmountRaw": "93888532126521",
       "inputAmountHop": 93888532.126521,
-      "outAmountRaw": "236815916",
-      "outAmountUi": 0.236815916,
+      "outAmountRaw": "233329718",
+      "outAmountUi": 0.233329718,
       "outUsd": null,
-      "priceImpactPct": 0.99941856383906,
+      "priceImpactPct": 0.9994149315981636,
       "routePlan": [
         {
           "label": "Raydium CP",
@@ -112,35 +112,35 @@
           "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
           "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
           "inAmount": "93888532126521",
-          "outAmount": "20264471",
+          "outAmount": "20085656",
           "percent": 100,
           "bps": null
         },
         {
-          "label": "1DEX",
-          "ammKey": "DbuvwPuLvH8uy2B1sKuu18aCd2QpCvfZdfDtdRZztBd2",
+          "label": "Raydium",
+          "ammKey": "6a1CsrpeZubDjEJE9s1CMVheB6HWM5d7m1cj2jkhyXhj",
           "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-          "outputMint": "So11111111111111111111111111111111111111112",
-          "inAmount": "9773",
-          "outAmount": "114214",
-          "percent": 1,
+          "outputMint": "7dHbWXmci3dT8UFYWYZweBLXgycu7Y3iL6trKn1Y7ARj",
+          "inAmount": "20085656",
+          "outAmount": "191462659",
+          "percent": 100,
           "bps": null
         },
         {
-          "label": "ZeroFi",
-          "ammKey": "4otzWqybJZVrPWEXBJetK3hQEhFvGsip6n4bS24LEAgi",
-          "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "label": "Meteora",
+          "ammKey": "7EJSgV2pthhDfb4UiER9vzTqe2eojei9GEQAQnkqJ96e",
+          "inputMint": "7dHbWXmci3dT8UFYWYZweBLXgycu7Y3iL6trKn1Y7ARj",
           "outputMint": "So11111111111111111111111111111111111111112",
-          "inAmount": "20254698",
-          "outAmount": "236701702",
-          "percent": 99,
+          "inAmount": "191462659",
+          "outAmount": "233329718",
+          "percent": 100,
           "bps": null
         }
       ],
       "routeAmmKeys": [
         "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f",
-        "DbuvwPuLvH8uy2B1sKuu18aCd2QpCvfZdfDtdRZztBd2",
-        "4otzWqybJZVrPWEXBJetK3hQEhFvGsip6n4bS24LEAgi"
+        "6a1CsrpeZubDjEJE9s1CMVheB6HWM5d7m1cj2jkhyXhj",
+        "7EJSgV2pthhDfb4UiER9vzTqe2eojei9GEQAQnkqJ96e"
       ],
       "ownedAmmKeysHit": [
         "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f"
@@ -154,9 +154,9 @@
     }
   },
   "cashMath": {
-    "primaryOutUsd": 20.264471,
+    "primaryOutUsd": 20.085656,
     "cycleCostUsd": 0,
-    "primaryNetCashUsd": 20.264471,
+    "primaryNetCashUsd": 20.085656,
     "bestExternalHopRawAtImpact": "0",
     "bestExternalHopUiAtImpact": 0,
     "bestExternalOutUsdAtImpact": null,
@@ -168,8 +168,8 @@
       {
         "inputAmountRaw": "46944266063261",
         "inputAmountHop": 46944266.063261,
-        "outUsd": 20.242763,
-        "priceImpactPct": 0.9988382912351683,
+        "outUsd": 20.063941,
+        "priceImpactPct": 0.9988309614121599,
         "acceptedExternal": false,
         "rejectionReasons": [
           "route uses owned AMM key"
@@ -181,8 +181,8 @@
       {
         "inputAmountRaw": "23472133031630",
         "inputAmountHop": 23472133.03163,
-        "outUsd": 20.199485,
-        "priceImpactPct": 0.9976815498191045,
+        "outUsd": 20.020653,
+        "priceImpactPct": 0.9976669672313373,
         "acceptedExternal": false,
         "rejectionReasons": [
           "route uses owned AMM key"
@@ -194,8 +194,8 @@
       {
         "inputAmountRaw": "11736066515815",
         "inputAmountHop": 11736066.515815,
-        "outUsd": 20.113482,
-        "priceImpactPct": 0.9953828420891584,
+        "outUsd": 19.934633,
+        "priceImpactPct": 0.9953539825079366,
         "acceptedExternal": false,
         "rejectionReasons": [
           "route uses owned AMM key"
@@ -207,8 +207,8 @@
       {
         "inputAmountRaw": "5868033257907",
         "inputAmountHop": 5868033.257907,
-        "outUsd": 19.943655,
-        "priceImpactPct": 0.9908436535797877,
+        "outUsd": 19.764793,
+        "priceImpactPct": 0.9907871317214599,
         "acceptedExternal": false,
         "rejectionReasons": [
           "route uses owned AMM key"
@@ -220,8 +220,8 @@
       {
         "inputAmountRaw": "2934016628953",
         "inputAmountHop": 2934016.628953,
-        "outUsd": 19.612461,
-        "priceImpactPct": 0.9819914166115553,
+        "outUsd": 19.43365,
+        "priceImpactPct": 0.9818829716434389,
         "acceptedExternal": false,
         "rejectionReasons": [
           "route uses owned AMM key"
@@ -233,8 +233,8 @@
       {
         "inputAmountRaw": "1467008314476",
         "inputAmountHop": 1467008.314476,
-        "outUsd": 18.982012,
-        "priceImpactPct": 0.9651406168779559,
+        "outUsd": 18.803572,
+        "priceImpactPct": 0.9649407242459594,
         "acceptedExternal": false,
         "rejectionReasons": [
           "route uses owned AMM key"
@@ -246,8 +246,8 @@
       {
         "inputAmountRaw": "733504157238",
         "inputAmountHop": 733504.157238,
-        "outUsd": 17.835365,
-        "priceImpactPct": 0.934492737476249,
+        "outUsd": 17.658523,
+        "priceImpactPct": 0.9341513381323434,
         "acceptedExternal": false,
         "rejectionReasons": [
           "route uses owned AMM key"
@@ -259,8 +259,8 @@
       {
         "inputAmountRaw": "366752078619",
         "inputAmountHop": 366752.078619,
-        "outUsd": 15.912867,
-        "priceImpactPct": 0.8831077069547458,
+        "outUsd": 15.741372,
+        "priceImpactPct": 0.8826007948500566,
         "acceptedExternal": false,
         "rejectionReasons": [
           "route uses owned AMM key"
@@ -272,8 +272,8 @@
       {
         "inputAmountRaw": "183376039309",
         "inputAmountHop": 183376.039309,
-        "outUsd": 13.090732,
-        "priceImpactPct": 0.8076769345052581,
+        "outUsd": 12.933124,
+        "priceImpactPct": 0.8070894356972446,
         "acceptedExternal": false,
         "rejectionReasons": [
           "route uses owned AMM key"
@@ -285,8 +285,8 @@
       {
         "inputAmountRaw": "91688019654",
         "inputAmountHop": 91688.019654,
-        "outUsd": 9.663207,
-        "priceImpactPct": 0.7160651378761123,
+        "outUsd": 9.53209,
+        "priceImpactPct": 0.7156385632899399,
         "acceptedExternal": false,
         "rejectionReasons": [
           "route uses owned AMM key"
