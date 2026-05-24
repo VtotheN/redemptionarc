@@ -1,0 +1,43 @@
+{
+  "verdict": "CSDM_UPGRADE_APPROVAL_READY_NO_LIVE",
+  "generatedAt": "2026-05-24T02:53:32.845Z",
+  "noSend": true,
+  "dryRun": true,
+  "allowLive": false,
+  "liveIntentIgnored": "This planner only emits the exact upgrade packet. It never runs solana program deploy.",
+  "approvalPacket": {
+    "requiresExplicitUserApproval": true,
+    "exactCommandNotRun": "solana program deploy --url \"$SOLANA_RPC_URL\" --program-id /Users/velon/gh-src-vtothen/EXPERIMENTO-CanSmelldaMoney/program/keys/program-keypair.json --upgrade-authority /Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/keys/keeper-keypair.json --no-auto-extend /Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/csdm/programs/csdm/target/deploy/csdm_flash_lend_backing.so",
+    "programId": "Q9FMc5YLqjJe96geFtg43ocfyrpJYM2WDHkQEqh8aNv",
+    "programDataAddress": "FXVduXj6jBz9E3PqY4mNsbNLLsEfBRQH9FozdfhomcWy",
+    "programDataSlot": "420917531",
+    "upgradeAuthority": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+    "programKeypairPath": "/Users/velon/gh-src-vtothen/EXPERIMENTO-CanSmelldaMoney/program/keys/program-keypair.json",
+    "authorityKeypairPath": "/Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/keys/keeper-keypair.json",
+    "artifactPath": "/Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/csdm/programs/csdm/target/deploy/csdm_flash_lend_backing.so",
+    "artifactBytes": 42304,
+    "liveElfBytes": 43416,
+    "byteHeadroom": 1112,
+    "artifactSha256": "e457e655baa0513a5f1b3e93fe5631e79b2d557ba814ae7841d5bfd6a4250942",
+    "liveElfSha256": "3974a1d3d4990286bd92939da2451bcfa56bc0ddc061daf8a548169c40cb0ff8",
+    "noAutoExtend": true
+  },
+  "sourceReceipts": {
+    "preflightPath": "receipts/CSDM-UPGRADE-PREFLIGHT-LATEST.json",
+    "preflightVerdict": "CSDM_UPGRADE_PREFLIGHT_READY_NO_LIVE",
+    "liveShapePath": "receipts/CSDM-LIVE-SHAPE-SCAN-LATEST.json",
+    "liveShapeVerdict": "CSDM_LIVE_SHAPE_READY_NO_LIVE"
+  },
+  "postUpgradeRequiredImmediately": [
+    "Run npm run csdm-upgrade-preflight again and verify ProgramData slot/hash changed to the pinned artifact.",
+    "Run ix7 flash_lend_backing simulation against CSDM live-shape accounts.",
+    "Emit a CashRelay source receipt with spendable SOL/USDC beforeRaw/afterRaw after all costs.",
+    "Do not count CSDM receipt mint, HOP, T22 fees, or self-fees as profit."
+  ],
+  "cashProofGate": {
+    "pass": false,
+    "upstreamCashProofPass": false,
+    "reason": "This packet only approves an engineering upgrade. Profit remains blocked until SOL/USDC wallet/vault delta passes RedemptionCashRelay."
+  },
+  "blockers": []
+}

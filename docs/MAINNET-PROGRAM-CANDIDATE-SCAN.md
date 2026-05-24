@@ -59,3 +59,11 @@ npm run csdm-live-shape-scan
 ```
 
 That scanner checks the mainnet CSDM pool/config/backing accounts from `config.mainnet.existing.json`: derived PDA matches, token account mints/owners, asset config, allowed borrower, oracle, and whether backing is nonzero. Passing shape means only that ix7 can be simulated after upgrade; it is still not cash proof.
+
+When both preflights pass, build the exact no-send approval packet:
+
+```bash
+npm run csdm-upgrade-approval-plan
+```
+
+This pins the ProgramData hash, artifact hash, authority, keypairs, byte headroom, and exact `solana program deploy ... --no-auto-extend` command. It does not run the command and still marks cash proof as blocked.
