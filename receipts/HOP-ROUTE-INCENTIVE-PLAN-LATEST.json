@@ -1,6 +1,6 @@
 {
   "verdict": "HOP_ROUTE_INCENTIVE_BLOCKED_NEEDS_CASH_PROOF",
-  "generatedAt": "2026-05-24T05:39:59.704Z",
+  "generatedAt": "2026-05-24T05:54:27.125Z",
   "readOnly": true,
   "noSend": true,
   "liveIntentIgnored": {
@@ -12,7 +12,7 @@
   "inputs": {
     "flowPath": "receipts/HOP-EXTERNAL-FLOW-WATCH-LATEST.json",
     "flowVerdict": "HOP_EXTERNAL_FLOW_DETECTED_READ_ONLY",
-    "flowGeneratedAt": "2026-05-24T05:39:46.869Z",
+    "flowGeneratedAt": "2026-05-24T05:53:30.815Z",
     "cashabilityPath": "receipts/HOP-CASHABILITY-GATE-LATEST.json",
     "cashabilityVerdict": "HOP_CASHABILITY_BLOCKED",
     "rewardToken": "USDC",
@@ -26,8 +26,12 @@
   "observedFlow": {
     "externalEvents": 24,
     "affiliatedEvents": 1,
-    "externalFlowUsd": 6.54385,
-    "t22FeeHop": 2838.650524,
+    "externalQuoteInUsd": 6.54385,
+    "externalQuoteOutUsd": 1.489388,
+    "externalQuoteGrossUsd": 8.033238,
+    "externalQuoteNetUsd": 5.054462,
+    "externalHopVaultNetUi": -28454.318122,
+    "t22FeeHop": 2900.498099,
     "activePoolsWithExternalFlow": [
       "hop-usdc-raydium-cp"
     ],
@@ -48,25 +52,29 @@
         "quoteAsset": "USDC",
         "externalEvents": 24,
         "externalQuoteInUsd": 6.54385,
-        "externalEstimatedT22HopUi": 2838.650524
+        "externalQuoteOutUsd": 1.489388,
+        "externalQuoteNetUsd": 5.054462,
+        "externalHopVaultNetUi": -28454.318122,
+        "externalEstimatedT22HopUi": 2900.498099
       }
     ]
   },
   "economics": {
-    "lpFeeUsdEstimate": 0.016359625,
+    "lpFeeUsdEstimate": 0.020083095000000002,
     "t22SettlementUsd": 0,
     "externalCashabilityUsd": 0,
-    "theoreticalFeeBudgetUsd": 0.016359625,
-    "theoreticalMaxRewardUsd": 0.0016359624999999997,
+    "theoreticalFeeBudgetUsd": 0.020083095000000002,
+    "theoreticalMaxRewardUsd": 0.0020083095000000004,
     "confirmedCashBudgetUsd": 0,
     "cashSafeRewardUsd": 0,
     "rewardToken": "USDC",
-    "retainedTheoreticalFeeUsd": 0.0147236625
+    "retainedTheoreticalFeeUsd": 0.018074785500000003
   },
   "gate": {
     "cashRelayPass": false,
     "rewardAllowed": false,
     "rejectionReasons": [
+      "external USDC net inflow is paired with HOP inventory outflow; inventoryDrawUsd must be priced before rewards",
       "no confirmed spendable USDC/SOL fee budget for rewards",
       "cashSafeRewardUsd 0.000000000 below HOP_INCENTIVE_MIN_REWARD_USD 0.001",
       "only one configured HOP venue; route incentive should wait for N-pool path proof",

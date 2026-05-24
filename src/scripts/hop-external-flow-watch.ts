@@ -333,11 +333,35 @@ async function inspectPool(connection: Connection, pool: PoolConfig, args: {
     const value = event.vaultDeltaSummary.quoteVaultDeltaUsd;
     return sum + (value && value > 0 ? value : 0);
   }, 0);
+  const externalQuoteOutUsd = externalEvents.reduce((sum, event) => {
+    const value = event.vaultDeltaSummary.quoteVaultDeltaUsd;
+    return sum + (value && value < 0 ? Math.abs(value) : 0);
+  }, 0);
+  const externalQuoteNetUsd = externalEvents.reduce((sum, event) => {
+    const value = event.vaultDeltaSummary.quoteVaultDeltaUsd;
+    return sum + (value ?? 0);
+  }, 0);
+  const externalHopVaultInUi = externalEvents.reduce((sum, event) => {
+    const value = event.vaultDeltaSummary.hopVaultDeltaUi;
+    return sum + (value > 0 ? value : 0);
+  }, 0);
+  const externalHopVaultOutUi = externalEvents.reduce((sum, event) => {
+    const value = event.vaultDeltaSummary.hopVaultDeltaUi;
+    return sum + (value < 0 ? Math.abs(value) : 0);
+  }, 0);
+  const externalHopVaultNetUi = externalEvents.reduce((sum, event) => sum + event.vaultDeltaSummary.hopVaultDeltaUi, 0);
   const externalT22Ui = externalEvents.reduce((sum, event) => sum + event.t22.estimatedFromVaultMoveUi, 0);
   const affiliatedQuoteInUsd = affiliatedEvents.reduce((sum, event) => {
     const value = event.vaultDeltaSummary.quoteVaultDeltaUsd;
     return sum + (value && value > 0 ? value : 0);
   }, 0);
+  const affiliatedQuoteOutUsd = affiliatedEvents.reduce((sum, event) => {
+    const value = event.vaultDeltaSummary.quoteVaultDeltaUsd;
+    return sum + (value && value < 0 ? Math.abs(value) : 0);
+  }, 0);
+  const latestExternalEvent = externalEvents
+    .slice()
+    .sort((a, b) => (b.blockTime ?? 0) - (a.blockTime ?? 0))[0] ?? null;
 
   return {
     ...pool,
@@ -346,8 +370,20 @@ async function inspectPool(connection: Connection, pool: PoolConfig, args: {
     externalEvents: externalEvents.length,
     affiliatedEvents: affiliatedEvents.length,
     externalQuoteInUsd,
+    externalQuoteOutUsd,
+    externalQuoteNetUsd,
+    externalHopVaultInUi,
+    externalHopVaultOutUi,
+    externalHopVaultNetUi,
     affiliatedQuoteInUsd,
+    affiliatedQuoteOutUsd,
     externalEstimatedT22HopUi: externalT22Ui,
+    latestExternalEvent: latestExternalEvent ? {
+      signature: latestExternalEvent.signature,
+      blockTime: latestExternalEvent.blockTime,
+      quoteVaultDeltaUsd: latestExternalEvent.vaultDeltaSummary.quoteVaultDeltaUsd,
+      hopVaultDeltaUi: latestExternalEvent.vaultDeltaSummary.hopVaultDeltaUi,
+    } : null,
     events,
   };
 }
@@ -399,6 +435,11 @@ async function main() {
   const externalEvents = poolReports.reduce((sum, pool) => sum + pool.externalEvents, 0);
   const affiliatedEvents = poolReports.reduce((sum, pool) => sum + pool.affiliatedEvents, 0);
   const externalQuoteInUsd = poolReports.reduce((sum, pool) => sum + pool.externalQuoteInUsd, 0);
+  const externalQuoteOutUsd = poolReports.reduce((sum, pool) => sum + pool.externalQuoteOutUsd, 0);
+  const externalQuoteNetUsd = poolReports.reduce((sum, pool) => sum + pool.externalQuoteNetUsd, 0);
+  const externalHopVaultInUi = poolReports.reduce((sum, pool) => sum + pool.externalHopVaultInUi, 0);
+  const externalHopVaultOutUi = poolReports.reduce((sum, pool) => sum + pool.externalHopVaultOutUi, 0);
+  const externalHopVaultNetUi = poolReports.reduce((sum, pool) => sum + pool.externalHopVaultNetUi, 0);
   const externalEstimatedT22HopUi = poolReports.reduce((sum, pool) => sum + pool.externalEstimatedT22HopUi, 0);
   const activePoolsWithExternalFlow = poolReports.filter((pool) => pool.externalEvents > 0).map((pool) => pool.id);
   const missingSecondVenue = pools.length < 2;
@@ -437,6 +478,11 @@ async function main() {
       externalEvents,
       affiliatedEvents,
       externalQuoteInUsd,
+      externalQuoteOutUsd,
+      externalQuoteNetUsd,
+      externalHopVaultInUi,
+      externalHopVaultOutUi,
+      externalHopVaultNetUi,
       externalEstimatedT22HopUi,
       activePoolsWithExternalFlow,
       missingSecondVenue,

@@ -14,6 +14,9 @@ type FlowReceipt = {
     externalEvents?: number;
     affiliatedEvents?: number;
     externalQuoteInUsd?: number;
+    externalQuoteOutUsd?: number;
+    externalQuoteNetUsd?: number;
+    externalHopVaultNetUi?: number;
     externalEstimatedT22HopUi?: number;
     activePoolsWithExternalFlow?: string[];
     missingSecondVenue?: boolean;
@@ -29,6 +32,9 @@ type FlowReceipt = {
     quoteAsset?: string;
     externalEvents?: number;
     externalQuoteInUsd?: number;
+    externalQuoteOutUsd?: number;
+    externalQuoteNetUsd?: number;
+    externalHopVaultNetUi?: number;
     externalEstimatedT22HopUi?: number;
   }>;
 };
@@ -114,12 +120,20 @@ function main() {
 
   if (!flow) rejectionReasons.add(`missing flow receipt ${flowPath}`);
   const externalEvents = positive(flow?.summary?.externalEvents);
-  const externalFlowUsd = positive(flow?.summary?.externalQuoteInUsd);
+  const externalQuoteInUsd = positive(flow?.summary?.externalQuoteInUsd);
+  const externalQuoteOutUsd = positive(flow?.summary?.externalQuoteOutUsd);
+  const externalQuoteGrossUsd = externalQuoteInUsd + externalQuoteOutUsd;
+  const externalQuoteNetUsd = typeof flow?.summary?.externalQuoteNetUsd === "number" && Number.isFinite(flow.summary.externalQuoteNetUsd)
+    ? flow.summary.externalQuoteNetUsd
+    : externalQuoteInUsd - externalQuoteOutUsd;
+  const externalHopVaultNetUi = typeof flow?.summary?.externalHopVaultNetUi === "number" && Number.isFinite(flow.summary.externalHopVaultNetUi)
+    ? flow.summary.externalHopVaultNetUi
+    : null;
   const affiliatedEvents = positive(flow?.summary?.affiliatedEvents);
   const t22FeeHop = positive(flow?.summary?.externalEstimatedT22HopUi);
   const missingSecondVenue = flow?.summary?.missingSecondVenue === true;
 
-  const lpFeeUsdEstimate = externalFlowUsd * lpFeeBps / 10_000;
+  const lpFeeUsdEstimate = externalQuoteGrossUsd * lpFeeBps / 10_000;
   const externalCashabilityUsd = includeCashabilityBudget ? cashabilityExternalUsd(cashability) : 0;
   const theoreticalFeeBudgetUsd = lpFeeUsdEstimate + t22SettlementUsd;
   const theoreticalMaxRewardUsd = theoreticalFeeBudgetUsd * rewardShareBps / 10_000;
@@ -131,7 +145,10 @@ function main() {
   } else if (externalEvents <= 0) {
     rejectionReasons.add("no external signer flow observed");
   }
-  if (externalFlowUsd <= 0) rejectionReasons.add("no external quote-asset inflow observed");
+  if (externalQuoteGrossUsd <= 0) rejectionReasons.add("no external quote-asset movement observed");
+  if (externalQuoteNetUsd > 0 && externalHopVaultNetUi != null && externalHopVaultNetUi < 0) {
+    rejectionReasons.add("external USDC net inflow is paired with HOP inventory outflow; inventoryDrawUsd must be priced before rewards");
+  }
   if (theoreticalFeeBudgetUsd <= 0) rejectionReasons.add("no theoretical fee budget from LP fee or settled T22");
   if (confirmedCashBudgetUsd <= 0) rejectionReasons.add("no confirmed spendable USDC/SOL fee budget for rewards");
   if (cashSafeRewardUsd < minRewardUsd) {
@@ -179,7 +196,11 @@ function main() {
     observedFlow: {
       externalEvents,
       affiliatedEvents,
-      externalFlowUsd,
+      externalQuoteInUsd,
+      externalQuoteOutUsd,
+      externalQuoteGrossUsd,
+      externalQuoteNetUsd,
+      externalHopVaultNetUi,
       t22FeeHop,
       activePoolsWithExternalFlow: flow?.summary?.activePoolsWithExternalFlow ?? [],
       missingSecondVenue,
@@ -189,6 +210,9 @@ function main() {
         quoteAsset: pool.quoteAsset ?? null,
         externalEvents: positive(pool.externalEvents),
         externalQuoteInUsd: positive(pool.externalQuoteInUsd),
+        externalQuoteOutUsd: positive(pool.externalQuoteOutUsd),
+        externalQuoteNetUsd: typeof pool.externalQuoteNetUsd === "number" && Number.isFinite(pool.externalQuoteNetUsd) ? pool.externalQuoteNetUsd : null,
+        externalHopVaultNetUi: typeof pool.externalHopVaultNetUi === "number" && Number.isFinite(pool.externalHopVaultNetUi) ? pool.externalHopVaultNetUi : null,
         externalEstimatedT22HopUi: positive(pool.externalEstimatedT22HopUi),
       })),
     },
@@ -220,7 +244,7 @@ function main() {
   };
 
   const out = writeReceipt(OUT_RECEIPT, receipt);
-  console.log(`${verdict} externalFlowUsd=${externalFlowUsd.toFixed(6)} theoreticalRewardUsd=${theoreticalMaxRewardUsd.toFixed(9)} cashSafeRewardUsd=${cashSafeRewardUsd.toFixed(9)} receipt=${out}`);
+  console.log(`${verdict} externalQuoteGrossUsd=${externalQuoteGrossUsd.toFixed(6)} theoreticalRewardUsd=${theoreticalMaxRewardUsd.toFixed(9)} cashSafeRewardUsd=${cashSafeRewardUsd.toFixed(9)} receipt=${out}`);
 }
 
 main();
