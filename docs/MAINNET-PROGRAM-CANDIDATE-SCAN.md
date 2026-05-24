@@ -43,3 +43,11 @@ Next exact build:
 2. Simulate `flash_lend_backing` or a HOP burn/redeem instruction against exact accounts.
 3. Emit a source receipt with real SOL/USDC `beforeRaw`/`afterRaw`.
 4. Pass `npm run redemption-cash-relay-plan`.
+
+The first step is now captured by:
+
+```bash
+npm run csdm-upgrade-preflight
+```
+
+That preflight checks Q9 ProgramData, local program/authority keypairs, artifact hash/size, and source invariants. It still refuses cash proof because an upgradeable program is not profit.
