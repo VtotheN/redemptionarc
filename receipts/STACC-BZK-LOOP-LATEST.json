@@ -1,7 +1,7 @@
 {
   "verdict": "STACC_BZK_LOOP_MONITORING_NO_LIVE",
-  "generatedAt": "2026-05-24T04:27:54.800Z",
-  "iteration": 1,
+  "generatedAt": "2026-05-24T04:35:16.477Z",
+  "iteration": 2,
   "noSend": true,
   "dryRun": true,
   "allowLive": false,
@@ -42,7 +42,7 @@
       "stdoutTail": [
         "> redemptionarc@0.1.0 stacc-social-fee-source-scan",
         "> tsx src/scripts/stacc-social-fee-source-scan.ts",
-        "STACC_SOCIAL_FEE_SOURCE_OBSERVED_NO_LIVE recentPositiveClaims=3 netSol=0.395985093 localAuthority=false receipt=/Users/velon/Desktop/redemptionarc/receipts/STACC-SOCIAL-FEE-SOURCE-LATEST.json",
+        "STACC_SOCIAL_FEE_SOURCE_OBSERVED_NO_LIVE recentPositiveClaims=2 netSol=0.193582427 localAuthority=false receipt=/Users/velon/Desktop/redemptionarc/receipts/STACC-SOCIAL-FEE-SOURCE-LATEST.json",
         "blocked=WzMa social-fee authority keypair is not locally configured | latest positive social-fee claim is not directly BZK-account linked | no live path: current unclaimed amount and exact claim accounts are not simulated"
       ],
       "stderrTail": []
@@ -151,10 +151,10 @@
     "authorityLocalSignerAvailable": false,
     "recent": {
       "scannedTxs": 50,
-      "claimLikeCount": 4,
-      "positiveClaimCount": 3,
-      "positiveNetSol": 0.395985093,
-      "positiveNetUsd": 34.002973833927506,
+      "claimLikeCount": 3,
+      "positiveClaimCount": 2,
+      "positiveNetSol": 0.193582427,
+      "positiveNetUsd": 16.633625598131548,
       "claimSamples": [
         {
           "signature": "3Torrzx8pD7CBUMJvoUh4BLdwxxt66hxJpmboGvRNp88uyaFW9Q9PW5DpiiNFREuczAcezPWTnCSrLKFQPmAsSfG",
@@ -186,16 +186,6 @@
             "Program log: Instruction: ClaimSocialFeePdaV2",
             "Program log: No fees available to claim"
           ]
-        },
-        {
-          "signature": "vY8oys67X7BGEM4hTR6uoQmK76ZnBmhJGzQPGA6m9c2Soq7diCFofErPZogLSTeba6xhFKZm5FvF83NxyeiRTwq",
-          "nativeDeltaSol": 0.202402666,
-          "bzkRelated": false,
-          "logHints": [
-            "Program log: Instruction: ClaimSocialFeePdaV2",
-            "Program log: Instruction: ClaimSocialFeePdaV2",
-            "Program log: No fees available to claim"
-          ]
         }
       ]
     },
@@ -209,13 +199,179 @@
       "netDeltaSol": 0.033783402,
       "grossClaimSol": 0.033793402,
       "feeSol": 0.00001,
-      "netCashUsd": 2.9009580272938558,
-      "grossClaimUsd": 2.901816720573856,
-      "feeUsd": 0.0008586932800000001,
+      "netCashUsd": 2.9028485126863735,
+      "grossClaimUsd": 2.903707765556374,
+      "feeUsd": 0.00085925287,
       "bzkRelated": false,
       "programIds": [
         "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
         "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ"
+      ],
+      "socialFeeInstructions": [
+        {
+          "index": 2,
+          "programId": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
+          "accountIndexes": [
+            0,
+            6,
+            8,
+            3,
+            5,
+            14,
+            10,
+            11,
+            1,
+            9,
+            12,
+            13
+          ],
+          "accounts": [
+            {
+              "pubkey": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+              "isSigner": true,
+              "isWritable": true
+            },
+            {
+              "pubkey": "HDLQmC6MAApKKbKb5cz4der2FLW1vsiwKjfQDz54UFt9",
+              "isSigner": false,
+              "isWritable": true
+            },
+            {
+              "pubkey": "So11111111111111111111111111111111111111112",
+              "isSigner": false,
+              "isWritable": true
+            },
+            {
+              "pubkey": "BXQvs49xhSnEvKAHhoKFc7J5kwX3pEp5ngPWJtoFL1ip",
+              "isSigner": false,
+              "isWritable": true
+            },
+            {
+              "pubkey": "FCfwoXBHHQxXGghjzxqRvYMwBpikwket6jGyjfwwzuyU",
+              "isSigner": false,
+              "isWritable": true
+            },
+            {
+              "pubkey": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+              "isSigner": false,
+              "isWritable": false
+            },
+            {
+              "pubkey": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+              "isSigner": false,
+              "isWritable": false
+            },
+            {
+              "pubkey": "CHqnuTkj6sXDFknM652aEFPECZh9qVsBXWkhPohmV9dA",
+              "isSigner": false,
+              "isWritable": false
+            },
+            {
+              "pubkey": "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
+              "isSigner": true,
+              "isWritable": false
+            },
+            {
+              "pubkey": "11111111111111111111111111111111",
+              "isSigner": false,
+              "isWritable": false
+            },
+            {
+              "pubkey": "D6QxXDt6hhcCpto4HiZKkN2YQ2iZRF5R7S3caCHpUsML",
+              "isSigner": false,
+              "isWritable": false
+            },
+            {
+              "pubkey": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
+              "isSigner": false,
+              "isWritable": false
+            }
+          ],
+          "dataBase64": "EU3whjq8NZUIAAAAMjI4NDM2MDEC",
+          "dataHex": "114df0863abc359508000000323238343336303102"
+        },
+        {
+          "index": 3,
+          "programId": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
+          "accountIndexes": [
+            0,
+            6,
+            4,
+            7,
+            2,
+            14,
+            10,
+            11,
+            1,
+            9,
+            12,
+            13
+          ],
+          "accounts": [
+            {
+              "pubkey": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+              "isSigner": true,
+              "isWritable": true
+            },
+            {
+              "pubkey": "HDLQmC6MAApKKbKb5cz4der2FLW1vsiwKjfQDz54UFt9",
+              "isSigner": false,
+              "isWritable": true
+            },
+            {
+              "pubkey": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "isSigner": false,
+              "isWritable": true
+            },
+            {
+              "pubkey": "JAW3k28XCPEMvRzwEXGncDCRgideTXCvqqYMmcvNjMFq",
+              "isSigner": false,
+              "isWritable": true
+            },
+            {
+              "pubkey": "6Rp8rNgcuPWymJYtxxYDumZ18uAYhbtWsCB5VxGgyZW9",
+              "isSigner": false,
+              "isWritable": true
+            },
+            {
+              "pubkey": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+              "isSigner": false,
+              "isWritable": false
+            },
+            {
+              "pubkey": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+              "isSigner": false,
+              "isWritable": false
+            },
+            {
+              "pubkey": "CHqnuTkj6sXDFknM652aEFPECZh9qVsBXWkhPohmV9dA",
+              "isSigner": false,
+              "isWritable": false
+            },
+            {
+              "pubkey": "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
+              "isSigner": true,
+              "isWritable": false
+            },
+            {
+              "pubkey": "11111111111111111111111111111111",
+              "isSigner": false,
+              "isWritable": false
+            },
+            {
+              "pubkey": "D6QxXDt6hhcCpto4HiZKkN2YQ2iZRF5R7S3caCHpUsML",
+              "isSigner": false,
+              "isWritable": false
+            },
+            {
+              "pubkey": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
+              "isSigner": false,
+              "isWritable": false
+            }
+          ],
+          "dataBase64": "EU3whjq8NZUIAAAAMjI4NDM2MDEC",
+          "dataHex": "114df0863abc359508000000323238343336303102"
+        }
       ],
       "logHints": [
         "Program log: Instruction: ClaimSocialFeePdaV2",
@@ -243,6 +399,61 @@
     "positiveBzkRelatedCount": 0,
     "positiveBzkRelatedSolTotal": 0,
     "latest": [
+      {
+        "signature": "3mhX4MwYzUR1wbehgE19QTiU7iYr1H7y8LKCB3G866wFL6FwKkqNFNU9e8oQgHwPaDuTFhmXU8rRCuKzweUZtEcq",
+        "slot": 421780293,
+        "err": null,
+        "blockTime": 1779597315,
+        "nativeDeltaLamports": -21991820,
+        "nativeDeltaSol": -0.02199182,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "11111111111111111111111111111111",
+          "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+          "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+          "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "4XTDs5yyqNrZWWHTaRrtgHwK5aHUmxTPiH3bBmM3g9bAS9EbmZFRp6FTYkTFEs44cymR6iMqqTb9WRzX8PgM8APG",
+        "slot": 421779810,
+        "err": null,
+        "blockTime": 1779597123,
+        "nativeDeltaLamports": -5000,
+        "nativeDeltaSol": -0.000005,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "SP12tWFxD9oJsVWNavTTBZvMbA6gkAmxtVgxdqvyvhY"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "5BTxovjNqxq6FwMM9GtDHrJDFk9wseGHDfJBt6HgCCR6aBjb9zEiwnnyxyxCsoZCJ6vGkNApgVrK2kTNGH6HrH39",
+        "slot": 421779804,
+        "err": null,
+        "blockTime": 1779597121,
+        "nativeDeltaLamports": -5000,
+        "nativeDeltaSol": -0.000005,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "2bDQDY4fQmZM2MX5GMW7JkC5Qsucfs88zrbMDVbGnLx2BvaW6RmBPyjmtSEAZdJ6CGGSWdVwV6c4JZ2DuRDghMzP",
+        "slot": 421779799,
+        "err": null,
+        "blockTime": 1779597119,
+        "nativeDeltaLamports": -5000,
+        "nativeDeltaSol": -0.000005,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+        ],
+        "bzkRelated": false
+      },
       {
         "signature": "3Torrzx8pD7CBUMJvoUh4BLdwxxt66hxJpmboGvRNp88uyaFW9Q9PW5DpiiNFREuczAcezPWTnCSrLKFQPmAsSfG",
         "slot": 421773201,
@@ -320,58 +531,6 @@
           "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
         ],
         "bzkRelated": false
-      },
-      {
-        "signature": "32w6LrW5GR2PmZ21tt33fpRbrEkVPcrfjjgKzvQNtcLkGUzKaNNHa2XLdry8t3D1iCrs5ngyqWuVERBFGBUK3pmg",
-        "slot": 421771502,
-        "err": null,
-        "blockTime": 1779593806,
-        "nativeDeltaLamports": -5000,
-        "nativeDeltaSol": -0.000005,
-        "programIds": [
-          "ComputeBudget111111111111111111111111111111",
-          "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
-        ],
-        "bzkRelated": false
-      },
-      {
-        "signature": "Kkn3FcLezxgbtDuLAXE5U9RjdyNDM8ebVcCotUMHtDPYWtTG6AFZhQFnguyXgsT57mGzWYnjY5EdnhjsTdeMnnC",
-        "slot": 421770745,
-        "err": null,
-        "blockTime": 1779593504,
-        "nativeDeltaLamports": -5000,
-        "nativeDeltaSol": -0.000005,
-        "programIds": [
-          "ComputeBudget111111111111111111111111111111",
-          "SP12tWFxD9oJsVWNavTTBZvMbA6gkAmxtVgxdqvyvhY"
-        ],
-        "bzkRelated": false
-      },
-      {
-        "signature": "5r4mtYoYryB6kcHfeKzfpcYpJQHJvP842hvNRxrBspndDNhNKhEpRzN91kz3VESiVkCU5yimG21YffNEWErL9v4K",
-        "slot": 421770739,
-        "err": null,
-        "blockTime": 1779593501,
-        "nativeDeltaLamports": -5000,
-        "nativeDeltaSol": -0.000005,
-        "programIds": [
-          "ComputeBudget111111111111111111111111111111",
-          "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
-        ],
-        "bzkRelated": false
-      },
-      {
-        "signature": "qoVCNEoHWbVs6XkYDbhr3PK86ALUy51DJf6wS9L4GNy7Y5Y9FWtcPjqbbGFxdgNw7Po5LGch7W98SknfyWsyE22",
-        "slot": 421770733,
-        "err": null,
-        "blockTime": 1779593499,
-        "nativeDeltaLamports": -5000,
-        "nativeDeltaSol": -0.000005,
-        "programIds": [
-          "ComputeBudget111111111111111111111111111111",
-          "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
-        ],
-        "bzkRelated": false
       }
     ],
     "positive": [
@@ -439,7 +598,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18380694758,
+        "requiredExternalVolumeUsdForMinNet": 100.18388112854,
         "swapFeeUsd": 0,
         "protocolFeeUsd": 0,
         "lpFeeUsd": 0,
@@ -463,7 +622,7 @@
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045951736895
+          "usd": 0.00045970282134999993
         },
         "inventoryRiskUsd": 0,
         "inventoryRiskBps": null,
@@ -471,8 +630,8 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": -0.00045951736895,
-        "totalSystemNetUsd": -0.00045951736895
+        "collectorLedgerNetUsd": -0.00045970282134999993,
+        "totalSystemNetUsd": -0.00045970282134999993
       },
       "collectSimulation": null,
       "cashProofPass": false,
@@ -496,7 +655,7 @@
     "BZK claimable cash fees 0.000000 below MIN_NET_USD 0.25",
     "no direct local signer cash-fee collect is currently ready",
     "no active route candidate for settlement simulation",
-    "social-fee SOL source observed (34.002974 USD net), but not executable by CashRelay yet",
+    "social-fee SOL source observed (16.633626 USD net), but not executable by CashRelay yet",
     "social-fee source is not yet a fresh exact executable receipt",
     "cycle sim not cash-positive: total-system cash gate below MIN_NET_USD (0.25) | collect authority is not locally signable; direct collect is not executable by this wallet set"
   ],

@@ -1,6 +1,6 @@
 {
   "verdict": "STACC_SOCIAL_FEE_SOURCE_OBSERVED_NO_LIVE",
-  "generatedAt": "2026-05-24T04:32:18.318Z",
+  "generatedAt": "2026-05-24T04:34:52.190Z",
   "noSend": true,
   "dryRun": true,
   "allowLiveIgnored": false,
@@ -13,7 +13,7 @@
   "localSignerPubkeys": [],
   "asset": "SOL",
   "decimals": 9,
-  "solPriceUsd": 85.893798,
+  "solPriceUsd": 85.925287,
   "minNetUsd": 0.25,
   "latestPositiveClaim": {
     "signature": "3Torrzx8pD7CBUMJvoUh4BLdwxxt66hxJpmboGvRNp88uyaFW9Q9PW5DpiiNFREuczAcezPWTnCSrLKFQPmAsSfG",
@@ -25,9 +25,9 @@
     "netDeltaSol": 0.033783402,
     "grossClaimSol": 0.033793402,
     "feeSol": 0.00001,
-    "netCashUsd": 2.901784707140796,
-    "grossClaimUsd": 2.902643645120796,
-    "feeUsd": 0.0008589379800000001,
+    "netCashUsd": 2.9028485126863735,
+    "grossClaimUsd": 2.903707765556374,
+    "feeUsd": 0.00085925287,
     "bzkRelated": false,
     "programIds": [
       "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
@@ -210,7 +210,7 @@
     "claimLikeCount": 3,
     "positiveClaimCount": 2,
     "positiveNetSol": 0.193582427,
-    "positiveNetUsd": 16.627529881087746,
+    "positiveNetUsd": 16.633625598131548,
     "claimSamples": [
       {
         "signature": "3Torrzx8pD7CBUMJvoUh4BLdwxxt66hxJpmboGvRNp88uyaFW9Q9PW5DpiiNFREuczAcezPWTnCSrLKFQPmAsSfG",
