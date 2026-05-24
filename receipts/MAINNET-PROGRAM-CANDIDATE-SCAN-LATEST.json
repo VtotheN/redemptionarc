@@ -1,0 +1,280 @@
+{
+  "verdict": "MAINNET_PROGRAM_CANDIDATE_SCAN_SAVED_NO_LIVE",
+  "generatedAt": "2026-05-24T02:34:51.744Z",
+  "noSend": true,
+  "dryRun": false,
+  "allowLive": true,
+  "liveIntentIgnored": "This scanner only reads RPC/local files. It never deploys, upgrades, closes, or sends transactions.",
+  "architectureFinding": {
+    "csdm": "CSDM is live, upgradeable, and local keeper authority matches. It is the strongest candidate for backing-vault / flash-lend / HOP-redeem integration.",
+    "atom": "atom_ickk program ID is free and local program keypair matches; use as clean fresh deploy slot if we avoid upgrading live CSDM.",
+    "enchancedblock": "ENCHANCEDBLOCK is controlled live infra; keep it as external Orca actuator/source, not as the redeem vault.",
+    "ora": "ora-culoxx is controlled live infra; keep as oracle/freshness helper."
+  },
+  "candidateSummary": {
+    "bestExistingUpgradeTarget": "CSDM",
+    "bestFreshDeployTarget": "atom_ickk",
+    "recommendedNextBuild": "Build exact CSDM upgrade/sim receipt for ix7 flash_lend_backing plus HOP burn/redeem-to-USDC path.",
+    "cashStatus": "No profit booked. Program control only removes an engineering blocker; cash proof still needs wallet SOL/USDC delta through RedemptionCashRelay."
+  },
+  "programInspections": [
+    {
+      "name": "atom_ickk",
+      "programId": "BxJMJLxXJhKvuhvvxY57wYY69CAs9RCQWBv9JPCtm9Kx",
+      "role": "fresh multi-slot flash/capital window candidate",
+      "useRecommendation": "Best clean deploy slot if we avoid touching live infra; not a cash source by itself.",
+      "exists": false,
+      "executable": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "programDataAddress": null,
+      "programDataSlot": null,
+      "programDataAccountBytes": null,
+      "elfDataLenEstimate": null,
+      "upgradeAuthority": null,
+      "localProgramKeypairs": [
+        {
+          "path": "/Users/velon/Desktop/atom_ickk/target/deploy/atom_ickk-keypair.json",
+          "exists": true,
+          "pubkey": "BxJMJLxXJhKvuhvvxY57wYY69CAs9RCQWBv9JPCtm9Kx",
+          "status": "array_keypair"
+        }
+      ],
+      "localAuthorityKeypairs": [
+        {
+          "path": "/Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/keys/keeper-keypair.json",
+          "exists": true,
+          "pubkey": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+          "status": "array_keypair"
+        }
+      ],
+      "localProgramKeypairMatches": true,
+      "localAuthorityMatches": [],
+      "classification": "FREE_PROGRAM_ID_CAN_DEPLOY",
+      "closeOrUpgradePosition": "clean deploy slot; no close/upgrade needed"
+    },
+    {
+      "name": "CSDM",
+      "programId": "Q9FMc5YLqjJe96geFtg43ocfyrpJYM2WDHkQEqh8aNv",
+      "role": "backing vault / receipt / flash-lend candidate",
+      "useRecommendation": "Best live candidate if local authority matches; add HOP redeem or ix7 proof before any cash claim.",
+      "exists": true,
+      "executable": true,
+      "ownerProgram": "BPFLoaderUpgradeab1e11111111111111111111111",
+      "lamports": 1141440,
+      "programDataAddress": "FXVduXj6jBz9E3PqY4mNsbNLLsEfBRQH9FozdfhomcWy",
+      "programDataSlot": "420917531",
+      "programDataAccountBytes": 43461,
+      "elfDataLenEstimate": 43416,
+      "upgradeAuthority": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+      "localProgramKeypairs": [
+        {
+          "path": "/Users/velon/gh-src-vtothen/EXPERIMENTO-CanSmelldaMoney/program/keys/program-keypair.json",
+          "exists": true,
+          "pubkey": "Q9FMc5YLqjJe96geFtg43ocfyrpJYM2WDHkQEqh8aNv",
+          "status": "array_keypair"
+        },
+        {
+          "path": "/Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/keys/csdm-program-keypair.json",
+          "exists": true,
+          "pubkey": "Q9FMc5YLqjJe96geFtg43ocfyrpJYM2WDHkQEqh8aNv",
+          "status": "array_keypair"
+        }
+      ],
+      "localAuthorityKeypairs": [
+        {
+          "path": "/Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/keys/keeper-keypair.json",
+          "exists": true,
+          "pubkey": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+          "status": "array_keypair"
+        }
+      ],
+      "localProgramKeypairMatches": true,
+      "localAuthorityMatches": [
+        "/Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/keys/keeper-keypair.json"
+      ],
+      "classification": "LIVE_UPGRADEABLE_CONTROLLED",
+      "closeOrUpgradePosition": "upgrade candidate, not close candidate; preserve live ID and add exact receipt before any upgrade"
+    },
+    {
+      "name": "ENCHANCEDBLOCK",
+      "programId": "61hviwfoDk6ygzJHJaDG2tsoWbBpUYWdNJnSSfRA1vPh",
+      "role": "authority-controlled venue plus external Orca settlement source",
+      "useRecommendation": "Keep live; use as actuator/source only after exact sim receipt with SOL/USDC delta.",
+      "exists": true,
+      "executable": true,
+      "ownerProgram": "BPFLoaderUpgradeab1e11111111111111111111111",
+      "lamports": 1141440,
+      "programDataAddress": "HNYnQd7f4ey3AzLZMFKtLyTPmjHb2uoHFfP3HFn1vYdj",
+      "programDataSlot": "420918790",
+      "programDataAccountBytes": 49277,
+      "elfDataLenEstimate": 49232,
+      "upgradeAuthority": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "localProgramKeypairs": [],
+      "localAuthorityKeypairs": [
+        {
+          "path": "/Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/keys/fvx-admin-mainnet.json",
+          "exists": true,
+          "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+          "status": "metadata_pubkey"
+        }
+      ],
+      "localProgramKeypairMatches": false,
+      "localAuthorityMatches": [
+        "/Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/keys/fvx-admin-mainnet.json"
+      ],
+      "classification": "LIVE_UPGRADEABLE_CONTROLLED",
+      "closeOrUpgradePosition": "controlled live infra; do not close by default, upgrade only with exact receipt"
+    },
+    {
+      "name": "ora-culoxx",
+      "programId": "D2MyTRvKuPDwrAbAbzvizcCC7xKW47gB1DL8Nr9ck2aj",
+      "role": "price/oracle freshness primitive",
+      "useRecommendation": "Keep live as oracle truth helper; not a cash source.",
+      "exists": true,
+      "executable": true,
+      "ownerProgram": "BPFLoaderUpgradeab1e11111111111111111111111",
+      "lamports": 1141440,
+      "programDataAddress": "6evSMzf95ZnFZqRK265gVxuqM6vxz8UNfGYbiiQGypEW",
+      "programDataSlot": "420787689",
+      "programDataAccountBytes": 1293,
+      "elfDataLenEstimate": 1248,
+      "upgradeAuthority": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "localProgramKeypairs": [
+        {
+          "path": "/Users/velon/gh-src-vtothen/EXPERIMENTO-ora-culoxx/program/keys/program-keypair.json",
+          "exists": true,
+          "pubkey": "D2MyTRvKuPDwrAbAbzvizcCC7xKW47gB1DL8Nr9ck2aj",
+          "status": "array_keypair"
+        }
+      ],
+      "localAuthorityKeypairs": [
+        {
+          "path": "/Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/keys/fvx-admin-mainnet.json",
+          "exists": true,
+          "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+          "status": "metadata_pubkey"
+        },
+        {
+          "path": "/Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/keys/ora-admin-keypair.json",
+          "exists": true,
+          "pubkey": "admnz5UvRa93HM5nTrxXmsJ1rw2tvXMBFGauvCgzQhE",
+          "status": "array_keypair"
+        },
+        {
+          "path": "/Users/velon/gh-src-vtothen/EXPERIMENTO-ora-culoxx/examples/keys/admin-keypair.json",
+          "exists": true,
+          "pubkey": "admnz5UvRa93HM5nTrxXmsJ1rw2tvXMBFGauvCgzQhE",
+          "status": "array_keypair"
+        }
+      ],
+      "localProgramKeypairMatches": true,
+      "localAuthorityMatches": [
+        "/Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/keys/fvx-admin-mainnet.json"
+      ],
+      "classification": "LIVE_UPGRADEABLE_CONTROLLED",
+      "closeOrUpgradePosition": "controlled live infra; do not close by default, upgrade only with exact receipt"
+    },
+    {
+      "name": "ROLLBLOCK",
+      "programId": "9R2VdiXXby8V5n1nKG5yjmauZjNA74PjteuugogDwnt8",
+      "role": "on-chain invariant/judge candidate",
+      "useRecommendation": "Optional judge; not required before RedemptionCashRelay receipt path.",
+      "exists": false,
+      "executable": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "programDataAddress": null,
+      "programDataSlot": null,
+      "programDataAccountBytes": null,
+      "elfDataLenEstimate": null,
+      "upgradeAuthority": null,
+      "localProgramKeypairs": [],
+      "localAuthorityKeypairs": [
+        {
+          "path": "/Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/keys/keeper-keypair.json",
+          "exists": true,
+          "pubkey": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+          "status": "array_keypair"
+        }
+      ],
+      "localProgramKeypairMatches": false,
+      "localAuthorityMatches": [],
+      "classification": "MISSING_NO_LOCAL_KEYPAIR",
+      "closeOrUpgradePosition": "not a usable deploy/upgrade target from this scan"
+    },
+    {
+      "name": "flywheel-1",
+      "programId": "8cTuyNMJkz72bqyvU91g2SUcxtJTpmSrD2NcLDd8Kqyn",
+      "role": "legacy receipt/PDA pattern candidate",
+      "useRecommendation": "Archaeology only unless executable and controlled.",
+      "exists": false,
+      "executable": false,
+      "ownerProgram": null,
+      "lamports": 0,
+      "programDataAddress": null,
+      "programDataSlot": null,
+      "programDataAccountBytes": null,
+      "elfDataLenEstimate": null,
+      "upgradeAuthority": null,
+      "localProgramKeypairs": [],
+      "localAuthorityKeypairs": [
+        {
+          "path": "/Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/keys/keeper-keypair.json",
+          "exists": true,
+          "pubkey": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+          "status": "array_keypair"
+        }
+      ],
+      "localProgramKeypairMatches": false,
+      "localAuthorityMatches": [],
+      "classification": "MISSING_NO_LOCAL_KEYPAIR",
+      "closeOrUpgradePosition": "not a usable deploy/upgrade target from this scan"
+    }
+  ],
+  "sourceInspections": {
+    "csdm": {
+      "legacyPath": "/Users/velon/gh-src-vtothen/EXPERIMENTO-CanSmelldaMoney/program/src/lib.rs",
+      "flashLendLib": "/Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/csdm/programs/csdm/src/lib.rs",
+      "flashLendIx": "/Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/csdm/programs/csdm/src/flash_lend.rs",
+      "legacyRedeemPattern": true,
+      "legacyBackedFlashPattern": true,
+      "legacySessionPattern": true,
+      "flashLendBackingIx7InSource": true,
+      "releasesRealBacking": true,
+      "requiresBackingGrowth": true,
+      "requiresAllowedBorrower": true,
+      "requiresDeadline": true,
+      "burnsReceipt": true,
+      "liveIx7Assumption": "Do not assume ix7 is live until binary hash or exact ix7 simulation proves it on Q9."
+    },
+    "atom": {
+      "repo": "/Users/velon/Desktop/atom_ickk",
+      "flashOpenFound": true,
+      "borrowerExitFound": true,
+      "supportsMultiSlotWindow": true,
+      "hasTokenMintVaultConstraints": true,
+      "use": "fresh deploy slot for atom-style capital window or HOP redeem vault if CSDM upgrade is not chosen"
+    }
+  },
+  "cashProofGate": {
+    "pass": false,
+    "sourceClass": "program_control_scan_only",
+    "eligibilityProof": "Program target exists for build path, but no SOL/USDC source receipt is attached.",
+    "instructionPath": "TBD: exact CSDM ix7 or atom-derived redeem-vault instruction receipt required.",
+    "settlementPathToSolUsdc": "TBD: HOP/custom/accounting units must burn/lock/redeem into spendable SOL/USDC.",
+    "costModel": "TBD: upgrade/deploy rent, transaction fees, flash repay, Orca fees, tips, and liabilities must be priced.",
+    "rejectionReasons": [
+      "program control is not cash profit",
+      "CSDM/atom still need exact no-send simulation receipt",
+      "HOP/custom token value still needs burn/redeem or external SOL/USDC settlement proof",
+      "RedemptionCashRelay must receive authority-exclusive SOL/USDC source receipt before live"
+    ]
+  },
+  "nextRequiredExactBuild": [
+    "For CSDM path: prove local build fits current ProgramData or plan buffer extension; simulate ix7 flash_lend_backing against exact accounts.",
+    "For atom path: add HOP redeem-vault instruction and deploy only behind a separate approval receipt.",
+    "Wire ENCHANCEDBLOCK source receipt so Orca settlement shows afterRaw > beforeRaw in SOL/USDC after all costs.",
+    "Feed the final source receipt into npm run redemption-cash-relay-plan and require READY_NO_LIVE before any live step."
+  ]
+}

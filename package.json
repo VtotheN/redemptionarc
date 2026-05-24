@@ -19,6 +19,7 @@
     "flash-provider-scan": "tsx src/scripts/flash-provider-scan.ts",
     "cycle-plan": "tsx src/scripts/cycle-plan.ts",
     "redemption-cash-relay-plan": "tsx src/scripts/redemption-cash-relay-plan.ts",
+    "mainnet-program-candidate-scan": "tsx src/scripts/mainnet-program-candidate-scan.ts",
     "atom-enchancedblock-gate": "tsx src/scripts/atom-enchancedblock-cash-gate.ts",
     "atom-enchancedblock-cash-gate": "tsx src/scripts/atom-enchancedblock-cash-gate.ts",
     "redemption-underwheel-source": "tsx src/scripts/redemption-underwheel-source.ts",
