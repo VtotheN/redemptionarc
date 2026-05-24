@@ -51,3 +51,11 @@ npm run csdm-upgrade-preflight
 ```
 
 That preflight checks Q9 ProgramData, local program/authority keypairs, artifact hash/size, and source invariants. It still refuses cash proof because an upgradeable program is not profit.
+
+The second step is:
+
+```bash
+npm run csdm-live-shape-scan
+```
+
+That scanner checks the mainnet CSDM pool/config/backing accounts from `config.mainnet.existing.json`: derived PDA matches, token account mints/owners, asset config, allowed borrower, oracle, and whether backing is nonzero. Passing shape means only that ix7 can be simulated after upgrade; it is still not cash proof.

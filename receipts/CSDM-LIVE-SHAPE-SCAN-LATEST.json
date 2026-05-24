@@ -1,0 +1,174 @@
+{
+  "verdict": "CSDM_LIVE_SHAPE_READY_NO_LIVE",
+  "generatedAt": "2026-05-24T02:49:36.737Z",
+  "noSend": true,
+  "dryRun": true,
+  "allowLive": false,
+  "liveIntentIgnored": "This scanner only reads accounts. It never creates pools, seeds backing, upgrades, or sends ix7.",
+  "configPath": "/Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/csdm/keeper/config.mainnet.existing.json",
+  "expectedAuthority": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+  "seeds": {
+    "csdmProgramId": "Q9FMc5YLqjJe96geFtg43ocfyrpJYM2WDHkQEqh8aNv",
+    "poolMint": "So11111111111111111111111111111111111111112",
+    "repayMint": "So11111111111111111111111111111111111111112",
+    "bumps": {
+      "poolState": 253,
+      "poolAccount": 255,
+      "csdmMint": 255,
+      "poolCsdmAccount": 255,
+      "assetConfig": 255
+    }
+  },
+  "configuredAddresses": {
+    "csdmPoolStatePda": "BSHxRLtdgndvUWdKSH4rkeA1j1iS3TzLMgX25VeDQdCQ",
+    "csdmPoolAccountPda": "B7G2c2oRm6qNwj7xjMhN7jR3yFxb3Srmr5dL9NCUTAKP",
+    "csdmMintPda": "DHYv1GnjJuJnvKggmncifHXByhnJqk5am7aLGwfW2NSz",
+    "csdmPoolCsdmAccountPda": "4y1D1CtQMkygCX6yPMPP5xwMCDAnXR3J15DzGeQw7iDj",
+    "csdmAssetConfigPda": "FP4rW3Se9usD7X4pExWXbzVCE3qSDEAsgwkzZLBT38iW"
+  },
+  "derivedAddresses": {
+    "csdmPoolStatePda": "BSHxRLtdgndvUWdKSH4rkeA1j1iS3TzLMgX25VeDQdCQ",
+    "csdmPoolAccountPda": "B7G2c2oRm6qNwj7xjMhN7jR3yFxb3Srmr5dL9NCUTAKP",
+    "csdmMintPda": "DHYv1GnjJuJnvKggmncifHXByhnJqk5am7aLGwfW2NSz",
+    "csdmPoolCsdmAccountPda": "4y1D1CtQMkygCX6yPMPP5xwMCDAnXR3J15DzGeQw7iDj",
+    "csdmAssetConfigPda": "FP4rW3Se9usD7X4pExWXbzVCE3qSDEAsgwkzZLBT38iW"
+  },
+  "pdaMatches": {
+    "csdmPoolStatePda": true,
+    "csdmPoolAccountPda": true,
+    "csdmMintPda": true,
+    "csdmPoolCsdmAccountPda": true,
+    "csdmAssetConfigPda": true
+  },
+  "accounts": {
+    "poolState": {
+      "address": "BSHxRLtdgndvUWdKSH4rkeA1j1iS3TzLMgX25VeDQdCQ",
+      "exists": true,
+      "executable": false,
+      "ownerProgram": "Q9FMc5YLqjJe96geFtg43ocfyrpJYM2WDHkQEqh8aNv",
+      "dataLen": 72,
+      "lamports": 1392000,
+      "poolBump": 253,
+      "csdmMintBump": 255,
+      "poolAccountBump": 255,
+      "poolCsdmBump": 255,
+      "poolMint": "So11111111111111111111111111111111111111112",
+      "csdmMint": "DHYv1GnjJuJnvKggmncifHXByhnJqk5am7aLGwfW2NSz"
+    },
+    "poolAccount": {
+      "address": "B7G2c2oRm6qNwj7xjMhN7jR3yFxb3Srmr5dL9NCUTAKP",
+      "exists": true,
+      "executable": false,
+      "ownerProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "dataLen": 165,
+      "lamports": 202039280,
+      "mint": "So11111111111111111111111111111111111111112",
+      "owner": "BSHxRLtdgndvUWdKSH4rkeA1j1iS3TzLMgX25VeDQdCQ",
+      "amountRaw": "200000000"
+    },
+    "csdmMint": {
+      "address": "DHYv1GnjJuJnvKggmncifHXByhnJqk5am7aLGwfW2NSz",
+      "exists": true,
+      "executable": false,
+      "ownerProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "dataLen": 82,
+      "lamports": 1461600,
+      "supplyRaw": "200000000",
+      "decimals": 9
+    },
+    "poolCsdmAccount": {
+      "address": "4y1D1CtQMkygCX6yPMPP5xwMCDAnXR3J15DzGeQw7iDj",
+      "exists": true,
+      "executable": false,
+      "ownerProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "dataLen": 165,
+      "lamports": 2039280,
+      "mint": "DHYv1GnjJuJnvKggmncifHXByhnJqk5am7aLGwfW2NSz",
+      "owner": "BSHxRLtdgndvUWdKSH4rkeA1j1iS3TzLMgX25VeDQdCQ",
+      "amountRaw": "0"
+    },
+    "assetConfig": {
+      "address": "FP4rW3Se9usD7X4pExWXbzVCE3qSDEAsgwkzZLBT38iW",
+      "exists": true,
+      "executable": false,
+      "ownerProgram": "Q9FMc5YLqjJe96geFtg43ocfyrpJYM2WDHkQEqh8aNv",
+      "dataLen": 232,
+      "lamports": 2505600,
+      "bump": 255,
+      "paused": 0,
+      "backingDecimals": 9,
+      "repayDecimals": 9,
+      "poolMint": "So11111111111111111111111111111111111111112",
+      "repayMint": "So11111111111111111111111111111111111111112",
+      "backingOracle": "QUVF91dzXWYvE5FmFEc41JZxRDmNgx8S8P6sNDWYZiW",
+      "repayOracle": "QUVF91dzXWYvE5FmFEc41JZxRDmNgx8S8P6sNDWYZiW",
+      "allowedBorrower": "61hviwfoDk6ygzJHJaDG2tsoWbBpUYWdNJnSSfRA1vPh",
+      "maxAmountRaw": "100000000",
+      "maxDeadlineSlots": "5",
+      "minProfitMicros": "0",
+      "authority": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv"
+    },
+    "backingMint": {
+      "address": "So11111111111111111111111111111111111111112",
+      "exists": true,
+      "executable": false,
+      "ownerProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "dataLen": 82,
+      "lamports": 1514452806436,
+      "supplyRaw": "0",
+      "decimals": 9
+    },
+    "repayMint": {
+      "address": "So11111111111111111111111111111111111111112",
+      "exists": true,
+      "executable": false,
+      "ownerProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "dataLen": 82,
+      "lamports": 1514452806436,
+      "supplyRaw": "0",
+      "decimals": 9
+    },
+    "borrowerProgram": {
+      "address": "61hviwfoDk6ygzJHJaDG2tsoWbBpUYWdNJnSSfRA1vPh",
+      "exists": true,
+      "executable": true,
+      "ownerProgram": "BPFLoaderUpgradeab1e11111111111111111111111",
+      "dataLen": 36,
+      "lamports": 1141440
+    },
+    "backingOracle": {
+      "address": "GyJzwayA96Y82LCjMdhvwXZx2PYxyVYJ6co5T3BCaZnD",
+      "exists": true,
+      "executable": false,
+      "ownerProgram": "D2MyTRvKuPDwrAbAbzvizcCC7xKW47gB1DL8Nr9ck2aj",
+      "dataLen": 16,
+      "lamports": 1002240
+    }
+  },
+  "liveShape": {
+    "pass": true,
+    "readyForIx7SimulationAfterUpgrade": true,
+    "backingRaw": "200000000",
+    "maxAmountRaw": "100000000",
+    "storedBackingOracle": "QUVF91dzXWYvE5FmFEc41JZxRDmNgx8S8P6sNDWYZiW",
+    "runtimeBackingOracleToPass": "GyJzwayA96Y82LCjMdhvwXZx2PYxyVYJ6co5T3BCaZnD",
+    "minRepayDeltaRawFromConfig": "250000",
+    "configuredFlashAmountRaw": "50000000",
+    "configuredDeadlineSlotOffset": 5
+  },
+  "cashProofGate": {
+    "pass": false,
+    "reason": "Account shape is not cash profit. It only says whether ix7 can be simulated after upgrade.",
+    "required": "A source receipt must show spendable SOL/USDC growth after flash lend, borrower CPI, repay, fees, and liabilities."
+  },
+  "shapeWarnings": [
+    "asset_config stores an older oracle; ix7 does not enforce this field, so pass the fresh oracle account explicitly",
+    "pool_csdm_account is zero before flash, which is expected; borrower must return receipt during ix7"
+  ],
+  "shapeRejections": [],
+  "nextRequiredExactBuild": [
+    "After explicit upgrade approval, simulate ix7 flash_lend_backing against these exact accounts.",
+    "If ix7 simulation passes, emit CashRelay source receipt with SOL/USDC beforeRaw/afterRaw.",
+    "Do not book HOP/CSDM receipt units as profit."
+  ]
+}
