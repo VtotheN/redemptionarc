@@ -159,11 +159,19 @@ async function recentClaimRows(connection: Connection, owner: string, limit: num
         const keyedIx = ix as { programIdIndex: number; accountKeyIndexes?: Iterable<number>; accounts?: Iterable<number>; data?: Uint8Array };
         const programId = accountKeys[keyedIx.programIdIndex];
         const accountIndexes = [...(keyedIx.accountKeyIndexes ?? keyedIx.accounts ?? [])].map(Number);
+        const message = tx.transaction.message as unknown as {
+          isAccountSigner?: (index: number) => boolean;
+          isAccountWritable?: (index: number) => boolean;
+        };
         return {
           index,
           programId,
           accountIndexes,
-          accounts: accountIndexes.map((accountIndex) => accountKeys[accountIndex] ?? null),
+          accounts: accountIndexes.map((accountIndex) => ({
+            pubkey: accountKeys[accountIndex] ?? null,
+            isSigner: message.isAccountSigner?.(accountIndex) ?? accountIndex === 0,
+            isWritable: message.isAccountWritable?.(accountIndex) ?? false,
+          })),
           dataBase64: keyedIx.data ? Buffer.from(keyedIx.data).toString("base64") : "",
           dataHex: keyedIx.data ? Buffer.from(keyedIx.data).toString("hex") : "",
         };

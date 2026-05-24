@@ -1,0 +1,13 @@
+{
+  "verdict": "STACC_SOCIAL_FEE_CLAIM_SIM_BLOCKED",
+  "generatedAt": "2026-05-24T04:32:26.337Z",
+  "noSend": true,
+  "dryRun": true,
+  "authority": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+  "authorityLocalSignerAvailable": false,
+  "instructionCount": 2,
+  "sourceReceipt": "receipts/STACC-SOCIAL-FEE-SOURCE-LATEST.json",
+  "rejectionReasons": [
+    "matching authority keypair not found in SOCIAL_FEE_KEYPAIR_PATHS/OWNED_FEE_KEYPAIR_PATHS"
+  ]
+}

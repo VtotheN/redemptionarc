@@ -28,6 +28,7 @@
     "csdm-ix7-postlive-source": "tsx src/scripts/csdm-ix7-postlive-source.ts",
     "stacc-bzk-security-plan": "tsx src/scripts/stacc-bzk-security-plan.ts",
     "stacc-social-fee-source-scan": "tsx src/scripts/stacc-social-fee-source-scan.ts",
+    "stacc-social-fee-claim-sim": "tsx src/scripts/stacc-social-fee-claim-sim.ts",
     "stacc-bzk-loop": "tsx src/scripts/stacc-bzk-loop.ts",
     "atom-enchancedblock-gate": "tsx src/scripts/atom-enchancedblock-cash-gate.ts",
     "atom-enchancedblock-cash-gate": "tsx src/scripts/atom-enchancedblock-cash-gate.ts",
