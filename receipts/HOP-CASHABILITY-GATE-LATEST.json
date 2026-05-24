@@ -1,6 +1,6 @@
 {
   "verdict": "HOP_CASHABILITY_BLOCKED",
-  "generatedAt": "2026-05-24T05:59:45.994Z",
+  "generatedAt": "2026-05-24T06:17:39.882Z",
   "readOnly": true,
   "noSend": true,
   "liveIntentIgnored": {
@@ -101,10 +101,10 @@
       "error": null,
       "inputAmountRaw": "93888532126521",
       "inputAmountHop": 93888532.126521,
-      "outAmountRaw": "233329718",
-      "outAmountUi": 0.233329718,
+      "outAmountRaw": "233649754",
+      "outAmountUi": 0.233649754,
       "outUsd": null,
-      "priceImpactPct": 0.9994149315981636,
+      "priceImpactPct": 0.9994148527139374,
       "routePlan": [
         {
           "label": "Raydium CP",
@@ -117,30 +117,30 @@
           "bps": null
         },
         {
-          "label": "Raydium",
-          "ammKey": "6a1CsrpeZubDjEJE9s1CMVheB6HWM5d7m1cj2jkhyXhj",
+          "label": "GoonFi V2",
+          "ammKey": "GMCJvYGf5Ex2ARiMquaBDqU6iKM8uiEQkB8jCnoNfHpC",
           "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-          "outputMint": "7dHbWXmci3dT8UFYWYZweBLXgycu7Y3iL6trKn1Y7ARj",
-          "inAmount": "20085656",
-          "outAmount": "191462659",
-          "percent": 100,
+          "outputMint": "So11111111111111111111111111111111111111112",
+          "inAmount": "20084910",
+          "outAmount": "233641065",
+          "percent": 99,
           "bps": null
         },
         {
-          "label": "Meteora",
-          "ammKey": "7EJSgV2pthhDfb4UiER9vzTqe2eojei9GEQAQnkqJ96e",
-          "inputMint": "7dHbWXmci3dT8UFYWYZweBLXgycu7Y3iL6trKn1Y7ARj",
+          "label": "Quantum",
+          "ammKey": "ugobDeUHRY34mq1yK94eYrepgj2KVmUkHiaV8vyUD42",
+          "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
           "outputMint": "So11111111111111111111111111111111111111112",
-          "inAmount": "191462659",
-          "outAmount": "233329718",
-          "percent": 100,
+          "inAmount": "746",
+          "outAmount": "8689",
+          "percent": 1,
           "bps": null
         }
       ],
       "routeAmmKeys": [
         "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f",
-        "6a1CsrpeZubDjEJE9s1CMVheB6HWM5d7m1cj2jkhyXhj",
-        "7EJSgV2pthhDfb4UiER9vzTqe2eojei9GEQAQnkqJ96e"
+        "GMCJvYGf5Ex2ARiMquaBDqU6iKM8uiEQkB8jCnoNfHpC",
+        "ugobDeUHRY34mq1yK94eYrepgj2KVmUkHiaV8vyUD42"
       ],
       "ownedAmmKeysHit": [
         "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f"

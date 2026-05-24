@@ -1,6 +1,6 @@
 {
   "verdict": "STACC_BZK_LOOP_MONITORING_NO_LIVE",
-  "generatedAt": "2026-05-24T05:59:55.781Z",
+  "generatedAt": "2026-05-24T06:17:44.007Z",
   "iteration": 1,
   "noSend": true,
   "dryRun": true,
@@ -57,6 +57,19 @@
         "> redemptionarc@0.1.0 stacc-social-fee-claim-sim",
         "> tsx src/scripts/stacc-social-fee-claim-sim.ts",
         "STACC_SOCIAL_FEE_CLAIM_SIM_BLOCKED authority=2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM missingSigners=1 ix=1 receipt=/Users/velon/Desktop/redemptionarc/receipts/STACC-SOCIAL-FEE-CLAIM-SIM-LATEST.json"
+      ],
+      "stderrTail": []
+    },
+    {
+      "name": "stacc-social-authority-profile",
+      "command": "npm run stacc-social-authority-profile",
+      "status": 0,
+      "signal": null,
+      "ok": true,
+      "stdoutTail": [
+        "> redemptionarc@0.1.0 stacc-social-authority-profile",
+        "> tsx src/scripts/stacc-social-authority-profile.ts",
+        "STACC_SOCIAL_AUTHORITY_PROFILE_READ_ONLY authority=2sMr...hkjM sol=100.982226724 receipt=/Users/velon/Desktop/redemptionarc/receipts/STACC-SOCIAL-AUTHORITY-PROFILE-LATEST.json"
       ],
       "stderrTail": []
     },
@@ -260,10 +273,10 @@
         "error": null,
         "inputAmountRaw": "93888532126521",
         "inputAmountHop": 93888532.126521,
-        "outAmountRaw": "233329718",
-        "outAmountUi": 0.233329718,
+        "outAmountRaw": "233649754",
+        "outAmountUi": 0.233649754,
         "outUsd": null,
-        "priceImpactPct": 0.9994149315981636,
+        "priceImpactPct": 0.9994148527139374,
         "routePlan": [
           {
             "label": "Raydium CP",
@@ -276,30 +289,30 @@
             "bps": null
           },
           {
-            "label": "Raydium",
-            "ammKey": "6a1CsrpeZubDjEJE9s1CMVheB6HWM5d7m1cj2jkhyXhj",
+            "label": "GoonFi V2",
+            "ammKey": "GMCJvYGf5Ex2ARiMquaBDqU6iKM8uiEQkB8jCnoNfHpC",
             "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-            "outputMint": "7dHbWXmci3dT8UFYWYZweBLXgycu7Y3iL6trKn1Y7ARj",
-            "inAmount": "20085656",
-            "outAmount": "191462659",
-            "percent": 100,
+            "outputMint": "So11111111111111111111111111111111111111112",
+            "inAmount": "20084910",
+            "outAmount": "233641065",
+            "percent": 99,
             "bps": null
           },
           {
-            "label": "Meteora",
-            "ammKey": "7EJSgV2pthhDfb4UiER9vzTqe2eojei9GEQAQnkqJ96e",
-            "inputMint": "7dHbWXmci3dT8UFYWYZweBLXgycu7Y3iL6trKn1Y7ARj",
+            "label": "Quantum",
+            "ammKey": "ugobDeUHRY34mq1yK94eYrepgj2KVmUkHiaV8vyUD42",
+            "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
             "outputMint": "So11111111111111111111111111111111111111112",
-            "inAmount": "191462659",
-            "outAmount": "233329718",
-            "percent": 100,
+            "inAmount": "746",
+            "outAmount": "8689",
+            "percent": 1,
             "bps": null
           }
         ],
         "routeAmmKeys": [
           "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f",
-          "6a1CsrpeZubDjEJE9s1CMVheB6HWM5d7m1cj2jkhyXhj",
-          "7EJSgV2pthhDfb4UiER9vzTqe2eojei9GEQAQnkqJ96e"
+          "GMCJvYGf5Ex2ARiMquaBDqU6iKM8uiEQkB8jCnoNfHpC",
+          "ugobDeUHRY34mq1yK94eYrepgj2KVmUkHiaV8vyUD42"
         ],
         "ownedAmmKeysHit": [
           "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f"
@@ -411,7 +424,7 @@
       "claimLikeCount": 2,
       "positiveClaimCount": 2,
       "positiveNetSol": 0.149760726,
-      "positiveNetUsd": 12.887774891210473,
+      "positiveNetUsd": 12.87471395877456,
       "claimSamples": [
         {
           "signature": "1nqq151qk2chsiqt6Psdh9aC7L1natbEPPif2z2GpAMJbo8LFgzQNhiUpMRvKeRDwf67smmCjHnAP2cuD6MRdfv",
@@ -441,9 +454,9 @@
       "netDeltaSol": 0.115977324,
       "grossClaimSol": 0.115982324,
       "feeSol": 0.000005,
-      "netCashUsd": 9.98051815131413,
-      "grossClaimUsd": 9.980948430174129,
-      "feeUsd": 0.00043027886000000006,
+      "netCashUsd": 9.970403536933441,
+      "grossClaimUsd": 9.97083337973344,
+      "feeUsd": 0.0004298428,
       "bzkRelated": false,
       "programIds": [
         "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
@@ -524,18 +537,199 @@
         "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM"
       ],
       "simErr": null,
-      "cashProofGate": null
+      "cashProofGate": {
+        "pass": false,
+        "reason": "Missing required social-claim authority signer; no simulation or live path is allowed."
+      }
+    },
+    "authorityProfile": {
+      "verdict": "STACC_SOCIAL_AUTHORITY_PROFILE_READ_ONLY",
+      "authority": "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
+      "short": "2sMr...hkjM",
+      "solBalance": {
+        "lamports": 100982226724,
+        "sol": 100.982226724
+      },
+      "tokenAccounts": [
+        {
+          "tokenAccount": "H49wrynyh8pxKmrjf3XnsdWR6VrnzbUPvpUHeoc8iwMV",
+          "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+          "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "amountRaw": "221509",
+          "decimals": 6,
+          "uiAmountString": "0.221509"
+        }
+      ],
+      "recentSignatures": [
+        {
+          "signature": "1nqq151qk2chsiqt6Psdh9aC7L1natbEPPif2z2GpAMJbo8LFgzQNhiUpMRvKeRDwf67smmCjHnAP2cuD6MRdfv",
+          "slot": 421785513,
+          "blockTime": 1779599392,
+          "err": null
+        },
+        {
+          "signature": "5D2Be8DEn4rFSbm4Ww5T8dDZH31nQ188W71F1jjGtGDZCWJtgYyq8oCGCvV5zGnxUcxPAPUUgBkfTqSanfgQk17c",
+          "slot": 421785098,
+          "blockTime": 1779599227,
+          "err": null
+        },
+        {
+          "signature": "4oy6VwkUxkQT2Jq1Xoh5fyTibVJNhiC9CYZNtd2Nitict5uCkHRkxay55RdKsueD6ujL42REqsJnHxumzErWocfR",
+          "slot": 421784050,
+          "blockTime": 1779598814,
+          "err": null
+        },
+        {
+          "signature": "4z5j9MVmQeYddvgX47HcY7pNKwh4kxiyCzbNR7GQvPcmpbFSQRk4oxCw8eiRXY4n65z84P2rHjaK99AmuJbakckJ",
+          "slot": 421783976,
+          "blockTime": 1779598785,
+          "err": null
+        },
+        {
+          "signature": "2Yz7k4jybtoF26ofMg5BiFUEyGtXCYeY6zvL2idpaTfFLFhKVAqRApQRnjNviRkypKAK9E3Sf3GxFyaayX6g4Fiz",
+          "slot": 421783816,
+          "blockTime": 1779598721,
+          "err": null
+        },
+        {
+          "signature": "5WLNngXAaJ8ZLCkw538xF5PK4WNouyfVgbj8mfQSy8dygZi2KLmpN3w33asF9S7w5gn4KMVB4e5pMh6vMpktLDCL",
+          "slot": 421783647,
+          "blockTime": 1779598654,
+          "err": null
+        },
+        {
+          "signature": "3SmHCEiLHU9t47Q9gwLMumsbNo4i7zTXSu8vMzJVPporFRpUAu4PSKoYxwMB39VA1LKkm6uGHHsdBrnxTNmRtQoe",
+          "slot": 421776409,
+          "blockTime": 1779595769,
+          "err": null
+        },
+        {
+          "signature": "4Y9J7cptAX1rCKJYNqamY4cYH9MtJRo8N6zYP824ZnvePVt8zeSUmPCSAG7eTz3ikxY7sNa5Coa5EZ3TornMxnx4",
+          "slot": 421776327,
+          "blockTime": 1779595735,
+          "err": null
+        },
+        {
+          "signature": "3Torrzx8pD7CBUMJvoUh4BLdwxxt66hxJpmboGvRNp88uyaFW9Q9PW5DpiiNFREuczAcezPWTnCSrLKFQPmAsSfG",
+          "slot": 421773201,
+          "blockTime": 1779594483,
+          "err": null
+        },
+        {
+          "signature": "4fwmtodDHJpfe7wBVaopNzwBdVq4Pz46HAhA4hj3eVcUMLrYcR3jLSgTgLt38Yv6UdPmfumLpgKs87udCCMHs7H5",
+          "slot": 421771153,
+          "blockTime": 1779593667,
+          "err": null
+        },
+        {
+          "signature": "23oMiSvvggGXoufCCBAe6mpJTUmA7ym4iJob5CMSwPG432wZf8mS6WhPaSwoQzi8FsGzDhhwpuxgkydJhQ67S2tj",
+          "slot": 421764058,
+          "blockTime": 1779590841,
+          "err": null
+        },
+        {
+          "signature": "64FptZgrxxfQFbqY2qw56uRxyWEu5VxFCjQgtAbx5gDZgxTEe98mdAzXxMEigbh5cvFa18ML38GeaPtV1dnTNszE",
+          "slot": 421763954,
+          "blockTime": 1779590798,
+          "err": null
+        },
+        {
+          "signature": "4jfsuS6BqkWimpgSps7tRS5JX9m1VjQBqpLJDoioNuTRV9KAWvxtzZcTxHMz1EZ47sw4RJLnJ9fVsJH3C1KJXC5E",
+          "slot": 421762314,
+          "blockTime": 1779590145,
+          "err": null
+        },
+        {
+          "signature": "a9qpbaFzda4i1crGbCv24Fu8tHb3eQafRUj2cxNLJZY9ci99WPnNhhcWKSD3aSysHdQcBMtYggzVPyqDwHVkscP",
+          "slot": 421761398,
+          "blockTime": 1779589776,
+          "err": null
+        },
+        {
+          "signature": "5fmpeFi5F3R8g2WbYC822ohatajdev2E3mEpJMTpoCbVgsQv1zG4a6QzhPWwAxY5U3GyhppFv5gepaNzPTgtonZv",
+          "slot": 421761209,
+          "blockTime": 1779589700,
+          "err": null
+        },
+        {
+          "signature": "BzfjUf3Q5qv8EjwYD8JeqxFwFAX21W3oZRz28sYMExoySX6JZasYjimEerxDM3emuKTMmNWA1HkjsuJwQ9eDLwu",
+          "slot": 421759125,
+          "blockTime": 1779588863,
+          "err": null
+        },
+        {
+          "signature": "2EbyuEYfo4tAZm44pT9h8EjHEcwRhhCG7y7Ff9jeEuQuT1CSVYzD7jJJdxRsxwa4KQ5QAgu7dWMLaE6Zt8Z6EpXB",
+          "slot": 421759103,
+          "blockTime": 1779588854,
+          "err": null
+        },
+        {
+          "signature": "66WZ7oYCFz6g5Ctqkyb1LpFwxshgs4PBfyVxm681YdpFkP6EZWNEkuh6arTGfnR1qVLRNktUbKnUwD9rn8ym3LJx",
+          "slot": 421758859,
+          "blockTime": 1779588754,
+          "err": null
+        },
+        {
+          "signature": "nWdTzzsK5LYQ7ZzuNyjDXzDA956wMGop61CrPo2WLFpL1E9SGjMrVBdxHCdNS2mpXaEnHrjaYbYj2BFqHgmtdNe",
+          "slot": 421758680,
+          "blockTime": 1779588682,
+          "err": null
+        },
+        {
+          "signature": "1HGNja9WU8n6XkVcmxfD3Mfhppp3f9s4B13UNr3HFBsFoEQckY9d9sSDyvx5JS2dqgJGLB9qg4KVCmQS5EAgne4",
+          "slot": 421758661,
+          "blockTime": 1779588674,
+          "err": null
+        }
+      ]
     }
   },
   "wzmaPulse": {
     "owner": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
     "limit": 20,
     "fetched": 20,
-    "positiveCount": 3,
-    "positiveSolTotal": 0.599578324,
+    "positiveCount": 4,
+    "positiveSolTotal": 0.354759513,
     "positiveBzkRelatedCount": 1,
     "positiveBzkRelatedSolTotal": 0.115977324,
     "latest": [
+      {
+        "signature": "4n6MoapiaqqgK2uYeneXyxtVvtpRbfUCJjTyjScrM318FmDHm9ty9DdSuL3njdGVuwrBv3gYH8Wzst6XGGSk9C8R",
+        "slot": 421794614,
+        "err": null,
+        "blockTime": 1779603021,
+        "nativeDeltaLamports": -350080000,
+        "nativeDeltaSol": -0.35008,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "11111111111111111111111111111111"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "V9dtZYCEqFse55YaxPuRKjNxJT9P8hdRH23BY5eTRbp36WbVpgUmiSc2JzsKQRJmMd2aPXLjykPyv4z5kHLLz1R",
+        "slot": 421794199,
+        "err": null,
+        "blockTime": 1779602854,
+        "nativeDeltaLamports": 207332429,
+        "nativeDeltaSol": 0.207332429,
+        "programIds": [
+          "11111111111111111111111111111111"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "2wvgV5wnJJvwVE8gqJysB3S3YUz2anBHUBBM23YAMNt7rE4Xn87h79Stt8e1ymu1xnxsepMKbz2BkcXMNnBM8SKN",
+        "slot": 421794173,
+        "err": null,
+        "blockTime": 1779602844,
+        "nativeDeltaLamports": 31439760,
+        "nativeDeltaSol": 0.03143976,
+        "programIds": [
+          "11111111111111111111111111111111"
+        ],
+        "bzkRelated": false
+      },
       {
         "signature": "3R4Hh5NWTY5wH8SJWLafFgyFbjg22L5khrbUF8N6PE3PKDpZtuEg3nAP9SMykC4H3kEpT9aCkjNBYTyVW5bkaTD9",
         "slot": 421789662,
@@ -634,72 +828,33 @@
           "11111111111111111111111111111111"
         ],
         "bzkRelated": false
-      },
-      {
-        "signature": "4wFKi9QB9ug2SxZb8Mv7fcaBMrpUGr1MBXou31y6jLQiw8AuoTBJbAYuS2qjnB18zSbBs1kNi2Mz7HNXJKvsMkMQ",
-        "slot": 421787015,
-        "err": {
-          "InstructionError": [
-            2,
-            {
-              "Custom": 6011
-            }
-          ]
-        },
-        "blockTime": 1779599989,
-        "nativeDeltaLamports": null,
-        "nativeDeltaSol": null,
-        "programIds": [
-          "ComputeBudget111111111111111111111111111111",
-          "F9SixdqdmEBP5kprp2gZPZNeMmfHJRCTMFjN22dx3akf",
-          "11111111111111111111111111111111"
-        ],
-        "bzkRelated": false
-      },
-      {
-        "signature": "3HsmYhnDemB2i6gVvYZxG3y9je95jwCKe6EfdL9qhtzmpB7E8dHkWaX9ediitQ8L7rLZ7Zt2tiq1wE1Q3hQUNww",
-        "slot": 421786797,
-        "err": {
-          "InstructionError": [
-            2,
-            {
-              "Custom": 6011
-            }
-          ]
-        },
-        "blockTime": 1779599903,
-        "nativeDeltaLamports": null,
-        "nativeDeltaSol": null,
-        "programIds": [
-          "ComputeBudget111111111111111111111111111111",
-          "F9SixdqdmEBP5kprp2gZPZNeMmfHJRCTMFjN22dx3akf",
-          "11111111111111111111111111111111"
-        ],
-        "bzkRelated": false
-      },
-      {
-        "signature": "2VWpe5XfyiZddrw9HYHuMxgjiiN8MsQW1CyeQCc5zKYThG7L7MS6USoArdekMdupu3ztKufzMBYfyzUFbYhFZswj",
-        "slot": 421786761,
-        "err": {
-          "InstructionError": [
-            2,
-            {
-              "Custom": 6011
-            }
-          ]
-        },
-        "blockTime": 1779599888,
-        "nativeDeltaLamports": null,
-        "nativeDeltaSol": null,
-        "programIds": [
-          "ComputeBudget111111111111111111111111111111",
-          "F9SixdqdmEBP5kprp2gZPZNeMmfHJRCTMFjN22dx3akf",
-          "11111111111111111111111111111111"
-        ],
-        "bzkRelated": false
       }
     ],
     "positive": [
+      {
+        "signature": "V9dtZYCEqFse55YaxPuRKjNxJT9P8hdRH23BY5eTRbp36WbVpgUmiSc2JzsKQRJmMd2aPXLjykPyv4z5kHLLz1R",
+        "slot": 421794199,
+        "err": null,
+        "blockTime": 1779602854,
+        "nativeDeltaLamports": 207332429,
+        "nativeDeltaSol": 0.207332429,
+        "programIds": [
+          "11111111111111111111111111111111"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "2wvgV5wnJJvwVE8gqJysB3S3YUz2anBHUBBM23YAMNt7rE4Xn87h79Stt8e1ymu1xnxsepMKbz2BkcXMNnBM8SKN",
+        "slot": 421794173,
+        "err": null,
+        "blockTime": 1779602844,
+        "nativeDeltaLamports": 31439760,
+        "nativeDeltaSol": 0.03143976,
+        "programIds": [
+          "11111111111111111111111111111111"
+        ],
+        "bzkRelated": false
+      },
       {
         "signature": "1nqq151qk2chsiqt6Psdh9aC7L1natbEPPif2z2GpAMJbo8LFgzQNhiUpMRvKeRDwf67smmCjHnAP2cuD6MRdfv",
         "slot": 421785513,
@@ -724,19 +879,6 @@
         "programIds": [
           "ComputeBudget111111111111111111111111111111",
           "11111111111111111111111111111111"
-        ],
-        "bzkRelated": false
-      },
-      {
-        "signature": "497zjsKym1eqZ1jEUsjuJqUXvDGvrcT6ZcU4fWGRsA1RghJMRUDkvRJBKigJa1APrGJKSUeiaG7Tk4FdYoPxZcgH",
-        "slot": 421784119,
-        "err": null,
-        "blockTime": 1779598841,
-        "nativeDeltaLamports": 483591000,
-        "nativeDeltaSol": 0.483591,
-        "programIds": [
-          "ComputeBudget111111111111111111111111111111",
-          "TCMPhJdwDryooaGtiocG1u3xcYbRpiJzb283XfCZsDp"
         ],
         "bzkRelated": false
       }
@@ -794,7 +936,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18417820762,
+        "requiredExternalVolumeUsdForMinNet": 100.18397006907999,
         "swapFeeUsd": 0,
         "protocolFeeUsd": 0,
         "lpFeeUsd": 0,
@@ -818,7 +960,7 @@
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00046044551904999995
+          "usd": 0.00045992517269999994
         },
         "inventoryRiskUsd": 0,
         "inventoryRiskBps": null,
@@ -826,8 +968,8 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": -0.00046044551904999995,
-        "totalSystemNetUsd": -0.00046044551904999995
+        "collectorLedgerNetUsd": -0.00045992517269999994,
+        "totalSystemNetUsd": -0.00045992517269999994
       },
       "collectSimulation": null,
       "cashProofPass": false,
@@ -852,7 +994,7 @@
     "no direct local signer cash-fee collect is currently ready",
     "no active route candidate for settlement simulation",
     "recent BZK/Pump/Jupiter-related WzMa SOL inflow detected; classify only after exact source receipt",
-    "social-fee SOL source observed (12.887775 USD net), but not executable by CashRelay yet",
+    "social-fee SOL source observed (12.874714 USD net), but not executable by CashRelay yet",
     "social-fee source is not yet a fresh exact executable receipt",
     "social-fee claim sim is not OK for the local signer set",
     "HOP external flow observed (6.543850 USD), but no spendable USDC/SOL fee receipt yet",
