@@ -177,7 +177,9 @@ async function main(): Promise<void> {
     ?? localSigners.find((entry) => requiredSigners.includes(entry.pubkey))
     ?? localSigners[0]
     ?? null;
-  const socialClaimAuthority = instructions[0]?.keys[8]?.pubkey.toBase58() ?? null;
+  const socialClaimAuthority = instructions[0]?.keys[8]?.pubkey.toBase58()
+    ?? string(source.socialClaimAuthority)
+    ?? string(source.authority);
 
   if (!authority || !payer || instructions.length === 0 || missingSignerPubkeys.length > 0) {
     const receipt = {

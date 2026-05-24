@@ -1,12 +1,12 @@
 {
   "verdict": "STACC_SOCIAL_FEE_CLAIM_SIM_BLOCKED",
-  "generatedAt": "2026-05-24T05:10:05.643Z",
+  "generatedAt": "2026-05-24T05:44:32.445Z",
   "noSend": true,
   "dryRun": true,
   "authority": "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
   "socialClaimAuthority": "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
   "authorityLocalSignerAvailable": false,
-  "instructionCount": 2,
+  "instructionCount": 1,
   "requiredSignerPubkeys": [
     "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM"
   ],
