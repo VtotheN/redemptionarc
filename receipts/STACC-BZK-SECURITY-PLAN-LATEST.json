@@ -1,0 +1,127 @@
+{
+  "verdict": "STACC_BZK_SECURITY_PATH_READY_NO_LIVE",
+  "generatedAt": "2026-05-24T03:59:58.592Z",
+  "noSend": true,
+  "dryRun": true,
+  "allowLive": false,
+  "sourceInterpretation": {
+    "userClarification": "STACC config means the BZK security/pool/listing path, not the CSDM 267 SOL scale preset.",
+    "birdeyeTokenUrl": "https://birdeye.so/solana/token/Bzkdz5AKApsqizBxzqMUqWGJbx4gHXVC6NJekmAY8Gq3?tab=security",
+    "bzkMint": "Bzkdz5AKApsqizBxzqMUqWGJbx4gHXVC6NJekmAY8Gq3",
+    "whatCanBeReplicated": [
+      "authority-owned Whirlpool config and pool setup",
+      "BZK external route/listing/security posture",
+      "cash source adapter that accepts only external SOL/USDC inflows or collectable protocol/LP fees"
+    ],
+    "whatCannotBeCountedAsCash": [
+      "nominal flash volume",
+      "Token-2022 ring fees before conversion",
+      "self-volume used only to make a chart look active"
+    ]
+  },
+  "bzkSecurityState": {
+    "mintOwner": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+    "bzkIsLegacySpl": true,
+    "derivedTokenBadge": "E7MHZnSwwogY5wDGY2yw4wXUbDBS83NY2dMybcYdCPTg",
+    "tokenBadgeExists": false,
+    "tokenBadgeRequirementInterpretation": "TokenBadge is not required for a legacy SPL mint; Orca docs require TokenBadge for selected Token-2022/restricted cases.",
+    "whirlpoolConfig": "12yTE48QR6bGK4EMcyY8XsARbX1TRTEbwHYSuuxR1Hp8",
+    "configExtension": "4xkLmmdSw5Kh3Mnhab8rw6LfFkBHmZLrVELXbkwnQCKE",
+    "feeAuthority": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+    "collectProtocolFeesAuthority": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+    "rewardEmissionsSuperAuthority": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+    "configExtensionAuthority": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+    "tokenBadgeAuthority": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+    "whirlpoolControlHeld": true,
+    "observedPool": {
+      "address": "9edoD8zkgyjTf8YdBQymUNvhWp4FyMPuiwALHyDk2538",
+      "tokenMintA": "Bzkdz5AKApsqizBxzqMUqWGJbx4gHXVC6NJekmAY8Gq3",
+      "tokenMintB": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "feeRate": 10000,
+      "protocolFeeRate": 2500,
+      "protocolFeeOwedA": "0",
+      "protocolFeeOwedB": "0",
+      "liquidity": "0"
+    }
+  },
+  "localCashEvidence": {
+    "cashModelPath": "receipts/STACC-BZK-CASH-MODEL-LATEST.json",
+    "cashModelVerdict": "BZK_CASH_PATH_CONFIRMED_READ_ONLY",
+    "firstPumpCashTx": {
+      "signature": "2AqqEuiCkTJCqWT69fEVbdVdKfqtkAzxM9SRowcDCMFdWwWTLvsBDfNrnPyHFJ2CfTkNqTgjSgWissDDQEL2QmVq",
+      "slot": 421476117,
+      "source": "PUMP_AMM",
+      "type": "UNKNOWN",
+      "feePayer": "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
+      "wzmaNativeGainLamports": 2081291788,
+      "wzmaNativeGainSol": 2.081291788,
+      "programIds": [
+        "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
+        "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P",
+        "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ"
+      ]
+    },
+    "externalSwapCount": 1,
+    "positiveSolTotal": 15.733164182,
+    "note": "These are read-only historical receipts. They prove the path shape; they are not a current spendable-profit receipt."
+  },
+  "referenceStaccTx": {
+    "txDecodePath": "receipts/STACC-TX-DECODE.json",
+    "signature": "2jgoM1pFSH7FRqnLixMs3GAYrNQWDiJyMf1G284FTBWNjXqFy7MAV9cA1uyg4KDLw3dQsYN9xKvTimmRbscMGaLe",
+    "err": null,
+    "feeLamports": 25800,
+    "computeUnitsConsumed": 212277,
+    "token2022TransferCheckedWithFeeCount": 4,
+    "referenceFlashAmountUsdc": 1000,
+    "interpretationOf100k": "A 100k flash/borrow simulation passing only proves MarginFi capacity and transaction mechanics. CashRelay still needs post-settlement SOL/USDC growth."
+  },
+  "implementationPlan": {
+    "sourceClass": "external_flow_fee_or_sell_settlement",
+    "eligibilityProof": [
+      "WzMa controls Whirlpool fee/protocol authorities for the decoded BZK config.",
+      "External BZK route exists in local Helius receipts.",
+      "Pump/PumpSwap/Jupiter historical receipts show direct SOL inflows to WzMa."
+    ],
+    "instructionPathOptions": [
+      "collect_protocol_fees_v2 from the BZK Whirlpool when protocolFeeOwedA/B > costs",
+      "collect LP fees/decrease-liquidity only if owned position NFT proves fee ownership",
+      "sell already-owned BZK via Pump/Jupiter only if quote + simulation settle into more SOL/USDC than inventory basis and costs"
+    ],
+    "settlementPathToSolUsdc": [
+      "BZK/fee token -> Jupiter/Pump/Raydium route -> SOL or USDC",
+      "write CashRelay source receipt with beforeRaw/afterRaw on the receiving SOL/USDC account",
+      "reject if only BZK balance, chart volume, or T22 withheld amount increases"
+    ],
+    "nextImplementationFiles": [
+      "src/scripts/stacc-bzk-fee-source-scan.ts",
+      "src/scripts/stacc-bzk-settlement-sim.ts",
+      "src/scripts/stacc-bzk-postlive-source.ts"
+    ]
+  },
+  "noSendCommands": {
+    "refreshAutopsy": "DRY_RUN=true ALLOW_LIVE=false npm run stacc-autopsy",
+    "refreshCashModel": "DRY_RUN=true ALLOW_LIVE=false npm run stacc-bzk-cash-analysis",
+    "nextSourceScanToBuild": "DRY_RUN=true ALLOW_LIVE=false npm run stacc-bzk-fee-source-scan"
+  },
+  "cashProofGate": {
+    "pass": false,
+    "reason": "This plan proves the STACC/BZK mechanism shape only. It becomes cash when a fresh source scan emits SOL/USDC afterRaw > beforeRaw after all costs.",
+    "requiredReceiptShape": {
+      "sourceClass": "authority_exclusive_actuator",
+      "payerClass": "external_protocol",
+      "asset": "SOL or USDC",
+      "simErr": null,
+      "costsUsd": "priced",
+      "liabilitiesUsd": "priced",
+      "inventoryDrawUsd": "priced"
+    }
+  },
+  "rejections": [
+    "this is still a no-send plan; live execution requires a fresh exact sim and explicit approval"
+  ],
+  "nextRequiredExactBuild": [
+    "Build the BZK fee/source scanner against the decoded pool and WzMa authorities.",
+    "Only collect/sell if exact simulation shows SOL/USDC net increase.",
+    "Use the 100k flash setting only as execution capacity; do not book it as revenue."
+  ]
+}
