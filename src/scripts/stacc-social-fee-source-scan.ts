@@ -154,6 +154,21 @@ async function recentClaimRows(connection: Connection, owner: string, limit: num
     const programIds = [...new Set(instructions
       .map((ix) => accountKeys[ix.programIdIndex])
       .filter((value): value is string => typeof value === "string"))];
+    const socialFeeInstructions = instructions
+      .map((ix, index) => {
+        const keyedIx = ix as { programIdIndex: number; accountKeyIndexes?: Iterable<number>; accounts?: Iterable<number>; data?: Uint8Array };
+        const programId = accountKeys[keyedIx.programIdIndex];
+        const accountIndexes = [...(keyedIx.accountKeyIndexes ?? keyedIx.accounts ?? [])].map(Number);
+        return {
+          index,
+          programId,
+          accountIndexes,
+          accounts: accountIndexes.map((accountIndex) => accountKeys[accountIndex] ?? null),
+          dataBase64: keyedIx.data ? Buffer.from(keyedIx.data).toString("base64") : "",
+          dataHex: keyedIx.data ? Buffer.from(keyedIx.data).toString("hex") : "",
+        };
+      })
+      .filter((ix) => ix.programId === SOCIAL_FEE_PROGRAM);
     const logs = tx.meta?.logMessages ?? [];
     const ownerIndex = staticKeys.findIndex((key) => key === owner);
     const beforeRaw = ownerIndex >= 0 ? tx.meta?.preBalances[ownerIndex] ?? null : null;
@@ -172,6 +187,7 @@ async function recentClaimRows(connection: Connection, owner: string, limit: num
       nativeDeltaLamports,
       nativeDeltaSol: nativeDeltaLamports == null ? null : nativeDeltaLamports / 1_000_000_000,
       programIds,
+      socialFeeInstructions,
       claimLike,
       bzkRelated: accountKeys.includes(BZK_MINT),
       logHints: logs
@@ -263,6 +279,7 @@ async function main(): Promise<void> {
       feeUsd: solPriceUsd > 0 ? latestFeeSol * solPriceUsd : null,
       bzkRelated: latestPositiveClaim.bzkRelated,
       programIds: latestPositiveClaim.programIds,
+      socialFeeInstructions: latestPositiveClaim.socialFeeInstructions,
       logHints: latestPositiveClaim.logHints,
     } : null,
     recent: {

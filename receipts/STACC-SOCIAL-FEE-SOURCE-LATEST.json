@@ -1,6 +1,6 @@
 {
   "verdict": "STACC_SOCIAL_FEE_SOURCE_OBSERVED_NO_LIVE",
-  "generatedAt": "2026-05-24T04:27:24.998Z",
+  "generatedAt": "2026-05-24T04:30:05.289Z",
   "noSend": true,
   "dryRun": true,
   "allowLiveIgnored": false,
@@ -13,7 +13,7 @@
   "localSignerPubkeys": [],
   "asset": "SOL",
   "decimals": 9,
-  "solPriceUsd": 85.869328,
+  "solPriceUsd": 85.914794,
   "minNetUsd": 0.25,
   "latestPositiveClaim": {
     "signature": "3Torrzx8pD7CBUMJvoUh4BLdwxxt66hxJpmboGvRNp88uyaFW9Q9PW5DpiiNFREuczAcezPWTnCSrLKFQPmAsSfG",
@@ -25,13 +25,83 @@
     "netDeltaSol": 0.033783402,
     "grossClaimSol": 0.033793402,
     "feeSol": 0.00001,
-    "netCashUsd": 2.9009580272938558,
-    "grossClaimUsd": 2.901816720573856,
-    "feeUsd": 0.0008586932800000001,
+    "netCashUsd": 2.902494023449188,
+    "grossClaimUsd": 2.9033531713891882,
+    "feeUsd": 0.00085914794,
     "bzkRelated": false,
     "programIds": [
       "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
       "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ"
+    ],
+    "socialFeeInstructions": [
+      {
+        "index": 2,
+        "programId": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
+        "accountIndexes": [
+          0,
+          6,
+          8,
+          3,
+          5,
+          14,
+          10,
+          11,
+          1,
+          9,
+          12,
+          13
+        ],
+        "accounts": [
+          "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+          "HDLQmC6MAApKKbKb5cz4der2FLW1vsiwKjfQDz54UFt9",
+          "So11111111111111111111111111111111111111112",
+          "BXQvs49xhSnEvKAHhoKFc7J5kwX3pEp5ngPWJtoFL1ip",
+          "FCfwoXBHHQxXGghjzxqRvYMwBpikwket6jGyjfwwzuyU",
+          "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+          "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+          "CHqnuTkj6sXDFknM652aEFPECZh9qVsBXWkhPohmV9dA",
+          "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
+          "11111111111111111111111111111111",
+          "D6QxXDt6hhcCpto4HiZKkN2YQ2iZRF5R7S3caCHpUsML",
+          "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ"
+        ],
+        "dataBase64": "EU3whjq8NZUIAAAAMjI4NDM2MDEC",
+        "dataHex": "114df0863abc359508000000323238343336303102"
+      },
+      {
+        "index": 3,
+        "programId": "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ",
+        "accountIndexes": [
+          0,
+          6,
+          4,
+          7,
+          2,
+          14,
+          10,
+          11,
+          1,
+          9,
+          12,
+          13
+        ],
+        "accounts": [
+          "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+          "HDLQmC6MAApKKbKb5cz4der2FLW1vsiwKjfQDz54UFt9",
+          "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "JAW3k28XCPEMvRzwEXGncDCRgideTXCvqqYMmcvNjMFq",
+          "6Rp8rNgcuPWymJYtxxYDumZ18uAYhbtWsCB5VxGgyZW9",
+          "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+          "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+          "CHqnuTkj6sXDFknM652aEFPECZh9qVsBXWkhPohmV9dA",
+          "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
+          "11111111111111111111111111111111",
+          "D6QxXDt6hhcCpto4HiZKkN2YQ2iZRF5R7S3caCHpUsML",
+          "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ"
+        ],
+        "dataBase64": "EU3whjq8NZUIAAAAMjI4NDM2MDEC",
+        "dataHex": "114df0863abc359508000000323238343336303102"
+      }
     ],
     "logHints": [
       "Program log: Instruction: ClaimSocialFeePdaV2",
@@ -44,7 +114,7 @@
     "claimLikeCount": 4,
     "positiveClaimCount": 3,
     "positiveNetSol": 0.395985093,
-    "positiveNetUsd": 34.002973833927506,
+    "positiveNetUsd": 34.02097769216584,
     "claimSamples": [
       {
         "signature": "3Torrzx8pD7CBUMJvoUh4BLdwxxt66hxJpmboGvRNp88uyaFW9Q9PW5DpiiNFREuczAcezPWTnCSrLKFQPmAsSfG",
