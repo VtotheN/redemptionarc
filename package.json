@@ -80,7 +80,9 @@
     "init-kpx9-pool": "tsx src/scripts/init-kpx9-pool.ts",
     "init-kpx9-tick-arrays": "tsx src/scripts/init-kpx9-tick-arrays.ts",
     "add-kpx9-liquidity": "tsx src/scripts/add-kpx9-liquidity.ts",
-    "remove-kpx9-liquidity": "tsx src/scripts/remove-kpx9-liquidity.ts"
+    "remove-kpx9-liquidity": "tsx src/scripts/remove-kpx9-liquidity.ts",
+    "bundle-womb-lite": "tsx src/scripts/bundle-womb-lite.ts",
+    "bundle-womb-lite-loop": "tsx src/scripts/bundle-womb-lite-loop.ts"
   },
   "dependencies": {
     "@mrgnlabs/marginfi-client-v2": "^6.4.1",
@@ -93,7 +95,7 @@
   "devDependencies": {
     "@types/bn.js": "^5.2.0",
     "@types/node": "^22.15.21",
-    "tsx": "^4.19.4",
-    "typescript": "^5.8.3"
+    "tsx": "^4.22.3",
+    "typescript": "^5.9.3"
   }
 }
