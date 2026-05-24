@@ -83,6 +83,12 @@ async function main(): Promise<void> {
   const maxOracleAgeSlots = process.env.CSDM_IX7_MAX_ORACLE_AGE_SLOTS?.trim()
     || process.env.CSDM_SIM_ORACLE_AGE_SLOTS?.trim()
     || null;
+  const flashAmountAtoms = process.env.CSDM_IX7_FLASH_AMOUNT_ATOMS?.trim()
+    || process.env.CSDM_FLASH_AMOUNT_ATOMS?.trim()
+    || null;
+  const minRepayDeltaAtoms = process.env.CSDM_IX7_MIN_REPAY_DELTA_ATOMS?.trim()
+    || process.env.CSDM_MIN_REPAY_DELTA_ATOMS?.trim()
+    || null;
   const preflight = readJson(preflightPath);
   const liveShape = readJson(liveShapePath);
   const preflightProgram = asRecord(preflight.program);
@@ -104,9 +110,18 @@ async function main(): Promise<void> {
   if (forceSimulate) commandEnv.FORCE_CSDM_SIMULATE = "true";
   else delete commandEnv.FORCE_CSDM_SIMULATE;
   if (maxOracleAgeSlots) commandEnv.CSDM_SIM_ORACLE_AGE_SLOTS = maxOracleAgeSlots;
+  if (flashAmountAtoms) commandEnv.CSDM_FLASH_AMOUNT_ATOMS = flashAmountAtoms;
+  if (minRepayDeltaAtoms) commandEnv.CSDM_MIN_REPAY_DELTA_ATOMS = minRepayDeltaAtoms;
   delete commandEnv.CSDM_LIVE;
   delete commandEnv.LIVE_TX_APPROVED;
   commandEnv.ALLOW_LIVE = "false";
+
+  const simulatorEnvPrefix = [
+    maxOracleAgeSlots ? `CSDM_SIM_ORACLE_AGE_SLOTS=${maxOracleAgeSlots}` : null,
+    flashAmountAtoms ? `CSDM_FLASH_AMOUNT_ATOMS=${flashAmountAtoms}` : null,
+    minRepayDeltaAtoms ? `CSDM_MIN_REPAY_DELTA_ATOMS=${minRepayDeltaAtoms}` : null
+  ].filter((value): value is string => value !== null).join(" ");
+  const simulatorCommandPrefix = simulatorEnvPrefix ? `${simulatorEnvPrefix} ` : "";
 
   const commandReady = fs.existsSync(path.join(simCwd, "package.json"))
     && fs.existsSync(path.join(simCwd, "node_modules"))
@@ -159,10 +174,12 @@ async function main(): Promise<void> {
       preflightPath,
       liveShapePath,
       simulatorCommand: forceSimulate
-        ? `${maxOracleAgeSlots ? `CSDM_SIM_ORACLE_AGE_SLOTS=${maxOracleAgeSlots} ` : ""}CSDM_DRY_RUN=true FORCE_CSDM_SIMULATE=true npm run csdm:simulate`
-        : `${maxOracleAgeSlots ? `CSDM_SIM_ORACLE_AGE_SLOTS=${maxOracleAgeSlots} ` : ""}CSDM_DRY_RUN=true npm run csdm:simulate`,
+        ? `${simulatorCommandPrefix}CSDM_DRY_RUN=true FORCE_CSDM_SIMULATE=true npm run csdm:simulate`
+        : `${simulatorCommandPrefix}CSDM_DRY_RUN=true npm run csdm:simulate`,
       forceSimulate,
       maxOracleAgeSlots,
+      flashAmountAtoms,
+      minRepayDeltaAtoms,
       envSecretsRecorded: false
     },
     upstreamProofs: {

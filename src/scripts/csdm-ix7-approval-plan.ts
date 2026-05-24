@@ -43,9 +43,14 @@ async function main(): Promise<void> {
   const upstream = record(simReceipt.upstreamProofs);
   const simInputs = record(simReceipt.inputs);
   const maxOracleAgeSlots = string(simInputs.maxOracleAgeSlots);
-  const liveEnvPrefix = maxOracleAgeSlots
-    ? `CSDM_SIM_ORACLE_AGE_SLOTS=${maxOracleAgeSlots} `
-    : "";
+  const flashAmountAtoms = string(simInputs.flashAmountAtoms);
+  const minRepayDeltaAtoms = string(simInputs.minRepayDeltaAtoms);
+  const liveEnvParts = [
+    maxOracleAgeSlots ? `CSDM_SIM_ORACLE_AGE_SLOTS=${maxOracleAgeSlots}` : null,
+    flashAmountAtoms ? `CSDM_FLASH_AMOUNT_ATOMS=${flashAmountAtoms}` : null,
+    minRepayDeltaAtoms ? `CSDM_MIN_REPAY_DELTA_ATOMS=${minRepayDeltaAtoms}` : null
+  ].filter((value): value is string => value !== null);
+  const liveEnvPrefix = liveEnvParts.length > 0 ? `${liveEnvParts.join(" ")} ` : "";
 
   const exactCommand = [
     `cd ${simCwd}`,
@@ -86,6 +91,12 @@ async function main(): Promise<void> {
         maxOracleAgeSlots
           ? `This packet pins CSDM_SIM_ORACLE_AGE_SLOTS=${maxOracleAgeSlots} to tolerate build/send slot lag.`
           : "This packet uses the keeper default CSDM max oracle age.",
+        flashAmountAtoms
+          ? `This packet pins CSDM_FLASH_AMOUNT_ATOMS=${flashAmountAtoms}; do not change size after approval.`
+          : "This packet uses the keeper default CSDM flash amount.",
+        minRepayDeltaAtoms
+          ? `This packet pins CSDM_MIN_REPAY_DELTA_ATOMS=${minRepayDeltaAtoms}; do not change repay delta after approval.`
+          : "This packet uses the keeper default CSDM min repay delta.",
         "The live script re-simulates and sends only if CSDM_LIVE=true and CSDM_DRY_RUN is not true.",
         "Run a fresh npm run csdm-ix7-sim immediately before any live send."
       ],
@@ -109,6 +120,8 @@ async function main(): Promise<void> {
       command: record(simReceipt.inputs).simulatorCommand,
       forceSimulate: simulation.forceSimulate,
       maxOracleAgeSlots,
+      inputFlashAmountAtoms: flashAmountAtoms,
+      inputMinRepayDeltaAtoms: minRepayDeltaAtoms,
       borrowerIx: simulation.borrowerIx,
       flashAmountAtoms: simulation.flashAmountAtoms,
       minRepayDeltaAtoms: simulation.minRepayDeltaAtoms,
