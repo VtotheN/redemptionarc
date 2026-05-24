@@ -1,6 +1,6 @@
 {
   "verdict": "STACC_SIGNER_SEARCH_NO_MATCH",
-  "generatedAt": "2026-05-24T05:12:04.452Z",
+  "generatedAt": "2026-05-24T05:51:24.488Z",
   "noSend": true,
   "targetPubkeys": [
     "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM"
@@ -8,17 +8,22 @@
   "searchRoots": [
     "/Users/velon"
   ],
+  "maxFileBytes": 524288,
+  "includeBase58Seeds": false,
   "dirsScanned": 13182,
-  "filesSeen": 85879,
-  "candidateFiles": 6605,
-  "keypairLike": 197,
-  "uniqueDerived": 101,
+  "filesSeen": 85887,
+  "candidateFiles": 9772,
+  "keypairLike": 281,
+  "base58KeypairLike": 18,
+  "uniqueDerived": 158,
   "matchCount": 0,
   "matches": [],
   "targetMentionFiles": [
     "/Users/velon/Desktop/redemptionarc/receipts/STACC-BZK-CASH-MODEL-LATEST.json",
+    "/Users/velon/Desktop/redemptionarc/receipts/STACC-BZK-LOOP-HISTORY.jsonl",
     "/Users/velon/Desktop/redemptionarc/receipts/STACC-BZK-LOOP-LATEST.json",
     "/Users/velon/Desktop/redemptionarc/receipts/STACC-BZK-SECURITY-PLAN-LATEST.json",
+    "/Users/velon/Desktop/redemptionarc/receipts/STACC-SIGNER-SEARCH-LATEST.json",
     "/Users/velon/Desktop/redemptionarc/receipts/STACC-SOCIAL-FEE-CLAIM-SIM-LATEST.json",
     "/Users/velon/Desktop/redemptionarc/receipts/STACC-SOCIAL-FEE-SOURCE-LATEST.json",
     "/Users/velon/Desktop/redemptionarc/src/scripts/stacc-signer-search.ts",
@@ -26,403 +31,483 @@
   ],
   "sampleDerivedPubkeys": [
     {
+      "file": "/Users/velon/.claude/history.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "base58-secret-key",
+      "match": false
+    },
+    {
       "file": "/Users/velon/.claude/paste-cache/4f5aacbda6565135.txt",
       "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.claude/paste-cache/4f5aacbda6565135.txt",
       "pubkey": "CQXbE2AuXzoZtxMsk3pHDS7TVAxNGW681Sf9UGScQ1tY",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/0d8674b6-be1e-4863-8c16-f320716bddcb.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/10335461-0658-4661-aa4f-0e899337eaa3/subagents/agent-a84f05bbdf50d1027.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/10335461-0658-4661-aa4f-0e899337eaa3/subagents/agent-ad09243ae7a50f125.jsonl",
+      "pubkey": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/1473413c-f1a5-401c-b253-c5cb3b641856/subagents/agent-a810ce21528ded72a.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/1561dabb-c6fe-4dcc-9a8a-fd2b9468ad1b/subagents/agent-ad345e933fc76b116.jsonl",
+      "pubkey": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/1561dabb-c6fe-4dcc-9a8a-fd2b9468ad1b/subagents/agent-afaa72b6d2f864bbe.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/1575e5f2-c6be-4ef6-ab89-402c59285a99.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/1d720394-bdcc-48a5-ab04-0cd749871907.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/20ec7166-1043-465d-bf2e-3ddeb3eadd6c.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/32f91fdd-d794-44b3-8e53-302f533694a5.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/358f4ee6-3582-4bec-b0f9-13a826811f68.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/3aa62211-2660-45e4-b44b-eae5a0a7a35a.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/57339414-4490-45e9-8af6-cea155d3fc5e.jsonl",
+      "pubkey": "admnz5UvRa93HM5nTrxXmsJ1rw2tvXMBFGauvCgzQhE",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/6229627f-66a5-4c36-92ef-fdea4b6b1381.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/6229627f-66a5-4c36-92ef-fdea4b6b1381.jsonl",
+      "pubkey": "GG166JkS7FNKTKF3ZMaJJmBeyV1eHf1geLcXHFYGLwyC",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/6229627f-66a5-4c36-92ef-fdea4b6b1381.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "base58-secret-key",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/6229627f-66a5-4c36-92ef-fdea4b6b1381.jsonl",
+      "pubkey": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+      "format": "base58-secret-key",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/65fa0b45-6ab5-4720-a8e0-67066bd6010a.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/6842c621-0c08-4873-8730-4aea9d8dcab4.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/856e1992-0edf-4023-8f7a-bb54f91bc465/subagents/agent-a4f913898ca57f575.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/856e1992-0edf-4023-8f7a-bb54f91bc465/subagents/agent-a4f913898ca57f575.jsonl",
+      "pubkey": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/d4d2dd8a-a8cc-421f-930c-1d4a531f2237.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/d7d32974-0bef-457e-b4eb-851c11b6490c.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/d8b119ba-cd1b-43ae-8bcc-387f5f7e3eaf.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/e1f1fed5-79cb-46b1-8529-3b148818840c.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/e4472d14-40a0-4a08-b5c9-77d41506bd83.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/e63f6ef5-5b47-41cd-9b37-270715dd32bb.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/eb1c6c3a-071f-4213-bca3-e38e387578a8.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/f357ccf2-f555-4a96-aed3-44bb7dda8809/subagents/agent-aa681bc7460370380.jsonl",
+      "pubkey": "GG166JkS7FNKTKF3ZMaJJmBeyV1eHf1geLcXHFYGLwyC",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/f357ccf2-f555-4a96-aed3-44bb7dda8809/subagents/agent-aa681bc7460370380.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.claude/projects/-Users-velon/f357ccf2-f555-4a96-aed3-44bb7dda8809/tool-results/blmcbrl0v.txt",
       "pubkey": "mAGicPQYBMvcYveUZA5F5UNNwyHvfYh5xkLS2Fr1mev",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/f994cc12-d8e4-40c7-89c7-2b6ec79e265c.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon/ff964516-4a0a-4a4d-8db7-1b27e772a0b3.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.claude/projects/-Users-velon-Desktop-theRbundle/e912aa98-60cf-4a8b-8553-1054ce39e388.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "base58-secret-key",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.codex/sessions/2026/05/20/rollout-2026-05-20T21-03-31-019e480f-1ee4-7341-8cdc-c962880fba98.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "base58-secret-key",
       "match": false
     },
     {
       "file": "/Users/velon/.config/solana/id.json",
       "pubkey": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.cursor/projects/1779330340573/agent-transcripts/c0ad8184-cc64-4b3e-b7b6-0ccb7d6b24b0/c0ad8184-cc64-4b3e-b7b6-0ccb7d6b24b0.jsonl",
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "base58-secret-key",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/gas-station-admin.json",
       "pubkey": "7Wg8aXuPijrmH4svDmqArMeMAWF3ZusgrznJ6ymprBAN",
+      "format": "json-secret-key-array",
+      "match": false
+    },
+    {
+      "file": "/Users/velon/.keys/gas-station-admin.txt",
+      "pubkey": "7Wg8aXuPijrmH4svDmqArMeMAWF3ZusgrznJ6ymprBAN",
+      "format": "base58-secret-key",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/nawebona-vladimir-admin.json",
       "pubkey": "6T3oSSG3QsmYqFhJt1QN5BtugUNcvZjxNiRu4gakM3Yu",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/nawebona-vladimir-crank.json",
       "pubkey": "FLuXmSjhRPd3EeUiUuvr8ouLR5knuh9XzMqKrZRnJ85d",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/nawebona-vladimir-ring-1.json",
       "pubkey": "GTcUiKCywte2LQankT3pNwP4HBfgjp854EPzB38QCb1B",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/nawebona-vladimir-ring-2.json",
       "pubkey": "CegzNEdsaBHndXuCNrDF4qDZRwqsu3HjvaEX8yw4iFby",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/nawebona-vladimir-ring-3.json",
       "pubkey": "AdXpCSoUyY472rf6Tr3yuUuEZo4enRfoqzQWYU8cNXNJ",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/nawebona-vladimir-ring-4.json",
       "pubkey": "A7Bb8icHUfBrkEZJ9PY8pHipaJg2P1u5V8Sfb6F5gC9y",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/nawebona-vladimir-treasury.json",
       "pubkey": "fzBFYiDyvu5kNexJuBZDmoG1gL76ZWXEL8YE1y7NtwM",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/payer-candidate-2.json",
       "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/phantom-crank.json",
       "pubkey": "FvkP2XzbCK6PspjhZ44sae5vbQPZQGmVkCv1dUC2pAZ9",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/phantom-hop-1.json",
       "pubkey": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/phantom-hop-2.json",
       "pubkey": "HLyJtPmLy1a8ozovtURsV6nW9gTXAdHo8u9FvzXe1gdp",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/phantom-hop-3.json",
       "pubkey": "gPaEVBZyTpM6GACSo2Lnc2oABdDgGfLyBSHC9fESdAB",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/phantom-hop-4.json",
       "pubkey": "75vwRvoUsSRws6nAjqyw6kYjkGyAXv8aAPUJyC2umKPt",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/phantom-owned-usdc-fee-vault.json",
       "pubkey": "98a3z7NS9piL7YBqo3WtFu4mJQWLonwc6Jxip5mLeim7",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/phantom-ring-1.json",
       "pubkey": "Ge5fCyRkNy4gPTAbTvr7i3XDDkZ8FiEAihh83wD9oi9q",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/phantom-ring-2.json",
       "pubkey": "FdPYAFnJ5P9X1QLtoydEbFoNgNz4XeRnyTq6EPuZrHMp",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/phantom-ring-3.json",
       "pubkey": "GqW1n2EGdaqVjcnMsm1XuN8p71NbyAhk1kpkig9wWPsa",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/phantom-ring-4.json",
       "pubkey": "8EwaiE1tXUAM4fGZXHHwoJnfCggrvvHiaBZsD7asci57",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/phantom-treasury.json",
       "pubkey": "FdpruPJgPzyNefSxkU5JqifteeDPqwZPfBzcmNb7NNxY",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/tiotulio-prime-admin.json",
       "pubkey": "9vnbNsvbKbweEvLMud1y5DjjJYShk9N1rcKJbJt62yHd",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/tiotulio-prime-crank.json",
       "pubkey": "G9K8WAprCVdZKYhq2DzuT6V4zAt2V6x2YLa4rJcnz6kL",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/tiotulio-prime-ring-1.json",
       "pubkey": "5KqJ7NjQyCbqJhbXSYRn2SmuGtmoPdgG4kb4yKs8qGEU",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/tiotulio-prime-ring-2.json",
       "pubkey": "CsrAPSwJiEpDfTCQiSQJX5NV9etv8Y1Bbcph1bhr8MtA",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/tiotulio-prime-ring-3.json",
       "pubkey": "4E9Y6JQfMLKUcafycdtVPXKkVmmxTLUeUcD6jRhapAAE",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/tiotulio-prime-ring-4.json",
       "pubkey": "FHftfNtujuzJyn323U2WNfSWcJFXg94JUqCVhxLQRBaQ",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/tiotulio-prime-treasury.json",
       "pubkey": "3pytadruqrd4yygPQ9uF8BDDLhPpygQmXwDrHHvB4YcG",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
       "file": "/Users/velon/.keys/underwheel-marginfi-account.json",
       "pubkey": "3TUioqNLgZskQa8UAhxLoFHZ9bc2e1FZs2bYFjWPrSyW",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/arc-mint.json",
-      "pubkey": "GvWfjcCh1JceUmcQpoQcVKS5Vxa2r4oncbveuWgUt2sh",
+      "file": "/Users/velon/.kimi/sessions/71732395a81d44399eb41b43dc5c65a4/02860592-db80-46dc-ad76-ec4dbcbd5629/subagents/ad2152fa7/context.jsonl",
+      "pubkey": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/bot-1.json",
-      "pubkey": "GB2zDSh8jphhJn7EcE3Mf3RCHv2SQVJVQfR18qMhte6r",
+      "file": "/Users/velon/.kimi/sessions/71732395a81d44399eb41b43dc5c65a4/34ab018e-031f-4dc9-8075-ba656959379e/subagents/a57f4724f/context.jsonl",
+      "pubkey": "GDhEC7Nu2dDkde3df6CAne13rxp7Q8r3z9FLevMUhEsn",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/bot-2.json",
-      "pubkey": "8ytXBomj5jrE3PosJTA6fnsvDDfuAQfreVJKPGBsPoQs",
+      "file": "/Users/velon/.kimi/sessions/71732395a81d44399eb41b43dc5c65a4/34ab018e-031f-4dc9-8075-ba656959379e/subagents/a57f4724f/wire.jsonl",
+      "pubkey": "GDhEC7Nu2dDkde3df6CAne13rxp7Q8r3z9FLevMUhEsn",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/bot-3.json",
-      "pubkey": "EYSkQkFgW1q1TUSCn4EzeSvEQFvh4YGy4y63xiR9M1Ta",
+      "file": "/Users/velon/.kimi/sessions/71732395a81d44399eb41b43dc5c65a4/3780454b-8c7e-44b0-9196-1b2d0f1a6540/subagents/a6a2cc209/context.jsonl",
+      "pubkey": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/bot-4.json",
-      "pubkey": "APUSE85XDsJ1MKj9Rwy2CJuxTSKfY6bZaBhRNtSEUi6f",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/crank.json",
-      "pubkey": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/kpx9-authority.json",
-      "pubkey": "7Wg8aXuPijrmH4svDmqArMeMAWF3ZusgrznJ6ymprBAN",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/kpx9-position-mint.json",
-      "pubkey": "BajtYir7NtMgmLYJDu3Sy4GH1x55MyQqjhczkYw59T3R",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/kpx9-vault-a.json",
-      "pubkey": "7etFhsHcyX2zwJa6fJzLkCBx1fzVMgwxaFoPG8PgaRwX",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/kpx9-vault-b.json",
-      "pubkey": "7JDkeT6N5zAvF1w4SPcnLcr8nR5Px2RdLniNrMCyB3bR",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/marginfi-account.json",
-      "pubkey": "9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/old-fee-config-auth.json",
+      "file": "/Users/velon/.kimi/sessions/71732395a81d44399eb41b43dc5c65a4/3780454b-8c7e-44b0-9196-1b2d0f1a6540/subagents/a6a2cc209/context.jsonl",
       "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/orca-config.json",
-      "pubkey": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
+      "file": "/Users/velon/.kimi/sessions/71732395a81d44399eb41b43dc5c65a4/3780454b-8c7e-44b0-9196-1b2d0f1a6540/subagents/a6a2cc209/context.jsonl",
+      "pubkey": "CQXbE2AuXzoZtxMsk3pHDS7TVAxNGW681Sf9UGScQ1tY",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/pool-vault-a.json",
-      "pubkey": "4QD4GgnjRvjETqWLT5e3x7SHtJSzs9kShUPLfyHcTu7d",
+      "file": "/Users/velon/.kimi/sessions/71732395a81d44399eb41b43dc5c65a4/3780454b-8c7e-44b0-9196-1b2d0f1a6540/subagents/a6a2cc209/context.jsonl",
+      "pubkey": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+      "format": "base58-secret-key",
       "match": false
     },
     {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/pool-vault-b.json",
-      "pubkey": "Qv51R47g7pMDxa3UofXaz8cNr8pwRSXaNufgnEWX8Yk",
+      "file": "/Users/velon/.kimi/sessions/71732395a81d44399eb41b43dc5c65a4/3780454b-8c7e-44b0-9196-1b2d0f1a6540/subagents/a6a2cc209/wire.jsonl",
+      "pubkey": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/position-mint.json",
-      "pubkey": "2UkyZsHdx4ftkVi3xSoRCLAzF4FaRV7G5fCtW7FrDrHu",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/redemption-hop-mint.json",
-      "pubkey": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/ring1.json",
-      "pubkey": "4ftgDecgELHsLm6yVmoynNAW4KkBW8P6TK3rU47yyxvu",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/ring2.json",
-      "pubkey": "Yja2XE6rAtf9tTughmeQ95YjVR2nR4iRRsrp9oYdipk",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/ring3.json",
-      "pubkey": "5jZur8NtpXNmDhRncSBkNgHhN129rBnKdiUBJadD1ihq",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/ring4.json",
-      "pubkey": "DevoDSB8G1kVmzWxzwaoKgRMozHK1sQqNfJABnWSvmkC",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/treasury.json",
-      "pubkey": "BGM3VPeND4xts3J6WeaeRJVFpzAJhyJiqycqYP2vk6dV",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionarc/keys/withdraw-authority.json",
-      "pubkey": "4J3QuZt1fPbkPJST4rd9sZyQLrKAzv6FLgWpvXumn57Y",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/arc-mint.json",
-      "pubkey": "GvWfjcCh1JceUmcQpoQcVKS5Vxa2r4oncbveuWgUt2sh",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/bot-1.json",
-      "pubkey": "GB2zDSh8jphhJn7EcE3Mf3RCHv2SQVJVQfR18qMhte6r",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/bot-2.json",
-      "pubkey": "8ytXBomj5jrE3PosJTA6fnsvDDfuAQfreVJKPGBsPoQs",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/bot-3.json",
-      "pubkey": "EYSkQkFgW1q1TUSCn4EzeSvEQFvh4YGy4y63xiR9M1Ta",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/bot-4.json",
-      "pubkey": "APUSE85XDsJ1MKj9Rwy2CJuxTSKfY6bZaBhRNtSEUi6f",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/crank.json",
-      "pubkey": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/kpx9-authority.json",
-      "pubkey": "7Wg8aXuPijrmH4svDmqArMeMAWF3ZusgrznJ6ymprBAN",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/kpx9-position-mint.json",
-      "pubkey": "BajtYir7NtMgmLYJDu3Sy4GH1x55MyQqjhczkYw59T3R",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/kpx9-vault-a.json",
-      "pubkey": "7etFhsHcyX2zwJa6fJzLkCBx1fzVMgwxaFoPG8PgaRwX",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/kpx9-vault-b.json",
-      "pubkey": "7JDkeT6N5zAvF1w4SPcnLcr8nR5Px2RdLniNrMCyB3bR",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/marginfi-account.json",
-      "pubkey": "9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/old-fee-config-auth.json",
+      "file": "/Users/velon/.kimi/sessions/71732395a81d44399eb41b43dc5c65a4/3780454b-8c7e-44b0-9196-1b2d0f1a6540/subagents/a6a2cc209/wire.jsonl",
       "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/orca-config.json",
-      "pubkey": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
+      "file": "/Users/velon/.kimi/sessions/71732395a81d44399eb41b43dc5c65a4/3780454b-8c7e-44b0-9196-1b2d0f1a6540/subagents/a6a2cc209/wire.jsonl",
+      "pubkey": "CQXbE2AuXzoZtxMsk3pHDS7TVAxNGW681Sf9UGScQ1tY",
+      "format": "json-secret-key-array",
       "match": false
     },
     {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/pool-vault-a.json",
-      "pubkey": "4QD4GgnjRvjETqWLT5e3x7SHtJSzs9kShUPLfyHcTu7d",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/pool-vault-b.json",
-      "pubkey": "Qv51R47g7pMDxa3UofXaz8cNr8pwRSXaNufgnEWX8Yk",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/position-mint.json",
-      "pubkey": "2UkyZsHdx4ftkVi3xSoRCLAzF4FaRV7G5fCtW7FrDrHu",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/redemption-hop-mint.json",
-      "pubkey": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/ring1.json",
-      "pubkey": "4ftgDecgELHsLm6yVmoynNAW4KkBW8P6TK3rU47yyxvu",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/ring2.json",
-      "pubkey": "Yja2XE6rAtf9tTughmeQ95YjVR2nR4iRRsrp9oYdipk",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/ring3.json",
-      "pubkey": "5jZur8NtpXNmDhRncSBkNgHhN129rBnKdiUBJadD1ihq",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/ring4.json",
-      "pubkey": "DevoDSB8G1kVmzWxzwaoKgRMozHK1sQqNfJABnWSvmkC",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/treasury.json",
-      "pubkey": "BGM3VPeND4xts3J6WeaeRJVFpzAJhyJiqycqYP2vk6dV",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Desktop/redemptionlove/keys/withdraw-authority.json",
-      "pubkey": "4J3QuZt1fPbkPJST4rd9sZyQLrKAzv6FLgWpvXumn57Y",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Downloads/whirlpools-main/legacy-sdk/whirlpool/tests/preload_account/reset_position_range/owner_wallet_secret.json",
-      "pubkey": "4GQ4VQZKPt4fLxGCusfdBZia2ge5hUZpfwwr3pqxUrmf",
-      "match": false
-    },
-    {
-      "file": "/Users/velon/Downloads/whirlpools-main/programs/whirlpool/src/auth/localnet/localnet-admin-keypair-0.json",
-      "pubkey": "tstYmkF9JHjZbSugJe1H3ygUTox1bqSxpn5QjxMwVrm",
+      "file": "/Users/velon/.kimi/sessions/71732395a81d44399eb41b43dc5c65a4/3780454b-8c7e-44b0-9196-1b2d0f1a6540/subagents/a6a2cc209/wire.jsonl",
+      "pubkey": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+      "format": "base58-secret-key",
       "match": false
     }
   ],

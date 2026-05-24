@@ -28,8 +28,10 @@ const SKIP_NAMES = new Set([
   ".cargo",
   "DerivedData",
 ]);
-const EXTENSIONS = new Set([".json", ".env", ".txt", ".key", ".pem", ".bak"]);
+const EXTENSIONS = new Set([".json", ".jsonl", ".env", ".txt", ".key", ".pem", ".bak", ".yaml", ".yml"]);
 const NAME_HINT = /key|wallet|secret|kp|payer|authority|signer|id\.json|\.env|solana/i;
+const BASE58_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+const BASE58_SECRET_RE = /(?<![1-9A-HJ-NP-Za-km-z])([1-9A-HJ-NP-Za-km-z]{40,120})(?![1-9A-HJ-NP-Za-km-z])/g;
 
 type AnyRecord = Record<string, unknown>;
 
@@ -46,6 +48,20 @@ function csv(name: string): string[] {
     .split(",")
     .map((value) => value.trim())
     .filter(Boolean);
+}
+
+function numberEnv(name: string, fallback: number): number {
+  const raw = process.env[name];
+  if (raw == null || raw === "") return fallback;
+  const parsed = Number(raw);
+  if (!Number.isFinite(parsed) || parsed <= 0) throw new Error(`Invalid ${name}=${raw}`);
+  return parsed;
+}
+
+function boolEnv(name: string, fallback: boolean): boolean {
+  const raw = process.env[name];
+  if (raw == null || raw === "") return fallback;
+  return ["1", "true", "yes", "y"].includes(raw.toLowerCase());
 }
 
 function targets(): string[] {
@@ -96,8 +112,53 @@ function parseKeypairArrays(text: string): number[][] {
   return out;
 }
 
-function shouldScanFile(file: string, size: number): boolean {
-  if (size <= 0 || size > 512 * 1024) return false;
+function base58Decode(value: string): Uint8Array | null {
+  const bytes = [0];
+  for (const char of value) {
+    const digit = BASE58_ALPHABET.indexOf(char);
+    if (digit < 0) return null;
+    let carry = digit;
+    for (let index = 0; index < bytes.length; index += 1) {
+      carry += bytes[index] * 58;
+      bytes[index] = carry & 0xff;
+      carry >>= 8;
+    }
+    while (carry > 0) {
+      bytes.push(carry & 0xff);
+      carry >>= 8;
+    }
+  }
+
+  let leadingZeros = 0;
+  for (const char of value) {
+    if (char !== "1") break;
+    leadingZeros += 1;
+  }
+  return Uint8Array.from([...Array(leadingZeros).fill(0), ...bytes.reverse()]);
+}
+
+function parseBase58Keypairs(text: string, includeSeeds: boolean): Array<{ raw: Uint8Array; format: "base58-secret-key" | "base58-seed" }> {
+  const out: Array<{ raw: Uint8Array; format: "base58-secret-key" | "base58-seed" }> = [];
+  const seen = new Set<string>();
+  for (const match of text.matchAll(BASE58_SECRET_RE)) {
+    const decoded = base58Decode(match[1]);
+    if (!decoded) continue;
+    const format = decoded.length === 64
+      ? "base58-secret-key"
+      : includeSeeds && decoded.length === 32
+        ? "base58-seed"
+        : null;
+    if (!format) continue;
+    const key = `${format}:${Buffer.from(decoded).toString("hex")}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push({ raw: decoded, format });
+  }
+  return out;
+}
+
+function shouldScanFile(file: string, size: number, maxBytes: number): boolean {
+  if (size <= 0 || size > maxBytes) return false;
   const basename = path.basename(file);
   return EXTENSIONS.has(path.extname(file)) || NAME_HINT.test(basename);
 }
@@ -105,14 +166,23 @@ function shouldScanFile(file: string, size: number): boolean {
 async function main(): Promise<void> {
   const targetPubkeys = new Set(targets());
   const searchRoots = roots();
-  const matches: Array<{ file: string; pubkey: string }> = [];
-  const derivedByFile = new Map<string, { file: string; pubkey: string; match: boolean }>();
+  const maxFileBytes = Math.floor(numberEnv("SIGNER_SEARCH_MAX_FILE_BYTES", 512 * 1024));
+  const includeBase58Seeds = boolEnv("SIGNER_SEARCH_INCLUDE_BASE58_SEEDS", false);
+  const matches: Array<{ file: string; pubkey: string; format: string }> = [];
+  const derivedByFile = new Map<string, { file: string; pubkey: string; format: string; match: boolean }>();
   const targetMentions: string[] = [];
   let dirsScanned = 0;
   let filesSeen = 0;
   let candidateFiles = 0;
   let keypairLike = 0;
+  let base58KeypairLike = 0;
   let errors = 0;
+
+  function recordDerived(file: string, pubkey: string, format: string): void {
+    const row = { file, pubkey, format, match: targetPubkeys.has(pubkey) };
+    derivedByFile.set(`${file}:${pubkey}:${format}`, row);
+    if (row.match) matches.push({ file, pubkey, format });
+  }
 
   function scanFile(file: string): void {
     filesSeen += 1;
@@ -123,7 +193,7 @@ async function main(): Promise<void> {
       errors += 1;
       return;
     }
-    if (!stat.isFile() || !shouldScanFile(file, stat.size)) return;
+    if (!stat.isFile() || !shouldScanFile(file, stat.size, maxFileBytes)) return;
     candidateFiles += 1;
     let text: string;
     try {
@@ -139,11 +209,20 @@ async function main(): Promise<void> {
       try {
         const pubkey = Keypair.fromSecretKey(Uint8Array.from(raw)).publicKey.toBase58();
         keypairLike += 1;
-        const row = { file, pubkey, match: targetPubkeys.has(pubkey) };
-        derivedByFile.set(`${file}:${pubkey}`, row);
-        if (row.match) matches.push({ file, pubkey });
+        recordDerived(file, pubkey, "json-secret-key-array");
       } catch {
         // Ignore arrays that look keypair-like but are not valid Solana secret keys.
+      }
+    }
+    for (const candidate of parseBase58Keypairs(text, includeBase58Seeds)) {
+      try {
+        const keypair = candidate.format === "base58-secret-key"
+          ? Keypair.fromSecretKey(candidate.raw)
+          : Keypair.fromSeed(candidate.raw);
+        base58KeypairLike += 1;
+        recordDerived(file, keypair.publicKey.toBase58(), candidate.format);
+      } catch {
+        // Ignore base58 strings that decode to 32/64 bytes but are not valid keys.
       }
     }
   }
@@ -176,10 +255,13 @@ async function main(): Promise<void> {
     noSend: true,
     targetPubkeys: [...targetPubkeys],
     searchRoots,
+    maxFileBytes,
+    includeBase58Seeds,
     dirsScanned,
     filesSeen,
     candidateFiles,
     keypairLike,
+    base58KeypairLike,
     uniqueDerived: derived.length,
     matchCount: matches.length,
     matches,
@@ -187,6 +269,7 @@ async function main(): Promise<void> {
     sampleDerivedPubkeys: derived.slice(0, 80).map((entry) => ({
       file: entry.file,
       pubkey: entry.pubkey,
+      format: entry.format,
       match: entry.match,
     })),
     errors,
