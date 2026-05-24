@@ -175,6 +175,7 @@ async function runOnce(iteration: number) {
     runStep("stacc-bzk-security-plan", "npm run stacc-bzk-security-plan"),
     runStep("stacc-social-fee-source-scan", "npm run stacc-social-fee-source-scan"),
     runStep("stacc-social-fee-claim-sim", "npm run stacc-social-fee-claim-sim"),
+    runStep("stacc-social-authority-profile", "npm run stacc-social-authority-profile"),
     runStep("orca-owned-fee-source-scan", "npm run orca-owned-fee-source-scan", {
       INCLUDE_STACC_SCREENSHOT_AUTHORITIES: "true",
       OWNED_FEE_MAX_CONFIGS: process.env.OWNED_FEE_MAX_CONFIGS ?? "12"
@@ -201,6 +202,7 @@ async function runOnce(iteration: number) {
   const feeScan = readJson("receipts/ORCA-OWNED-FEE-SOURCE-SCAN-LATEST.json");
   const socialFee = readJson("receipts/STACC-SOCIAL-FEE-SOURCE-LATEST.json");
   const socialFeeClaimSim = readJson("receipts/STACC-SOCIAL-FEE-CLAIM-SIM-LATEST.json");
+  const socialAuthorityProfile = readJson("receipts/STACC-SOCIAL-AUTHORITY-PROFILE-LATEST.json");
   const jupiter = readJson("receipts/JUPITER-INDEX-WATCH-LATEST.json");
   const cycleSim = readJson("receipts/ORCA-OWNED-FEE-CYCLE-SIM-LATEST.json");
   const hopFlow = readJson("receipts/HOP-EXTERNAL-FLOW-WATCH-LATEST.json");
@@ -335,6 +337,14 @@ async function runOnce(iteration: number) {
         missingSignerPubkeys: socialFeeClaimSim.missingSignerPubkeys ?? null,
         simErr: socialFeeClaimSim.simErr ?? null,
         cashProofGate: socialFeeClaimSim.cashProofGate ?? null,
+      } : null,
+      authorityProfile: socialAuthorityProfile ? {
+        verdict: socialAuthorityProfile.verdict ?? null,
+        authority: socialAuthorityProfile.authority ?? null,
+        short: socialAuthorityProfile.short ?? null,
+        solBalance: socialAuthorityProfile.solBalance ?? null,
+        tokenAccounts: socialAuthorityProfile.tokenAccounts ?? null,
+        recentSignatures: socialAuthorityProfile.recentSignatures ?? null,
       } : null
     },
     wzmaPulse,
