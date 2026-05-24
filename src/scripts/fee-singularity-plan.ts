@@ -3,7 +3,7 @@
  *
  * Builds and simulates the intended single-v0-TX core:
  *   MarginFi flash -> borrow USDC -> fork Whirlpool USDC/HOP
- *   -> four Token-2022 transfer-fee hops -> harvest/withdraw withheld HOP
+ *   -> 4..8 Token-2022 transfer-fee hops -> harvest/withdraw withheld HOP
  *   -> fork Whirlpool HOP/USDC -> repay -> optional tip -> end flash.
  *
  * This script never sends a transaction. It writes an exact receipt and blocks
@@ -280,6 +280,15 @@ function keypairPubkey(path: string): PublicKey {
   return publicKeyFromKeypairFile(path);
 }
 
+function intEnv(name: string, fallback: number, min: number, max: number): number {
+  const raw = process.env[name];
+  const parsed = raw == null || raw === "" ? fallback : Number(raw);
+  if (!Number.isInteger(parsed) || parsed < min || parsed > max) {
+    throw new Error(`${name} must be an integer from ${min} to ${max}, got ${raw ?? fallback}`);
+  }
+  return parsed;
+}
+
 async function main() {
   const config = loadConfig();
   const connection = connectionFor(config.rpcUrl);
@@ -301,6 +310,7 @@ async function main() {
   const minNetUsd = Number(process.env.MIN_NET_USD || "0.01");
   const useHopInventoryCushion = process.env.USE_HOP_INVENTORY_CUSHION === "true";
   const extraHopSafetyBps = BigInt(process.env.EXTRA_HOP_SAFETY_BPS || "1000");
+  const ringHops = intEnv("FEE_SINGULARITY_RING_HOPS", 4, 4, 8);
 
   const crankUsdcAta = getAssociatedTokenAddressSync(USDC_MINT, crank.publicKey, false, TOKEN_PROGRAM_ID);
   const ringAtas = ringWallets.map((owner) => getAssociatedTokenAddressSync(HOP_MINT, owner, false, TOKEN_2022_PROGRAM_ID));
@@ -349,12 +359,12 @@ async function main() {
   const ring = [];
   let amount = ringAmount;
   let ringWithheld = 0n;
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < ringHops; i++) {
     const fee = transferFee(amount, activeHopFeeBps, maxHopFee);
     const delivered = amount - fee;
     ring.push({
-      from: i,
-      to: (i + 1) % 4,
+      from: i % ringAtas.length,
+      to: (i + 1) % ringAtas.length,
       input: amount,
       fee,
       delivered,
@@ -363,7 +373,8 @@ async function main() {
     amount = delivered;
   }
 
-  const restoredHopForSwap2 = ring[3].delivered + ringWithheld + swap1HopT22Fee;
+  const lastRingLeg = ring[ring.length - 1];
+  const restoredHopForSwap2 = lastRingLeg.delivered + ringWithheld + swap1HopT22Fee;
   const outputUsdcForHopInput = (hopInput: bigint) => {
     const hopInputTransferFee = transferFee(hopInput, activeHopFeeBps, maxHopFee);
     const hopNetToPool = hopInput > hopInputTransferFee ? hopInput - hopInputTransferFee : 0n;
@@ -418,10 +429,11 @@ async function main() {
     totalSystemNetUsd > minNetUsd ? null : `total-system net ${totalSystemNetUsd.toFixed(6)} below MIN_NET_USD ${minNetUsd}`,
   ].filter((reason): reason is string => Boolean(reason));
 
+  const expectedEndFlashIndex = 11 + ringHops;
   const ixs: TransactionInstruction[] = [
     ComputeBudgetProgram.setComputeUnitLimit({ units: cuLimit }),
     ComputeBudgetProgram.setComputeUnitPrice({ microLamports: cuPrice }),
-    startFlashIx(marginfiAccount, crank.publicKey, 15n),
+    startFlashIx(marginfiAccount, crank.publicKey, BigInt(expectedEndFlashIndex)),
     createAssociatedTokenAccountIdempotentInstruction(crank.publicKey, crankUsdcAta, crank.publicKey, USDC_MINT),
     borrowIx(marginfiAccount, crank.publicKey, crankUsdcAta, flashMicro),
     swapV2Ix({
@@ -469,7 +481,10 @@ async function main() {
   ];
 
   const endFlashIndex = ixs.length - 1;
-  if (endFlashIndex !== 15) throw new Error(`endIndex mismatch: expected 15 got ${endFlashIndex}`);
+  if (endFlashIndex !== expectedEndFlashIndex) {
+    throw new Error(`endIndex mismatch: expected ${expectedEndFlashIndex} got ${endFlashIndex}`);
+  }
+  const ringInstructionPlan = ring.map((leg, index) => `t22_ring_${index}_${leg.from}_to_${leg.to}`);
   const instructionPlan = [
     "compute_unit_limit",
     "compute_unit_price",
@@ -477,10 +492,7 @@ async function main() {
     "create_crank_usdc_ata_idempotent",
     "marginfi_borrow_usdc",
     "fork_whirlpool_swap_usdc_to_hop",
-    "t22_ring_a_to_b",
-    "t22_ring_b_to_c",
-    "t22_ring_c_to_d",
-    "t22_ring_d_to_a",
+    ...ringInstructionPlan,
     "t22_harvest_withheld_to_mint",
     "t22_withdraw_withheld_from_mint_to_crank_hop",
     "fork_whirlpool_swap_hop_to_usdc",
@@ -536,6 +548,7 @@ async function main() {
     noSend: true,
     dryRunOnly: true,
     flashAmountUsdc: flashUsdcUi,
+    ringHops,
     forkPool: {
       program: WHIRLPOOL_PROGRAM_ID.toBase58(),
       config: WHIRLPOOLS_CONFIG.toBase58(),
