@@ -65,6 +65,7 @@ type HopRedeemInspection = {
   redeemable: boolean;
   backingAsset: string | null;
   vaultExists: boolean;
+  vaultBalanceUsd: number | null;
   redeemInstruction: string | null;
   exactBurnForCashProof: boolean;
   localHopRedeemProgramFound: boolean;
@@ -84,6 +85,14 @@ type CashRelayInspection = {
 function strEnv(name: string, fallback: string): string {
   const raw = process.env[name];
   return raw == null || raw.trim() === "" ? fallback : raw.trim();
+}
+
+function numEnv(name: string, fallback: number): number {
+  const raw = process.env[name];
+  if (raw == null || raw.trim() === "") return fallback;
+  const parsed = Number(raw);
+  if (!Number.isFinite(parsed)) throw new Error(`Invalid numeric env ${name}=${raw}`);
+  return parsed;
 }
 
 function optionalEnv(name: string): string | null {
@@ -263,6 +272,7 @@ function inspectHopRedeem(receiptPath: string | null): HopRedeemInspection {
       redeemable: false,
       backingAsset: null,
       vaultExists: false,
+      vaultBalanceUsd: null,
       redeemInstruction: null,
       exactBurnForCashProof: false,
       localHopRedeemProgramFound,
@@ -274,6 +284,7 @@ function inspectHopRedeem(receiptPath: string | null): HopRedeemInspection {
   const redeemable = bool(receipt.redeemable) === true || bool(receipt.hopRedeemable) === true;
   const backingAsset = string(receipt.backingAsset) ?? string(receipt.asset);
   const vaultExists = bool(receipt.vaultExists) === true;
+  const vaultBalanceUsd = num(receipt.vaultBalanceUsd) ?? num(receipt.backingVaultUsd) ?? num(receipt.vaultUsd);
   const redeemInstruction = string(receipt.redeemInstruction) ?? string(receipt.instructionPath);
   const exactBurnForCashProof = bool(receipt.exactBurnForCashProof) === true ||
     (bool(receipt.noSend) === true && redeemable && vaultExists && Boolean(redeemInstruction));
@@ -292,6 +303,7 @@ function inspectHopRedeem(receiptPath: string | null): HopRedeemInspection {
     redeemable,
     backingAsset,
     vaultExists,
+    vaultBalanceUsd,
     redeemInstruction,
     exactBurnForCashProof,
     localHopRedeemProgramFound,
@@ -375,12 +387,21 @@ async function main(): Promise<void> {
   const enchancedblockGatePath = optionalEnv("ENCHANCEDBLOCK_GATE_RECEIPT_PATH");
   const hopRedeemPath = optionalEnv("HOP_REDEEM_RECEIPT_PATH");
   const cashRelayPath = strEnv("CASH_RELAY_RECEIPT_PATH", "receipts/REDEMPTION-CASH-RELAY-LATEST.json");
+  const sellSizeUsd = numEnv("SELL_SIZE_USDC", numEnv("ENCHANCEDBLOCK_SELL_SIZE_USDC", 100));
+  const baitBps = numEnv("BAIT_BPS", numEnv("ENCHANCEDBLOCK_BAIT_BPS", 60));
+  const orcaFeeBps = numEnv("ORCA_FEE_BPS", numEnv("ENCHANCEDBLOCK_ORCA_FEE_BPS", 30));
+  const gasBps = numEnv("GAS_BPS", numEnv("ENCHANCEDBLOCK_GAS_BPS", 3));
+  const cyclesPerDay = numEnv("CYCLES_PER_DAY", numEnv("ENCHANCEDBLOCK_CYCLES_PER_DAY", 96));
 
   const atom = inspectAtom(atomRepo);
   const enchancedblock = inspectEnchancedblock(enchancedblockRepo);
   const enchancedblockGate = summarizeGateReceipt(enchancedblockGatePath);
   const hopRedeem = inspectHopRedeem(hopRedeemPath);
   const cashRelay = inspectCashRelay(cashRelayPath);
+  const vaultBalanceUsd = numEnv("HOP_REDEEM_VAULT_USD", hopRedeem.vaultBalanceUsd ?? 0);
+  const modelNetEdgeBps = baitBps - orcaFeeBps - gasBps;
+  const modeledNetPerCycleUsd = sellSizeUsd * modelNetEdgeBps / 10_000;
+  const modeledNetPerDayUsd = modeledNetPerCycleUsd * cyclesPerDay;
   const accountProbes = await probeAccounts(
     new Connection(config.rpcUrl, "confirmed"),
     [atomProgramId, enchancedblockProgramId, csdmProgramId]
@@ -396,6 +417,9 @@ async function main(): Promise<void> {
   if (!atom.deployableLocalPrimitive) rejectionReasons.push("local atom_ickk primitive is incomplete");
   if (enchancedblock.externalSourceClass !== "external_orca_whirlpool") {
     rejectionReasons.push("ENCHANCEDBLOCK external Orca source is not present locally");
+  }
+  if (modelNetEdgeBps <= 0) {
+    rejectionReasons.push("ENCHANCEDBLOCK modeled net edge is not positive");
   }
 
   const receipt = {
@@ -420,6 +444,41 @@ async function main(): Promise<void> {
       enchancedblockProgramId,
       csdmProgramId,
       accountProbes
+    },
+    gates: {
+      gate1AtomDeployed: {
+        pass: accountProbes[atomProgramId]?.executable === true,
+        deployableLocalPrimitive: atom.deployableLocalPrimitive,
+        status: accountProbes[atomProgramId]?.executable === true
+          ? "PASS_EXECUTABLE"
+          : "FAIL_DEPLOY_OR_REDEPLOY_REQUIRED"
+      },
+      gate2EdgeModel: {
+        pass: modelNetEdgeBps > 0,
+        baitBps,
+        orcaFeeBps,
+        gasBps,
+        modelNetEdgeBps,
+        exactProofPass: enchancedblockGate.pass,
+        caveat: "This is deterministic planning math only. Cash proof still needs ENCHANCEDBLOCK_GATE_RECEIPT_PATH with simErr=null."
+      },
+      gate3VaultMath: {
+        pass: sellSizeUsd > 0 && modelNetEdgeBps > 0 && cyclesPerDay > 0,
+        sellSizeUsd,
+        cyclesPerDay,
+        modeledNetPerCycleUsd,
+        modeledNetPerDayUsd,
+        formula: "SELL_SIZE_USDC * modelNetEdgeBps / 10000 * CYCLES_PER_DAY",
+        caveat: "Modeled income is not booked profit until Gate 4 and CashRelay pass."
+      },
+      gate4RedeemVaultFunded: {
+        pass: vaultBalanceUsd > 0 && hopRedeem.redeemable && hopRedeem.vaultExists && hopRedeem.exactBurnForCashProof,
+        vaultBalanceUsd,
+        redeemable: hopRedeem.redeemable,
+        vaultExists: hopRedeem.vaultExists,
+        exactBurnForCashProof: hopRedeem.exactBurnForCashProof,
+        expectedFirstRun: "FAIL when vault is empty or redeem proof is missing."
+      }
     },
     investigations: {
       atom,

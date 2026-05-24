@@ -1,6 +1,6 @@
 {
   "verdict": "ATOM_ENCHANCEDBLOCK_CASH_GATE_BLOCKED",
-  "generatedAt": "2026-05-24T02:15:12.808Z",
+  "generatedAt": "2026-05-24T02:18:59.004Z",
   "noSend": true,
   "dryRun": false,
   "allowLive": true,
@@ -39,6 +39,39 @@
         "ownerProgram": "BPFLoaderUpgradeab1e11111111111111111111111",
         "dataLen": 36
       }
+    }
+  },
+  "gates": {
+    "gate1AtomDeployed": {
+      "pass": false,
+      "deployableLocalPrimitive": true,
+      "status": "FAIL_DEPLOY_OR_REDEPLOY_REQUIRED"
+    },
+    "gate2EdgeModel": {
+      "pass": true,
+      "baitBps": 60,
+      "orcaFeeBps": 30,
+      "gasBps": 3,
+      "modelNetEdgeBps": 27,
+      "exactProofPass": false,
+      "caveat": "This is deterministic planning math only. Cash proof still needs ENCHANCEDBLOCK_GATE_RECEIPT_PATH with simErr=null."
+    },
+    "gate3VaultMath": {
+      "pass": true,
+      "sellSizeUsd": 100,
+      "cyclesPerDay": 96,
+      "modeledNetPerCycleUsd": 0.27,
+      "modeledNetPerDayUsd": 25.92,
+      "formula": "SELL_SIZE_USDC * modelNetEdgeBps / 10000 * CYCLES_PER_DAY",
+      "caveat": "Modeled income is not booked profit until Gate 4 and CashRelay pass."
+    },
+    "gate4RedeemVaultFunded": {
+      "pass": false,
+      "vaultBalanceUsd": 0,
+      "redeemable": false,
+      "vaultExists": false,
+      "exactBurnForCashProof": false,
+      "expectedFirstRun": "FAIL when vault is empty or redeem proof is missing."
     }
   },
   "investigations": {
@@ -87,6 +120,7 @@
       "redeemable": false,
       "backingAsset": null,
       "vaultExists": false,
+      "vaultBalanceUsd": null,
       "redeemInstruction": null,
       "exactBurnForCashProof": false,
       "localHopRedeemProgramFound": false,
