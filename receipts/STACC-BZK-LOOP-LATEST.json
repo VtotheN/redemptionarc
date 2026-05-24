@@ -1,6 +1,6 @@
 {
   "verdict": "STACC_BZK_LOOP_MONITORING_NO_LIVE",
-  "generatedAt": "2026-05-24T05:17:58.177Z",
+  "generatedAt": "2026-05-24T05:29:01.754Z",
   "iteration": 1,
   "noSend": true,
   "dryRun": true,
@@ -74,6 +74,45 @@
       "stderrTail": []
     },
     {
+      "name": "hop-external-flow-watch",
+      "command": "npm run hop-external-flow-watch",
+      "status": 0,
+      "signal": null,
+      "ok": true,
+      "stdoutTail": [
+        "> redemptionarc@0.1.0 hop-external-flow-watch",
+        "> tsx src/scripts/hop-external-flow-watch.ts",
+        "HOP_EXTERNAL_FLOW_DETECTED_READ_ONLY pools=1 externalEvents=24 externalQuoteInUsd=6.543850 receipt=/Users/velon/Desktop/redemptionarc/receipts/HOP-EXTERNAL-FLOW-WATCH-LATEST.json"
+      ],
+      "stderrTail": []
+    },
+    {
+      "name": "hop-cashability-gate",
+      "command": "npm run hop-cashability-gate",
+      "status": 0,
+      "signal": null,
+      "ok": true,
+      "stdoutTail": [
+        "> redemptionarc@0.1.0 hop-cashability-gate",
+        "> tsx src/scripts/hop-cashability-gate.ts",
+        "HOP_CASHABILITY_BLOCKED hop=93888532.126521 usdcOut=20.264471 net=20.264471 receipt=/Users/velon/Desktop/redemptionarc/receipts/HOP-CASHABILITY-GATE-LATEST.json"
+      ],
+      "stderrTail": []
+    },
+    {
+      "name": "hop-route-incentive-plan",
+      "command": "npm run hop-route-incentive-plan",
+      "status": 0,
+      "signal": null,
+      "ok": true,
+      "stdoutTail": [
+        "> redemptionarc@0.1.0 hop-route-incentive-plan",
+        "> tsx src/scripts/hop-route-incentive-plan.ts",
+        "HOP_ROUTE_INCENTIVE_BLOCKED_NEEDS_CASH_PROOF externalFlowUsd=6.543850 theoreticalRewardUsd=0.001635962 cashSafeRewardUsd=0.000000000 receipt=/Users/velon/Desktop/redemptionarc/receipts/HOP-ROUTE-INCENTIVE-PLAN-LATEST.json"
+      ],
+      "stderrTail": []
+    },
+    {
       "name": "orca-owned-fee-cycle-sim-external",
       "command": "npm run orca-owned-fee-cycle-sim",
       "status": 1,
@@ -143,6 +182,203 @@
     "routeCount": 0,
     "routes": []
   },
+  "hopFlow": {
+    "verdict": "HOP_EXTERNAL_FLOW_DETECTED_READ_ONLY",
+    "summary": {
+      "externalEvents": 24,
+      "affiliatedEvents": 1,
+      "externalQuoteInUsd": 6.54385,
+      "externalEstimatedT22HopUi": 2838.650524,
+      "activePoolsWithExternalFlow": [
+        "hop-usdc-raydium-cp"
+      ],
+      "missingSecondVenue": true
+    },
+    "cashRule": "External signer flow is only a candidate. CashRelay still requires exact owned SOL/USDC after > before after harvesting, LP fee collect/remove, and settlement costs.",
+    "next": "Add more HOP venues to HOP_FLOW_POOLS_JSON after creating them; one pool cannot prove two-venue arb flow."
+  },
+  "hopCashability": {
+    "verdict": "HOP_CASHABILITY_BLOCKED",
+    "quotes": {
+      "usdc": {
+        "outputAsset": "USDC",
+        "ok": true,
+        "status": 200,
+        "error": null,
+        "inputAmountRaw": "93888532126521",
+        "inputAmountHop": 93888532.126521,
+        "outAmountRaw": "20264471",
+        "outAmountUi": 20.264471,
+        "outUsd": 20.264471,
+        "priceImpactPct": 0.999418522719073,
+        "routePlan": [
+          {
+            "label": "Raydium CP",
+            "ammKey": "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f",
+            "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+            "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+            "inAmount": "93888532126521",
+            "outAmount": "20264471",
+            "percent": 100,
+            "bps": null
+          }
+        ],
+        "routeAmmKeys": [
+          "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f"
+        ],
+        "ownedAmmKeysHit": [
+          "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f"
+        ],
+        "usesOwnedRoute": true,
+        "acceptedExternal": false,
+        "rejectionReasons": [
+          "route uses owned AMM key"
+        ]
+      },
+      "sol": {
+        "outputAsset": "SOL",
+        "ok": true,
+        "status": 200,
+        "error": null,
+        "inputAmountRaw": "93888532126521",
+        "inputAmountHop": 93888532.126521,
+        "outAmountRaw": "236641011",
+        "outAmountUi": 0.236641011,
+        "outUsd": null,
+        "priceImpactPct": 0.9994185174102233,
+        "routePlan": [
+          {
+            "label": "Raydium CP",
+            "ammKey": "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f",
+            "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+            "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+            "inAmount": "93888532126521",
+            "outAmount": "20264471",
+            "percent": 100,
+            "bps": null
+          },
+          {
+            "label": "Quantum",
+            "ammKey": "ugobDeUHRY34mq1yK94eYrepgj2KVmUkHiaV8vyUD42",
+            "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+            "outputMint": "So11111111111111111111111111111111111111112",
+            "inAmount": "924",
+            "outAmount": "10801",
+            "percent": 1,
+            "bps": null
+          },
+          {
+            "label": "BisonFi",
+            "ammKey": "8FnX3xo2yYw3EUE6w3nQA4GfXGS9wpK6oj3veJpbFzLo",
+            "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+            "outputMint": "So11111111111111111111111111111111111111112",
+            "inAmount": "20263328",
+            "outAmount": "236627641",
+            "percent": 98,
+            "bps": null
+          },
+          {
+            "label": "Quantum",
+            "ammKey": "8R5qdXKMn2KcfHBy9rEpi43KScHewqvRAcpFyqoL3wap",
+            "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+            "outputMint": "So11111111111111111111111111111111111111112",
+            "inAmount": "219",
+            "outAmount": "2569",
+            "percent": 1,
+            "bps": null
+          }
+        ],
+        "routeAmmKeys": [
+          "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f",
+          "ugobDeUHRY34mq1yK94eYrepgj2KVmUkHiaV8vyUD42",
+          "8FnX3xo2yYw3EUE6w3nQA4GfXGS9wpK6oj3veJpbFzLo",
+          "8R5qdXKMn2KcfHBy9rEpi43KScHewqvRAcpFyqoL3wap"
+        ],
+        "ownedAmmKeysHit": [
+          "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f"
+        ],
+        "usesOwnedRoute": true,
+        "acceptedExternal": false,
+        "rejectionReasons": [
+          "route uses owned AMM key",
+          "SOL output lacks USD valuation"
+        ]
+      }
+    },
+    "cashMath": {
+      "primaryOutUsd": 20.264471,
+      "cycleCostUsd": 0,
+      "primaryNetCashUsd": 20.264471,
+      "bestExternalHopRawAtImpact": "0",
+      "bestExternalHopUiAtImpact": 0,
+      "bestExternalOutUsdAtImpact": null,
+      "bestExternalNetUsdAtImpact": null
+    },
+    "rejectionReasons": [
+      "USDC quote: route uses owned AMM key"
+    ],
+    "next": "Do not count harvested HOP as profit. Find non-owned liquidity or a separate SOL/USDC source."
+  },
+  "hopIncentive": {
+    "verdict": "HOP_ROUTE_INCENTIVE_BLOCKED_NEEDS_CASH_PROOF",
+    "observedFlow": {
+      "externalEvents": 24,
+      "affiliatedEvents": 1,
+      "externalFlowUsd": 6.54385,
+      "t22FeeHop": 2838.650524,
+      "activePoolsWithExternalFlow": [
+        "hop-usdc-raydium-cp"
+      ],
+      "missingSecondVenue": true,
+      "hopTransferFee": {
+        "currentEpoch": 976,
+        "activeBps": 690,
+        "maximumFeeRaw": "18446744073709551615",
+        "olderBps": 690,
+        "olderEpoch": "974",
+        "newerBps": 1,
+        "newerEpoch": "978",
+        "mintWithheldAmountRaw": "388424722"
+      },
+      "perPool": [
+        {
+          "id": "hop-usdc-raydium-cp",
+          "quoteAsset": "USDC",
+          "externalEvents": 24,
+          "externalQuoteInUsd": 6.54385,
+          "externalEstimatedT22HopUi": 2838.650524
+        }
+      ]
+    },
+    "economics": {
+      "lpFeeUsdEstimate": 0.016359625,
+      "t22SettlementUsd": 0,
+      "externalCashabilityUsd": 0,
+      "theoreticalFeeBudgetUsd": 0.016359625,
+      "theoreticalMaxRewardUsd": 0.0016359624999999997,
+      "confirmedCashBudgetUsd": 0,
+      "cashSafeRewardUsd": 0,
+      "rewardToken": "USDC",
+      "retainedTheoreticalFeeUsd": 0.0147236625
+    },
+    "gate": {
+      "cashRelayPass": false,
+      "rewardAllowed": false,
+      "rejectionReasons": [
+        "no confirmed spendable USDC/SOL fee budget for rewards",
+        "cashSafeRewardUsd 0.000000000 below HOP_INCENTIVE_MIN_REWARD_USD 0.001",
+        "only one configured HOP venue; route incentive should wait for N-pool path proof",
+        "T22 HOP fee observed but not settled to USDC/SOL; not reward budget"
+      ],
+      "requiredBeforeLive": [
+        "N-pool route proof with external signer flow",
+        "exact collect/settle receipt proving spendable USDC/SOL fee budget",
+        "reward transaction simulation showing reward <= cashSafeRewardUsd",
+        "post-reward owned SOL+USDC remains above pre-flow baseline plus MIN_NET_USD"
+      ]
+    },
+    "next": "Keep incentives disabled. Use this receipt to size a micro-reward only after collect/settle cash proof exists."
+  },
   "socialFee": {
     "verdict": "STACC_SOCIAL_FEE_SOURCE_OBSERVED_NO_LIVE",
     "sourceClass": "authority_exclusive_protocol_fee_claim",
@@ -160,7 +396,7 @@
       "claimLikeCount": 2,
       "positiveClaimCount": 2,
       "positiveNetSol": 0.149760726,
-      "positiveNetUsd": 12.840764999319074,
+      "positiveNetUsd": 12.825098080490035,
       "claimSamples": [
         {
           "signature": "1nqq151qk2chsiqt6Psdh9aC7L1natbEPPif2z2GpAMJbo8LFgzQNhiUpMRvKeRDwf67smmCjHnAP2cuD6MRdfv",
@@ -190,9 +426,9 @@
       "netDeltaSol": 0.115977324,
       "grossClaimSol": 0.115982324,
       "feeSol": 0.000005,
-      "netCashUsd": 9.944112869310528,
-      "grossClaimUsd": 9.944541578670528,
-      "feeUsd": 0.00042870936,
+      "netCashUsd": 9.931980133514916,
+      "grossClaimUsd": 9.932408319809916,
+      "feeUsd": 0.000428186295,
       "bzkRelated": false,
       "programIds": [
         "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
@@ -273,6 +509,90 @@
     "positiveBzkRelatedSolTotal": 0.115977324,
     "latest": [
       {
+        "signature": "4SW7f1tMVmH9VfD57iEx7KwtbFTNmif7x3KYKncqjFdqANcejunowEZJpwzgBUa3VuH25htBUiogCuK7ShFZBjrt",
+        "slot": 421787322,
+        "err": {
+          "InstructionError": [
+            2,
+            {
+              "Custom": 6011
+            }
+          ]
+        },
+        "blockTime": 1779600112,
+        "nativeDeltaLamports": null,
+        "nativeDeltaSol": null,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "F9SixdqdmEBP5kprp2gZPZNeMmfHJRCTMFjN22dx3akf",
+          "11111111111111111111111111111111"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "4wFKi9QB9ug2SxZb8Mv7fcaBMrpUGr1MBXou31y6jLQiw8AuoTBJbAYuS2qjnB18zSbBs1kNi2Mz7HNXJKvsMkMQ",
+        "slot": 421787015,
+        "err": {
+          "InstructionError": [
+            2,
+            {
+              "Custom": 6011
+            }
+          ]
+        },
+        "blockTime": 1779599989,
+        "nativeDeltaLamports": null,
+        "nativeDeltaSol": null,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "F9SixdqdmEBP5kprp2gZPZNeMmfHJRCTMFjN22dx3akf",
+          "11111111111111111111111111111111"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "3HsmYhnDemB2i6gVvYZxG3y9je95jwCKe6EfdL9qhtzmpB7E8dHkWaX9ediitQ8L7rLZ7Zt2tiq1wE1Q3hQUNww",
+        "slot": 421786797,
+        "err": {
+          "InstructionError": [
+            2,
+            {
+              "Custom": 6011
+            }
+          ]
+        },
+        "blockTime": 1779599903,
+        "nativeDeltaLamports": null,
+        "nativeDeltaSol": null,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "F9SixdqdmEBP5kprp2gZPZNeMmfHJRCTMFjN22dx3akf",
+          "11111111111111111111111111111111"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "2VWpe5XfyiZddrw9HYHuMxgjiiN8MsQW1CyeQCc5zKYThG7L7MS6USoArdekMdupu3ztKufzMBYfyzUFbYhFZswj",
+        "slot": 421786761,
+        "err": {
+          "InstructionError": [
+            2,
+            {
+              "Custom": 6011
+            }
+          ]
+        },
+        "blockTime": 1779599888,
+        "nativeDeltaLamports": null,
+        "nativeDeltaSol": null,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "F9SixdqdmEBP5kprp2gZPZNeMmfHJRCTMFjN22dx3akf",
+          "11111111111111111111111111111111"
+        ],
+        "bzkRelated": false
+      },
+      {
         "signature": "1nqq151qk2chsiqt6Psdh9aC7L1natbEPPif2z2GpAMJbo8LFgzQNhiUpMRvKeRDwf67smmCjHnAP2cuD6MRdfv",
         "slot": 421785513,
         "err": null,
@@ -348,63 +668,6 @@
         "programIds": [
           "ComputeBudget111111111111111111111111111111",
           "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
-        ],
-        "bzkRelated": false
-      },
-      {
-        "signature": "38rtgjRhKrqEnUikFbePG3s8nuuuEoYbPSA2YUPKncCKLDb9KSViUi43pbGyNy5hrhXhxFFRQ2zouMk222UVTkof",
-        "slot": 421785091,
-        "err": null,
-        "blockTime": 1779599224,
-        "nativeDeltaLamports": -630080000,
-        "nativeDeltaSol": -0.63008,
-        "programIds": [
-          "ComputeBudget111111111111111111111111111111",
-          "11111111111111111111111111111111"
-        ],
-        "bzkRelated": false
-      },
-      {
-        "signature": "31MiLRvKZhFc8xVrELUEY241kgBayVYKKazTfvusThK7RNSR1gF1a3VsV8am3csczWwEk3uNPzd6p7eKEVVobuGe",
-        "slot": 421785072,
-        "err": {
-          "InsufficientFundsForRent": {
-            "account_index": 0
-          }
-        },
-        "blockTime": 1779599217,
-        "nativeDeltaLamports": -80000,
-        "nativeDeltaSol": -0.00008,
-        "programIds": [
-          "ComputeBudget111111111111111111111111111111",
-          "11111111111111111111111111111111"
-        ],
-        "bzkRelated": false
-      },
-      {
-        "signature": "497zjsKym1eqZ1jEUsjuJqUXvDGvrcT6ZcU4fWGRsA1RghJMRUDkvRJBKigJa1APrGJKSUeiaG7Tk4FdYoPxZcgH",
-        "slot": 421784119,
-        "err": null,
-        "blockTime": 1779598841,
-        "nativeDeltaLamports": 483591000,
-        "nativeDeltaSol": 0.483591,
-        "programIds": [
-          "ComputeBudget111111111111111111111111111111",
-          "TCMPhJdwDryooaGtiocG1u3xcYbRpiJzb283XfCZsDp"
-        ],
-        "bzkRelated": false
-      },
-      {
-        "signature": "4qwXnkdhkDEfQn8v4BeycbAR8U9trMjvzbojtomuJGVJfr2L7GUTd4QQLzEg1fqNEjpuHqd7TrFdKqg6Y4KUFLcG",
-        "slot": 421783600,
-        "err": null,
-        "blockTime": 1779598636,
-        "nativeDeltaLamports": -8063800,
-        "nativeDeltaSol": -0.0080638,
-        "programIds": [
-          "ComputeBudget111111111111111111111111111111",
-          "F9SixdqdmEBP5kprp2gZPZNeMmfHJRCTMFjN22dx3akf",
-          "11111111111111111111111111111111"
         ],
         "bzkRelated": false
       }
@@ -504,7 +767,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18348381828,
+        "requiredExternalVolumeUsdForMinNet": 100.18329613385998,
         "swapFeeUsd": 0,
         "protocolFeeUsd": 0,
         "lpFeeUsd": 0,
@@ -528,7 +791,7 @@
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.0004587095456999999
+          "usd": 0.00045824033465
         },
         "inventoryRiskUsd": 0,
         "inventoryRiskBps": null,
@@ -536,8 +799,8 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": -0.0004587095456999999,
-        "totalSystemNetUsd": -0.0004587095456999999
+        "collectorLedgerNetUsd": -0.00045824033465,
+        "totalSystemNetUsd": -0.00045824033465
       },
       "collectSimulation": null,
       "cashProofPass": false,
@@ -562,14 +825,18 @@
     "no direct local signer cash-fee collect is currently ready",
     "no active route candidate for settlement simulation",
     "recent BZK/Pump/Jupiter-related WzMa SOL inflow detected; classify only after exact source receipt",
-    "social-fee SOL source observed (12.840765 USD net), but not executable by CashRelay yet",
+    "social-fee SOL source observed (12.825098 USD net), but not executable by CashRelay yet",
     "social-fee source is not yet a fresh exact executable receipt",
+    "HOP external flow observed (6.543850 USD), but no spendable USDC/SOL fee receipt yet",
+    "HOP settlement route is not accepted as external cash",
+    "HOP route incentive is disabled until confirmed spendable USDC/SOL fee budget exists",
     "cycle sim not cash-positive: total-system cash gate below MIN_NET_USD (0.25) | collect authority is not locally signable; direct collect is not executable by this wallet set"
   ],
   "nextRequiredExactBuild": [
     "Keep monitoring BZK route/indexing and protocol fees.",
     "If partner authority signs are available, configure OWNED_FEE_KEYPAIR_PATHS and rerun.",
     "If the Pump social-claim authority signer is approved and local, configure SOCIAL_FEE_KEYPAIR_PATHS and build exact claim sim.",
+    "If HOP external flow keeps arriving, build an exact LP-fee/settlement source receipt; do not count HOP or owned-pool USDC routes as profit.",
     "If external flow appears, run settlement sim before any live action."
   ]
 }

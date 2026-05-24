@@ -1,18 +1,18 @@
 {
   "verdict": "HOP_ROUTE_INCENTIVE_BLOCKED_NEEDS_CASH_PROOF",
-  "generatedAt": "2026-05-24T01:57:52.607Z",
+  "generatedAt": "2026-05-24T05:28:51.294Z",
   "readOnly": true,
   "noSend": true,
   "liveIntentIgnored": {
-    "dryRun": false,
-    "allowLive": true,
+    "dryRun": true,
+    "allowLive": false,
     "liveTxApproved": true,
     "note": "hop-route-incentive-plan only calculates reward budgets; it never builds or sends reward transactions"
   },
   "inputs": {
     "flowPath": "receipts/HOP-EXTERNAL-FLOW-WATCH-LATEST.json",
     "flowVerdict": "HOP_EXTERNAL_FLOW_DETECTED_READ_ONLY",
-    "flowGeneratedAt": "2026-05-24T01:49:26.858Z",
+    "flowGeneratedAt": "2026-05-24T05:28:35.748Z",
     "cashabilityPath": "receipts/HOP-CASHABILITY-GATE-LATEST.json",
     "cashabilityVerdict": "HOP_CASHABILITY_BLOCKED",
     "rewardToken": "USDC",
@@ -24,10 +24,10 @@
     "includeCashabilityBudget": true
   },
   "observedFlow": {
-    "externalEvents": 11,
+    "externalEvents": 24,
     "affiliatedEvents": 1,
-    "externalFlowUsd": 6.4778839999999995,
-    "t22FeeHop": 2396.063684,
+    "externalFlowUsd": 6.54385,
+    "t22FeeHop": 2838.650524,
     "activePoolsWithExternalFlow": [
       "hop-usdc-raydium-cp"
     ],
@@ -40,28 +40,28 @@
       "olderEpoch": "974",
       "newerBps": 1,
       "newerEpoch": "978",
-      "mintWithheldAmountRaw": "0"
+      "mintWithheldAmountRaw": "388424722"
     },
     "perPool": [
       {
         "id": "hop-usdc-raydium-cp",
         "quoteAsset": "USDC",
-        "externalEvents": 11,
-        "externalQuoteInUsd": 6.4778839999999995,
-        "externalEstimatedT22HopUi": 2396.063684
+        "externalEvents": 24,
+        "externalQuoteInUsd": 6.54385,
+        "externalEstimatedT22HopUi": 2838.650524
       }
     ]
   },
   "economics": {
-    "lpFeeUsdEstimate": 0.016194709999999998,
+    "lpFeeUsdEstimate": 0.016359625,
     "t22SettlementUsd": 0,
     "externalCashabilityUsd": 0,
-    "theoreticalFeeBudgetUsd": 0.016194709999999998,
-    "theoreticalMaxRewardUsd": 0.0016194709999999997,
+    "theoreticalFeeBudgetUsd": 0.016359625,
+    "theoreticalMaxRewardUsd": 0.0016359624999999997,
     "confirmedCashBudgetUsd": 0,
     "cashSafeRewardUsd": 0,
     "rewardToken": "USDC",
-    "retainedTheoreticalFeeUsd": 0.014575238999999999
+    "retainedTheoreticalFeeUsd": 0.0147236625
   },
   "gate": {
     "cashRelayPass": false,

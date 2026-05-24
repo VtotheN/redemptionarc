@@ -184,6 +184,9 @@ async function runOnce(iteration: number) {
       SOL_QUOTE_AMOUNT_RAW: process.env.BZK_SOL_QUOTE_AMOUNT_RAW ?? "1000000",
       USDC_QUOTE_AMOUNT_RAW: process.env.BZK_USDC_QUOTE_AMOUNT_RAW ?? "1000000"
     }),
+    runStep("hop-external-flow-watch", "npm run hop-external-flow-watch"),
+    runStep("hop-cashability-gate", "npm run hop-cashability-gate"),
+    runStep("hop-route-incentive-plan", "npm run hop-route-incentive-plan"),
     runStep("orca-owned-fee-cycle-sim-external", "npm run orca-owned-fee-cycle-sim", {
       BOT_COUNTERPARTY_MODE: "external",
       TARGET_WHIRLPOOL: BZK_POOL,
@@ -198,6 +201,9 @@ async function runOnce(iteration: number) {
   const socialFee = readJson("receipts/STACC-SOCIAL-FEE-SOURCE-LATEST.json");
   const jupiter = readJson("receipts/JUPITER-INDEX-WATCH-LATEST.json");
   const cycleSim = readJson("receipts/ORCA-OWNED-FEE-CYCLE-SIM-LATEST.json");
+  const hopFlow = readJson("receipts/HOP-EXTERNAL-FLOW-WATCH-LATEST.json");
+  const hopCashability = readJson("receipts/HOP-CASHABILITY-GATE-LATEST.json");
+  const hopIncentive = readJson("receipts/HOP-ROUTE-INCENTIVE-PLAN-LATEST.json");
   const wzmaPulse = await recentNativeInflows(connection, WZMA, numberEnv("STACC_BZK_WZMA_TX_LIMIT", 20));
   const bzkPool = topBzkPool(feeScan);
   const bzkClaimableUsd = number(bzkPool?.cashClaimableUsd) ?? 0;
@@ -218,6 +224,16 @@ async function runOnce(iteration: number) {
   const socialFeeCompatibility = record(socialFee?.cashRelayCompatibility);
   const socialFeeObservedUsd = number(socialFeeRecent.positiveNetUsd);
   const socialFeeObserved = socialFee?.verdict === "STACC_SOCIAL_FEE_SOURCE_OBSERVED_NO_LIVE";
+  const hopFlowSummary = record(hopFlow?.summary);
+  const hopExternalEvents = number(hopFlowSummary.externalEvents) ?? 0;
+  const hopExternalFlowUsd = number(hopFlowSummary.externalQuoteInUsd) ?? 0;
+  const hopExternalFlowDetected = hopExternalEvents > 0 && hopExternalFlowUsd > 0;
+  const hopCashabilityVerdict = string(hopCashability?.verdict);
+  const hopAcceptedExternalSettlement =
+    hopCashabilityVerdict === "HOP_CASHABILITY_READY_NO_SEND"
+    || hopCashabilityVerdict === "HOP_CASHABILITY_PARTIAL_READY_NO_SEND";
+  const hopIncentiveGate = record(hopIncentive?.gate);
+  const hopRewardAllowed = hopIncentiveGate.rewardAllowed === true;
   const anyStepFailed = steps.some((step) => !step.ok && step.name !== "orca-owned-fee-cycle-sim-external");
 
   const rejectionReasons = [
@@ -234,6 +250,11 @@ async function runOnce(iteration: number) {
       ? `social-fee SOL source observed (${socialFeeObservedUsd?.toFixed(6) ?? "unknown"} USD net), but not executable by CashRelay yet`
       : null,
     socialFeeCompatibility.pass === true ? null : "social-fee source is not yet a fresh exact executable receipt",
+    hopExternalFlowDetected
+      ? `HOP external flow observed (${hopExternalFlowUsd.toFixed(6)} USD), but no spendable USDC/SOL fee receipt yet`
+      : null,
+    hopAcceptedExternalSettlement ? null : "HOP settlement route is not accepted as external cash",
+    hopRewardAllowed ? null : "HOP route incentive is disabled until confirmed spendable USDC/SOL fee budget exists",
     cycleNoGoReasons.length > 0 ? `cycle sim not cash-positive: ${cycleNoGoReasons.join(" | ")}` : null
   ].filter((value): value is string => value !== null);
 
@@ -267,6 +288,26 @@ async function runOnce(iteration: number) {
       cashTvlUsd: bzkPool.cashTvlUsd ?? null
     } : null,
     jupiter: jupiterRoutes,
+    hopFlow: {
+      verdict: hopFlow?.verdict ?? null,
+      summary: hopFlow?.summary ?? null,
+      cashRule: hopFlow?.cashRule ?? null,
+      next: hopFlow?.next ?? null
+    },
+    hopCashability: {
+      verdict: hopCashability?.verdict ?? null,
+      quotes: hopCashability?.quotes ?? null,
+      cashMath: hopCashability?.cashMath ?? null,
+      rejectionReasons: hopCashability?.rejectionReasons ?? null,
+      next: hopCashability?.next ?? null
+    },
+    hopIncentive: {
+      verdict: hopIncentive?.verdict ?? null,
+      observedFlow: hopIncentive?.observedFlow ?? null,
+      economics: hopIncentive?.economics ?? null,
+      gate: hopIncentive?.gate ?? null,
+      next: hopIncentive?.next ?? null
+    },
     socialFee: {
       verdict: socialFee?.verdict ?? null,
       sourceClass: socialFee?.sourceClass ?? null,
@@ -305,6 +346,7 @@ async function runOnce(iteration: number) {
         "Keep monitoring BZK route/indexing and protocol fees.",
         "If partner authority signs are available, configure OWNED_FEE_KEYPAIR_PATHS and rerun.",
         "If the Pump social-claim authority signer is approved and local, configure SOCIAL_FEE_KEYPAIR_PATHS and build exact claim sim.",
+        "If HOP external flow keeps arriving, build an exact LP-fee/settlement source receipt; do not count HOP or owned-pool USDC routes as profit.",
         "If external flow appears, run settlement sim before any live action."
       ]
   };
