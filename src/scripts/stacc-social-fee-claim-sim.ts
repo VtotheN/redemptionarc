@@ -196,6 +196,10 @@ async function main(): Promise<void> {
       missingSignerPubkeys,
       configuredSignerPubkeys: availableSignerPubkeys,
       sourceReceipt: SOURCE_RECEIPT,
+      cashProofGate: {
+        pass: false,
+        reason: "Missing required social-claim authority signer; no simulation or live path is allowed.",
+      },
       rejectionReasons: [
         authority ? null : "source receipt has no authority",
         instructions.length > 0 ? null : "source receipt has no reusable social-fee instruction shape",
@@ -203,6 +207,9 @@ async function main(): Promise<void> {
         payer ? null : "no local payer/signer keypair found in default Solana keypair, keys/, SOCIAL_FEE_KEYPAIR_PATHS/OWNED_FEE_KEYPAIR_PATHS/KEEPER_AUTHORITY_KEYPAIR_PATHS",
         missingSignerPubkeys.length === 0 ? null : `missing required signer keypairs: ${missingSignerPubkeys.join(", ")}`,
       ].filter((value): value is string => value !== null),
+      next: authority
+        ? `Set SOCIAL_FEE_KEYPAIR_PATHS to a local keypair file whose public key is ${authority}, then rerun npm run stacc-social-fee-claim-sim.`
+        : "Rerun npm run stacc-social-fee-source-scan to refresh authority/account data.",
     };
     const out = writeReceipt(OUT_RECEIPT, receipt);
     console.log(`${receipt.verdict} authority=${authority ?? "null"} missingSigners=${missingSignerPubkeys.length} ix=${instructions.length} receipt=${out}`);

@@ -1,6 +1,6 @@
 {
   "verdict": "STACC_SOCIAL_FEE_CLAIM_SIM_BLOCKED",
-  "generatedAt": "2026-05-24T05:59:19.770Z",
+  "generatedAt": "2026-05-24T06:02:29.206Z",
   "noSend": true,
   "dryRun": true,
   "authority": "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
@@ -41,7 +41,12 @@
     "4J3QuZt1fPbkPJST4rd9sZyQLrKAzv6FLgWpvXumn57Y"
   ],
   "sourceReceipt": "receipts/STACC-SOCIAL-FEE-SOURCE-LATEST.json",
+  "cashProofGate": {
+    "pass": false,
+    "reason": "Missing required social-claim authority signer; no simulation or live path is allowed."
+  },
   "rejectionReasons": [
     "missing required signer keypairs: 2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM"
-  ]
+  ],
+  "next": "Set SOCIAL_FEE_KEYPAIR_PATHS to a local keypair file whose public key is 2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM, then rerun npm run stacc-social-fee-claim-sim."
 }
