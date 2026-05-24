@@ -173,6 +173,7 @@ async function runOnce(iteration: number) {
   const minNetUsd = numberEnv("MIN_NET_USD", config.minNetUsd);
   const steps = [
     runStep("stacc-bzk-security-plan", "npm run stacc-bzk-security-plan"),
+    runStep("stacc-social-fee-source-scan", "npm run stacc-social-fee-source-scan"),
     runStep("orca-owned-fee-source-scan", "npm run orca-owned-fee-source-scan", {
       INCLUDE_STACC_SCREENSHOT_AUTHORITIES: "true",
       OWNED_FEE_MAX_CONFIGS: process.env.OWNED_FEE_MAX_CONFIGS ?? "12"
@@ -194,6 +195,7 @@ async function runOnce(iteration: number) {
 
   const security = readJson("receipts/STACC-BZK-SECURITY-PLAN-LATEST.json");
   const feeScan = readJson("receipts/ORCA-OWNED-FEE-SOURCE-SCAN-LATEST.json");
+  const socialFee = readJson("receipts/STACC-SOCIAL-FEE-SOURCE-LATEST.json");
   const jupiter = readJson("receipts/JUPITER-INDEX-WATCH-LATEST.json");
   const cycleSim = readJson("receipts/ORCA-OWNED-FEE-CYCLE-SIM-LATEST.json");
   const wzmaPulse = await recentNativeInflows(connection, WZMA, numberEnv("STACC_BZK_WZMA_TX_LIMIT", 20));
@@ -212,6 +214,10 @@ async function runOnce(iteration: number) {
   const partnerFeeCandidate = bzkClaimableUsd >= minNetUsd && bzkExecutionClass === "PARTNER_OR_UNVERIFIED_CLAIMABLE_CASH";
   const routeCandidate = jupiterRoutes.routeFound && bzkActive;
   const freshWzmaCashPulse = wzmaPulse.positiveBzkRelatedSolTotal * solPriceForPulse >= minNetUsd;
+  const socialFeeRecent = record(socialFee?.recent);
+  const socialFeeCompatibility = record(socialFee?.cashRelayCompatibility);
+  const socialFeeObservedUsd = number(socialFeeRecent.positiveNetUsd);
+  const socialFeeObserved = socialFee?.verdict === "STACC_SOCIAL_FEE_SOURCE_OBSERVED_NO_LIVE";
   const anyStepFailed = steps.some((step) => !step.ok && step.name !== "orca-owned-fee-cycle-sim-external");
 
   const rejectionReasons = [
@@ -224,6 +230,10 @@ async function runOnce(iteration: number) {
     partnerFeeCandidate ? "claimable BZK cash fees require partner/unverified authority, not local direct collect" : null,
     routeCandidate ? null : "no active route candidate for settlement simulation",
     freshWzmaCashPulse ? "recent BZK/Pump/Jupiter-related WzMa SOL inflow detected; classify only after exact source receipt" : null,
+    socialFeeObserved
+      ? `social-fee SOL source observed (${socialFeeObservedUsd?.toFixed(6) ?? "unknown"} USD net), but not executable by CashRelay yet`
+      : null,
+    socialFeeCompatibility.pass === true ? null : "social-fee source is not yet a fresh exact executable receipt",
     cycleNoGoReasons.length > 0 ? `cycle sim not cash-positive: ${cycleNoGoReasons.join(" | ")}` : null
   ].filter((value): value is string => value !== null);
 
@@ -257,6 +267,16 @@ async function runOnce(iteration: number) {
       cashTvlUsd: bzkPool.cashTvlUsd ?? null
     } : null,
     jupiter: jupiterRoutes,
+    socialFee: {
+      verdict: socialFee?.verdict ?? null,
+      sourceClass: socialFee?.sourceClass ?? null,
+      sourceName: socialFee?.sourceName ?? null,
+      payerClass: socialFee?.payerClass ?? null,
+      authorityLocalSignerAvailable: socialFee?.authorityLocalSignerAvailable ?? null,
+      recent: socialFee?.recent ?? null,
+      latestPositiveClaim: socialFee?.latestPositiveClaim ?? null,
+      cashRelayCompatibility: socialFee?.cashRelayCompatibility ?? null
+    },
     wzmaPulse,
     cycleSim: {
       verdict: cycleSim?.verdict ?? null,
@@ -280,6 +300,7 @@ async function runOnce(iteration: number) {
       : [
         "Keep monitoring BZK route/indexing and protocol fees.",
         "If partner authority signs are available, configure OWNED_FEE_KEYPAIR_PATHS and rerun.",
+        "If WzMa social-fee authority is approved and local, configure SOCIAL_FEE_KEYPAIR_PATHS and build exact claim sim.",
         "If external flow appears, run settlement sim before any live action."
       ]
   };

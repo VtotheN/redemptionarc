@@ -1,7 +1,7 @@
 {
   "verdict": "STACC_BZK_LOOP_MONITORING_NO_LIVE",
-  "generatedAt": "2026-05-24T04:17:04.099Z",
-  "iteration": 3,
+  "generatedAt": "2026-05-24T04:27:54.800Z",
+  "iteration": 1,
   "noSend": true,
   "dryRun": true,
   "allowLive": false,
@@ -30,6 +30,20 @@
         "    \"this is still a no-send plan; live execution requires a fresh exact sim and explicit approval\"",
         "  ]",
         "}"
+      ],
+      "stderrTail": []
+    },
+    {
+      "name": "stacc-social-fee-source-scan",
+      "command": "npm run stacc-social-fee-source-scan",
+      "status": 0,
+      "signal": null,
+      "ok": true,
+      "stdoutTail": [
+        "> redemptionarc@0.1.0 stacc-social-fee-source-scan",
+        "> tsx src/scripts/stacc-social-fee-source-scan.ts",
+        "STACC_SOCIAL_FEE_SOURCE_OBSERVED_NO_LIVE recentPositiveClaims=3 netSol=0.395985093 localAuthority=false receipt=/Users/velon/Desktop/redemptionarc/receipts/STACC-SOCIAL-FEE-SOURCE-LATEST.json",
+        "blocked=WzMa social-fee authority keypair is not locally configured | latest positive social-fee claim is not directly BZK-account linked | no live path: current unclaimed amount and exact claim accounts are not simulated"
       ],
       "stderrTail": []
     },
@@ -128,6 +142,97 @@
     "routeFound": false,
     "routeCount": 0,
     "routes": []
+  },
+  "socialFee": {
+    "verdict": "STACC_SOCIAL_FEE_SOURCE_OBSERVED_NO_LIVE",
+    "sourceClass": "authority_exclusive_protocol_fee_claim",
+    "sourceName": "pump_social_fee_claim_pda_v2",
+    "payerClass": "external_protocol",
+    "authorityLocalSignerAvailable": false,
+    "recent": {
+      "scannedTxs": 50,
+      "claimLikeCount": 4,
+      "positiveClaimCount": 3,
+      "positiveNetSol": 0.395985093,
+      "positiveNetUsd": 34.002973833927506,
+      "claimSamples": [
+        {
+          "signature": "3Torrzx8pD7CBUMJvoUh4BLdwxxt66hxJpmboGvRNp88uyaFW9Q9PW5DpiiNFREuczAcezPWTnCSrLKFQPmAsSfG",
+          "nativeDeltaSol": 0.033783402,
+          "bzkRelated": false,
+          "logHints": [
+            "Program log: Instruction: ClaimSocialFeePdaV2",
+            "Program log: Instruction: ClaimSocialFeePdaV2",
+            "Program log: No fees available to claim"
+          ]
+        },
+        {
+          "signature": "23oMiSvvggGXoufCCBAe6mpJTUmA7ym4iJob5CMSwPG432wZf8mS6WhPaSwoQzi8FsGzDhhwpuxgkydJhQ67S2tj",
+          "nativeDeltaSol": -0.00001,
+          "bzkRelated": false,
+          "logHints": [
+            "Program log: Instruction: ClaimSocialFeePdaV2",
+            "Program log: No fees available to claim",
+            "Program log: Instruction: ClaimSocialFeePdaV2",
+            "Program log: No fees available to claim"
+          ]
+        },
+        {
+          "signature": "64FptZgrxxfQFbqY2qw56uRxyWEu5VxFCjQgtAbx5gDZgxTEe98mdAzXxMEigbh5cvFa18ML38GeaPtV1dnTNszE",
+          "nativeDeltaSol": 0.159799025,
+          "bzkRelated": false,
+          "logHints": [
+            "Program log: Instruction: ClaimSocialFeePdaV2",
+            "Program log: Instruction: ClaimSocialFeePdaV2",
+            "Program log: No fees available to claim"
+          ]
+        },
+        {
+          "signature": "vY8oys67X7BGEM4hTR6uoQmK76ZnBmhJGzQPGA6m9c2Soq7diCFofErPZogLSTeba6xhFKZm5FvF83NxyeiRTwq",
+          "nativeDeltaSol": 0.202402666,
+          "bzkRelated": false,
+          "logHints": [
+            "Program log: Instruction: ClaimSocialFeePdaV2",
+            "Program log: Instruction: ClaimSocialFeePdaV2",
+            "Program log: No fees available to claim"
+          ]
+        }
+      ]
+    },
+    "latestPositiveClaim": {
+      "signature": "3Torrzx8pD7CBUMJvoUh4BLdwxxt66hxJpmboGvRNp88uyaFW9Q9PW5DpiiNFREuczAcezPWTnCSrLKFQPmAsSfG",
+      "slot": 421773201,
+      "blockTime": 1779594483,
+      "beforeRaw": "227088662",
+      "afterRaw": "260872064",
+      "netDeltaLamports": "33783402",
+      "netDeltaSol": 0.033783402,
+      "grossClaimSol": 0.033793402,
+      "feeSol": 0.00001,
+      "netCashUsd": 2.9009580272938558,
+      "grossClaimUsd": 2.901816720573856,
+      "feeUsd": 0.0008586932800000001,
+      "bzkRelated": false,
+      "programIds": [
+        "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+        "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ"
+      ],
+      "logHints": [
+        "Program log: Instruction: ClaimSocialFeePdaV2",
+        "Program log: Instruction: ClaimSocialFeePdaV2",
+        "Program log: No fees available to claim"
+      ]
+    },
+    "cashRelayCompatibility": {
+      "pass": false,
+      "reason": "Observed real SOL settlement, but not yet a fresh exact executable source receipt for this local signer set.",
+      "wouldNeed": [
+        "Configure a local WzMa signer only if Velon owns/approves that authority.",
+        "Derive current social-fee claim PDA/accounts before execution.",
+        "Simulate exact claim transaction and prove afterRaw > beforeRaw after costs.",
+        "Then feed the exact source receipt into RedemptionCashRelay before live approval."
+      ]
+    }
   },
   "wzmaPulse": {
     "owner": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
@@ -334,7 +439,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18395783256,
+        "requiredExternalVolumeUsdForMinNet": 100.18380694758,
         "swapFeeUsd": 0,
         "protocolFeeUsd": 0,
         "lpFeeUsd": 0,
@@ -358,7 +463,7 @@
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045989458139999995
+          "usd": 0.00045951736895
         },
         "inventoryRiskUsd": 0,
         "inventoryRiskBps": null,
@@ -366,8 +471,8 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": -0.00045989458139999995,
-        "totalSystemNetUsd": -0.00045989458139999995
+        "collectorLedgerNetUsd": -0.00045951736895,
+        "totalSystemNetUsd": -0.00045951736895
       },
       "collectSimulation": null,
       "cashProofPass": false,
@@ -391,11 +496,14 @@
     "BZK claimable cash fees 0.000000 below MIN_NET_USD 0.25",
     "no direct local signer cash-fee collect is currently ready",
     "no active route candidate for settlement simulation",
+    "social-fee SOL source observed (34.002974 USD net), but not executable by CashRelay yet",
+    "social-fee source is not yet a fresh exact executable receipt",
     "cycle sim not cash-positive: total-system cash gate below MIN_NET_USD (0.25) | collect authority is not locally signable; direct collect is not executable by this wallet set"
   ],
   "nextRequiredExactBuild": [
     "Keep monitoring BZK route/indexing and protocol fees.",
     "If partner authority signs are available, configure OWNED_FEE_KEYPAIR_PATHS and rerun.",
+    "If WzMa social-fee authority is approved and local, configure SOCIAL_FEE_KEYPAIR_PATHS and build exact claim sim.",
     "If external flow appears, run settlement sim before any live action."
   ]
 }
