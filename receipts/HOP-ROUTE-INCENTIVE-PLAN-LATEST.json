@@ -1,0 +1,83 @@
+{
+  "verdict": "HOP_ROUTE_INCENTIVE_BLOCKED_NEEDS_CASH_PROOF",
+  "generatedAt": "2026-05-24T01:57:52.607Z",
+  "readOnly": true,
+  "noSend": true,
+  "liveIntentIgnored": {
+    "dryRun": false,
+    "allowLive": true,
+    "liveTxApproved": true,
+    "note": "hop-route-incentive-plan only calculates reward budgets; it never builds or sends reward transactions"
+  },
+  "inputs": {
+    "flowPath": "receipts/HOP-EXTERNAL-FLOW-WATCH-LATEST.json",
+    "flowVerdict": "HOP_EXTERNAL_FLOW_DETECTED_READ_ONLY",
+    "flowGeneratedAt": "2026-05-24T01:49:26.858Z",
+    "cashabilityPath": "receipts/HOP-CASHABILITY-GATE-LATEST.json",
+    "cashabilityVerdict": "HOP_CASHABILITY_BLOCKED",
+    "rewardToken": "USDC",
+    "rewardShareBps": 1000,
+    "lpFeeBps": 25,
+    "t22SettlementUsd": 0,
+    "confirmedCashFeeUsd": 0,
+    "minRewardUsd": 0.001,
+    "includeCashabilityBudget": true
+  },
+  "observedFlow": {
+    "externalEvents": 11,
+    "affiliatedEvents": 1,
+    "externalFlowUsd": 6.4778839999999995,
+    "t22FeeHop": 2396.063684,
+    "activePoolsWithExternalFlow": [
+      "hop-usdc-raydium-cp"
+    ],
+    "missingSecondVenue": true,
+    "hopTransferFee": {
+      "currentEpoch": 976,
+      "activeBps": 690,
+      "maximumFeeRaw": "18446744073709551615",
+      "olderBps": 690,
+      "olderEpoch": "974",
+      "newerBps": 1,
+      "newerEpoch": "978",
+      "mintWithheldAmountRaw": "0"
+    },
+    "perPool": [
+      {
+        "id": "hop-usdc-raydium-cp",
+        "quoteAsset": "USDC",
+        "externalEvents": 11,
+        "externalQuoteInUsd": 6.4778839999999995,
+        "externalEstimatedT22HopUi": 2396.063684
+      }
+    ]
+  },
+  "economics": {
+    "lpFeeUsdEstimate": 0.016194709999999998,
+    "t22SettlementUsd": 0,
+    "externalCashabilityUsd": 0,
+    "theoreticalFeeBudgetUsd": 0.016194709999999998,
+    "theoreticalMaxRewardUsd": 0.0016194709999999997,
+    "confirmedCashBudgetUsd": 0,
+    "cashSafeRewardUsd": 0,
+    "rewardToken": "USDC",
+    "retainedTheoreticalFeeUsd": 0.014575238999999999
+  },
+  "gate": {
+    "cashRelayPass": false,
+    "rewardAllowed": false,
+    "rejectionReasons": [
+      "no confirmed spendable USDC/SOL fee budget for rewards",
+      "cashSafeRewardUsd 0.000000000 below HOP_INCENTIVE_MIN_REWARD_USD 0.001",
+      "only one configured HOP venue; route incentive should wait for N-pool path proof",
+      "T22 HOP fee observed but not settled to USDC/SOL; not reward budget"
+    ],
+    "requiredBeforeLive": [
+      "N-pool route proof with external signer flow",
+      "exact collect/settle receipt proving spendable USDC/SOL fee budget",
+      "reward transaction simulation showing reward <= cashSafeRewardUsd",
+      "post-reward owned SOL+USDC remains above pre-flow baseline plus MIN_NET_USD"
+    ]
+  },
+  "next": "Keep incentives disabled. Use this receipt to size a micro-reward only after collect/settle cash proof exists."
+}

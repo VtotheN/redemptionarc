@@ -1,0 +1,901 @@
+{
+  "verdict": "HOP_EXTERNAL_FLOW_DETECTED_READ_ONLY",
+  "generatedAt": "2026-05-24T01:49:26.858Z",
+  "readOnly": true,
+  "noSend": true,
+  "liveIntentIgnored": {
+    "dryRun": false,
+    "allowLive": true,
+    "liveTxApproved": true,
+    "note": "hop-external-flow-watch only reads confirmed transactions"
+  },
+  "input": {
+    "hopMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+    "poolCount": 1,
+    "limitPerPool": 12,
+    "lookbackHours": 72,
+    "affiliatedWallets": [
+      "FvkP2XzbCK6PspjhZ44sae5vbQPZQGmVkCv1dUC2pAZ9",
+      "FdpruPJgPzyNefSxkU5JqifteeDPqwZPfBzcmNb7NNxY",
+      "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "7Wg8aXuPijrmH4svDmqArMeMAWF3ZusgrznJ6ymprBAN",
+      "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+      "BGM3VPeND4xts3J6WeaeRJVFpzAJhyJiqycqYP2vk6dV"
+    ],
+    "poolConfigSource": "default_pool_a_only"
+  },
+  "hopTransferFee": {
+    "currentEpoch": 976,
+    "activeBps": 690,
+    "maximumFeeRaw": "18446744073709551615",
+    "olderBps": 690,
+    "olderEpoch": "974",
+    "newerBps": 1,
+    "newerEpoch": "978",
+    "mintWithheldAmountRaw": "0"
+  },
+  "quoteUsdPrices": {
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v": 1
+  },
+  "lpSnapshots": [
+    {
+      "lpMint": "J2HNL9QJYrzDQsf9g3gSnPRSfUEWqWW75H5FyVmBzYqq",
+      "supplyRaw": "1340918829",
+      "supplyUi": "1.340918829",
+      "holders": [
+        {
+          "tokenAccount": "3Jr7Tfac6eRsCEh2tW58wnD1747LScUhMUC9mRsCY8E1",
+          "owner": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+          "amountRaw": "1340918829",
+          "amountUi": "1.340918829",
+          "affiliated": true
+        }
+      ],
+      "largestHolderAffiliated": true
+    }
+  ],
+  "summary": {
+    "externalEvents": 11,
+    "affiliatedEvents": 1,
+    "externalQuoteInUsd": 6.4778839999999995,
+    "externalEstimatedT22HopUi": 2396.063684,
+    "activePoolsWithExternalFlow": [
+      "hop-usdc-raydium-cp"
+    ],
+    "missingSecondVenue": true
+  },
+  "poolReports": [
+    {
+      "id": "hop-usdc-raydium-cp",
+      "label": "HOP/USDC Raydium CP",
+      "pool": "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f",
+      "quoteMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "quoteAsset": "USDC",
+      "lpMint": "J2HNL9QJYrzDQsf9g3gSnPRSfUEWqWW75H5FyVmBzYqq",
+      "vaultOwner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+      "signaturesScanned": 12,
+      "eventsClassified": 12,
+      "externalEvents": 11,
+      "affiliatedEvents": 1,
+      "externalQuoteInUsd": 6.4778839999999995,
+      "affiliatedQuoteInUsd": 1.374831,
+      "externalEstimatedT22HopUi": 2396.063684,
+      "events": [
+        {
+          "signature": "LR7cWi18xmgEsgQrcicaGh3DhMpZ5aw5Z7QCPCtNtUJS7uyK5a8k557kTpaczyeqbwaDECKhPxmDs2ZNP9ZPUbL",
+          "slot": 421753991,
+          "blockTime": 1779586805,
+          "flowClass": "EXTERNAL_FLOW_CANDIDATE",
+          "signers": [
+            "Do195ic11Pa7ByZvn6gMcMd4NX5k6yh3KN6thHbskAae"
+          ],
+          "affiliatedSigners": [],
+          "vaultDeltaSummary": {
+            "hopVaultDeltaRaw": "-3384163472",
+            "hopVaultDeltaUi": -3384.163472,
+            "quoteVaultDeltaRaw": "860667",
+            "quoteVaultDeltaUi": 0.860667,
+            "quoteVaultDeltaUsd": 0.860667
+          },
+          "t22": {
+            "allHopAccountDeltaRaw": "-233507280",
+            "observedWithheldRaw": "233507280",
+            "observedWithheldUi": 233.50728,
+            "estimatedFromVaultMoveRaw": "233507279",
+            "estimatedFromVaultMoveUi": 233.507279
+          },
+          "poolVaultDeltas": [
+            {
+              "accountIndex": 4,
+              "tokenAccount": "5Q8jZNf9tuQKDGTq32pDqYJa9b9yjfBsoAfGtyyveSbQ",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "decimals": 6,
+              "preRaw": "96759073153",
+              "postRaw": "93374909681",
+              "deltaRaw": "-3384163472",
+              "deltaUi": -3384.163472
+            },
+            {
+              "accountIndex": 11,
+              "tokenAccount": "HYsEdWsUpobsavHph8ShXALg64wT5ePCJVZ35XZ37tHf",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "21992048",
+              "postRaw": "22852715",
+              "deltaRaw": "860667",
+              "deltaUi": 0.860667
+            }
+          ],
+          "relevantTokenDeltas": [
+            {
+              "accountIndex": 4,
+              "tokenAccount": "5Q8jZNf9tuQKDGTq32pDqYJa9b9yjfBsoAfGtyyveSbQ",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "decimals": 6,
+              "preRaw": "96759073153",
+              "postRaw": "93374909681",
+              "deltaRaw": "-3384163472",
+              "deltaUi": -3384.163472
+            },
+            {
+              "accountIndex": 11,
+              "tokenAccount": "HYsEdWsUpobsavHph8ShXALg64wT5ePCJVZ35XZ37tHf",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "21992048",
+              "postRaw": "22852715",
+              "deltaRaw": "860667",
+              "deltaUi": 0.860667
+            },
+            {
+              "accountIndex": 19,
+              "tokenAccount": "AHFAv95Z67xnPYuHTf5a9uMEHdXFvbQvwc4EazY3tpt7",
+              "owner": "Enc6rB84ZwGxZU8aqAF41dRJxg3yesiJgD7uJFVhMraM",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "32758621350",
+              "postRaw": "32757808625",
+              "deltaRaw": "-812725",
+              "deltaUi": -0.812725
+            },
+            {
+              "accountIndex": 26,
+              "tokenAccount": "dwxR9YF7WwnJJu7bPC4UNcWFpcSsooH6fxbpoa3fTbJ",
+              "owner": "83v8iPyZihDEjDdY8RdZddyZNyUtXngz69Lgo9Kt5d6d",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "1448815854",
+              "postRaw": "1448767912",
+              "deltaRaw": "-47942",
+              "deltaUi": -0.047942
+            },
+            {
+              "accountIndex": 2,
+              "tokenAccount": "3gaTYKc7VomS5qPv9VDyrJgLYNzUuDzBYLWRDmpgsjJ3",
+              "owner": "Do195ic11Pa7ByZvn6gMcMd4NX5k6yh3KN6thHbskAae",
+              "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "decimals": 6,
+              "preRaw": "0",
+              "postRaw": "3150656192",
+              "deltaRaw": "3150656192",
+              "deltaUi": 3150.656192
+            }
+          ]
+        },
+        {
+          "signature": "2KdeJjUx6pAyxA5AFmV8zyP1Pipput2Fy2rLmucYAz2Td8gjap2yZC8LQFNkXppVTdSWKqWVtoPJf2nEZJWu6omv",
+          "slot": 421753977,
+          "blockTime": 1779586799,
+          "flowClass": "EXTERNAL_FLOW_CANDIDATE",
+          "signers": [
+            "8fKBvBdxEM3JtMp46k5VmoKvcoPp3KrHPAKfKGyZtAda"
+          ],
+          "affiliatedSigners": [],
+          "vaultDeltaSummary": {
+            "hopVaultDeltaRaw": "-5629343794",
+            "hopVaultDeltaUi": -5629.343794,
+            "quoteVaultDeltaRaw": "1291231",
+            "quoteVaultDeltaUi": 1.291231,
+            "quoteVaultDeltaUsd": 1.291231
+          },
+          "t22": {
+            "allHopAccountDeltaRaw": "-388424722",
+            "observedWithheldRaw": "388424722",
+            "observedWithheldUi": 388.424722,
+            "estimatedFromVaultMoveRaw": "388424721",
+            "estimatedFromVaultMoveUi": 388.424721
+          },
+          "poolVaultDeltas": [
+            {
+              "accountIndex": 5,
+              "tokenAccount": "HYsEdWsUpobsavHph8ShXALg64wT5ePCJVZ35XZ37tHf",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "20700817",
+              "postRaw": "21992048",
+              "deltaRaw": "1291231",
+              "deltaUi": 1.291231
+            },
+            {
+              "accountIndex": 6,
+              "tokenAccount": "5Q8jZNf9tuQKDGTq32pDqYJa9b9yjfBsoAfGtyyveSbQ",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "decimals": 6,
+              "preRaw": "102388416947",
+              "postRaw": "96759073153",
+              "deltaRaw": "-5629343794",
+              "deltaUi": -5629.343794
+            }
+          ],
+          "relevantTokenDeltas": [
+            {
+              "accountIndex": 5,
+              "tokenAccount": "HYsEdWsUpobsavHph8ShXALg64wT5ePCJVZ35XZ37tHf",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "20700817",
+              "postRaw": "21992048",
+              "deltaRaw": "1291231",
+              "deltaUi": 1.291231
+            },
+            {
+              "accountIndex": 6,
+              "tokenAccount": "5Q8jZNf9tuQKDGTq32pDqYJa9b9yjfBsoAfGtyyveSbQ",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "decimals": 6,
+              "preRaw": "102388416947",
+              "postRaw": "96759073153",
+              "deltaRaw": "-5629343794",
+              "deltaUi": -5629.343794
+            },
+            {
+              "accountIndex": 20,
+              "tokenAccount": "2BnuubMg42zGMNcrL4DWN5SWP3A1571Mz4WCN2v8oHMR",
+              "owner": "2BnuubMg42zGMNcrL4DWN5SWP3A1571Mz4WCN2v8oHMR",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "140431911537",
+              "postRaw": "140430620306",
+              "deltaRaw": "-1291231",
+              "deltaUi": -1.291231
+            },
+            {
+              "accountIndex": 4,
+              "tokenAccount": "HTmGeWx61XtXJfVXVY6Td3eNVXuryti9EoNwXQuCc9BU",
+              "owner": "8fKBvBdxEM3JtMp46k5VmoKvcoPp3KrHPAKfKGyZtAda",
+              "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "decimals": 6,
+              "preRaw": "0",
+              "postRaw": "5240919072",
+              "deltaRaw": "5240919072",
+              "deltaUi": 5240.919072
+            }
+          ]
+        },
+        {
+          "signature": "4FCWhzjfe2JG1cwFFxT95WutiZZmzRD9GT69RAqgzDuixpSPhDQQmBRYtWniSpR1rXuHj1fLrsLQvXwh9xRa1UiT",
+          "slot": 421753657,
+          "blockTime": 1779586673,
+          "flowClass": "EXTERNAL_FLOW_CANDIDATE",
+          "signers": [
+            "4SjhWWPoo9UjHdwAdQYhMvkmzy2dwBpnHbnTE84zJWvc"
+          ],
+          "affiliatedSigners": [],
+          "vaultDeltaSummary": {
+            "hopVaultDeltaRaw": "-13784241247",
+            "hopVaultDeltaUi": -13784.241247,
+            "quoteVaultDeltaRaw": "2579112",
+            "quoteVaultDeltaUi": 2.579112,
+            "quoteVaultDeltaUsd": 2.579112
+          },
+          "t22": {
+            "allHopAccountDeltaRaw": "-951112647",
+            "observedWithheldRaw": "951112647",
+            "observedWithheldUi": 951.112647,
+            "estimatedFromVaultMoveRaw": "951112646",
+            "estimatedFromVaultMoveUi": 951.112646
+          },
+          "poolVaultDeltas": [
+            {
+              "accountIndex": 1,
+              "tokenAccount": "5Q8jZNf9tuQKDGTq32pDqYJa9b9yjfBsoAfGtyyveSbQ",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "decimals": 6,
+              "preRaw": "116172658194",
+              "postRaw": "102388416947",
+              "deltaRaw": "-13784241247",
+              "deltaUi": -13784.241247
+            },
+            {
+              "accountIndex": 7,
+              "tokenAccount": "HYsEdWsUpobsavHph8ShXALg64wT5ePCJVZ35XZ37tHf",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "18121705",
+              "postRaw": "20700817",
+              "deltaRaw": "2579112",
+              "deltaUi": 2.579112
+            }
+          ],
+          "relevantTokenDeltas": [
+            {
+              "accountIndex": 1,
+              "tokenAccount": "5Q8jZNf9tuQKDGTq32pDqYJa9b9yjfBsoAfGtyyveSbQ",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "decimals": 6,
+              "preRaw": "116172658194",
+              "postRaw": "102388416947",
+              "deltaRaw": "-13784241247",
+              "deltaUi": -13784.241247
+            },
+            {
+              "accountIndex": 7,
+              "tokenAccount": "HYsEdWsUpobsavHph8ShXALg64wT5ePCJVZ35XZ37tHf",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "18121705",
+              "postRaw": "20700817",
+              "deltaRaw": "2579112",
+              "deltaUi": 2.579112
+            },
+            {
+              "accountIndex": 24,
+              "tokenAccount": "A3C9xwv4Hfx92M5HQpxUiibSqCa5pYhD2kTwnU5fEPq",
+              "owner": "8sKQHfjNhvmAw94PhfvfMcytmqW6jmxvwieYyzXCCPu",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "49994276177",
+              "postRaw": "49991697065",
+              "deltaRaw": "-2579112",
+              "deltaUi": -2.579112
+            },
+            {
+              "accountIndex": 5,
+              "tokenAccount": "CYmwLxe8pGmBJatfEpBhSr774zpYmPWRu9QBJMwcr5Po",
+              "owner": "4SjhWWPoo9UjHdwAdQYhMvkmzy2dwBpnHbnTE84zJWvc",
+              "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "decimals": 6,
+              "preRaw": "0",
+              "postRaw": "12833128600",
+              "deltaRaw": "12833128600",
+              "deltaUi": 12833.1286
+            }
+          ]
+        },
+        {
+          "signature": "2yc4iuGGHSdKqSWDyCtNSCXA5YgTSGTyDEXQ58QVjyCEYQe7SuKR4ERQrnzVxDrLEcrC9q29YCaHHgnVkpasQfA7",
+          "slot": 421753477,
+          "blockTime": 1779586601,
+          "flowClass": "EXTERNAL_FLOW_CANDIDATE",
+          "signers": [
+            "GTNVwahB6YREju5Sq1KwALjCYZphb896jc2cUbmtMMwK"
+          ],
+          "affiliatedSigners": [],
+          "vaultDeltaSummary": {
+            "hopVaultDeltaRaw": "-3998436247",
+            "hopVaultDeltaUi": -3998.436247,
+            "quoteVaultDeltaRaw": "628008",
+            "quoteVaultDeltaUi": 0.628008,
+            "quoteVaultDeltaUsd": 0.628008
+          },
+          "t22": {
+            "allHopAccountDeltaRaw": "-275892102",
+            "observedWithheldRaw": "275892102",
+            "observedWithheldUi": 275.892102,
+            "estimatedFromVaultMoveRaw": "275892101",
+            "estimatedFromVaultMoveUi": 275.892101
+          },
+          "poolVaultDeltas": [
+            {
+              "accountIndex": 1,
+              "tokenAccount": "5Q8jZNf9tuQKDGTq32pDqYJa9b9yjfBsoAfGtyyveSbQ",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "decimals": 6,
+              "preRaw": "120171094441",
+              "postRaw": "116172658194",
+              "deltaRaw": "-3998436247",
+              "deltaUi": -3998.436247
+            },
+            {
+              "accountIndex": 6,
+              "tokenAccount": "HYsEdWsUpobsavHph8ShXALg64wT5ePCJVZ35XZ37tHf",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "17493697",
+              "postRaw": "18121705",
+              "deltaRaw": "628008",
+              "deltaUi": 0.628008
+            }
+          ],
+          "relevantTokenDeltas": [
+            {
+              "accountIndex": 1,
+              "tokenAccount": "5Q8jZNf9tuQKDGTq32pDqYJa9b9yjfBsoAfGtyyveSbQ",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "decimals": 6,
+              "preRaw": "120171094441",
+              "postRaw": "116172658194",
+              "deltaRaw": "-3998436247",
+              "deltaUi": -3998.436247
+            },
+            {
+              "accountIndex": 6,
+              "tokenAccount": "HYsEdWsUpobsavHph8ShXALg64wT5ePCJVZ35XZ37tHf",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "17493697",
+              "postRaw": "18121705",
+              "deltaRaw": "628008",
+              "deltaUi": 0.628008
+            },
+            {
+              "accountIndex": 24,
+              "tokenAccount": "9t4P5wMwfFkyn92Z7hf463qYKEZf8ERVZsGBEPNp8uJx",
+              "owner": "8ekCy2jHHUbW2yeNGFWYJT9Hm9FW7SvZcZK66dSZCDiF",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "1675382195122",
+              "postRaw": "1675381567114",
+              "deltaRaw": "-628008",
+              "deltaUi": -0.628008
+            },
+            {
+              "accountIndex": 7,
+              "tokenAccount": "TXHc6JwvpzCWfzs1gtkGcJKFKAi46WquP1qQd8zsqfz",
+              "owner": "GTNVwahB6YREju5Sq1KwALjCYZphb896jc2cUbmtMMwK",
+              "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "decimals": 6,
+              "preRaw": "0",
+              "postRaw": "3722544145",
+              "deltaRaw": "3722544145",
+              "deltaUi": 3722.544145
+            }
+          ]
+        },
+        {
+          "signature": "4zCSNsvVY4qxAEzzqajuM8jBGwuaLUww1juPxTcKgNbsNHH8Fb4e83knwoHXx7PrC5YcbmVzTLoA6LYKXWZaQpsk",
+          "slot": 421753276,
+          "blockTime": 1779586522,
+          "flowClass": "EXTERNAL_FLOW_CANDIDATE",
+          "signers": [
+            "AFs8iK4tuhj8kyyqEcT8zWwHFjB43QpoJBt82GSJssSS"
+          ],
+          "affiliatedSigners": [],
+          "vaultDeltaSummary": {
+            "hopVaultDeltaRaw": "-6003829883",
+            "hopVaultDeltaUi": -6003.829883,
+            "quoteVaultDeltaRaw": "861160",
+            "quoteVaultDeltaUi": 0.86116,
+            "quoteVaultDeltaUsd": 0.86116
+          },
+          "t22": {
+            "allHopAccountDeltaRaw": "-414264262",
+            "observedWithheldRaw": "414264262",
+            "observedWithheldUi": 414.264262,
+            "estimatedFromVaultMoveRaw": "414264261",
+            "estimatedFromVaultMoveUi": 414.264261
+          },
+          "poolVaultDeltas": [
+            {
+              "accountIndex": 2,
+              "tokenAccount": "5Q8jZNf9tuQKDGTq32pDqYJa9b9yjfBsoAfGtyyveSbQ",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "decimals": 6,
+              "preRaw": "126174924324",
+              "postRaw": "120171094441",
+              "deltaRaw": "-6003829883",
+              "deltaUi": -6003.829883
+            },
+            {
+              "accountIndex": 7,
+              "tokenAccount": "HYsEdWsUpobsavHph8ShXALg64wT5ePCJVZ35XZ37tHf",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "16632537",
+              "postRaw": "17493697",
+              "deltaRaw": "861160",
+              "deltaUi": 0.86116
+            }
+          ],
+          "relevantTokenDeltas": [
+            {
+              "accountIndex": 2,
+              "tokenAccount": "5Q8jZNf9tuQKDGTq32pDqYJa9b9yjfBsoAfGtyyveSbQ",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "decimals": 6,
+              "preRaw": "126174924324",
+              "postRaw": "120171094441",
+              "deltaRaw": "-6003829883",
+              "deltaUi": -6003.829883
+            },
+            {
+              "accountIndex": 7,
+              "tokenAccount": "HYsEdWsUpobsavHph8ShXALg64wT5ePCJVZ35XZ37tHf",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "16632537",
+              "postRaw": "17493697",
+              "deltaRaw": "861160",
+              "deltaUi": 0.86116
+            },
+            {
+              "accountIndex": 16,
+              "tokenAccount": "CfZTL86UvfmT3biprZFQhQk8JhiWDn3YaqmXTFmTXBig",
+              "owner": "CfZTL86UvfmT3biprZFQhQk8JhiWDn3YaqmXTFmTXBig",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "38185358076",
+              "postRaw": "38184631039",
+              "deltaRaw": "-727037",
+              "deltaUi": -0.727037
+            },
+            {
+              "accountIndex": 19,
+              "tokenAccount": "3f9kSZg8PPJ6NkLwVdXeff16ZT1XbkmT5eaQCqUnpDWx",
+              "owner": "J4uBbeoWpZE8fH58PM1Fp9n9K6f1aThyeVCyRdJbaXqt",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "2098189522",
+              "postRaw": "2098055399",
+              "deltaRaw": "-134123",
+              "deltaUi": -0.134123
+            },
+            {
+              "accountIndex": 4,
+              "tokenAccount": "7KdHc9DCHdUx2PjX8zot2NbjNXRZoM9N14arRGjRj9sQ",
+              "owner": "AFs8iK4tuhj8kyyqEcT8zWwHFjB43QpoJBt82GSJssSS",
+              "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "decimals": 6,
+              "preRaw": "0",
+              "postRaw": "5589565621",
+              "deltaRaw": "5589565621",
+              "deltaUi": 5589.565621
+            }
+          ]
+        },
+        {
+          "signature": "4mc8nXZChvHzhUj28imLYEf43vemkGzkEwg4Buv47avdmduvktbeEyw21fAuVvZGVgsGVZyxZUqfdRHz8SvdeYfm",
+          "slot": 421749263,
+          "blockTime": 1779584932,
+          "flowClass": "EXTERNAL_FLOW_CANDIDATE",
+          "signers": [
+            "BFZL8RwKdhs3nmWhCz86htMK9bDT5a8ZMXZ4M3Z7vZai"
+          ],
+          "affiliatedSigners": [],
+          "vaultDeltaSummary": {
+            "hopVaultDeltaRaw": "-1925546030",
+            "hopVaultDeltaUi": -1925.54603,
+            "quoteVaultDeltaRaw": "257706",
+            "quoteVaultDeltaUi": 0.257706,
+            "quoteVaultDeltaUsd": 0.257706
+          },
+          "t22": {
+            "allHopAccountDeltaRaw": "-132862677",
+            "observedWithheldRaw": "132862677",
+            "observedWithheldUi": 132.862677,
+            "estimatedFromVaultMoveRaw": "132862676",
+            "estimatedFromVaultMoveUi": 132.862676
+          },
+          "poolVaultDeltas": [
+            {
+              "accountIndex": 3,
+              "tokenAccount": "5Q8jZNf9tuQKDGTq32pDqYJa9b9yjfBsoAfGtyyveSbQ",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "decimals": 6,
+              "preRaw": "128100470354",
+              "postRaw": "126174924324",
+              "deltaRaw": "-1925546030",
+              "deltaUi": -1925.54603
+            },
+            {
+              "accountIndex": 7,
+              "tokenAccount": "HYsEdWsUpobsavHph8ShXALg64wT5ePCJVZ35XZ37tHf",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "16374831",
+              "postRaw": "16632537",
+              "deltaRaw": "257706",
+              "deltaUi": 0.257706
+            }
+          ],
+          "relevantTokenDeltas": [
+            {
+              "accountIndex": 3,
+              "tokenAccount": "5Q8jZNf9tuQKDGTq32pDqYJa9b9yjfBsoAfGtyyveSbQ",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "decimals": 6,
+              "preRaw": "128100470354",
+              "postRaw": "126174924324",
+              "deltaRaw": "-1925546030",
+              "deltaUi": -1925.54603
+            },
+            {
+              "accountIndex": 7,
+              "tokenAccount": "HYsEdWsUpobsavHph8ShXALg64wT5ePCJVZ35XZ37tHf",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "16374831",
+              "postRaw": "16632537",
+              "deltaRaw": "257706",
+              "deltaUi": 0.257706
+            },
+            {
+              "accountIndex": 20,
+              "tokenAccount": "9t4P5wMwfFkyn92Z7hf463qYKEZf8ERVZsGBEPNp8uJx",
+              "owner": "8ekCy2jHHUbW2yeNGFWYJT9Hm9FW7SvZcZK66dSZCDiF",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "1246416857834",
+              "postRaw": "1246416600128",
+              "deltaRaw": "-257706",
+              "deltaUi": -0.257706
+            },
+            {
+              "accountIndex": 1,
+              "tokenAccount": "3bePgWwbiE71CW7zwDMRJstKHagbyVHSJ6Cwhqjw65FY",
+              "owner": "BFZL8RwKdhs3nmWhCz86htMK9bDT5a8ZMXZ4M3Z7vZai",
+              "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "decimals": 6,
+              "preRaw": "0",
+              "postRaw": "1792683353",
+              "deltaRaw": "1792683353",
+              "deltaUi": 1792.683353
+            }
+          ]
+        },
+        {
+          "signature": "8BefJY1vUQuVwXivs4BYr8QcNfGqWnZf6qQQ3LAChz3bwjuY9YNEoXro7YS6S4RpWQa2tkeQiBxAu82p8maEkUB",
+          "slot": 421748910,
+          "blockTime": 1779584792,
+          "flowClass": "AFFILIATED_FLOW_REJECTED",
+          "signers": [
+            "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S"
+          ],
+          "affiliatedSigners": [
+            "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S"
+          ],
+          "vaultDeltaSummary": {
+            "hopVaultDeltaRaw": "8229565354",
+            "hopVaultDeltaUi": 8229.565354,
+            "quoteVaultDeltaRaw": "1374831",
+            "quoteVaultDeltaUi": 1.374831,
+            "quoteVaultDeltaUsd": 1.374831
+          },
+          "t22": {
+            "allHopAccountDeltaRaw": "4135218383047",
+            "observedWithheldRaw": "0",
+            "observedWithheldUi": 0,
+            "estimatedFromVaultMoveRaw": "609924822",
+            "estimatedFromVaultMoveUi": 609.924822
+          },
+          "poolVaultDeltas": [
+            {
+              "accountIndex": 4,
+              "tokenAccount": "HYsEdWsUpobsavHph8ShXALg64wT5ePCJVZ35XZ37tHf",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "15000000",
+              "postRaw": "16374831",
+              "deltaRaw": "1374831",
+              "deltaUi": 1.374831
+            },
+            {
+              "accountIndex": 5,
+              "tokenAccount": "5Q8jZNf9tuQKDGTq32pDqYJa9b9yjfBsoAfGtyyveSbQ",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "decimals": 6,
+              "preRaw": "119870905000",
+              "postRaw": "128100470354",
+              "deltaRaw": "8229565354",
+              "deltaUi": 8229.565354
+            }
+          ],
+          "relevantTokenDeltas": [
+            {
+              "accountIndex": 4,
+              "tokenAccount": "HYsEdWsUpobsavHph8ShXALg64wT5ePCJVZ35XZ37tHf",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "15000000",
+              "postRaw": "16374831",
+              "deltaRaw": "1374831",
+              "deltaUi": 1.374831
+            },
+            {
+              "accountIndex": 5,
+              "tokenAccount": "5Q8jZNf9tuQKDGTq32pDqYJa9b9yjfBsoAfGtyyveSbQ",
+              "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+              "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "decimals": 6,
+              "preRaw": "119870905000",
+              "postRaw": "128100470354",
+              "deltaRaw": "8229565354",
+              "deltaUi": 8229.565354
+            },
+            {
+              "accountIndex": 16,
+              "tokenAccount": "5BK5sqF2vH8o1BBrSukV44ujpu19rpgvJFedGC8GzF9X",
+              "owner": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+              "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+              "decimals": 6,
+              "preRaw": "2154967",
+              "postRaw": "780136",
+              "deltaRaw": "-1374831",
+              "deltaUi": -1.374831
+            },
+            {
+              "accountIndex": 18,
+              "tokenAccount": "2s2Au2bxsvF5cHbdhfP4JaFX8FXp5wXzQxBj15PNPEkD",
+              "owner": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+              "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+              "decimals": 6,
+              "preRaw": "89761543308828",
+              "postRaw": "93888532126521",
+              "deltaRaw": "4126988817693",
+              "deltaUi": 4126988.817693
+            }
+          ]
+        },
+        {
+          "signature": "4e6yitVSDLeBXm7HrikHzKbfjMp1Zg6CHqgJwYqeHJwraYMGVcWKf8mz7FXs2GMtgEgFCWpsjnzVkrHDSTMoyccH",
+          "slot": 421746020,
+          "blockTime": 1779583626,
+          "flowClass": "EXTERNAL_FLOW_CANDIDATE",
+          "signers": [
+            "zeronaXJsbvPZFmzytV4RPXWBHQGMFcRCvoYaDNPiRL"
+          ],
+          "affiliatedSigners": [],
+          "vaultDeltaSummary": {
+            "hopVaultDeltaRaw": "0",
+            "hopVaultDeltaUi": 0,
+            "quoteVaultDeltaRaw": "0",
+            "quoteVaultDeltaUi": 0,
+            "quoteVaultDeltaUsd": 0
+          },
+          "t22": {
+            "allHopAccountDeltaRaw": "0",
+            "observedWithheldRaw": "0",
+            "observedWithheldUi": 0,
+            "estimatedFromVaultMoveRaw": "0",
+            "estimatedFromVaultMoveUi": 0
+          },
+          "poolVaultDeltas": [],
+          "relevantTokenDeltas": []
+        },
+        {
+          "signature": "2uSME6UMf9D7hyUr7jNuH2KRouzDwNCSgJgFykin1Noq71Kh3JNAKn8n2bWCUfrRrSSogYPyXdANw8o263pmzKa2",
+          "slot": 421746020,
+          "blockTime": 1779583626,
+          "flowClass": "EXTERNAL_FLOW_CANDIDATE",
+          "signers": [
+            "VLXAMxYR676GZHpyNoQGmJHdLBPz8WKXHQr1HgtyeWt"
+          ],
+          "affiliatedSigners": [],
+          "vaultDeltaSummary": {
+            "hopVaultDeltaRaw": "0",
+            "hopVaultDeltaUi": 0,
+            "quoteVaultDeltaRaw": "0",
+            "quoteVaultDeltaUi": 0,
+            "quoteVaultDeltaUsd": 0
+          },
+          "t22": {
+            "allHopAccountDeltaRaw": "0",
+            "observedWithheldRaw": "0",
+            "observedWithheldUi": 0,
+            "estimatedFromVaultMoveRaw": "0",
+            "estimatedFromVaultMoveUi": 0
+          },
+          "poolVaultDeltas": [],
+          "relevantTokenDeltas": []
+        },
+        {
+          "signature": "5V5EYK3xbyrodpvAYiqfham9s8EsWQnhn5yPzCV4bpN1uSaQsMfwxV4scphH5GHdTzktU7keHtfKQ4nFZPxkLr3h",
+          "slot": 421746020,
+          "blockTime": 1779583626,
+          "flowClass": "EXTERNAL_FLOW_CANDIDATE",
+          "signers": [
+            "VLXAMxYR676GZHpyNoQGmJHdLBPz8WKXHQr1HgtyeWt"
+          ],
+          "affiliatedSigners": [],
+          "vaultDeltaSummary": {
+            "hopVaultDeltaRaw": "0",
+            "hopVaultDeltaUi": 0,
+            "quoteVaultDeltaRaw": "0",
+            "quoteVaultDeltaUi": 0,
+            "quoteVaultDeltaUsd": 0
+          },
+          "t22": {
+            "allHopAccountDeltaRaw": "0",
+            "observedWithheldRaw": "0",
+            "observedWithheldUi": 0,
+            "estimatedFromVaultMoveRaw": "0",
+            "estimatedFromVaultMoveUi": 0
+          },
+          "poolVaultDeltas": [],
+          "relevantTokenDeltas": []
+        },
+        {
+          "signature": "5aX5GYuLt6v1Cb8TCuk23S1MSnmJ3atprAVCGtHhnSFmMeSAREuW5TkQW9Cetkk3mFJm38i8FSUuXt7aWqjtSVFJ",
+          "slot": 421746020,
+          "blockTime": 1779583626,
+          "flowClass": "EXTERNAL_FLOW_CANDIDATE",
+          "signers": [
+            "VLXAMxYR676GZHpyNoQGmJHdLBPz8WKXHQr1HgtyeWt"
+          ],
+          "affiliatedSigners": [],
+          "vaultDeltaSummary": {
+            "hopVaultDeltaRaw": "0",
+            "hopVaultDeltaUi": 0,
+            "quoteVaultDeltaRaw": "0",
+            "quoteVaultDeltaUi": 0,
+            "quoteVaultDeltaUsd": 0
+          },
+          "t22": {
+            "allHopAccountDeltaRaw": "0",
+            "observedWithheldRaw": "0",
+            "observedWithheldUi": 0,
+            "estimatedFromVaultMoveRaw": "0",
+            "estimatedFromVaultMoveUi": 0
+          },
+          "poolVaultDeltas": [],
+          "relevantTokenDeltas": []
+        },
+        {
+          "signature": "ciM8RK7YGbVip1sMAkjoZRhGYEcmxZjF3f5AJt94koaamubyvorBcjZqPVWgmAvREruGDMnpTPU2hM64B3rLexJ",
+          "slot": 421746020,
+          "blockTime": 1779583626,
+          "flowClass": "EXTERNAL_FLOW_CANDIDATE",
+          "signers": [
+            "VLXAMxYR676GZHpyNoQGmJHdLBPz8WKXHQr1HgtyeWt"
+          ],
+          "affiliatedSigners": [],
+          "vaultDeltaSummary": {
+            "hopVaultDeltaRaw": "0",
+            "hopVaultDeltaUi": 0,
+            "quoteVaultDeltaRaw": "0",
+            "quoteVaultDeltaUi": 0,
+            "quoteVaultDeltaUsd": 0
+          },
+          "t22": {
+            "allHopAccountDeltaRaw": "0",
+            "observedWithheldRaw": "0",
+            "observedWithheldUi": 0,
+            "estimatedFromVaultMoveRaw": "0",
+            "estimatedFromVaultMoveUi": 0
+          },
+          "poolVaultDeltas": [],
+          "relevantTokenDeltas": []
+        }
+      ]
+    }
+  ],
+  "cashRule": "External signer flow is only a candidate. CashRelay still requires exact owned SOL/USDC after > before after harvesting, LP fee collect/remove, and settlement costs.",
+  "next": "Add more HOP venues to HOP_FLOW_POOLS_JSON after creating them; one pool cannot prove two-venue arb flow."
+}

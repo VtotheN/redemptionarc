@@ -1,0 +1,313 @@
+{
+  "verdict": "HOP_CASHABILITY_BLOCKED",
+  "generatedAt": "2026-05-24T01:30:45.515Z",
+  "readOnly": true,
+  "noSend": true,
+  "liveIntentIgnored": {
+    "dryRun": false,
+    "allowLive": true,
+    "liveTxApproved": true,
+    "note": "hop-cashability-gate never builds or sends swap transactions"
+  },
+  "input": {
+    "hopMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+    "usdcMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "amountRaw": "4126988817693",
+    "amountHop": 4126988.817693,
+    "amountSourceKind": "source_tx_positive_hop_delta",
+    "amountSource": {
+      "signature": "8BefJY1vUQuVwXivs4BYr8QcNfGqWnZf6qQQ3LAChz3bwjuY9YNEoXro7YS6S4RpWQa2tkeQiBxAu82p8maEkUB",
+      "selectedOwner": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+      "selectedDeltaRaw": "4126988817693",
+      "deltas": [
+        {
+          "owner": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+          "accountIndex": 18,
+          "preRaw": "89761543308828",
+          "postRaw": "93888532126521",
+          "deltaRaw": "4126988817693"
+        }
+      ]
+    },
+    "quoteUrl": "https://lite-api.jup.ag/swap/v1/quote",
+    "slippageBps": 100,
+    "maxImpactPct": 1,
+    "restrictIntermediateTokens": true,
+    "cycleCostUsd": 1.374831,
+    "minNetUsd": 0.25,
+    "solPriceUsd": null
+  },
+  "ownershipGuards": {
+    "ownedAmmKeys": [
+      "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f",
+      "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV"
+    ],
+    "ownedLpMints": [
+      "J2HNL9QJYrzDQsf9g3gSnPRSfUEWqWW75H5FyVmBzYqq"
+    ],
+    "ownedWallets": [
+      "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+      "BGM3VPeND4xts3J6WeaeRJVFpzAJhyJiqycqYP2vk6dV"
+    ],
+    "ownedLpSnapshots": [
+      {
+        "mint": "J2HNL9QJYrzDQsf9g3gSnPRSfUEWqWW75H5FyVmBzYqq",
+        "supplyRaw": "1340918829",
+        "supplyUi": "1.340918829",
+        "holders": [
+          {
+            "tokenAccount": "3Jr7Tfac6eRsCEh2tW58wnD1747LScUhMUC9mRsCY8E1",
+            "owner": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+            "amountRaw": "1340918829",
+            "amountUi": "1.340918829",
+            "ownedWallet": true
+          }
+        ],
+        "ownedLargestHolder": true
+      }
+    ]
+  },
+  "quotes": {
+    "usdc": {
+      "outputAsset": "USDC",
+      "ok": true,
+      "status": 200,
+      "error": null,
+      "inputAmountRaw": "4126988817693",
+      "inputAmountHop": 4126988.817693,
+      "outAmountRaw": "14877028",
+      "outAmountUi": 14.877028,
+      "outUsd": 14.877028,
+      "priceImpactPct": 0.9848293032701941,
+      "routePlan": [
+        {
+          "label": "Raydium CP",
+          "ammKey": "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f",
+          "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+          "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "inAmount": "4126988817693",
+          "outAmount": "14877028",
+          "percent": 100,
+          "bps": null
+        }
+      ],
+      "routeAmmKeys": [
+        "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f"
+      ],
+      "ownedAmmKeysHit": [
+        "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f"
+      ],
+      "usesOwnedRoute": true,
+      "acceptedExternal": false,
+      "rejectionReasons": [
+        "route uses owned AMM key"
+      ]
+    },
+    "sol": {
+      "outputAsset": "SOL",
+      "ok": true,
+      "status": 200,
+      "error": null,
+      "inputAmountRaw": "4126988817693",
+      "inputAmountHop": 4126988.817693,
+      "outAmountRaw": "173025080",
+      "outAmountUi": 0.17302508,
+      "outUsd": null,
+      "priceImpactPct": 0.9848285153500982,
+      "routePlan": [
+        {
+          "label": "Raydium CP",
+          "ammKey": "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f",
+          "inputMint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+          "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "inAmount": "4126988817693",
+          "outAmount": "14877028",
+          "percent": 100,
+          "bps": null
+        },
+        {
+          "label": "GoonFi V2",
+          "ammKey": "EEUNhHsRoUVgJUFpkupmdF4v7uLUw1zhYLp7u9s8zFqG",
+          "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "outputMint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+          "inAmount": "14877028",
+          "outAmount": "14891398",
+          "percent": 100,
+          "bps": null
+        },
+        {
+          "label": "GoonFi V2",
+          "ammKey": "4rJggoVMajEUtipev1XhSMjESYk8Zibz6CDHPtUe1mem",
+          "inputMint": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+          "outputMint": "So11111111111111111111111111111111111111112",
+          "inAmount": "14891398",
+          "outAmount": "173025080",
+          "percent": 100,
+          "bps": null
+        }
+      ],
+      "routeAmmKeys": [
+        "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f",
+        "EEUNhHsRoUVgJUFpkupmdF4v7uLUw1zhYLp7u9s8zFqG",
+        "4rJggoVMajEUtipev1XhSMjESYk8Zibz6CDHPtUe1mem"
+      ],
+      "ownedAmmKeysHit": [
+        "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f"
+      ],
+      "usesOwnedRoute": true,
+      "acceptedExternal": false,
+      "rejectionReasons": [
+        "route uses owned AMM key",
+        "SOL output lacks USD valuation"
+      ]
+    }
+  },
+  "cashMath": {
+    "primaryOutUsd": 14.877028,
+    "cycleCostUsd": 1.374831,
+    "primaryNetCashUsd": 13.502196999999999,
+    "bestExternalHopRawAtImpact": "0",
+    "bestExternalHopUiAtImpact": 0,
+    "bestExternalOutUsdAtImpact": null,
+    "bestExternalNetUsdAtImpact": null
+  },
+  "search": {
+    "best": null,
+    "probes": [
+      {
+        "inputAmountRaw": "2063494408847",
+        "inputAmountHop": 2063494.408847,
+        "outUsd": 14.431547,
+        "priceImpactPct": 0.9705671559025247,
+        "acceptedExternal": false,
+        "rejectionReasons": [
+          "route uses owned AMM key"
+        ],
+        "ownedAmmKeysHit": [
+          "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f"
+        ]
+      },
+      {
+        "inputAmountRaw": "1031747204423",
+        "inputAmountHop": 1031747.204423,
+        "outUsd": 13.6161,
+        "priceImpactPct": 0.9444604866663531,
+        "acceptedExternal": false,
+        "rejectionReasons": [
+          "route uses owned AMM key"
+        ],
+        "ownedAmmKeysHit": [
+          "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f"
+        ]
+      },
+      {
+        "inputAmountRaw": "515873602211",
+        "inputAmountHop": 515873.602211,
+        "outUsd": 12.233595,
+        "priceImpactPct": 0.9001993356950088,
+        "acceptedExternal": false,
+        "rejectionReasons": [
+          "route uses owned AMM key"
+        ],
+        "ownedAmmKeysHit": [
+          "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f"
+        ]
+      },
+      {
+        "inputAmountRaw": "257936801105",
+        "inputAmountHop": 257936.801105,
+        "outUsd": 10.168654,
+        "priceImpactPct": 0.8340899099096262,
+        "acceptedExternal": false,
+        "rejectionReasons": [
+          "route uses owned AMM key"
+        ],
+        "ownedAmmKeysHit": [
+          "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f"
+        ]
+      },
+      {
+        "inputAmountRaw": "128968400552",
+        "inputAmountHop": 128968.400552,
+        "outUsd": 7.602247,
+        "priceImpactPct": 0.7519259707992495,
+        "acceptedExternal": false,
+        "rejectionReasons": [
+          "route uses owned AMM key"
+        ],
+        "ownedAmmKeysHit": [
+          "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f"
+        ]
+      },
+      {
+        "inputAmountRaw": "64484200276",
+        "inputAmountHop": 64484.200276,
+        "outUsd": 5.052105,
+        "priceImpactPct": 0.6702827352767524,
+        "acceptedExternal": false,
+        "rejectionReasons": [
+          "route uses owned AMM key"
+        ],
+        "ownedAmmKeysHit": [
+          "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f"
+        ]
+      },
+      {
+        "inputAmountRaw": "32242100138",
+        "inputAmountHop": 32242.100138,
+        "outUsd": 3.023598,
+        "priceImpactPct": 0.6053397693901128,
+        "acceptedExternal": false,
+        "rejectionReasons": [
+          "route uses owned AMM key"
+        ],
+        "ownedAmmKeysHit": [
+          "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f"
+        ]
+      },
+      {
+        "inputAmountRaw": "16121050069",
+        "inputAmountHop": 16121.050069,
+        "outUsd": 1.67695,
+        "priceImpactPct": 0.5622265435277769,
+        "acceptedExternal": false,
+        "rejectionReasons": [
+          "route uses owned AMM key"
+        ],
+        "ownedAmmKeysHit": [
+          "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f"
+        ]
+      },
+      {
+        "inputAmountRaw": "8060525034",
+        "inputAmountHop": 8060.525034,
+        "outUsd": 0.886919,
+        "priceImpactPct": 0.536933604144462,
+        "acceptedExternal": false,
+        "rejectionReasons": [
+          "route uses owned AMM key"
+        ],
+        "ownedAmmKeysHit": [
+          "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f"
+        ]
+      },
+      {
+        "inputAmountRaw": "4030262517",
+        "inputAmountHop": 4030.262517,
+        "outUsd": 0.456651,
+        "priceImpactPct": 0.523158861781454,
+        "acceptedExternal": false,
+        "rejectionReasons": [
+          "route uses owned AMM key"
+        ],
+        "ownedAmmKeysHit": [
+          "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f"
+        ]
+      }
+    ]
+  },
+  "rejectionReasons": [
+    "USDC quote: route uses owned AMM key"
+  ],
+  "next": "Do not count harvested HOP as profit. Find non-owned liquidity or a separate SOL/USDC source."
+}
