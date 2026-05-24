@@ -1,0 +1,137 @@
+{
+  "verdict": "ATOM_ENCHANCEDBLOCK_CASH_GATE_BLOCKED",
+  "generatedAt": "2026-05-24T02:15:12.808Z",
+  "noSend": true,
+  "dryRun": false,
+  "allowLive": true,
+  "liveIntentIgnored": "This planner never sends transactions. Deploys, closes, upgrades, bundles, and retrieves require separate exact approval.",
+  "architecture": {
+    "atomIckk": "multi-slot capital window; deployable actuator, not the cash source",
+    "enchancedblock": "authority-controlled internal price plus external Orca Whirlpool settlement source",
+    "hopRedeemVault": "required bridge from HOP/accounting units to spendable SOL/USDC",
+    "cashRelay": "final judge; only SOL/USDC delta after costs passes"
+  },
+  "deploymentPosition": {
+    "userClaimAccepted": "An unused program can be closed/upgraded/redeployed if its authority and program keypair/data length allow it.",
+    "deploymentDoesNotChangeCashGate": "Deployability removes an engineering blocker, not the HOP redeem/CashRelay proof requirement.",
+    "atomProgramId": "BxJMJLxXJhKvuhvvxY57wYY69CAs9RCQWBv9JPCtm9Kx",
+    "enchancedblockProgramId": "61hviwfoDk6ygzJHJaDG2tsoWbBpUYWdNJnSSfRA1vPh",
+    "csdmProgramId": "Q9FMc5YLqjJe96geFtg43ocfyrpJYM2WDHkQEqh8aNv",
+    "accountProbes": {
+      "BxJMJLxXJhKvuhvvxY57wYY69CAs9RCQWBv9JPCtm9Kx": {
+        "pubkey": "BxJMJLxXJhKvuhvvxY57wYY69CAs9RCQWBv9JPCtm9Kx",
+        "exists": false,
+        "executable": false,
+        "ownerProgram": null,
+        "dataLen": 0
+      },
+      "61hviwfoDk6ygzJHJaDG2tsoWbBpUYWdNJnSSfRA1vPh": {
+        "pubkey": "61hviwfoDk6ygzJHJaDG2tsoWbBpUYWdNJnSSfRA1vPh",
+        "exists": true,
+        "executable": true,
+        "ownerProgram": "BPFLoaderUpgradeab1e11111111111111111111111",
+        "dataLen": 36
+      },
+      "Q9FMc5YLqjJe96geFtg43ocfyrpJYM2WDHkQEqh8aNv": {
+        "pubkey": "Q9FMc5YLqjJe96geFtg43ocfyrpJYM2WDHkQEqh8aNv",
+        "exists": true,
+        "executable": true,
+        "ownerProgram": "BPFLoaderUpgradeab1e11111111111111111111111",
+        "dataLen": 36
+      }
+    }
+  },
+  "investigations": {
+    "atom": {
+      "repoPath": "/Users/velon/Desktop/atom_ickk",
+      "exists": true,
+      "flashOpenFound": true,
+      "borrowerExitFound": true,
+      "keeperLiquidateFound": true,
+      "hasTokenMintConstraint": true,
+      "hasTokenVaultConstraint": true,
+      "rejectsZeroBorrow": true,
+      "enforcesMaxDeadlineSlots": true,
+      "enforcesBorrowerExitBeforeDeadline": true,
+      "hasPermissionlessLiquidationAfterDeadline": true,
+      "supportsMultiSlotWindow": true,
+      "deployableLocalPrimitive": true
+    },
+    "enchancedblock": {
+      "repoPath": "/Users/velon/gh-src-vtothen/EXPERIMENTO-ENCHANCEDBLOCK",
+      "exists": true,
+      "hasRealOrcaExecutor": true,
+      "hasForwardCycle": true,
+      "hasInverseCycle": true,
+      "hasJitoBundleBuilder": true,
+      "hasAdminRebalance": true,
+      "externalSourceClass": "external_orca_whirlpool"
+    },
+    "enchancedblockGate": {
+      "path": null,
+      "exists": false,
+      "verdict": null,
+      "pass": false,
+      "gatePass": null,
+      "simErr": null,
+      "forwardEdgeBps": null,
+      "inverseEdgeBps": null,
+      "chosenDirection": null,
+      "rejectionReasons": [
+        "ENCHANCEDBLOCK_GATE_RECEIPT_PATH is required for exact current edge proof"
+      ]
+    },
+    "hopRedeem": {
+      "receiptPath": null,
+      "receiptExists": false,
+      "redeemable": false,
+      "backingAsset": null,
+      "vaultExists": false,
+      "redeemInstruction": null,
+      "exactBurnForCashProof": false,
+      "localHopRedeemProgramFound": false,
+      "bhivePatternFound": true,
+      "rejectionReasons": [
+        "HOP_REDEEM_RECEIPT_PATH is required; no HOP burn/redeem vault proof is wired",
+        "no local HOP redeem program found in RedemptionArc"
+      ]
+    },
+    "cashRelay": {
+      "receiptPath": "receipts/REDEMPTION-CASH-RELAY-LATEST.json",
+      "exists": true,
+      "verdict": "REDEMPTION_CASH_RELAY_BLOCKED",
+      "pass": false,
+      "netCashUsd": 0,
+      "rejectionReasons": [
+        "CashRelay is not ready: REDEMPTION_CASH_RELAY_BLOCKED"
+      ]
+    }
+  },
+  "answers": {
+    "atomIckk": "YES as local/deployable primitive; mainnet executable proof still required before live.",
+    "enchancedblock": "YES as an external-source design; current positive edge still needs an exact passing gate receipt.",
+    "hopRedeemVault": "NOT PROVEN. RedemptionArc HOP is still non-cash until a HOP redeem vault or external settlement route exists.",
+    "cashRelayInvariant": "NOT PROVEN. A unified receipt must show spendable SOL/USDC after atom_ickk, ENCHANCEDBLOCK, repay, retrieve, costs, and inventory liabilities."
+  },
+  "cashProofGate": {
+    "pass": false,
+    "requiresAtomExecutableOrDeployReceipt": true,
+    "requiresCurrentEnchancedblockEdgeReceipt": true,
+    "requiresHopBurnRedeemToSolUsdc": true,
+    "requiresCashRelayReadyNoLive": true,
+    "requiresNoHopCustomTokenProfit": true
+  },
+  "rejectionReasons": [
+    "atom_ickk is not confirmed executable on mainnet; deploy/redeploy receipt required before live",
+    "ENCHANCEDBLOCK_GATE_RECEIPT_PATH is required for exact current edge proof",
+    "HOP_REDEEM_RECEIPT_PATH is required; no HOP burn/redeem vault proof is wired",
+    "no local HOP redeem program found in RedemptionArc",
+    "CashRelay is not ready: REDEMPTION_CASH_RELAY_BLOCKED"
+  ],
+  "nextRequiredExactBuild": [
+    "Deploy or redeploy atom_ickk only behind separate approval; record program ID, pool, maxDeadlineSlots, flash fee, and vault liquidity.",
+    "Emit an ENCHANCEDBLOCK no-send source receipt with chosen direction, exact route, simErr=null, positive SOL/USDC post balances, and all costs.",
+    "Build or wire a HOP redeem vault receipt: burn/lock HOP -> SOL/USDC from backing vault, with liabilities priced.",
+    "Feed the resulting SOL/USDC source receipt into RedemptionCashRelay and require REDEMPTION_CASH_RELAY_READY_NO_LIVE before any live path."
+  ]
+}
