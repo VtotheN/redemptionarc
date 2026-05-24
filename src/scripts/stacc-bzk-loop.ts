@@ -176,6 +176,7 @@ async function runOnce(iteration: number) {
     runStep("stacc-social-fee-source-scan", "npm run stacc-social-fee-source-scan"),
     runStep("stacc-social-fee-claim-sim", "npm run stacc-social-fee-claim-sim"),
     runStep("stacc-social-authority-profile", "npm run stacc-social-authority-profile"),
+    runStep("stacc-local-keypair-inventory", "npm run stacc-local-keypair-inventory"),
     runStep("orca-owned-fee-source-scan", "npm run orca-owned-fee-source-scan", {
       INCLUDE_STACC_SCREENSHOT_AUTHORITIES: "true",
       OWNED_FEE_MAX_CONFIGS: process.env.OWNED_FEE_MAX_CONFIGS ?? "12"
@@ -203,6 +204,7 @@ async function runOnce(iteration: number) {
   const socialFee = readJson("receipts/STACC-SOCIAL-FEE-SOURCE-LATEST.json");
   const socialFeeClaimSim = readJson("receipts/STACC-SOCIAL-FEE-CLAIM-SIM-LATEST.json");
   const socialAuthorityProfile = readJson("receipts/STACC-SOCIAL-AUTHORITY-PROFILE-LATEST.json");
+  const localKeypairInventory = readJson("receipts/STACC-LOCAL-KEYPAIR-INVENTORY-LATEST.json");
   const jupiter = readJson("receipts/JUPITER-INDEX-WATCH-LATEST.json");
   const cycleSim = readJson("receipts/ORCA-OWNED-FEE-CYCLE-SIM-LATEST.json");
   const hopFlow = readJson("receipts/HOP-EXTERNAL-FLOW-WATCH-LATEST.json");
@@ -229,6 +231,7 @@ async function runOnce(iteration: number) {
   const socialFeeObservedUsd = number(socialFeeRecent.positiveNetUsd);
   const socialFeeObserved = socialFee?.verdict === "STACC_SOCIAL_FEE_SOURCE_OBSERVED_NO_LIVE";
   const socialClaimSimOk = socialFeeClaimSim?.verdict === "STACC_SOCIAL_FEE_CLAIM_SIM_OK_NO_LIVE";
+  const localKeypairMatchCount = array(localKeypairInventory?.matches).length;
   const hopFlowSummary = record(hopFlow?.summary);
   const hopExternalEvents = number(hopFlowSummary.externalEvents) ?? 0;
   const hopExternalFlowUsd = number(hopFlowSummary.externalQuoteInUsd) ?? 0;
@@ -258,6 +261,7 @@ async function runOnce(iteration: number) {
       : null,
     socialFeeCompatibility.pass === true ? null : "social-fee source is not yet a fresh exact executable receipt",
     socialClaimSimOk ? null : "social-fee claim sim is not OK for the local signer set",
+    localKeypairMatchCount > 0 ? null : "local keypair inventory did not find the Pump social-claim authority signer",
     hopExternalFlowDetected
       ? `HOP external flow observed (${hopExternalFlowUsd.toFixed(6)} USD), but no spendable USDC/SOL fee receipt yet`
       : null,
@@ -345,6 +349,13 @@ async function runOnce(iteration: number) {
         solBalance: socialAuthorityProfile.solBalance ?? null,
         tokenAccounts: socialAuthorityProfile.tokenAccounts ?? null,
         recentSignatures: socialAuthorityProfile.recentSignatures ?? null,
+      } : null,
+      localKeypairInventory: localKeypairInventory ? {
+        verdict: localKeypairInventory.verdict ?? null,
+        targetPubkeys: localKeypairInventory.targetPubkeys ?? null,
+        candidateCount: localKeypairInventory.candidateCount ?? null,
+        matches: localKeypairInventory.matches ?? null,
+        topBySol: localKeypairInventory.topBySol ?? null,
       } : null
     },
     wzmaPulse,
