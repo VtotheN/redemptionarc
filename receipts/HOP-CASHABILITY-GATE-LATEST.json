@@ -1,6 +1,6 @@
 {
   "verdict": "HOP_CASHABILITY_BLOCKED",
-  "generatedAt": "2026-05-24T06:17:39.882Z",
+  "generatedAt": "2026-05-24T06:34:59.307Z",
   "readOnly": true,
   "noSend": true,
   "liveIntentIgnored": {
@@ -101,10 +101,10 @@
       "error": null,
       "inputAmountRaw": "93888532126521",
       "inputAmountHop": 93888532.126521,
-      "outAmountRaw": "233649754",
-      "outAmountUi": 0.233649754,
+      "outAmountRaw": "233964289",
+      "outAmountUi": 0.233964289,
       "outUsd": null,
-      "priceImpactPct": 0.9994148527139374,
+      "priceImpactPct": 0.9994146360593541,
       "routePlan": [
         {
           "label": "Raydium CP",
@@ -121,26 +121,26 @@
           "ammKey": "GMCJvYGf5Ex2ARiMquaBDqU6iKM8uiEQkB8jCnoNfHpC",
           "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
           "outputMint": "So11111111111111111111111111111111111111112",
-          "inAmount": "20084910",
-          "outAmount": "233641065",
-          "percent": 99,
+          "inAmount": "19685725",
+          "outAmount": "229305132",
+          "percent": 98,
           "bps": null
         },
         {
-          "label": "Quantum",
-          "ammKey": "ugobDeUHRY34mq1yK94eYrepgj2KVmUkHiaV8vyUD42",
+          "label": "Whirlpool",
+          "ammKey": "83v8iPyZihDEjDdY8RdZddyZNyUtXngz69Lgo9Kt5d6d",
           "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
           "outputMint": "So11111111111111111111111111111111111111112",
-          "inAmount": "746",
-          "outAmount": "8689",
-          "percent": 1,
+          "inAmount": "399931",
+          "outAmount": "4659157",
+          "percent": 2,
           "bps": null
         }
       ],
       "routeAmmKeys": [
         "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f",
         "GMCJvYGf5Ex2ARiMquaBDqU6iKM8uiEQkB8jCnoNfHpC",
-        "ugobDeUHRY34mq1yK94eYrepgj2KVmUkHiaV8vyUD42"
+        "83v8iPyZihDEjDdY8RdZddyZNyUtXngz69Lgo9Kt5d6d"
       ],
       "ownedAmmKeysHit": [
         "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f"

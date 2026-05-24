@@ -1,0 +1,299 @@
+{
+  "verdict": "STACC_LOCAL_KEYPAIR_TARGET_NOT_FOUND_READ_ONLY",
+  "generatedAt": "2026-05-24T06:36:25.701Z",
+  "readOnly": true,
+  "noSend": true,
+  "targetPubkeys": [
+    "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM"
+  ],
+  "searchRoots": [
+    "/Users/velon/.config/solana",
+    "/Users/velon/.keys",
+    "/Users/velon/Desktop/redemptionarc/keys"
+  ],
+  "candidateCount": 52,
+  "matches": [],
+  "topBySol": [
+    {
+      "pubkey": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+      "target": false,
+      "sol": 4.125808726,
+      "lamports": 4125808726,
+      "fileBasename": "crank.json"
+    },
+    {
+      "pubkey": "FvkP2XzbCK6PspjhZ44sae5vbQPZQGmVkCv1dUC2pAZ9",
+      "target": false,
+      "sol": 0.82615175,
+      "lamports": 826151750,
+      "fileBasename": "phantom-crank.json"
+    },
+    {
+      "pubkey": "BGM3VPeND4xts3J6WeaeRJVFpzAJhyJiqycqYP2vk6dV",
+      "target": false,
+      "sol": 0.050251528,
+      "lamports": 50251528,
+      "fileBasename": "treasury.json"
+    },
+    {
+      "pubkey": "FdpruPJgPzyNefSxkU5JqifteeDPqwZPfBzcmNb7NNxY",
+      "target": false,
+      "sol": 0.029995694,
+      "lamports": 29995694,
+      "fileBasename": "phantom-treasury.json"
+    },
+    {
+      "pubkey": "3TUioqNLgZskQa8UAhxLoFHZ9bc2e1FZs2bYFjWPrSyW",
+      "target": false,
+      "sol": 0.0169824,
+      "lamports": 16982400,
+      "fileBasename": "underwheel-marginfi-account.json"
+    },
+    {
+      "pubkey": "9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz",
+      "target": false,
+      "sol": 0.0169824,
+      "lamports": 16982400,
+      "fileBasename": "marginfi-account.json"
+    },
+    {
+      "pubkey": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
+      "target": false,
+      "sol": 0.003085652,
+      "lamports": 3085652,
+      "fileBasename": "id.json"
+    },
+    {
+      "pubkey": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
+      "target": false,
+      "sol": 0.00282576,
+      "lamports": 2825760,
+      "fileBasename": "phantom-hop-1.json"
+    },
+    {
+      "pubkey": "HLyJtPmLy1a8ozovtURsV6nW9gTXAdHo8u9FvzXe1gdp",
+      "target": false,
+      "sol": 0.00282576,
+      "lamports": 2825760,
+      "fileBasename": "phantom-hop-2.json"
+    },
+    {
+      "pubkey": "gPaEVBZyTpM6GACSo2Lnc2oABdDgGfLyBSHC9fESdAB",
+      "target": false,
+      "sol": 0.00282576,
+      "lamports": 2825760,
+      "fileBasename": "phantom-hop-3.json"
+    },
+    {
+      "pubkey": "75vwRvoUsSRws6nAjqyw6kYjkGyAXv8aAPUJyC2umKPt",
+      "target": false,
+      "sol": 0.00282576,
+      "lamports": 2825760,
+      "fileBasename": "phantom-hop-4.json"
+    },
+    {
+      "pubkey": "AKjuodXiTwwCVtZzrnGnYHYvZhEB3HH728JQrY7ovXDA",
+      "target": false,
+      "sol": 0.00282576,
+      "lamports": 2825760,
+      "fileBasename": "redemption-hop-mint.json"
+    },
+    {
+      "pubkey": "7JDkeT6N5zAvF1w4SPcnLcr8nR5Px2RdLniNrMCyB3bR",
+      "target": false,
+      "sol": 0.0021576,
+      "lamports": 2157600,
+      "fileBasename": "kpx9-vault-b.json"
+    },
+    {
+      "pubkey": "Qv51R47g7pMDxa3UofXaz8cNr8pwRSXaNufgnEWX8Yk",
+      "target": false,
+      "sol": 0.0021576,
+      "lamports": 2157600,
+      "fileBasename": "pool-vault-b.json"
+    },
+    {
+      "pubkey": "98a3z7NS9piL7YBqo3WtFu4mJQWLonwc6Jxip5mLeim7",
+      "target": false,
+      "sol": 0.00203928,
+      "lamports": 2039280,
+      "fileBasename": "phantom-owned-usdc-fee-vault.json"
+    },
+    {
+      "pubkey": "7etFhsHcyX2zwJa6fJzLkCBx1fzVMgwxaFoPG8PgaRwX",
+      "target": false,
+      "sol": 0.00203928,
+      "lamports": 2039280,
+      "fileBasename": "kpx9-vault-a.json"
+    },
+    {
+      "pubkey": "4QD4GgnjRvjETqWLT5e3x7SHtJSzs9kShUPLfyHcTu7d",
+      "target": false,
+      "sol": 0.00203928,
+      "lamports": 2039280,
+      "fileBasename": "pool-vault-a.json"
+    },
+    {
+      "pubkey": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
+      "target": false,
+      "sol": 0.00164256,
+      "lamports": 1642560,
+      "fileBasename": "orca-config.json"
+    },
+    {
+      "pubkey": "BajtYir7NtMgmLYJDu3Sy4GH1x55MyQqjhczkYw59T3R",
+      "target": false,
+      "sol": 0.0014616,
+      "lamports": 1461600,
+      "fileBasename": "kpx9-position-mint.json"
+    },
+    {
+      "pubkey": "2UkyZsHdx4ftkVi3xSoRCLAzF4FaRV7G5fCtW7FrDrHu",
+      "target": false,
+      "sol": 0.0014616,
+      "lamports": 1461600,
+      "fileBasename": "position-mint.json"
+    },
+    {
+      "pubkey": "7Wg8aXuPijrmH4svDmqArMeMAWF3ZusgrznJ6ymprBAN",
+      "target": false,
+      "sol": 0,
+      "lamports": 0,
+      "fileBasename": "gas-station-admin.json"
+    },
+    {
+      "pubkey": "6T3oSSG3QsmYqFhJt1QN5BtugUNcvZjxNiRu4gakM3Yu",
+      "target": false,
+      "sol": 0,
+      "lamports": 0,
+      "fileBasename": "nawebona-vladimir-admin.json"
+    },
+    {
+      "pubkey": "FLuXmSjhRPd3EeUiUuvr8ouLR5knuh9XzMqKrZRnJ85d",
+      "target": false,
+      "sol": 0,
+      "lamports": 0,
+      "fileBasename": "nawebona-vladimir-crank.json"
+    },
+    {
+      "pubkey": "GTcUiKCywte2LQankT3pNwP4HBfgjp854EPzB38QCb1B",
+      "target": false,
+      "sol": 0,
+      "lamports": 0,
+      "fileBasename": "nawebona-vladimir-ring-1.json"
+    },
+    {
+      "pubkey": "CegzNEdsaBHndXuCNrDF4qDZRwqsu3HjvaEX8yw4iFby",
+      "target": false,
+      "sol": 0,
+      "lamports": 0,
+      "fileBasename": "nawebona-vladimir-ring-2.json"
+    },
+    {
+      "pubkey": "AdXpCSoUyY472rf6Tr3yuUuEZo4enRfoqzQWYU8cNXNJ",
+      "target": false,
+      "sol": 0,
+      "lamports": 0,
+      "fileBasename": "nawebona-vladimir-ring-3.json"
+    },
+    {
+      "pubkey": "A7Bb8icHUfBrkEZJ9PY8pHipaJg2P1u5V8Sfb6F5gC9y",
+      "target": false,
+      "sol": 0,
+      "lamports": 0,
+      "fileBasename": "nawebona-vladimir-ring-4.json"
+    },
+    {
+      "pubkey": "fzBFYiDyvu5kNexJuBZDmoG1gL76ZWXEL8YE1y7NtwM",
+      "target": false,
+      "sol": 0,
+      "lamports": 0,
+      "fileBasename": "nawebona-vladimir-treasury.json"
+    },
+    {
+      "pubkey": "FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp",
+      "target": false,
+      "sol": 0,
+      "lamports": 0,
+      "fileBasename": "payer-candidate-2.json"
+    },
+    {
+      "pubkey": "Ge5fCyRkNy4gPTAbTvr7i3XDDkZ8FiEAihh83wD9oi9q",
+      "target": false,
+      "sol": 0,
+      "lamports": 0,
+      "fileBasename": "phantom-ring-1.json"
+    },
+    {
+      "pubkey": "FdPYAFnJ5P9X1QLtoydEbFoNgNz4XeRnyTq6EPuZrHMp",
+      "target": false,
+      "sol": 0,
+      "lamports": 0,
+      "fileBasename": "phantom-ring-2.json"
+    },
+    {
+      "pubkey": "GqW1n2EGdaqVjcnMsm1XuN8p71NbyAhk1kpkig9wWPsa",
+      "target": false,
+      "sol": 0,
+      "lamports": 0,
+      "fileBasename": "phantom-ring-3.json"
+    },
+    {
+      "pubkey": "8EwaiE1tXUAM4fGZXHHwoJnfCggrvvHiaBZsD7asci57",
+      "target": false,
+      "sol": 0,
+      "lamports": 0,
+      "fileBasename": "phantom-ring-4.json"
+    },
+    {
+      "pubkey": "9vnbNsvbKbweEvLMud1y5DjjJYShk9N1rcKJbJt62yHd",
+      "target": false,
+      "sol": 0,
+      "lamports": 0,
+      "fileBasename": "tiotulio-prime-admin.json"
+    },
+    {
+      "pubkey": "G9K8WAprCVdZKYhq2DzuT6V4zAt2V6x2YLa4rJcnz6kL",
+      "target": false,
+      "sol": 0,
+      "lamports": 0,
+      "fileBasename": "tiotulio-prime-crank.json"
+    },
+    {
+      "pubkey": "5KqJ7NjQyCbqJhbXSYRn2SmuGtmoPdgG4kb4yKs8qGEU",
+      "target": false,
+      "sol": 0,
+      "lamports": 0,
+      "fileBasename": "tiotulio-prime-ring-1.json"
+    },
+    {
+      "pubkey": "CsrAPSwJiEpDfTCQiSQJX5NV9etv8Y1Bbcph1bhr8MtA",
+      "target": false,
+      "sol": 0,
+      "lamports": 0,
+      "fileBasename": "tiotulio-prime-ring-2.json"
+    },
+    {
+      "pubkey": "4E9Y6JQfMLKUcafycdtVPXKkVmmxTLUeUcD6jRhapAAE",
+      "target": false,
+      "sol": 0,
+      "lamports": 0,
+      "fileBasename": "tiotulio-prime-ring-3.json"
+    },
+    {
+      "pubkey": "FHftfNtujuzJyn323U2WNfSWcJFXg94JUqCVhxLQRBaQ",
+      "target": false,
+      "sol": 0,
+      "lamports": 0,
+      "fileBasename": "tiotulio-prime-ring-4.json"
+    },
+    {
+      "pubkey": "3pytadruqrd4yygPQ9uF8BDDLhPpygQmXwDrHHvB4YcG",
+      "target": false,
+      "sol": 0,
+      "lamports": 0,
+      "fileBasename": "tiotulio-prime-treasury.json"
+    }
+  ],
+  "note": "Secret key material is never printed. Non-matching keypair paths are reduced to basenames in the receipt; exact file path is recorded only for target matches."
+}
