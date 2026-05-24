@@ -1,0 +1,107 @@
+{
+  "verdict": "CSDM_IX7_SIM_READY_NO_LIVE",
+  "generatedAt": "2026-05-24T03:12:51.760Z",
+  "noSend": true,
+  "dryRun": true,
+  "allowLive": false,
+  "liveIntentIgnored": "This script forces CSDM_DRY_RUN=true, removes CSDM_LIVE, and never sends a transaction.",
+  "inputs": {
+    "keeperEnvPath": "/Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/.env.keeper",
+    "simCwd": "/Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/enchancedblock/keeper",
+    "preflightPath": "receipts/CSDM-UPGRADE-PREFLIGHT-LATEST.json",
+    "liveShapePath": "receipts/CSDM-LIVE-SHAPE-SCAN-LATEST.json",
+    "simulatorCommand": "CSDM_DRY_RUN=true FORCE_CSDM_SIMULATE=true npm run csdm:simulate",
+    "envSecretsRecorded": false
+  },
+  "upstreamProofs": {
+    "csdmProgramId": "Q9FMc5YLqjJe96geFtg43ocfyrpJYM2WDHkQEqh8aNv",
+    "programDataSlot": "421765950",
+    "liveElfPrefixSha256": "e457e655baa0513a5f1b3e93fe5631e79b2d557ba814ae7841d5bfd6a4250942",
+    "liveElfPrefixMatchesArtifact": true,
+    "lastUpgradeSignature": "3UEpq6Fp2qunYMCgZQN19kZQP4LBpUffaqR5bCFo59brFD5cj5nempaWyZoKfjQFTvuXaSeUCCcTtQqJWHA5LvnG",
+    "liveShapePass": true,
+    "backingRaw": "200000000",
+    "maxAmountRaw": "100000000",
+    "minRepayDeltaRawFromConfig": "250000",
+    "runtimeBackingOracleToPass": "GyJzwayA96Y82LCjMdhvwXZx2PYxyVYJ6co5T3BCaZnD"
+  },
+  "simulation": {
+    "mode": "csdm_flash_lend_backing_simulate",
+    "csdmProgram": "Q9FMc5YLqjJe96geFtg43ocfyrpJYM2WDHkQEqh8aNv",
+    "borrowerIx": "0x0A_csdm_flash_borrower",
+    "flashAmountAtoms": "50000000",
+    "minRepayDeltaAtoms": "250000",
+    "marketPriceUsd": 84.691,
+    "estimatedUsdcOut": 4.269916,
+    "fairUsdcOracle": 4.23455,
+    "surplusVsOracle": 0.035366,
+    "edgeOracleBps": 53,
+    "dynamicBaitBps": 200,
+    "expectedPool1SolOutAtoms": "51441390",
+    "repayRequiredAtoms": "50250000",
+    "gatePass": true,
+    "solvencyPass": true,
+    "err": null,
+    "unitsConsumed": 58689,
+    "judge": "PASS",
+    "firstLiveSig": null,
+    "logTail": [
+      "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc success",
+      "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [3]",
+      "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 76 of 546099 compute units",
+      "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success",
+      "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [3]",
+      "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 83 of 544970 compute units",
+      "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success",
+      "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [3]",
+      "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 83 of 543822 compute units",
+      "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success",
+      "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [3]",
+      "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 76 of 542695 compute units",
+      "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success",
+      "Program 61hviwfoDk6ygzJHJaDG2tsoWbBpUYWdNJnSSfRA1vPh consumed 45181 of 587787 compute units",
+      "Program 61hviwfoDk6ygzJHJaDG2tsoWbBpUYWdNJnSSfRA1vPh success",
+      "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [2]",
+      "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 131 of 541469 compute units",
+      "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success",
+      "Program Q9FMc5YLqjJe96geFtg43ocfyrpJYM2WDHkQEqh8aNv consumed 58583 of 599894 compute units",
+      "Program Q9FMc5YLqjJe96geFtg43ocfyrpJYM2WDHkQEqh8aNv success"
+    ]
+  },
+  "commandResult": {
+    "status": 0,
+    "signal": null,
+    "stdoutTail": [
+      "    \"Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [3]\",",
+      "    \"Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 76 of 542695 compute units\",",
+      "    \"Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success\",",
+      "    \"Program 61hviwfoDk6ygzJHJaDG2tsoWbBpUYWdNJnSSfRA1vPh consumed 45181 of 587787 compute units\",",
+      "    \"Program 61hviwfoDk6ygzJHJaDG2tsoWbBpUYWdNJnSSfRA1vPh success\",",
+      "    \"Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [2]\",",
+      "    \"Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 131 of 541469 compute units\",",
+      "    \"Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success\",",
+      "    \"Program Q9FMc5YLqjJe96geFtg43ocfyrpJYM2WDHkQEqh8aNv consumed 58583 of 599894 compute units\",",
+      "    \"Program Q9FMc5YLqjJe96geFtg43ocfyrpJYM2WDHkQEqh8aNv success\"",
+      "  ]",
+      "}"
+    ],
+    "stderrTail": []
+  },
+  "cashProofGate": {
+    "pass": false,
+    "reason": "Simulation proves ix7 mechanics only. It is not spendable SOL/USDC wallet growth until a separately approved live transaction confirms post balances after all costs.",
+    "requiredForCashRelay": [
+      "exact live approval receipt for one ix7 transaction or bundle",
+      "confirmed signature",
+      "beforeRaw/afterRaw for SOL or USDC authority-exclusive vault/wallet",
+      "costsUsd, liabilitiesUsd, and inventoryDrawUsd priced",
+      "RedemptionCashRelay source receipt with payerClass=external_protocol"
+    ]
+  },
+  "rejections": [],
+  "nextRequiredExactBuild": [
+    "Create a one-shot live approval planner for ix7 using the exact simulated accounts and signers.",
+    "Live approval must still be manual; do not send from this simulator.",
+    "After confirmation, emit a CashRelay source receipt with real SOL/USDC beforeRaw and afterRaw."
+  ]
+}

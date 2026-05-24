@@ -23,6 +23,7 @@
     "csdm-upgrade-preflight": "tsx src/scripts/csdm-upgrade-preflight.ts",
     "csdm-live-shape-scan": "tsx src/scripts/csdm-live-shape-scan.ts",
     "csdm-upgrade-approval-plan": "tsx src/scripts/csdm-upgrade-approval-plan.ts",
+    "csdm-ix7-sim": "tsx src/scripts/csdm-ix7-sim.ts",
     "atom-enchancedblock-gate": "tsx src/scripts/atom-enchancedblock-cash-gate.ts",
     "atom-enchancedblock-cash-gate": "tsx src/scripts/atom-enchancedblock-cash-gate.ts",
     "redemption-underwheel-source": "tsx src/scripts/redemption-underwheel-source.ts",
