@@ -1,0 +1,56 @@
+{
+  "verdict": "REDEMPTION_CASH_RELAY_BLOCKED_MISSING_SOURCE",
+  "generatedAt": "2026-05-24T00:44:56.296Z",
+  "noSend": true,
+  "dryRun": false,
+  "allowLive": true,
+  "liveTxApproved": true,
+  "liveIntentIgnored": "ALLOW_LIVE/LIVE_TX_APPROVED are ignored by RedemptionCashRelay V1; planner is no-send only.",
+  "sourceReceiptPath": null,
+  "minNetUsd": 0.25,
+  "architecture": {
+    "hop": "control / metering only",
+    "ggssUnderwheel": "future actuator source",
+    "acceptedProfit": "USDC/SOL vault delta after all costs",
+    "cashRelay": "judge"
+  },
+  "sourceClassification": {
+    "sourceReceiptPath": null,
+    "verdict": null,
+    "sourceClass": null,
+    "sourceName": null,
+    "payerClass": null,
+    "asset": null,
+    "decimals": null
+  },
+  "cashMath": {
+    "beforeRaw": null,
+    "afterRaw": null,
+    "deltaRaw": null,
+    "deltaUi": 0,
+    "assetPriceUsd": null,
+    "cashDeltaUsd": 0,
+    "costsUsd": 0,
+    "liabilitiesUsd": 0,
+    "inventoryDrawUsd": 0,
+    "totalCostsUsd": 0,
+    "netCashUsd": 0
+  },
+  "cashProofGate": {
+    "pass": false,
+    "requiresAuthorityExclusiveActuator": true,
+    "requiresExternalProtocolPayer": true,
+    "requiresSolOrUsdcDelta": true,
+    "requiresCleanSimulation": true,
+    "requiresNetCashUsdAtLeastMin": true
+  },
+  "rejectionReasons": [
+    "CASH_SOURCE_RECEIPT_PATH is required"
+  ],
+  "nextRequiredExactBuild": [
+    "Build a source adapter that emits the CashRelay source receipt shape from an authority-exclusive actuator.",
+    "Use GGSS/UNDERWHEEL only after exact no-send simulation proves a SOL/USDC vault delta.",
+    "Keep HOP/custom-token balances as control or metering only; never count them as profit.",
+    "Replace this no-send planner with a reviewed live executor only after Velon approves an exact ready receipt."
+  ]
+}
