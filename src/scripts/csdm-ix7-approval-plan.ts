@@ -41,13 +41,18 @@ async function main(): Promise<void> {
   const simReceipt = readJson(simReceiptPath);
   const simulation = record(simReceipt.simulation);
   const upstream = record(simReceipt.upstreamProofs);
+  const simInputs = record(simReceipt.inputs);
+  const maxOracleAgeSlots = string(simInputs.maxOracleAgeSlots);
+  const liveEnvPrefix = maxOracleAgeSlots
+    ? `CSDM_SIM_ORACLE_AGE_SLOTS=${maxOracleAgeSlots} `
+    : "";
 
   const exactCommand = [
     `cd ${simCwd}`,
     `set -a`,
     `source ${keeperEnvPath}`,
     `set +a`,
-    `CSDM_DRY_RUN=false npm run csdm:live`
+    `${liveEnvPrefix}CSDM_DRY_RUN=false npm run csdm:live`
   ].join("\n");
 
   const rejections = [
@@ -78,6 +83,9 @@ async function main(): Promise<void> {
       exactCommandNotRun: exactCommand,
       commandSafety: [
         "Do not add FORCE_CSDM_SIMULATE=true for live approval.",
+        maxOracleAgeSlots
+          ? `This packet pins CSDM_SIM_ORACLE_AGE_SLOTS=${maxOracleAgeSlots} to tolerate build/send slot lag.`
+          : "This packet uses the keeper default CSDM max oracle age.",
         "The live script re-simulates and sends only if CSDM_LIVE=true and CSDM_DRY_RUN is not true.",
         "Run a fresh npm run csdm-ix7-sim immediately before any live send."
       ],
@@ -100,6 +108,7 @@ async function main(): Promise<void> {
     pinnedSimulation: {
       command: record(simReceipt.inputs).simulatorCommand,
       forceSimulate: simulation.forceSimulate,
+      maxOracleAgeSlots,
       borrowerIx: simulation.borrowerIx,
       flashAmountAtoms: simulation.flashAmountAtoms,
       minRepayDeltaAtoms: simulation.minRepayDeltaAtoms,

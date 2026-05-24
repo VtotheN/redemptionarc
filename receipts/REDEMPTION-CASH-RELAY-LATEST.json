@@ -1,12 +1,12 @@
 {
   "verdict": "REDEMPTION_CASH_RELAY_BLOCKED",
-  "generatedAt": "2026-05-24T00:55:41.805Z",
+  "generatedAt": "2026-05-24T03:34:21.628Z",
   "noSend": true,
-  "dryRun": false,
-  "allowLive": true,
-  "liveTxApproved": true,
-  "liveIntentIgnored": "ALLOW_LIVE/LIVE_TX_APPROVED are ignored by RedemptionCashRelay V1; planner is no-send only.",
-  "sourceReceiptPath": "/Users/velon/Desktop/redemptionarc/receipts/REDEMPTION-UNDERWHEEL-CASH-SOURCE-LATEST.json",
+  "dryRun": true,
+  "allowLive": false,
+  "liveTxApproved": false,
+  "liveIntentIgnored": null,
+  "sourceReceiptPath": "receipts/CSDM-IX7-SOURCE-LATEST.json",
   "minNetUsd": 0.25,
   "architecture": {
     "hop": "control / metering only",
@@ -15,26 +15,26 @@
     "cashRelay": "judge"
   },
   "sourceClassification": {
-    "sourceReceiptPath": "/Users/velon/Desktop/redemptionarc/receipts/REDEMPTION-UNDERWHEEL-CASH-SOURCE-LATEST.json",
-    "verdict": "UNDERWHEEL_CASH_SOURCE_BLOCKED",
-    "sourceClass": "underwheel_unproven_cash_source",
-    "sourceName": "UNDERWHEEL/GGSS underwheel-mainnet-shadow-dry-run",
-    "payerClass": "owned_inventory",
-    "asset": "USDC",
-    "decimals": 6
+    "sourceReceiptPath": "receipts/CSDM-IX7-SOURCE-LATEST.json",
+    "verdict": "CSDM_IX7_SOURCE_READY_FOR_CASH_RELAY",
+    "sourceClass": "authority_exclusive_actuator",
+    "sourceName": "CSDM ix7 flash_lend_backing via ENCHANCEDBLOCK 0x0A",
+    "payerClass": "external_protocol",
+    "asset": "SOL",
+    "decimals": 9
   },
   "cashMath": {
-    "beforeRaw": "0",
-    "afterRaw": "0",
-    "deltaRaw": "0",
-    "deltaUi": 0,
-    "assetPriceUsd": 1,
-    "cashDeltaUsd": 0,
-    "costsUsd": 0,
+    "beforeRaw": "200000000",
+    "afterRaw": "200250000",
+    "deltaRaw": "250000",
+    "deltaUi": 0.00025,
+    "assetPriceUsd": 84.691,
+    "cashDeltaUsd": 0.02117275,
+    "costsUsd": 0.0008469100000000001,
     "liabilitiesUsd": 0,
     "inventoryDrawUsd": 0,
-    "totalCostsUsd": 0,
-    "netCashUsd": 0
+    "totalCostsUsd": 0.0008469100000000001,
+    "netCashUsd": 0.02032584
   },
   "cashProofGate": {
     "pass": false,
@@ -45,11 +45,7 @@
     "requiresNetCashUsdAtLeastMin": true
   },
   "rejectionReasons": [
-    "sourceClass must be authority_exclusive_actuator",
-    "payerClass owned_inventory is a hard reject",
-    "simErr must be null",
-    "afterRaw must be greater than beforeRaw",
-    "netCashUsd 0.000000 below MIN_NET_USD 0.25"
+    "netCashUsd 0.020326 below MIN_NET_USD 0.25"
   ],
   "nextRequiredExactBuild": [
     "Build a source adapter that emits the CashRelay source receipt shape from an authority-exclusive actuator.",

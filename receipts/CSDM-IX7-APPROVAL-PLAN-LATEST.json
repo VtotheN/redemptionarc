@@ -1,15 +1,16 @@
 {
   "verdict": "CSDM_IX7_APPROVAL_READY_NO_LIVE",
-  "generatedAt": "2026-05-24T03:17:21.513Z",
+  "generatedAt": "2026-05-24T03:27:06.224Z",
   "noSend": true,
   "dryRun": true,
   "allowLive": false,
   "liveIntentIgnored": "This planner only emits the exact live command. It never runs npm run csdm:live.",
   "requiresExplicitUserApproval": true,
   "approvalPacket": {
-    "exactCommandNotRun": "cd /Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/enchancedblock/keeper\nset -a\nsource /Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/.env.keeper\nset +a\nCSDM_DRY_RUN=false npm run csdm:live",
+    "exactCommandNotRun": "cd /Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/enchancedblock/keeper\nset -a\nsource /Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/.env.keeper\nset +a\nCSDM_SIM_ORACLE_AGE_SLOTS=64 CSDM_DRY_RUN=false npm run csdm:live",
     "commandSafety": [
       "Do not add FORCE_CSDM_SIMULATE=true for live approval.",
+      "This packet pins CSDM_SIM_ORACLE_AGE_SLOTS=64 to tolerate build/send slot lag.",
       "The live script re-simulates and sends only if CSDM_LIVE=true and CSDM_DRY_RUN is not true.",
       "Run a fresh npm run csdm-ix7-sim immediately before any live send."
     ],
@@ -30,23 +31,24 @@
     "runtimeBackingOracleToPass": "GyJzwayA96Y82LCjMdhvwXZx2PYxyVYJ6co5T3BCaZnD"
   },
   "pinnedSimulation": {
-    "command": "CSDM_DRY_RUN=true npm run csdm:simulate",
+    "command": "CSDM_SIM_ORACLE_AGE_SLOTS=64 CSDM_DRY_RUN=true npm run csdm:simulate",
     "forceSimulate": false,
+    "maxOracleAgeSlots": "64",
     "borrowerIx": "0x0A_csdm_flash_borrower",
     "flashAmountAtoms": "50000000",
     "minRepayDeltaAtoms": "250000",
     "marketPriceUsd": 84.691,
-    "estimatedUsdcOut": 4.266843,
+    "estimatedUsdcOut": 4.265199,
     "fairUsdcOracle": 4.23455,
-    "surplusVsOracle": 0.032293,
-    "edgeOracleBps": 46,
+    "surplusVsOracle": 0.030649,
+    "edgeOracleBps": 42,
     "dynamicBaitBps": 0,
-    "expectedPool1SolOutAtoms": "50376227",
+    "expectedPool1SolOutAtoms": "50356819",
     "repayRequiredAtoms": "50250000",
     "gatePass": true,
     "solvencyPass": true,
     "err": null,
-    "unitsConsumed": 57704,
+    "unitsConsumed": 58766,
     "judge": "PASS"
   },
   "cashProofGate": {

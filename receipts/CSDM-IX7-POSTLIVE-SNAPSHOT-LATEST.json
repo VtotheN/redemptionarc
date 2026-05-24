@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-05-24T03:28:46.173Z",
+  "slot": 421770301,
+  "liveAttemptSignature": "47PUCYnBx2Hbz95PN7nbvLfQ2HMFJfzHtyxYVwF8rHemwVPrEpndrQRta6YHXTBJpuCot1K3ru75k36jCmSj8qo1",
+  "retry": {
+    "maxOracleAgeSlots": 64
+  },
+  "accounts": {
+    "csdmBackingWsol": {
+      "address": "B7G2c2oRm6qNwj7xjMhN7jR3yFxb3Srmr5dL9NCUTAKP",
+      "amountRaw": "200250000",
+      "decimals": 9,
+      "uiAmountString": "0.20025"
+    },
+    "csdmReceiptPool": {
+      "address": "4y1D1CtQMkygCX6yPMPP5xwMCDAnXR3J15DzGeQw7iDj",
+      "amountRaw": "0",
+      "decimals": 9,
+      "uiAmountString": "0"
+    },
+    "pool1SolVault": {
+      "address": "6KWpdPDv4ZJeaXo2EhshGcxA5YR4VcEmGyUeaDnaXVgf",
+      "amountRaw": "750273908",
+      "decimals": 9,
+      "uiAmountString": "0.750273908"
+    },
+    "pool1UsdcVault": {
+      "address": "CYaPwtMHcQbbMiEggxpwLvzswqnXqzrsA2AxArrXCazb",
+      "amountRaw": "154286633",
+      "decimals": 6,
+      "uiAmountString": "154.286633"
+    }
+  }
+}

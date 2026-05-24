@@ -80,6 +80,9 @@ async function main(): Promise<void> {
   const preflightPath = strEnv("CSDM_UPGRADE_PREFLIGHT_RECEIPT", DEFAULT_PREFLIGHT);
   const liveShapePath = strEnv("CSDM_LIVE_SHAPE_RECEIPT", DEFAULT_LIVE_SHAPE);
   const forceSimulate = boolEnv("CSDM_IX7_FORCE_SIMULATE", false);
+  const maxOracleAgeSlots = process.env.CSDM_IX7_MAX_ORACLE_AGE_SLOTS?.trim()
+    || process.env.CSDM_SIM_ORACLE_AGE_SLOTS?.trim()
+    || null;
   const preflight = readJson(preflightPath);
   const liveShape = readJson(liveShapePath);
   const preflightProgram = asRecord(preflight.program);
@@ -100,6 +103,7 @@ async function main(): Promise<void> {
   };
   if (forceSimulate) commandEnv.FORCE_CSDM_SIMULATE = "true";
   else delete commandEnv.FORCE_CSDM_SIMULATE;
+  if (maxOracleAgeSlots) commandEnv.CSDM_SIM_ORACLE_AGE_SLOTS = maxOracleAgeSlots;
   delete commandEnv.CSDM_LIVE;
   delete commandEnv.LIVE_TX_APPROVED;
   commandEnv.ALLOW_LIVE = "false";
@@ -155,9 +159,10 @@ async function main(): Promise<void> {
       preflightPath,
       liveShapePath,
       simulatorCommand: forceSimulate
-        ? "CSDM_DRY_RUN=true FORCE_CSDM_SIMULATE=true npm run csdm:simulate"
-        : "CSDM_DRY_RUN=true npm run csdm:simulate",
+        ? `${maxOracleAgeSlots ? `CSDM_SIM_ORACLE_AGE_SLOTS=${maxOracleAgeSlots} ` : ""}CSDM_DRY_RUN=true FORCE_CSDM_SIMULATE=true npm run csdm:simulate`
+        : `${maxOracleAgeSlots ? `CSDM_SIM_ORACLE_AGE_SLOTS=${maxOracleAgeSlots} ` : ""}CSDM_DRY_RUN=true npm run csdm:simulate`,
       forceSimulate,
+      maxOracleAgeSlots,
       envSecretsRecorded: false
     },
     upstreamProofs: {
