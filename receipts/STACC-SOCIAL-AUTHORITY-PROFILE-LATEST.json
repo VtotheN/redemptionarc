@@ -1,0 +1,149 @@
+{
+  "verdict": "STACC_SOCIAL_AUTHORITY_PROFILE_READ_ONLY",
+  "generatedAt": "2026-05-24T06:07:04.265Z",
+  "noSend": true,
+  "readOnly": true,
+  "authority": "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
+  "short": "2sMr...hkjM",
+  "solBalance": {
+    "lamports": 100982226724,
+    "sol": 100.982226724
+  },
+  "tokenAccounts": [
+    {
+      "tokenAccount": "H49wrynyh8pxKmrjf3XnsdWR6VrnzbUPvpUHeoc8iwMV",
+      "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "amountRaw": "221509",
+      "decimals": 6,
+      "uiAmountString": "0.221509"
+    }
+  ],
+  "recentSignatures": [
+    {
+      "signature": "1nqq151qk2chsiqt6Psdh9aC7L1natbEPPif2z2GpAMJbo8LFgzQNhiUpMRvKeRDwf67smmCjHnAP2cuD6MRdfv",
+      "slot": 421785513,
+      "blockTime": 1779599392,
+      "err": null
+    },
+    {
+      "signature": "5D2Be8DEn4rFSbm4Ww5T8dDZH31nQ188W71F1jjGtGDZCWJtgYyq8oCGCvV5zGnxUcxPAPUUgBkfTqSanfgQk17c",
+      "slot": 421785098,
+      "blockTime": 1779599227,
+      "err": null
+    },
+    {
+      "signature": "4oy6VwkUxkQT2Jq1Xoh5fyTibVJNhiC9CYZNtd2Nitict5uCkHRkxay55RdKsueD6ujL42REqsJnHxumzErWocfR",
+      "slot": 421784050,
+      "blockTime": 1779598814,
+      "err": null
+    },
+    {
+      "signature": "4z5j9MVmQeYddvgX47HcY7pNKwh4kxiyCzbNR7GQvPcmpbFSQRk4oxCw8eiRXY4n65z84P2rHjaK99AmuJbakckJ",
+      "slot": 421783976,
+      "blockTime": 1779598785,
+      "err": null
+    },
+    {
+      "signature": "2Yz7k4jybtoF26ofMg5BiFUEyGtXCYeY6zvL2idpaTfFLFhKVAqRApQRnjNviRkypKAK9E3Sf3GxFyaayX6g4Fiz",
+      "slot": 421783816,
+      "blockTime": 1779598721,
+      "err": null
+    },
+    {
+      "signature": "5WLNngXAaJ8ZLCkw538xF5PK4WNouyfVgbj8mfQSy8dygZi2KLmpN3w33asF9S7w5gn4KMVB4e5pMh6vMpktLDCL",
+      "slot": 421783647,
+      "blockTime": 1779598654,
+      "err": null
+    },
+    {
+      "signature": "3SmHCEiLHU9t47Q9gwLMumsbNo4i7zTXSu8vMzJVPporFRpUAu4PSKoYxwMB39VA1LKkm6uGHHsdBrnxTNmRtQoe",
+      "slot": 421776409,
+      "blockTime": 1779595769,
+      "err": null
+    },
+    {
+      "signature": "4Y9J7cptAX1rCKJYNqamY4cYH9MtJRo8N6zYP824ZnvePVt8zeSUmPCSAG7eTz3ikxY7sNa5Coa5EZ3TornMxnx4",
+      "slot": 421776327,
+      "blockTime": 1779595735,
+      "err": null
+    },
+    {
+      "signature": "3Torrzx8pD7CBUMJvoUh4BLdwxxt66hxJpmboGvRNp88uyaFW9Q9PW5DpiiNFREuczAcezPWTnCSrLKFQPmAsSfG",
+      "slot": 421773201,
+      "blockTime": 1779594483,
+      "err": null
+    },
+    {
+      "signature": "4fwmtodDHJpfe7wBVaopNzwBdVq4Pz46HAhA4hj3eVcUMLrYcR3jLSgTgLt38Yv6UdPmfumLpgKs87udCCMHs7H5",
+      "slot": 421771153,
+      "blockTime": 1779593667,
+      "err": null
+    },
+    {
+      "signature": "23oMiSvvggGXoufCCBAe6mpJTUmA7ym4iJob5CMSwPG432wZf8mS6WhPaSwoQzi8FsGzDhhwpuxgkydJhQ67S2tj",
+      "slot": 421764058,
+      "blockTime": 1779590841,
+      "err": null
+    },
+    {
+      "signature": "64FptZgrxxfQFbqY2qw56uRxyWEu5VxFCjQgtAbx5gDZgxTEe98mdAzXxMEigbh5cvFa18ML38GeaPtV1dnTNszE",
+      "slot": 421763954,
+      "blockTime": 1779590798,
+      "err": null
+    },
+    {
+      "signature": "4jfsuS6BqkWimpgSps7tRS5JX9m1VjQBqpLJDoioNuTRV9KAWvxtzZcTxHMz1EZ47sw4RJLnJ9fVsJH3C1KJXC5E",
+      "slot": 421762314,
+      "blockTime": 1779590145,
+      "err": null
+    },
+    {
+      "signature": "a9qpbaFzda4i1crGbCv24Fu8tHb3eQafRUj2cxNLJZY9ci99WPnNhhcWKSD3aSysHdQcBMtYggzVPyqDwHVkscP",
+      "slot": 421761398,
+      "blockTime": 1779589776,
+      "err": null
+    },
+    {
+      "signature": "5fmpeFi5F3R8g2WbYC822ohatajdev2E3mEpJMTpoCbVgsQv1zG4a6QzhPWwAxY5U3GyhppFv5gepaNzPTgtonZv",
+      "slot": 421761209,
+      "blockTime": 1779589700,
+      "err": null
+    },
+    {
+      "signature": "BzfjUf3Q5qv8EjwYD8JeqxFwFAX21W3oZRz28sYMExoySX6JZasYjimEerxDM3emuKTMmNWA1HkjsuJwQ9eDLwu",
+      "slot": 421759125,
+      "blockTime": 1779588863,
+      "err": null
+    },
+    {
+      "signature": "2EbyuEYfo4tAZm44pT9h8EjHEcwRhhCG7y7Ff9jeEuQuT1CSVYzD7jJJdxRsxwa4KQ5QAgu7dWMLaE6Zt8Z6EpXB",
+      "slot": 421759103,
+      "blockTime": 1779588854,
+      "err": null
+    },
+    {
+      "signature": "66WZ7oYCFz6g5Ctqkyb1LpFwxshgs4PBfyVxm681YdpFkP6EZWNEkuh6arTGfnR1qVLRNktUbKnUwD9rn8ym3LJx",
+      "slot": 421758859,
+      "blockTime": 1779588754,
+      "err": null
+    },
+    {
+      "signature": "nWdTzzsK5LYQ7ZzuNyjDXzDA956wMGop61CrPo2WLFpL1E9SGjMrVBdxHCdNS2mpXaEnHrjaYbYj2BFqHgmtdNe",
+      "slot": 421758680,
+      "blockTime": 1779588682,
+      "err": null
+    },
+    {
+      "signature": "1HGNja9WU8n6XkVcmxfD3Mfhppp3f9s4B13UNr3HFBsFoEQckY9d9sSDyvx5JS2dqgJGLB9qg4KVCmQS5EAgne4",
+      "slot": 421758661,
+      "blockTime": 1779588674,
+      "err": null
+    }
+  ],
+  "locatorHints": [
+    "Look for this public key in wallet apps or keypair files.",
+    "A matching wallet should show approximately the same SOL balance at the generatedAt timestamp.",
+    "Do not paste private keys or seed phrases into chat; provide only the local keypair file path if found."
+  ]
+}
