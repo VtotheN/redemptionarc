@@ -1,6 +1,6 @@
 {
   "verdict": "CSDM_UPGRADE_PREFLIGHT_READY_NO_LIVE",
-  "generatedAt": "2026-05-24T02:44:08.513Z",
+  "generatedAt": "2026-05-24T03:02:33.086Z",
   "noSend": true,
   "dryRun": true,
   "allowLive": false,
@@ -11,10 +11,16 @@
     "executable": true,
     "ownerProgram": "BPFLoaderUpgradeab1e11111111111111111111111",
     "programDataAddress": "FXVduXj6jBz9E3PqY4mNsbNLLsEfBRQH9FozdfhomcWy",
-    "programDataSlot": "420917531",
+    "programDataSlot": "421765950",
     "upgradeAuthority": "BmrLTu87zQnbsTQ8KpSvzp5UY2gq6eGKAr8k4vyVdyYv",
     "liveElfBytes": 43416,
-    "liveElfSha256": "3974a1d3d4990286bd92939da2451bcfa56bc0ddc061daf8a548169c40cb0ff8"
+    "liveElfSha256": "3974a1d3d4990286bd92939da2451bcfa56bc0ddc061daf8a548169c40cb0ff8",
+    "liveElfSha256Full": "3974a1d3d4990286bd92939da2451bcfa56bc0ddc061daf8a548169c40cb0ff8",
+    "liveElfPrefixSha256": "e457e655baa0513a5f1b3e93fe5631e79b2d557ba814ae7841d5bfd6a4250942",
+    "liveElfPrefixMatchesArtifact": true,
+    "liveElfTailBytes": 1112,
+    "liveElfTailSha256": "26db3650737ff56859b16a6bf7d73f839000c3bf1aa84ab4675601961f7ccd54",
+    "lastUpgradeSignature": "3UEpq6Fp2qunYMCgZQN19kZQP4LBpUffaqR5bCFo59brFD5cj5nempaWyZoKfjQFTvuXaSeUCCcTtQqJWHA5LvnG"
   },
   "localInputs": {
     "programKeypair": {
@@ -54,7 +60,8 @@
     "classification": "engineering_preflight_only",
     "exactLiveCommandNotRun": "solana program deploy --program-id <CSDM_PROGRAM_KEYPAIR> --upgrade-authority <AUTHORITY> --no-auto-extend <ARTIFACT>",
     "requiresSeparateApproval": true,
-    "rollbackRequirement": "Capture current ProgramData slot/hash, artifact hash, authority, and cash gate status before any live upgrade."
+    "rollbackRequirement": "Capture current ProgramData slot/hash, artifact hash, authority, and cash gate status before any live upgrade.",
+    "deploymentComparisonNote": "liveElfSha256Full includes allocated ProgramData tail bytes; liveElfPrefixMatchesArtifact is the exact deployed-artifact check."
   },
   "cashProofGate": {
     "pass": false,
@@ -68,8 +75,8 @@
   },
   "engineeringRejections": [],
   "nextRequiredExactBuild": [
-    "Create a no-send live-upgrade approval receipt that pins artifactSha256, liveElfSha256, authority, and byteHeadroom.",
-    "After explicit approval only, upgrade Q9 with --no-auto-extend and immediately run ix7 simulation.",
+    "Run exact ix7 simulation against live-shaped accounts.",
+    "Do not run live ix7 until the simulation produces a source receipt with real SOL/USDC afterRaw > beforeRaw after all costs.",
     "Do not report profit until RedemptionCashRelay sees real SOL/USDC growth."
   ]
 }

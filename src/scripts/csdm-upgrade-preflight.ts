@@ -56,6 +56,10 @@ function sha256(file: string): string | null {
   return crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
 }
 
+function sha256Buffer(data: Buffer): string {
+  return crypto.createHash("sha256").update(data).digest("hex");
+}
+
 function fileBytes(file: string): number | null {
   return fs.existsSync(file) ? fs.statSync(file).size : null;
 }
@@ -124,14 +128,27 @@ async function main(): Promise<void> {
   const programData = programDataAccount ? parseProgramData(programDataAccount.data) : null;
   const programKeypair = keyMaterial(programKeypairPath);
   const authorityKeypair = keyMaterial(authorityKeypairPath);
+  const artifactBuffer = fs.existsSync(artifactPath) ? fs.readFileSync(artifactPath) : null;
   const artifactBytes = fileBytes(artifactPath);
-  const artifactSha256 = sha256(artifactPath);
+  const artifactSha256 = artifactBuffer ? sha256Buffer(artifactBuffer) : sha256(artifactPath);
   const liveElfSha256 = programData
-    ? crypto.createHash("sha256").update(programData.elfBytes).digest("hex")
+    ? sha256Buffer(programData.elfBytes)
     : null;
   const liveElfBytes = programData?.elfBytes.length ?? null;
   const artifactFits = artifactBytes !== null && liveElfBytes !== null ? artifactBytes <= liveElfBytes : false;
   const byteHeadroom = artifactBytes !== null && liveElfBytes !== null ? liveElfBytes - artifactBytes : null;
+  const livePrefix = programData && artifactBuffer
+    ? programData.elfBytes.subarray(0, artifactBuffer.length)
+    : null;
+  const liveTail = programData && artifactBuffer && programData.elfBytes.length >= artifactBuffer.length
+    ? programData.elfBytes.subarray(artifactBuffer.length)
+    : null;
+  const liveElfPrefixSha256 = livePrefix ? sha256Buffer(livePrefix) : null;
+  const liveElfPrefixMatchesArtifact = livePrefix && artifactBuffer
+    ? Buffer.compare(livePrefix, artifactBuffer) === 0
+    : false;
+  const liveElfTailBytes = liveTail ? liveTail.length : null;
+  const liveElfTailSha256 = liveTail ? sha256Buffer(liveTail) : null;
   const markers = sourceMarkers(libPath, flashLendPath);
   const markerPass = Object.entries(markers)
     .filter(([_, value]) => typeof value === "boolean")
@@ -169,7 +186,13 @@ async function main(): Promise<void> {
       programDataSlot: programData?.slot ?? null,
       upgradeAuthority: programData?.upgradeAuthority ?? null,
       liveElfBytes,
-      liveElfSha256
+      liveElfSha256,
+      liveElfSha256Full: liveElfSha256,
+      liveElfPrefixSha256,
+      liveElfPrefixMatchesArtifact,
+      liveElfTailBytes,
+      liveElfTailSha256,
+      lastUpgradeSignature: strEnv("CSDM_LAST_UPGRADE_SIGNATURE", "") || null
     },
     localInputs: {
       programKeypair,
@@ -188,7 +211,8 @@ async function main(): Promise<void> {
       classification: "engineering_preflight_only",
       exactLiveCommandNotRun: "solana program deploy --program-id <CSDM_PROGRAM_KEYPAIR> --upgrade-authority <AUTHORITY> --no-auto-extend <ARTIFACT>",
       requiresSeparateApproval: true,
-      rollbackRequirement: "Capture current ProgramData slot/hash, artifact hash, authority, and cash gate status before any live upgrade."
+      rollbackRequirement: "Capture current ProgramData slot/hash, artifact hash, authority, and cash gate status before any live upgrade.",
+      deploymentComparisonNote: "liveElfSha256Full includes allocated ProgramData tail bytes; liveElfPrefixMatchesArtifact is the exact deployed-artifact check."
     },
     cashProofGate: {
       pass: false,
@@ -202,6 +226,13 @@ async function main(): Promise<void> {
     },
     engineeringRejections,
     nextRequiredExactBuild: engineeringRejections.length === 0
+      && liveElfPrefixMatchesArtifact
+      ? [
+        "Run exact ix7 simulation against live-shaped accounts.",
+        "Do not run live ix7 until the simulation produces a source receipt with real SOL/USDC afterRaw > beforeRaw after all costs.",
+        "Do not report profit until RedemptionCashRelay sees real SOL/USDC growth."
+      ]
+      : engineeringRejections.length === 0
       ? [
         "Create a no-send live-upgrade approval receipt that pins artifactSha256, liveElfSha256, authority, and byteHeadroom.",
         "After explicit approval only, upgrade Q9 with --no-auto-extend and immediately run ix7 simulation.",
@@ -220,6 +251,7 @@ async function main(): Promise<void> {
     artifactBytes,
     liveElfBytes,
     byteHeadroom,
+    liveElfPrefixMatchesArtifact,
     cashProofPass: receipt.cashProofGate.pass
   }, null, 2));
 
