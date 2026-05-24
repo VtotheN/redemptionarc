@@ -65,6 +65,12 @@ function stringField(record: AnyRecord, name: string): string | null {
   return typeof value === "string" ? value : null;
 }
 
+function boolEnv(name: string, fallback: boolean): boolean {
+  const raw = process.env[name];
+  if (raw == null || raw.trim() === "") return fallback;
+  return ["1", "true", "yes", "y"].includes(raw.toLowerCase());
+}
+
 async function main(): Promise<void> {
   const config = loadConfig();
   assertNoForbiddenConfigured(config);
@@ -73,6 +79,7 @@ async function main(): Promise<void> {
   const simCwd = strEnv("CSDM_SIM_COMMAND_CWD", DEFAULT_SIM_CWD);
   const preflightPath = strEnv("CSDM_UPGRADE_PREFLIGHT_RECEIPT", DEFAULT_PREFLIGHT);
   const liveShapePath = strEnv("CSDM_LIVE_SHAPE_RECEIPT", DEFAULT_LIVE_SHAPE);
+  const forceSimulate = boolEnv("CSDM_IX7_FORCE_SIMULATE", false);
   const preflight = readJson(preflightPath);
   const liveShape = readJson(liveShapePath);
   const preflightProgram = asRecord(preflight.program);
@@ -89,9 +96,10 @@ async function main(): Promise<void> {
   const commandEnv: NodeJS.ProcessEnv = {
     ...process.env,
     ...envFileVars,
-    CSDM_DRY_RUN: "true",
-    FORCE_CSDM_SIMULATE: "true"
+    CSDM_DRY_RUN: "true"
   };
+  if (forceSimulate) commandEnv.FORCE_CSDM_SIMULATE = "true";
+  else delete commandEnv.FORCE_CSDM_SIMULATE;
   delete commandEnv.CSDM_LIVE;
   delete commandEnv.LIVE_TX_APPROVED;
   commandEnv.ALLOW_LIVE = "false";
@@ -146,7 +154,10 @@ async function main(): Promise<void> {
       simCwd,
       preflightPath,
       liveShapePath,
-      simulatorCommand: "CSDM_DRY_RUN=true FORCE_CSDM_SIMULATE=true npm run csdm:simulate",
+      simulatorCommand: forceSimulate
+        ? "CSDM_DRY_RUN=true FORCE_CSDM_SIMULATE=true npm run csdm:simulate"
+        : "CSDM_DRY_RUN=true npm run csdm:simulate",
+      forceSimulate,
       envSecretsRecorded: false
     },
     upstreamProofs: {
@@ -166,6 +177,7 @@ async function main(): Promise<void> {
       csdmProgram: parsed.csdmProgram,
       borrowerIx: parsed.borrowerIx,
       flashAmountAtoms: parsed.flashAmountAtoms,
+      forceSimulate: parsed.forceSimulate,
       minRepayDeltaAtoms: parsed.minRepayDeltaAtoms,
       marketPriceUsd: parsed.marketPriceUsd,
       estimatedUsdcOut: parsed.estimatedUsdcOut,
