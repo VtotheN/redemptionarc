@@ -1,0 +1,401 @@
+{
+  "verdict": "STACC_BZK_LOOP_MONITORING_NO_LIVE",
+  "generatedAt": "2026-05-24T04:11:44.699Z",
+  "iteration": 1,
+  "noSend": true,
+  "dryRun": true,
+  "allowLive": false,
+  "minNetUsd": 0.25,
+  "steps": [
+    {
+      "name": "stacc-bzk-security-plan",
+      "command": "npm run stacc-bzk-security-plan",
+      "status": 0,
+      "signal": null,
+      "ok": true,
+      "stdoutTail": [
+        "> redemptionarc@0.1.0 stacc-bzk-security-plan",
+        "> tsx src/scripts/stacc-bzk-security-plan.ts",
+        "{",
+        "  \"verdict\": \"STACC_BZK_SECURITY_PATH_READY_NO_LIVE\",",
+        "  \"receipt\": \"/Users/velon/Desktop/redemptionarc/receipts/STACC-BZK-SECURITY-PLAN-LATEST.json\",",
+        "  \"bzkIsLegacySpl\": true,",
+        "  \"tokenBadgeExists\": false,",
+        "  \"whirlpoolControlHeld\": true,",
+        "  \"externalSwapCount\": 1,",
+        "  \"firstPumpSol\": 2.081291788,",
+        "  \"positiveSolTotal\": 15.733164182,",
+        "  \"ringMechanicallyDecoded\": true,",
+        "  \"rejections\": [",
+        "    \"this is still a no-send plan; live execution requires a fresh exact sim and explicit approval\"",
+        "  ]",
+        "}"
+      ],
+      "stderrTail": []
+    },
+    {
+      "name": "orca-owned-fee-source-scan",
+      "command": "npm run orca-owned-fee-source-scan",
+      "status": 0,
+      "signal": null,
+      "ok": true,
+      "stdoutTail": [
+        "> redemptionarc@0.1.0 orca-owned-fee-source-scan",
+        "> tsx src/scripts/orca-owned-fee-source-scan.ts",
+        "ORCA_OWNED_FEE_SOURCE_SCAN_READ_ONLY configs=12 pools=66 active=43 claimable=0 directCashUsd=0.000000 receipt=/Users/velon/Desktop/redemptionarc/receipts/ORCA-OWNED-FEE-SOURCE-SCAN-LATEST.json"
+      ],
+      "stderrTail": []
+    },
+    {
+      "name": "jupiter-index-watch",
+      "command": "npm run jupiter-index-watch",
+      "status": 0,
+      "signal": null,
+      "ok": true,
+      "stdoutTail": [
+        "> redemptionarc@0.1.0 jupiter-index-watch",
+        "> tsx src/scripts/jupiter-index-watch.ts",
+        "JUPITER_NO_ROUTE_FOUND_READ_ONLY mint=Bzkdz5AKApsqizBxzqMUqWGJbx4gHXVC6NJekmAY8Gq3 routeFound=false receipt=/Users/velon/Desktop/redemptionarc/receipts/JUPITER-INDEX-WATCH-LATEST.json"
+      ],
+      "stderrTail": []
+    },
+    {
+      "name": "orca-owned-fee-cycle-sim-external",
+      "command": "npm run orca-owned-fee-cycle-sim",
+      "status": 1,
+      "signal": null,
+      "ok": false,
+      "stdoutTail": [
+        "> redemptionarc@0.1.0 orca-owned-fee-cycle-sim",
+        "> tsx src/scripts/orca-owned-fee-cycle-sim.ts",
+        "OWNED_FEE_MULTI_BOT_CYCLE_NO_GO candidates=1 pass=0 selected=9edoD8zkgyjTf8YdBQymUNvhWp4FyMPuiwALHyDk2538 receipt=/Users/velon/Desktop/redemptionarc/receipts/ORCA-OWNED-FEE-CYCLE-SIM-LATEST.json"
+      ],
+      "stderrTail": []
+    }
+  ],
+  "security": {
+    "verdict": "STACC_BZK_SECURITY_PATH_READY_NO_LIVE",
+    "bzkIsLegacySpl": true,
+    "whirlpoolControlHeld": true
+  },
+  "bzkPool": {
+    "whirlpool": "9edoD8zkgyjTf8YdBQymUNvhWp4FyMPuiwALHyDk2538",
+    "active": true,
+    "controlStatus": "stacc_partner_observed_not_local",
+    "executionClass": "ACTIVE_FEE_SOURCE",
+    "cashClaimableUsd": 0,
+    "tokenA": {
+      "mint": "Bzkdz5AKApsqizBxzqMUqWGJbx4gHXVC6NJekmAY8Gq3",
+      "vault": "YFqvE2hf64MReuG3CwMpUdAybkLCHF9pA14nRCGoxE9",
+      "mintMeta": {
+        "mint": "Bzkdz5AKApsqizBxzqMUqWGJbx4gHXVC6NJekmAY8Gq3",
+        "exists": true,
+        "ownerProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+        "decimals": 6,
+        "symbol": "UNKNOWN",
+        "cashClass": "non_cash"
+      },
+      "vaultRaw": "3",
+      "vaultUi": 0.000003,
+      "vaultCashUsd": null,
+      "protocolFeeOwedRaw": "0",
+      "protocolFeeOwedUi": 0,
+      "protocolFeeOwedCashUsd": null
+    },
+    "tokenB": {
+      "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "vault": "27zLHa4Dhxero9oknEXNFRX1HbcU19C4eWda6BBmrKkV",
+      "mintMeta": {
+        "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "exists": true,
+        "ownerProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+        "decimals": 6,
+        "symbol": "USDC",
+        "cashClass": "usdc"
+      },
+      "vaultRaw": "2",
+      "vaultUi": 0.000002,
+      "vaultCashUsd": 0.000002,
+      "protocolFeeOwedRaw": "0",
+      "protocolFeeOwedUi": 0,
+      "protocolFeeOwedCashUsd": 0
+    },
+    "feeRate": 10000,
+    "protocolFeeRate": 2500,
+    "cashTvlUsd": 0.000002
+  },
+  "jupiter": {
+    "routeFound": false,
+    "routeCount": 0,
+    "routes": []
+  },
+  "wzmaPulse": {
+    "owner": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+    "limit": 20,
+    "fetched": 20,
+    "positiveCount": 2,
+    "positiveSolTotal": 0.097743192,
+    "positiveBzkRelatedCount": 0,
+    "positiveBzkRelatedSolTotal": 0,
+    "latest": [
+      {
+        "signature": "3Torrzx8pD7CBUMJvoUh4BLdwxxt66hxJpmboGvRNp88uyaFW9Q9PW5DpiiNFREuczAcezPWTnCSrLKFQPmAsSfG",
+        "slot": 421773201,
+        "err": null,
+        "blockTime": 1779594483,
+        "nativeDeltaLamports": 33783402,
+        "nativeDeltaSol": 0.033783402,
+        "programIds": [
+          "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+          "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "4BBHYSBzM7VQ8j4LdUscUbKyAXqDbKVDFsHbQoX9Cg7dFR6kCt2XbJxbUuCNBdTQoSHseLfskbA8GzhzxrGMae2N",
+        "slot": 421773192,
+        "err": null,
+        "blockTime": 1779594479,
+        "nativeDeltaLamports": -5000,
+        "nativeDeltaSol": -0.000005,
+        "programIds": [
+          "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA",
+          "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"
+        ],
+        "bzkRelated": true
+      },
+      {
+        "signature": "3ZnKB452aVatar8pZdDZh8dKyrXrxPBFKaXncoXNHf5PzTD6rrTGMaDYMpCsYDWN3SxoxPL9WHPauDYVe6FnxJi",
+        "slot": 421773033,
+        "err": null,
+        "blockTime": 1779594415,
+        "nativeDeltaLamports": -5000,
+        "nativeDeltaSol": -0.000005,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "SP12tWFxD9oJsVWNavTTBZvMbA6gkAmxtVgxdqvyvhY"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "4GP2CWJBSW5yJ1yRCjC9Scju6disdZTBC5Qpt9EQtkDJYKoQnM2NK7JwtpGg6s222QDBxFC6SVNWduXkHobFGQZ",
+        "slot": 421773028,
+        "err": null,
+        "blockTime": 1779594413,
+        "nativeDeltaLamports": -5000,
+        "nativeDeltaSol": -0.000005,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "4DQuAxrQuU9bKF6hqRjXj7Pq2C3dWaCyyb8BJMK8Ad2P6iEfGVsETRFu8JggC7UjtQUUnZkck6nmgVaEtWozSbdT",
+        "slot": 421771513,
+        "err": null,
+        "blockTime": 1779593810,
+        "nativeDeltaLamports": -5000,
+        "nativeDeltaSol": -0.000005,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "SP12tWFxD9oJsVWNavTTBZvMbA6gkAmxtVgxdqvyvhY"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "FNSy3QwsLL6hbE4pWcoKSCDnwZTqmxUGsbNJmH1ma9HqGi7kBXEh6XPDgwpt44hHkNR69BhQbhkVdTAPhDmYqhY",
+        "slot": 421771508,
+        "err": null,
+        "blockTime": 1779593808,
+        "nativeDeltaLamports": -5000,
+        "nativeDeltaSol": -0.000005,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "32w6LrW5GR2PmZ21tt33fpRbrEkVPcrfjjgKzvQNtcLkGUzKaNNHa2XLdry8t3D1iCrs5ngyqWuVERBFGBUK3pmg",
+        "slot": 421771502,
+        "err": null,
+        "blockTime": 1779593806,
+        "nativeDeltaLamports": -5000,
+        "nativeDeltaSol": -0.000005,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "Kkn3FcLezxgbtDuLAXE5U9RjdyNDM8ebVcCotUMHtDPYWtTG6AFZhQFnguyXgsT57mGzWYnjY5EdnhjsTdeMnnC",
+        "slot": 421770745,
+        "err": null,
+        "blockTime": 1779593504,
+        "nativeDeltaLamports": -5000,
+        "nativeDeltaSol": -0.000005,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "SP12tWFxD9oJsVWNavTTBZvMbA6gkAmxtVgxdqvyvhY"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "5r4mtYoYryB6kcHfeKzfpcYpJQHJvP842hvNRxrBspndDNhNKhEpRzN91kz3VESiVkCU5yimG21YffNEWErL9v4K",
+        "slot": 421770739,
+        "err": null,
+        "blockTime": 1779593501,
+        "nativeDeltaLamports": -5000,
+        "nativeDeltaSol": -0.000005,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "qoVCNEoHWbVs6XkYDbhr3PK86ALUy51DJf6wS9L4GNy7Y5Y9FWtcPjqbbGFxdgNw7Po5LGch7W98SknfyWsyE22",
+        "slot": 421770733,
+        "err": null,
+        "blockTime": 1779593499,
+        "nativeDeltaLamports": -5000,
+        "nativeDeltaSol": -0.000005,
+        "programIds": [
+          "ComputeBudget111111111111111111111111111111",
+          "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+        ],
+        "bzkRelated": false
+      }
+    ],
+    "positive": [
+      {
+        "signature": "3Torrzx8pD7CBUMJvoUh4BLdwxxt66hxJpmboGvRNp88uyaFW9Q9PW5DpiiNFREuczAcezPWTnCSrLKFQPmAsSfG",
+        "slot": 421773201,
+        "err": null,
+        "blockTime": 1779594483,
+        "nativeDeltaLamports": 33783402,
+        "nativeDeltaSol": 0.033783402,
+        "programIds": [
+          "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+          "pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ"
+        ],
+        "bzkRelated": false
+      },
+      {
+        "signature": "4pShT55qJFRQu84uCo4LsnV4ZLRnfvEv72SDx7j86uUHSJvJoQY1ddLdhS9sRQBctiwCzHEPT4UHau9mUPw497EK",
+        "slot": 421764661,
+        "err": null,
+        "blockTime": 1779591081,
+        "nativeDeltaLamports": 63959790,
+        "nativeDeltaSol": 0.06395979,
+        "programIds": [
+          "11111111111111111111111111111111"
+        ],
+        "bzkRelated": false
+      }
+    ],
+    "positiveBzkRelated": []
+  },
+  "cycleSim": {
+    "verdict": "OWNED_FEE_MULTI_BOT_CYCLE_NO_GO",
+    "selected": {
+      "whirlpool": "9edoD8zkgyjTf8YdBQymUNvhWp4FyMPuiwALHyDk2538",
+      "programLabel": "official-orca",
+      "program": "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc",
+      "config": "12yTE48QR6bGK4EMcyY8XsARbX1TRTEbwHYSuuxR1Hp8",
+      "controlStatus": "stacc_partner_observed_not_local",
+      "collectProtocolFeesAuthority": "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
+      "directLocalCollect": false,
+      "tokenA": {
+        "mint": "Bzkdz5AKApsqizBxzqMUqWGJbx4gHXVC6NJekmAY8Gq3",
+        "symbol": "UNKNOWN",
+        "existingFeeUi": 0,
+        "existingFeeCashUsd": null
+      },
+      "tokenB": {
+        "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+        "symbol": "USDC",
+        "existingFeeUi": 0,
+        "existingFeeCashUsd": 0
+      },
+      "activeCashTvlUsd": 0.000002,
+      "feeRate": 10000,
+      "protocolFeeRate": 2500,
+      "multiBotTraffic": {
+        "botCount": 0,
+        "rounds": 0,
+        "tradeNotionalUsd": 0,
+        "grossVolumeUsd": 0,
+        "botCounterpartyMode": "external",
+        "externalFlowShare": 1,
+        "controlledFlowShare": 0
+      },
+      "feeMath": {
+        "protocolCaptureRate": 0.0025,
+        "requiredExternalVolumeUsdForMinNet": 100.18347975655999,
+        "swapFeeUsd": 0,
+        "protocolFeeUsd": 0,
+        "lpFeeUsd": 0,
+        "externalProtocolFeeUsd": 0,
+        "controlledProtocolSelfTransferUsd": 0,
+        "controlledSwapFeePaidUsd": 0,
+        "controlledExternalLpLeakageUsd": 0,
+        "ownedFullLp": false,
+        "ownedLpFeeAccrualUsd": 0,
+        "ownedLpCashCreditUsd": 0,
+        "countOwnedLpFeesAsCash": false
+      },
+      "costs": {
+        "ownedBotTxCost": {
+          "txCount": 0,
+          "lamportsPerTx": 5350,
+          "totalLamports": 0,
+          "usd": 0
+        },
+        "collectTxCost": {
+          "txCount": 1,
+          "lamportsPerTx": 5350,
+          "totalLamports": 5350,
+          "usd": 0.00045869939139999994
+        },
+        "inventoryRiskUsd": 0,
+        "inventoryRiskBps": null,
+        "inventoryRiskBlocksCashProof": false
+      },
+      "existingCashClaimableUsd": 0,
+      "ledgers": {
+        "collectorLedgerNetUsd": -0.00045869939139999994,
+        "totalSystemNetUsd": -0.00045869939139999994
+      },
+      "collectSimulation": null,
+      "cashProofPass": false,
+      "noGoReasons": [
+        "total-system cash gate below MIN_NET_USD (0.25)",
+        "collect authority is not locally signable; direct collect is not executable by this wallet set"
+      ]
+    },
+    "noGoReasons": [
+      "total-system cash gate below MIN_NET_USD (0.25)",
+      "collect authority is not locally signable; direct collect is not executable by this wallet set"
+    ]
+  },
+  "cashProofGate": {
+    "pass": false,
+    "reason": "Monitoring only. No live-safe cash-settled BZK opportunity is ready yet.",
+    "liveStillRequiresExplicitApproval": true
+  },
+  "rejectionReasons": [
+    "Jupiter has no current BZK route",
+    "BZK claimable cash fees 0.000000 below MIN_NET_USD 0.25",
+    "no direct local signer cash-fee collect is currently ready",
+    "no active route candidate for settlement simulation",
+    "cycle sim not cash-positive: total-system cash gate below MIN_NET_USD (0.25) | collect authority is not locally signable; direct collect is not executable by this wallet set"
+  ],
+  "nextRequiredExactBuild": [
+    "Keep monitoring BZK route/indexing and protocol fees.",
+    "If partner authority signs are available, configure OWNED_FEE_KEYPAIR_PATHS and rerun.",
+    "If external flow appears, run settlement sim before any live action."
+  ]
+}

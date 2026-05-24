@@ -27,6 +27,7 @@
     "csdm-ix7-approval-plan": "tsx src/scripts/csdm-ix7-approval-plan.ts",
     "csdm-ix7-postlive-source": "tsx src/scripts/csdm-ix7-postlive-source.ts",
     "stacc-bzk-security-plan": "tsx src/scripts/stacc-bzk-security-plan.ts",
+    "stacc-bzk-loop": "tsx src/scripts/stacc-bzk-loop.ts",
     "atom-enchancedblock-gate": "tsx src/scripts/atom-enchancedblock-cash-gate.ts",
     "atom-enchancedblock-cash-gate": "tsx src/scripts/atom-enchancedblock-cash-gate.ts",
     "redemption-underwheel-source": "tsx src/scripts/redemption-underwheel-source.ts",
