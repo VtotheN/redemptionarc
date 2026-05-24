@@ -1,9 +1,9 @@
 {
   "verdict": "MAINNET_PROGRAM_CANDIDATE_SCAN_SAVED_NO_LIVE",
-  "generatedAt": "2026-05-24T02:34:51.744Z",
+  "generatedAt": "2026-05-24T02:40:41.285Z",
   "noSend": true,
-  "dryRun": false,
-  "allowLive": true,
+  "dryRun": true,
+  "allowLive": false,
   "liveIntentIgnored": "This scanner only reads RPC/local files. It never deploys, upgrades, closes, or sends transactions.",
   "architectureFinding": {
     "csdm": "CSDM is live, upgradeable, and local keeper authority matches. It is the strongest candidate for backing-vault / flash-lend / HOP-redeem integration.",
@@ -14,7 +14,11 @@
   "candidateSummary": {
     "bestExistingUpgradeTarget": "CSDM",
     "bestFreshDeployTarget": "atom_ickk",
-    "recommendedNextBuild": "Build exact CSDM upgrade/sim receipt for ix7 flash_lend_backing plus HOP burn/redeem-to-USDC path.",
+    "csdmUpgradeFitsCurrentProgramData": true,
+    "csdmArtifactBytes": 42304,
+    "csdmLiveElfBytes": 43416,
+    "csdmUpgradeByteHeadroom": 1112,
+    "recommendedNextBuild": "CSDM ix7 artifact appears to fit current Q9 ProgramData; next is exact upgrade simulation/receipt, not live upgrade.",
     "cashStatus": "No profit booked. Program control only removes an engineering blocker; cash proof still needs wallet SOL/USDC delta through RedemptionCashRelay."
   },
   "programInspections": [
@@ -246,6 +250,8 @@
       "requiresAllowedBorrower": true,
       "requiresDeadline": true,
       "burnsReceipt": true,
+      "deployArtifact": "/Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/csdm/programs/csdm/target/deploy/csdm_flash_lend_backing.so",
+      "deployArtifactBytes": 42304,
       "liveIx7Assumption": "Do not assume ix7 is live until binary hash or exact ix7 simulation proves it on Q9."
     },
     "atom": {
@@ -272,7 +278,7 @@
     ]
   },
   "nextRequiredExactBuild": [
-    "For CSDM path: prove local build fits current ProgramData or plan buffer extension; simulate ix7 flash_lend_backing against exact accounts.",
+    "For CSDM path: produce exact upgrade simulation/receipt for the ix7 artifact against Q9 before any live upgrade.",
     "For atom path: add HOP redeem-vault instruction and deploy only behind a separate approval receipt.",
     "Wire ENCHANCEDBLOCK source receipt so Orca settlement shows afterRaw > beforeRaw in SOL/USDC after all costs.",
     "Feed the final source receipt into npm run redemption-cash-relay-plan and require READY_NO_LIVE before any live step."

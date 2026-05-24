@@ -13,6 +13,7 @@ The scanner writes `receipts/MAINNET-PROGRAM-CANDIDATE-SCAN-LATEST.json` and nev
 - local program keypair pubkey matches
 - local authority keypair/pubkey metadata matches
 - local source markers for CSDM redeem/session/`flash_lend_backing` and atom multi-slot capital
+- optional local CSDM `.so` artifact size against the live Q9 ProgramData ELF length estimate
 
 Current architecture rule:
 
@@ -33,6 +34,8 @@ T22 fee/nav/internal accounting != cash profit
 ```
 
 CSDM is useful because the legacy source already has burn-share-for-backing semantics, and the lazyloop source adds `ix7 flash_lend_backing`, which releases real backing and requires principal plus delta to return. That is the right shape for a cash-settled vault, but the live program must still be proven by exact binary/ix simulation before assuming ix7 is available.
+
+Current local build note: `csdm_flash_lend_backing.so` compiled to 42,304 bytes, while live Q9 ProgramData exposes an estimated 43,416 bytes for the program ELF. The scanner records this as fit/headroom, but that still is not approval to upgrade.
 
 Next exact build:
 

@@ -82,6 +82,10 @@ function readText(file: string): string {
   return fs.existsSync(file) ? fs.readFileSync(file, "utf8") : "";
 }
 
+function fileBytes(file: string): number | null {
+  return fs.existsSync(file) ? fs.statSync(file).size : null;
+}
+
 function keyMaterial(file: string): KeyMaterial {
   if (!fs.existsSync(file)) {
     return { path: file, exists: false, pubkey: null, status: "missing" };
@@ -184,6 +188,10 @@ function inspectCsdmSources(): Record<string, unknown> {
     "CSDM_FLASH_LEND_IX_PATH",
     "/Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/csdm/programs/csdm/src/flash_lend.rs"
   );
+  const deployArtifact = strEnv(
+    "CSDM_FLASH_LEND_SO_PATH",
+    "/Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/csdm/programs/csdm/target/deploy/csdm_flash_lend_backing.so"
+  );
   const legacy = readText(legacyPath);
   const lib = readText(flashLendLib);
   const ix = readText(flashLendIx);
@@ -200,6 +208,8 @@ function inspectCsdmSources(): Record<string, unknown> {
     requiresAllowedBorrower: /allowed_borrower_key/.test(ix) && /borrower_program/.test(ix),
     requiresDeadline: /deadline_slot/.test(ix) && /max_deadline_slots/.test(ix),
     burnsReceipt: /Burn\s*\{/.test(ix) && /pool_csdm_account/.test(ix),
+    deployArtifact,
+    deployArtifactBytes: fileBytes(deployArtifact),
     liveIx7Assumption: "Do not assume ix7 is live until binary hash or exact ix7 simulation proves it on Q9."
   };
 }
@@ -387,6 +397,17 @@ async function main(): Promise<void> {
   const atomDeployable = atom?.classification === "FREE_PROGRAM_ID_CAN_DEPLOY";
   const enchancedblockControlled = enchancedblock?.classification === "LIVE_UPGRADEABLE_CONTROLLED";
   const oraControlled = ora?.classification === "LIVE_UPGRADEABLE_CONTROLLED";
+  const csdmSourceInspection = inspectCsdmSources();
+  const csdmArtifactBytes = typeof csdmSourceInspection.deployArtifactBytes === "number"
+    ? csdmSourceInspection.deployArtifactBytes
+    : null;
+  const csdmLiveElfBytes = csdm?.elfDataLenEstimate ?? null;
+  const csdmUpgradeFitsCurrentProgramData = csdmArtifactBytes !== null && csdmLiveElfBytes !== null
+    ? csdmArtifactBytes <= csdmLiveElfBytes
+    : null;
+  const csdmUpgradeByteHeadroom = csdmArtifactBytes !== null && csdmLiveElfBytes !== null
+    ? csdmLiveElfBytes - csdmArtifactBytes
+    : null;
 
   const receipt = {
     verdict: "MAINNET_PROGRAM_CANDIDATE_SCAN_SAVED_NO_LIVE",
@@ -412,8 +433,14 @@ async function main(): Promise<void> {
     candidateSummary: {
       bestExistingUpgradeTarget: csdmControlled ? "CSDM" : null,
       bestFreshDeployTarget: atomDeployable ? "atom_ickk" : null,
+      csdmUpgradeFitsCurrentProgramData,
+      csdmArtifactBytes,
+      csdmLiveElfBytes,
+      csdmUpgradeByteHeadroom,
       recommendedNextBuild: csdmControlled
-        ? "Build exact CSDM upgrade/sim receipt for ix7 flash_lend_backing plus HOP burn/redeem-to-USDC path."
+        ? csdmUpgradeFitsCurrentProgramData === true
+          ? "CSDM ix7 artifact appears to fit current Q9 ProgramData; next is exact upgrade simulation/receipt, not live upgrade."
+          : "Build exact CSDM upgrade/sim receipt and handle ProgramData extension or fresh deploy if artifact does not fit."
         : atomDeployable
           ? "Deploy atom-derived HOP redeem vault only after exact build receipt."
           : "No safe mainnet program target selected.",
@@ -421,7 +448,7 @@ async function main(): Promise<void> {
     },
     programInspections: inspections,
     sourceInspections: {
-      csdm: inspectCsdmSources(),
+      csdm: csdmSourceInspection,
       atom: inspectAtomSource()
     },
     cashProofGate: {
@@ -441,7 +468,7 @@ async function main(): Promise<void> {
       ]
     },
     nextRequiredExactBuild: [
-      "For CSDM path: prove local build fits current ProgramData or plan buffer extension; simulate ix7 flash_lend_backing against exact accounts.",
+      "For CSDM path: produce exact upgrade simulation/receipt for the ix7 artifact against Q9 before any live upgrade.",
       "For atom path: add HOP redeem-vault instruction and deploy only behind a separate approval receipt.",
       "Wire ENCHANCEDBLOCK source receipt so Orca settlement shows afterRaw > beforeRaw in SOL/USDC after all costs.",
       "Feed the final source receipt into npm run redemption-cash-relay-plan and require READY_NO_LIVE before any live step."
