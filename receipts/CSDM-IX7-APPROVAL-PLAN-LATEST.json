@@ -1,0 +1,73 @@
+{
+  "verdict": "CSDM_IX7_APPROVAL_READY_NO_LIVE",
+  "generatedAt": "2026-05-24T03:17:21.513Z",
+  "noSend": true,
+  "dryRun": true,
+  "allowLive": false,
+  "liveIntentIgnored": "This planner only emits the exact live command. It never runs npm run csdm:live.",
+  "requiresExplicitUserApproval": true,
+  "approvalPacket": {
+    "exactCommandNotRun": "cd /Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/enchancedblock/keeper\nset -a\nsource /Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/.env.keeper\nset +a\nCSDM_DRY_RUN=false npm run csdm:live",
+    "commandSafety": [
+      "Do not add FORCE_CSDM_SIMULATE=true for live approval.",
+      "The live script re-simulates and sends only if CSDM_LIVE=true and CSDM_DRY_RUN is not true.",
+      "Run a fresh npm run csdm-ix7-sim immediately before any live send."
+    ],
+    "expectedLiveMode": "CSDM_LIVE=true via npm run csdm:live, CSDM_DRY_RUN=false",
+    "signerMaterialSource": "/Users/velon/gh-src-vtothen/EXPERIMENTO-lazyloop/.env.keeper",
+    "signerSecretsRecorded": false
+  },
+  "pinnedProofs": {
+    "simReceiptPath": "receipts/CSDM-IX7-SIM-LATEST.json",
+    "csdmProgramId": "Q9FMc5YLqjJe96geFtg43ocfyrpJYM2WDHkQEqh8aNv",
+    "programDataSlot": "421765950",
+    "liveElfPrefixSha256": "e457e655baa0513a5f1b3e93fe5631e79b2d557ba814ae7841d5bfd6a4250942",
+    "liveElfPrefixMatchesArtifact": true,
+    "lastUpgradeSignature": "3UEpq6Fp2qunYMCgZQN19kZQP4LBpUffaqR5bCFo59brFD5cj5nempaWyZoKfjQFTvuXaSeUCCcTtQqJWHA5LvnG",
+    "backingRaw": "200000000",
+    "maxAmountRaw": "100000000",
+    "minRepayDeltaRawFromConfig": "250000",
+    "runtimeBackingOracleToPass": "GyJzwayA96Y82LCjMdhvwXZx2PYxyVYJ6co5T3BCaZnD"
+  },
+  "pinnedSimulation": {
+    "command": "CSDM_DRY_RUN=true npm run csdm:simulate",
+    "forceSimulate": false,
+    "borrowerIx": "0x0A_csdm_flash_borrower",
+    "flashAmountAtoms": "50000000",
+    "minRepayDeltaAtoms": "250000",
+    "marketPriceUsd": 84.691,
+    "estimatedUsdcOut": 4.266843,
+    "fairUsdcOracle": 4.23455,
+    "surplusVsOracle": 0.032293,
+    "edgeOracleBps": 46,
+    "dynamicBaitBps": 0,
+    "expectedPool1SolOutAtoms": "50376227",
+    "repayRequiredAtoms": "50250000",
+    "gatePass": true,
+    "solvencyPass": true,
+    "err": null,
+    "unitsConsumed": 57704,
+    "judge": "PASS"
+  },
+  "cashProofGate": {
+    "pass": false,
+    "reason": "Approval readiness is not profit. CashRelay remains blocked until a confirmed live receipt shows real SOL/USDC afterRaw > beforeRaw after costs.",
+    "postLiveRequiredReceipt": {
+      "sourceClass": "authority_exclusive_actuator",
+      "payerClass": "external_protocol",
+      "asset": "SOL or USDC",
+      "beforeRaw": "required",
+      "afterRaw": "required",
+      "simErr": null,
+      "costsUsd": "required",
+      "liabilitiesUsd": "required",
+      "inventoryDrawUsd": "required"
+    }
+  },
+  "rejections": [],
+  "nextRequiredExactBuild": [
+    "Wait for explicit Velon approval before running the exact command.",
+    "After live confirmation, build a post-live source receipt with SOL/USDC beforeRaw and afterRaw.",
+    "Only feed that post-live source receipt into RedemptionCashRelay."
+  ]
+}
