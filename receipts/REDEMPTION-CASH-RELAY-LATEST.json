@@ -1,12 +1,12 @@
 {
-  "verdict": "REDEMPTION_CASH_RELAY_BLOCKED_MISSING_SOURCE",
-  "generatedAt": "2026-05-24T00:44:56.296Z",
+  "verdict": "REDEMPTION_CASH_RELAY_BLOCKED",
+  "generatedAt": "2026-05-24T00:55:41.805Z",
   "noSend": true,
   "dryRun": false,
   "allowLive": true,
   "liveTxApproved": true,
   "liveIntentIgnored": "ALLOW_LIVE/LIVE_TX_APPROVED are ignored by RedemptionCashRelay V1; planner is no-send only.",
-  "sourceReceiptPath": null,
+  "sourceReceiptPath": "/Users/velon/Desktop/redemptionarc/receipts/REDEMPTION-UNDERWHEEL-CASH-SOURCE-LATEST.json",
   "minNetUsd": 0.25,
   "architecture": {
     "hop": "control / metering only",
@@ -15,20 +15,20 @@
     "cashRelay": "judge"
   },
   "sourceClassification": {
-    "sourceReceiptPath": null,
-    "verdict": null,
-    "sourceClass": null,
-    "sourceName": null,
-    "payerClass": null,
-    "asset": null,
-    "decimals": null
+    "sourceReceiptPath": "/Users/velon/Desktop/redemptionarc/receipts/REDEMPTION-UNDERWHEEL-CASH-SOURCE-LATEST.json",
+    "verdict": "UNDERWHEEL_CASH_SOURCE_BLOCKED",
+    "sourceClass": "underwheel_unproven_cash_source",
+    "sourceName": "UNDERWHEEL/GGSS underwheel-mainnet-shadow-dry-run",
+    "payerClass": "owned_inventory",
+    "asset": "USDC",
+    "decimals": 6
   },
   "cashMath": {
-    "beforeRaw": null,
-    "afterRaw": null,
-    "deltaRaw": null,
+    "beforeRaw": "0",
+    "afterRaw": "0",
+    "deltaRaw": "0",
     "deltaUi": 0,
-    "assetPriceUsd": null,
+    "assetPriceUsd": 1,
     "cashDeltaUsd": 0,
     "costsUsd": 0,
     "liabilitiesUsd": 0,
@@ -45,7 +45,11 @@
     "requiresNetCashUsdAtLeastMin": true
   },
   "rejectionReasons": [
-    "CASH_SOURCE_RECEIPT_PATH is required"
+    "sourceClass must be authority_exclusive_actuator",
+    "payerClass owned_inventory is a hard reject",
+    "simErr must be null",
+    "afterRaw must be greater than beforeRaw",
+    "netCashUsd 0.000000 below MIN_NET_USD 0.25"
   ],
   "nextRequiredExactBuild": [
     "Build a source adapter that emits the CashRelay source receipt shape from an authority-exclusive actuator.",

@@ -1,0 +1,61 @@
+{
+  "verdict": "UNDERWHEEL_CASH_SOURCE_BLOCKED",
+  "noSend": true,
+  "sourceClass": "underwheel_unproven_cash_source",
+  "sourceName": "UNDERWHEEL/GGSS underwheel-mainnet-shadow-dry-run",
+  "payerClass": "owned_inventory",
+  "asset": "USDC",
+  "beforeRaw": "0",
+  "afterRaw": "0",
+  "decimals": 6,
+  "costsUsd": 0,
+  "liabilitiesUsd": 0,
+  "inventoryDrawUsd": 0,
+  "simErr": "missing exact simulation result",
+  "adapter": {
+    "sourceReceiptPath": "/Users/velon/gh-src-vtothen/UNDERWHEEL/receipts/latest-plan.json",
+    "adapterVerdict": "BLOCKED",
+    "rejectionReasons": [
+      "sourceClass is not external cash: CodexLoop ENCHANCEDBLOCK owned vault inventory",
+      "UNDERWHEEL gate cannot execute",
+      "UNDERWHEEL economics do not pass profit/mark-to-market gates",
+      "UNDERWHEEL receipt does not expose exact USDC/SOL beforeRaw and afterRaw",
+      "source receipt simulation is missing or failed"
+    ],
+    "requires": [
+      "noSend=true",
+      "UNDERWHEEL gate.canExecute=true",
+      "economics.classification=profit",
+      "economics.markToMarketPass=true",
+      "exact simulated beforeRaw/afterRaw for USDC or SOL",
+      "no owned inventory draw counted as profit"
+    ],
+    "nextRequiredExactBuild": [
+      "Patch UNDERWHEEL dry-run receipts to include cashRelaySource.beforeRaw/afterRaw from simulated post balances.",
+      "Use payerClass=external_protocol only when external Raydium/protocol settlement increases wallet USDC/SOL after costs.",
+      "Keep fee-first/preloaded GGSS USDC as solvency runway unless a fresh external payer funds it."
+    ]
+  },
+  "underwheelRawSummary": {
+    "type": "underwheel-mainnet-shadow-dry-run",
+    "createdAt": "2026-05-21T05:54:23.897Z",
+    "verdict": null,
+    "sourceClass": "CodexLoop ENCHANCEDBLOCK owned vault inventory",
+    "gate": {
+      "canExecute": false,
+      "blockedReason": "no executable candidate",
+      "noSendOnly": true
+    },
+    "executionGate": {
+      "canExecute": false,
+      "blockedReason": "no current-vault candidate passed profit/executable gates",
+      "nextCommand": null,
+      "objective": "profit",
+      "classification": "net system profit"
+    },
+    "economics": null,
+    "result": null,
+    "addresses": null,
+    "accounts": null
+  }
+}

@@ -19,6 +19,8 @@
     "flash-provider-scan": "tsx src/scripts/flash-provider-scan.ts",
     "cycle-plan": "tsx src/scripts/cycle-plan.ts",
     "redemption-cash-relay-plan": "tsx src/scripts/redemption-cash-relay-plan.ts",
+    "redemption-underwheel-source": "tsx src/scripts/redemption-underwheel-source.ts",
+    "redemption-underwheel-cash-relay-plan": "tsx src/scripts/redemption-underwheel-cash-relay-plan.ts",
     "hop-holder-scan": "tsx src/scripts/hop-holder-scan.ts",
     "init-hop-mint": "tsx src/scripts/init-hop-mint.ts",
     "init-cycle-accounts": "tsx src/scripts/init-cycle-accounts.ts",

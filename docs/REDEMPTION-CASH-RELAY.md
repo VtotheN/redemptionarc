@@ -66,7 +66,27 @@ compute exact USD net.
 ```bash
 npm run redemption-cash-relay-plan
 CASH_SOURCE_RECEIPT_PATH=receipts/source.json npm run redemption-cash-relay-plan
+npm run redemption-underwheel-cash-relay-plan
 ```
 
 `ALLOW_LIVE=true` and `LIVE_TX_APPROVED=true` are recorded but ignored. V1 is
 always no-send.
+
+## UNDERWHEEL/GGSS Adapter
+
+`npm run redemption-underwheel-cash-relay-plan` reads `UNDERWHEEL_RECEIPT_PATH`
+or `${UNDERWHEEL_REPO_PATH}/receipts/latest-plan.json`, writes
+`receipts/REDEMPTION-UNDERWHEEL-CASH-SOURCE-LATEST.json`, then runs the same
+CashRelay gate against that source receipt.
+
+The adapter only allows a future UNDERWHEEL receipt through when it contains:
+
+- exact no-send USDC/SOL `beforeRaw` and `afterRaw`;
+- `gate.canExecute=true`;
+- `economics.classification=profit`;
+- `economics.markToMarketPass=true`;
+- `payerClass=external_protocol`;
+- no owned-inventory, fee-first, HOP, or forbidden-wallet profit claim.
+
+Current GGSS fee-first and controlled-fee-volume receipts are treated as runway
+or owned-inventory evidence, not cash profit.
