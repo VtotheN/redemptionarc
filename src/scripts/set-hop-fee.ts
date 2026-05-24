@@ -41,10 +41,17 @@ function loadKeypair(path: string): Keypair {
   );
 }
 
+function boolEnv(name: string, fallback: boolean): boolean {
+  const raw = process.env[name];
+  if (raw == null || raw === "") return fallback;
+  return ["1", "true", "yes", "y"].includes(raw.toLowerCase());
+}
+
 async function main() {
   const rpcUrl = process.env.SOLANA_RPC_URL || process.env.RPC_URL || "https://api.mainnet-beta.solana.com";
   const dryRun = process.env.DRY_RUN !== "false";
   const allowLive = process.env.ALLOW_LIVE === "true";
+  const forceReschedule = boolEnv("FORCE_RESCHEDULE_HOP_FEE", false);
   const verify = process.argv.includes("--verify");
   const connection = new Connection(rpcUrl, "confirmed");
 
@@ -60,6 +67,36 @@ async function main() {
   const activeFee = activeFeeConfig.transferFeeBasisPoints;
   const feeConfigAuthority = feeConfig.transferFeeConfigAuthority;
   const withdrawAuthority = feeConfig.withdrawWithheldAuthority;
+  const targetScheduled = feeConfig.newerTransferFee.transferFeeBasisPoints === TARGET_FEE_BPS;
+  const targetActive = activeFee === TARGET_FEE_BPS;
+  const slotsUntilTargetEpoch = Number(feeConfig.newerTransferFee.epoch) <= currentEpoch
+    ? 0
+    : (epochInfo.slotsInEpoch - epochInfo.slotIndex)
+      + Math.max(Number(feeConfig.newerTransferFee.epoch) - currentEpoch - 1, 0) * epochInfo.slotsInEpoch;
+  const statusReceipt = {
+    mint: HOP_MINT.toBase58(),
+    currentEpoch,
+    slotsInEpoch: epochInfo.slotsInEpoch,
+    slotIndex: epochInfo.slotIndex,
+    slotsUntilTargetEpoch,
+    activeFee,
+    targetFee: TARGET_FEE_BPS,
+    olderFee: {
+      bps: feeConfig.olderTransferFee.transferFeeBasisPoints,
+      epoch: feeConfig.olderTransferFee.epoch.toString(),
+    },
+    newerFee: {
+      bps: feeConfig.newerTransferFee.transferFeeBasisPoints,
+      epoch: feeConfig.newerTransferFee.epoch.toString(),
+    },
+    transferFeeConfigAuthority: feeConfigAuthority?.toBase58() ?? null,
+    withdrawWithheldAuthority: withdrawAuthority?.toBase58() ?? null,
+    withheldAmount: feeConfig.withheldAmount.toString(),
+    targetActive,
+    targetScheduled,
+    canLowerNow: targetActive,
+    forceReschedule,
+  };
 
   console.log("=== HOP TOKEN STATE ===");
   console.log(`mint:                     ${HOP_MINT.toBase58()}`);
@@ -71,17 +108,33 @@ async function main() {
   console.log(`withdrawWithheldAuth:     ${withdrawAuthority?.toBase58() ?? "None"}`);
   console.log(`withheldAmount:           ${feeConfig.withheldAmount}`);
   console.log(`targetFeeBps:             ${TARGET_FEE_BPS}`);
+  console.log(`targetScheduled:          ${targetScheduled ? "yes" : "no"}`);
+  console.log(`slotsUntilTargetEpoch:    ${slotsUntilTargetEpoch}`);
 
   if (verify) {
-    const ok = activeFee === TARGET_FEE_BPS;
-    console.log(`\nVERIFY: activeFee=${activeFee} target=${TARGET_FEE_BPS} → ${ok ? "OK ✅" : "NOT SET ❌"}`);
-    writeReceipt("set-hop-fee-verify", { mint: HOP_MINT.toBase58(), activeFee, targetFee: TARGET_FEE_BPS, ok });
+    const verdict = targetActive
+      ? "HOP_FEE_TARGET_ACTIVE"
+      : targetScheduled
+        ? "HOP_FEE_TARGET_SCHEDULED_NOT_ACTIVE"
+        : "HOP_FEE_TARGET_NOT_SCHEDULED";
+    console.log(`\nVERIFY: ${verdict}`);
+    writeReceipt("set-hop-fee-status", { verdict, ...statusReceipt });
     return;
   }
 
-  if (activeFee === TARGET_FEE_BPS) {
+  if (targetActive) {
     console.log(`\nActive fee already ${TARGET_FEE_BPS} bps. Nothing to do.`);
-    writeReceipt("set-hop-fee", { verdict: "ALREADY_SET", activeFee, targetFee: TARGET_FEE_BPS });
+    writeReceipt("set-hop-fee-status", { verdict: "HOP_FEE_ALREADY_ACTIVE", ...statusReceipt });
+    return;
+  }
+
+  if (targetScheduled && !forceReschedule) {
+    console.log(`\nTarget fee already scheduled. Nothing to send until epoch ${feeConfig.newerTransferFee.epoch.toString()}.`);
+    writeReceipt("set-hop-fee-status", {
+      verdict: "HOP_FEE_ALREADY_SCHEDULED_WAIT_FOR_EPOCH",
+      ...statusReceipt,
+      note: "Re-sending SetTransferFee is intentionally blocked because it does not make the existing newer fee active before its epoch.",
+    });
     return;
   }
 
@@ -127,6 +180,8 @@ async function main() {
     authority: authority.publicKey.toBase58(),
     fromFeeBps: activeFee,
     toFeeBps: TARGET_FEE_BPS,
+    currentEpoch,
+    currentNewerFeeEpoch: feeConfig.newerTransferFee.epoch.toString(),
     dryRun,
     signature: null as string | null,
   };
@@ -145,7 +200,7 @@ async function main() {
     console.log(`HOP fee changed: ${activeFee} → ${TARGET_FEE_BPS} bps`);
   }
 
-  writeReceipt("set-hop-fee", receipt);
+  writeReceipt(receipt.verdict === "EXECUTED" ? "set-hop-fee" : "set-hop-fee-plan", receipt);
   console.log(`\nReceipt written. Run with --verify to confirm.`);
 }
 

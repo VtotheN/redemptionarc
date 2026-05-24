@@ -1,6 +1,6 @@
 {
   "verdict": "FORK_LIVE_TX_BLOCKED",
-  "generatedAt": "2026-05-23T23:18:39.676Z",
+  "generatedAt": "2026-05-24T00:06:52.943Z",
   "program": "GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h",
   "config": {
     "address": "9Nr7o1muxPfcsxv4WtTN2GdUFKhUsdR7WHejyJdesTmZ",
@@ -59,9 +59,9 @@
   },
   "hopTransferFee": {
     "currentEpoch": 976,
-    "slotsUntilNextEpoch": 331295,
+    "slotsUntilNextEpoch": 324025,
     "targetFeeEpoch": 978,
-    "slotsUntilTargetFeeEpoch": 763295,
+    "slotsUntilTargetFeeEpoch": 756025,
     "activeBps": 690,
     "targetBps": 1,
     "olderBps": 690,
