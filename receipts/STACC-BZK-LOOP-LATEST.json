@@ -1,7 +1,7 @@
 {
   "verdict": "STACC_BZK_LOOP_MONITORING_NO_LIVE",
-  "generatedAt": "2026-05-24T04:11:44.699Z",
-  "iteration": 1,
+  "generatedAt": "2026-05-24T04:17:04.099Z",
+  "iteration": 3,
   "noSend": true,
   "dryRun": true,
   "allowLive": false,
@@ -334,7 +334,7 @@
       },
       "feeMath": {
         "protocolCaptureRate": 0.0025,
-        "requiredExternalVolumeUsdForMinNet": 100.18347975655999,
+        "requiredExternalVolumeUsdForMinNet": 100.18395783256,
         "swapFeeUsd": 0,
         "protocolFeeUsd": 0,
         "lpFeeUsd": 0,
@@ -358,7 +358,7 @@
           "txCount": 1,
           "lamportsPerTx": 5350,
           "totalLamports": 5350,
-          "usd": 0.00045869939139999994
+          "usd": 0.00045989458139999995
         },
         "inventoryRiskUsd": 0,
         "inventoryRiskBps": null,
@@ -366,8 +366,8 @@
       },
       "existingCashClaimableUsd": 0,
       "ledgers": {
-        "collectorLedgerNetUsd": -0.00045869939139999994,
-        "totalSystemNetUsd": -0.00045869939139999994
+        "collectorLedgerNetUsd": -0.00045989458139999995,
+        "totalSystemNetUsd": -0.00045989458139999995
       },
       "collectSimulation": null,
       "cashProofPass": false,
