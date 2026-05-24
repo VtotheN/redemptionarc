@@ -6,6 +6,7 @@ import { assertNoForbiddenConfigured } from "../utils/safety.js";
 const OUT_RECEIPT = "CSDM-UPGRADE-APPROVAL-PLAN-LATEST.json";
 const DEFAULT_PREFLIGHT = "receipts/CSDM-UPGRADE-PREFLIGHT-LATEST.json";
 const DEFAULT_LIVE_SHAPE = "receipts/CSDM-LIVE-SHAPE-SCAN-LATEST.json";
+const DEFAULT_FEE_PAYER = "keys/crank.json";
 
 function strEnv(name: string, fallback: string): string {
   const raw = process.env[name];
@@ -43,6 +44,7 @@ async function main(): Promise<void> {
 
   const preflightPath = strEnv("CSDM_UPGRADE_PREFLIGHT_RECEIPT", DEFAULT_PREFLIGHT);
   const liveShapePath = strEnv("CSDM_LIVE_SHAPE_RECEIPT", DEFAULT_LIVE_SHAPE);
+  const feePayerPath = strEnv("CSDM_UPGRADE_FEE_PAYER_KEYPAIR_PATH", DEFAULT_FEE_PAYER);
   const preflight = record(readJson(preflightPath), preflightPath);
   const liveShape = record(readJson(liveShapePath), liveShapePath);
   const program = record(preflight.program, "preflight.program");
@@ -73,6 +75,7 @@ async function main(): Promise<void> {
   const exactCommand = [
     "solana program deploy",
     "--url", "\"$SOLANA_RPC_URL\"",
+    "--fee-payer", feePayerPath,
     "--program-id", programKeypairPath ?? "<missing-program-keypair>",
     "--upgrade-authority", authorityKeypairPath ?? "<missing-authority-keypair>",
     "--no-auto-extend",
@@ -110,6 +113,7 @@ async function main(): Promise<void> {
       upgradeAuthority,
       programKeypairPath,
       authorityKeypairPath,
+      feePayerPath,
       artifactPath,
       artifactBytes,
       liveElfBytes,
