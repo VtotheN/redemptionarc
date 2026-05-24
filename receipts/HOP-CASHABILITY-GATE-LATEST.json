@@ -1,6 +1,6 @@
 {
   "verdict": "HOP_CASHABILITY_BLOCKED",
-  "generatedAt": "2026-05-24T05:28:46.318Z",
+  "generatedAt": "2026-05-24T05:39:55.319Z",
   "readOnly": true,
   "noSend": true,
   "liveIntentIgnored": {
@@ -101,10 +101,10 @@
       "error": null,
       "inputAmountRaw": "93888532126521",
       "inputAmountHop": 93888532.126521,
-      "outAmountRaw": "236641011",
-      "outAmountUi": 0.236641011,
+      "outAmountRaw": "236815916",
+      "outAmountUi": 0.236815916,
       "outUsd": null,
-      "priceImpactPct": 0.9994185174102233,
+      "priceImpactPct": 0.99941856383906,
       "routePlan": [
         {
           "label": "Raydium CP",
@@ -117,41 +117,30 @@
           "bps": null
         },
         {
-          "label": "Quantum",
-          "ammKey": "ugobDeUHRY34mq1yK94eYrepgj2KVmUkHiaV8vyUD42",
+          "label": "1DEX",
+          "ammKey": "DbuvwPuLvH8uy2B1sKuu18aCd2QpCvfZdfDtdRZztBd2",
           "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
           "outputMint": "So11111111111111111111111111111111111111112",
-          "inAmount": "924",
-          "outAmount": "10801",
+          "inAmount": "9773",
+          "outAmount": "114214",
           "percent": 1,
           "bps": null
         },
         {
-          "label": "BisonFi",
-          "ammKey": "8FnX3xo2yYw3EUE6w3nQA4GfXGS9wpK6oj3veJpbFzLo",
+          "label": "ZeroFi",
+          "ammKey": "4otzWqybJZVrPWEXBJetK3hQEhFvGsip6n4bS24LEAgi",
           "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
           "outputMint": "So11111111111111111111111111111111111111112",
-          "inAmount": "20263328",
-          "outAmount": "236627641",
-          "percent": 98,
-          "bps": null
-        },
-        {
-          "label": "Quantum",
-          "ammKey": "8R5qdXKMn2KcfHBy9rEpi43KScHewqvRAcpFyqoL3wap",
-          "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-          "outputMint": "So11111111111111111111111111111111111111112",
-          "inAmount": "219",
-          "outAmount": "2569",
-          "percent": 1,
+          "inAmount": "20254698",
+          "outAmount": "236701702",
+          "percent": 99,
           "bps": null
         }
       ],
       "routeAmmKeys": [
         "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f",
-        "ugobDeUHRY34mq1yK94eYrepgj2KVmUkHiaV8vyUD42",
-        "8FnX3xo2yYw3EUE6w3nQA4GfXGS9wpK6oj3veJpbFzLo",
-        "8R5qdXKMn2KcfHBy9rEpi43KScHewqvRAcpFyqoL3wap"
+        "DbuvwPuLvH8uy2B1sKuu18aCd2QpCvfZdfDtdRZztBd2",
+        "4otzWqybJZVrPWEXBJetK3hQEhFvGsip6n4bS24LEAgi"
       ],
       "ownedAmmKeysHit": [
         "6zbtkhUtxdd3gfae4QJpHe356S44wRMNxNjJq33oEL7f"

@@ -1,9 +1,9 @@
 {
   "verdict": "ORCA_OWNED_FEE_SOURCE_SCAN_READ_ONLY",
-  "generatedAt": "2026-05-24T05:28:17.213Z",
+  "generatedAt": "2026-05-24T05:39:31.686Z",
   "rpcUrlRedacted": "https://mainnet.helius-rpc.com/?api-key=<redacted>",
   "noSend": true,
-  "solPriceUsd": 85.652399,
+  "solPriceUsd": 85.574196,
   "programs": [
     {
       "label": "official-orca",
