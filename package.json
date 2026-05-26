@@ -86,6 +86,7 @@
     "ring-bot": "tsx src/scripts/ring-bot.ts",
     "harvest-withheld": "tsx src/scripts/harvest-withheld.ts",
     "flywheel-bot": "tsx src/scripts/flywheel-bot.ts",
+    "auto-compound": "tsx src/scripts/auto-compound.ts",
     "fork-readiness": "tsx src/scripts/fork-readiness.ts",
     "fee-singularity-plan": "tsx src/scripts/fee-singularity-plan.ts",
     "bundle-womb-lite-plan": "tsx src/scripts/bundle-womb-lite-plan.ts",
