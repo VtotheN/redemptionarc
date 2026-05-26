@@ -42,8 +42,6 @@ import {
   TOKEN_2022_PROGRAM_ID,
   TOKEN_PROGRAM_ID,
   createAssociatedTokenAccountIdempotentInstruction,
-  createHarvestWithheldTokensToMintInstruction,
-  createWithdrawWithheldTokensFromMintInstruction,
   getAssociatedTokenAddressSync,
   getMint,
   getTransferFeeConfig,
@@ -294,6 +292,7 @@ async function main(): Promise<void> {
 
   // LP ATA — standard SPL token (NOT T22)
   const crankLpAta = getAssociatedTokenAddressSync(lpMint, crank.publicKey, false, TOKEN_PROGRAM_ID);
+  const lpAtaInfo = await conn.getAccountInfo(crankLpAta, "confirmed");
 
   // ── Amounts ──
   const flashAmountMicro = BigInt(Math.floor(flashUsdcUi * 10 ** USDC_DECIMALS));
@@ -317,7 +316,26 @@ async function main(): Promise<void> {
   const lpMintRaw = lpSupplyRaw === 0n
     ? BigInt(Math.floor(Math.sqrt(Number(addLiqUsdcRaw) * Number(targetHopRaw))))
     : (addLiqUsdcRaw * lpSupplyRaw) / usdcReserveRaw;
+  // Apply slippage to LP amount (matches SDK behavior: deposit mints exactly lpMintMin)
   const lpMintMin = lpMintRaw - (lpMintRaw * slippageBpsBig) / 10_000n;
+
+  // ── Withdraw min-amount-out (computed from pre-deposit state with slippage) ──
+  const expectedAOutRaw = lpSupplyRaw === 0n
+    ? addLiqUsdcRaw
+    : (lpMintMin * usdcReserveRaw) / lpSupplyRaw;
+  const expectedBOutRaw = lpSupplyRaw === 0n
+    ? targetHopRaw
+    : (lpMintMin * hopReserveRaw) / lpSupplyRaw;
+  const minAmountAOut = expectedAOutRaw - (expectedAOutRaw * slippageBpsBig) / 10_000n;
+  const minAmountBOut = expectedBOutRaw - (expectedBOutRaw * slippageBpsBig) / 10_000n;
+
+  // Catch the classic MAX-passing bug at build time
+  const U63_MAX = (1n << 63n) - 1n;
+  if (minAmountAOut > U63_MAX || minAmountBOut > U63_MAX || lpMintMin > U63_MAX) {
+    throw new Error(
+      `MIN_AMOUNT_OUT_OVERFLOW: minA=${minAmountAOut} minB=${minAmountBOut} lpMin=${lpMintMin}`
+    );
+  }
 
   // ── Estimate HOP received from LEG1 USDC→HOP swap (constant-product, 0.05% fee)
   //    Pool sees post-deposit reserves. After deposit, both sides scale by (1 + dep/usdc).
@@ -347,14 +365,19 @@ async function main(): Promise<void> {
   ixs.push(ComputeBudgetProgram.setComputeUnitLimit({ units: cuLimit }));
   // IX[1] CU price
   ixs.push(ComputeBudgetProgram.setComputeUnitPrice({ microLamports: cuPrice }));
-  // IX[2] start flash
-  ixs.push(startFlashIx(mfAccount, crank.publicKey, 13n));
+  // Track dynamic end index (depends on whether create LP ATA was added)
+  // Without Jito tip or harvest to stay under v0 limit (tip/harvest require ALT or separate TX)
+  let endIndex = 9; // base: 10 instructions (no create LP ATA, no Jito tip, no harvest)
+  if (!lpAtaInfo) endIndex = 10;
+  ixs.push(startFlashIx(mfAccount, crank.publicKey, BigInt(endIndex)));
   // IX[3] borrow USDC
   ixs.push(borrowIx(mfAccount, crank.publicKey, crankUsdcAta, flashAmountMicro));
-  // IX[4] create LP ATA idempotent (standard SPL)
-  ixs.push(createAssociatedTokenAccountIdempotentInstruction(
-    crank.publicKey, crankLpAta, crank.publicKey, lpMint, TOKEN_PROGRAM_ID
-  ));
+  // IX[4] create LP ATA idempotent (standard SPL) — only if missing to stay under v0 limit
+  if (!lpAtaInfo) {
+    ixs.push(createAssociatedTokenAccountIdempotentInstruction(
+      crank.publicKey, crankLpAta, crank.publicKey, lpMint, TOKEN_PROGRAM_ID
+    ));
+  }
   // IX[5] addLiquidity
   ixs.push(makeDepositCpmmInInstruction(
     RAYDIUM_CPMM_PROGRAM,
@@ -369,7 +392,7 @@ async function main(): Promise<void> {
     USDC_MINT,
     HOP_MINT,
     lpMint,
-    new BN(lpMintRaw.toString()),
+    new BN(lpMintMin.toString()),
     new BN(addLiqUsdcMax.toString()),
     new BN(addLiqHopMax.toString()),
   ));
@@ -425,32 +448,21 @@ async function main(): Promise<void> {
     USDC_MINT,
     HOP_MINT,
     lpMint,
-    new BN(lpMintRaw.toString()),
-    new BN(0),
-    new BN(0),
+    new BN(lpMintMin.toString()),
+    new BN(minAmountAOut.toString()),
+    new BN(minAmountBOut.toString()),
   ));
-  // IX[9] harvest withheld → mint (crankHopAta + vaultB to capture addLiq/swap fees)
-  ixs.push(createHarvestWithheldTokensToMintInstruction(
-    HOP_MINT, [crankHopAta, vaultB], TOKEN_2022_PROGRAM_ID
-  ));
-  // IX[10] withdraw withheld mint → crank HOP ATA
-  ixs.push(createWithdrawWithheldTokensFromMintInstruction(
-    HOP_MINT, crankHopAta, crank.publicKey, [], TOKEN_2022_PROGRAM_ID
-  ));
-  // IX[11] repay
+  // Harvest instructions removed from main TX to stay under v0 1232-byte limit.
+  // T22 fee collection can be done in a follow-up TX or via ALT in future.
+  // IX[endIndex-1] repay
   ixs.push(repayIx(mfAccount, crank.publicKey, crankUsdcAta, flashAmountMicro));
-  // IX[12] Jito tip
-  ixs.push(SystemProgram.transfer({
-    fromPubkey: crank.publicKey,
-    toPubkey: JITO_TIP_WALLET,
-    lamports: Number(jitoTipLamports),
-  }));
-  // IX[13] end flash
+  // Jito tip removed from main TX — v0 limit exceeded. Use ALT or separate tip TX for live bundles.
+  // IX[endIndex] end flash
   ixs.push(endFlashIx(mfAccount, crank.publicKey, oracle));
 
-  // Assertion: endFlash must be at exactly index 13
-  if (ixs.length - 1 !== 13) {
-    throw new Error(`endIndex mismatch: endFlash must be at index 13, got ${ixs.length - 1}`);
+  // Assertion: endFlash must match the declared endIndex
+  if (ixs.length - 1 !== endIndex) {
+    throw new Error(`endIndex mismatch: expected ${endIndex}, got ${ixs.length - 1}`);
   }
 
   // ── P&L projection ──
@@ -469,7 +481,9 @@ async function main(): Promise<void> {
   console.log(`T22 fee:    ${t22FeeBps} bps`);
   console.log(`Flash:      $${flashUsdcUi} USDC`);
   console.log(`AddLiq:     $${addLiqUsdcUi} USDC + ${(Number(addLiqHopRaw) / 10 ** HOP_DECIMALS).toFixed(2)} HOP`);
-  console.log(`  LP mint:  ${(Number(lpMintRaw) / 10 ** USDC_DECIMALS).toFixed(6)} (est)`);
+  console.log(`  LP raw:   ${lpMintRaw} (est)`);
+  console.log(`  LP min:   ${lpMintMin} (after ${slippageBps} bps slippage)`);
+  console.log(`  withdraw minA: ${minAmountAOut} minB: ${minAmountBOut}`);
   console.log(`Swap:       $${swapUsdcUi} USDC round-trip`);
   console.log(`  est HOP recv:      ${(Number(hopOutRaw) / 10 ** HOP_DECIMALS).toFixed(4)} (pre-T22)`);
   console.log(`  est HOP for sell:  ${(Number(hopForSell) / 10 ** HOP_DECIMALS).toFixed(4)} (post-T22)`);
