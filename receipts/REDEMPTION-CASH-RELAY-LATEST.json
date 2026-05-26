@@ -1,12 +1,12 @@
 {
-  "verdict": "REDEMPTION_CASH_RELAY_BLOCKED",
-  "generatedAt": "2026-05-24T03:34:21.628Z",
+  "verdict": "REDEMPTION_CASH_RELAY_READY_NO_LIVE",
+  "generatedAt": "2026-05-26T16:29:06.771Z",
   "noSend": true,
-  "dryRun": true,
-  "allowLive": false,
-  "liveTxApproved": false,
-  "liveIntentIgnored": null,
-  "sourceReceiptPath": "receipts/CSDM-IX7-SOURCE-LATEST.json",
+  "dryRun": false,
+  "allowLive": true,
+  "liveTxApproved": true,
+  "liveIntentIgnored": "ALLOW_LIVE/LIVE_TX_APPROVED are ignored by RedemptionCashRelay V1; planner is no-send only.",
+  "sourceReceiptPath": "receipts/HOP-REDEEM-PROOF.json",
   "minNetUsd": 0.25,
   "architecture": {
     "hop": "control / metering only",
@@ -15,38 +15,36 @@
     "cashRelay": "judge"
   },
   "sourceClassification": {
-    "sourceReceiptPath": "receipts/CSDM-IX7-SOURCE-LATEST.json",
-    "verdict": "CSDM_IX7_SOURCE_READY_FOR_CASH_RELAY",
+    "sourceReceiptPath": "receipts/HOP-REDEEM-PROOF.json",
+    "verdict": "REDEMPTIONARC_WITHHELD_SETTLEMENT_SIM_PASS",
     "sourceClass": "authority_exclusive_actuator",
-    "sourceName": "CSDM ix7 flash_lend_backing via ENCHANCEDBLOCK 0x0A",
+    "sourceName": "redemptionarc_t22_fee_collection_usdc_settlement",
     "payerClass": "external_protocol",
-    "asset": "SOL",
-    "decimals": 9
+    "asset": "USDC",
+    "decimals": 6
   },
   "cashMath": {
-    "beforeRaw": "200000000",
-    "afterRaw": "200250000",
-    "deltaRaw": "250000",
-    "deltaUi": 0.00025,
-    "assetPriceUsd": 84.691,
-    "cashDeltaUsd": 0.02117275,
-    "costsUsd": 0.0008469100000000001,
+    "beforeRaw": "121711583",
+    "afterRaw": "175572961",
+    "deltaRaw": "53861378",
+    "deltaUi": 53.861378,
+    "assetPriceUsd": 1,
+    "cashDeltaUsd": 53.861378,
+    "costsUsd": 0.01716326259967,
     "liabilitiesUsd": 0,
     "inventoryDrawUsd": 0,
-    "totalCostsUsd": 0.0008469100000000001,
-    "netCashUsd": 0.02032584
+    "totalCostsUsd": 0.01716326259967,
+    "netCashUsd": 53.844214737400335
   },
   "cashProofGate": {
-    "pass": false,
+    "pass": true,
     "requiresAuthorityExclusiveActuator": true,
     "requiresExternalProtocolPayer": true,
     "requiresSolOrUsdcDelta": true,
     "requiresCleanSimulation": true,
     "requiresNetCashUsdAtLeastMin": true
   },
-  "rejectionReasons": [
-    "netCashUsd 0.020326 below MIN_NET_USD 0.25"
-  ],
+  "rejectionReasons": [],
   "nextRequiredExactBuild": [
     "Build a source adapter that emits the CashRelay source receipt shape from an authority-exclusive actuator.",
     "Use GGSS/UNDERWHEEL only after exact no-send simulation proves a SOL/USDC vault delta.",

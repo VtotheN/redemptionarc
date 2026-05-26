@@ -1,0 +1,68 @@
+{
+  "verdict": "EXECUTED",
+  "noSend": false,
+  "dryRun": false,
+  "sourceClass": "authority_exclusive_actuator",
+  "sourceName": "redemptionarc_t22_fee_collection_usdc_settlement",
+  "payerClass": "external_protocol",
+  "asset": "USDC",
+  "decimals": 6,
+  "beforeRaw": "121711583",
+  "afterRaw": "168854573",
+  "simErr": null,
+  "costsUsd": 0.001492755,
+  "liabilitiesUsd": 0,
+  "inventoryDrawUsd": 0,
+  "netCashUsd": 47.141497245,
+  "redeemable": true,
+  "backingAsset": "USDC",
+  "vaultExists": true,
+  "vaultBalanceUsd": 0,
+  "redeemInstruction": "src/scripts/redeem-hop-to-usdc.ts",
+  "exactBurnForCashProof": true,
+  "generatedAt": "2026-05-26T16:42:53.480Z",
+  "instructions": [
+    {
+      "name": "setComputeUnitLimit",
+      "program": "ComputeBudget",
+      "summary": "units=400000"
+    },
+    {
+      "name": "setComputeUnitPrice",
+      "program": "ComputeBudget",
+      "summary": "microLamports=50000"
+    },
+    {
+      "name": "harvestWithheldTokensToMint",
+      "program": "Token-2022",
+      "summary": "sources=3 ring ATAs → HOP mint"
+    },
+    {
+      "name": "withdrawWithheldTokensFromMint",
+      "program": "Token-2022",
+      "summary": "HOP mint → 2s2Au2bx... (crank ataA)"
+    },
+    {
+      "name": "swapV2",
+      "program": "Whirlpool fork",
+      "summary": "538775.419989 HOP → USDC, a_to_b=false, min=0 USDC"
+    }
+  ],
+  "swapHopRaw": "538775419989",
+  "swapHopUi": 538775.419989,
+  "netUsdcRaw": "50413262",
+  "netUsdcUi": 50.413262,
+  "minUsdcOutRaw": "0",
+  "slippageBps": 300,
+  "simCu": 80946,
+  "gasUsd": 0.001492755,
+  "cuPrice": 50000,
+  "cuLimit": 400000,
+  "pool": "8aoWgf7ycbeKv6BTFCdUj4JR7Y4mXWuPZWEUhmuzN5ZL",
+  "usdcVault": "4QD4GgnjRvjETqWLT5e3x7SHtJSzs9kShUPLfyHcTu7d",
+  "sqrtPriceX64": "1844674407370955161600",
+  "feeRate": 300,
+  "liquidity": "78748145963",
+  "txSig": "4bNXMVSdnFbTHUzVa2sGPVcJex1C9ZcsTF2XKExkAWiuf7im4sjFa3gEDw44b5QE1nELipGsSsjYEAj5EkXB81nc",
+  "liveMinUsdc": "45728700"
+}

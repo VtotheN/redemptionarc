@@ -1,24 +1,9 @@
 {
   "config": "KPX9QQP4GLWiRkh4pGpkagwoPGaGixarRQs1LQKb9dt",
-  "authority": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+  "authority": "7Wg8aXuPijrmH4svDmqArMeMAWF3ZusgrznJ6ymprBAN",
   "currentFeatureFlags": 0,
   "desiredFeatureFlags": 1,
   "dryRun": false,
-  "signature": null,
-  "verdict": "TOKEN_BADGE_FEATURE_SIM_FAILED",
-  "simErr": {
-    "InstructionError": [
-      0,
-      {
-        "Custom": 2003
-      }
-    ]
-  },
-  "simLogs": [
-    "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc invoke [1]",
-    "Program log: Instruction: SetConfigFeatureFlag",
-    "Program log: AnchorError caused by account: authority. Error Code: ConstraintRaw. Error Number: 2003. Error Message: A raw constraint was violated.",
-    "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc consumed 2568 of 200000 compute units",
-    "Program whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc failed: custom program error: 0x7d3"
-  ]
+  "signature": "8zcLUGfwqs4DuE6WH67rihfvukusr7ApuVpzVZ8CVRdK3FDxGgR8US3wAWxyKEe2TrtnxP7w8Rs7ti2bSxoKuQw",
+  "verdict": "TOKEN_BADGE_FEATURE_EXECUTED"
 }

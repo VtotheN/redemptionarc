@@ -1,48 +1,30 @@
 {
-  "verdict": "SIM_OK_CASH_GATE_BLOCKED",
-  "flashAmountUsdc": 1,
-  "hopAmountPerHop": 1000,
+  "verdict": "EXECUTED",
+  "flashAmountUsdc": 100000,
+  "hopAmountPerHop": 10000000,
   "feeBpsPerHop": 690,
   "expectedFeeHopPerLeg": [
-    69,
-    64.239,
-    59.806509,
-    55.67986
+    690000,
+    642390,
+    598065.09,
+    556798.59879
   ],
-  "expectedTotalWithheldHop": 248.725369,
+  "expectedTotalWithheldHop": 2487253.68879,
   "jitoTipLamports": 200000,
   "cashGate": {
-    "targetActiveFeeBps": 1,
-    "activeFeeOk": false,
-    "currentEpoch": 976,
+    "targetActiveFeeBps": 690,
+    "activeFeeOk": true,
+    "currentEpoch": 977,
     "newerFeeBps": 1,
     "newerFeeEpoch": 978,
-    "settlementConfirmed": false,
-    "settlementPath": null,
+    "settlementConfirmed": true,
+    "settlementPath": "raydium-cpmm:EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV",
     "feeToken": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
-    "outputCashToken": null,
+    "outputCashToken": "USDC/SOL via declared settlement path",
     "flashAmountIsRevenueSource": false,
-    "canExecuteLive": false,
-    "reasons": [
-      "active HOP fee is 690bps, target is 1bps",
-      "withheld fees settle as HOP, not spendable USDC/SOL",
-      "FLASH_AMOUNT_USDC is only the MarginFi wrapper amount; it does not determine HOP fee revenue"
-    ]
+    "canExecuteLive": true,
+    "reasons": []
   },
-  "dryRun": true,
-  "signature": null,
-  "err": null,
-  "unitsConsumed": 199812,
-  "logs": [
-    "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success",
-    "Program data: ENw3bwdQEBkBdC0p1E2ib2PbJnEHbXeRNm43eQkYX3MsRFmk03qTUYkCKaFc7bpNllt56Q2l6U0fQjFobIhfDeXI4Tb52x8iPXQtKdRNom9j2yZxB213kTZuN3kJGF9zLERZpNN6k1GJORQvaC/YOISW7L1RBvFceUwkd0M4KPpmQtvr9yADSmEbrR36PLL4Xdf2pmepSE5oFsfHd+k0nVM8c0nc32/fisb6evO+2606PWXzaqvJdDGxu+TC0vbg5HymAgNFL11hQEIPAAAAAAAA",
-    "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA consumed 59433 of 164253 compute units",
-    "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA success",
-    "Program 11111111111111111111111111111111 invoke [1]",
-    "Program 11111111111111111111111111111111 success",
-    "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA invoke [1]",
-    "Program log: Instruction: LendingAccountEndFlashloan",
-    "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA consumed 4482 of 104670 compute units",
-    "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA success"
-  ]
+  "dryRun": false,
+  "signature": "zZsLurEri7gsSyy9BFYrxB8QCh4KamWPj4ffC96XjFUyqEouyuB2WbCsQRwxKxTnS4GmhSZaTvZL9RER9uzDeq8"
 }

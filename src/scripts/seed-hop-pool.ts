@@ -10,7 +10,7 @@
  *   SEED_USDC=500            (USDC to seed, e.g. 500 = $500)
  *   SEED_HOP=50000000        (HOP units to seed, e.g. 50000000 = 50 HOP at 6 decimals)
  *   HOP_PRICE_USD=0.01       (initial price: SEED_USDC / (SEED_HOP / 1e6))
- *   AMM_CONFIG_INDEX=0       (0=fee0, 1=fee1bps, 2=fee5bps, 3=fee25bps, 4=fee30bps, 5=fee100bps)
+ *   AMM_CONFIG_INDEX=0       (0=0.25%, 1=1%, 2=2%, 3=4%, 4=0.5%, 5=0.3%; default 0)
  *
  * After creation: Jupiter will index the pool within ~30 min.
  * Then run: npm run sell-hop-fees
@@ -32,21 +32,26 @@ const USDC_MINT = new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v");
 const HOP_DECIMALS = 6;
 const USDC_DECIMALS = 6;
 
-// Raydium CPMM AMM Configs (pre-deployed on mainnet)
-// Index  |  Fee    | Config Pubkey
-// 0      |  0%     | D4FPEruKEHrG5TenZ2mpDGEfu1iUvTiqBxvpU8HLBvC2
-// 1      |  0.01%  | DNXgeM9EiiaAbaWvwjHj9fQQLAX5ZsfHyvmYUNRAdNC8
-// 2      |  0.05%  | E64NGkDLLCdQ2yFNPcavaKptrEgmiQaNykUuLC1Qgwyp
-// 3      |  0.25%  | LanzrUcJuf68kqNXpepsfMAniiqeWUpBUqgs9pfwHNm
-// 4      |  0.3%   | A6W4s9f9FeZ2pFGkuHmhYG8sqZ4K5RaFdxpwQhvHimN8
-// 5      |  1%     | GVSwm4smQBYcgAJU7qjFHLQBHTc4AdB3F2HbZp6KqKof
+// Raydium CPMM AMM Configs — PDAs of CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C
+// Verified on-chain 2026-05-26. tradeFee / 1,000,000 = LP fee rate.
+// Index  |  Fee    | PDA
+// 0      |  0.25%  | D4FPEruKEHrG5TenZ2mpDGEfu1iUvTiqBxvpU8HLBvC2
+// 1      |  1%     | G95xxie3XbkCqtE39GgQ9Ggc7xBC8Uceve7HFDEFApkc
+// 2      |  2%     | 2fGXL8uhqxJ4tpgtosHZXT4zcQap6j62z3bMDxdkMvy5  (old pool uses this)
+// 3      |  4%     | C7Cx2pMLtjybS3mDKSfsBj4zQ3PRZGkKt7RCYTTbCSx2
+// 4      |  0.5%   | BhH6HphjBKXu2PkUc2aw3xEMdUvK14NXxE5LbNWZNZAA
+// 5      |  0.3%   | BgxH5ifebqHDuiADWKhLjXGP5hWZeZLoCdmeWJLkRqLP
+// 6      |  1.5%   | B5u5x9S5pyaJdonf7bXUiEnBfEXsJWhNxXfLGAbRFtg2
+// 7      |  2.5%   | ESLj2Rzmvn3RhDo4Z18hY1wYmGyC9xM4ZtRXhvoFkDAi
 const AMM_CONFIGS: Record<number, { pubkey: string; fee: string }> = {
-  0: { pubkey: "D4FPEruKEHrG5TenZ2mpDGEfu1iUvTiqBxvpU8HLBvC2", fee: "0%" },
-  1: { pubkey: "DNXgeM9EiiaAbaWvwjHj9fQQLAX5ZsfHyvmYUNRAdNC8", fee: "0.01%" },
-  2: { pubkey: "E64NGkDLLCdQ2yFNPcavaKptrEgmiQaNykUuLC1Qgwyp", fee: "0.05%" },
-  3: { pubkey: "LanzrUcJuf68kqNXpepsfMAniiqeWUpBUqgs9pfwHNm", fee: "0.25%" },
-  4: { pubkey: "A6W4s9f9FeZ2pFGkuHmhYG8sqZ4K5RaFdxpwQhvHimN8", fee: "0.3%" },
-  5: { pubkey: "GVSwm4smQBYcgAJU7qjFHLQBHTc4AdB3F2HbZp6KqKof", fee: "1%" },
+  0: { pubkey: "D4FPEruKEHrG5TenZ2mpDGEfu1iUvTiqBxvpU8HLBvC2", fee: "0.25%" },
+  1: { pubkey: "G95xxie3XbkCqtE39GgQ9Ggc7xBC8Uceve7HFDEFApkc", fee: "1%" },
+  2: { pubkey: "2fGXL8uhqxJ4tpgtosHZXT4zcQap6j62z3bMDxdkMvy5", fee: "2%" },
+  3: { pubkey: "C7Cx2pMLtjybS3mDKSfsBj4zQ3PRZGkKt7RCYTTbCSx2", fee: "4%" },
+  4: { pubkey: "BhH6HphjBKXu2PkUc2aw3xEMdUvK14NXxE5LbNWZNZAA", fee: "0.5%" },
+  5: { pubkey: "BgxH5ifebqHDuiADWKhLjXGP5hWZeZLoCdmeWJLkRqLP", fee: "0.3%" },
+  6: { pubkey: "B5u5x9S5pyaJdonf7bXUiEnBfEXsJWhNxXfLGAbRFtg2", fee: "1.5%" },
+  7: { pubkey: "ESLj2Rzmvn3RhDo4Z18hY1wYmGyC9xM4ZtRXhvoFkDAi", fee: "2.5%" },
 };
 
 function loadKeypair(p: string) {
@@ -59,7 +64,7 @@ async function main() {
   const allowLive = process.env.ALLOW_LIVE === "true";
   const seedUsdc = Number(process.env.SEED_USDC || "500");
   const seedHopUi = Number(process.env.SEED_HOP_UI || "50000");  // HOP in whole units
-  const ammConfigIndex = Number(process.env.AMM_CONFIG_INDEX || "2");  // 0.05% fee default
+  const ammConfigIndex = Number(process.env.AMM_CONFIG_INDEX || "0");  // 0.25% fee default
 
   const conn = new Connection(rpc, "confirmed");
   const crank = loadKeypair("keys/crank.json");

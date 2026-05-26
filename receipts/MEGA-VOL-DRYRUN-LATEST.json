@@ -1,0 +1,22 @@
+{
+  "verdict": "SIM_OK",
+  "epoch": 977,
+  "effectiveFeeBps": 690,
+  "epochChanging": true,
+  "hoursToFeeChange": 18.341444444444445,
+  "pairs": 3,
+  "hopAmountUi": 100000,
+  "withheldPerTxUi": 41400,
+  "withheldUsdPerTx": 4.140000000000001,
+  "simErr": null,
+  "simCu": 465692,
+  "usdcBefore": "168854573",
+  "usdcAfter": "164030302",
+  "usdcDelta": -4.824271,
+  "hopBefore": "8623846212212",
+  "hopAfter": "9539272639552",
+  "hopDelta": 915426.42734,
+  "gasUsd": 0.00466686,
+  "netCashUsd": 86.71370487400002,
+  "generatedAt": "2026-05-26T17:37:55.182Z"
+}

@@ -425,7 +425,7 @@ async function main() {
   const rpcUrl       = process.env.SOLANA_RPC_URL || process.env.RPC_URL || "https://api.mainnet-beta.solana.com";
   const dryRun       = process.env.DRY_RUN !== "false";
   const allowLive    = process.env.ALLOW_LIVE === "true";
-  const flashUsdc    = Number(process.env.FLASH_AMOUNT_USDC || "1000");
+  let flashUsdc    = Number(process.env.FLASH_AMOUNT_USDC || "300");
   const minFlashUsdc = Number(process.env.MIN_FLASH_AMOUNT_USDC || "1000");
   const nBundles     = Number(process.env.BUNDLES || "10");
   const jitoTip      = BigInt(process.env.JITO_TIP_LAMPORTS || "10000");
@@ -443,7 +443,7 @@ async function main() {
   const authUsdcAta   = getAssociatedTokenAddressSync(USDC_MINT, withdrawAuth.publicKey, false, TOKEN_PROGRAM_ID);
   const authHopAta    = getAssociatedTokenAddressSync(HOP_MINT,  withdrawAuth.publicKey, false, TOKEN_2022_PROGRAM_ID);
 
-  const flashMicro    = BigInt(Math.round(flashUsdc * 1e6));
+  let flashMicro    = BigInt(Math.round(flashUsdc * 1e6));
 
   console.log("=== FLYWHEEL BOT ===");
   console.log(`crank:        ${crank.publicKey.toBase58()}`);
@@ -483,9 +483,45 @@ async function main() {
   console.log(`protocolFeeOwedB:  ${Number(protocolFeeOwedB)/1e6} HOP`);
   console.log();
 
+  // ─── Cap flash to 80% of LP range capacity ────────────────────────────────
+
+  {
+    const lowerSqrtPx64 = tickToSqrtPriceX64(POSITION_TICK_LOWER);
+    const maxUsdcInRange = sqrtPrice > lowerSqrtPx64
+      ? amountDeltaARoundedUp(lowerSqrtPx64, sqrtPrice, liquidity)
+      : 0n;
+    const maxFlashCap = feeRate < 1_000_000
+      ? (maxUsdcInRange * 1_000_000n + BigInt(1_000_000 - feeRate - 1)) / BigInt(1_000_000 - feeRate)
+      : 0n;
+    const capAt80 = maxFlashCap * 80n / 100n;
+    if (capAt80 > 0n && flashMicro > capAt80) {
+      const cappedUsdc = Number(capAt80) / 1e6;
+      console.log(`WARN: $${flashUsdc} flash > 80% LP range ($${(Number(maxFlashCap)/1e6).toFixed(2)}). Autocap → $${cappedUsdc.toFixed(2)}`);
+      flashMicro = capAt80;
+      flashUsdc  = cappedUsdc;
+    }
+  }
+
   // ─── Compute expected swap amounts ───────────────────────────────────────
 
   const { hopOut, nextSqrtP: sqrtP1 } = computeSwapAToB(sqrtPrice, liquidity, flashMicro, feeRate);
+
+  // Derive post-swap1 tick → select correct tick arrays for swap2 (a_to_b=false)
+  const tickPostSwap1 = Math.floor(2 * Math.log(Number(sqrtP1) / Number(Q64)) / Math.log(1.0001));
+  let swap2Ta0 = TICK_ARRAY_90112;
+  let swap2Ta1 = TICK_ARRAY_95744;
+  let swap2Ta2 = TICK_ARRAY_95744;
+  if (tickPostSwap1 >= 90112) {
+    // defaults correct
+  } else if (tickPostSwap1 >= 84480) {
+    swap2Ta0 = TICK_ARRAY_84480; swap2Ta1 = TICK_ARRAY_90112; swap2Ta2 = TICK_ARRAY_95744;
+  } else {
+    console.error(`tickPostSwap1=${tickPostSwap1} < 84480 — price out of LP range. Reduce FLASH_AMOUNT_USDC.`);
+    writeReceipt("FLYWHEEL-RUN-001.json", { verdict: "PRICE_OUT_OF_RANGE", tickPostSwap1, flashUsdc });
+    process.exitCode = 1;
+    return;
+  }
+  console.log(`tick post-swap1: ${tickPostSwap1}  →  swap2 arrays: [${swap2Ta0.toBase58().slice(0,8)}..., ${swap2Ta1.toBase58().slice(0,8)}..., ${swap2Ta2.toBase58().slice(0,8)}...]`);
 
   // HOP received in our T22 ATA: withheld fee applies on transfer to us
   const t22FeeOnHopOut = (hopOut * BigInt(t22Bps) + 9_999n) / 10_000n;
@@ -505,7 +541,19 @@ async function main() {
     Math.ceil((Number(estimatedLamportsPerBundle) / 1e9) * solPriceUsd * 1e6),
     Math.ceil(gasUsdFloor * 1e6)
   ));
-  const cashNetUsdcMicro = walletUsdcDeltaBeforeCollect + collectableProtocolUsdc - estimatedGasUsdcMicro;
+  // LP fees accrue in position — yours as 100% LP, collected via collect_fees_v2
+  const lpFeeUsdcSwap1   = totalFeeUsdcSwap1 - protocolFeeUsdcSwap1;
+  const lpFeeHopSwap2    = totalFeeHopSwap2  - protocolFeeHopSwap2;
+  const sqrtPriceFp      = Number(sqrtPrice) / Number(Q64);
+  const hopPerUsdcRaw    = sqrtPriceFp * sqrtPriceFp;
+  const lpFeeSwap2AsUsdc = hopPerUsdcRaw > 0
+    ? BigInt(Math.floor(Number(lpFeeHopSwap2) / hopPerUsdcRaw))
+    : 0n;
+  const cashNetUsdcMicro = walletUsdcDeltaBeforeCollect
+    + collectableProtocolUsdc
+    + lpFeeUsdcSwap1
+    + lpFeeSwap2AsUsdc
+    - estimatedGasUsdcMicro;
   const protocolFeeRoundTripRate = (feeRate / 1_000_000) * (protocolFeeRate / 10_000) * 2;
   const breakEvenFlashUsdc = protocolFeeRoundTripRate > 0
     ? (Number(estimatedGasUsdcMicro) / 1e6) / protocolFeeRoundTripRate
@@ -536,7 +584,9 @@ async function main() {
   console.log(`Break-even flash: $${breakEvenFlashUsdc.toFixed(6)} USDC`);
   console.log(`Current LP range max flash: $${maxFlashUsdcInCurrentRange.toFixed(6)} USDC`);
   console.log(`Wallet USDC delta before collect: ${Number(walletUsdcDeltaBeforeCollect)/1e6}`);
-  console.log(`Cash proof net after USDC protocol fee + gas: ${Number(cashNetUsdcMicro)/1e6} USDC`);
+  console.log(`LP fee swap1 (USDC, yours):  ${Number(lpFeeUsdcSwap1)/1e6} USDC`);
+  console.log(`LP fee swap2 (HOP→est USDC): ${Number(lpFeeSwap2AsUsdc)/1e6} USDC`);
+  console.log(`Cash proof net (LP+proto-gas): ${Number(cashNetUsdcMicro)/1e6} USDC`);
   if (cashGateReasons.length > 0) console.log(`Cash gate blocked: ${cashGateReasons.join("; ")}`);
   console.log();
 
@@ -568,9 +618,9 @@ async function main() {
       tokenAuthority: crank.publicKey,
       tokenOwnerAccountA: crankUsdcAta,
       tokenOwnerAccountB: crankHopAta,
-      tickArray0: TICK_ARRAY_90112,
-      tickArray1: TICK_ARRAY_95744,
-      tickArray2: TICK_ARRAY_95744,
+      tickArray0: swap2Ta0,
+      tickArray1: swap2Ta1,
+      tickArray2: swap2Ta2,
       amount: hopSwap2,
       otherAmountThreshold: 0n,
       sqrtPriceLimit: MAX_SQRT_PRICE,
@@ -633,6 +683,8 @@ async function main() {
     walletUsdcDeltaBeforeCollect: (Number(walletUsdcDeltaBeforeCollect) / 1e6).toFixed(6),
     collectableProtocolUsdc: (Number(collectableProtocolUsdc) / 1e6).toFixed(6),
     estimatedGasUsdc: (Number(estimatedGasUsdcMicro) / 1e6).toFixed(6),
+    lpFeeUsdcSwap1:   (Number(lpFeeUsdcSwap1)   / 1e6).toFixed(6),
+    lpFeeSwap2AsUsdc: (Number(lpFeeSwap2AsUsdc) / 1e6).toFixed(6),
     cashNetUsdc: (Number(cashNetUsdcMicro) / 1e6).toFixed(6),
     cashProofPass,
     cashGateReasons,

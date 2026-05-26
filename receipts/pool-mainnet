@@ -1,0 +1,18 @@
+{
+  "verdict": "EXECUTED",
+  "network": "mainnet-beta",
+  "programId": "BxJMJLxXJhKvuhvvxY57wYY69CAs9RCQWBv9JPCtm9Kx",
+  "authority": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+  "tokenMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+  "pythPriceFeed": "Gnt27xtC473ZT2Mw5u8wZ68Z3gULkSTb5DuxJy7eJotD",
+  "poolPda": "5kbKWE8VDQ9BccVx8EkuSPovTeJt31nubnyANxrAhHkF",
+  "vaultPda": "8uvVXL5a7HwtXPskMfTbf4Y1tB24gh3GqpAP81zKimdT",
+  "txSignature": "3WYYsW4cvct2d1uLRdG8GuRSuP11m1b1PcVLibeZdjqx9LTdpf43GftRogAM639MXgTFEhL7raPyBjKxw9S2w71F",
+  "explorer": "https://explorer.solana.com/tx/3WYYsW4cvct2d1uLRdG8GuRSuP11m1b1PcVLibeZdjqx9LTdpf43GftRogAM639MXgTFEhL7raPyBjKxw9S2w71F",
+  "fees": {
+    "flashFeeBps": 30,
+    "keeperRewardBps": 50,
+    "insuranceMinBps": 500,
+    "maxDeadlineSlots": 150
+  }
+}

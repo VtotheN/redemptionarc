@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-05-24T14:28:16.740Z",
+  "dryRun": false,
+  "flashUsdc": 10000,
+  "addLiqUsdc": 5000,
+  "swapUsdc": 100,
+  "lpFeesUsd": 0.1,
+  "t22FeesUsd": 13.056243738053094,
+  "netEstUsd": 13.130243738053094,
+  "poolId": "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV",
+  "mfAccount": "9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz",
+  "crank": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+  "t22FeeBps": 690,
+  "priceUsd": 0.0004164497657470067,
+  "signature": null,
+  "simLogs": null,
+  "error": "Simulation failed. \nMessage: Transaction simulation failed: Error processing Instruction 11: custom program error: 0x1. \nLogs: \n[\n  \"Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 1352 of 372629 compute units\",\n  \"Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success\",\n  \"Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA invoke [1]\",\n  \"Program log: Instruction: LendingAccountRepay\",\n  \"Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [2]\",\n  \"Program log: Error: insufficient funds\",\n  \"Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 181 of 357209 compute units\",\n  \"Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA failed: custom program error: 0x1\",\n  \"Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA consumed 14249 of 371277 compute units\",\n  \"Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA failed: custom program error: 0x1\"\n]. \nCatch the `SendTransactionError` and call `getLogs()` on it for full details.",
+  "verdict": "ERROR"
+}

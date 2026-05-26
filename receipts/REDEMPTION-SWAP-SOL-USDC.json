@@ -1,8 +1,8 @@
 {
   "verdict": "SWAP_CONFIRMED",
   "dryRun": false,
-  "inputSolLamports": 3500000000,
-  "quotedUsdcUi": 290.742119,
-  "signature": "87BX83MpKPQ7Tx9pU6ZaQJGhwNa8av9BUyDFaNgNevswbVdWyT9BSefaXKhepPtkFzYU5XT9DfShyPh82nDRaPF",
-  "receivedUsdcUi": 290.742119
+  "inputSolLamports": 1500000000,
+  "quotedUsdcUi": 127.900498,
+  "signature": "2sbxfWp3QAgAFppMsU3NVhyQNKaKStPpDCbtuSRwE8JZFogLnfMQ5EkF1hxT8Thv8NzryLEA6WmiU3WBMaceH3u7",
+  "receivedUsdcUi": 127.900498
 }

@@ -1,6 +1,6 @@
 {
   "verdict": "HOP_ROUTE_INCENTIVE_BLOCKED_NEEDS_CASH_PROOF",
-  "generatedAt": "2026-05-24T06:35:01.915Z",
+  "generatedAt": "2026-05-24T14:12:44.622Z",
   "readOnly": true,
   "noSend": true,
   "liveIntentIgnored": {
@@ -12,7 +12,7 @@
   "inputs": {
     "flowPath": "receipts/HOP-EXTERNAL-FLOW-WATCH-LATEST.json",
     "flowVerdict": "HOP_EXTERNAL_FLOW_DETECTED_READ_ONLY",
-    "flowGeneratedAt": "2026-05-24T06:34:54.727Z",
+    "flowGeneratedAt": "2026-05-24T14:12:21.669Z",
     "cashabilityPath": "receipts/HOP-CASHABILITY-GATE-LATEST.json",
     "cashabilityVerdict": "HOP_CASHABILITY_BLOCKED",
     "rewardToken": "USDC",
@@ -24,14 +24,14 @@
     "includeCashabilityBudget": true
   },
   "observedFlow": {
-    "externalEvents": 24,
+    "externalEvents": 21,
     "affiliatedEvents": 1,
-    "externalQuoteInUsd": 6.54385,
-    "externalQuoteOutUsd": 1.489388,
-    "externalQuoteGrossUsd": 8.033238,
-    "externalQuoteNetUsd": 5.054462,
-    "externalHopVaultNetUi": -28454.318122,
-    "t22FeeHop": 2900.498099,
+    "externalQuoteInUsd": 6.802493,
+    "externalQuoteOutUsd": 3.215414,
+    "externalQuoteGrossUsd": 10.017907000000001,
+    "externalQuoteNetUsd": 3.5870789999999992,
+    "externalHopVaultNetUi": -20893.563889,
+    "t22FeeHop": 3619.542247,
     "activePoolsWithExternalFlow": [
       "hop-usdc-raydium-cp"
     ],
@@ -44,31 +44,31 @@
       "olderEpoch": "974",
       "newerBps": 1,
       "newerEpoch": "978",
-      "mintWithheldAmountRaw": "388424722"
+      "mintWithheldAmountRaw": "1211443763"
     },
     "perPool": [
       {
         "id": "hop-usdc-raydium-cp",
         "quoteAsset": "USDC",
-        "externalEvents": 24,
-        "externalQuoteInUsd": 6.54385,
-        "externalQuoteOutUsd": 1.489388,
-        "externalQuoteNetUsd": 5.054462,
-        "externalHopVaultNetUi": -28454.318122,
-        "externalEstimatedT22HopUi": 2900.498099
+        "externalEvents": 21,
+        "externalQuoteInUsd": 6.802493,
+        "externalQuoteOutUsd": 3.215414,
+        "externalQuoteNetUsd": 3.5870789999999992,
+        "externalHopVaultNetUi": -20893.563889,
+        "externalEstimatedT22HopUi": 3619.542247
       }
     ]
   },
   "economics": {
-    "lpFeeUsdEstimate": 0.020083095000000002,
+    "lpFeeUsdEstimate": 0.025044767500000002,
     "t22SettlementUsd": 0,
     "externalCashabilityUsd": 0,
-    "theoreticalFeeBudgetUsd": 0.020083095000000002,
-    "theoreticalMaxRewardUsd": 0.0020083095000000004,
+    "theoreticalFeeBudgetUsd": 0.025044767500000002,
+    "theoreticalMaxRewardUsd": 0.0025044767500000003,
     "confirmedCashBudgetUsd": 0,
     "cashSafeRewardUsd": 0,
     "rewardToken": "USDC",
-    "retainedTheoreticalFeeUsd": 0.018074785500000003
+    "retainedTheoreticalFeeUsd": 0.02254029075
   },
   "gate": {
     "cashRelayPass": false,

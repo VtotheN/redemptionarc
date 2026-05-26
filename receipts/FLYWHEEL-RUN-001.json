@@ -1,56 +1,51 @@
 {
-  "verdict": "SIM_FAILED_PRECHECK_BLOCKED",
-  "timestamp": "2026-05-23T23:14:15.447Z",
+  "verdict": "CASH_PROOF_FAILED",
+  "timestamp": "2026-05-26T20:05:36.879Z",
   "dryRun": true,
-  "flashUsdc": 1,
-  "nBundles": 1,
-  "poolSqrtPrice": "1844674407370955161600",
+  "flashUsdc": 300,
+  "nBundles": 10,
+  "poolSqrtPrice": "1962138879699883030712",
   "poolLiquidity": "78748145963",
   "feeRate": 300,
   "protocolFeeRate": 300,
   "t22Bps": 690,
   "targetT22Bps": 1,
   "marginfiUsdcBank": "2s37akK2eyBbp8DZgCm7RtsaEz8eJP3Nxd4urLHQv7yB",
-  "marginfiUsdcAvailable": 473984.94332,
-  "minFlashUsdc": 1,
+  "marginfiUsdcAvailable": 429847.544159,
+  "minFlashUsdc": 1000,
   "breakEvenFlashUsdc": 222.22222222222226,
   "positionTickLower": 84480,
   "positionTickUpper": 101312,
-  "maxFlashUsdcInCurrentRange": 365.742046,
+  "maxFlashUsdcInCurrentRange": 412.899183,
   "protocolFeeRoundTripRate": 0.000017999999999999997,
   "gasUsdFloor": 0.004,
-  "swap1HopOut": "9984324997",
-  "swap2HopIn": "9295406572",
-  "swap2UsdcEstOut": "930523",
-  "protocolFeeUsdcPerBundle": "0.000009",
-  "protocolFeeHopPerBundle": "0.083658",
+  "swap1HopOut": "2414928182970",
+  "swap2HopIn": "2248298138345",
+  "swap2UsdcEstOut": "284821366",
+  "protocolFeeUsdcPerBundle": "0.002700",
+  "protocolFeeHopPerBundle": "20.234683",
   "protocolFeeOwedABefore": 0,
-  "protocolFeeOwedBBefore": 0,
-  "walletUsdcDeltaBeforeCollect": "-0.069477",
-  "collectableProtocolUsdc": "0.000009",
+  "protocolFeeOwedBBefore": 4.514399,
+  "walletUsdcDeltaBeforeCollect": "-15.178634",
+  "collectableProtocolUsdc": "0.002700",
   "estimatedGasUsdc": "0.004000",
-  "cashNetUsdc": "-0.073468",
+  "lpFeeUsdcSwap1": "0.087300",
+  "lpFeeSwap2AsUsdc": "0.057826",
+  "cashNetUsdc": "-15.034808",
   "cashProofPass": false,
   "cashGateReasons": [
-    "FLASH_AMOUNT_USDC 1 is at/below break-even 222.222222",
+    "FLASH_AMOUNT_USDC 300 is below minimum 1000",
     "HOP Token-2022 fee is 690bps; target active fee is 1bps",
-    "cashNetUsdc -0.073468 is not positive"
+    "cashNetUsdc -15.034808 is not positive"
   ],
-  "simUnitsConsumed": 284578,
-  "simErr": {
-    "InstructionError": [
-      6,
-      {
-        "Custom": 1
-      }
-    ]
-  },
+  "simUnitsConsumed": 329976,
+  "simErr": null,
   "simLogs": [
-    "Program log: Error: insufficient funds",
-    "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 181 of 115603 compute units",
-    "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA failed: custom program error: 0x1",
-    "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA consumed 14249 of 129671 compute units",
-    "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA failed: custom program error: 0x1"
+    "Program 11111111111111111111111111111111 success",
+    "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA invoke [1]",
+    "Program log: Instruction: LendingAccountEndFlashloan",
+    "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA consumed 4482 of 74506 compute units",
+    "Program MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA success"
   ],
   "bundlesSent": 0,
   "bundleIds": [],
@@ -60,5 +55,5 @@
   "feesCollectedHop": null,
   "gasCostSol": null,
   "netUsdc": null,
-  "verdict2": "PENDING"
+  "verdict2": "NO_GO"
 }

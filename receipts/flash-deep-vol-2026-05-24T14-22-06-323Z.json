@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-05-24T14:22:06.323Z",
+  "dryRun": false,
+  "flashUsdc": 10000,
+  "addLiqUsdc": 5000,
+  "swapUsdc": 100,
+  "lpFeesUsd": 0.1,
+  "t22FeesUsd": 13.056243737796661,
+  "netEstUsd": 13.130243737796661,
+  "poolId": "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV",
+  "mfAccount": "9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz",
+  "crank": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+  "t22FeeBps": 690,
+  "priceUsd": 0.00020727536532283138,
+  "signature": "27RSMAomqVpubiyDU2Nb9X5TskGZ4CcwVv3nhi3W3e4sPsVqkVBSxAxsWfPuokJ5qMMSzC67yg2whFyKhciLvTob",
+  "simLogs": null,
+  "error": null,
+  "verdict": "EXECUTED"
+}

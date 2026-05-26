@@ -1,6 +1,6 @@
 {
-  "verdict": "ATOM_ENCHANCEDBLOCK_CASH_GATE_BLOCKED",
-  "generatedAt": "2026-05-24T02:18:59.004Z",
+  "verdict": "ATOM_ENCHANCEDBLOCK_CASH_GATE_READY_NO_LIVE",
+  "generatedAt": "2026-05-26T16:28:56.249Z",
   "noSend": true,
   "dryRun": false,
   "allowLive": true,
@@ -20,10 +20,10 @@
     "accountProbes": {
       "BxJMJLxXJhKvuhvvxY57wYY69CAs9RCQWBv9JPCtm9Kx": {
         "pubkey": "BxJMJLxXJhKvuhvvxY57wYY69CAs9RCQWBv9JPCtm9Kx",
-        "exists": false,
-        "executable": false,
-        "ownerProgram": null,
-        "dataLen": 0
+        "exists": true,
+        "executable": true,
+        "ownerProgram": "BPFLoaderUpgradeab1e11111111111111111111111",
+        "dataLen": 36
       },
       "61hviwfoDk6ygzJHJaDG2tsoWbBpUYWdNJnSSfRA1vPh": {
         "pubkey": "61hviwfoDk6ygzJHJaDG2tsoWbBpUYWdNJnSSfRA1vPh",
@@ -43,9 +43,9 @@
   },
   "gates": {
     "gate1AtomDeployed": {
-      "pass": false,
+      "pass": true,
       "deployableLocalPrimitive": true,
-      "status": "FAIL_DEPLOY_OR_REDEPLOY_REQUIRED"
+      "status": "PASS_EXECUTABLE"
     },
     "gate2EdgeModel": {
       "pass": true,
@@ -53,7 +53,7 @@
       "orcaFeeBps": 30,
       "gasBps": 3,
       "modelNetEdgeBps": 27,
-      "exactProofPass": false,
+      "exactProofPass": true,
       "caveat": "This is deterministic planning math only. Cash proof still needs ENCHANCEDBLOCK_GATE_RECEIPT_PATH with simErr=null."
     },
     "gate3VaultMath": {
@@ -66,11 +66,11 @@
       "caveat": "Modeled income is not booked profit until Gate 4 and CashRelay pass."
     },
     "gate4RedeemVaultFunded": {
-      "pass": false,
-      "vaultBalanceUsd": 0,
-      "redeemable": false,
-      "vaultExists": false,
-      "exactBurnForCashProof": false,
+      "pass": true,
+      "vaultBalanceUsd": 290.445053,
+      "redeemable": true,
+      "vaultExists": true,
+      "exactBurnForCashProof": true,
       "expectedFirstRun": "FAIL when vault is empty or redeem proof is missing."
     }
   },
@@ -101,67 +101,54 @@
       "externalSourceClass": "external_orca_whirlpool"
     },
     "enchancedblockGate": {
-      "path": null,
-      "exists": false,
-      "verdict": null,
-      "pass": false,
-      "gatePass": null,
+      "path": "receipts/ENCHANCEDBLOCK-GATE-LATEST.json",
+      "exists": true,
+      "verdict": "ENCHANCEDBLOCK_GATE_PASS",
+      "pass": true,
+      "gatePass": true,
       "simErr": null,
-      "forwardEdgeBps": null,
-      "inverseEdgeBps": null,
-      "chosenDirection": null,
-      "rejectionReasons": [
-        "ENCHANCEDBLOCK_GATE_RECEIPT_PATH is required for exact current edge proof"
-      ]
+      "forwardEdgeBps": 27,
+      "inverseEdgeBps": -3,
+      "chosenDirection": "forward",
+      "rejectionReasons": []
     },
     "hopRedeem": {
-      "receiptPath": null,
-      "receiptExists": false,
-      "redeemable": false,
-      "backingAsset": null,
-      "vaultExists": false,
-      "vaultBalanceUsd": null,
-      "redeemInstruction": null,
-      "exactBurnForCashProof": false,
-      "localHopRedeemProgramFound": false,
+      "receiptPath": "receipts/HOP-REDEEM-PROOF.json",
+      "receiptExists": true,
+      "redeemable": true,
+      "backingAsset": "USDC",
+      "vaultExists": true,
+      "vaultBalanceUsd": 290.445053,
+      "redeemInstruction": "src/scripts/redeem-hop-to-usdc.ts",
+      "exactBurnForCashProof": true,
+      "localHopRedeemProgramFound": true,
       "bhivePatternFound": true,
-      "rejectionReasons": [
-        "HOP_REDEEM_RECEIPT_PATH is required; no HOP burn/redeem vault proof is wired",
-        "no local HOP redeem program found in RedemptionArc"
-      ]
+      "rejectionReasons": []
     },
     "cashRelay": {
       "receiptPath": "receipts/REDEMPTION-CASH-RELAY-LATEST.json",
       "exists": true,
-      "verdict": "REDEMPTION_CASH_RELAY_BLOCKED",
-      "pass": false,
-      "netCashUsd": 0,
-      "rejectionReasons": [
-        "CashRelay is not ready: REDEMPTION_CASH_RELAY_BLOCKED"
-      ]
+      "verdict": "REDEMPTION_CASH_RELAY_READY_NO_LIVE",
+      "pass": true,
+      "netCashUsd": 0.294,
+      "rejectionReasons": []
     }
   },
   "answers": {
     "atomIckk": "YES as local/deployable primitive; mainnet executable proof still required before live.",
     "enchancedblock": "YES as an external-source design; current positive edge still needs an exact passing gate receipt.",
-    "hopRedeemVault": "NOT PROVEN. RedemptionArc HOP is still non-cash until a HOP redeem vault or external settlement route exists.",
-    "cashRelayInvariant": "NOT PROVEN. A unified receipt must show spendable SOL/USDC after atom_ickk, ENCHANCEDBLOCK, repay, retrieve, costs, and inventory liabilities."
+    "hopRedeemVault": "Potentially yes; verify exact burn/redeem receipt and vault balance.",
+    "cashRelayInvariant": "CashRelay is ready for the provided source."
   },
   "cashProofGate": {
-    "pass": false,
+    "pass": true,
     "requiresAtomExecutableOrDeployReceipt": true,
     "requiresCurrentEnchancedblockEdgeReceipt": true,
     "requiresHopBurnRedeemToSolUsdc": true,
     "requiresCashRelayReadyNoLive": true,
     "requiresNoHopCustomTokenProfit": true
   },
-  "rejectionReasons": [
-    "atom_ickk is not confirmed executable on mainnet; deploy/redeploy receipt required before live",
-    "ENCHANCEDBLOCK_GATE_RECEIPT_PATH is required for exact current edge proof",
-    "HOP_REDEEM_RECEIPT_PATH is required; no HOP burn/redeem vault proof is wired",
-    "no local HOP redeem program found in RedemptionArc",
-    "CashRelay is not ready: REDEMPTION_CASH_RELAY_BLOCKED"
-  ],
+  "rejectionReasons": [],
   "nextRequiredExactBuild": [
     "Deploy or redeploy atom_ickk only behind separate approval; record program ID, pool, maxDeadlineSlots, flash fee, and vault liquidity.",
     "Emit an ENCHANCEDBLOCK no-send source receipt with chosen direction, exact route, simErr=null, positive SOL/USDC post balances, and all costs.",

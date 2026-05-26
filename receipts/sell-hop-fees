@@ -1,6 +1,9 @@
 {
-  "verdict": "NO_ROUTE",
-  "hopBalanceUi": 89890298.308828,
-  "sellAmountUi": 1,
-  "conclusion": "HOP has no Jupiter route yet — seed a HOP/USDC pool first (run seed-hop-pool)"
+  "verdict": "EXECUTED",
+  "hopSold": 93974872.049124,
+  "usdcOut": 90.605471,
+  "priceImpactPct": 0.9976879999128699,
+  "routes": "Raydium CP",
+  "dryRun": false,
+  "signature": "3sN9vt9VicHr4XjBTrtxJHz4VhufHDczqcLTCP2P2XN3oy7t94Etp7Hmc2nJ7Wprbpi9FHt16X47kBCrc4q6fKTN"
 }

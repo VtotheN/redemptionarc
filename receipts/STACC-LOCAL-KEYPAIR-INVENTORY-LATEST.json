@@ -1,6 +1,6 @@
 {
   "verdict": "STACC_LOCAL_KEYPAIR_TARGET_NOT_FOUND_READ_ONLY",
-  "generatedAt": "2026-05-24T06:36:25.701Z",
+  "generatedAt": "2026-05-24T14:11:33.260Z",
   "readOnly": true,
   "noSend": true,
   "targetPubkeys": [

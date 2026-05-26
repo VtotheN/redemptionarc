@@ -20,7 +20,7 @@ import {
 } from "@solana/web3.js";
 import {
   TOKEN_2022_PROGRAM_ID,
-  getAssociatedTokenAddressSync, getAccount,
+  getAssociatedTokenAddressSync, getAccount, getMint, getTransferFeeConfig,
 } from "@solana/spl-token";
 import { writeReceipt } from "../utils/receipt.js";
 
@@ -113,10 +113,17 @@ async function main() {
   const hopBalance = Number(ataInfo.amount);
   const hopBalanceUi = hopBalance / 10 ** HOP_DECIMALS;
 
-  // Determine sell amount
+  // Read mint withheld amount (T22 TransferFeeConfig.withheldAmount)
+  const mintInfo = await getMint(conn, HOP_MINT, "confirmed", TOKEN_2022_PROGRAM_ID);
+  const feeConfig = getTransferFeeConfig(mintInfo);
+  const mintWithheld = Number(feeConfig?.withheldAmount ?? 0n);
+  const mintWithheldUi = mintWithheld / 10 ** HOP_DECIMALS;
+  console.log(`Mint withheld: ${mintWithheldUi} HOP`);
+
+  // Determine sell amount — ONLY sell withheld, NOT entire ataA balance
   const sellAmountRaw = process.env.SELL_HOP_AMOUNT
     ? Number(process.env.SELL_HOP_AMOUNT)
-    : hopBalance;
+    : mintWithheld;
 
   if (sellAmountRaw <= 0) {
     console.log(`ataA: ${hopBalanceUi} HOP — nothing to sell`);

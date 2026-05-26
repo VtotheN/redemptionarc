@@ -1,0 +1,8 @@
+{
+  "verdict": "DRY_RUN",
+  "poolAddr": "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV",
+  "buyUsdc": 2,
+  "estimatedHopOut": 3596554.482167,
+  "priceImpactPct": "0.4008",
+  "slippage": 0.99
+}

@@ -1,0 +1,497 @@
+{
+  "verdict": "T22_FEE_HARVEST_SCAN_COMPLETE",
+  "generatedAt": "2026-05-23T21:48:27.865Z",
+  "rpcUrlRedacted": "https://api.mainnet-beta.solana.com",
+  "parameters": {
+    "maxFeeBps": 100,
+    "totalCandidates": 5699,
+    "t22MintsFound": 1468,
+    "lowFeeBeforeJupiter": 10,
+    "liquidAfterJupiter": 1
+  },
+  "topCandidates": [
+    {
+      "mint": "HDaPAGVzD9kBEB4iTrNewuk9wrz58J8fXMs9Q3U31u5N",
+      "name": "Bad Credit Coin",
+      "symbol": "BCC",
+      "decimals": 6,
+      "feeBps": 100,
+      "maximumFeeRaw": "1000000000000",
+      "maximumFeeUi": 1000000,
+      "transferFeeConfigAuthority": "H7GbbP9SGb9VtUVJFXoesnQjcJk1XpXAFHTyMzNx4AaD",
+      "withdrawWithheldAuthority": "8wsbB75J8p6PQHHN8EfE94SR4ATyftm34xxvps9ds2VY",
+      "feeConfigMutable": true,
+      "jupiterRouteToUsdc": false,
+      "jupiterRouteToSol": true,
+      "jupiterRouteFromUsdc": true,
+      "jupiterRouteFromSol": true,
+      "tags": [
+        "coingecko"
+      ],
+      "score": 70,
+      "notes": [],
+      "jupiterOutAmountUsdcToMint": "484797034",
+      "jupiterOutAmountSolToMint": "41613652311"
+    },
+    {
+      "mint": "3u4XvCjmTmQmcvjoxo1z8y3wnRdtnCuv6N9WkiE6FJvH",
+      "name": "FUNGI",
+      "symbol": "FUNGI",
+      "decimals": 8,
+      "feeBps": 50,
+      "maximumFeeRaw": "100000000000000000",
+      "maximumFeeUi": 1000000000,
+      "transferFeeConfigAuthority": "11111111111111111111111111111111",
+      "withdrawWithheldAuthority": "FUNG1StvVi3m8QfC9mypu8w8V715Nzh27QHQ8KDeYScf",
+      "feeConfigMutable": true,
+      "jupiterRouteToUsdc": false,
+      "jupiterRouteToSol": false,
+      "jupiterRouteFromUsdc": false,
+      "jupiterRouteFromSol": false,
+      "tags": [
+        "coingecko"
+      ],
+      "score": 55,
+      "notes": [
+        "No Jupiter routes found; likely illiquid or not indexed.",
+        "transferFeeConfigAuthority is SystemProgram; likely burned/meaningless."
+      ]
+    },
+    {
+      "mint": "TKLSidmLVt3cqGaaodG8tyRzoANfQwoh67AccjmubeZ",
+      "name": "Kalshi (Tessera Pre-IPO)",
+      "symbol": "TKALSHI",
+      "decimals": 9,
+      "feeBps": 20,
+      "maximumFeeRaw": "18446744073709551615",
+      "maximumFeeUi": 18446744073.709553,
+      "transferFeeConfigAuthority": "EXvTtxurWBUNNCtLojaN8ZBJFNJPZFSH3szoih9hh7YW",
+      "withdrawWithheldAuthority": "5P6aL1imw2Vi7GptqoRHPu8fowJvXM8eVrs8nWnxVx5h",
+      "feeConfigMutable": true,
+      "jupiterRouteToUsdc": false,
+      "jupiterRouteToSol": false,
+      "jupiterRouteFromUsdc": false,
+      "jupiterRouteFromSol": false,
+      "tags": [
+        "coingecko"
+      ],
+      "score": 55,
+      "notes": [
+        "No Jupiter routes found; likely illiquid or not indexed."
+      ]
+    },
+    {
+      "mint": "TSPXcLV76s6V2zDiZQ18kBfcbnjaE2ZzNT3ga2Pd99v",
+      "name": "SpaceX (Tessera Pre-IPO)",
+      "symbol": "TSPACEX",
+      "decimals": 9,
+      "feeBps": 20,
+      "maximumFeeRaw": "18446744073709551615",
+      "maximumFeeUi": 18446744073.709553,
+      "transferFeeConfigAuthority": "EXvTtxurWBUNNCtLojaN8ZBJFNJPZFSH3szoih9hh7YW",
+      "withdrawWithheldAuthority": "BnWEwDEZFGZkDQDMs7q7UtK8dFR9VUXprhH1xnLqD2j7",
+      "feeConfigMutable": true,
+      "jupiterRouteToUsdc": false,
+      "jupiterRouteToSol": false,
+      "jupiterRouteFromUsdc": false,
+      "jupiterRouteFromSol": false,
+      "tags": [
+        "coingecko"
+      ],
+      "score": 55,
+      "notes": [
+        "No Jupiter routes found; likely illiquid or not indexed."
+      ]
+    },
+    {
+      "mint": "AK87oZM8ovFU14bq8mu4ufi5zsCPDbqqVvh5b6WHbUdL",
+      "name": "Just The Tip",
+      "symbol": "TIPS",
+      "decimals": 9,
+      "feeBps": 69,
+      "maximumFeeRaw": "6000000000000000",
+      "maximumFeeUi": 6000000,
+      "transferFeeConfigAuthority": "11111111111111111111111111111111",
+      "withdrawWithheldAuthority": "3Mrwo3rAbYJhqPcqs6KssESX6RTCbCqCMKxuhrLc75Rg",
+      "feeConfigMutable": true,
+      "jupiterRouteToUsdc": false,
+      "jupiterRouteToSol": false,
+      "jupiterRouteFromUsdc": false,
+      "jupiterRouteFromSol": false,
+      "tags": [
+        "coingecko"
+      ],
+      "score": 40,
+      "notes": [
+        "No Jupiter routes found; likely illiquid or not indexed.",
+        "transferFeeConfigAuthority is SystemProgram; likely burned/meaningless."
+      ]
+    },
+    {
+      "mint": "7usVzynPTUJ9czdS96ezm9C6Z3hCsjb7j6TMKipURyyQ",
+      "name": "Leia the Cat",
+      "symbol": "LEIA",
+      "decimals": 6,
+      "feeBps": 100,
+      "maximumFeeRaw": "10000000000000000",
+      "maximumFeeUi": 10000000000,
+      "transferFeeConfigAuthority": "11111111111111111111111111111111",
+      "withdrawWithheldAuthority": "11111111111111111111111111111111",
+      "feeConfigMutable": true,
+      "jupiterRouteToUsdc": false,
+      "jupiterRouteToSol": false,
+      "jupiterRouteFromUsdc": false,
+      "jupiterRouteFromSol": false,
+      "tags": [
+        "coingecko"
+      ],
+      "score": 40,
+      "notes": [
+        "No Jupiter routes found; likely illiquid or not indexed.",
+        "transferFeeConfigAuthority is SystemProgram; likely burned/meaningless."
+      ]
+    },
+    {
+      "mint": "ACu1RKQWdXAyoXvKzfSDsFKCqGfyBxngXq8YnmBPGomj",
+      "name": "MORPH",
+      "symbol": "MORPH",
+      "decimals": 5,
+      "feeBps": 100,
+      "maximumFeeRaw": "4242051000000000000",
+      "maximumFeeUi": 42420510000000,
+      "transferFeeConfigAuthority": "11111111111111111111111111111111",
+      "withdrawWithheldAuthority": "mW1XMXgfVyqNucTuRfeJJVXv7r968HBjy2XRxSLveXK",
+      "feeConfigMutable": true,
+      "jupiterRouteToUsdc": false,
+      "jupiterRouteToSol": false,
+      "jupiterRouteFromUsdc": false,
+      "jupiterRouteFromSol": false,
+      "tags": [
+        "coingecko"
+      ],
+      "score": 40,
+      "notes": [
+        "No Jupiter routes found; likely illiquid or not indexed.",
+        "transferFeeConfigAuthority is SystemProgram; likely burned/meaningless."
+      ]
+    },
+    {
+      "mint": "7VRvzb8XExciDb98kPcFC8v3P3ALbW9bhTUQQhBzCBPn",
+      "name": "Official Crypto Nostra",
+      "symbol": "OCN",
+      "decimals": 6,
+      "feeBps": 100,
+      "maximumFeeRaw": "2000000000000000",
+      "maximumFeeUi": 2000000000,
+      "transferFeeConfigAuthority": "11111111111111111111111111111111",
+      "withdrawWithheldAuthority": "Dg6c7gz1QB2rXQkEk4enaLtBUPtt12Srz94G1XwkJr9k",
+      "feeConfigMutable": true,
+      "jupiterRouteToUsdc": false,
+      "jupiterRouteToSol": false,
+      "jupiterRouteFromUsdc": false,
+      "jupiterRouteFromSol": false,
+      "tags": [
+        "coingecko"
+      ],
+      "score": 40,
+      "notes": [
+        "No Jupiter routes found; likely illiquid or not indexed.",
+        "transferFeeConfigAuthority is SystemProgram; likely burned/meaningless."
+      ]
+    },
+    {
+      "mint": "EhzVcKKmGjLk6pD5gLT6ZrTg62bMgPgTSCXXmANnSyQA",
+      "name": "Santa",
+      "symbol": "SANTA",
+      "decimals": 9,
+      "feeBps": 100,
+      "maximumFeeRaw": "10000000000000000",
+      "maximumFeeUi": 10000000,
+      "transferFeeConfigAuthority": "11111111111111111111111111111111",
+      "withdrawWithheldAuthority": "awiqtuR6umpSXhm6uDk1gdE1moduXdrRWx5bnQ6jGJi",
+      "feeConfigMutable": true,
+      "jupiterRouteToUsdc": false,
+      "jupiterRouteToSol": false,
+      "jupiterRouteFromUsdc": false,
+      "jupiterRouteFromSol": false,
+      "tags": [
+        "coingecko"
+      ],
+      "score": 40,
+      "notes": [
+        "No Jupiter routes found; likely illiquid or not indexed.",
+        "transferFeeConfigAuthority is SystemProgram; likely burned/meaningless."
+      ]
+    },
+    {
+      "mint": "SQUiDbpt993WzEa1WLUEgYJRtKxsQAKjoELH9xhMs3v",
+      "name": "Squid Game",
+      "symbol": "SQUID",
+      "decimals": 9,
+      "feeBps": 100,
+      "maximumFeeRaw": "100000000000000",
+      "maximumFeeUi": 100000,
+      "transferFeeConfigAuthority": "Gihun3g2XijWDVGn42SbR8hwyYpWr9FaJhWHth5wcAUc",
+      "withdrawWithheldAuthority": "Gihun3g2XijWDVGn42SbR8hwyYpWr9FaJhWHth5wcAUc",
+      "feeConfigMutable": true,
+      "jupiterRouteToUsdc": false,
+      "jupiterRouteToSol": false,
+      "jupiterRouteFromUsdc": false,
+      "jupiterRouteFromSol": false,
+      "tags": [
+        "coingecko"
+      ],
+      "score": 40,
+      "notes": [
+        "No Jupiter routes found; likely illiquid or not indexed."
+      ]
+    }
+  ],
+  "allCandidates": [
+    {
+      "mint": "HDaPAGVzD9kBEB4iTrNewuk9wrz58J8fXMs9Q3U31u5N",
+      "name": "Bad Credit Coin",
+      "symbol": "BCC",
+      "decimals": 6,
+      "feeBps": 100,
+      "maximumFeeRaw": "1000000000000",
+      "maximumFeeUi": 1000000,
+      "transferFeeConfigAuthority": "H7GbbP9SGb9VtUVJFXoesnQjcJk1XpXAFHTyMzNx4AaD",
+      "withdrawWithheldAuthority": "8wsbB75J8p6PQHHN8EfE94SR4ATyftm34xxvps9ds2VY",
+      "feeConfigMutable": true,
+      "jupiterRouteToUsdc": false,
+      "jupiterRouteToSol": true,
+      "jupiterRouteFromUsdc": true,
+      "jupiterRouteFromSol": true,
+      "tags": [
+        "coingecko"
+      ],
+      "score": 70,
+      "notes": [],
+      "jupiterOutAmountUsdcToMint": "484797034",
+      "jupiterOutAmountSolToMint": "41613652311"
+    },
+    {
+      "mint": "3u4XvCjmTmQmcvjoxo1z8y3wnRdtnCuv6N9WkiE6FJvH",
+      "name": "FUNGI",
+      "symbol": "FUNGI",
+      "decimals": 8,
+      "feeBps": 50,
+      "maximumFeeRaw": "100000000000000000",
+      "maximumFeeUi": 1000000000,
+      "transferFeeConfigAuthority": "11111111111111111111111111111111",
+      "withdrawWithheldAuthority": "FUNG1StvVi3m8QfC9mypu8w8V715Nzh27QHQ8KDeYScf",
+      "feeConfigMutable": true,
+      "jupiterRouteToUsdc": false,
+      "jupiterRouteToSol": false,
+      "jupiterRouteFromUsdc": false,
+      "jupiterRouteFromSol": false,
+      "tags": [
+        "coingecko"
+      ],
+      "score": 55,
+      "notes": [
+        "No Jupiter routes found; likely illiquid or not indexed.",
+        "transferFeeConfigAuthority is SystemProgram; likely burned/meaningless."
+      ]
+    },
+    {
+      "mint": "TKLSidmLVt3cqGaaodG8tyRzoANfQwoh67AccjmubeZ",
+      "name": "Kalshi (Tessera Pre-IPO)",
+      "symbol": "TKALSHI",
+      "decimals": 9,
+      "feeBps": 20,
+      "maximumFeeRaw": "18446744073709551615",
+      "maximumFeeUi": 18446744073.709553,
+      "transferFeeConfigAuthority": "EXvTtxurWBUNNCtLojaN8ZBJFNJPZFSH3szoih9hh7YW",
+      "withdrawWithheldAuthority": "5P6aL1imw2Vi7GptqoRHPu8fowJvXM8eVrs8nWnxVx5h",
+      "feeConfigMutable": true,
+      "jupiterRouteToUsdc": false,
+      "jupiterRouteToSol": false,
+      "jupiterRouteFromUsdc": false,
+      "jupiterRouteFromSol": false,
+      "tags": [
+        "coingecko"
+      ],
+      "score": 55,
+      "notes": [
+        "No Jupiter routes found; likely illiquid or not indexed."
+      ]
+    },
+    {
+      "mint": "TSPXcLV76s6V2zDiZQ18kBfcbnjaE2ZzNT3ga2Pd99v",
+      "name": "SpaceX (Tessera Pre-IPO)",
+      "symbol": "TSPACEX",
+      "decimals": 9,
+      "feeBps": 20,
+      "maximumFeeRaw": "18446744073709551615",
+      "maximumFeeUi": 18446744073.709553,
+      "transferFeeConfigAuthority": "EXvTtxurWBUNNCtLojaN8ZBJFNJPZFSH3szoih9hh7YW",
+      "withdrawWithheldAuthority": "BnWEwDEZFGZkDQDMs7q7UtK8dFR9VUXprhH1xnLqD2j7",
+      "feeConfigMutable": true,
+      "jupiterRouteToUsdc": false,
+      "jupiterRouteToSol": false,
+      "jupiterRouteFromUsdc": false,
+      "jupiterRouteFromSol": false,
+      "tags": [
+        "coingecko"
+      ],
+      "score": 55,
+      "notes": [
+        "No Jupiter routes found; likely illiquid or not indexed."
+      ]
+    },
+    {
+      "mint": "AK87oZM8ovFU14bq8mu4ufi5zsCPDbqqVvh5b6WHbUdL",
+      "name": "Just The Tip",
+      "symbol": "TIPS",
+      "decimals": 9,
+      "feeBps": 69,
+      "maximumFeeRaw": "6000000000000000",
+      "maximumFeeUi": 6000000,
+      "transferFeeConfigAuthority": "11111111111111111111111111111111",
+      "withdrawWithheldAuthority": "3Mrwo3rAbYJhqPcqs6KssESX6RTCbCqCMKxuhrLc75Rg",
+      "feeConfigMutable": true,
+      "jupiterRouteToUsdc": false,
+      "jupiterRouteToSol": false,
+      "jupiterRouteFromUsdc": false,
+      "jupiterRouteFromSol": false,
+      "tags": [
+        "coingecko"
+      ],
+      "score": 40,
+      "notes": [
+        "No Jupiter routes found; likely illiquid or not indexed.",
+        "transferFeeConfigAuthority is SystemProgram; likely burned/meaningless."
+      ]
+    },
+    {
+      "mint": "7usVzynPTUJ9czdS96ezm9C6Z3hCsjb7j6TMKipURyyQ",
+      "name": "Leia the Cat",
+      "symbol": "LEIA",
+      "decimals": 6,
+      "feeBps": 100,
+      "maximumFeeRaw": "10000000000000000",
+      "maximumFeeUi": 10000000000,
+      "transferFeeConfigAuthority": "11111111111111111111111111111111",
+      "withdrawWithheldAuthority": "11111111111111111111111111111111",
+      "feeConfigMutable": true,
+      "jupiterRouteToUsdc": false,
+      "jupiterRouteToSol": false,
+      "jupiterRouteFromUsdc": false,
+      "jupiterRouteFromSol": false,
+      "tags": [
+        "coingecko"
+      ],
+      "score": 40,
+      "notes": [
+        "No Jupiter routes found; likely illiquid or not indexed.",
+        "transferFeeConfigAuthority is SystemProgram; likely burned/meaningless."
+      ]
+    },
+    {
+      "mint": "ACu1RKQWdXAyoXvKzfSDsFKCqGfyBxngXq8YnmBPGomj",
+      "name": "MORPH",
+      "symbol": "MORPH",
+      "decimals": 5,
+      "feeBps": 100,
+      "maximumFeeRaw": "4242051000000000000",
+      "maximumFeeUi": 42420510000000,
+      "transferFeeConfigAuthority": "11111111111111111111111111111111",
+      "withdrawWithheldAuthority": "mW1XMXgfVyqNucTuRfeJJVXv7r968HBjy2XRxSLveXK",
+      "feeConfigMutable": true,
+      "jupiterRouteToUsdc": false,
+      "jupiterRouteToSol": false,
+      "jupiterRouteFromUsdc": false,
+      "jupiterRouteFromSol": false,
+      "tags": [
+        "coingecko"
+      ],
+      "score": 40,
+      "notes": [
+        "No Jupiter routes found; likely illiquid or not indexed.",
+        "transferFeeConfigAuthority is SystemProgram; likely burned/meaningless."
+      ]
+    },
+    {
+      "mint": "7VRvzb8XExciDb98kPcFC8v3P3ALbW9bhTUQQhBzCBPn",
+      "name": "Official Crypto Nostra",
+      "symbol": "OCN",
+      "decimals": 6,
+      "feeBps": 100,
+      "maximumFeeRaw": "2000000000000000",
+      "maximumFeeUi": 2000000000,
+      "transferFeeConfigAuthority": "11111111111111111111111111111111",
+      "withdrawWithheldAuthority": "Dg6c7gz1QB2rXQkEk4enaLtBUPtt12Srz94G1XwkJr9k",
+      "feeConfigMutable": true,
+      "jupiterRouteToUsdc": false,
+      "jupiterRouteToSol": false,
+      "jupiterRouteFromUsdc": false,
+      "jupiterRouteFromSol": false,
+      "tags": [
+        "coingecko"
+      ],
+      "score": 40,
+      "notes": [
+        "No Jupiter routes found; likely illiquid or not indexed.",
+        "transferFeeConfigAuthority is SystemProgram; likely burned/meaningless."
+      ]
+    },
+    {
+      "mint": "EhzVcKKmGjLk6pD5gLT6ZrTg62bMgPgTSCXXmANnSyQA",
+      "name": "Santa",
+      "symbol": "SANTA",
+      "decimals": 9,
+      "feeBps": 100,
+      "maximumFeeRaw": "10000000000000000",
+      "maximumFeeUi": 10000000,
+      "transferFeeConfigAuthority": "11111111111111111111111111111111",
+      "withdrawWithheldAuthority": "awiqtuR6umpSXhm6uDk1gdE1moduXdrRWx5bnQ6jGJi",
+      "feeConfigMutable": true,
+      "jupiterRouteToUsdc": false,
+      "jupiterRouteToSol": false,
+      "jupiterRouteFromUsdc": false,
+      "jupiterRouteFromSol": false,
+      "tags": [
+        "coingecko"
+      ],
+      "score": 40,
+      "notes": [
+        "No Jupiter routes found; likely illiquid or not indexed.",
+        "transferFeeConfigAuthority is SystemProgram; likely burned/meaningless."
+      ]
+    },
+    {
+      "mint": "SQUiDbpt993WzEa1WLUEgYJRtKxsQAKjoELH9xhMs3v",
+      "name": "Squid Game",
+      "symbol": "SQUID",
+      "decimals": 9,
+      "feeBps": 100,
+      "maximumFeeRaw": "100000000000000",
+      "maximumFeeUi": 100000,
+      "transferFeeConfigAuthority": "Gihun3g2XijWDVGn42SbR8hwyYpWr9FaJhWHth5wcAUc",
+      "withdrawWithheldAuthority": "Gihun3g2XijWDVGn42SbR8hwyYpWr9FaJhWHth5wcAUc",
+      "feeConfigMutable": true,
+      "jupiterRouteToUsdc": false,
+      "jupiterRouteToSol": false,
+      "jupiterRouteFromUsdc": false,
+      "jupiterRouteFromSol": false,
+      "tags": [
+        "coingecko"
+      ],
+      "score": 40,
+      "notes": [
+        "No Jupiter routes found; likely illiquid or not indexed."
+      ]
+    }
+  ],
+  "warnings": [
+    "batchAccountInfo chunk 3000 error=429 Too Many Requests:  {\"jsonrpc\":\"2.0\",\"error\":{\"code\": 429, \"message\":\"Too many requests for a specific RPC call\"}, \"id\": \"2df99bbe-0b89-4ca4-bc9c-ae261276672d\" } \r\n"
+  ],
+  "nextSteps": [
+    "For mutable-authority candidates: attempt to acquire authority via key compromise, social engineering, or marketplace purchase (if authority is an NFT/wallet).",
+    "For null-authority candidates: verify on-chain that WithdrawWithheldTokensFromMint is callable by anyone; usually it is not.",
+    "Run volume-bot or ring-bot simulation on top 3 before any live execution.",
+    "Check if any candidate has an Orca/Raydium pool with concentrated liquidity for tighter ring spreads."
+  ]
+}

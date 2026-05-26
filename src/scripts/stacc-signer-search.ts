@@ -12,7 +12,6 @@ if (process.env.ENV_PATH) {
 const OUT_RECEIPT = "STACC-SIGNER-SEARCH-LATEST.json";
 const CLAIM_SIM_RECEIPT = "receipts/STACC-SOCIAL-FEE-CLAIM-SIM-LATEST.json";
 const DEFAULT_TARGETS = [
-  "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
   "WzMaL78srutrF6CsxEkWuhMaDF5HZA6jNRaEPengqpb",
 ];
 const SKIP_NAMES = new Set([

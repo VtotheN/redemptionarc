@@ -1,10 +1,10 @@
 {
   "verdict": "DRY_RUN",
   "ataA": "2s2Au2bxsvF5cHbdhfP4JaFX8FXp5wXzQxBj15PNPEkD",
-  "beforeBalance": 89890298.308828,
-  "afterBalance": 89890298.308828,
+  "beforeBalance": 94232560.131533,
+  "afterBalance": 94232560.131533,
   "deltaHop": 0,
   "withheldInMintBefore": 0,
   "txs": [],
-  "ataCount": 3
+  "ataCount": 36
 }

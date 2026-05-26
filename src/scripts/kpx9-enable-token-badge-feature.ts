@@ -7,11 +7,12 @@ import fs from "node:fs";
 import {
   Connection,
   Keypair,
-  Transaction,
   TransactionInstruction,
-  sendAndConfirmTransaction,
+  TransactionMessage,
+  VersionedTransaction,
+  ComputeBudgetProgram,
 } from "@solana/web3.js";
-import { KPX9_WHIRLPOOLS_CONFIG, OFFICIAL_ORCA_PROGRAM_ID } from "../constants.js";
+import { KPX9_WHIRLPOOLS_CONFIG, KPX9_CONFIG_EXTENSION, OFFICIAL_ORCA_PROGRAM_ID } from "../constants.js";
 import { writeReceipt } from "../utils/receipt.js";
 
 if (process.env.ENV_PATH) dotenv.config({ path: process.env.ENV_PATH, override: true });
@@ -25,6 +26,7 @@ function loadKeypair(p: string): Keypair {
 }
 
 function decodeFeatureFlags(data: Buffer): number {
+  // WhirlpoolsConfig (108 bytes): disc(8)+fee_auth(32)+collect_auth(32)+reward_auth(32)+default_fee(2)+feature_flags(2)
   return data.readUInt16LE(106);
 }
 
@@ -34,9 +36,13 @@ async function main() {
   const allowLive = process.env.ALLOW_LIVE === "true";
   const connection = new Connection(rpcUrl, "confirmed");
 
+  // kpx9-authority signs the instruction; crank pays fees
   const authority = loadKeypair(
     process.env.KPX9_FEATURE_AUTH_PATH ||
     process.env.KPX9_ADMIN_KEYPAIR_PATH ||
+    "keys/kpx9-authority.json"
+  );
+  const payer = loadKeypair(
     process.env.CRANK_KEYPAIR_PATH ||
     "keys/crank.json"
   );
@@ -44,7 +50,8 @@ async function main() {
   console.log("=== KPX9 ENABLE TOKEN BADGE FEATURE ===");
   console.log(`program:   ${OFFICIAL_ORCA_PROGRAM_ID.toBase58()}`);
   console.log(`config:    ${KPX9_WHIRLPOOLS_CONFIG.toBase58()}`);
-  console.log(`authority: ${authority.publicKey.toBase58()}`);
+  console.log(`authority: ${authority.publicKey.toBase58()} (kpx9-authority)`);
+  console.log(`payer:     ${payer.publicKey.toBase58()} (crank, pays fees)`);
   console.log(`dry_run:   ${dryRun}`);
 
   const configInfo = await connection.getAccountInfo(KPX9_WHIRLPOOLS_CONFIG, "confirmed");
@@ -71,39 +78,42 @@ async function main() {
   const ix = new TransactionInstruction({
     programId: OFFICIAL_ORCA_PROGRAM_ID,
     keys: [
-      { pubkey: KPX9_WHIRLPOOLS_CONFIG, isSigner: false, isWritable: true },
-      { pubkey: authority.publicKey, isSigner: true, isWritable: false },
+      { pubkey: KPX9_WHIRLPOOLS_CONFIG,   isSigner: false, isWritable: true  },  // [0] whirlpools_config (writable)
+      { pubkey: authority.publicKey,      isSigner: true,  isWritable: false },  // [1] authority (signer)
+      { pubkey: OFFICIAL_ORCA_PROGRAM_ID, isSigner: false, isWritable: false },  // [2] whirlpool_program
     ],
     // ConfigFeatureFlag::TokenBadge(true): variant index 0 + bool true.
     data: Buffer.concat([SET_CONFIG_FEATURE_FLAG_DISC, Buffer.from([0, 1])]),
   });
 
-  const tx = new Transaction().add(ix);
-  tx.feePayer = authority.publicKey;
-  tx.recentBlockhash = (await connection.getLatestBlockhash("confirmed")).blockhash;
-  tx.sign(authority);
-
-  const sim = await connection.simulateTransaction(tx);
-  receipt.simErr = sim.value.err ?? null;
-  receipt.simLogs = sim.value.logs?.slice(-8) ?? [];
-
-  if (sim.value.err) {
-    receipt.verdict = "TOKEN_BADGE_FEATURE_SIM_FAILED";
-    writeReceipt("KPX9-TOKEN-BADGE-FEATURE.json", receipt);
-    console.error(`SIM_FAILED: ${JSON.stringify(sim.value.err)}`);
-    (receipt.simLogs as string[]).forEach((l) => console.error(l));
-    process.exitCode = 1;
-    return;
-  }
+  const { blockhash, lastValidBlockHeight } = await connection.getLatestBlockhash("confirmed");
+  const msg = new TransactionMessage({
+    payerKey: payer.publicKey,
+    recentBlockhash: blockhash,
+    instructions: [
+      ComputeBudgetProgram.setComputeUnitLimit({ units: 80_000 }),
+      ComputeBudgetProgram.setComputeUnitPrice({ microLamports: 50_000 }),
+      ix,
+    ],
+  }).compileToV0Message([]);
+  const vtx = new VersionedTransaction(msg);
+  vtx.sign([payer, authority]);
 
   if (dryRun || !allowLive) {
-    receipt.verdict = "TOKEN_BADGE_FEATURE_SIM_OK";
+    // Dry-run: only simulate
+    const sim = await connection.simulateTransaction(vtx, { sigVerify: false, replaceRecentBlockhash: true });
+    receipt.simErr = sim.value.err ?? null;
+    receipt.simLogs = sim.value.logs?.slice(-8) ?? [];
+    receipt.verdict = sim.value.err ? "TOKEN_BADGE_FEATURE_SIM_FAILED" : "TOKEN_BADGE_FEATURE_SIM_OK";
     writeReceipt("KPX9-TOKEN-BADGE-FEATURE.json", receipt);
-    console.log(`\nSIM_OK feature_flags=${receipt.desiredFeatureFlags}`);
+    console.log(sim.value.err ? `SIM_FAILED: ${JSON.stringify(sim.value.err)}` : `SIM_OK feature_flags=${receipt.desiredFeatureFlags}`);
+    if (sim.value.err) { (receipt.simLogs as string[]).forEach((l) => console.error(l)); process.exitCode = 1; }
     return;
   }
 
-  const sig = await sendAndConfirmTransaction(connection, tx, [authority], { commitment: "confirmed" });
+  // Live: send directly (skip preflight, let chain confirm)
+  const sig = await connection.sendTransaction(vtx, { skipPreflight: true });
+  await connection.confirmTransaction({ signature: sig, blockhash, lastValidBlockHeight }, "confirmed");
   receipt.verdict = "TOKEN_BADGE_FEATURE_EXECUTED";
   receipt.signature = sig;
   writeReceipt("KPX9-TOKEN-BADGE-FEATURE.json", receipt);

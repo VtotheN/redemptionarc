@@ -254,8 +254,10 @@ async function main(): Promise<void> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const lpSupplyRaw    = BigInt(((rpcData.lpAmount ?? (poolInfo as any).lpAmount ?? 0).toString()));
 
-  if (usdcReserveRaw === 0n || hopReserveRaw === 0n || lpSupplyRaw === 0n) {
-    throw new Error(`Pool empty: USDC=${usdcReserveRaw} HOP=${hopReserveRaw} LP=${lpSupplyRaw}`);
+  console.log(`[DEBUG] usdcReserveRaw=${usdcReserveRaw} hopReserveRaw=${hopReserveRaw} lpSupplyRaw=${lpSupplyRaw}`);
+
+  if (usdcReserveRaw === 0n || hopReserveRaw === 0n) {
+    throw new Error(`Pool reserves empty: USDC=${usdcReserveRaw} HOP=${hopReserveRaw}`);
   }
 
   const usdcReserveUi = Number(usdcReserveRaw) / 10 ** USDC_DECIMALS;
@@ -298,20 +300,23 @@ async function main(): Promise<void> {
   const addLiqUsdcRaw    = BigInt(Math.floor(addLiqUsdcUi * 10 ** USDC_DECIMALS));
   const swapUsdcRaw      = BigInt(Math.floor(swapUsdcUi   * 10 ** USDC_DECIMALS));
 
-  // Required HOP for the deposit to match current pool ratio:
-  // hopRequired = usdcDeposited * hopReserve / usdcReserve
-  // Round UP so we never under-deposit (avoids slippage rejection).
-  const addLiqHopRaw =
+  // Required HOP for the deposit to match current pool ratio.
+  // targetHopRaw = what the pool vault must RECEIVE (post-T22 withhold).
+  // addLiqHopRaw = what crank must SEND so vault receives targetHopRaw after T22 fee.
+  const targetHopRaw =
     (addLiqUsdcRaw * hopReserveRaw + (usdcReserveRaw - 1n)) / usdcReserveRaw;
+  const addLiqHopRaw = (targetHopRaw * 10_000n) / (10_000n - BigInt(t22FeeBps));
 
   // Apply tiny upward slippage cushion to amountMaxB (T22 fee on incoming HOP transfer)
   const slippageBpsBig = BigInt(slippageBps);
   const addLiqUsdcMax  = addLiqUsdcRaw + (addLiqUsdcRaw * slippageBpsBig) / 10_000n;
   const addLiqHopMax   = addLiqHopRaw  + (addLiqHopRaw  * (slippageBpsBig + BigInt(t22FeeBps))) / 10_000n;
 
-  // LP to mint: (addLiqUsdcRaw / usdcReserveRaw) * lpSupplyRaw, floored
-  // Apply slippage DOWN so program accepts.
-  const lpMintRaw = (addLiqUsdcRaw * lpSupplyRaw) / usdcReserveRaw;
+  // LP to mint. First deposit (lpSupply=0): geometric mean of vault amounts received.
+  // Subsequent: proportional to share of pool.
+  const lpMintRaw = lpSupplyRaw === 0n
+    ? BigInt(Math.floor(Math.sqrt(Number(addLiqUsdcRaw) * Number(targetHopRaw))))
+    : (addLiqUsdcRaw * lpSupplyRaw) / usdcReserveRaw;
   const lpMintMin = lpMintRaw - (lpMintRaw * slippageBpsBig) / 10_000n;
 
   // ── Estimate HOP received from LEG1 USDC→HOP swap (constant-product, 0.05% fee)
@@ -320,7 +325,7 @@ async function main(): Promise<void> {
   const lpFeeBps = 5n;                              // 0.05% Raydium CPMM
   const swapUsdcAfterFee = swapUsdcRaw - (swapUsdcRaw * lpFeeBps + 9_999n) / 10_000n;
   const usdcResPost = usdcReserveRaw + addLiqUsdcRaw;
-  const hopResPost  = hopReserveRaw  + addLiqHopRaw;
+  const hopResPost  = hopReserveRaw  + targetHopRaw; // vault receives targetHopRaw after T22
   const newUsdc1    = usdcResPost + swapUsdcAfterFee;
   const k1          = usdcResPost * hopResPost;
   const newHop1     = (k1 + newUsdc1 - 1n) / newUsdc1; // ceil-div for k preservation
@@ -364,7 +369,7 @@ async function main(): Promise<void> {
     USDC_MINT,
     HOP_MINT,
     lpMint,
-    new BN(lpMintMin.toString()),
+    new BN(lpMintRaw.toString()),
     new BN(addLiqUsdcMax.toString()),
     new BN(addLiqHopMax.toString()),
   ));
@@ -406,7 +411,7 @@ async function main(): Promise<void> {
     new BN(hopForSell.toString()),
     new BN(0),
   ));
-  // IX[8] removeLiquidity (burn ALL LP, no slippage protection)
+  // IX[8] removeLiquidity (burn ALL LP; slippage on outputs set to 0, not on LP in)
   ixs.push(makeWithdrawCpmmInInstruction(
     RAYDIUM_CPMM_PROGRAM,
     crank.publicKey,
@@ -420,13 +425,13 @@ async function main(): Promise<void> {
     USDC_MINT,
     HOP_MINT,
     lpMint,
-    new BN(lpMintMin.toString()),
+    new BN(lpMintRaw.toString()),
     new BN(0),
     new BN(0),
   ));
-  // IX[9] harvest withheld → mint
+  // IX[9] harvest withheld → mint (crankHopAta + vaultB to capture addLiq/swap fees)
   ixs.push(createHarvestWithheldTokensToMintInstruction(
-    HOP_MINT, [crankHopAta], TOKEN_2022_PROGRAM_ID
+    HOP_MINT, [crankHopAta, vaultB], TOKEN_2022_PROGRAM_ID
   ));
   // IX[10] withdraw withheld mint → crank HOP ATA
   ixs.push(createWithdrawWithheldTokensFromMintInstruction(

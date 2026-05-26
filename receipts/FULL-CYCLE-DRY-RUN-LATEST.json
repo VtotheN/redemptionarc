@@ -1,0 +1,44 @@
+{
+  "verdict": "SIM_OK_EPOCH_PENDING",
+  "dryRun": true,
+  "txSize": 1016,
+  "txVersion": "v0",
+  "altAddress": "qDpKx5a6o84rvUyRG3w7j1t9MPP8tYoqZsHWFh7494u",
+  "flashAmountUsdc": 1,
+  "hopAmountPerHopUi": 1000000,
+  "activeFeeBps": 690,
+  "epochOk": false,
+  "epochCurrent": 977,
+  "epochTarget": 978,
+  "hoursUntilEpoch978": 16.54222222222222,
+  "ring": {
+    "hops": 4,
+    "totalWithheldHop": 248725.368879,
+    "fees": [
+      69000,
+      64239,
+      59806.509,
+      55679.859879
+    ]
+  },
+  "swap": {
+    "program": "GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h",
+    "pool": "8aoWgf7ycbeKv6BTFCdUj4JR7Y4mXWuPZWEUhmuzN5ZL",
+    "inputHop": 248725.368879,
+    "estUsdcOut": 21.98366218815108,
+    "simUsdcDelta": 19.910388,
+    "sqrtPriceX64": "1962138879699883030712",
+    "wpFeeRate": 300
+  },
+  "beforeRaw": "168854573",
+  "afterRaw": "188764961",
+  "simErr": null,
+  "simCu": 275950,
+  "gasUsd": 0.036101505,
+  "jitoTipLamports": 200000,
+  "netCashUsd": 19.874286495,
+  "settlementConfirmed": true,
+  "settlementPath": "whirlpool_fork",
+  "canExecuteLive": false,
+  "generatedAt": "2026-05-26T19:25:41.419Z"
+}

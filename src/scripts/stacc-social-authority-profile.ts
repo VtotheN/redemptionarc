@@ -8,7 +8,7 @@ import { assertNoForbiddenConfigured } from "../utils/safety.js";
 
 const OUT_RECEIPT = "STACC-SOCIAL-AUTHORITY-PROFILE-LATEST.json";
 const CLAIM_SIM_RECEIPT = "receipts/STACC-SOCIAL-FEE-CLAIM-SIM-LATEST.json";
-const DEFAULT_AUTHORITY = "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM";
+const DEFAULT_AUTHORITY = "";
 
 type AnyRecord = Record<string, unknown>;
 

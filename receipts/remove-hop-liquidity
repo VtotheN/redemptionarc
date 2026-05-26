@@ -1,9 +1,9 @@
 {
   "verdict": "EXECUTED",
   "poolId": "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV",
-  "lpRemoved": "48244170532",
+  "lpRemoved": "2500000000",
   "removePct": 100,
   "estUsdcOut": 0,
   "dryRun": false,
-  "signature": "3E5AuYTyGezntsmssedX9raMKUoJZ2HPRooScCabDzSGSwyVMsmtvytvp7daX3jU6wJoHVLucFPeiGda9yLgF5m1"
+  "signature": "4WF2WDq7Rww8X4buEsRXhyMRfr2VjC9f1AQ11pGeLtnJprKY1VPQgpvCP6rkymoUnqVJ8eG9eEN21DjeeA1U7cfY"
 }

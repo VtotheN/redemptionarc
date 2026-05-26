@@ -1,13 +1,13 @@
 {
   "verdict": "STACC_SOCIAL_AUTHORITY_PROFILE_READ_ONLY",
-  "generatedAt": "2026-05-24T06:34:35.723Z",
+  "generatedAt": "2026-05-24T14:11:18.739Z",
   "noSend": true,
   "readOnly": true,
   "authority": "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM",
   "short": "2sMr...hkjM",
   "solBalance": {
-    "lamports": 100982226724,
-    "sol": 100.982226724
+    "lamports": 100982216724,
+    "sol": 100.982216724
   },
   "tokenAccounts": [
     {
@@ -20,6 +20,78 @@
     }
   ],
   "recentSignatures": [
+    {
+      "signature": "v7Hrgt3ayi7geg2W8fcyWd6kcGxLAkMhtBusWELXPwtKcTX8Cq3oXVZNTpkze2EnRnQ3CcL8o94bzfdCQxQiTNa",
+      "slot": 421866123,
+      "blockTime": 1779631535,
+      "err": null
+    },
+    {
+      "signature": "5Vkh29UN9BgLkanT6rvyZrFAepsBb6iStGWPDYV2BVfYXWZ1BNKFtaMRAYKE9CiGJGkvYohn4YKonmbZHmNFWYKD",
+      "slot": 421865613,
+      "blockTime": 1779631332,
+      "err": null
+    },
+    {
+      "signature": "3M4yNToijan32GJMWPt9xcJ6vYct1cJgF6EoKLk7CDxxexLWkoSo91BjuWJowSEaGe3NH6PpWUxGSJztjTDKLPNH",
+      "slot": 421863620,
+      "blockTime": 1779630532,
+      "err": null
+    },
+    {
+      "signature": "GWXF2P3ZEqWMFvzK9LqDpKTNEi1HKUFL7KvDGYn8fMWJstxtaG7sN65uSDBbodwbYDUSuBQCdNi8zTNic7o1oS8",
+      "slot": 421861270,
+      "blockTime": 1779629589,
+      "err": null
+    },
+    {
+      "signature": "2i9g1ajjzHY2qtcTPMp6KGQpg8mJubHwv7BQuVpEKojfw3ZD2TWiXtF5HSeUq6U48D7eSttC5oUSJYEiCTdViZNT",
+      "slot": 421861164,
+      "blockTime": 1779629547,
+      "err": null
+    },
+    {
+      "signature": "4qyAkweHo5He8ZbQboWxYxY4cWKBW7w8WEWGo7cxG8R3WufKA39xSBakp2nEDtowZJegNZM6nziB2T48rCGmFJYC",
+      "slot": 421861072,
+      "blockTime": 1779629510,
+      "err": null
+    },
+    {
+      "signature": "4QypwuJCB4R667K54ZWSiZ19Nifnfhou9ghQMdkjqAnWS6a1KRA1ty5JhjHipujEsdwpzofvMtt4GchDDvaMRbnk",
+      "slot": 421859795,
+      "blockTime": 1779629003,
+      "err": null
+    },
+    {
+      "signature": "3mnJta98LdjdXB29Biizrt1pWqg1oVQu9q6je7dz8EKaopCq2UQ5uhiPDe5vygRbLKwRi4hYXEoaScPRGoXV4jAQ",
+      "slot": 421856938,
+      "blockTime": 1779627858,
+      "err": null
+    },
+    {
+      "signature": "2ERCZ1Qrmbt3QUM9rJ8ox7KGGiDXBKGczxswCCLaDc5AA3mrQJ4fbQ3yj1Mejvra9KgcpjHFqME4tjbPXBnaQE5B",
+      "slot": 421856728,
+      "blockTime": 1779627773,
+      "err": null
+    },
+    {
+      "signature": "QDX7DH9vb2FBvyMCuwQDpBki5J8sabr2uJeAhDTT8wZCKVyFafpzZgFqZDo72Ffk6fLE65RbWy4fbcvmbAxRw65",
+      "slot": 421835526,
+      "blockTime": 1779619316,
+      "err": null
+    },
+    {
+      "signature": "3egNvGC3JHir1m7WSDamu1jd5qrsgLoP4nteHxM36wxhZuDqzJdUXsLHNTrisE8uYxCq83SsJkeaRYfM2VzU9KVX",
+      "slot": 421827541,
+      "blockTime": 1779616120,
+      "err": null
+    },
+    {
+      "signature": "4StXDpXQbS4zWjRfwZZgiYYfVkDPZZAkP6Qh7YLkrjocVg1D3hwTDSeDfu5ubLBGwkU5H8MxUYCDh88uXZi4MnHZ",
+      "slot": 421800935,
+      "blockTime": 1779605532,
+      "err": null
+    },
     {
       "signature": "1nqq151qk2chsiqt6Psdh9aC7L1natbEPPif2z2GpAMJbo8LFgzQNhiUpMRvKeRDwf67smmCjHnAP2cuD6MRdfv",
       "slot": 421785513,
@@ -66,78 +138,6 @@
       "signature": "4Y9J7cptAX1rCKJYNqamY4cYH9MtJRo8N6zYP824ZnvePVt8zeSUmPCSAG7eTz3ikxY7sNa5Coa5EZ3TornMxnx4",
       "slot": 421776327,
       "blockTime": 1779595735,
-      "err": null
-    },
-    {
-      "signature": "3Torrzx8pD7CBUMJvoUh4BLdwxxt66hxJpmboGvRNp88uyaFW9Q9PW5DpiiNFREuczAcezPWTnCSrLKFQPmAsSfG",
-      "slot": 421773201,
-      "blockTime": 1779594483,
-      "err": null
-    },
-    {
-      "signature": "4fwmtodDHJpfe7wBVaopNzwBdVq4Pz46HAhA4hj3eVcUMLrYcR3jLSgTgLt38Yv6UdPmfumLpgKs87udCCMHs7H5",
-      "slot": 421771153,
-      "blockTime": 1779593667,
-      "err": null
-    },
-    {
-      "signature": "23oMiSvvggGXoufCCBAe6mpJTUmA7ym4iJob5CMSwPG432wZf8mS6WhPaSwoQzi8FsGzDhhwpuxgkydJhQ67S2tj",
-      "slot": 421764058,
-      "blockTime": 1779590841,
-      "err": null
-    },
-    {
-      "signature": "64FptZgrxxfQFbqY2qw56uRxyWEu5VxFCjQgtAbx5gDZgxTEe98mdAzXxMEigbh5cvFa18ML38GeaPtV1dnTNszE",
-      "slot": 421763954,
-      "blockTime": 1779590798,
-      "err": null
-    },
-    {
-      "signature": "4jfsuS6BqkWimpgSps7tRS5JX9m1VjQBqpLJDoioNuTRV9KAWvxtzZcTxHMz1EZ47sw4RJLnJ9fVsJH3C1KJXC5E",
-      "slot": 421762314,
-      "blockTime": 1779590145,
-      "err": null
-    },
-    {
-      "signature": "a9qpbaFzda4i1crGbCv24Fu8tHb3eQafRUj2cxNLJZY9ci99WPnNhhcWKSD3aSysHdQcBMtYggzVPyqDwHVkscP",
-      "slot": 421761398,
-      "blockTime": 1779589776,
-      "err": null
-    },
-    {
-      "signature": "5fmpeFi5F3R8g2WbYC822ohatajdev2E3mEpJMTpoCbVgsQv1zG4a6QzhPWwAxY5U3GyhppFv5gepaNzPTgtonZv",
-      "slot": 421761209,
-      "blockTime": 1779589700,
-      "err": null
-    },
-    {
-      "signature": "BzfjUf3Q5qv8EjwYD8JeqxFwFAX21W3oZRz28sYMExoySX6JZasYjimEerxDM3emuKTMmNWA1HkjsuJwQ9eDLwu",
-      "slot": 421759125,
-      "blockTime": 1779588863,
-      "err": null
-    },
-    {
-      "signature": "2EbyuEYfo4tAZm44pT9h8EjHEcwRhhCG7y7Ff9jeEuQuT1CSVYzD7jJJdxRsxwa4KQ5QAgu7dWMLaE6Zt8Z6EpXB",
-      "slot": 421759103,
-      "blockTime": 1779588854,
-      "err": null
-    },
-    {
-      "signature": "66WZ7oYCFz6g5Ctqkyb1LpFwxshgs4PBfyVxm681YdpFkP6EZWNEkuh6arTGfnR1qVLRNktUbKnUwD9rn8ym3LJx",
-      "slot": 421758859,
-      "blockTime": 1779588754,
-      "err": null
-    },
-    {
-      "signature": "nWdTzzsK5LYQ7ZzuNyjDXzDA956wMGop61CrPo2WLFpL1E9SGjMrVBdxHCdNS2mpXaEnHrjaYbYj2BFqHgmtdNe",
-      "slot": 421758680,
-      "blockTime": 1779588682,
-      "err": null
-    },
-    {
-      "signature": "1HGNja9WU8n6XkVcmxfD3Mfhppp3f9s4B13UNr3HFBsFoEQckY9d9sSDyvx5JS2dqgJGLB9qg4KVCmQS5EAgne4",
-      "slot": 421758661,
-      "blockTime": 1779588674,
       "err": null
     }
   ],

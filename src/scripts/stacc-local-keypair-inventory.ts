@@ -8,7 +8,7 @@ import { writeReceipt } from "../utils/receipt.js";
 import { assertNoForbiddenConfigured } from "../utils/safety.js";
 
 const OUT_RECEIPT = "STACC-LOCAL-KEYPAIR-INVENTORY-LATEST.json";
-const DEFAULT_TARGET = "2sMrGNK8i36YRkF5WWCwnaUYuwDJhHe1g2xA8aPvhkjM";
+const DEFAULT_TARGET = "";
 const MAX_FILE_BYTES = 512 * 1024;
 
 type Candidate = {

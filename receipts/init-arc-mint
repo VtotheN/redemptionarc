@@ -1,0 +1,13 @@
+{
+  "verdict": "SIM",
+  "mint": "GvWfjcCh1JceUmcQpoQcVKS5Vxa2r4oncbveuWgUt2sh",
+  "name": "ARC",
+  "symbol": "ARC",
+  "decimals": 6,
+  "feeBps": 1,
+  "maxFee": "18446744073709551615",
+  "initialSupply": 100000000,
+  "escrowAta": "GBC3LyxaxrjMcvDWuqzNrqU7QDmLVC4G1DoefzgfJYR2",
+  "authority": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+  "dryRun": true
+}

@@ -1,9 +1,10 @@
 {
-  "verdict": "DRY_RUN",
+  "verdict": "EXECUTED",
+  "signature": "zHyRhQ2dy91XqFEGDnBKFNMvNKXx7Ld12pzBjmUVwXoz8RBStjDdMwJNhGUBHYLyMdJXiAw9MQCUgBWdxcVBAyV",
   "poolId": "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV",
-  "seedUsdcUi": 500,
-  "seedHopUi": 5000000,
-  "impliedPriceUsd": 0.0001,
-  "dryRun": true,
-  "signature": null
+  "seedUsdcUi": 100,
+  "targetHopUi": 240125,
+  "impliedPrice": 0.0004164497657470067,
+  "lpMintRaw": "2500000000",
+  "t22FeeBps": "690"
 }

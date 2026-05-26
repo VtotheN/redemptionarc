@@ -66,6 +66,7 @@
     "collect-hop-fees": "tsx src/scripts/collect-hop-fees.ts",
     "sell-hop-fees": "tsx src/scripts/sell-hop-fees.ts",
     "seed-hop-pool": "tsx src/scripts/seed-hop-pool.ts",
+    "buy-hop": "tsx src/scripts/buy-hop.ts",
     "snapshot": "tsx src/scripts/treasury-snapshot.ts",
     "dry-run": "DRY_RUN=true tsx src/gates/preflight.ts && DRY_RUN=true tsx src/scripts/treasury-snapshot.ts",
     "remove-hop-liquidity": "tsx src/scripts/remove-hop-liquidity.ts",
