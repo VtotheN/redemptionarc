@@ -425,6 +425,7 @@ async function main() {
   const rpcUrl       = process.env.SOLANA_RPC_URL || process.env.RPC_URL || "https://api.mainnet-beta.solana.com";
   const dryRun       = process.env.DRY_RUN !== "false";
   const allowLive    = process.env.ALLOW_LIVE === "true";
+  const receiptName  = process.env.RECEIPT_NAME || "FLYWHEEL-RUN-001.json";
   let flashUsdc    = Number(process.env.FLASH_AMOUNT_USDC || "300");
   const minFlashUsdc = Number(process.env.MIN_FLASH_AMOUNT_USDC || "1000");
   const nBundles     = Number(process.env.BUNDLES || "10");
@@ -517,7 +518,7 @@ async function main() {
     swap2Ta0 = TICK_ARRAY_84480; swap2Ta1 = TICK_ARRAY_90112; swap2Ta2 = TICK_ARRAY_95744;
   } else {
     console.error(`tickPostSwap1=${tickPostSwap1} < 84480 — price out of LP range. Reduce FLASH_AMOUNT_USDC.`);
-    writeReceipt("FLYWHEEL-RUN-001.json", { verdict: "PRICE_OUT_OF_RANGE", tickPostSwap1, flashUsdc });
+    writeReceipt(receiptName, { verdict: "PRICE_OUT_OF_RANGE", tickPostSwap1, flashUsdc });
     process.exitCode = 1;
     return;
   }
@@ -703,7 +704,7 @@ async function main() {
   };
 
   if (!simOk) {
-    writeReceipt("FLYWHEEL-RUN-001.json", receipt);
+    writeReceipt(receiptName, receipt);
     console.error("SIM_FAILED — fix before sending");
     process.exitCode = 1;
     return;
@@ -712,7 +713,7 @@ async function main() {
   if (!cashProofPass) {
     receipt.verdict = "CASH_PROOF_FAILED";
     receipt.verdict2 = "NO_GO";
-    writeReceipt("FLYWHEEL-RUN-001.json", receipt);
+    writeReceipt(receiptName, receipt);
     console.error("CASH_PROOF_FAILED — live send blocked because spendable USDC/SOL net is not positive");
     process.exitCode = 1;
     return;
@@ -720,7 +721,7 @@ async function main() {
 
   if (dryRun || !allowLive) {
     console.log("SIM_OK — DRY_RUN. Set DRY_RUN=false ALLOW_LIVE=true to run live.");
-    writeReceipt("FLYWHEEL-RUN-001.json", receipt);
+    writeReceipt(receiptName, receipt);
     return;
   }
 
@@ -848,7 +849,7 @@ async function main() {
   receipt.projNetPerBundle  = netPerBundle;
   receipt.projHrAt25Tps     = netPerBundle * 25 * 3600;
 
-  writeReceipt("FLYWHEEL-RUN-001.json", receipt);
+  writeReceipt(receiptName, receipt);
 
   console.log(`\n${receipt.verdict2} net=${netUsdc.toFixed(6)} USDC | bundles=${nBundles}`);
 }
