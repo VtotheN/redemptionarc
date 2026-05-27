@@ -521,8 +521,13 @@ async function main(): Promise<CycleResult> {
   let s2ta0: PublicKey, s2ta1: PublicKey, s2ta2: PublicKey;
 
   if (firstSwapAtoB) {
-    // USDC→HOP first: price goes down
-    s1ta0 = TICK_ARRAY_90112; s1ta1 = TICK_ARRAY_84480; s1ta2 = TICK_ARRAY_84480;
+    // USDC→HOP first: price goes down; ta0 must contain the current tick
+    const s1StartIdx = Math.floor(tickCurrent / (64 * 88)) * (64 * 88);
+    if (s1StartIdx >= 95744) {
+      s1ta0 = TICK_ARRAY_95744; s1ta1 = TICK_ARRAY_90112; s1ta2 = TICK_ARRAY_84480;
+    } else {
+      s1ta0 = TICK_ARRAY_90112; s1ta1 = TICK_ARRAY_84480; s1ta2 = TICK_ARRAY_84480;
+    }
 
     const poolLiqAfterAdd = liquidity + liquidityDelta;
     const liqShifted      = poolLiqAfterAdd * Q64;
