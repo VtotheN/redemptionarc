@@ -1,0 +1,14 @@
+{
+  "verdict": "SIM_OK",
+  "timestamp": "2026-05-27T11:22:56.023Z",
+  "dryRun": true,
+  "lpFeesExtractedUsdcUi": 0.145438,
+  "lpFeesExtractedHopUi": 1144.123521,
+  "protoFeesExtractedUsdcUi": 0.0045,
+  "protoFeesExtractedHopUi": 35.689682,
+  "totalExtractableUsdc": 0.14993800000000002,
+  "simOk": true,
+  "simErr": null,
+  "simCu": 55017,
+  "txSize": 678
+}

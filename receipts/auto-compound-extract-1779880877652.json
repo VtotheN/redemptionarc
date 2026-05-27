@@ -1,0 +1,21 @@
+{
+  "verdict": "SIM_FAILED",
+  "timestamp": "2026-05-27T11:21:18.372Z",
+  "dryRun": true,
+  "lpFeesExtractedUsdcUi": 0.145438,
+  "lpFeesExtractedHopUi": 1144.123521,
+  "protoFeesExtractedUsdcUi": 0.0045,
+  "protoFeesExtractedHopUi": 35.689682,
+  "totalExtractableUsdc": 0.14993800000000002,
+  "simOk": false,
+  "simErr": {
+    "InstructionError": [
+      5,
+      {
+        "Custom": 101
+      }
+    ]
+  },
+  "simCu": 61526,
+  "txSize": 865
+}
