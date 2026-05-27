@@ -47,6 +47,7 @@ import {
   getTransferFeeConfig,
 } from "@solana/spl-token";
 import { writeReceipt } from "../utils/receipt.js";
+import { getShardConfig } from "../utils/shard.js";
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 
@@ -66,8 +67,7 @@ const JITO_TIP_WALLET       = new PublicKey("96gYZGLnJYVFmbjzopPSU6QiEV5fGqZNyN9
 // MarginFi account (hardcoded — matches keys/marginfi-account.json)
 const MF_ACCOUNT_DEFAULT = new PublicKey("9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz");
 
-// crank HOP T22 ATA (hardcoded)
-const CRANK_HOP_ATA = new PublicKey("2s2Au2bxsvF5cHbdhfP4JaFX8FXp5wXzQxBj15PNPEkD");
+// HOP ATA is now computed dynamically per-crank for sharding support.
 
 const IX_START  = Buffer.from([14, 131, 33, 220, 81, 186, 180, 107]);
 const IX_END    = Buffer.from([105, 124, 201, 106, 153, 2, 8, 156]);
@@ -187,15 +187,19 @@ async function main(): Promise<void> {
   }
 
   const conn = new Connection(rpcUrl, "confirmed");
-  const crank = loadKeypair(process.env.CRANK_KEYPAIR_PATH || "keys/crank.json");
 
-  // ── MarginFi account ──
-  const mfAccountPath = process.env.MARGINFI_ACCOUNT_KEYPAIR_PATH;
-  const mfAccount = mfAccountPath ? marginfiAccountPubkey(mfAccountPath) : MF_ACCOUNT_DEFAULT;
+  // Shard-aware key loading
+  const shard = getShardConfig();
+  const crank = shard ? shard.crank : loadKeypair(process.env.CRANK_KEYPAIR_PATH || "keys/crank.json");
+  const mfAccount = shard
+    ? shard.marginfiAccountPubkey
+    : (process.env.MARGINFI_ACCOUNT_KEYPAIR_PATH
+        ? marginfiAccountPubkey(process.env.MARGINFI_ACCOUNT_KEYPAIR_PATH)
+        : MF_ACCOUNT_DEFAULT);
 
   // ── ATAs ──
   const crankUsdcAta = getAssociatedTokenAddressSync(USDC_MINT, crank.publicKey, false, TOKEN_PROGRAM_ID);
-  const crankHopAta  = CRANK_HOP_ATA; // = getAssociatedTokenAddressSync(HOP_MINT, crank, false, TOKEN_2022_PROGRAM_ID)
+  const crankHopAta  = getAssociatedTokenAddressSync(HOP_MINT, crank.publicKey, false, TOKEN_2022_PROGRAM_ID);
 
   // ── Oracle ──
   const oracle = await oracleForBank(conn, USDC_BANK);
@@ -497,7 +501,7 @@ async function main(): Promise<void> {
 
   // ── Receipt setup ──
   const ts = new Date().toISOString();
-  const receiptName = `flash-deep-vol-${ts.replace(/[:.]/g, "-")}.json`;
+  const receiptName = process.env.RECEIPT_NAME || `flash-deep-vol-${ts.replace(/[:.]/g, "-")}.json`;
   const receipt: Record<string, unknown> = {
     timestamp: ts,
     dryRun,

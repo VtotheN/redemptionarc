@@ -47,6 +47,7 @@ import {
   getMint, getTransferFeeConfig,
 } from "@solana/spl-token";
 import { writeReceipt } from "../utils/receipt.js";
+import { getShardConfig } from "../utils/shard.js";
 
 // ─── Program / account constants ─────────────────────────────────────────────
 
@@ -78,7 +79,7 @@ const MARGINFI_PROGRAM     = new PublicKey("MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZn
 const MARGINFI_GROUP       = new PublicKey("4qp6Fx6tnZkY5Wropq9wUYgtFxXKwE6viZxFHg3rdAG8");
 const USDC_BANK            = new PublicKey("2s37akK2eyBbp8DZgCm7RtsaEz8eJP3Nxd4urLHQv7yB");
 const USDC_LIQ_VAULT       = new PublicKey("7jaiZR5Sk8hdYN9MxTpczTcwbWpb5WEoxSANuUwveuat");
-const MF_ACCOUNT           = new PublicKey("9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz");
+const MF_ACCOUNT_DEFAULT   = new PublicKey("9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz");
 
 const JITO_TIP_WALLET = new PublicKey("96gYZGLnJYVFmbjzopPSU6QiEV5fGqZNyN9nmNhvrZU5");
 const JITO_URL        = "https://mainnet.block-engine.jito.labs.io/api/v1/bundles";
@@ -436,8 +437,12 @@ async function main() {
   const gasUsdFloor  = Number(process.env.GAS_USD_FLOOR || "0.004");
 
   const connection   = new Connection(rpcUrl, "confirmed");
-  const crank        = loadKeypair("keys/crank.json");
+
+  // Shard-aware key loading
+  const shard = getShardConfig();
+  const crank        = shard ? shard.crank : loadKeypair(process.env.CRANK_KEYPAIR_PATH || "keys/crank.json");
   const withdrawAuth = loadKeypair(process.env.WITHDRAW_AUTHORITY_KEYPAIR_PATH || "keys/crank.json");
+  const mfAccount    = shard ? shard.marginfiAccountPubkey : (process.env.MARGINFI_ACCOUNT_PUBKEY ? new PublicKey(process.env.MARGINFI_ACCOUNT_PUBKEY) : MF_ACCOUNT_DEFAULT);
 
   const crankUsdcAta  = getAssociatedTokenAddressSync(USDC_MINT, crank.publicKey, false, TOKEN_PROGRAM_ID);
   const crankHopAta   = getAssociatedTokenAddressSync(HOP_MINT,  crank.publicKey, false, TOKEN_2022_PROGRAM_ID);
@@ -598,8 +603,8 @@ async function main() {
   const ixs: TransactionInstruction[] = [
     ComputeBudgetProgram.setComputeUnitLimit({ units: cuLimit }),
     ComputeBudgetProgram.setComputeUnitPrice({ microLamports: cuPrice }),
-    startFlashIx(MF_ACCOUNT, crank.publicKey, END_IX),
-    borrowIx(MF_ACCOUNT, crank.publicKey, crankUsdcAta, flashMicro),
+    startFlashIx(mfAccount, crank.publicKey, END_IX),
+    borrowIx(mfAccount, crank.publicKey, crankUsdcAta, flashMicro),
     // swap USDC→HOP (a_to_b=true, price goes down)
     swapV2Ix({
       tokenAuthority: crank.publicKey,
@@ -628,9 +633,9 @@ async function main() {
       amountSpecifiedIsInput: true,
       aToB: false,
     }),
-    repayIx(MF_ACCOUNT, crank.publicKey, crankUsdcAta, flashMicro),
+    repayIx(mfAccount, crank.publicKey, crankUsdcAta, flashMicro),
     SystemProgram.transfer({ fromPubkey: crank.publicKey, toPubkey: JITO_TIP_WALLET, lamports: jitoTip }),
-    endFlashIx(MF_ACCOUNT, crank.publicKey, mfOracle),
+    endFlashIx(mfAccount, crank.publicKey, mfOracle),
   ];
 
   if (ixs.length - 1 !== Number(END_IX)) {
