@@ -2,6 +2,18 @@
 
 Flywheel engine: own Orca Whirlpool fork + MarginFi flash + HOP T22 ring.
 
+## Status (May 27 2026)
+
+✅ Epoch 978 active (T22 1bps)  
+✅ Loop v2 operational — 125 TXs confirmed, multi-RT + alternate direction  
+✅ $246.67 USDC recovered to wallet (sweep T22 fix deployed)  
+🟡 Whirlpool fork upgrade in progress (collect_fees_v2 needs redeploy)  
+⏳ Next: extract LP fees ($48.86 USDC + 392K HOP) + restart loop  
+
+See [POST_FLIP_REPORT.md](./POST_FLIP_REPORT.md) for full session recap.
+
+---
+
 ## Live State (2026-05-23)
 
 ### Own Orca Whirlpool (GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h)
