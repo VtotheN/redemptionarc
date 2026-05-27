@@ -60,6 +60,8 @@ const TOKEN_VAULT_B     = new PublicKey("Qv51R47g7pMDxa3UofXaz8cNr8pwRSXaNufgnEW
 const TICK_ARRAY_84480  = new PublicKey("be9QKj4mYB8erh6r4ZDrKxxSvSYSUNRfpTxqJUgd3jG");
 const TICK_ARRAY_90112  = new PublicKey("CDMSB5e6WUgtoSLrybvYm4j58Jue3eqpzHQVLmgVkAe4");
 const TICK_ARRAY_95744  = new PublicKey("MXd8HXPjcH9ZCuyr4uKKyN7GkJ5YizZQkgUndB6J8Gz");
+const TICK_ARRAY_101376 = new PublicKey("2dQq4vUnzfCmmdex9ikKjF7Z7XifVsbVzoTs7d7ogaEx");
+const TICK_ARRAY_107008 = new PublicKey("2BjLGkGEvB5umQjgesM5F48NGg8JVN1yHta8YZcMYann");
 const ORACLE            = new PublicKey("5qhXANMqTNNzdp1N1PrMzWzSzjHTZxuLPELcmpog6bp5");
 const POSITION          = new PublicKey("ErgQU48egJMNBLZeVkdjrtZrSWUQJCky3deh2B4U1YPQ");
 const POSITION_TA       = new PublicKey("GgLpt3VY9vWKLnNa5Dj3FKvBn3JEDL4KTKpabCAfL54Q");
@@ -432,7 +434,13 @@ async function main(): Promise<CycleResult> {
 
   const liqFromUsdc = liquidityFromA(addLiqMicro, sqrtPrice, sqrtPUpper);
   const HOP_SAFETY_BPS = 200n;
-  const hopEffective = (hopBalance * (10_000n - BigInt(realT22Bps) - HOP_SAFETY_BPS)) / 10_000n;
+  // When HOP→USDC first: reserve maxHopIn before sizing addLiq. Inert when aToB=true (hopReserve=0).
+  const sqrtPFpEarly = Number(sqrtPrice) / Number(Q64);
+  const maxHopInEst  = BigInt(Math.floor(Number(swapMicro) * sqrtPFpEarly * sqrtPFpEarly * 1.1));
+  const wantHopFirst = alternateDirection && (tickCurrent - POOL_CENTER_TICK) > 0;
+  const hopReserve   = (wantHopFirst && hopBalance > maxHopInEst) ? maxHopInEst : 0n;
+  const hopForLiq    = hopBalance - hopReserve;
+  const hopEffective = (hopForLiq * (10_000n - BigInt(realT22Bps) - HOP_SAFETY_BPS)) / 10_000n;
   const liqFromHop   = liquidityFromB(hopEffective, sqrtPrice, sqrtPLower);
   const liquidityDelta = liqFromUsdc < liqFromHop ? liqFromUsdc : liqFromHop;
 
@@ -512,7 +520,12 @@ async function main(): Promise<CycleResult> {
   // Push tick toward center (92520): if above center swap USDC→HOP (price down), else HOP→USDC (price up)
   // Fallback to USDC→HOP if wallet HOP after addLiq < hopSwap2 (can't fund alternate first swap)
   const hopAfterAddLiq = hopBalance > hopToSend ? hopBalance - hopToSend : 0n;
-  const firstSwapAtoB  = !alternateDirection || tickCurrent >= POOL_CENTER_TICK || hopAfterAddLiq < hopSwap2;
+  const tickDistance   = tickCurrent - POOL_CENTER_TICK;
+  // above center → aToB=false (HOP→USDC first) → net tick DOWN toward center
+  // below center → aToB=true  (USDC→HOP first) → net tick UP toward center
+  const firstSwapAtoB  = !alternateDirection || hopAfterAddLiq < hopSwap2
+    ? true
+    : tickDistance < 0;
   const swapDirection: "USDC_TO_HOP" | "HOP_TO_USDC" = firstSwapAtoB ? "USDC_TO_HOP" : "HOP_TO_USDC";
   console.log(`tickBefore:     ${tickBefore}  center:${POOL_CENTER_TICK}  firstSwap:${swapDirection}`);
 
@@ -543,9 +556,19 @@ async function main(): Promise<CycleResult> {
       throw new Error(`post-swap1 price below position range: sqrtPPost1=${sqrtPPost1}`);
     }
   } else {
-    // HOP→USDC first: price goes up
-    s1ta0 = TICK_ARRAY_90112; s1ta1 = TICK_ARRAY_95744; s1ta2 = TICK_ARRAY_95744;
-    s2ta0 = TICK_ARRAY_90112; s2ta1 = TICK_ARRAY_84480; s2ta2 = TICK_ARRAY_84480;
+    // HOP→USDC first: price goes up; ta0 must contain current tick
+    const s1bStartIdx = Math.floor(tickCurrent / (64 * 88)) * (64 * 88);
+    if (s1bStartIdx >= 95744) {
+      // upward swap may cross into 101376/107008 — provide full ascending sequence
+      s1ta0 = TICK_ARRAY_95744; s1ta1 = TICK_ARRAY_101376; s1ta2 = TICK_ARRAY_107008;
+      // downward swap2 descends from 95744 range after small hop
+      s2ta0 = TICK_ARRAY_95744; s2ta1 = TICK_ARRAY_90112; s2ta2 = TICK_ARRAY_84480;
+    } else {
+      // ascending swap1 may cross 95744 boundary — provide full asc sequence
+      s1ta0 = TICK_ARRAY_90112; s1ta1 = TICK_ARRAY_95744; s1ta2 = TICK_ARRAY_101376;
+      // swap2 descending starts post-swap1 — sparse builder picks 95744 if tick crossed, else 90112
+      s2ta0 = TICK_ARRAY_95744; s2ta1 = TICK_ARRAY_90112; s2ta2 = TICK_ARRAY_84480;
+    }
   }
 
   const minHopOut = dryRun ? 1n : (hopSwap2 * (10_000n - slipBig)) / 10_000n;
