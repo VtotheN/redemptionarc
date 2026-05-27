@@ -109,8 +109,49 @@ FORCE_T22_BPS=1 PROJECTION_MODE=true FLASH_AMOUNT_USDC=300 \
 
 ---
 
+## TASK 2 — Dry-Run Validation Status (pre-merge)
+
+**flash-deep-vol.ts post-fix: NOT VALIDATED IN SIM (out of scope for epoch 978 merge)**
+
+Root cause: Raydium CPMM pool `EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV` drained (on-chain state: 1 lamport USDC, 370,520 lamports HOP). Sim fails at IX[4] `addLiquidity` (insufficient HOP in crank ATA) before reaching the Repay instruction.
+
+Code-level fix confirmed at `flash-deep-vol.ts:488` (`lpMintRaw` instead of `lpMintMin`). To validate in sim, the Raydium pool requires re-seeding or the script needs refactor to target the Orca Whirlpool. **Out of scope for epoch 978 merge — `flywheel-bot.ts` is the canonical revenue path post-978.**
+
+---
+
+## Hallazgo on-chain: collect_fees_v2 not implemented in fork
+
+Fork `GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h` implements `collect_protocol_fees_v2` but not `collect_fees_v2` (discriminator `[0xcf 0x75 0x5f 0xbf 0xe5 0xb4 0xe2 0x0f]` returns `InstructionFallbackNotFound` error 101).
+
+LP fees accrued in the position are not collectible via IX until the program is extended. **Mitigation:** `auto-compound.ts` conditionally skips `collect_fees_v2` when `lpFeeA == 0n && lpFeeB == 0n`. LP fees continue accruing inside the position and grow `max_flash_in_range` automatically — implicit compound. `collect_protocol_fees_v2` (the 3% protocol slice) continues working correctly.
+
+---
+
+---
+
+## M4 — Post-978 Flash Sweep WITHOUT PROJECTION_MODE (2026-05-27)
+
+`FORCE_T22_BPS=1 DRY_RUN=true` — real slippage included in cashNet.
+
+| FLASH_USDC | Wallet USDC Δ | LP fee sw1 | LP fee sw2 | cashNet | Verdict |
+|---|---|---|---|---|---|
+| $30 | -0.020529 | 0.008730 | 0.008386 | **-0.007143** | CASH_PROOF_FAILED |
+| $50 | -0.033729 | 0.014550 | 0.013624 | **-0.009105** | CASH_PROOF_FAILED |
+| $100 | -0.065230 | 0.029100 | 0.025627 | **-0.013603** | CASH_PROOF_FAILED |
+| $150 | -0.094879 | 0.043650 | 0.036283 | **-0.017596** | CASH_PROOF_FAILED |
+| $200 | -0.122971 | 0.058200 | 0.045806 | **-0.021165** | CASH_PROOF_FAILED |
+| $300 | -0.175382 | 0.087300 | 0.062106 | **-0.027276** | CASH_PROOF_FAILED |
+
+**Sim err: null for all sizes** (TX simulates clean; cash gate rejects).
+
+**Key finding:** Slippage/LP-fee ratio ≈ 1.19× constant across all flash sizes. No flash size produces positive cashNet at current pool depth (TVL ~$507, maxFlashInRange ~$243). Pool must deepen ~2× before round-trip breaks even at 1bps T22. Bottleneck is pool liquidity, not protocol fees — consistent with TASK 4 PROJECTION_MODE note.
+
+**Gas estimate:** ~$0.004/bundle (constant, deduced from sweep).
+
+---
+
 ## Next Steps
 
 1. **Bootstrap shards** (`bootstrap-shards.ts`) when ready to scale.
-2. **Deepen pool liquidity** — auto-compound will raise `maxFlashUsdcInCurrentRange` organically.
+2. **Deepen pool liquidity** — auto-compound will raise `maxFlashUsdcInCurrentRange` organically. Break-even requires ~2× current TVL.
 3. **Monitor epoch 978** — when `solana epoch >= 978`, run live with `FORCE_T22_BPS` removed.

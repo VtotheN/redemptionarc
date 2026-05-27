@@ -96,6 +96,9 @@ const COLLECT_FEES_V2_DISC          = Buffer.from([0xcf, 0x75, 0x5f, 0xbf, 0xe5,
 const SWAP_V2_DISC = Buffer.from([0x2b, 0x04, 0xed, 0x0b, 0x1a, 0xc9, 0x1e, 0x62]);
 const INCREASE_LIQUIDITY_V2_DISC    = Buffer.from([0x85, 0x1d, 0x59, 0xdf, 0x45, 0xee, 0xb0, 0x0a]);
 
+// sqrtPrice limits for swap direction
+const MAX_SQRT_PRICE = 79226673515401279992447579055n; // B→A (HOP→USDC): price of A per B increases
+
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
 function loadKp(p: string): Keypair {
@@ -286,46 +289,37 @@ function increaseLiquidityV2Ix(args: {
   });
 }
 
-function swapV2Ix(args: {
-  tokenAuthority: PublicKey;
-  tokenOwnerAccountA: PublicKey;
-  tokenOwnerAccountB: PublicKey;
-  tickArray0: PublicKey;
-  tickArray1: PublicKey;
-  tickArray2: PublicKey;
-  amount: bigint;
-  otherAmountThreshold: bigint;
-  sqrtPriceLimit: bigint;
-  amountSpecifiedIsInput: boolean;
-  aToB: boolean;
-}): TransactionInstruction {
-  const data = Buffer.concat([
-    SWAP_V2_DISC,
-    u64Le(args.amount),
-    u64Le(args.otherAmountThreshold),
-    u128Le(args.sqrtPriceLimit),
-    Buffer.from([args.amountSpecifiedIsInput ? 1 : 0]),
-    Buffer.from([args.aToB ? 1 : 0]),
-  ]);
+// swapV2HopToUsdc — account order and data layout verified against not-stacc-replicate.ts live TXs.
+// Only supports B→A (HOP→USDC): aToB=false, sqrtPriceLimit=MAX_SQRT_PRICE.
+function swapV2HopToUsdcIx(authority: PublicKey, crankUsdcAta: PublicKey, crankHopAta: PublicKey, hopAmount: bigint): TransactionInstruction {
   return new TransactionInstruction({
     programId: WHIRLPOOL_PROGRAM_ID,
     keys: [
-      { pubkey: args.tokenAuthority, isSigner: true, isWritable: false },
-      { pubkey: WHIRLPOOL, isSigner: false, isWritable: true },
-      { pubkey: args.tokenOwnerAccountA, isSigner: false, isWritable: true },
-      { pubkey: args.tokenOwnerAccountB, isSigner: false, isWritable: true },
-      { pubkey: TOKEN_VAULT_A, isSigner: false, isWritable: true },
-      { pubkey: TOKEN_VAULT_B, isSigner: false, isWritable: true },
-      { pubkey: TICK_ARRAY_90112, isSigner: false, isWritable: true },
-      { pubkey: args.tickArray0, isSigner: false, isWritable: true },
-      { pubkey: args.tickArray1, isSigner: false, isWritable: true },
-      { pubkey: args.tickArray2, isSigner: false, isWritable: true },
-      { pubkey: ORACLE, isSigner: false, isWritable: true },
-      { pubkey: WHIRLPOOL_PROGRAM_ID, isSigner: false, isWritable: false },
-      { pubkey: args.aToB ? TOKEN_PROGRAM_ID : TOKEN_2022_PROGRAM_ID, isSigner: false, isWritable: false },
-      { pubkey: args.aToB ? TOKEN_2022_PROGRAM_ID : TOKEN_PROGRAM_ID, isSigner: false, isWritable: false },
+      { pubkey: TOKEN_PROGRAM_ID,       isSigner: false, isWritable: false },
+      { pubkey: TOKEN_2022_PROGRAM_ID,  isSigner: false, isWritable: false },
+      { pubkey: SPL_MEMO,               isSigner: false, isWritable: false },
+      { pubkey: authority,              isSigner: true,  isWritable: false },
+      { pubkey: WHIRLPOOL,              isSigner: false, isWritable: true  },
+      { pubkey: USDC_MINT,              isSigner: false, isWritable: false },
+      { pubkey: HOP_MINT,               isSigner: false, isWritable: true  },
+      { pubkey: crankUsdcAta,           isSigner: false, isWritable: true  },
+      { pubkey: TOKEN_VAULT_A,          isSigner: false, isWritable: true  },
+      { pubkey: crankHopAta,            isSigner: false, isWritable: true  },
+      { pubkey: TOKEN_VAULT_B,          isSigner: false, isWritable: true  },
+      { pubkey: TICK_ARRAY_90112,       isSigner: false, isWritable: true  },
+      { pubkey: TICK_ARRAY_95744,       isSigner: false, isWritable: true  },
+      { pubkey: TICK_ARRAY_95744,       isSigner: false, isWritable: true  },
+      { pubkey: ORACLE,                 isSigner: false, isWritable: true  },
     ],
-    data,
+    data: Buffer.concat([
+      SWAP_V2_DISC,
+      u64Le(hopAmount),
+      u64Le(0n),                       // otherAmountThreshold=0
+      u128Le(MAX_SQRT_PRICE),          // B→A: price of A/B increases → sqrtPrice limit = max
+      Buffer.from([1]),                // amountSpecifiedIsInput = true
+      Buffer.from([0]),                // aToB = false (HOP→USDC)
+      Buffer.from([0]),                // remaining_accounts_info = None
+    ]),
   });
 }
 
@@ -511,7 +505,12 @@ async function main() {
     createIdempotentAta(crank.publicKey, authUsdcAta, withdrawAuth.publicKey, USDC_MINT),
     createIdempotentAta(crank.publicKey, authHopAta,  withdrawAuth.publicKey, HOP_MINT, TOKEN_2022_PROGRAM_ID),
     collectProtocolFeesV2Ix({ authority: withdrawAuth.publicKey, destA: authUsdcAta, destB: authHopAta }),
-    collectFeesV2Ix({ positionAuthority: crank.publicKey, tokenOwnerAccountA: crankUsdcAta, tokenOwnerAccountB: crankHopAta }),
+    // collect_fees_v2 is not implemented in fork GxRHMB9a... — skip when LP fees are zero.
+    // LP fees still accrue inside the position and grow max_flash_in_range (implicit compound).
+    // TODO: remove guard when fork program is extended to handle collect_fees_v2.
+    ...(lpFeeA === 0n && lpFeeB === 0n
+      ? (console.log("[auto-compound] Skipping collect_fees_v2 (LP fees zero)"), [])
+      : [collectFeesV2Ix({ positionAuthority: crank.publicKey, tokenOwnerAccountA: crankUsdcAta, tokenOwnerAccountB: crankHopAta })]),
     // [4.5] Harvest T22 withheld fees into mint
     createHarvestWithheldTokensToMintInstruction(HOP_MINT, [crankHopAta, TOKEN_VAULT_B], TOKEN_2022_PROGRAM_ID),
     // [5.5] Withdraw T22 withheld fees from mint to crank HOP ATA
@@ -520,21 +519,7 @@ async function main() {
 
   // Optional: swap collected HOP → USDC before re-injecting liquidity
   if (doSwapHop) {
-    const Q64 = 1n << 64n;
-    const MIN_SQRT_PRICE = 4295048016n;
-    ixs.push(swapV2Ix({
-      tokenAuthority: crank.publicKey,
-      tokenOwnerAccountA: crankUsdcAta,
-      tokenOwnerAccountB: crankHopAta,
-      tickArray0: TICK_ARRAY_84480,
-      tickArray1: TICK_ARRAY_90112,
-      tickArray2: TICK_ARRAY_95744,
-      amount: compoundHopMicro,
-      otherAmountThreshold: 0n,
-      sqrtPriceLimit: MIN_SQRT_PRICE,
-      amountSpecifiedIsInput: true,
-      aToB: false,
-    }));
+    ixs.push(swapV2HopToUsdcIx(crank.publicKey, crankUsdcAta, crankHopAta, compoundHopMicro));
     // After swapping all HOP fees, recompute liquidityDelta using USDC-only heuristic
     // (HOP side becomes 0 — increase_liquidity will be USDC-bounded)
     const liqFromAOnly = liquidityFromAmountA(compoundUsdcMicro + compoundHopMicro /* rough: assumes 1:1 price */, sqrtPrice, sqrtPUpper);
@@ -542,14 +527,20 @@ async function main() {
     tokenMaxB = 0n;
   }
 
-  ixs.push(increaseLiquidityV2Ix({
-    positionAuthority: crank.publicKey,
-    tokenOwnerAccountA: crankUsdcAta,
-    tokenOwnerAccountB: crankHopAta,
-    liquidityAmount: liquidityDelta,
-    tokenMaxA,
-    tokenMaxB,
-  }));
+  if (liquidityDelta === 0n) {
+    console.log("[auto-compound] Skipping increase_liquidity_v2 (delta=0). USDC from swap stays in crank ATA for next round.");
+    // TODO: Opción B — recalcular liquidityDelta post-swap usando output esperado del swap
+    // HOP→USDC para reinyectar atómicamente sin USDC atrapada en el ATA del crank.
+  } else {
+    ixs.push(increaseLiquidityV2Ix({
+      positionAuthority: crank.publicKey,
+      tokenOwnerAccountA: crankUsdcAta,
+      tokenOwnerAccountB: crankHopAta,
+      liquidityAmount: liquidityDelta,
+      tokenMaxA,
+      tokenMaxB,
+    }));
+  }
 
   if (jitoTip > 0n) {
     ixs.push(SystemProgram.transfer({ fromPubkey: crank.publicKey, toPubkey: new PublicKey("96gYZGLnJYVFmbjzopPSU6QiEV5fGqZNyN9nmNhvrZU5"), lamports: jitoTip }));
