@@ -1,6 +1,6 @@
 # RedemptionArc — Estrategia Definitiva
 *Documento de referencia. Leer completo antes de tocar cualquier cosa.*
-*Última actualización: Mayo 27, 2026*
+*Última actualización: Mayo 27, 2026 — 06:10 AM*
 
 ---
 
@@ -209,6 +209,26 @@ cashNet = walletDelta + lpFeeSwap1 + lpFeeSwap2
 4. Si funciona → construir auto-compound
 5. Si funciona → deploy en VPS 89.167.71.153
 6. Si funciona → escalar SWAP_USDC gradualmente
+
+---
+
+---
+
+## txnsONcouq — Deploy Mainnet (Mayo 27, 2026)
+
+**atom_ickk cerrado:** `BxJMJLxXJhKvuhvvxY57wYY69CAs9RCQWBv9JPCtm9Kx` → 2.62968984 SOL recuperados
+
+**batch-processor LIVE mainnet:**
+- Program ID: `HKKrVUYk7qA42AXUgaujBBs4vGWCDdp7jPpdQ3BJahuX`
+- ProgramData: `6no3kjnJWyae7Vf47Uy41kLiScaEnkkxDJGvUXmcVVY6`
+- Authority: `8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S` (crank)
+- Deploy TX: `39rUBEZSeonhpSfHeh1KKwyfMMWUvFKmQnHSqSkRYTxXnopJFnQnnAzQXrHoJGhubiyyuqna6PceDkrfZnJKa14r`
+- Data: 26,776 bytes (26KB), executable ✓
+- Repo: `/Users/velon/gh-src-vtothen/EXPERIMENTO-txnsONcouq`
+- Built with: cargo-build-sbf 3.1.14, platform-tools v1.52
+
+**txns-engine:** pendiente deploy (127KB, ID a determinar)
+**Crank SOL post-deploy:** 2.691 SOL
 
 ---
 
