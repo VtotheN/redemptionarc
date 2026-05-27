@@ -76,6 +76,7 @@ const JITO_URL          = "https://mainnet.block-engine.jito.wtf/api/v1/bundles"
 
 const POSITION_TICK_LOWER = 84480;
 const POSITION_TICK_UPPER = 101312;
+const POOL_CENTER_TICK    = 92520;
 const RT_COUNT_MAX        = 5;
 
 const IX_START           = Buffer.from([14, 131, 33, 220, 81, 186, 180, 107]);
@@ -368,7 +369,8 @@ async function main(): Promise<CycleResult> {
   const jitoTip     = BigInt(process.env.JITO_TIP_LAMPORTS || "200000");
   const altAddress  = process.env.ALT_ADDRESS || "EjNKyxzhMCDX63sXLNddioHNZmyyNaHUipsXR65AmwAC";
   const solPriceUsd = Number(process.env.SOL_PRICE_USD || "150");
-  const receiptName = process.env.RECEIPT_NAME || "flash-deep-vol-orca-v2.json";
+  const receiptName        = process.env.RECEIPT_NAME || "flash-deep-vol-orca-v2.json";
+  const alternateDirection = process.env.ALTERNATE_DIRECTION !== "false";
 
   if (Number(process.env.RT_COUNT || "1") > RT_COUNT_MAX) {
     throw new Error(`RT_COUNT max is ${RT_COUNT_MAX}, got ${process.env.RT_COUNT}`);
@@ -441,10 +443,12 @@ async function main(): Promise<CycleResult> {
   const hopToSend   = (hopForVault * 10_000n + (10_000n - BigInt(realT22Bps)) - 1n)
                       / (10_000n - BigInt(realT22Bps));
 
-  const tokenMaxA = addLiqMicro;
+  // 0.1% of addLiq — trivial vs free flash, covers drift-induced rounding at any tick
+  const ADDLIQ_BUFFER = addLiqMicro / 1000n;
+  const tokenMaxA = addLiqMicro + ADDLIQ_BUFFER;
   const tokenMaxB = hopBalance;
 
-  const flashAmount = addLiqMicro + swapMicro;
+  const flashAmount = addLiqMicro + swapMicro + ADDLIQ_BUFFER;
 
   const sqrtPFp    = Number(sqrtPrice) / Number(Q64);
   const hopPerUsdc = sqrtPFp * sqrtPFp;
@@ -503,51 +507,81 @@ async function main(): Promise<CycleResult> {
     return { verdict: "INSUFFICIENT_HOP", simOk: false, cashNetProj: 0 };
   }
 
+  // ── Direction + telemetry ────────────────────────────────────────────────
+  const tickBefore    = tickCurrent;
+  // Push tick toward center (92520): if above center swap USDC→HOP (price down), else HOP→USDC (price up)
+  const firstSwapAtoB = !alternateDirection || tickCurrent >= POOL_CENTER_TICK;
+  const swapDirection: "USDC_TO_HOP" | "HOP_TO_USDC" = firstSwapAtoB ? "USDC_TO_HOP" : "HOP_TO_USDC";
+  console.log(`tickBefore:     ${tickBefore}  center:${POOL_CENTER_TICK}  firstSwap:${swapDirection}`);
+
   // ── Tick array selection ─────────────────────────────────────────────────
-  const s1ta0 = TICK_ARRAY_90112;
-  const s1ta1 = TICK_ARRAY_84480;
-  const s1ta2 = TICK_ARRAY_84480;
-
-  const poolLiqAfterAdd = liquidity + liquidityDelta;
-  const liqShifted      = poolLiqAfterAdd * Q64;
-  const sqrtPPost1      = liqShifted / (liqShifted / sqrtPrice + swapMicro);
-  const sqrtP_90112     = tickToSqrtPriceX64(90112);
-  const sqrtP_84480     = tickToSqrtPriceX64(84480);
-
+  let s1ta0: PublicKey, s1ta1: PublicKey, s1ta2: PublicKey;
   let s2ta0: PublicKey, s2ta1: PublicKey, s2ta2: PublicKey;
-  if (sqrtPPost1 >= sqrtP_90112) {
-    s2ta0 = TICK_ARRAY_90112; s2ta1 = TICK_ARRAY_95744; s2ta2 = TICK_ARRAY_95744;
-  } else if (sqrtPPost1 >= sqrtP_84480) {
-    s2ta0 = TICK_ARRAY_84480; s2ta1 = TICK_ARRAY_90112; s2ta2 = TICK_ARRAY_95744;
+
+  if (firstSwapAtoB) {
+    // USDC→HOP first: price goes down
+    s1ta0 = TICK_ARRAY_90112; s1ta1 = TICK_ARRAY_84480; s1ta2 = TICK_ARRAY_84480;
+
+    const poolLiqAfterAdd = liquidity + liquidityDelta;
+    const liqShifted      = poolLiqAfterAdd * Q64;
+    const sqrtPPost1      = liqShifted / (liqShifted / sqrtPrice + swapMicro);
+    const sqrtP_90112     = tickToSqrtPriceX64(90112);
+    const sqrtP_84480     = tickToSqrtPriceX64(84480);
+
+    if (sqrtPPost1 >= sqrtP_90112) {
+      s2ta0 = TICK_ARRAY_90112; s2ta1 = TICK_ARRAY_95744; s2ta2 = TICK_ARRAY_95744;
+    } else if (sqrtPPost1 >= sqrtP_84480) {
+      s2ta0 = TICK_ARRAY_84480; s2ta1 = TICK_ARRAY_90112; s2ta2 = TICK_ARRAY_95744;
+    } else {
+      throw new Error(`post-swap1 price below position range: sqrtPPost1=${sqrtPPost1}`);
+    }
   } else {
-    throw new Error(`post-swap1 price below position range: sqrtPPost1=${sqrtPPost1}`);
+    // HOP→USDC first: price goes up
+    s1ta0 = TICK_ARRAY_90112; s1ta1 = TICK_ARRAY_95744; s1ta2 = TICK_ARRAY_95744;
+    s2ta0 = TICK_ARRAY_90112; s2ta1 = TICK_ARRAY_84480; s2ta2 = TICK_ARRAY_84480;
   }
 
-  const minHopOut   = dryRun ? 1n : (hopSwap2 * (10_000n - slipBig)) / 10_000n;
+  const minHopOut    = dryRun ? 1n : (hopSwap2 * (10_000n - slipBig)) / 10_000n;
   const hopSwap2Usdc = BigInt(Math.floor(Number(hopSwap2) / hopPerUsdc));
-  const minUsdcOut  = dryRun ? 1n : (hopSwap2Usdc * (10_000n - slipBig * 2n)) / 10_000n;
+  const minUsdcOut   = dryRun ? 1n : (hopSwap2Usdc * (10_000n - slipBig * 2n)) / 10_000n;
 
   // ── Build IXs ───────────────────────────────────────────────────────────
   // endIndex = 7 + 2*N (0-indexed position of endFlashLoan in the IX array)
   const endIdx = BigInt(7 + 2 * rtCount);
 
-  // N swap pairs (all use same tick arrays — price returns ~origin after each round-trip at 1bps)
   const swapPairIxs: TransactionInstruction[] = [];
   for (let i = 0; i < rtCount; i++) {
-    swapPairIxs.push(
-      swapV2Ix({
-        authority: crank.publicKey, ownerA: crankUsdcAta, ownerB: crankHopAta,
-        ta0: s1ta0, ta1: s1ta1, ta2: s1ta2,
-        amount: swapMicro, otherAmountThreshold: minHopOut,
-        sqrtPriceLimit: MIN_SQRT_PRICE, amountSpecifiedIsInput: true, aToB: true,
-      }),
-      swapV2Ix({
-        authority: crank.publicKey, ownerA: crankUsdcAta, ownerB: crankHopAta,
-        ta0: s2ta0, ta1: s2ta1, ta2: s2ta2,
-        amount: hopSwap2, otherAmountThreshold: minUsdcOut,
-        sqrtPriceLimit: MAX_SQRT_PRICE, amountSpecifiedIsInput: true, aToB: false,
-      }),
-    );
+    if (firstSwapAtoB) {
+      swapPairIxs.push(
+        swapV2Ix({
+          authority: crank.publicKey, ownerA: crankUsdcAta, ownerB: crankHopAta,
+          ta0: s1ta0, ta1: s1ta1, ta2: s1ta2,
+          amount: swapMicro, otherAmountThreshold: minHopOut,
+          sqrtPriceLimit: MIN_SQRT_PRICE, amountSpecifiedIsInput: true, aToB: true,
+        }),
+        swapV2Ix({
+          authority: crank.publicKey, ownerA: crankUsdcAta, ownerB: crankHopAta,
+          ta0: s2ta0, ta1: s2ta1, ta2: s2ta2,
+          amount: hopSwap2, otherAmountThreshold: minUsdcOut,
+          sqrtPriceLimit: MAX_SQRT_PRICE, amountSpecifiedIsInput: true, aToB: false,
+        }),
+      );
+    } else {
+      swapPairIxs.push(
+        swapV2Ix({
+          authority: crank.publicKey, ownerA: crankUsdcAta, ownerB: crankHopAta,
+          ta0: s1ta0, ta1: s1ta1, ta2: s1ta2,
+          amount: hopSwap2, otherAmountThreshold: minUsdcOut,
+          sqrtPriceLimit: MAX_SQRT_PRICE, amountSpecifiedIsInput: true, aToB: false,
+        }),
+        swapV2Ix({
+          authority: crank.publicKey, ownerA: crankUsdcAta, ownerB: crankHopAta,
+          ta0: s2ta0, ta1: s2ta1, ta2: s2ta2,
+          amount: swapMicro, otherAmountThreshold: minHopOut,
+          sqrtPriceLimit: MIN_SQRT_PRICE, amountSpecifiedIsInput: true, aToB: true,
+        }),
+      );
+    }
   }
 
   // CU_LIMIT starts at max for first sim; will be tightened after measuring actual consumption
@@ -630,7 +664,10 @@ async function main(): Promise<CycleResult> {
     ? (cashNetIsPositive ? "SIM_OK_PROFITABLE" : "SIM_OK_CHECK_ECONOMICS")
     : "SIM_FAILED";
 
-  writeReceipt(receiptName, {
+  const tickFromCenter   = tickBefore - POOL_CENTER_TICK;
+  const rangeUtilization = parseFloat(((tickBefore - POSITION_TICK_LOWER) / (POSITION_TICK_UPPER - POSITION_TICK_LOWER)).toFixed(4));
+
+  const receiptData = {
     timestamp: new Date().toISOString(),
     rtCount,
     addLiqUsdc, swapUsdc, t22Bps,
@@ -648,7 +685,12 @@ async function main(): Promise<CycleResult> {
     cuLimitFinal,
     txSize,
     simOk, simErr, verdict,
-  });
+    tickBefore,
+    tickFromCenter,
+    rangeUtilization,
+    swapDirection,
+  };
+  writeReceipt(receiptName, receiptData);
 
   console.log(`\nVERDICT: ${verdict}`);
   console.log(`cashNet proj: $${cashNetProj.toFixed(6)} (T22-only)`);
@@ -666,8 +708,29 @@ async function main(): Promise<CycleResult> {
     const directTx = buildTx(ixs, crank.publicKey, fresh, altAccounts);
     directTx.sign([crank]);
     const sig = await conn.sendRawTransaction(directTx.serialize(), { skipPreflight: false });
-    await conn.confirmTransaction({ signature: sig, blockhash: fresh, lastValidBlockHeight }, "confirmed");
+    const confirmation = await conn.confirmTransaction({ signature: sig, blockhash: fresh, lastValidBlockHeight }, "confirmed");
     console.log(`TX (direct): ${sig}`);
+
+    const liveReceipt: Record<string, unknown> = { onchainSig: sig };
+    if (confirmation.value.err) {
+      console.error(`[CYCLE FAIL] on-chain:`, JSON.stringify(confirmation.value.err));
+      liveReceipt.onchainErr    = confirmation.value.err;
+      liveReceipt.onchainStatus = "reverted";
+    } else {
+      liveReceipt.onchainStatus = "confirmed";
+      try {
+        const poolAfter = await conn.getAccountInfo(WHIRLPOOL, "confirmed");
+        if (poolAfter) {
+          const tickAfterLive = Buffer.from(poolAfter.data).readInt32LE(WP_TICK_INDEX_OFFSET);
+          liveReceipt.tickAfterLive = tickAfterLive;
+          liveReceipt.tickDriftLive = tickAfterLive - tickBefore;
+          console.log(`tickAfterLive: ${tickAfterLive}  drift: ${tickAfterLive - tickBefore}`);
+        }
+      } catch (_e) {
+        console.warn("tickAfterLive fetch failed");
+      }
+    }
+    writeReceipt(receiptName, { ...receiptData, ...liveReceipt });
     return { ...baseResult, bundleId: sig };
   }
 

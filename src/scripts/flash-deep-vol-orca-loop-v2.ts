@@ -18,14 +18,19 @@
  */
 
 import "dotenv/config";
+import fs from "node:fs";
 import { Connection, PublicKey } from "@solana/web3.js";
 import { getMint, getTransferFeeConfig, TOKEN_2022_PROGRAM_ID } from "@solana/spl-token";
 import { runCycle } from "./flash-deep-vol-orca-v2.js";
 import { runExtract } from "./auto-compound-extract.js";
 import { runSweep } from "./redeem-hop-to-usdc.js";
 
-const HOP_MINT    = new PublicKey("HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3");
-const ALT_DEFAULT = "EjNKyxzhMCDX63sXLNddioHNZmyyNaHUipsXR65AmwAC";
+const HOP_MINT             = new PublicKey("HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3");
+const WHIRLPOOL            = new PublicKey("8aoWgf7ycbeKv6BTFCdUj4JR7Y4mXWuPZWEUhmuzN5ZL");
+const ALT_DEFAULT          = "EjNKyxzhMCDX63sXLNddioHNZmyyNaHUipsXR65AmwAC";
+const POSITION_TICK_LOWER  = 84480;
+const POSITION_TICK_UPPER  = 101312;
+const WP_TICK_INDEX_OFFSET = 81;
 
 const FAIL_THRESHOLD  = 3;
 const BACKOFF_MS      = 60_000;
@@ -38,6 +43,12 @@ function sleep(ms: number): Promise<void> {
 
 function fmt(d: Date): string {
   return d.toISOString().replace("T", " ").slice(0, 19);
+}
+
+async function readCurrentTick(conn: Connection): Promise<number> {
+  const info = await conn.getAccountInfo(WHIRLPOOL, "confirmed");
+  if (!info) throw new Error("WHIRLPOOL account not found");
+  return Buffer.from(info.data).readInt32LE(WP_TICK_INDEX_OFFSET);
 }
 
 async function getHopT22Bps(conn: Connection): Promise<number> {
@@ -113,6 +124,26 @@ async function main(): Promise<void> {
     totalCycles++;
     const ts = Date.now();
     process.env.RECEIPT_NAME = `deep-vol-v2-${ts}.json`;
+
+    // Safety: pause if tick near range boundaries (10% margin each side)
+    const SAFETY_MARGIN_PCT = 0.10;
+    const rangeSize  = POSITION_TICK_UPPER - POSITION_TICK_LOWER;
+    const safetyLow  = POSITION_TICK_LOWER + Math.floor(rangeSize * SAFETY_MARGIN_PCT);
+    const safetyHigh = POSITION_TICK_UPPER - Math.floor(rangeSize * SAFETY_MARGIN_PCT);
+    try {
+      const currentTick = await readCurrentTick(conn);
+      if (currentTick < safetyLow || currentTick > safetyHigh) {
+        console.error(`[SAFETY] Tick ${currentTick} outside [${safetyLow}, ${safetyHigh}]. Pausing 5min.`);
+        fs.writeFileSync(`receipts/SAFETY-PAUSE-${ts}.json`, JSON.stringify({
+          timestamp: new Date().toISOString(), currentTick, safetyLow, safetyHigh,
+          totalCycles, totalBundles,
+        }, null, 2));
+        await sleep(300_000);
+        continue;
+      }
+    } catch (e) {
+      console.error(`[SAFETY] Tick check failed:`, e instanceof Error ? e.message : e);
+    }
 
     let ok = false;
     let verdict = "UNKNOWN";
