@@ -136,6 +136,103 @@ function estimateUsdcOut(swapHopRaw: bigint, sqrtPriceX64: bigint, liquidity: bi
   return { grossUsdc, feeHop, netUsdc: grossUsdc, netSqrtPrice: nextSqrtP };
 }
 
+// ─── Exported sweep (for loop integration) ───────────────────────────────────
+
+export type SweepResult = {
+  verdict: string;
+  withheldHopUi: number;
+  netUsdcUi: number;
+  simOk: boolean;
+  txSig?: string;
+};
+
+export async function runSweep(): Promise<SweepResult> {
+  const rpc         = process.env.SOLANA_RPC_URL || process.env.RPC_URL || "https://api.mainnet-beta.solana.com";
+  const dryRun      = process.env.DRY_RUN !== "false";
+  const allowLive   = process.env.ALLOW_LIVE === "true";
+  const cuPrice     = BigInt(process.env.CU_PRICE || "50000");
+  const slippageBps = Number(process.env.SLIPPAGE_BPS || "300");
+  const crankPath   = process.env.CRANK_KEYPAIR_PATH || "keys/crank.json";
+
+  const conn  = new Connection(rpc, "confirmed");
+  const crank = loadKeypair(crankPath);
+  const crankHopAta  = getAssociatedTokenAddressSync(HOP_MINT,  crank.publicKey, false, TOKEN_2022_PROGRAM_ID);
+  const crankUsdcAta = getAssociatedTokenAddressSync(USDC_MINT, crank.publicKey, false);
+
+  const mintInfo  = await getMint(conn, HOP_MINT, "confirmed", TOKEN_2022_PROGRAM_ID);
+  const feeConfig = getTransferFeeConfig(mintInfo);
+  const withheld  = feeConfig?.withheldAmount ?? 0n;
+
+  if (withheld === 0n) {
+    return { verdict: "SKIP_NO_WITHHELD", withheldHopUi: 0, netUsdcUi: 0, simOk: true };
+  }
+
+  const poolData = await conn.getAccountInfo(WHIRLPOOL, "confirmed");
+  if (!poolData) throw new Error("Whirlpool not found");
+  const pd          = Buffer.from(poolData.data);
+  const sqrtPriceX64 = pd.readBigUInt64LE(65) | (pd.readBigUInt64LE(73) << 64n);
+  const feeRate      = pd.readUInt16LE(45);
+  const liquidity    = pd.readBigUInt64LE(49) | (pd.readBigUInt64LE(57) << 64n);
+
+  const { netUsdc } = estimateUsdcOut(withheld, sqrtPriceX64, liquidity, feeRate);
+
+  // Harvest sources: ring ATAs + pool vault B (addLiq/swap2 withheld) + crank ATA (swap1/removeLiq withheld)
+  const allSources = [...RING_ATAS, TOKEN_VAULT_B, crankHopAta];
+
+  const ixCuLimit  = ComputeBudgetProgram.setComputeUnitLimit({ units: 400_000 });
+  const ixCuPrice2 = ComputeBudgetProgram.setComputeUnitPrice({ microLamports: Number(cuPrice) });
+  const ixHarvest  = createHarvestWithheldTokensToMintInstruction(HOP_MINT, allSources, TOKEN_2022_PROGRAM_ID);
+  const ixWithdraw = createWithdrawWithheldTokensFromMintInstruction(HOP_MINT, crankHopAta, crank.publicKey, [], TOKEN_2022_PROGRAM_ID);
+  const ixSwap0    = swapV2Ix({
+    tokenAuthority: crank.publicKey, tokenOwnerAccountA: crankUsdcAta, tokenOwnerAccountB: crankHopAta,
+    tickArray0: TICK_ARRAY_90112, tickArray1: TICK_ARRAY_95744, tickArray2: TICK_ARRAY_95744,
+    amount: withheld, otherAmountThreshold: 0n, sqrtPriceLimit: MAX_SQRT_PRICE,
+    amountSpecifiedIsInput: true, aToB: false,
+  });
+
+  const { blockhash } = await conn.getLatestBlockhash("confirmed");
+  const tx = new Transaction({ recentBlockhash: blockhash, feePayer: crank.publicKey });
+  tx.add(ixCuLimit, ixCuPrice2, ixHarvest, ixWithdraw, ixSwap0);
+
+  const sim   = await conn.simulateTransaction(tx, [crank], [crankUsdcAta]);
+  const simOk = !sim.value.err;
+  if (!simOk) {
+    return { verdict: "SWEEP_SIM_FAILED", withheldHopUi: Number(withheld)/1e6, netUsdcUi: 0, simOk: false };
+  }
+
+  let actualNetUsdc = netUsdc;
+  if (sim.value.accounts?.[0]) {
+    const ad = sim.value.accounts[0];
+    if (ad.data && Array.isArray(ad.data)) {
+      const decoded = Buffer.from(ad.data[0], "base64");
+      if (decoded.length >= 72) {
+        let before = 0n;
+        try { const a = await getAccount(conn, crankUsdcAta, "confirmed"); before = a.amount; } catch { /* ok */ }
+        actualNetUsdc = decoded.readBigUInt64LE(64) - before;
+      }
+    }
+  }
+
+  if (dryRun || !allowLive) {
+    return { verdict: "SWEEP_SIM_OK", withheldHopUi: Number(withheld)/1e6, netUsdcUi: Number(actualNetUsdc)/1e6, simOk: true };
+  }
+
+  const liveMin   = actualNetUsdc * BigInt(10000 - slippageBps) / 10000n;
+  const ixSwapLv  = swapV2Ix({
+    tokenAuthority: crank.publicKey, tokenOwnerAccountA: crankUsdcAta, tokenOwnerAccountB: crankHopAta,
+    tickArray0: TICK_ARRAY_90112, tickArray1: TICK_ARRAY_95744, tickArray2: TICK_ARRAY_95744,
+    amount: withheld, otherAmountThreshold: liveMin, sqrtPriceLimit: MAX_SQRT_PRICE,
+    amountSpecifiedIsInput: true, aToB: false,
+  });
+
+  const { blockhash: liveHash } = await conn.getLatestBlockhash("confirmed");
+  const liveTx = new Transaction({ recentBlockhash: liveHash, feePayer: crank.publicKey });
+  liveTx.add(ixCuLimit, ixCuPrice2, ixHarvest, ixWithdraw, ixSwapLv);
+
+  const sig = await sendAndConfirmTransaction(conn, liveTx, [crank], { commitment: "confirmed" });
+  return { verdict: "SWEEP_EXECUTED", withheldHopUi: Number(withheld)/1e6, netUsdcUi: Number(actualNetUsdc)/1e6, simOk: true, txSig: sig };
+}
+
 // ─── Main ────────────────────────────────────────────────────────────────────
 
 async function main() {

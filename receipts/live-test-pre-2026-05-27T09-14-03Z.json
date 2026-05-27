@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-05-27T09:14:03.304Z",
+  "epoch": 977,
+  "slot": 422472763,
+  "t22Bps": 690,
+  "t22GateEpoch": 978,
+  "pool": {
+    "sqrtPrice": "1962138879699883030712",
+    "tick": 93342,
+    "liquidity": "78748145963",
+    "feeRate": 300,
+    "hopPriceUsd": "0.00008839",
+    "hopPerUsdc": "11314.10"
+  },
+  "balances": {
+    "sol": "0.250849287",
+    "usdc": "148.854573",
+    "hop": "8623846.212212"
+  },
+  "withheld": {
+    "mint": "33945.191558",
+    "crankHopAta": "0.000000",
+    "vaultB": "0.000000",
+    "total": "33945.191558"
+  },
+  "positions": {
+    "pos1": {
+      "liquidity": "78627479083",
+      "tickLower": 84480,
+      "tickUpper": 101312,
+      "feeOwedA": "0",
+      "feeOwedB": "0"
+    },
+    "pos2": {
+      "liquidity": "120666880",
+      "tickLower": 84480,
+      "tickUpper": 101312,
+      "feeOwedA": "0",
+      "feeOwedB": "0"
+    }
+  }
+}

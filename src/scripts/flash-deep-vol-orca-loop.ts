@@ -13,23 +13,26 @@
  *   SOLANA_RPC_URL
  *   ALT_ADDRESS          (default: EjNKyxzhMCDX63sXLNddioHNZmyyNaHUipsXR65AmwAC)
  *   ADDLIQ_USDC          (default: 700)
- *   SWAP_USDC            (default: 300)
+ *   SWAP_USDC            (default: 500)
  *   LOOP_INTERVAL_MS     (default: 3000)
  *   EPOCH_POLL_MS        (default: 600000 = 10 min)
  *   CU_PRICE             (default: 10000 microlamports)
  *   JITO_TIP_LAMPORTS    (default: 200000)
  *   SOL_PRICE_USD        (default: 150)
+ *   SWEEP_EVERY          (default: 50 — run T22 withheld sweep every N cycles)
  */
 
 import "dotenv/config";
 import { Connection, PublicKey } from "@solana/web3.js";
 import { getMint, getTransferFeeConfig, TOKEN_2022_PROGRAM_ID } from "@solana/spl-token";
 import { runCycle } from "./flash-deep-vol-orca.js";
+import { runSweep } from "./redeem-hop-to-usdc.js";
 
 const HOP_MINT = new PublicKey("HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3");
 const ALT_DEFAULT = "EjNKyxzhMCDX63sXLNddioHNZmyyNaHUipsXR65AmwAC";
 const FAIL_THRESHOLD = 3;
 const BACKOFF_MS = 60_000;
+const SWEEP_EVERY   = Number(process.env.SWEEP_EVERY ?? "50");
 
 function sleep(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
@@ -79,7 +82,7 @@ async function main(): Promise<void> {
   // Harden cycle env vars — loop owns these
   process.env.ALT_ADDRESS    = process.env.ALT_ADDRESS    ?? ALT_DEFAULT;
   process.env.ADDLIQ_USDC    = process.env.ADDLIQ_USDC    ?? "700";
-  process.env.SWAP_USDC      = process.env.SWAP_USDC      ?? "300";
+  process.env.SWAP_USDC      = process.env.SWAP_USDC      ?? "500";
   process.env.DRY_RUN        = "false";
   process.env.ALLOW_LIVE     = "true";
   // No FORCE_T22_BPS — use real on-chain value (should be 1bps after epoch 978 gate)
@@ -149,6 +152,21 @@ async function main(): Promise<void> {
       consecutiveFails = 0;
     } else {
       await sleep(loopMs);
+    }
+
+    // T22 withheld sweep — runs every SWEEP_EVERY cycles
+    if (totalCycles % SWEEP_EVERY === 0) {
+      try {
+        const sweep = await runSweep();
+        console.log(
+          `[sweep #${totalCycles}] ${fmt(new Date())} ${sweep.verdict}` +
+          ` hop=${sweep.withheldHopUi.toFixed(2)}` +
+          ` usdc=$${sweep.netUsdcUi.toFixed(4)}` +
+          (sweep.txSig ? ` tx=${sweep.txSig.slice(0, 8)}...` : "")
+        );
+      } catch (e) {
+        console.error(`[sweep #${totalCycles}] ${fmt(new Date())} ERROR:`, e instanceof Error ? e.message : e);
+      }
     }
   }
 }

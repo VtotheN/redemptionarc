@@ -87,6 +87,7 @@
     "harvest-withheld": "tsx src/scripts/harvest-withheld.ts",
     "flash-deep-vol-orca": "tsx src/scripts/flash-deep-vol-orca.ts",
     "flash-deep-vol-orca-loop": "tsx src/scripts/flash-deep-vol-orca-loop.ts",
+    "redeem-hop-to-usdc": "tsx src/scripts/redeem-hop-to-usdc.ts",
     "create-deep-vol-orca-alt": "tsx src/scripts/create-deep-vol-orca-alt.ts",
     "flywheel-bot": "tsx src/scripts/flywheel-bot.ts",
     "auto-compound": "tsx src/scripts/auto-compound.ts",

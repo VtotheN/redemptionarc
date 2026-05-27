@@ -71,7 +71,7 @@ const USDC_BANK         = new PublicKey("2s37akK2eyBbp8DZgCm7RtsaEz8eJP3Nxd4urLH
 const USDC_LIQ_VAULT    = new PublicKey("7jaiZR5Sk8hdYN9MxTpczTcwbWpb5WEoxSANuUwveuat");
 const MF_ACCOUNT_DEFAULT = new PublicKey("9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz");
 const JITO_TIP_WALLET   = new PublicKey("96gYZGLnJYVFmbjzopPSU6QiEV5fGqZNyN9nmNhvrZU5");
-const JITO_URL          = "https://mainnet.block-engine.jito.labs.io/api/v1/bundles";
+const JITO_URL          = "https://mainnet.block-engine.jito.wtf/api/v1/bundles";
 
 const POSITION_TICK_LOWER = 84480;
 const POSITION_TICK_UPPER = 101312;
@@ -490,13 +490,22 @@ async function main(): Promise<CycleResult> {
   const s1ta2 = TICK_ARRAY_84480;
 
   // swap2: HOP→USDC, aToB=false, price goes UP
+  // Estimate post-swap1 sqrtPrice so tick arrays cover the actual starting tick,
+  // not the pre-swap1 tick. Larger swaps (e.g. $500) push price further down.
+  // Formula: new_sqrtP = L*2^64 / (L*2^64/sqrtP + swapMicro)
+  const poolLiqAfterAdd = liquidity + liquidityDelta;
+  const liqShifted      = poolLiqAfterAdd * Q64;
+  const sqrtPPost1      = liqShifted / (liqShifted / sqrtPrice + swapMicro);
+  const sqrtP_90112     = tickToSqrtPriceX64(90112);
+  const sqrtP_84480     = tickToSqrtPriceX64(84480);
+
   let s2ta0: PublicKey, s2ta1: PublicKey, s2ta2: PublicKey;
-  if (tickCurrent >= 90112) {
+  if (sqrtPPost1 >= sqrtP_90112) {
     s2ta0 = TICK_ARRAY_90112; s2ta1 = TICK_ARRAY_95744; s2ta2 = TICK_ARRAY_95744;
-  } else if (tickCurrent >= 84480) {
+  } else if (sqrtPPost1 >= sqrtP_84480) {
     s2ta0 = TICK_ARRAY_84480; s2ta1 = TICK_ARRAY_90112; s2ta2 = TICK_ARRAY_95744;
   } else {
-    throw new Error(`tick ${tickCurrent} below position range`);
+    throw new Error(`post-swap1 price below position range: sqrtPPost1=${sqrtPPost1}`);
   }
 
   // Thresholds: accept any positive amount in DRY_RUN sim; tighten for live
@@ -615,12 +624,29 @@ async function main(): Promise<CycleResult> {
   const baseResult: CycleResult = { verdict, simOk, cashNetProj: Number(cashNetProj)/1e6 };
   if (dryRun || !allowLive || !simOk || cashNetProj <= 0n) return baseResult;
 
-  // ── Live send via Jito ──────────────────────────────────────────────────
+  const skipJito = process.env.JITO_SKIP === "true";
+
+  // ── Live send ────────────────────────────────────────────────────────────
+  const { blockhash: fresh, lastValidBlockHeight } = await conn.getLatestBlockhash("confirmed");
+
+  if (skipJito) {
+    // Direct RPC send — no Jito tip instruction
+    const directMsg = new TransactionMessage({
+      payerKey: crank.publicKey, recentBlockhash: fresh, instructions: ixs,
+    }).compileToV0Message(altAccounts);
+    const directTx = new VersionedTransaction(directMsg);
+    directTx.sign([crank]);
+    const sig = await conn.sendRawTransaction(directTx.serialize(), { skipPreflight: false });
+    await conn.confirmTransaction({ signature: sig, blockhash: fresh, lastValidBlockHeight }, "confirmed");
+    console.log(`TX (direct): ${sig}`);
+    return { ...baseResult, bundleId: sig };
+  }
+
+  // Jito bundle path (default)
   const liveIxs = [
     ...ixs,
     SystemProgram.transfer({ fromPubkey: crank.publicKey, toPubkey: JITO_TIP_WALLET, lamports: jitoTip }),
   ];
-  const { blockhash: fresh } = await conn.getLatestBlockhash("confirmed");
   const liveMsg = new TransactionMessage({
     payerKey: crank.publicKey, recentBlockhash: fresh, instructions: liveIxs,
   }).compileToV0Message(altAccounts);
