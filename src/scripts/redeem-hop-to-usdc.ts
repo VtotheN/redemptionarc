@@ -26,7 +26,7 @@ import {
   getAssociatedTokenAddressSync,
   createHarvestWithheldTokensToMintInstruction,
   createWithdrawWithheldTokensFromMintInstruction,
-  getMint, getTransferFeeConfig, getAccount,
+  getMint, getTransferFeeConfig, getTransferFeeAmount, getAccount,
 } from "@solana/spl-token";
 import { writeReceipt } from "../utils/receipt.js";
 
@@ -161,7 +161,18 @@ export async function runSweep(): Promise<SweepResult> {
 
   const mintInfo  = await getMint(conn, HOP_MINT, "confirmed", TOKEN_2022_PROGRAM_ID);
   const feeConfig = getTransferFeeConfig(mintInfo);
-  const withheld  = feeConfig?.withheldAmount ?? 0n;
+  const mintWithheld = feeConfig?.withheldAmount ?? 0n;
+
+  // Harvest sources: ring ATAs + pool vault B (addLiq/swap2 withheld) + crank ATA (swap1/removeLiq withheld)
+  const allSources = [...RING_ATAS, TOKEN_VAULT_B, crankHopAta];
+  let ataWithheld = 0n;
+  for (const src of allSources) {
+    try {
+      const ataInfo = await getAccount(conn, src, "confirmed", TOKEN_2022_PROGRAM_ID);
+      ataWithheld += getTransferFeeAmount(ataInfo)?.withheldAmount ?? 0n;
+    } catch { /* ATA may not exist */ }
+  }
+  const withheld = mintWithheld + ataWithheld;
 
   if (withheld === 0n) {
     return { verdict: "SKIP_NO_WITHHELD", withheldHopUi: 0, netUsdcUi: 0, simOk: true };
@@ -175,9 +186,6 @@ export async function runSweep(): Promise<SweepResult> {
   const liquidity    = pd.readBigUInt64LE(49) | (pd.readBigUInt64LE(57) << 64n);
 
   const { netUsdc } = estimateUsdcOut(withheld, sqrtPriceX64, liquidity, feeRate);
-
-  // Harvest sources: ring ATAs + pool vault B (addLiq/swap2 withheld) + crank ATA (swap1/removeLiq withheld)
-  const allSources = [...RING_ATAS, TOKEN_VAULT_B, crankHopAta];
 
   const ixCuLimit  = ComputeBudgetProgram.setComputeUnitLimit({ units: 400_000 });
   const ixCuPrice2 = ComputeBudgetProgram.setComputeUnitPrice({ microLamports: Number(cuPrice) });
@@ -256,8 +264,19 @@ async function main() {
   // ── 1. On-chain state ─────────────────────────────────────────────────────
   const mintInfo  = await getMint(conn, HOP_MINT, "confirmed", TOKEN_2022_PROGRAM_ID);
   const feeConfig = getTransferFeeConfig(mintInfo);
-  const withheld  = feeConfig?.withheldAmount ?? 0n;
-  console.log(`\nMint withheld: ${Number(withheld) / 1e6} HOP (${withheld} raw)`);
+  const mintWithheld = feeConfig?.withheldAmount ?? 0n;
+
+  let ataWithheldMain = 0n;
+  for (const src of [...RING_ATAS, TOKEN_VAULT_B, crankHopAta]) {
+    try {
+      const ataInfo = await getAccount(conn, src, "confirmed", TOKEN_2022_PROGRAM_ID);
+      ataWithheldMain += getTransferFeeAmount(ataInfo)?.withheldAmount ?? 0n;
+    } catch { /* ATA may not exist */ }
+  }
+  const withheld = mintWithheld + ataWithheldMain;
+  console.log(`\nMint withheld: ${Number(mintWithheld) / 1e6} HOP (${mintWithheld} raw)`);
+  console.log(`ATA withheld:  ${Number(ataWithheldMain) / 1e6} HOP (${ataWithheldMain} raw)`);
+  console.log(`Total withheld: ${Number(withheld) / 1e6} HOP (${withheld} raw)`);
 
   const overrideAmt = process.env.SWAP_HOP_AMOUNT ? BigInt(process.env.SWAP_HOP_AMOUNT) : null;
   const swapHopRaw  = overrideAmt ?? withheld;
@@ -301,7 +320,7 @@ async function main() {
   // ── 2. Build instructions ─────────────────────────────────────────────────
   const ixCuLimit = ComputeBudgetProgram.setComputeUnitLimit({ units: CU_LIMIT });
   const ixCuPrice = ComputeBudgetProgram.setComputeUnitPrice({ microLamports: Number(cuPrice) });
-  const ixHarvest = createHarvestWithheldTokensToMintInstruction(HOP_MINT, RING_ATAS, TOKEN_2022_PROGRAM_ID);
+  const ixHarvest = createHarvestWithheldTokensToMintInstruction(HOP_MINT, [...RING_ATAS, TOKEN_VAULT_B, crankHopAta], TOKEN_2022_PROGRAM_ID);
   const ixWithdraw = createWithdrawWithheldTokensFromMintInstruction(
     HOP_MINT, crankHopAta, crank.publicKey, [], TOKEN_2022_PROGRAM_ID
   );
