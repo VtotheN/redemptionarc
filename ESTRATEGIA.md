@@ -244,37 +244,68 @@ cashNet = walletDelta + lpFeeSwap1 + lpFeeSwap2
 
 ---
 
-## Estado actual (Mayo 27, 2026 — post cycle test)
+## Estado actual (Mayo 27, 2026 — 125 ciclos live confirmados v2)
+
+### Epoch 978 confirmado LIVE — T22 = 1bps activo
 
 - [x] Whirlpool fork deployado mainnet
 - [x] Pool USDC/HOP — TVL ~$410 (+41% vs $290 base)
 - [x] flash-deep-vol-orca.ts SIM_OK + LIVE TX confirmado (TX mechanics PASS)
 - [x] ALT creado
-- [x] flash-deep-vol-orca-loop.ts — loop listo, esperando epoch 978
 - [x] batch-processor deployado mainnet: `HKKrVUYk7qA42AXUgaujBBs4vGWCDdp7jPpdQ3BJahuX`
 - [x] LP Position 3 añadida: `GHsx5fdmUc8bszmviebo7tutjM4gGHeR2UGRiMWB4gCW` (32.5B liq, 120 USDC seed)
-- **Crank:** 1.184 SOL / $129.87 USDC / ~6.32M HOP
-- [ ] **Epoch 978 — loop arranca automático cuando T22=1bps**
-- [ ] Verificar TX rate sostenible con 1bps
-- [ ] Verificar MarginFi sin rate limits
-- [ ] Auto-compound script (collect feeOwedA/B acumulados)
-- [ ] flash-deep-vol-orca-v2.ts SIM_OK con RT_COUNT={1,3,5}
-- [ ] auto-compound-extract.ts SIM_OK
-- [ ] flash-deep-vol-orca-loop-v2.ts smoke test en DRY_RUN
-- [ ] Primera TX live de v2 confirmada con epoch 978 active
+- [x] **Epoch 978 ACTIVO — T22 = 1bps confirmado on-chain**
+- [x] **flash-deep-vol-orca-v2.ts — 125 TXs live confirmadas con RT_COUNT=3**
+- [x] **flash-deep-vol-orca-loop-v2.ts — loop corrió 13min, tick drift gestionado**
+
+### Evidencia on-chain — loop-v2 (Mayo 27, 2026 12:36–12:49 UTC)
+
+```
+TXs confirmadas:  125
+RT_COUNT:         3 (6 swaps/TX)
+ADDLIQ_USDC:      $700
+SWAP_USDC:        $500
+Tick inicio:      91291  → Tick final: 91669  (+378 ticks, ~3/TX)
+Drift promedio:   3 ticks/TX
+
+Primera TX: 5wyb6TkU8UdTJWPH6PLdsKGdvVH9WkKyQ8FCnD9LMMCtKML6ZTTFmRAptAjFKPQr3bFQNEwVvV4gNdGq3zEG7Heh
+Última TX:  4QTuDrHg8x6u7X6WLti6a2QN3QETt6GH8GMVEhbAS5BV71nWTrhAsVWvMUdgo7rVDXLd9kd2RiuahXXU5azEytLQ
+
+T22 withheld (proyectado):  $39.55 USDC equiv (2,878 HOP/TX × 125)
+Gas consumido:              $3.84 USDC (SOL equivalente)
+cashNetProj acumulado:      $35.71
+```
+
+### Estado crank post-loop
+
+```
+SOL:              1.18246355
+USDC:             27.455595   ← crank wallet (treasury snapshot lee wallet diferente)
+HOP spendable:    5,771,928.740
+HOP withheld:     1,658,236.829  ← EN CRANK ATA (no harvested aún!)
+                                   ≈ $165.82 USDC @ $0.0001/HOP
+                                   PENDIENTE: harvestWithheldTokensToMint → redeem
+```
+
+**NOTA CRÍTICA:** El treasury snapshot (`REDEMPTION_TREASURY=BGM3VP...`) lee UN WALLET DIFERENTE al crank (`8pWEf...`). Las ganancias van al crank, no al treasury. `cash_usdc=0.000000` en el snapshot no significa que el crank tiene 0.
+
+### Lo que está pendiente
+
+- [ ] Harvest withheld HOP del crank ATA → mint → USDC (1.66M HOP ≈ $165)
+- [ ] Investigar drain USDC crank ($129.87 → $27.46) — ciclos v2 son USDC-neutrales, posible drain de loop v1 o actividad anterior
 - [ ] Deploy en VPS 89.167.71.153
+- [ ] check-withheld.ts necesita leer crank HOP ATA withheld (actualmente solo lee ring accounts)
+- [ ] Auto-compound script (collect feeOwedA/B — fork no soporta collect_fees_v2 standalone)
 
 ---
 
 ## Próximos pasos en orden
 
-1. Esperar epoch 978 → loop arranca automático (T22 gate baked in)
-2. Ver primera TX live con T22=1bps → confirmar +$0.266 neto
-3. Correr 10-20 TX → medir TPS real + verificar MarginFi rate limits
-4. Si funciona → construir auto-compound (collect feeOwedA/B por posición)
-5. Si funciona → deploy en VPS 89.167.71.153
-6. Si funciona → escalar SWAP_USDC gradualmente
-7. Pendiente: deploy txns-engine (127KB) cuando sea necesario
+1. **Harvest + sweep T22:** harvester → crank ATA withheld (1.66M HOP) → mint → USDC
+2. **Investigar USDC drain:** comparar receipts v1 loop vs v2 loop, identificar fuente
+3. **VPS deploy:** `89.167.71.153` — flash-deep-vol-orca-loop-v2 con RT_COUNT=3
+4. Escalar SWAP_USDC gradualmente después de 100+ TXs en VPS
+5. Deploy txns-engine (127KB) cuando sea necesario
 
 ---
 

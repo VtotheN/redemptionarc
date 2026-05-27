@@ -1,0 +1,15 @@
+{
+  "verdict": "EXECUTED",
+  "timestamp": "2026-05-27T12:49:10.438Z",
+  "dryRun": false,
+  "lpFeesExtractedUsdcUi": 48.476094,
+  "lpFeesExtractedHopUi": 389060.402712,
+  "protoFeesExtractedUsdcUi": 0.3375,
+  "protoFeesExtractedHopUi": 2753.540949,
+  "totalExtractableUsdc": 48.813594,
+  "simOk": true,
+  "simErr": null,
+  "simCu": 54281,
+  "txSize": 678,
+  "signature": "23xjyJXX6sWTLabfHCAZK9bZE6d9TZ5k3gEsNEdLzVUyeSAYUKQhf6Mg3V52Yeepjz7ETnXwZ7YxhReMNuXiQB6R"
+}

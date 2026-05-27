@@ -1,0 +1,23 @@
+{
+  "timestamp": "2026-05-27T11:49:46.197Z",
+  "rtCount": 3,
+  "addLiqUsdc": 700,
+  "swapUsdc": 500,
+  "t22Bps": 1,
+  "liquidityDelta": "170454366072",
+  "poolLiquidity": "111283654549",
+  "usdcNeeded": 699.999999,
+  "hopToSend": 4720754.595185,
+  "totalHopXferHop": 28785817.029822,
+  "t22WithheldHop": 2878.581702,
+  "t22WithheldUsdc": 0.312449,
+  "lpFeeDrainProjected": 0.9,
+  "gasUsdc": 0.03075,
+  "cashNetProj": 0.281699,
+  "cuConsumed": 130011,
+  "cuLimitFinal": 143013,
+  "txSize": 915,
+  "simOk": false,
+  "simErr": "{\"InstructionError\":[4,{\"Custom\":6017}]}",
+  "verdict": "SIM_FAILED"
+}
