@@ -92,6 +92,33 @@ DOTENV_CONFIG_PATH=.env.redemptionarc npm run flash-deep-vol-orca-loop
 
 ---
 
+## v2 y extract (Mayo 27, 2026)
+
+Tres nuevos archivos paralelos a los originales (no tocan ni reemplazan los originales):
+
+| Script | Propósito | Relación |
+|--------|-----------|----------|
+| `flash-deep-vol-orca-v2.ts` | Multi-round-trip: RT_COUNT pares swap/ciclo | Copia de v1 + RT_COUNT + two-sim + T22 math |
+| `auto-compound-extract.ts` | Extrae LP fees al wallet (sin reinvertir) | Copia de auto-compound sin increase_liquidity |
+| `flash-deep-vol-orca-loop-v2.ts` | Loop que usa v2 + extract | Usa v2 cycle + runExtract + runSweep |
+
+Correr loop v2:
+```bash
+RT_COUNT=2 EXTRACT_EVERY=25 SWEEP_EVERY=50 npm run flash-deep-vol-orca-loop-v2
+```
+
+Single cycle DRY_RUN:
+```bash
+DRY_RUN=true FORCE_T22_BPS=1 RT_COUNT=3 npm run flash-deep-vol-orca-v2
+```
+
+Extract DRY_RUN:
+```bash
+DRY_RUN=true npm run auto-compound-extract
+```
+
+---
+
 ## Por qué hay que esperar epoch 978
 
 HOP es un Token-2022 con transfer fee. Fee actual: 690bps. Fee en epoch 978: 1bps.
@@ -141,6 +168,37 @@ Si MarginFi tiene limits: número desconocido
 ```
 
 **El número real lo dan las primeras TX live.**
+
+---
+
+## Math corregido (Mayo 27, 2026 — post v2)
+
+LP fees son CIRCULARES (somos LP + trader → nos las pagamos a nosotros mismos). NO son ingreso real al wallet. Solo el T22 withheld que se acumula en el mint y se hace sweep → USDC es cash real.
+
+```
+Con ADDLIQ_USDC=700, SWAP_USDC=500, T22=1bps, N round-trips:
+
+T22 withheld (HOP xfers: addLiq+removeLiq + swap1×N + swap2×N):
+  N=1: ~$0.003  acumulado → sweep cada 50 ciclos
+  N=3: ~$0.006
+  N=5: ~$0.010
+
+LP fees (van a position.feeOwedA/B — circular, no wallet):
+  N=1: $0.30/ciclo  (quedan en position hasta extract)
+  N=5: $1.50/ciclo
+
+auto-compound (v1 original) = reinvierte LP fees → crece position
+auto-compound-extract (v2)  = extrae LP fees al wallet → disponibles para reusar
+
+Wallet net SI extract activo (LP fees a wallet + T22 - gas):
+  N=1: $0.30 + $0.003 - $0.005 = ~+$0.298/ciclo
+  N=2: $0.60 + $0.005 - $0.005 = ~+$0.600/ciclo
+  N=5: $1.50 + $0.010 - $0.005 = ~+$1.505/ciclo
+
+NOTA: LP "fees al wallet" son nominales — vuelven al pool si se reusan como addLiqMicro.
+La ganancia estructural real sigue siendo el T22 withheld sweep.
+Los primeros TX live a 1bps confirmarán el número exacto.
+```
 
 ---
 
@@ -200,6 +258,10 @@ cashNet = walletDelta + lpFeeSwap1 + lpFeeSwap2
 - [ ] Verificar TX rate sostenible con 1bps
 - [ ] Verificar MarginFi sin rate limits
 - [ ] Auto-compound script (collect feeOwedA/B acumulados)
+- [ ] flash-deep-vol-orca-v2.ts SIM_OK con RT_COUNT={1,3,5}
+- [ ] auto-compound-extract.ts SIM_OK
+- [ ] flash-deep-vol-orca-loop-v2.ts smoke test en DRY_RUN
+- [ ] Primera TX live de v2 confirmada con epoch 978 active
 - [ ] Deploy en VPS 89.167.71.153
 
 ---

@@ -482,4 +482,5 @@ async function main() {
   }
 }
 
-main().catch(e => { console.error(e); process.exitCode = 1; });
+const _isMain = new URL(import.meta.url).pathname === new URL(process.argv[1] ?? "", "file://").pathname;
+if (_isMain) main().catch(e => { console.error(e); process.exitCode = 1; });
