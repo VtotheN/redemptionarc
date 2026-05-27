@@ -508,9 +508,11 @@ async function main(): Promise<CycleResult> {
   }
 
   // ── Direction + telemetry ────────────────────────────────────────────────
-  const tickBefore    = tickCurrent;
+  const tickBefore     = tickCurrent;
   // Push tick toward center (92520): if above center swap USDC→HOP (price down), else HOP→USDC (price up)
-  const firstSwapAtoB = !alternateDirection || tickCurrent >= POOL_CENTER_TICK;
+  // Fallback to USDC→HOP if wallet HOP after addLiq < hopSwap2 (can't fund alternate first swap)
+  const hopAfterAddLiq = hopBalance > hopToSend ? hopBalance - hopToSend : 0n;
+  const firstSwapAtoB  = !alternateDirection || tickCurrent >= POOL_CENTER_TICK || hopAfterAddLiq < hopSwap2;
   const swapDirection: "USDC_TO_HOP" | "HOP_TO_USDC" = firstSwapAtoB ? "USDC_TO_HOP" : "HOP_TO_USDC";
   console.log(`tickBefore:     ${tickBefore}  center:${POOL_CENTER_TICK}  firstSwap:${swapDirection}`);
 
@@ -541,9 +543,11 @@ async function main(): Promise<CycleResult> {
     s2ta0 = TICK_ARRAY_90112; s2ta1 = TICK_ARRAY_84480; s2ta2 = TICK_ARRAY_84480;
   }
 
-  const minHopOut    = dryRun ? 1n : (hopSwap2 * (10_000n - slipBig)) / 10_000n;
-  const hopSwap2Usdc = BigInt(Math.floor(Number(hopSwap2) / hopPerUsdc));
-  const minUsdcOut   = dryRun ? 1n : (hopSwap2Usdc * (10_000n - slipBig * 2n)) / 10_000n;
+  const minHopOut = dryRun ? 1n : (hopSwap2 * (10_000n - slipBig)) / 10_000n;
+  // HOP→USDC swaps use output-specified (amount=swapMicro USDC exact out) so each round-trip
+  // is USDC-neutral — the pool pulls however much HOP it needs, capped by maxHopIn.
+  // This makes the flash repayment work regardless of RT_COUNT.
+  const maxHopIn = dryRun ? hopSwap2Raw * 2n : (hopSwap2Raw * 11_000n) / 10_000n;
 
   // ── Build IXs ───────────────────────────────────────────────────────────
   // endIndex = 7 + 2*N (0-indexed position of endFlashLoan in the IX array)
@@ -553,27 +557,31 @@ async function main(): Promise<CycleResult> {
   for (let i = 0; i < rtCount; i++) {
     if (firstSwapAtoB) {
       swapPairIxs.push(
+        // swap1: USDC→HOP, input-specified
         swapV2Ix({
           authority: crank.publicKey, ownerA: crankUsdcAta, ownerB: crankHopAta,
           ta0: s1ta0, ta1: s1ta1, ta2: s1ta2,
           amount: swapMicro, otherAmountThreshold: minHopOut,
           sqrtPriceLimit: MIN_SQRT_PRICE, amountSpecifiedIsInput: true, aToB: true,
         }),
+        // swap2: HOP→USDC, output-specified (exact swapMicro USDC out)
         swapV2Ix({
           authority: crank.publicKey, ownerA: crankUsdcAta, ownerB: crankHopAta,
           ta0: s2ta0, ta1: s2ta1, ta2: s2ta2,
-          amount: hopSwap2, otherAmountThreshold: minUsdcOut,
-          sqrtPriceLimit: MAX_SQRT_PRICE, amountSpecifiedIsInput: true, aToB: false,
+          amount: swapMicro, otherAmountThreshold: maxHopIn,
+          sqrtPriceLimit: MAX_SQRT_PRICE, amountSpecifiedIsInput: false, aToB: false,
         }),
       );
     } else {
       swapPairIxs.push(
+        // swap1: HOP→USDC, output-specified (exact swapMicro USDC out)
         swapV2Ix({
           authority: crank.publicKey, ownerA: crankUsdcAta, ownerB: crankHopAta,
           ta0: s1ta0, ta1: s1ta1, ta2: s1ta2,
-          amount: hopSwap2, otherAmountThreshold: minUsdcOut,
-          sqrtPriceLimit: MAX_SQRT_PRICE, amountSpecifiedIsInput: true, aToB: false,
+          amount: swapMicro, otherAmountThreshold: maxHopIn,
+          sqrtPriceLimit: MAX_SQRT_PRICE, amountSpecifiedIsInput: false, aToB: false,
         }),
+        // swap2: USDC→HOP, input-specified
         swapV2Ix({
           authority: crank.publicKey, ownerA: crankUsdcAta, ownerB: crankHopAta,
           ta0: s2ta0, ta1: s2ta1, ta2: s2ta2,
