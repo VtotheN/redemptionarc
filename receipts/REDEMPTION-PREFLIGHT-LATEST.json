@@ -1,12 +1,12 @@
 {
   "verdict": "REDEMPTION_PREFLIGHT_READY_NO_LIVE",
-  "generatedAt": "2026-05-23T10:30:55.549Z",
+  "generatedAt": "2026-05-26T21:34:35.240Z",
   "dryRun": true,
-  "allowLive": false,
+  "allowLive": true,
   "configuredWallets": {
     "REDEMPTION_TREASURY": "BGM3VPeND4xts3J6WeaeRJVFpzAJhyJiqycqYP2vk6dV",
     "REDEMPTION_CRANK": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
-    "REDEMPTION_WITHDRAW_AUTHORITY": "4J3QuZt1fPbkPJST4rd9sZyQLrKAzv6FLgWpvXumn57Y"
+    "REDEMPTION_WITHDRAW_AUTHORITY": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S"
   },
   "forbiddenWallets": [
     "FvkP2XzbCK6PspjhZ44sae5vbQPZQGmVkCv1dUC2pAZ9",

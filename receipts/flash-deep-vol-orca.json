@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-05-27T06:55:18.437Z",
+  "addLiqUsdc": 700,
+  "swapUsdc": 300,
+  "t22Bps": 1,
+  "liquidityDelta": "206332579200",
+  "poolLiquidity": "78748145963",
+  "poolLiquidityDeep": "285080725163",
+  "usdcNeeded": 637.489829,
+  "hopToSend": 8438586.35801,
+  "liqBinding": "HOP",
+  "lpFeePerSwap": 0.09,
+  "totalLpFees": 0.18,
+  "gasUsdc": 0.03075,
+  "cashNetProj": 0.14925,
+  "simOk": true,
+  "simErr": null,
+  "simCu": 403850,
+  "txSize": 671,
+  "verdict": "SIM_OK_PROFITABLE"
+}

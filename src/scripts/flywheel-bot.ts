@@ -542,24 +542,32 @@ async function main() {
   const protocolFeeUsdcSwap1 = (totalFeeUsdcSwap1 * BigInt(protocolFeeRate)) / 10_000n;
   const protocolFeeHopSwap2 = (totalFeeHopSwap2 * BigInt(protocolFeeRate)) / 10_000n;
   const walletUsdcDeltaBeforeCollect = usdcOut - flashMicro;
-  const collectableProtocolUsdc = protocolFeeUsdcSwap1;
+  const sqrtPriceFp      = Number(sqrtPrice) / Number(Q64);
+  const hopPerUsdcRaw    = sqrtPriceFp * sqrtPriceFp;
+  // LP fees accrue in position — yours as 100% LP, collected via collect_fees_v2
+  const lpFeeUsdcSwap1   = totalFeeUsdcSwap1 - protocolFeeUsdcSwap1;
+  const lpFeeHopSwap2    = totalFeeHopSwap2  - protocolFeeHopSwap2;
+  const lpFeeSwap2AsUsdc = hopPerUsdcRaw > 0
+    ? BigInt(Math.floor(Number(lpFeeHopSwap2) / hopPerUsdcRaw))
+    : 0n;
+  const protocolFeeHopSwap2AsUsdc = hopPerUsdcRaw > 0
+    ? BigInt(Math.floor(Number(protocolFeeHopSwap2) / hopPerUsdcRaw))
+    : 0n;
+  const collectableProtocolUsdc = protocolFeeUsdcSwap1 + protocolFeeHopSwap2AsUsdc;
+  // T22 withheld tokens are ours (we are withdraw_withheld_authority on HOP mint).
+  // Recovered via withdrawWithheldTokensFromMint in auto-compound. Not a cost — add back.
+  const t22RecoveredUsdcMicro = hopPerUsdcRaw > 0
+    ? BigInt(Math.floor(Number(t22FeeOnHopOut) / hopPerUsdcRaw))
+    : 0n;
   const estimatedLamportsPerBundle = 5_000n + jitoTip;
   const estimatedGasUsdcMicro = BigInt(Math.max(
     Math.ceil((Number(estimatedLamportsPerBundle) / 1e9) * solPriceUsd * 1e6),
     Math.ceil(gasUsdFloor * 1e6)
   ));
-  // LP fees accrue in position — yours as 100% LP, collected via collect_fees_v2
-  const lpFeeUsdcSwap1   = totalFeeUsdcSwap1 - protocolFeeUsdcSwap1;
-  const lpFeeHopSwap2    = totalFeeHopSwap2  - protocolFeeHopSwap2;
-  const sqrtPriceFp      = Number(sqrtPrice) / Number(Q64);
-  const hopPerUsdcRaw    = sqrtPriceFp * sqrtPriceFp;
-  const lpFeeSwap2AsUsdc = hopPerUsdcRaw > 0
-    ? BigInt(Math.floor(Number(lpFeeHopSwap2) / hopPerUsdcRaw))
-    : 0n;
   const projectionMode = process.env.PROJECTION_MODE === "true";
   const cashNetUsdcMicro = projectionMode
-    ? (collectableProtocolUsdc + lpFeeUsdcSwap1 + lpFeeSwap2AsUsdc - estimatedGasUsdcMicro)
-    : (walletUsdcDeltaBeforeCollect + collectableProtocolUsdc + lpFeeUsdcSwap1 + lpFeeSwap2AsUsdc - estimatedGasUsdcMicro);
+    ? (collectableProtocolUsdc + lpFeeUsdcSwap1 + lpFeeSwap2AsUsdc + t22RecoveredUsdcMicro - estimatedGasUsdcMicro)
+    : (walletUsdcDeltaBeforeCollect + collectableProtocolUsdc + lpFeeUsdcSwap1 + lpFeeSwap2AsUsdc + t22RecoveredUsdcMicro - estimatedGasUsdcMicro);
   const protocolFeeRoundTripRate = (feeRate / 1_000_000) * (protocolFeeRate / 10_000) * 2;
   const breakEvenFlashUsdc = protocolFeeRoundTripRate > 0
     ? (Number(estimatedGasUsdcMicro) / 1e6) / protocolFeeRoundTripRate
@@ -592,7 +600,8 @@ async function main() {
   console.log(`Wallet USDC delta before collect: ${Number(walletUsdcDeltaBeforeCollect)/1e6}`);
   console.log(`LP fee swap1 (USDC, yours):  ${Number(lpFeeUsdcSwap1)/1e6} USDC`);
   console.log(`LP fee swap2 (HOP→est USDC): ${Number(lpFeeSwap2AsUsdc)/1e6} USDC`);
-  console.log(`Cash proof net (LP+proto-gas): ${Number(cashNetUsdcMicro)/1e6} USDC`);
+  console.log(`T22 recovered (withdraw_withheld_auth): ${Number(t22RecoveredUsdcMicro)/1e6} USDC`);
+  console.log(`Cash proof net (LP+proto+T22-gas): ${Number(cashNetUsdcMicro)/1e6} USDC`);
   if (cashGateReasons.length > 0) console.log(`Cash gate blocked: ${cashGateReasons.join("; ")}`);
   console.log();
 

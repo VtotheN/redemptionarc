@@ -1,0 +1,18 @@
+{
+  "verdict": "SIM_OK",
+  "timestamp": "2026-05-26T20:35:11.579Z",
+  "position": "ErgQU48egJMNBLZeVkdjrtZrSWUQJCky3deh2B4U1YPQ",
+  "whirlpool": "8aoWgf7ycbeKv6BTFCdUj4JR7Y4mXWuPZWEUhmuzN5ZL",
+  "addUsdcUi": 50,
+  "liqDelta": "16183205576",
+  "hopVaultRecv": "616192.097376",
+  "hopCrankSends": "661860.469792",
+  "tokenMaxA": "51.000000",
+  "tokenMaxB": "675097.679187",
+  "t22Bps": "690",
+  "poolPrice": "11314.10075129",
+  "simCu": 36328,
+  "simErr": null,
+  "signature": null,
+  "dryRun": true
+}

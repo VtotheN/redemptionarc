@@ -1,0 +1,33 @@
+{
+  "verdict": "SIM_FAILED",
+  "timestamp": "2026-05-27T04:01:09.984Z",
+  "dryRun": true,
+  "protocolFeeOwedABefore": 0,
+  "protocolFeeOwedBBefore": 4.514399,
+  "lpFeeAClaimable": 0,
+  "lpFeeBClaimable": 0,
+  "compoundUsdcAmount": 0,
+  "compoundHopAmount": 4.514399,
+  "liquidityDelta": "0",
+  "usedUsdc": 0,
+  "usedHop": 0,
+  "newMaxFlashInRangeEstimate": 243.375076,
+  "posValueUsdcApprox": 507.5390227867805,
+  "simUnitsConsumed": 64641,
+  "simErr": {
+    "InstructionError": [
+      7,
+      {
+        "Custom": 102
+      }
+    ]
+  },
+  "simLogs": [
+    "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+    "Program log: Instruction: SwapV2",
+    "Program log: AnchorError occurred. Error Code: InstructionDidNotDeserialize. Error Number: 102. Error Message: The program could not deserialize the given instruction.",
+    "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 6624 of 341983 compute units",
+    "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h failed: custom program error: 0x66"
+  ],
+  "estimatedGasUsdc": 0.004
+}

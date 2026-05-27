@@ -1,0 +1,15 @@
+{
+  "verdict": "BELOW_THRESHOLD",
+  "timestamp": "2026-05-26T21:41:56.323Z",
+  "dryRun": true,
+  "protocolFeeOwedABefore": 0,
+  "protocolFeeOwedBBefore": 4.514399,
+  "lpFeeAClaimable": 0,
+  "lpFeeBClaimable": 0,
+  "compoundUsdcAmount": 0,
+  "compoundHopAmount": 4.514399,
+  "liquidityDelta": null,
+  "newMaxFlashInRangeEstimate": null,
+  "minCompoundUsdc": 1,
+  "posValueUsdcApprox": 33872400041.794624
+}

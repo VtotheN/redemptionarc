@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-05-26T22:14:27.440Z",
+  "dryRun": true,
+  "flashUsdc": 1000,
+  "addLiqUsdc": 500,
+  "swapUsdc": 10,
+  "lpFeesUsd": 0.01,
+  "t22FeesUsd": 1.3056243738205764,
+  "netEstUsd": 1.2896243738205764,
+  "poolId": "EwoZHyXz48vZL1TwkpQoq31brW4G4NDwmMr1DMw6qqBV",
+  "mfAccount": "9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz",
+  "crank": "8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S",
+  "t22FeeBps": 690,
+  "priceUsd": 0.0000026989096405052356,
+  "signature": null,
+  "simLogs": null,
+  "error": "encoding overruns Uint8Array",
+  "verdict": "ERROR"
+}

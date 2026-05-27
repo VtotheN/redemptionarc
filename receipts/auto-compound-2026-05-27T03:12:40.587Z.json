@@ -1,0 +1,33 @@
+{
+  "verdict": "SIM_FAILED",
+  "timestamp": "2026-05-27T03:12:41.365Z",
+  "dryRun": true,
+  "protocolFeeOwedABefore": 0,
+  "protocolFeeOwedBBefore": 4.514399,
+  "lpFeeAClaimable": 0,
+  "lpFeeBClaimable": 0,
+  "compoundUsdcAmount": 0,
+  "compoundHopAmount": 4.514399,
+  "liquidityDelta": "0",
+  "usedUsdc": 0,
+  "usedHop": 0,
+  "newMaxFlashInRangeEstimate": 243.375076,
+  "posValueUsdcApprox": 507.5390227867805,
+  "simUnitsConsumed": 61541,
+  "simErr": {
+    "InstructionError": [
+      5,
+      {
+        "Custom": 101
+      }
+    ]
+  },
+  "simLogs": [
+    "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+    "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+    "Program log: AnchorError occurred. Error Code: InstructionFallbackNotFound. Error Number: 101. Error Message: Fallback functions are not supported.",
+    "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 6507 of 344966 compute units",
+    "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h failed: custom program error: 0x65"
+  ],
+  "estimatedGasUsdc": 0.004
+}

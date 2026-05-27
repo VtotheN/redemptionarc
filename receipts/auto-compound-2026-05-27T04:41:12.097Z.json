@@ -1,0 +1,26 @@
+{
+  "verdict": "SIM_OK",
+  "timestamp": "2026-05-27T04:41:13.197Z",
+  "dryRun": true,
+  "protocolFeeOwedABefore": 0,
+  "protocolFeeOwedBBefore": 4.514399,
+  "lpFeeAClaimable": 0,
+  "lpFeeBClaimable": 0,
+  "compoundUsdcAmount": 0,
+  "compoundHopAmount": 4.514399,
+  "liquidityDelta": "0",
+  "usedUsdc": 0,
+  "usedHop": 0,
+  "newMaxFlashInRangeEstimate": 243.375076,
+  "posValueUsdcApprox": 507.5390227867805,
+  "simUnitsConsumed": 134807,
+  "simErr": null,
+  "simLogs": [
+    "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 105 of 270428 compute units",
+    "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success",
+    "Program data: 4cpJr5MroJZwqpD0hZ9CMKYDRT3GGbvHh+t1gRwiv6J5ldEcrcdGOwC4eHLOOqMlXmoAAAAAAAAAKqpgyWIiKV5qAAAAAAAAAF/iRAAAAAAAcwEAAAAAAADGwAQAAAAAAAAAAAAAAAAAyAQAAAAAAAAlAAAAAAAAAA==",
+    "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 76790 of 341983 compute units",
+    "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+  ],
+  "estimatedGasUsdc": 0.004
+}

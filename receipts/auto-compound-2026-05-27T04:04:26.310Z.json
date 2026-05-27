@@ -1,0 +1,33 @@
+{
+  "verdict": "SIM_FAILED",
+  "timestamp": "2026-05-27T04:04:28.070Z",
+  "dryRun": true,
+  "protocolFeeOwedABefore": 0,
+  "protocolFeeOwedBBefore": 4.514399,
+  "lpFeeAClaimable": 0,
+  "lpFeeBClaimable": 0,
+  "compoundUsdcAmount": 0,
+  "compoundHopAmount": 4.514399,
+  "liquidityDelta": "0",
+  "usedUsdc": 0,
+  "usedHop": 0,
+  "newMaxFlashInRangeEstimate": 243.375076,
+  "posValueUsdcApprox": 507.5390227867805,
+  "simUnitsConsumed": 137169,
+  "simErr": {
+    "InstructionError": [
+      8,
+      {
+        "Custom": 6012
+      }
+    ]
+  },
+  "simLogs": [
+    "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 76790 of 341983 compute units",
+    "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success",
+    "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h invoke [1]",
+    "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 2362 of 265193 compute units",
+    "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h failed: custom program error: 0x177c"
+  ],
+  "estimatedGasUsdc": 0.004
+}

@@ -1,0 +1,2 @@
+measure-m2-loop.sh: line 16: 1779851492N: value too great for base (error token is "1779851492N")
+Total iterations: 0

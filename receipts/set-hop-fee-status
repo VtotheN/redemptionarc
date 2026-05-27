@@ -1,10 +1,10 @@
 {
   "verdict": "HOP_FEE_ALREADY_SCHEDULED_WAIT_FOR_EPOCH",
   "mint": "HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3",
-  "currentEpoch": 976,
+  "currentEpoch": 977,
   "slotsInEpoch": 432000,
-  "slotIndex": 108195,
-  "slotsUntilTargetEpoch": 755805,
+  "slotIndex": 292248,
+  "slotsUntilTargetEpoch": 139752,
   "activeFee": 690,
   "targetFee": 1,
   "olderFee": {
