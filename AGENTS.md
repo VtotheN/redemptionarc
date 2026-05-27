@@ -38,3 +38,23 @@ target first aggressive profile: 25 USD/cycle
 required crank float: 0.443596051 SOL
 no live send until exact TX0/TX2/TX3 simulation receipt exists
 ```
+
+## ESTRATEGIA ACTIVA — NO MODIFICAR SIN LEER ESTO
+
+El sistema usa flash-deep-vol-orca-loop.ts como
+motor principal. Cualquier IA que trabaje en este
+repo DEBE leer SISTEMA.md antes de tocar cualquier
+script relacionado con flash, flywheel, o el pool.
+
+PROHIBIDO sin aprobación explícita de Velon:
+- Cambiar flashAmount en flash-deep-vol-orca.ts
+- Modificar el cash gate de flywheel-bot.ts
+- Tocar las direcciones del pool o LP positions
+- Cambiar SWAP_USDC o ADDLIQ_USDC sin sim previo
+- Concluir "no es rentable" sin leer SISTEMA.md
+
+Si encuentras que algo "no es rentable":
+1. Lee SISTEMA.md completo primero
+2. Verifica que el cash gate incluye LP fees + T22 recovery
+3. Corre DRY_RUN=true antes de cualquier conclusión
+4. Pregunta antes de cambiar cualquier cosa

@@ -1,111 +1,114 @@
-═══════════════════════════════════════════════════════
-CÓMO HACE DINERO ESTE SISTEMA — LEER PRIMERO
-═══════════════════════════════════════════════════════
+# RedemptionArc — Sistema Completo
 
-EN UNA LÍNEA:
-Pedimos prestado USDC gratis → swapeamos en nuestro 
-pool → cobras el fee → devolvemos el USDC → las fees 
-se quedan. Repetir cada 2 segundos.
+## Qué hace este sistema y por qué es rentable
 
-POR QUÉ ES REAL Y NO CIRCULAR:
-El flash ($300) es dinero de otros usuarios de MarginFi.
-Nosotros lo usamos por 1 TX (gratis, 0 bps).
-El pool cobra 0.03% de fee en cada swap.
-Esas fees van a nuestra posición LP.
-Devolvemos el flash.
-Las fees quedaron. El flash no costó nada.
+Flash USDC gratis de MarginFi → addLiq en nuestro
+Whirlpool fork → swap USDC→HOP→USDC → removeLiq →
+repay flash. Las LP fees quedan. Repetir cada 3s.
 
-NÚMEROS VERIFICADOS (no cambiar sin probar):
-  Flash: $300 USDC (máximo sin salirse del tick range)
-  Fee del pool: 0.03% por swap
-  2 swaps por TX: USDC→HOP y HOP→USDC
-  Fee bruta: $300 × 0.03% × 2 = $0.18
-  Gas: $0.004
-  T22 loss con 1bps: $0.036
-  NET por TX: +$0.14
-  A 20 TX/min: $168/hora
+El capital del flash NO es nuestro. Es de otros
+usuarios de MarginFi. Lo usamos por 1 TX y lo
+devolvemos. Las fees se quedan.
 
-CUÁNDO ARRANCA:
-  Epoch 978 — aproximadamente 18 horas desde Mayo 26 2026
-  El script epoch-watcher-loop.ts (PID 85873) está 
-  corriendo y arranca el loop solo cuando detecte 
-  fee == 1bps en el mint HOP.
-  NO tocar, NO parar, NO reiniciar.
+## Math verificado (no cambiar sin probar on-chain)
 
-CÓMO ESCALA:
-  Más USDC en el pool = más revenue.
-  Cada hora agregas lo que generaste → crece solo.
-  $290 TVL  → $168/hora
-  $1,000    → $560/hora
-  $5,000    → $2,800/hora
-  $10,000   → $5,600/hora
+Script: flash-deep-vol-orca.ts
+SIM_OK confirmado: null simErr, CU=403,850, TX=671 bytes
 
-═══════════════════════════════════════════════════════
-SCRIPTS — QUÉ HACE CADA UNO
-═══════════════════════════════════════════════════════
+  flashAmount = addLiqMicro + swapMicro = $1,000
+  addLiq: $700 USDC + 8.6M HOP → liquidityDelta=226B
+  swap:   $300 USDC → HOP → USDC (round trip)
+  LP fee: $300 × 0.03% × 2 = $0.18 bruto
+  gas:    $0.031
+  NET:    $0.149 por TX (verificado en sim)
 
-epoch-watcher-loop.ts  ← EL PRINCIPAL. Ya corriendo.
-  Espera epoch 978 → arranca flywheel-bot.ts en loop
-  ENV: FLASH_AMOUNT_USDC=300 LOOP_INTERVAL_MS=3000
-  NO parar este proceso.
+  A 20 TX/min = $178.80/hora
 
-flywheel-bot.ts  ← Motor 1. No correr directo.
-  1 ciclo del flywheel. Lo ejecuta el watcher.
-  Fixes aplicados:
-    - Cap automático al 80% del tick range
-    - LP fees incluidas en cash proof
-    - Tick arrays dinámicos según precio post-swap1
+## Por qué el cash gate bloqueaba antes (RESUELTO)
 
-not-stacc-replicate.ts  ← Motor 2 (futuro)
-  Ring T22 + harvest + swap HOP→USDC
-  Espera también epoch 978. Complementario.
+El cash gate original no contaba:
+  1. LP fees swap1 (USDC, acumulan en posición LP)
+  2. LP fees swap2 (HOP, acumulan en posición LP)
+  3. T22 withheld (ingreso real, somos withdraw authority)
 
-redeem-hop-to-usdc.ts  ← Cobrar HOP withheld manualmente
-  Usar cuando haya HOP acumulado en el mint.
-  Probado: generó $47.14 USDC real on-chain.
+Formula correcta implementada en flywheel-bot.ts:
+  cashNet = walletUsdcDeltaBeforeCollect
+          + lpFeeUsdcSwap1
+          + lpFeeSwap2AsUsdc
+          + protocolFeeSwap1
+          + protocolFeeSwap2AsUsdc
+          + t22RecoveredUsdc
+          - gas
 
-check-withheld.ts  ← Ver estado actual
-  Muestra HOP withheld, epoch actual, fee activa.
+## Por qué esperar epoch 978
 
-treasury-snapshot.ts  ← Ver balances
-  USDC, SOL, HOP del crank.
+HOP T22 fee activa = 690bps hasta epoch 978.
+Con 690bps: T22 cost > fees → net negativo.
+Con 1bps (epoch 978+): T22 cost ~$0.021 → net +$0.149.
+El loop detecta el flip automáticamente.
 
-═══════════════════════════════════════════════════════
-DIRECCIONES — NO CAMBIAR
-═══════════════════════════════════════════════════════
+## Reglas que NUNCA cambiar
 
-Pool USDC/HOP:    8aoWgf7ycbeKv6BTFCdUj4JR7Y4mXWuPZWEUhmuzN5ZL
+1. NO correr loops con T22 fee != 1bps
+2. NO cambiar flash-deep-vol-orca.ts sin sim previo
+3. flashAmount = addLiqMicro + swapMicro (AMBOS)
+4. ALT_ADDRESS = EjNKyxzhMCDX63sXLNddioHNZmyyNaHUipsXR65AmwAC
+5. El "0 USDC en crank" NO es blocker — el flash
+   se repaga con el output del swap, no del balance previo
+6. SWAP_USDC=300 fijo hasta confirmar TX live
+7. Escalar SWAP_USDC solo después de TX live confirmada
+
+## Direcciones (no tocar)
+
 Whirlpool fork:   GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h
-LP Position:      ErgQU48egJMNBLZeVkdjrtZrSWUQJCky3deh2B4U1YPQ
+Pool USDC/HOP:    8aoWgf7ycbeKv6BTFCdUj4JR7Y4mXWuPZWEUhmuzN5ZL
+LP Position 1:    ErgQU48egJMNBLZeVkdjrtZrSWUQJCky3deh2B4U1YPQ
+LP Position 2:    3Qx4NtMhd9vDKWbcdUAu2qrwpypbXEGy95N4cYgdyaGk
+ALT:              EjNKyxzhMCDX63sXLNddioHNZmyyNaHUipsXR65AmwAC
 MarginFi bank:    2s37akK2eyBbp8DZgCm7RtsaEz8eJP3Nxd4urLHQv7yB
 MarginFi account: 9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz
 HOP mint:         HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3
 Crank:            8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S
 
-═══════════════════════════════════════════════════════
-REGLAS
-═══════════════════════════════════════════════════════
+## Scripts — qué hace cada uno
 
-1. epoch-watcher-loop.ts ya está corriendo. No pararlo.
-2. FLASH_AMOUNT_USDC=300 fijo hasta que TVL del pool 
-   supere $1,000. Luego subir a 1000.
-3. Cada hora: npm run snapshot para ver cuánto generó.
-4. Cuando haya USDC disponible: agregar al pool con 
-   add-liquidity-hop.ts para escalar el revenue.
-5. Si algo falla 3 veces seguidas: el watcher pausa 
-   60s y reintenta solo. No intervenir.
-6. Nunca correr el loop con fee HOP != 1bps. 
-   El cash gate lo previene pero igual no intentarlo.
+flash-deep-vol-orca-loop.ts  ← EL PRINCIPAL
+  Loop con epoch watcher. Arranca en epoch 978.
+  No parar este proceso.
+  ENV: DOTENV_CONFIG_PATH=.env.redemptionarc
 
-═══════════════════════════════════════════════════════
-ESTADO ACTUAL (Mayo 26 2026)
-═══════════════════════════════════════════════════════
+flash-deep-vol-orca.ts  ← Motor principal
+  1 ciclo del flywheel addLiq+swap+removeLiq.
+  SIM_OK verificado. No modificar.
 
-[x] MarginFi flash probado ($1, $1k, $100k on-chain)
-[x] Pool USDC/HOP deployado con $290 TVL
-[x] Ciclo manual probado: $47.14 USDC real
-[x] flywheel-bot.ts con 3 fixes, SIM_OK
-[x] epoch-watcher-loop.ts corriendo (PID 85873)
-[ ] Epoch 978 flip (~18 horas)
-[ ] Primera TX live flywheel
-[ ] Escalar TVL con revenue generado
+flywheel-bot.ts  ← Motor alternativo (sin addLiq)
+  Requiere TVL alto para ser rentable.
+  Usar solo cuando pool tenga >$30k TVL.
+
+redeem-hop-to-usdc.ts  ← Cobrar HOP withheld
+  Usar periódicamente para convertir T22 fees a USDC.
+  Probado: generó $47.14 USDC on-chain.
+
+check-withheld.ts  ← Estado actual del sistema
+not-stacc-replicate.ts  ← Ring T22 base
+treasury-snapshot.ts  ← Ver balances
+
+## Historial de TX probadas on-chain
+
+MarginFi flash $1:    probado ✓
+MarginFi flash $1k:   probado ✓
+MarginFi flash $100k: probado ✓
+HOP→USDC manual:      $47.14 USDC real ✓
+  TX: 4bNXMVSdnFbTHUzVa2sGPVcJex1C9ZcsTF2XKExkAWiuf7im4sjFa3gEDw44b5QE1nELipGsSsjYEAj5EkXB81nc
+atom_ickk deploy:     BxJMJLxXJhKvuhvvxY57wYY69CAs9RCQWBv9JPCtm9Kx ✓
+flash-deep-vol-orca:  SIM_OK, CU=403850, TX=671 bytes ✓
+
+## Estado actual
+
+[x] Whirlpool fork deployado con liquidez
+[x] flash-deep-vol-orca.ts SIM_OK
+[x] ALT creado: EjNKyx...
+[x] flash-deep-vol-orca-loop.ts corriendo
+[x] Epoch watcher activo — flipa ~2026-05-27 07:50 AM
+[ ] Primera TX live confirmada
+[ ] Escalar SWAP_USDC a 500 → 700

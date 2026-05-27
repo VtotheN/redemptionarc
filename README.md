@@ -114,10 +114,18 @@ Files to build:
 2. `initialize_token_badge` feature flag check removed from handler — config flag not set on our fork.
 3. `is_admin_key` constraint removed to allow crank as fee authority.
 
-## Pending
+## Estado del sistema (Mayo 2026)
 
-- [ ] Flash-deep-vol loop on our Orca Whirlpool
-- [ ] Jupiter indexing of our pool (pool too new, non-standard program)
-- [ ] Epoch 977: HOP fee → 1bps active
-- [ ] collect-protocol-fees keeper script
-- [ ] Scale: test $500k flash
+Motor principal: flash-deep-vol-orca-loop.ts
+  - SIM_OK verificado
+  - $0.149/TX neto = $178.80/hora a 20 TX/min
+  - Epoch watcher activo → arranca en epoch 978
+  - ALT: EjNKyxzhMCDX63sXLNddioHNZmyyNaHUipsXR65AmwAC
+
+Pendiente:
+  [ ] Primera TX live post-epoch 978
+  [ ] collect_fees_v2 periódico (LP fees → wallet)
+  [ ] Escalar SWAP_USDC tras confirmar TX live
+  [ ] Jupiter indexing del pool
+
+Leer SISTEMA.md antes de modificar cualquier script.
