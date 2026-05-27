@@ -113,6 +113,7 @@ Epoch 978 activa aproximadamente: **2026-05-27 07:50 AM**
 | Pool USDC/HOP | `8aoWgf7ycbeKv6BTFCdUj4JR7Y4mXWuPZWEUhmuzN5ZL` |
 | LP Position 1 | `ErgQU48egJMNBLZeVkdjrtZrSWUQJCky3deh2B4U1YPQ` |
 | LP Position 2 | `3Qx4NtMhd9vDKWbcdUAu2qrwpypbXEGy95N4cYgdyaGk` |
+| LP Position 3 | `GHsx5fdmUc8bszmviebo7tutjM4gGHeR2UGRiMWB4gCW` (120 USDC seed, 32.5B liq) |
 | ALT | `EjNKyxzhMCDX63sXLNddioHNZmyyNaHUipsXR65AmwAC` |
 | MarginFi bank USDC | `2s37akK2eyBbp8DZgCm7RtsaEz8eJP3Nxd4urLHQv7yB` |
 | MarginFi account | `9SdjygeTAmMrgCQjBAGNAAjjYE6U35ARWcuvvxFZJHz` |
@@ -185,30 +186,33 @@ cashNet = walletDelta + lpFeeSwap1 + lpFeeSwap2
 
 ---
 
-## Estado actual (Mayo 27, 2026 — 3 AM)
+## Estado actual (Mayo 27, 2026 — post cycle test)
 
 - [x] Whirlpool fork deployado mainnet
-- [x] Pool USDC/HOP con $290 TVL
-- [x] flash-deep-vol-orca.ts SIM_OK
+- [x] Pool USDC/HOP — TVL ~$410 (+41% vs $290 base)
+- [x] flash-deep-vol-orca.ts SIM_OK + LIVE TX confirmado (TX mechanics PASS)
 - [x] ALT creado
-- [x] flash-deep-vol-orca-loop.ts corriendo con epoch watcher
-- [x] Keys backup en Desktop (eliminar después de copiar)
-- [ ] **Primera TX live — epoch 978 ~07:50 AM**
-- [ ] Verificar TX rate sostenible
+- [x] flash-deep-vol-orca-loop.ts — loop listo, esperando epoch 978
+- [x] batch-processor deployado mainnet: `HKKrVUYk7qA42AXUgaujBBs4vGWCDdp7jPpdQ3BJahuX`
+- [x] LP Position 3 añadida: `GHsx5fdmUc8bszmviebo7tutjM4gGHeR2UGRiMWB4gCW` (32.5B liq, 120 USDC seed)
+- **Crank:** 1.184 SOL / $129.87 USDC / ~6.32M HOP
+- [ ] **Epoch 978 — loop arranca automático cuando T22=1bps**
+- [ ] Verificar TX rate sostenible con 1bps
 - [ ] Verificar MarginFi sin rate limits
-- [ ] Auto-compound script (construir después de TX live)
-- [ ] Deploy en VPS para no depender de computadora local
+- [ ] Auto-compound script (collect feeOwedA/B acumulados)
+- [ ] Deploy en VPS 89.167.71.153
 
 ---
 
 ## Próximos pasos en orden
 
-1. Esperar epoch 978 (07:50 AM) → loop arranca solo
-2. Ver primera TX live → confirmar signature y net real
-3. Correr 10-20 TX → medir TPS real y verificar MarginFi
-4. Si funciona → construir auto-compound
+1. Esperar epoch 978 → loop arranca automático (T22 gate baked in)
+2. Ver primera TX live con T22=1bps → confirmar +$0.266 neto
+3. Correr 10-20 TX → medir TPS real + verificar MarginFi rate limits
+4. Si funciona → construir auto-compound (collect feeOwedA/B por posición)
 5. Si funciona → deploy en VPS 89.167.71.153
 6. Si funciona → escalar SWAP_USDC gradualmente
+7. Pendiente: deploy txns-engine (127KB) cuando sea necesario
 
 ---
 
