@@ -320,16 +320,17 @@ async function main(): Promise<void> {
   const lpMintRaw = lpSupplyRaw === 0n
     ? BigInt(Math.floor(Math.sqrt(Number(addLiqUsdcRaw) * Number(targetHopRaw))))
     : (addLiqUsdcRaw * lpSupplyRaw) / usdcReserveRaw;
-  // Apply slippage to LP amount (matches SDK behavior: deposit mints exactly lpMintMin)
+  // Deposit slippage: minimum LP we accept receiving (program mints exactly lpMintRaw in atomic TX)
   const lpMintMin = lpMintRaw - (lpMintRaw * slippageBpsBig) / 10_000n;
 
-  // ── Withdraw min-amount-out (computed from pre-deposit state with slippage) ──
-  const expectedAOutRaw = lpSupplyRaw === 0n
-    ? addLiqUsdcRaw
-    : (lpMintMin * usdcReserveRaw) / lpSupplyRaw;
-  const expectedBOutRaw = lpSupplyRaw === 0n
-    ? targetHopRaw
-    : (lpMintMin * hopReserveRaw) / lpSupplyRaw;
+  // ── Withdraw min-amount-out (computed from POST-deposit state with slippage) ──
+  // After deposit, reserves grow by addLiq amounts and lpSupply by lpMintRaw.
+  const postDepositUsdcReserve = usdcReserveRaw + addLiqUsdcRaw;
+  const postDepositHopReserve  = hopReserveRaw  + targetHopRaw;
+  const postDepositLpSupply    = lpSupplyRaw === 0n ? lpMintRaw : lpSupplyRaw + lpMintRaw;
+
+  const expectedAOutRaw = (lpMintRaw * postDepositUsdcReserve) / postDepositLpSupply;
+  const expectedBOutRaw = (lpMintRaw * postDepositHopReserve)  / postDepositLpSupply;
   const minAmountAOut = expectedAOutRaw - (expectedAOutRaw * slippageBpsBig) / 10_000n;
   const minAmountBOut = expectedBOutRaw - (expectedBOutRaw * slippageBpsBig) / 10_000n;
 
@@ -361,6 +362,37 @@ async function main(): Promise<void> {
   // The pool will receive `hopForSell - fee(hopForSell)`. We send our entire usable HOP.
   // amountIn for swap IX is what the *user* transfers; program reads vault delta itself.
   const hopForSell = hopReceivedUsable;
+
+  // ── Crank HOP balance check (working capital required for addLiquidity) ──
+  const crankHopBalance = await conn.getTokenAccountBalance(crankHopAta, "confirmed")
+    .then((b) => BigInt(b.value.amount))
+    .catch(() => 0n);
+  if (crankHopBalance < addLiqHopRaw) {
+    console.warn(`\nWARN: Crank HOP balance insufficient for addLiquidity.`);
+    console.warn(`  Required:  ${addLiqHopRaw} lamports (${(Number(addLiqHopRaw)/1e6).toFixed(2)} HOP)`);
+    console.warn(`  Available: ${crankHopBalance} lamports (${(Number(crankHopBalance)/1e6).toFixed(2)} HOP)`);
+    console.warn(`  Delta:     ${addLiqHopRaw - crankHopBalance} lamports`);
+    console.warn(`  Fix: Pre-fund crank HOP ATA or reduce ADDLIQ_USDC.\n`);
+    // Do NOT throw — let the simulation fail naturally so receipt captures the error.
+  }
+
+  // ── Round-trip USDC reconstitution sanity check ──
+  // Ideal post-withdraw USDC (post-deposit reserves, no swap impact):
+  const idealWithdrawUsdc = (lpMintRaw * postDepositUsdcReserve) / postDepositLpSupply;
+  // Net USDC after swaps: we spent swapUsdcRaw on swap1, receive swap2Usdc on swap2.
+  // For swap2 estimation: pool receives hopForSell-fee, we get USDC out.
+  const swap2UsdcEst = (() => {
+    const hopInAfterFee = hopForSell - calcT22Fee(hopForSell);
+    const k2 = (postDepositUsdcReserve + swapUsdcRaw) * (postDepositHopReserve - hopOutRaw);
+    const newUsdc2 = k2 / (postDepositHopReserve - hopOutRaw + hopInAfterFee);
+    return (postDepositUsdcReserve + swapUsdcRaw) - newUsdc2;
+  })();
+  const totalUsdcAfterRoundTrip = idealWithdrawUsdc + swap2UsdcEst - swapUsdcRaw;
+  const usdcDelta = totalUsdcAfterRoundTrip - flashAmountMicro;
+  console.log(`Round-trip USDC delta: ${usdcDelta} lamports (${(Number(usdcDelta)/1e6).toFixed(4)} USDC)`);
+  if (usdcDelta < 0n) {
+    console.warn(`WARN: Round-trip loses USDC. Crank needs ${-usdcDelta} lamports working capital to cover repay.`);
+  }
 
   // ── Build instructions ──
   const ixs: TransactionInstruction[] = [];
@@ -438,7 +470,8 @@ async function main(): Promise<void> {
     new BN(hopForSell.toString()),
     new BN(0),
   ));
-  // IX[8] removeLiquidity (burn ALL LP; slippage on outputs set to 0, not on LP in)
+  // IX[8] removeLiquidity — burn EXACTLY lpMintRaw (what we expect to mint in deposit)
+  // Using lpMintRaw instead of lpMintMin ensures we burn all received LP, not less.
   ixs.push(makeWithdrawCpmmInInstruction(
     RAYDIUM_CPMM_PROGRAM,
     crank.publicKey,
@@ -452,7 +485,7 @@ async function main(): Promise<void> {
     USDC_MINT,
     HOP_MINT,
     lpMint,
-    new BN(lpMintMin.toString()),
+    new BN(lpMintRaw.toString()),
     new BN(minAmountAOut.toString()),
     new BN(minAmountBOut.toString()),
   ));

@@ -471,7 +471,8 @@ async function main() {
   if (!feeConfig) throw new Error("HOP missing TransferFeeConfig");
   const activeT22Config = epochInfo.epoch >= Number(feeConfig.newerTransferFee.epoch)
     ? feeConfig.newerTransferFee : feeConfig.olderTransferFee;
-  const t22Bps = activeT22Config.transferFeeBasisPoints;
+  const forceT22Bps = process.env.FORCE_T22_BPS ? Number(process.env.FORCE_T22_BPS) : null;
+  const t22Bps = forceT22Bps ?? activeT22Config.transferFeeBasisPoints;
 
   const { feeRate, protocolFeeRate, liquidity, sqrtPrice, protocolFeeOwedA, protocolFeeOwedB } = poolState;
   const marginfiVaultBalance = await connection.getTokenAccountBalance(USDC_LIQ_VAULT, "confirmed")
@@ -555,11 +556,10 @@ async function main() {
   const lpFeeSwap2AsUsdc = hopPerUsdcRaw > 0
     ? BigInt(Math.floor(Number(lpFeeHopSwap2) / hopPerUsdcRaw))
     : 0n;
-  const cashNetUsdcMicro = walletUsdcDeltaBeforeCollect
-    + collectableProtocolUsdc
-    + lpFeeUsdcSwap1
-    + lpFeeSwap2AsUsdc
-    - estimatedGasUsdcMicro;
+  const projectionMode = process.env.PROJECTION_MODE === "true";
+  const cashNetUsdcMicro = projectionMode
+    ? (collectableProtocolUsdc + lpFeeUsdcSwap1 + lpFeeSwap2AsUsdc - estimatedGasUsdcMicro)
+    : (walletUsdcDeltaBeforeCollect + collectableProtocolUsdc + lpFeeUsdcSwap1 + lpFeeSwap2AsUsdc - estimatedGasUsdcMicro);
   const protocolFeeRoundTripRate = (feeRate / 1_000_000) * (protocolFeeRate / 10_000) * 2;
   const breakEvenFlashUsdc = protocolFeeRoundTripRate > 0
     ? (Number(estimatedGasUsdcMicro) / 1e6) / protocolFeeRoundTripRate

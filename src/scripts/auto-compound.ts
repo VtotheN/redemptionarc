@@ -36,6 +36,8 @@ import {
   TOKEN_2022_PROGRAM_ID, TOKEN_PROGRAM_ID,
   getAssociatedTokenAddressSync,
   createAssociatedTokenAccountIdempotentInstruction as createIdempotentAta,
+  createHarvestWithheldTokensToMintInstruction,
+  createWithdrawWithheldTokensFromMintInstruction,
 } from "@solana/spl-token";
 import { loadConfig } from "../config.js";
 import { connectionFor } from "../utils/rpc.js";
@@ -62,6 +64,9 @@ const TICK_ARRAY_LOWER  = new PublicKey("be9QKj4mYB8erh6r4ZDrKxxSvSYSUNRfpTxqJUg
 const TICK_ARRAY_UPPER  = new PublicKey("MXd8HXPjcH9ZCuyr4uKKyN7GkJ5YizZQkgUndB6J8Gz");
 const ORACLE            = new PublicKey("5qhXANMqTNNzdp1N1PrMzWzSzjHTZxuLPELcmpog6bp5");
 const SPL_MEMO          = new PublicKey("MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr");
+const TICK_ARRAY_84480  = new PublicKey("be9QKj4mYB8erh6r4ZDrKxxSvSYSUNRfpTxqJUgd3jG");
+const TICK_ARRAY_90112  = new PublicKey("CDMSB5e6WUgtoSLrybvYm4j58Jue3eqpzHQVLmgVkAe4");
+const TICK_ARRAY_95744  = new PublicKey("MXd8HXPjcH9ZCuyr4uKKyN7GkJ5YizZQkgUndB6J8Gz");
 
 const USDC_MINT = new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v");
 const HOP_MINT  = new PublicKey("HZF5k7h39hkysoSZ4ZfmWc55PhvW7ntVvVqdXFCyYGh3");
@@ -88,6 +93,7 @@ const Q64 = 1n << 64n;
 // IX discriminators
 const COLLECT_PROTOCOL_FEES_V2_DISC = Buffer.from([0x67, 0x80, 0xde, 0x86, 0x72, 0xc8, 0x16, 0xc8]);
 const COLLECT_FEES_V2_DISC          = Buffer.from([0xcf, 0x75, 0x5f, 0xbf, 0xe5, 0xb4, 0xe2, 0x0f]);
+const SWAP_V2_DISC = Buffer.from([0x2b, 0x04, 0xed, 0x0b, 0x1a, 0xc9, 0x1e, 0x62]);
 const INCREASE_LIQUIDITY_V2_DISC    = Buffer.from([0x85, 0x1d, 0x59, 0xdf, 0x45, 0xee, 0xb0, 0x0a]);
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -280,6 +286,49 @@ function increaseLiquidityV2Ix(args: {
   });
 }
 
+function swapV2Ix(args: {
+  tokenAuthority: PublicKey;
+  tokenOwnerAccountA: PublicKey;
+  tokenOwnerAccountB: PublicKey;
+  tickArray0: PublicKey;
+  tickArray1: PublicKey;
+  tickArray2: PublicKey;
+  amount: bigint;
+  otherAmountThreshold: bigint;
+  sqrtPriceLimit: bigint;
+  amountSpecifiedIsInput: boolean;
+  aToB: boolean;
+}): TransactionInstruction {
+  const data = Buffer.concat([
+    SWAP_V2_DISC,
+    u64Le(args.amount),
+    u64Le(args.otherAmountThreshold),
+    u128Le(args.sqrtPriceLimit),
+    Buffer.from([args.amountSpecifiedIsInput ? 1 : 0]),
+    Buffer.from([args.aToB ? 1 : 0]),
+  ]);
+  return new TransactionInstruction({
+    programId: WHIRLPOOL_PROGRAM_ID,
+    keys: [
+      { pubkey: args.tokenAuthority, isSigner: true, isWritable: false },
+      { pubkey: WHIRLPOOL, isSigner: false, isWritable: true },
+      { pubkey: args.tokenOwnerAccountA, isSigner: false, isWritable: true },
+      { pubkey: args.tokenOwnerAccountB, isSigner: false, isWritable: true },
+      { pubkey: TOKEN_VAULT_A, isSigner: false, isWritable: true },
+      { pubkey: TOKEN_VAULT_B, isSigner: false, isWritable: true },
+      { pubkey: TICK_ARRAY_90112, isSigner: false, isWritable: true },
+      { pubkey: args.tickArray0, isSigner: false, isWritable: true },
+      { pubkey: args.tickArray1, isSigner: false, isWritable: true },
+      { pubkey: args.tickArray2, isSigner: false, isWritable: true },
+      { pubkey: ORACLE, isSigner: false, isWritable: true },
+      { pubkey: WHIRLPOOL_PROGRAM_ID, isSigner: false, isWritable: false },
+      { pubkey: args.aToB ? TOKEN_PROGRAM_ID : TOKEN_2022_PROGRAM_ID, isSigner: false, isWritable: false },
+      { pubkey: args.aToB ? TOKEN_2022_PROGRAM_ID : TOKEN_PROGRAM_ID, isSigner: false, isWritable: false },
+    ],
+    data,
+  });
+}
+
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -425,14 +474,14 @@ async function main() {
 
   const liqFromA = liquidityFromAmountA(compoundUsdcMicro, sqrtPrice, sqrtPUpper);
   const liqFromB = liquidityFromAmountB(compoundHopMicro, sqrtPrice, sqrtPLower);
-  const liquidityDelta = liqFromA < liqFromB ? liqFromA : liqFromB;
+  let liquidityDelta = liqFromA < liqFromB ? liqFromA : liqFromB;
 
   const usedUsdcMicro = amountAFromLiquidity(liquidityDelta, sqrtPrice, sqrtPUpper);
   const usedHopMicro  = amountBFromLiquidity(liquidityDelta, sqrtPrice, sqrtPLower);
 
   const slippageMul = 10000n + BigInt(slippageBps);
   const tokenMaxA = (compoundUsdcMicro * slippageMul) / 10000n;
-  const tokenMaxB = (compoundHopMicro * slippageMul) / 10000n;
+  let tokenMaxB = (compoundHopMicro * slippageMul) / 10000n;
 
   // New max flash estimate (same math as flywheel-bot.ts)
   const feeRate = poolState.feeRate;
@@ -453,6 +502,7 @@ async function main() {
   console.log();
 
   // ─── Build TX ────────────────────────────────────────────────────────────
+  const doSwapHop = process.env.SWAP_HOP_TO_USDC === "true";
 
   const ixs: TransactionInstruction[] = [
     ComputeBudgetProgram.setComputeUnitLimit({ units: cuLimit }),
@@ -462,15 +512,44 @@ async function main() {
     createIdempotentAta(crank.publicKey, authHopAta,  withdrawAuth.publicKey, HOP_MINT, TOKEN_2022_PROGRAM_ID),
     collectProtocolFeesV2Ix({ authority: withdrawAuth.publicKey, destA: authUsdcAta, destB: authHopAta }),
     collectFeesV2Ix({ positionAuthority: crank.publicKey, tokenOwnerAccountA: crankUsdcAta, tokenOwnerAccountB: crankHopAta }),
-    increaseLiquidityV2Ix({
-      positionAuthority: crank.publicKey,
+    // [4.5] Harvest T22 withheld fees into mint
+    createHarvestWithheldTokensToMintInstruction(HOP_MINT, [crankHopAta, TOKEN_VAULT_B], TOKEN_2022_PROGRAM_ID),
+    // [5.5] Withdraw T22 withheld fees from mint to crank HOP ATA
+    createWithdrawWithheldTokensFromMintInstruction(HOP_MINT, crankHopAta, crank.publicKey, [], TOKEN_2022_PROGRAM_ID),
+  ];
+
+  // Optional: swap collected HOP → USDC before re-injecting liquidity
+  if (doSwapHop) {
+    const Q64 = 1n << 64n;
+    const MIN_SQRT_PRICE = 4295048016n;
+    ixs.push(swapV2Ix({
+      tokenAuthority: crank.publicKey,
       tokenOwnerAccountA: crankUsdcAta,
       tokenOwnerAccountB: crankHopAta,
-      liquidityAmount: liquidityDelta,
-      tokenMaxA,
-      tokenMaxB,
-    }),
-  ];
+      tickArray0: TICK_ARRAY_84480,
+      tickArray1: TICK_ARRAY_90112,
+      tickArray2: TICK_ARRAY_95744,
+      amount: compoundHopMicro,
+      otherAmountThreshold: 0n,
+      sqrtPriceLimit: MIN_SQRT_PRICE,
+      amountSpecifiedIsInput: true,
+      aToB: false,
+    }));
+    // After swapping all HOP fees, recompute liquidityDelta using USDC-only heuristic
+    // (HOP side becomes 0 — increase_liquidity will be USDC-bounded)
+    const liqFromAOnly = liquidityFromAmountA(compoundUsdcMicro + compoundHopMicro /* rough: assumes 1:1 price */, sqrtPrice, sqrtPUpper);
+    liquidityDelta = liqFromAOnly < liquidityDelta ? liqFromAOnly : liquidityDelta;
+    tokenMaxB = 0n;
+  }
+
+  ixs.push(increaseLiquidityV2Ix({
+    positionAuthority: crank.publicKey,
+    tokenOwnerAccountA: crankUsdcAta,
+    tokenOwnerAccountB: crankHopAta,
+    liquidityAmount: liquidityDelta,
+    tokenMaxA,
+    tokenMaxB,
+  }));
 
   if (jitoTip > 0n) {
     ixs.push(SystemProgram.transfer({ fromPubkey: crank.publicKey, toPubkey: new PublicKey("96gYZGLnJYVFmbjzopPSU6QiEV5fGqZNyN9nmNhvrZU5"), lamports: jitoTip }));
@@ -483,6 +562,8 @@ async function main() {
 
   // ─── Simulate ────────────────────────────────────────────────────────────
 
+  const serializedSize = tx.serialize().length;
+  console.log(`TX serialized size: ${serializedSize}b ${serializedSize > 1232 ? "(OVER LEGACY LIMIT)" : "OK"}`);
   console.log("Simulating compound TX...");
   const sim = await connection.simulateTransaction(tx);
   const simLogs = (sim.value.logs ?? []).slice(-20);
