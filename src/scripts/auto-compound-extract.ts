@@ -56,7 +56,10 @@ const WP_PROTO_FEE_B_OFFSET = 93;
 const POS_FEE_OWED_A_OFFSET = 112;
 const POS_FEE_OWED_B_OFFSET = 136;
 
+const POSITION_MINT              = new PublicKey("21GvQjZagJKZT9nVwAKnXQpSicnNj5X6UvBjZY3SRu8R");
+
 const COLLECT_PROTOCOL_FEES_V2_DISC = Buffer.from([0x67, 0x80, 0xde, 0x86, 0x72, 0xc8, 0x16, 0xc8]);
+const COLLECT_FEES_V2_DISC          = Buffer.from([0xcf, 0x75, 0x5f, 0xbf, 0xe5, 0xb4, 0xe2, 0x0f]);
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -92,6 +95,33 @@ function collectProtocolFeesV2Ix(args: {
       { pubkey: SPL_MEMO,              isSigner: false, isWritable: false },
     ],
     data: Buffer.concat([COLLECT_PROTOCOL_FEES_V2_DISC, Buffer.from([0x00])]),
+  });
+}
+
+function collectFeesV2Ix(args: {
+  positionAuthority: PublicKey;
+  positionTokenAccount: PublicKey;
+  tokenOwnerAccountA: PublicKey;
+  tokenOwnerAccountB: PublicKey;
+}): TransactionInstruction {
+  return new TransactionInstruction({
+    programId: WHIRLPOOL_PROGRAM,
+    keys: [
+      { pubkey: WHIRLPOOL,                   isSigner: false, isWritable: true  },
+      { pubkey: args.positionAuthority,      isSigner: true,  isWritable: false },
+      { pubkey: POSITION,                    isSigner: false, isWritable: true  },
+      { pubkey: args.positionTokenAccount,   isSigner: false, isWritable: false },
+      { pubkey: USDC_MINT,                   isSigner: false, isWritable: false },
+      { pubkey: HOP_MINT,                    isSigner: false, isWritable: true  },
+      { pubkey: args.tokenOwnerAccountA,     isSigner: false, isWritable: true  },
+      { pubkey: TOKEN_VAULT_A,               isSigner: false, isWritable: true  },
+      { pubkey: args.tokenOwnerAccountB,     isSigner: false, isWritable: true  },
+      { pubkey: TOKEN_VAULT_B,               isSigner: false, isWritable: true  },
+      { pubkey: TOKEN_PROGRAM_ID,            isSigner: false, isWritable: false },
+      { pubkey: TOKEN_2022_PROGRAM_ID,       isSigner: false, isWritable: false },
+      { pubkey: SPL_MEMO,                    isSigner: false, isWritable: false },
+    ],
+    data: Buffer.concat([COLLECT_FEES_V2_DISC, Buffer.from([0x00])]),
   });
 }
 
@@ -190,11 +220,14 @@ async function runExtract(): Promise<ExtractResult> {
     collectProtocolFeesV2Ix({ authority: withdrawAuth.publicKey, destA: authUsdcAta, destB: authHopAta }),
   ];
 
-  // NOTE: collect_fees_v2 is NOT implemented in fork GxRHMB9a (InstructionFallbackNotFound error 101).
-  // LP fees (feeOwedA/B) accumulate in position but cannot be extracted until the fork is upgraded.
-  // Only protocol fees are extractable via collect_protocol_fees_v2 (which IS implemented).
-  console.log("[extract] Skipping collect_fees_v2 — not implemented in fork (Error 101). LP fees stay in position.");
-  // No increase_liquidity_v2 — tokens stay in crank ATAs
+  // Collect LP fees (feeOwedA/B) → crank ATAs
+  const positionTokenAccount = getAssociatedTokenAddressSync(POSITION_MINT, crank.publicKey, false, TOKEN_PROGRAM_ID);
+  ixs.push(collectFeesV2Ix({
+    positionAuthority:    crank.publicKey,
+    positionTokenAccount,
+    tokenOwnerAccountA:   crankUsdcAta,
+    tokenOwnerAccountB:   crankHopAta,
+  }));
 
   const { blockhash } = await conn.getLatestBlockhash("confirmed");
   const tx = new Transaction({ recentBlockhash: blockhash, feePayer: crank.publicKey });
@@ -242,8 +275,9 @@ async function runExtract(): Promise<ExtractResult> {
     return { ...baseExtractResult, verdict: "SIM_FAILED", simOk: false };
   }
 
-  console.log(`SIM_OK — would extract: $${protoFeesExtractedUsdcUi.toFixed(6)} USDC + ${protoFeesExtractedHopUi.toFixed(4)} HOP (protocol fees)`);
-  console.log(`         LP fees ($${lpFeesExtractedUsdcUi.toFixed(6)} USDC + ${lpFeesExtractedHopUi.toFixed(4)} HOP) stay in position (fork limit).`);
+  console.log(`SIM_OK — would extract: $${(protoFeesExtractedUsdcUi + lpFeesExtractedUsdcUi).toFixed(6)} USDC + ${(protoFeesExtractedHopUi + lpFeesExtractedHopUi).toFixed(4)} HOP`);
+  console.log(`  protocol fees: $${protoFeesExtractedUsdcUi.toFixed(6)} USDC + ${protoFeesExtractedHopUi.toFixed(4)} HOP`);
+  console.log(`  LP fees:       $${lpFeesExtractedUsdcUi.toFixed(6)} USDC + ${lpFeesExtractedHopUi.toFixed(4)} HOP`);
 
   const okResult: ExtractResult = {
     verdict: "SIM_OK",
