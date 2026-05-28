@@ -160,7 +160,7 @@ async function main() {
     ta0:                    TICK_ARRAY_95744,
     ta1:                    TICK_ARRAY_90112,
     ta2:                    TICK_ARRAY_84480,
-    amount:                 184_920_000n,
+    amount:                 200_000_000n,
     otherAmountThreshold:   0n,
     sqrtPriceLimit,
     amountSpecifiedIsInput: true,
@@ -221,7 +221,7 @@ TX:          ${sig}
 Tick before: ${tickBefore}
 Tick after:  ${tickAfter}
 Tick delta:  ${tickAfter - tickBefore}
-USDC sent:   $184.92
+USDC sent:   ~$179 (capped at sqrtPriceLimit tick 93000)
 sqrtPriceLimit: ${sqrtPriceLimit}
 `);
 }

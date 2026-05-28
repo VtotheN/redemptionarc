@@ -437,7 +437,7 @@ async function main(): Promise<CycleResult> {
   // When HOP→USDC first: reserve maxHopIn before sizing addLiq. Inert when aToB=true (hopReserve=0).
   const sqrtPFpEarly = Number(sqrtPrice) / Number(Q64);
   const maxHopInEst  = BigInt(Math.floor(Number(swapMicro) * sqrtPFpEarly * sqrtPFpEarly * 1.1));
-  const wantHopFirst = alternateDirection && (tickCurrent - POOL_CENTER_TICK) > 0;
+  const wantHopFirst = alternateDirection && (tickCurrent - POOL_CENTER_TICK) < 0;
   const hopReserve   = (wantHopFirst && hopBalance > maxHopInEst) ? maxHopInEst : 0n;
   const hopForLiq    = hopBalance - hopReserve;
   const hopEffective = (hopForLiq * (10_000n - BigInt(realT22Bps) - HOP_SAFETY_BPS)) / 10_000n;
@@ -521,11 +521,11 @@ async function main(): Promise<CycleResult> {
   // Fallback to USDC→HOP if wallet HOP after addLiq < hopSwap2 (can't fund alternate first swap)
   const hopAfterAddLiq = hopBalance > hopToSend ? hopBalance - hopToSend : 0n;
   const tickDistance   = tickCurrent - POOL_CENTER_TICK;
-  // above center → aToB=false (HOP→USDC first) → net tick DOWN toward center
-  // below center → aToB=true  (USDC→HOP first) → net tick UP toward center
+  // above center → aToB=true  (USDC→HOP first) → tick goes down → net drift toward center
+  // below center → aToB=false (HOP→USDC first) → tick goes up  → net drift toward center
   const firstSwapAtoB  = !alternateDirection || hopAfterAddLiq < hopSwap2
     ? true
-    : tickDistance < 0;
+    : tickDistance > 0;
   const swapDirection: "USDC_TO_HOP" | "HOP_TO_USDC" = firstSwapAtoB ? "USDC_TO_HOP" : "HOP_TO_USDC";
   console.log(`tickBefore:     ${tickBefore}  center:${POOL_CENTER_TICK}  firstSwap:${swapDirection}`);
 
@@ -575,7 +575,7 @@ async function main(): Promise<CycleResult> {
   // HOP→USDC swaps use output-specified (amount=swapMicro USDC exact out) so each round-trip
   // is USDC-neutral — the pool pulls however much HOP it needs, capped by maxHopIn.
   // This makes the flash repayment work regardless of RT_COUNT.
-  const maxHopIn = dryRun ? hopSwap2Raw * 2n : (hopSwap2Raw * 11_000n) / 10_000n;
+  const maxHopIn = hopSwap2Raw * 2n;
 
   // ── Build IXs ───────────────────────────────────────────────────────────
   // endIndex = 7 + 2*N (0-indexed position of endFlashLoan in the IX array)
