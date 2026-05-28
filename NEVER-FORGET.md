@@ -571,3 +571,74 @@ At 21.8 cycles/min:
 ```
 
 Sweep-induced tick spikes (+390/sweep) now trigger immediate rebalance → system self-corrects.
+
+---
+
+## SETTLEMENT ARCHITECTURE (CSDM + ENCHANCEDBLOCK) — added 2026-05-28
+
+### Why USDC-only has been flat
+
+USDC-only (wallet_usdc + vault_usdc) = $816.21 FLAT throughout 1200+ loops (verified 2026-05-28).
+
+The sweeps in the ON-CHAIN PROOF section above are REAL transactions, but they measure wallet USDC only:
+- Sweep fires → HOP from ring ATAs sold → pool vault USDC moves to crank wallet
+- wallet_usdc UP, vault_usdc DOWN by same amount → USDC-only UNCHANGED
+
+This is structural: our pool only has our own capital. Selling HOP to our own pool cannot add external USDC.
+
+T22 fees ARE real — HOP accumulates. But HOP→USDC conversion via own pool is circular.
+
+### The real settlement path
+
+External USDC source = ENCHANCEDBLOCK external arb (against real Orca SOL/USDC LPs):
+```
+ENCHANCEDBLOCK arbs external Orca → earns real USDC from external LPs
+  ↓
+CSDM ix_flash_lend_backing (IX 7) → lends that USDC for settlement window
+  ↓
+HOP treasury (T22 withheld) → redeemed at USDC price from CSDM backing
+  ↓
+Repay CSDM + delta → net HOP→USDC inflow (external, not circular)
+```
+
+### CSDM + ENCHANCEDBLOCK addresses
+
+```
+ENCHANCEDBLOCK program:     61hviwfoDk6ygzJHJaDG2tsoWbBpUYWdNJnSSfRA1vPh
+ENCHANCEDBLOCK USDC vault:  CYaPwtMHcQbbMiEggxpwLvzswqnXqzrsA2AxArrXCazb  ($154 as of 2026-05-28)
+ENCHANCEDBLOCK SOL vault:   0.752 SOL (needs 10 SOL for full operation)
+ENCHANCEDBLOCK VPS:         37.27.214.225
+CSDM program:               Q9FMc5YLqjJe96geFtg43ocfyrpJYM2WDHkQEqh8aNv
+CSDM receipt mint:          DHYv1GnjJuJnvKggmncifHXByhnJqk5am7aLGwfW2NSz
+CSDM pool PDA:              BSHxRLtdgndvUWdKSH4rkeA1j1iS3TzLMgX25VeDQdCQ
+CSDM allowed_borrower:      61hviwfoDk6ygzJHJaDG2tsoWbBpUYWdNJnSSfRA1vPh (ENCHANCEDBLOCK — already on-chain)
+atom_ickk (needs redeploy): BxJMJLxXJhKvuhvvxY57wYY69CAs9RCQWBv9JPCtm9Kx
+atom_ickk source+keypair:   /Users/velon/Desktop/atom_ickk/target/deploy/
+```
+
+### Blocker: ENCHANCEDBLOCK needs 10 SOL
+
+ENCHANCEDBLOCK currently has 0.752 SOL in sol_vault. Needs 10 SOL minimum to sustain arb loop:
+- Below 10 SOL: vault empties before enough USDC accumulates → loop collapses
+- Fund: send SOL to ENCHANCEDBLOCK sol_vault address (NOT the crank wallet)
+- Once funded → ENCHANCEDBLOCK accumulates USDC externally → CSDM can lend → settlement closes
+
+### Scripts for settlement status
+
+```bash
+# Check CSDM + ENCHANCEDBLOCK state:
+npx tsx src/scripts/atom-enchancedblock-cash-gate.ts
+
+# Existing CSDM scripts:
+src/scripts/csdm-ix7-sim.ts           # simulate IX 7 flash_lend_backing
+src/scripts/csdm-ix7-approval-plan.ts # shows approval path
+src/scripts/settlement-gap.ts         # shows gap to settlement
+src/scripts/settlement-options.ts     # settlement routing options
+```
+
+### Next steps (priority order)
+
+1. Fund ENCHANCEDBLOCK sol_vault with 9.25 SOL (to reach 10 SOL minimum)
+2. Monitor ENCHANCEDBLOCK USDC vault accumulation (currently $154 → target $500+)
+3. Redeploy atom_ickk if multi-slot window needed
+4. Run not-stacc-replicate.ts with SETTLEMENT_CONFIRMED=true SETTLEMENT_PATH=whirlpool_fork once ENCHANCEDBLOCK vault ready
