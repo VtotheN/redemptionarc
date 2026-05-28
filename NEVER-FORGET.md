@@ -350,13 +350,29 @@ s2ta0 = TICK_ARRAY_90112;  // was: TICK_ARRAY_95744 (wrong for desc swap from ~9
 
 ---
 
-## VPS (PENDING)
+## VPS — LIVE 24/7
 
-Target: `root@89.167.71.153`
-Status: SSH key issue blocking deploy (as of 2026-05-28)
-Password location: `keys/vps-password.txt` — never display
-Once deployed: `systemctl enable redemptionarc && systemctl start redemptionarc`
-Current loop: running on Mac, PID in `logs/loop.pid`
+**Host:** `89.167.71.153` (betterme-helsinki)  
+**User:** root  
+**Password:** `keys/vps-password.txt` — never display in chat  
+**Repo:** `/opt/redemptionarc/` (NOT a git repo — rsync to sync)  
+**Keypair:** `/opt/redemptionarc/keys/crank.json` (same crank wallet as Mac)  
+**Status (2026-05-28):** `systemctl status redemptionarc` → ACTIVE, auto-restart on-failure
+
+```bash
+# Monitor from Mac:
+VPS_PASS=$(cat keys/vps-password.txt)
+sshpass -p "$VPS_PASS" ssh root@89.167.71.153 "tail -f /opt/redemptionarc/logs/loop-vps.log"
+
+# Restart:
+sshpass -p "$VPS_PASS" ssh root@89.167.71.153 "systemctl restart redemptionarc"
+
+# Sync code after changes:
+sshpass -p "$VPS_PASS" rsync -avz --exclude='keys/' --exclude='logs/' --exclude='node_modules/' \
+  /Users/velon/Desktop/redemptionarc/src/ root@89.167.71.153:/opt/redemptionarc/src/
+```
+
+**IMPORTANT:** Never run loop on Mac AND VPS simultaneously — same crank wallet, same position. Conflicts.
 
 ---
 
@@ -401,6 +417,18 @@ Tick drifted to 95740 uncorrected while loop thought it was rebalancing.
 cashNet degraded from $0.454 → $0.420 (-8%) and drift accelerated from 4.2 → 5.7 ticks/cycle.
 
 **Fix:** Always add `AUTO_REBALANCE_DRY_RUN=false` to launch command.
+
+### REBALANCE PHILOSOPHY — READ BEFORE TOUCHING REBALANCE CONFIG
+
+**Over-rebalancing burns money.** Each rebalance costs ~$101 USDC (1480 ticks × $0.069/tick).
+Past sessions lost money by rebalancing too frequently or at wrong thresholds.
+
+Rules:
+1. Only rebalance when tick exits ±1480 range from center (94000 high / 91040 low)
+2. Never lower the threshold to trigger more frequent rebalances
+3. REBALANCE_AMOUNT_USDC=200 — enough to overshoot center and buffer next drift cycle
+4. Sweep (SWEEP_EVERY=50) causes +390 tick spike → may trigger rebalance immediately after. This is expected and fine.
+5. If tick is within range: DO NOT rebalance. Let it drift to threshold naturally.
 
 ### BUG #2 — REBALANCE_TICK_HIGH=98000 too aggressive
 
