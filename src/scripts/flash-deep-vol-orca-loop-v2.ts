@@ -343,9 +343,15 @@ async function main(): Promise<void> {
         if (needsDown && usdcRaw < usdcMinReserve) {
           console.warn(`[rebalance] SKIP — USDC balance $${(Number(usdcRaw) / 1e6).toFixed(2)} < $30 reserve`);
         } else {
+          const effectiveUsdc = needsDown
+            ? Math.min(rebalanceAmountUsdc, Math.max(0, (Number(usdcRaw) / 1e6) - 30))
+            : rebalanceAmountUsdc;
+          if (needsDown && effectiveUsdc < 10) {
+            console.warn(`[rebalance] SKIP — effective USDC $${effectiveUsdc.toFixed(2)} too small after $30 reserve`);
+          } else {
           try {
             const result = await executeAutoRebalance(conn, currentTickForRebalance, direction, {
-              rebalanceAmountUsdc, rebalanceAmountHop, tickTargetLow, tickTargetHigh, dryRun: rebalanceDryRun,
+              rebalanceAmountUsdc: effectiveUsdc, rebalanceAmountHop, tickTargetLow, tickTargetHigh, dryRun: rebalanceDryRun,
             });
             consecutiveRebFails = 0;
             lastRebalanceAt = Date.now();
@@ -353,7 +359,7 @@ async function main(): Promise<void> {
               direction,
               tickBefore: currentTickForRebalance,
               tickAfter:  result.tickAfter,
-              usdcSpent:  needsDown ? rebalanceAmountUsdc : 0,
+              usdcSpent:  needsDown ? effectiveUsdc : 0,
               hopSpent:   needsUp   ? rebalanceAmountHop.toString() : "0",
               sig:        result.sig,
               dryRun:     rebalanceDryRun,
@@ -370,11 +376,12 @@ async function main(): Promise<void> {
             console.error(`[rebalance] FAIL ${consecutiveRebFails}/${REBALANCE_FAIL_MAX}: ${msg}`);
             appendRebalanceLog({ direction, tickBefore: currentTickForRebalance, error: msg, consecutiveRebFails });
             if (consecutiveRebFails >= REBALANCE_FAIL_MAX) {
-              console.error(`[rebalance] FATAL: ${REBALANCE_FAIL_MAX} consecutive failures. Stopping loop.`);
-              process.exit(1);
+              console.warn(`[rebalance] ${REBALANCE_FAIL_MAX} consecutive failures — skipping rebalance, will retry next trigger`);
+              consecutiveRebFails = 0;
             }
           }
-        }
+          } // close inner else (effectiveUsdc >= 10)
+        }   // close outer else (usdcRaw >= reserve)
       } else if ((needsDown || needsUp) && !cooldownOk) {
         const waitSec = Math.ceil((rebalanceCooldownMs - (Date.now() - lastRebalanceAt)) / 1000);
         console.log(`[rebalance] Tick ${currentTickForRebalance} needs ${needsDown ? "DOWN" : "UP"} — cooldown ${waitSec}s remaining`);
