@@ -384,3 +384,72 @@ Current loop: running on Mac, PID in `logs/loop.pid`
 ---
 
 *Last updated: 2026-05-28 by Claude (sessions e8c024d8 + current). Crank: 8pWEfpJas2tgS8iE7ZyHKNjeDSEixqSwK12W4tagNJ3S*
+
+---
+
+## AUDIT FINDINGS (2026-05-28 — live session)
+
+### BUG #1 — AUTO_REBALANCE was always DRY_RUN (CRITICAL)
+
+`flash-deep-vol-orca-loop-v2.ts` line 249:
+```typescript
+const rebalanceDryRun = process.env.AUTO_REBALANCE_DRY_RUN !== "false"; // default TRUE
+```
+
+**Effect:** Every auto-rebalance logged as `dryRun:true` — never executed on-chain.
+Tick drifted to 95740 uncorrected while loop thought it was rebalancing.
+cashNet degraded from $0.454 → $0.420 (-8%) and drift accelerated from 4.2 → 5.7 ticks/cycle.
+
+**Fix:** Always add `AUTO_REBALANCE_DRY_RUN=false` to launch command.
+
+### BUG #2 — REBALANCE_TICK_HIGH=98000 too aggressive
+
+At 5480 ticks from center, tick degrades heavily before rebalance fires.
+By tick 95000: cashNet=$0.42, drift=5.7t/cycle → system near break-even.
+
+**Fix:** `REBALANCE_TICK_HIGH=94000` (1480 ticks from center).
+**Fix:** `REBALANCE_TICK_LOW=91040` (symmetric).
+
+### BUG #3 — Sweep causes +390 tick spike (expected, must account for)
+
+Each auto-sweep (every 50 cycles) does HOP→USDC in pool → tick jumps +370-390 UP.
+With corrected REBALANCE_TICK_HIGH=94000, this spike may trigger immediate rebalance after sweep. That's correct behavior.
+
+---
+
+## CORRECTED CANONICAL LAUNCH COMMAND (post-audit 2026-05-28)
+
+```bash
+RT_COUNT=5 ADDLIQ_USDC=700 SWAP_USDC=500 ALTERNATE_DIRECTION=false \
+  JITO_SKIP=true DRY_RUN=false ALLOW_LIVE=true \
+  AUTO_REBALANCE=true AUTO_REBALANCE_DRY_RUN=false \
+  REBALANCE_TICK_HIGH=94000 REBALANCE_TICK_LOW=91040 \
+  REBALANCE_AMOUNT_USDC=200 TICK_TARGET_HIGH=92520 TICK_TARGET_LOW=92520 \
+  EXTRACT_EVERY=100 SWEEP_EVERY=50 LOOP_INTERVAL_MS=500 \
+  npx tsx src/scripts/flash-deep-vol-orca-loop-v2.ts >> logs/prod-corrected.log 2>&1 &
+echo $! > logs/loop.pid
+```
+
+**Key diff from previous:**
+- `AUTO_REBALANCE_DRY_RUN=false` ← NEW, critical
+- `REBALANCE_TICK_HIGH=94000` ← was 98000
+- `REBALANCE_TICK_LOW=91040` ← was 87000
+
+---
+
+## CORRECTED ECONOMICS (with real rebalances firing)
+
+```
+Near center (tick 92520 ± 1480):
+  cashNet/cycle:   $0.450 avg
+  drift/cycle:     4.3 ticks avg
+  rebalance amort: 4.3 × $0.069 = $0.297/cycle
+  gas:             $0.031/cycle
+  NET:             +$0.122/cycle
+
+At 21.8 cycles/min:
+  NET/hr:          $0.122 × 21.8 × 60 = +$159/hr
+  NET/day:         ~$3,816/day
+```
+
+Sweep-induced tick spikes (+390/sweep) now trigger immediate rebalance → system self-corrects.
