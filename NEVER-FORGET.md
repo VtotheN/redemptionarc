@@ -29,7 +29,29 @@ NET:       +$89.50
 Sweep harvested 1,048,896 HOP accumulated in ring ATAs from ~48 prior cycles (not just one cycle).  
 Per-cycle average from that batch: **$89.50 / 48 = ~$1.86/cycle** net USDC realized.
 
-### Proof 2 — Prior sweep (2026-05-28T05:39Z)
+### Proof 2 — Single cycle + immediate sweep (2026-05-28T08:45Z)
+
+**Before:** $219.163 USDC  
+**Flash TX:** `413R6qwWZ15QKB3pzkCJJFZ5t6PicuzXTjxsEYTP3AXh5argiuyUtM5jyBCZmjYywqKfyZC9VWekkt4VosZa5jB`  
+→ [Solscan](https://solscan.io/tx/413R6qwWZ15QKB3pzkCJJFZ5t6PicuzXTjxsEYTP3AXh5argiuyUtM5jyBCZmjYywqKfyZC9VWekkt4VosZa5jB)  
+**Sweep TX:** `5kxaoaRUNSS9mHjh135Ag8azoF9c5A8Yy9NZSq3mq9ARgsWPrwLt2j3mMi6EQKfDqdDSmjAj9VuJhs43Js1AfCP7`  
+→ [Solscan](https://solscan.io/tx/5kxaoaRUNSS9mHjh135Ag8azoF9c5A8Yy9NZSq3mq9ARgsWPrwLt2j3mMi6EQKfDqdDSmjAj9VuJhs43Js1AfCP7)  
+**After:** $219.327 USDC  
+**Net: +$0.164 USDC** (1 ciclo, sweep inmediato, 6,765 HOP withheld → $0.54 bruto, gas $0.001)
+
+```
+cashNet proj (sim):  $0.429/cycle
+withheld HOP:        6,765 (acumulado en 1 ciclo)
+sweep net USDC:      +$0.540
+gas sweep:           $0.001
+NET spendable:       +$0.540/cycle (sweep cada ciclo)
+```
+
+> **Reading the numbers:** $0.54/ciclo × 8.9 ciclos/min × 60 = $288/hr bruto.  
+> Rebalance cost a +4 ticks/cycle: 4 × 8.9 × 60 × $0.069 = $147/hr.  
+> NET: ~$141/hr. (RT=5, ADDLIQ=700, loop 24/7)
+
+### Proof 3 — Prior sweep (2026-05-28T05:39Z)
 
 **TX:** `dju4fEGD5e3qMsnp2SH3mcb7YmxBYDAQxJzY8DEQBDnr2VkFaYw6DgvTpHHfEFT2nCyHwF9dgkMj1Yoey3X3Lnu`  
 → [Solscan](https://solscan.io/tx/dju4fEGD5e3qMsnp2SH3mcb7YmxBYDAQxJzY8DEQBDnr2VkFaYw6DgvTpHHfEFT2nCyHwF9dgkMj1Yoey3X3Lnu)  
