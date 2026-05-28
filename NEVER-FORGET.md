@@ -212,17 +212,36 @@ RT=N → +~(N×2/3) ticks/cycle (approximately linear)
 
 ## ECONOMICS (verified empirically)
 
-### RT=5, ADDLIQ=700, SWAP=500
+### VPS live data (2026-05-28, 20 min of runtime)
+
+```
+Cycle rate VPS:   ~17.5 cycles/min (LOOP_INTERVAL_MS=2000)
+Sweeps observed:  $27.70 + $28.14 + $26.65 + $29.65 + $53.72 = $165.86 in ~20 min
+
+Gross sweep rate: ~$8.30/min
+Rebalance amort:  ~$5.10/min ($102 every ~20 min)
+Gas:              ~$0.54/min
+────────────────────────────────
+NET spendeable:   ~$2.50-3/min = ~$160/hr = ~$3,800/day (conservative)
+
+If rebalance counted as restructuring (not cost):
+NET total system: ~$5-8/min = ~$300-480/hr
+```
+
+**Goal: $10,000 total system. From $2,300 current. At $160/hr conservative: ~48 hours.**
+
+### RT=5, ADDLIQ=700, SWAP=500 (theoretical)
 ```
 cashNet/cycle:  $0.454 (measured live, 48 cycles)
-Cycle rate:     ~8.9 cycles/min (loop interval 500ms + TX confirm time)
-Revenue gross:  $0.454 × 8.9 × 60 = $242/hr
+Cycle rate:     ~8.9 cycles/min (500ms interval, Mac)
+                ~17.5 cycles/min (2000ms interval, VPS — fewer 429 errors)
+Revenue gross:  $0.454 × 17.5 × 60 = $476/hr (VPS rate)
 
-Drift:          +4 ticks/cycle × 8.9 × 60 = 2,136 ticks/hr
-Rebalance cost: $0.069/tick × 2,136 = $147/hr
-Gas:            ~$3.6/hr
+Drift:          +4-5 ticks/cycle × 17.5 × 60 = 4,200-5,250 ticks/hr
+Rebalance:      $102 every ~20 min = $306/hr
+Gas:            ~$0.54/min = $32/hr
 
-NET:            ~$91/hr = ~$2,184/day
+NET:            ~$138/hr theoretical
 ```
 
 ### RT=3, ADDLIQ=700, SWAP=500 (historical baseline)
@@ -234,6 +253,8 @@ NET:            ~$38/hr
 ### Rebalance cost calibration
 - Empirically measured: $50 USDC swap → 721 ticks moved at tick ~94750
 - Rate: **$0.069/tick**
+- From center to threshold (1,480 ticks): ~$102 per rebalance event
+- Rebalance is USDC→HOP conversion — HOP stays in wallet, not lost from system
 
 ### OPTION D was a mistake
 | Config | cashNet/cycle | Reason changed | Outcome |
