@@ -256,18 +256,21 @@ async function main(): Promise<void> {
   process.env.ALLOW_LIVE     = "true";
 
   const autoRebalance        = process.env.AUTO_REBALANCE === "true";
-  const rebalanceTickHigh    = Number(process.env.REBALANCE_TICK_HIGH   ?? "96000");
-  const rebalanceTickLow     = Number(process.env.REBALANCE_TICK_LOW    ?? "90000");
-  const rebalanceAmountUsdc  = Number(process.env.REBALANCE_AMOUNT_USDC ?? "50");
+  const rebalanceTickHigh    = Number(process.env.REBALANCE_TICK_HIGH   ?? "94000");
+  const rebalanceTickLow     = Number(process.env.REBALANCE_TICK_LOW    ?? "91040");
+  const rebalanceAmountUsdc  = Number(process.env.REBALANCE_AMOUNT_USDC ?? "200");
   const rebalanceAmountHop   = BigInt(process.env.REBALANCE_AMOUNT_HOP  ?? "700000");
-  const tickTargetLow        = Number(process.env.TICK_TARGET_LOW       ?? "93000");
-  const tickTargetHigh       = Number(process.env.TICK_TARGET_HIGH      ?? "92500");
+  const tickTargetLow        = Number(process.env.TICK_TARGET_LOW       ?? "92520");
+  const tickTargetHigh       = Number(process.env.TICK_TARGET_HIGH      ?? "92520");
   const usdcMinReserve       = 30_000_000n; // $30 in raw USDC (6 decimals)
   const rebalanceCooldownMs  = 10 * 60 * 1_000; // 10 min
   const REBALANCE_FAIL_MAX   = 3;
 
   let lastRebalanceAt        = 0;
   let consecutiveRebFails    = 0;
+
+  fs.mkdirSync("logs",     { recursive: true });
+  fs.mkdirSync("receipts", { recursive: true });
 
   const conn = new Connection(rpcUrl, "confirmed");
 
@@ -349,39 +352,38 @@ async function main(): Promise<void> {
           if (needsDown && effectiveUsdc < 10) {
             console.warn(`[rebalance] SKIP — effective USDC $${effectiveUsdc.toFixed(2)} too small after $30 reserve`);
           } else {
-          try {
-            const result = await executeAutoRebalance(conn, currentTickForRebalance, direction, {
-              rebalanceAmountUsdc: effectiveUsdc, rebalanceAmountHop, tickTargetLow, tickTargetHigh, dryRun: rebalanceDryRun,
-            });
-            consecutiveRebFails = 0;
-            lastRebalanceAt = Date.now();
-            const entry = {
-              direction,
-              tickBefore: currentTickForRebalance,
-              tickAfter:  result.tickAfter,
-              usdcSpent:  needsDown ? effectiveUsdc : 0,
-              hopSpent:   needsUp   ? rebalanceAmountHop.toString() : "0",
-              sig:        result.sig,
-              dryRun:     rebalanceDryRun,
-            };
-            appendRebalanceLog(entry);
-            console.log(
-              `[rebalance] ${rebalanceDryRun ? "DRY_RUN" : "OK"}` +
-              ` tick ${currentTickForRebalance}→${result.tickAfter}` +
-              (result.sig ? ` sig=${result.sig.slice(0, 8)}...` : "")
-            );
-          } catch (e) {
-            consecutiveRebFails++;
-            const msg = e instanceof Error ? e.message : String(e);
-            console.error(`[rebalance] FAIL ${consecutiveRebFails}/${REBALANCE_FAIL_MAX}: ${msg}`);
-            appendRebalanceLog({ direction, tickBefore: currentTickForRebalance, error: msg, consecutiveRebFails });
-            if (consecutiveRebFails >= REBALANCE_FAIL_MAX) {
-              console.warn(`[rebalance] ${REBALANCE_FAIL_MAX} consecutive failures — skipping rebalance, will retry next trigger`);
+            try {
+              const result = await executeAutoRebalance(conn, currentTickForRebalance, direction, {
+                rebalanceAmountUsdc: effectiveUsdc, rebalanceAmountHop, tickTargetLow, tickTargetHigh, dryRun: rebalanceDryRun,
+              });
               consecutiveRebFails = 0;
+              lastRebalanceAt = Date.now();
+              appendRebalanceLog({
+                direction,
+                tickBefore: currentTickForRebalance,
+                tickAfter:  result.tickAfter,
+                usdcSpent:  needsDown ? effectiveUsdc : 0,
+                hopSpent:   needsUp   ? rebalanceAmountHop.toString() : "0",
+                sig:        result.sig,
+                dryRun:     rebalanceDryRun,
+              });
+              console.log(
+                `[rebalance] ${rebalanceDryRun ? "DRY_RUN" : "OK"}` +
+                ` tick ${currentTickForRebalance}→${result.tickAfter}` +
+                (result.sig ? ` sig=${result.sig.slice(0, 8)}...` : "")
+              );
+            } catch (e) {
+              consecutiveRebFails++;
+              const msg = e instanceof Error ? e.message : String(e);
+              console.error(`[rebalance] FAIL ${consecutiveRebFails}/${REBALANCE_FAIL_MAX}: ${msg}`);
+              appendRebalanceLog({ direction, tickBefore: currentTickForRebalance, error: msg, consecutiveRebFails });
+              if (consecutiveRebFails >= REBALANCE_FAIL_MAX) {
+                console.warn(`[rebalance] ${REBALANCE_FAIL_MAX} consecutive failures — skipping rebalance, will retry next trigger`);
+                consecutiveRebFails = 0;
+              }
             }
           }
-          } // close inner else (effectiveUsdc >= 10)
-        }   // close outer else (usdcRaw >= reserve)
+        }
       } else if ((needsDown || needsUp) && !cooldownOk) {
         const waitSec = Math.ceil((rebalanceCooldownMs - (Date.now() - lastRebalanceAt)) / 1000);
         console.log(`[rebalance] Tick ${currentTickForRebalance} needs ${needsDown ? "DOWN" : "UP"} — cooldown ${waitSec}s remaining`);
