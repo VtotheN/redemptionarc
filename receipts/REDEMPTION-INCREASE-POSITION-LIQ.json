@@ -1,0 +1,23 @@
+{
+  "verdict": "ADDLIQ_EXECUTED",
+  "dryRun": false,
+  "usdcDepositUi": 465,
+  "liquidityDelta": "166969595912",
+  "requiredHopRaw": "6952399644651",
+  "sendHopRaw": "6953094954147",
+  "t22Bps": "1",
+  "simulation": {
+    "err": null,
+    "logs": [
+      "Program MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr success",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb invoke [2]",
+      "Program log: Instruction: TransferChecked",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 3086 of 168621 compute units",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+      "Program data: HgeQtWb+m6FwqpD0hZ9CMKYDRT3GGbvHh+t1gRwiv6J5ldEcrcdGO83h8dGLs+4tTPRZeeeF9YxZk1mDhYRzf7iSvne/VXD/AEoBAMCLAQAI2CngJgAAAAAAAAAAAAAAQFa3GwAAAACePMHkUgYAAAAAAAAAAAAAuJRxKQAAAAA=",
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 35404 of 199700 compute units",
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+    ]
+  },
+  "signature": "4qPJboBYUBKRkLedNXV9cWSysuihgqf3pY3DVEBL7rAZyqb2c71xGyqQd3oZfHUjFrffLgFHC1uKkaQ5sivEu5Pn"
+}

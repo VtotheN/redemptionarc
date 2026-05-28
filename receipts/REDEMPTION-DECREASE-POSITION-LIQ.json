@@ -1,0 +1,26 @@
+{
+  "verdict": "DECREASE_LIQ_EXECUTED",
+  "removePct": 50,
+  "liquidityToRemove": "122798537497",
+  "posLiq": "245597074995",
+  "tick": 96305,
+  "estUsdcOut": 220.452337,
+  "estHopOut": 6761176.070115,
+  "dryRun": false,
+  "simulation": {
+    "err": null,
+    "logs": [
+      "Program log: Memo (len 28): \"TFe: 1, 18446744073709551615\"",
+      "Program MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr consumed 11510 of 282367 compute units",
+      "Program MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr success",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb invoke [2]",
+      "Program log: Instruction: TransferChecked",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb consumed 3086 of 269390 compute units",
+      "Program TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb success",
+      "Program data: pgEkR3DKtatwqpD0hZ9CMKYDRT3GGbvHh+t1gRwiv6J5ldEcrcdGO83h8dGLs+4tTPRZeeeF9YxZk1mDhYRzf7iSvne/VXD/AEoBAMCLAQAZ+1yXHAAAAAAAAAAAAAAA8dUjDQAAAADgd381JgYAAAAAAAAAAAAAaLxMKAAAAAA=",
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 34621 of 299700 compute units",
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+    ]
+  },
+  "signature": "zydkuw9LXPeRb3YegnEtokQizR5jUsBWTLAoVbxdHCJs9BeSzRJwiWPnoURuVWVtto3qhoYqbLdGwkaNBJZJBdj"
+}

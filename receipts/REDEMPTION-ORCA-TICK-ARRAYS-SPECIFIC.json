@@ -1,0 +1,32 @@
+{
+  "verdict": "TICK_ARRAYS_DEPLOYED",
+  "dryRun": false,
+  "whirlpool": "8aoWgf7ycbeKv6BTFCdUj4JR7Y4mXWuPZWEUhmuzN5ZL",
+  "tickArrayStarts": [
+    101376,
+    107008
+  ],
+  "tickArrays": [
+    {
+      "start": 101376,
+      "address": "2dQq4vUnzfCmmdex9ikKjF7Z7XifVsbVzoTs7d7ogaEx",
+      "existed": false
+    },
+    {
+      "start": 107008,
+      "address": "2BjLGkGEvB5umQjgesM5F48NGg8JVN1yHta8YZcMYann",
+      "existed": false
+    }
+  ],
+  "simulation": {
+    "err": null,
+    "logs": [
+      "Program log: Instruction: InitializeTickArray",
+      "Program 11111111111111111111111111111111 invoke [2]",
+      "Program 11111111111111111111111111111111 success",
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h consumed 13918 of 383084 compute units",
+      "Program GxRHMB9a6XE8BqGPeNb9UkJUPvbvrPoPgNTJPJJA4n8h success"
+    ]
+  },
+  "signature": "3FCjm2aqceSaNEkZPSMwEp5d3TKX1ozxKxmGsxUdZWMdFUfRPqSA7f3pYXmRKBH33LeZmQnewcC9fLBVUtxpvjwG"
+}

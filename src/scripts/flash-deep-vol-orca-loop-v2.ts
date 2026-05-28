@@ -392,13 +392,35 @@ async function main(): Promise<void> {
       if (ok) {
         totalBundles++;
         consecutiveFails = 0;
+
+        // Drift measurement: read tick after cycle
+        let tickAfterCycle = 0;
+        try { tickAfterCycle = await readCurrentTick(conn); } catch (_) {}
+        const driftThis = tickAfterCycle - currentTickForRebalance;
+
         console.log(
           `[loop #${totalCycles}] ${fmt(new Date())} OK` +
           ` bundle=${result.bundleId}` +
           ` cashNet=$${result.cashNetProj.toFixed(4)}` +
           ` rtCount=${rtCount}` +
+          ` tick:${currentTickForRebalance}→${tickAfterCycle}(${driftThis >= 0 ? "+" : ""}${driftThis})` +
+          ` dir=${result.swapDirection ?? "?"}` +
+          ` fallback=${result.fallbackFired ?? "?"}` +
           ` (total=${totalBundles})`
         );
+
+        // Append drift entry for calibration analysis
+        fs.appendFileSync("logs/drift-calibration.log", JSON.stringify({
+          ts: new Date().toISOString(),
+          cycle: totalCycles,
+          bundle: totalBundles,
+          tickBefore: currentTickForRebalance,
+          tickAfter: tickAfterCycle,
+          drift: driftThis,
+          swapDirection: result.swapDirection,
+          fallbackFired: result.fallbackFired,
+          cashNet: result.cashNetProj,
+        }) + "\n");
       } else {
         consecutiveFails++;
         console.warn(

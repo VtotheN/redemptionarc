@@ -147,9 +147,10 @@ async function main() {
   console.log(`Tick before:       ${tickBefore}`);
   console.log(`sqrtPrice before:  ${sqrtPriceBefore}`);
 
-  // sqrtPriceLimit for tick 93000 — lower bound for aToB swap
-  const sqrtPriceLimit = tickToSqrtPriceX64(93000);
-  console.log(`sqrtPriceLimit:    ${sqrtPriceLimit} (tick 93000)`);
+  // sqrtPriceLimit for tick 92520 (center) — lower bound for aToB swap
+  const targetTick = Number(process.env.TARGET_TICK ?? "92520");
+  const sqrtPriceLimit = tickToSqrtPriceX64(targetTick);
+  console.log(`sqrtPriceLimit:    ${sqrtPriceLimit} (tick ${targetTick})`);
 
   // Build swap IX
   // Current tick ~98034 is in TICK_ARRAY_95744 range; going down through 90112 → 84480
@@ -160,7 +161,7 @@ async function main() {
     ta0:                    TICK_ARRAY_95744,
     ta1:                    TICK_ARRAY_90112,
     ta2:                    TICK_ARRAY_84480,
-    amount:                 200_000_000n,
+    amount:                 BigInt(process.env.SWAP_AMOUNT_USDC ? Math.round(Number(process.env.SWAP_AMOUNT_USDC) * 1e6) : 500_000_000),
     otherAmountThreshold:   0n,
     sqrtPriceLimit,
     amountSpecifiedIsInput: true,
@@ -189,6 +190,19 @@ async function main() {
   console.log("Last 10 logs:");
   logs.slice(-10).forEach((l) => console.log(" ", l));
   console.log("---");
+
+  // Parse post-sim accounts to get projected tick + USDC consumed
+  if (sim.value.accounts) {
+    console.log("Post-sim accounts available:", sim.value.accounts.length);
+  }
+  // Log summary
+  const usdcBefore = (await conn.getTokenAccountBalance(ownerA, "confirmed")).value.uiAmount ?? 0;
+  console.log(`\nDRY_RUN SUMMARY:`);
+  console.log(`  tick before:    ${tickBefore}`);
+  console.log(`  target tick:    ${targetTick}`);
+  console.log(`  USDC limit:     $${Number(process.env.SWAP_AMOUNT_USDC ?? 500)}`);
+  console.log(`  USDC wallet:    $${usdcBefore.toFixed(2)}`);
+  console.log(`  sim ok:         ${!sim.value.err}`);
 
   if (dryRun || !allowLive) {
     console.log("\nDRY_RUN — set DRY_RUN=false ALLOW_LIVE=true to execute");

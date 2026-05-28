@@ -357,6 +357,8 @@ export type CycleResult = {
   simOk: boolean;
   cashNetProj: number;
   bundleId?: string;
+  swapDirection?: "USDC_TO_HOP" | "HOP_TO_USDC";
+  fallbackFired?: boolean;
 };
 
 async function main(): Promise<CycleResult> {
@@ -521,11 +523,12 @@ async function main(): Promise<CycleResult> {
   // Fallback to USDC→HOP if wallet HOP after addLiq < hopSwap2 (can't fund alternate first swap)
   const hopAfterAddLiq = hopBalance > hopToSend ? hopBalance - hopToSend : 0n;
   const tickDistance   = tickCurrent - POOL_CENTER_TICK;
-  // above center → aToB=true  (USDC→HOP first) → tick goes down → net drift toward center
-  // below center → aToB=false (HOP→USDC first) → tick goes up  → net drift toward center
+  // above center → aToB=false (HOP→USDC first, output-spec) → net drift -2 toward center
+  // below center → aToB=true  (USDC→HOP first, input-spec)  → net drift +2 toward center
+  // Each direction's round-trip asymmetry flips: output-spec-first = net DOWN, input-spec-first = net UP
   const firstSwapAtoB  = !alternateDirection || hopAfterAddLiq < hopSwap2
     ? true
-    : tickDistance > 0;
+    : tickDistance < 0;
   const swapDirection: "USDC_TO_HOP" | "HOP_TO_USDC" = firstSwapAtoB ? "USDC_TO_HOP" : "HOP_TO_USDC";
   console.log(`tickBefore:     ${tickBefore}  center:${POOL_CENTER_TICK}  firstSwap:${swapDirection}`);
 
@@ -566,8 +569,8 @@ async function main(): Promise<CycleResult> {
     } else {
       // ascending swap1 may cross 95744 boundary — provide full asc sequence
       s1ta0 = TICK_ARRAY_90112; s1ta1 = TICK_ARRAY_95744; s1ta2 = TICK_ARRAY_101376;
-      // swap2 descending starts post-swap1 — sparse builder picks 95744 if tick crossed, else 90112
-      s2ta0 = TICK_ARRAY_95744; s2ta1 = TICK_ARRAY_90112; s2ta2 = TICK_ARRAY_84480;
+      // swap2 descends from post-swap1 tick (still in 90112 range); ta0 must match current tick array
+      s2ta0 = TICK_ARRAY_90112; s2ta1 = TICK_ARRAY_84480; s2ta2 = TICK_ARRAY_84480;
     }
   }
 
@@ -732,7 +735,8 @@ async function main(): Promise<CycleResult> {
   console.log(`cashNet proj: $${cashNetProj.toFixed(6)} (T22-only)`);
   console.log(`receipt: receipts/${receiptName}`);
 
-  const baseResult: CycleResult = { verdict, simOk, cashNetProj };
+  const fallbackFired = !alternateDirection || hopAfterAddLiq < hopSwap2;
+  const baseResult: CycleResult = { verdict, simOk, cashNetProj, swapDirection, fallbackFired };
   if (dryRun || !allowLive || !simOk || !cashNetIsPositive) return baseResult;
 
   const skipJito = process.env.JITO_SKIP === "true";
