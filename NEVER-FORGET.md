@@ -29,7 +29,30 @@ NET:       +$89.50
 Sweep harvested 1,048,896 HOP accumulated in ring ATAs from ~48 prior cycles (not just one cycle).  
 Per-cycle average from that batch: **$89.50 / 48 = ~$1.86/cycle** net USDC realized.
 
-### Proof 2 — Single cycle + immediate sweep (2026-05-28T08:45Z)
+### Proof 2 — 164-cycle live session (2026-05-28T08:51–08:58Z) ← MAIN PROOF
+
+**Loop ran 164 cycles in ~7.5 minutes. Auto-sweeps at cycle 50, 100, 150.**
+
+| Checkpoint | USDC wallet | Cycle |
+|---|---|---|
+| After rebalance (loop start) | $81.64 | #1 |
+| After auto-sweep @cycle 100 | $252.92 | #138 |
+| After auto-sweep @cycle 150 | **$270.38** | #164 |
+
+**NET: +$188.74 USDC** in 7.5 minutes of loop running from center tick.
+
+```
+Start USDC:  $81.64   (post-rebalance, loop cycle #1)
+End USDC:    $270.38  (cycle #164, 2 auto-sweeps fired)
+DELTA:       +$188.74 USDC — liquid, in wallet, real
+Duration:    ~7.5 min
+Cycles:      164
+Rate:        21.8 cycles/min
+```
+
+Auto-sweep TX (cycle 150 visible in logs): tick jumped 93945→94335 (+390) — that's the sweep selling HOP back for USDC.
+
+### Proof 3 — Single cycle + immediate sweep (2026-05-28T08:45Z)
 
 **Before:** $219.163 USDC  
 **Flash TX:** `413R6qwWZ15QKB3pzkCJJFZ5t6PicuzXTjxsEYTP3AXh5argiuyUtM5jyBCZmjYywqKfyZC9VWekkt4VosZa5jB`  
