@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IMÁN v3 — Biblia del Sistema</title>
+<style>
+:root {
+  --bg: #060610;
+  --bg2: #0d0d1f;
+  --bg3: #12122a;
+  --green: #00ff88;
+  --cyan: #00e5ff;
+  --orange: #ff6b35;
+  --yellow: #ffd700;
+  --red: #ff3355;
+  --purple: #a855f7;
+  --text: #e0e0e0;
+  --dim: #666;
+  --glow-g: 0 0 12px #00ff8855, 0 0 24px #00ff8822;
+  --glow-c: 0 0 12px #00e5ff55, 0 0 24px #00e5ff22;
+  --glow-o: 0 0 12px #ff6b3555, 0 0 24px #ff6b3522;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Courier New', monospace;
+  overflow-x: hidden;
+}
+#bg-canvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; opacity:0.25; }
+
+/* HEADER */
+.hdr {
+  background: linear-gradient(180deg,#06061044,#0d0d1f);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #00ff8833;
+  padding: 16px 40px;
+  display: flex; align-items:center; justify-content:space-between;
+  position: sticky; top:0; z-index:100;
+  box-shadow: 0 2px 30px #00ff8815;
+}
+.logo { font-size:1.8rem; font-weight:900; letter-spacing:6px; color:var(--green); text-shadow:var(--glow-g); }
+.logo em { color:var(--cyan); font-style:normal; }
+.logo small { font-size:0.6rem; color:var(--dim); letter-spacing:3px; display:block; margin-top:2px; }
+.sbars { display:flex; gap:12px; align-items:center; }
+.spill {
+  display:flex; align-items:center; gap:7px;
+  background:#060618; border:1px solid #1a1a3a;
+  border-radius:4px; padding:5px 12px; font-size:0.7rem; letter-spacing:1px;
+}
+.spill.g { border-color:#00ff8833; }
+.spill.c { border-color:#00e5ff33; }
+.spill.o { border-color:#ff6b3533; }
+.dot {
+  width:7px; height:7px; border-radius:50%;
+  background:var(--green); animation:pulse-g 1.5s infinite;
+}
+.dot.c { background:var(--cyan); animation:pulse-c 1.5s infinite; }
+.dot.o { background:var(--orange); animation:pulse-o 1.5s infinite; }
+@keyframes pulse-g { 0%,100%{box-shadow:0 0 4px var(--green);opacity:1} 50%{box-shadow:0 0 12px var(--green);opacity:.5} }
+@keyframes pulse-c { 0%,100%{box-shadow:0 0 4px var(--cyan);opacity:1}   50%{box-shadow:0 0 12px var(--cyan);opacity:.5}   }
+@keyframes pulse-o { 0%,100%{box-shadow:0 0 4px var(--orange);opacity:1} 50%{box-shadow:0 0 12px var(--orange);opacity:.5} }
+
+/* NAV */
+nav {
+  background:var(--bg2); border-bottom:1px solid #1a1a33;
+  padding:0 40px; display:flex; overflow-x:auto; gap:0;
+}
+nav a {
+  color:var(--dim); text-decoration:none; padding:12px 18px;
+  font-size:0.72rem; letter-spacing:2px; text-transform:uppercase;
+  border-bottom:2px solid transparent; transition:all .2s; white-space:nowrap;
+}
+nav a:hover, nav a.on { color:var(--green); border-bottom-color:var(--green); }
+
+/* MAIN */
+.wrap { max-width:1440px; margin:0 auto; padding:36px 40px; }
+section { display:none; }
+section.on { display:block; }
+
+/* CARD */
+.card {
+  background:var(--bg2); border:1px solid #1a1a33;
+  border-radius:8px; padding:22px; margin-bottom:22px;
+}
+.card.g { border-color:#00ff8828; box-shadow:var(--glow-g); }
+.card.c { border-color:#00e5ff28; box-shadow:var(--glow-c); }
+.card.o { border-color:#ff6b3528; box-shadow:var(--glow-o); }
+.ctitle {
+  font-size:0.65rem; letter-spacing:3px; text-transform:uppercase;
+  color:var(--dim); margin-bottom:16px; display:flex; align-items:center; gap:10px;
+}
+.ctitle::after { content:''; flex:1; height:1px; background:#1a1a33; }
+
+/* GRIDS */
+.g2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.g3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px; }
+.g4 { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+@media(max-width:1100px) { .g4 { grid-template-columns:repeat(2,1fr); } }
+@media(max-width:800px)  { .g2,.g3 { grid-template-columns:1fr; } }
+
+/* STAT */
+.stat { background:var(--bg3); border:1px solid #1a1a33; border-radius:6px; padding:16px; text-align:center; }
+.sv { font-size:1.9rem; font-weight:900; color:var(--green); text-shadow:var(--glow-g); display:block; margin-bottom:3px; }
+.sv.c { color:var(--cyan); text-shadow:var(--glow-c); }
+.sv.o { color:var(--orange); text-shadow:var(--glow-o); }
+.sv.y { color:var(--yellow); }
+.sl { font-size:0.62rem; letter-spacing:2px; text-transform:uppercase; color:var(--dim); }
+
+/* SECTION HEADER */
+.sh { margin-bottom:28px; }
+.sh h2 { font-size:1.8rem; font-weight:900; letter-spacing:5px; text-transform:uppercase; margin-bottom:6px; }
+.sh p { color:var(--dim); font-size:0.82rem; letter-spacing:1px; }
+.sh .line { width:55px; height:3px; background:var(--green); box-shadow:var(--glow-g); margin-top:10px; border-radius:2px; }
+.sh .line.c { background:var(--cyan); box-shadow:var(--glow-c); }
+.sh .line.o { background:var(--orange); box-shadow:var(--glow-o); }
+.sh .line.y { background:var(--yellow); }
+
+/* CODE */
+pre, code { font-family:'Courier New',monospace; font-size:0.78rem; }
+.cb {
+  background:#03030e; border:1px solid #1a1a2e;
+  border-radius:4px; padding:16px; overflow-x:auto; line-height:1.7;
+}
+.cb .cm { color:#4a4a6a; }
+.cb .kw { color:var(--cyan); }
+.cb .st { color:var(--orange); }
+.cb .nm { color:var(--yellow); }
+.cb .fn { color:var(--green); }
+
+/* TABLES */
+table { width:100%; border-collapse:collapse; font-size:0.79rem; }
+th {
+  background:#080818; color:var(--dim); font-size:0.63rem;
+  letter-spacing:2px; text-transform:uppercase; padding:10px 14px;
+  text-align:left; border-bottom:1px solid #1a1a33;
+}
+td { padding:10px 14px; border-bottom:1px solid #0d0d1f; }
+tr:hover td { background:#0d0d1f; }
+
+/* BADGES */
+.b { display:inline-block; padding:2px 8px; border-radius:3px; font-size:0.62rem; letter-spacing:1px; font-weight:bold; }
+.bl { background:#00ff8815; color:var(--green); border:1px solid var(--green); }
+.bp { background:#ff6b3515; color:var(--orange); border:1px solid var(--orange); }
+.bd { background:#ff333515; color:var(--red); border:1px solid var(--red); }
+.bm { background:#00e5ff15; color:var(--cyan); border:1px solid var(--cyan); }
+
+/* MECH CARDS */
+.mc {
+  background:var(--bg3); border-left:3px solid var(--green);
+  padding:14px 18px; margin-bottom:10px; border-radius:0 6px 6px 0;
+}
+.mc.c { border-left-color:var(--cyan); }
+.mc.o { border-left-color:var(--orange); }
+.mc.y { border-left-color:var(--yellow); }
+.mt { font-size:0.78rem; font-weight:bold; letter-spacing:2px; color:var(--green); margin-bottom:5px; }
+.mc.c .mt { color:var(--cyan); }
+.mc.o .mt { color:var(--orange); }
+.mc.y .mt { color:var(--yellow); }
+.md { font-size:0.78rem; color:var(--dim); line-height:1.6; }
+.mf {
+  font-family:monospace; font-size:0.73rem; color:var(--text);
+  background:#03030e; padding:5px 9px; border-radius:3px; margin-top:7px; display:inline-block;
+}
+
+/* BUNDLE VIZ */
+.bv { display:flex; flex-direction:column; gap:4px; }
+.bt {
+  display:flex; align-items:center; gap:12px;
+  background:var(--bg3); border:1px solid #1a1a33;
+  padding:9px 13px; border-radius:4px; font-size:0.78rem;
+  transition:all .15s;
+}
+.bt:hover { border-color:var(--green); box-shadow:var(--glow-g); }
+.bn { color:var(--dim); font-size:0.68rem; width:22px; }
+.btype {
+  background:#00ff8812; border:1px solid var(--green);
+  color:var(--green); padding:2px 7px; border-radius:3px;
+  font-size:0.62rem; letter-spacing:1px;
+}
+.btype.s { background:#00e5ff12; border-color:var(--cyan); color:var(--cyan); }
+.btype.t { background:#ff6b3512; border-color:var(--orange); color:var(--orange); }
+.ba { text-align:center; color:#333; font-size:0.68rem; padding:1px 0; }
+
+/* FLOW */
+.fl {
+  font-family:monospace; font-size:0.78rem; line-height:1.8;
+  color:var(--text); white-space:pre; overflow-x:auto;
+}
+.fl .fg { color:var(--green); }
+.fl .fc { color:var(--cyan); }
+.fl .fo { color:var(--orange); }
+.fl .fy { color:var(--yellow); }
+.fl .fd { color:var(--dim); }
+
+/* MATH */
+.mth {
+  background:#03030e; border:1px solid #1a1a2e;
+  border-radius:4px; padding:16px; font-family:monospace;
+  font-size:0.82rem; line-height:2.1; margin:10px 0;
+}
+.mth .v { color:var(--cyan); }
+.mth .op { color:var(--dim); }
+.mth .n  { color:var(--yellow); }
+.mth .r  { color:var(--green); font-weight:bold; }
+.mth .cm { color:#3a3a5a; }
+
+/* SPREAD BAR */
+.smeter { margin:14px 0; }
+.sbg {
+  background:#1a1a33; border-radius:100px; height:18px;
+  position:relative; overflow:visible;
+}
+.sbar {
+  height:100%; border-radius:100px;
+  background:linear-gradient(90deg,#1a2a1a,var(--green));
+  transition:width 1s ease; position:relative;
+}
+.sbar::after {
+  content:''; position:absolute; right:-1px; top:-3px;
+  width:3px; height:24px; background:var(--green);
+  border-radius:2px; box-shadow:var(--glow-g);
+}
+.stline {
+  position:absolute; left:43.3%;
+  top:-5px; bottom:-5px; width:2px;
+  background:var(--orange); box-shadow:var(--glow-o);
+}
+.stlabel {
+  position:absolute; left:44.5%; top:-18px;
+  font-size:0.62rem; color:var(--orange);
+}
+.smarks { display:flex; justify-content:space-between; font-size:0.62rem; color:var(--dim); margin-top:5px; }
+
+/* TIMELINE */
+.tl { position:relative; padding-left:28px; }
+.tl::before {
+  content:''; position:absolute; left:7px; top:0; bottom:0;
+  width:2px; background:linear-gradient(180deg,var(--green),var(--cyan));
+}
+.ti { margin-bottom:18px; position:relative; }
+.td {
+  position:absolute; left:-23px; top:4px;
+  width:9px; height:9px; border-radius:50%;
+  background:var(--green); box-shadow:var(--glow-g);
+}
+.ti:nth-child(2n) .td { background:var(--cyan); box-shadow:var(--glow-c); }
+.tlb { font-size:0.62rem; letter-spacing:1px; color:var(--dim); margin-bottom:3px; }
+.tlc { font-size:0.79rem; line-height:1.6; }
+
+/* HIGHLIGHT */
+.hb {
+  background:#00ff8808; border:1px solid #00ff8828;
+  border-radius:4px; padding:14px; margin:12px 0;
+  font-size:0.79rem;
+}
+.wb {
+  background:#ff6b3508; border:1px solid #ff6b3528;
+  border-radius:4px; padding:14px; margin:12px 0;
+  font-size:0.79rem; color:var(--dim);
+}
+
+/* POOL CARD */
+.pc {
+  background:var(--bg3); border:1px solid #1a1a33;
+  border-radius:8px; padding:18px; position:relative; overflow:hidden;
+}
+.pc::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg,var(--green),var(--cyan));
+}
+.pn { font-size:1.1rem; font-weight:bold; color:var(--green); margin-bottom:7px; letter-spacing:2px; }
+
+/* COLORS */
+.g  { color:var(--green); }
+.c  { color:var(--cyan); }
+.o  { color:var(--orange); }
+.y  { color:var(--yellow); }
+.r  { color:var(--red); }
+.d  { color:var(--dim); }
+.mono { font-family:monospace; font-size:0.72rem; }
+.mono:hover { color:var(--cyan); cursor:pointer; }
+
+/* IX ROW */
+.ixrow {
+  display:grid; grid-template-columns:38px 150px 1fr 70px;
+  gap:10px; padding:9px 0; border-bottom:1px solid #0d0d1f;
+  font-size:0.79rem; align-items:start;
+}
+.ixn {
+  color:var(--dim); font-size:0.68rem; font-weight:bold;
+  background:#080818; border-radius:3px; padding:3px 5px; text-align:center;
+}
+
+/* FADE IN */
+.fi { opacity:0; transform:translateY(16px); transition:opacity .45s ease,transform .45s ease; }
+.fi.v { opacity:1; transform:none; }
+
+footer {
+  border-top:1px solid #1a1a33; padding:20px 40px;
+  text-align:center; font-size:0.68rem; color:var(--dim);
+  letter-spacing:2px; margin-top:50px;
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div>
+    <div class="logo">IMA&#x0307;N <em>v3</em></div>
+    <small>MAINNET LIVE · PINOCCHIO AMM BOT-TRAP · SOLANA</small>
+  </div>
+  <div class="sbars">
+    <div class="spill g"><div class="dot"></div>SIMBIONTE v2</div>
+    <div class="spill c"><div class="dot c"></div>synthSOL LIVE</div>
+    <div class="spill g"><div class="dot"></div>FDV $500k</div>
+    <div class="spill" style="font-size:0.65rem">FVxMBH · 0.41 SOL · vault 2.16 SOL</div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="on" onclick="show('overview',this);return false">OVERVIEW</a>
+  <a href="#" onclick="show('trampa',this);return false">TRAMPA v5</a>
+  <a href="#" onclick="show('cronometro',this);return false">CRONÓMETRO</a>
+  <a href="#" onclick="show('escorpion',this);return false">ESCORPIÓN</a>
+  <a href="#" onclick="show('pools',this);return false">PISCINAS</a>
+  <a href="#" onclick="show('math',this);return false">MATEMÁTICAS</a>
+  <a href="#" onclick="show('roadmap',this);return false">ROADMAP</a>
+  <a href="#" onclick="show('deploy',this);return false">DEPLOY</a>
+  <a href="#" onclick="show('simbionte',this);return false">SIMBIONTE v2</a>
+  <a href="#" onclick="show('fdvboost',this);return false">FDV BOOST ★</a>
+</nav>
+
+<div class="wrap">
+
+<!-- ══════════════════════════════════════════════════
+     OVERVIEW
+══════════════════════════════════════════════════ -->
+<section id="overview" class="on">
+  <div class="sh fi">
+    <h2><span class="g">ARQUITECTURA</span> <span class="c">GENERAL</span></h2>
+    <p>Tres componentes. Un sistema de captura de valor compuesto.</p>
+    <div class="line"></div>
+  </div>
+
+  <div class="g4 fi">
+    <div class="stat"><span class="sv">3</span><span class="sl">Pools LIVE</span></div>
+    <div class="stat"><span class="sv c">$119.79</span><span class="sl">Capital Arb USDC</span></div>
+    <div class="stat"><span class="sv o">65 bps</span><span class="sl">Spread Threshold</span></div>
+    <div class="stat"><span class="sv y">~48h</span><span class="sl">Epoch Cycle</span></div>
+  </div>
+
+  <div class="card g fi" style="margin-top:20px">
+    <div class="ctitle">ARQUITECTURA VISUAL</div>
+    <div class="fl">
+┌──────────────────────────────────────────────────────────────────────┐
+│                       <span class="fg">IMÁN v3 MAINNET</span>                            │
+│                                                                      │
+│  ┌────────────────┐    ┌─────────────────┐    ┌──────────────────┐  │
+│  │  <span class="fg">TRAMPA v5</span>      │    │   <span class="fc">ESCORPIÓN</span>       │    │  <span class="fo">CRONÓMETRO</span>      │  │
+│  │  <span class="fd">(on-chain)</span>      │◄───│   <span class="fd">(VPS Rust)</span>      │    │  <span class="fd">(VPS Rust)</span>     │  │
+│  │ <span class="fd">FpFXNWCm...</span>     │    │   <span class="fd">204.168.225.7</span>   │    │  <span class="fd">204.168.225.7</span>  │  │
+│  │ <span class="fd">Pinocchio AMM</span>  │    │                 │    │                │  │
+│  │                │    │ ✓ 3 pools watch │    │ ✓ spread scan  │  │
+│  │ PROPINA 75%   │    │ ✓ rebalance     │    │ ✓ Mode B arb   │  │
+│  │ CONCENTRADOR  │    │ ✓ synth oracle  │    │ ✓ Mode A epoch │  │
+│  │ LATIDO        │    │ ✓ MAGNETAR upd  │    │ ✓ Jito bundle  │  │
+│  │ ANCLA_TWAP    │    └─────────────────┘    └──────────────────┘  │
+│  └───────┬────────┘                                  │              │
+│          │                                           │ Jupiter API  │
+│    ┌─────┴───────────────────┐                       │ Orca V2      │
+│    │ SOL/USDC   (Pyth V1)    │◄──────────────────────┘ Jito engine  │
+│    │ mSOL/USDC  (Pyth V1)    │                                      │
+│    │ JitoSOL/SOL (Synth PDA) │                                      │
+│    └─────────────────────────┘                                      │
+└──────────────────────────────────────────────────────────────────────┘
+    </div>
+  </div>
+
+  <div class="g3 fi">
+    <div class="card g">
+      <div class="ctitle">TRAMPA v5</div>
+      <p style="font-size:0.82rem;line-height:1.7;color:var(--dim);margin-bottom:12px">
+        AMM on-chain (Pinocchio, sin Anchor). Captura fees de bots que intentan arbitrar.
+        Cuatro mecanismos compuestos: fee dinámico proporcional a la divergencia,
+        rango activo, ventana fee-free aleatoria, precio reference TWAP.
+      </p>
+      <span class="b bl">LIVE MAINNET</span>
+      <span class="b bm" style="margin-left:6px">PINOCCHIO</span>
+      <div style="margin-top:10px;font-size:0.72rem;color:var(--dim)">
+        Program: <span class="mono g">FpFXNWCm5qM4t9GKttp9Jkx8YpYfxgW5Cu37T8pdr8oE</span>
+      </div>
+    </div>
+    <div class="card c">
+      <div class="ctitle">ESCORPIÓN</div>
+      <p style="font-size:0.82rem;line-height:1.7;color:var(--dim);margin-bottom:12px">
+        Monitor off-chain en VPS. Detecta divergencia oracle/pool en las 3 piscinas.
+        Trigger rebalance vía Jito bundle si div &gt; 10bps. Refresca synth oracle
+        JitoSOL cada ~100 slots. Actualiza MAGNETAR on-chain.
+      </p>
+      <span class="b bl">VPS 204.168.225.7</span>
+      <span class="b bm" style="margin-left:6px">SYSTEMD</span>
+      <div style="margin-top:10px;font-size:0.72rem;color:var(--dim)">
+        Binary: <span class="mono">/root/iman-escorpion/target/release/iman-escorpion</span>
+      </div>
+    </div>
+    <div class="card o">
+      <div class="ctitle">CRONÓMETRO</div>
+      <p style="font-size:0.82rem;line-height:1.7;color:var(--dim);margin-bottom:12px">
+        Arb bot off-chain. Threshold 65bps. Modo B: trade $100 si spread &gt;65bps.
+        Modo A: bundle 5 TXs (mSOL+JitoSOL) cuando slots_left &lt;500.
+        Polling 400ms en ventana epoch. Jupiter API + Jito bundles.
+      </p>
+      <span class="b bl">DRY_RUN=false</span>
+      <span class="b bm" style="margin-left:6px">JITO BUNDLE</span>
+      <div style="margin-top:10px;font-size:0.72rem;color:var(--dim)">
+        Binary: <span class="mono">/root/iman/cronometro/target/.../iman-cronometro</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card fi">
+    <div class="ctitle">FLUJO DE VALOR — ¿CÓMO CAPTURA IMÁN v3?</div>
+    <div class="g2">
+      <div>
+        <div class="mc"><div class="mt">① Bot externo detecta divergencia</div><div class="md">Ve precio TRAMPA vs oracle. Entra swap. PROPINA fee = 25bps + 75%×div. Captura el 100% del arb spread menos su ventaja marginal.</div></div>
+        <div class="mc c"><div class="mt">② ESCORPIÓN rebalancea</div><div class="md">Detecta div post-swap &gt; 10bps. Jito bundle [rebalance_ix, tip]. Pool vuelve al precio oracle. Reset para próxima trampa.</div></div>
+      </div>
+      <div>
+        <div class="mc o"><div class="mt">③ CRONÓMETRO captura spike époch</div><div class="md">Boundary époch: spread mSOL/JitoSOL 100-200bps por 3-10 slots. Bundle 5 TXs: [mSOL_buy, mSOL_sell, JitoSOL_buy, JitoSOL_sell, tip] en UN slot.</div></div>
+        <div class="mc y"><div class="mt">④ FVxMBH acumula USDC</div><div class="md">Cada bundle époch: +$0.70-$1.60 net. Capital recicla (TX2 USDC disponible para TX3 mismo slot). SOL 3.34 gas. USDC 119.79 arb capital.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     TRAMPA v5
+══════════════════════════════════════════════════ -->
+<section id="trampa">
+  <div class="sh fi">
+    <h2><span class="g">TRAMPA</span> <span class="c">v5</span></h2>
+    <p>On-chain Bot-Trap AMM — Pinocchio (sin Anchor) — FpFXNWCm5qM4t9GKttp9Jkx8YpYfxgW5Cu37T8pdr8oE</p>
+    <div class="line"></div>
+  </div>
+
+  <div class="g4 fi">
+    <div class="stat"><span class="sv">75%</span><span class="sl">PROPINA pct</span></div>
+    <div class="stat"><span class="sv c">±200</span><span class="sl">CONCENTRADOR bps</span></div>
+    <div class="stat"><span class="sv o">5k–12k</span><span class="sl">LATIDO slots</span></div>
+    <div class="stat"><span class="sv y">MAX()</span><span class="sl">ANCLA_TWAP</span></div>
+  </div>
+
+  <div class="card fi" style="margin-top:18px">
+    <div class="ctitle">4 MECANISMOS COMPUESTOS</div>
+    <div class="g2">
+      <div>
+        <div class="mc">
+          <div class="mt">PROPINA — Fee Dinámico</div>
+          <div class="md">Fee crece con la divergencia. Bot externo paga más de lo que gana. No hay arbitraje neto positivo.</div>
+          <div class="mf">fee = 25bps + 75% × div_bps<br>div=30bps → fee=47.5bps (bot net negativo si div &lt; 100)</div>
+        </div>
+        <div class="mc c" style="margin-top:10px">
+          <div class="mt">CONCENTRADOR — Rango Activo</div>
+          <div class="md">Solo acepta swaps dentro de ±200bps del precio oracle. Fuera del rango → rechaza instrucción.</div>
+          <div class="mf">if |pool − oracle| / oracle × 10000 &gt; 200:<br>    reject_swap() → "price out of range"</div>
+        </div>
+      </div>
+      <div>
+        <div class="mc o">
+          <div class="mt">LATIDO — Ventana Fee-Free</div>
+          <div class="md">Ventana pseudo-aleatoria 5k–12k slots SIN fee. Atrae liquidez legítima. Dificulta predictibilidad para bots.</div>
+          <div class="mf">fee = (slot in latido_window) ? 0 : propina_fee<br>next_window = last_latido + rand(5000..12000)</div>
+        </div>
+        <div class="mc y" style="margin-top:10px">
+          <div class="mt">ANCLA_TWAP — Anti-Dump</div>
+          <div class="md">Precio de referencia = MAX(spot, TWAP). Protege contra manipulación temporal del precio spot.</div>
+          <div class="mf">ref_price = MAX(oracle_spot, price_history_avg)<br>fee_calc basado en ref_price, no spot directo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card fi">
+    <div class="ctitle">INSTRUCCIONES (0–8)</div>
+    <div class="ixrow" style="color:var(--dim);font-size:0.62rem;letter-spacing:1px;padding-bottom:7px;border-bottom:1px solid #1a1a33">
+      <div>IX</div><div>NOMBRE</div><div>DESCRIPCIÓN</div><div>QUIÉN</div>
+    </div>
+    <div class="ixrow"><div class="ixn">0</div><div class="g mono">initialize_pool</div><div class="d">Crea pool PDA + vaults + config inicial (propina_pct, concentrador, latido params)</div><div class="g" style="font-size:0.7rem">owner</div></div>
+    <div class="ixrow"><div class="ixn">1</div><div class="g mono">swap</div><div class="d">Swap A↔B con PROPINA+CONCENTRADOR+LATIDO+ANCLA_TWAP. Oracle owner check: Pyth V1 OR synth PDA.</div><div class="d" style="font-size:0.7rem">anyone</div></div>
+    <div class="ixrow"><div class="ixn">2</div><div class="g mono">rebalance</div><div class="d">Drena 1%/ciclo del reserva mayor al vault. Mantiene pool al precio oracle. Incentivo al caller.</div><div class="c" style="font-size:0.7rem">escorpión</div></div>
+    <div class="ixrow"><div class="ixn">3</div><div class="g mono">collect_fees</div><div class="d">Retira fees acumulados del fee_vault → authority wallet</div><div class="g" style="font-size:0.7rem">owner</div></div>
+    <div class="ixrow"><div class="ixn">4</div><div class="g mono">fund_pool</div><div class="d">Añade liquidez al pool (vault A + vault B). GUSANO script lo usa para auto-deploy.</div><div class="g" style="font-size:0.7rem">owner</div></div>
+    <div class="ixrow"><div class="ixn">5</div><div class="g mono">update_magnetar</div><div class="d">Actualiza on-chain price feed / tracking state. 83 bytes: pool_pk, oracle_price, pool_price, div_bps, reserves.</div><div class="c" style="font-size:0.7rem">escorpión</div></div>
+    <div class="ixrow"><div class="ixn">6</div><div class="g mono">lock_opportunity</div><div class="d">Bloquea slot de oportunidad para keeper prioritario</div><div class="d" style="font-size:0.7rem">keeper</div></div>
+    <div class="ixrow"><div class="ixn">7</div><div class="g mono">claim_incentivo</div><div class="d">Reclama incentivo de rebalance (incentivo_pct del fee capturado, default 10%)</div><div class="d" style="font-size:0.7rem">keeper</div></div>
+    <div class="ixrow" style="background:#00ff8806">
+      <div class="ixn" style="background:#00ff8815;color:var(--green);border:1px solid var(--green)">8</div>
+      <div style="color:var(--orange)" class="mono">update_synthetic_oracle</div>
+      <div class="d">Crea/actualiza PDA synth Pyth V1 para LSTs sin feed USD. <span class="o">Permissionless.</span> Mode 0=SOL-denominated, Mode 1=USD via SOL_USD feed.</div>
+      <div class="o" style="font-size:0.7rem">anyone</div>
+    </div>
+  </div>
+
+  <div class="g2 fi">
+    <div class="card">
+      <div class="ctitle">POOL STATE — OFFSETS CLAVE</div>
+      <table>
+        <tr><th style="width:60px">OFFSET</th><th style="width:80px">TIPO</th><th>CAMPO</th><th>DESCRIPCIÓN</th></tr>
+        <tr><td class="y mono">+0</td><td class="d">Pubkey</td><td class="g">token_a_mint</td><td class="d">Mint token A</td></tr>
+        <tr><td class="y mono">+32</td><td class="d">Pubkey</td><td class="g">token_b_mint</td><td class="d">Mint token B</td></tr>
+        <tr><td class="y mono">+64</td><td class="d">Pubkey</td><td class="g">token_a_vault</td><td class="d">Token account vault A</td></tr>
+        <tr><td class="y mono">+96</td><td class="d">Pubkey</td><td class="g">token_b_vault</td><td class="d">Token account vault B</td></tr>
+        <tr><td class="y mono">+128</td><td class="d">Pubkey</td><td class="g">oracle_pubkey</td><td class="d">Oracle (Pyth V1 o synth PDA)</td></tr>
+        <tr><td class="y mono">+192</td><td class="d">Pubkey</td><td class="g">fee_vault</td><td class="d">Vault acumulador de fees</td></tr>
+        <tr><td class="y mono">+224</td><td class="d">u16</td><td class="g">propina_pct</td><td class="d">7500 = 75%</td></tr>
+        <tr><td class="y mono">+226</td><td class="d">u16</td><td class="g">concentrador_range_bps</td><td class="d">200 = ±200bps</td></tr>
+        <tr><td class="y mono">+280</td><td class="d">u64</td><td class="g">reserve_a</td><td class="d">Reserva token A (micro-units)</td></tr>
+        <tr><td class="y mono">+288</td><td class="d">u64</td><td class="g">reserve_b</td><td class="d">Reserva token B (micro-units)</td></tr>
+        <tr><td class="y mono">+296</td><td class="d">[u64;64]</td><td class="g">price_history</td><td class="d">TWAP buffer (64 entradas)</td></tr>
+        <tr><td class="y mono">+811</td><td class="d">u8</td><td class="g">mint_a_decimals</td><td class="d">0→9 (backward compat)</td></tr>
+        <tr><td class="y mono">+812</td><td class="d">u8</td><td class="g">mint_b_decimals</td><td class="d">0→6 (backward compat)</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <div class="ctitle">ORACLE SINTÉTICO — JitoSOL/SOL</div>
+      <p style="font-size:0.82rem;line-height:1.7;color:var(--dim);margin-bottom:12px">
+        <strong class="g">Problema:</strong> JitoSOL no tiene feed Pyth V1 en USD.<br>
+        <strong class="g">Solución:</strong> Instrucción 8 crea PDA propio con layout idéntico a Pyth V1.
+        ESCORPIÓN lee tasa del stake pool (total_lamports / supply) cada ~100 slots y escribe en el PDA.
+      </p>
+      <div class="hb">
+        <div style="font-size:0.72rem;color:var(--green);margin-bottom:6px">PDA: EeiNMjxsnieNg2Na4kpVYctB1t23gZzciZoC82zgP6wM</div>
+        <div class="d" style="font-size:0.7rem">
+          Seeds: ["synth_oracle", Jito4APyf...] · Bump: 254 · Mode: 0<br>
+          price@208 (i64 LE) · exp@20 (i32=-6) · 240 bytes · 2,561,280 lamports rent
+        </div>
+      </div>
+      <div class="cb">
+<span class="cm">// ESCORPIÓN cada ~100 slots:</span>
+stake = read_u64_le(&data, <span class="nm">258</span>); <span class="cm">// total_lamports</span>
+supply = read_u64_le(&data, <span class="nm">266</span>); <span class="cm">// pool_token_supply</span>
+rate = stake <span class="kw">as</span> f64 / supply <span class="kw">as</span> f64;
+<span class="cm">// e.g. 1.283807 SOL/JitoSOL</span>
+
+price_write = (rate × <span class="nm">1_000_000.0</span>) <span class="kw">as</span> i64;
+exp_write   = <span class="nm">-6_i32</span>;
+<span class="cm">// Idéntico a Pyth V1 en price@208, exp@20</span>
+
+<span class="cm">// TRAMPA oracle owner check (swap.rs:94):</span>
+owner == PYTH_PROGRAM_ID || owner == program_id
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     CRONÓMETRO
+══════════════════════════════════════════════════ -->
+<section id="cronometro">
+  <div class="sh fi">
+    <h2><span class="o">CRONÓMETRO</span> <span class="bd" style="font-size:1rem;vertical-align:middle;margin-left:12px">✗ MUERTO</span></h2>
+    <p>Cross-DEX Arb Bot + Epoch Spike Captor — APAGADO. Ver razón abajo.</p>
+    <div class="line o"></div>
+  </div>
+
+  <div class="card fi" style="border-color:#ff333533;background:#0d0808;margin-bottom:24px">
+    <div class="ctitle" style="color:var(--red)">POR QUÉ SE APAGÓ</div>
+    <div class="mc o">
+      <div class="mt" style="color:var(--red)">Modelo roto: competía velocidad contra bots con colocation</div>
+      <div class="md">CRONÓMETRO era arb directo cross-DEX (mSOL/JitoSOL epoch spike). Threshold 65bps.
+      El problema: en epoch boundary los spreads duran 3-10 slots. Bots con colocation en Jito tienen ventaja
+      de latencia estructural. Nuestro VPS Helsinki a 180ms de los validators = siempre último.
+      Net revenue: $0. Competición de velocidad no escala sin infraestructura cara.</div>
+      <div class="mf" style="color:var(--red);margin-top:8px">Aprendizaje → solución: ser el VENUE, no el arber.
+      En lugar de competir por el spread, construimos el pool que cobra fees cuando otros arbean.</div>
+    </div>
+    <div class="hb" style="border-color:#ff333533;background:#1a080808;margin-top:10px">
+      <span style="color:var(--red)">REEMPLAZADO POR:</span> synthSOL/USDC Raydium CPMM (FnRbEjy...) + SIMBIONTE v2.
+      Motor = bots externos. Fees van a nosotros. Sin competencia de latencia.
+    </div>
+  </div>
+
+  <div class="g4 fi">
+    <div class="stat"><span class="sv o">65 bps</span><span class="sl">MIN_SPREAD_BPS</span></div>
+    <div class="stat"><span class="sv">$100</span><span class="sl">ARB_USDC_AMOUNT</span></div>
+    <div class="stat"><span class="sv c">500</span><span class="sl">EPOCH_WINDOW_SLOTS</span></div>
+    <div class="stat"><span class="sv y">400ms</span><span class="sl">Sleep Near-Epoch</span></div>
+  </div>
+
+  <div class="card fi" style="margin-top:18px">
+    <div class="ctitle">LOOP PRINCIPAL — 892 LÍNEAS (main.rs)</div>
+    <div class="fl">
+<span class="fg">START</span>
+  │
+  ▼  near_epoch=false, cycle=0
+┌──────────────────────────────────────────────────────────────┐
+│  Cada ciclo (~400ms near_epoch, ~500ms normal)               │
+│                                                              │
+│  <span class="fc">1. get_sol_prices()</span>                                        │
+│     ├── on-chain: Orca sqrt_price → USD (offsets 61-65)      │
+│     └── Jupiter probe: $10 USDC→SOL via market              │
+│  <span class="fc">2. get_lst_prices(JITOSOL_MINT)</span>                            │
+│     ├── probe Orca (dexes=Orca) → price_orca                 │
+│     └── probe Market (excludeDexes=Orca) → price_mkt        │
+│  <span class="fc">3. get_lst_prices(MSOL_MINT)</span>  ← mismo patrón               │
+│                                                              │
+│  → spread = |orca − mkt| / min × 10,000                     │
+└──────────────┬───────────────────────────────────────────────┘
+               │
+       ┌───────┴───────────────────────────┐
+       │                                   │
+       ▼                                   ▼
+<span class="fg">spread > 65bps</span>                  <span class="fc">near_epoch || cycle%20==0</span>
+  && cooldown ok?                   && cooldown ok?
+       │                                   │
+      YES → <span class="fo">run_mode_b()</span>            YES → <span class="fg">check_mode_a()</span>
+               [buy,sell,tip]                    │
+               3 TXs Jito                  slots_left &lt; 500?
+               30s cooldown                     │
+                                          YES → <span class="fo">run_mode_a_bundle()</span>
+                                               5 TXs Jito
+                                               near_epoch=true
+                                               400ms polling
+    </div>
+  </div>
+
+  <div class="g2 fi">
+    <div class="card o">
+      <div class="ctitle">MODE B — SINGLE PAIR ARB</div>
+      <p class="d" style="font-size:0.79rem;margin-bottom:14px">Trigger: spread &gt; 65bps cualquier par. 30s cooldown por par.</p>
+      <div class="bv">
+        <div class="bt"><span class="bn">TX1</span><span class="btype">BUY</span><span>$100 USDC → LST via non-Orca (ZeroFi/AlphaQ/HumidiFi)</span></div>
+        <div class="ba">↓ all-or-nothing bundle</div>
+        <div class="bt"><span class="bn">TX2</span><span class="btype s">SELL</span><span>LST → ~$100.40 USDC via Orca V2 (30bps fee)</span></div>
+        <div class="ba">↓</div>
+        <div class="bt"><span class="bn">TX3</span><span class="btype t">TIP</span><span>100k lamports → Jito tip account (rotativo round-robin)</span></div>
+      </div>
+      <div class="hb" style="margin-top:12px">
+        Guard: <span class="g">usdc_out &gt; usdc_in</span> verificado antes de enviar. Net neg → SKIP.
+      </div>
+    </div>
+
+    <div class="card g">
+      <div class="ctitle">MODE A — EPOCH BUNDLE (5 TXs)</div>
+      <p class="d" style="font-size:0.79rem;margin-bottom:14px">Trigger: slots_left &lt; 500 (~200s antes epoch boundary). Polling 400ms.</p>
+      <div class="bv">
+        <div class="bt"><span class="bn">TX1</span><span class="btype">BUY</span><span>$100 USDC → mSOL via non-Orca</span></div>
+        <div class="bt"><span class="bn">TX2</span><span class="btype s">SELL</span><span>mSOL → ~$100.40 USDC via Orca V2 <span class="g">[profit_1]</span></span></div>
+        <div class="bt"><span class="bn">TX3</span><span class="btype">BUY</span><span>$100 USDC → JitoSOL via non-Orca (usa $100.40 de TX2)</span></div>
+        <div class="bt"><span class="bn">TX4</span><span class="btype s">SELL</span><span>JitoSOL → ~$100.40 USDC via Orca V2 <span class="g">[profit_2]</span></span></div>
+        <div class="ba">↓ all-or-nothing · Jito max=5 TXs</div>
+        <div class="bt"><span class="bn">TX5</span><span class="btype t">TIP</span><span>100k lamports → Jito tip (round-robin 4 accounts)</span></div>
+      </div>
+      <div class="hb" style="margin-top:12px">
+        <span class="g">+$0.80 net</span> (100bps spread) · TX2 USDC → disponible para TX3 en mismo slot ·
+        30s cooldown post-bundle
+      </div>
+    </div>
+  </div>
+
+  <div class="card fi">
+    <div class="ctitle">ROUTING JUPITER — CONFIRMADO EMPÍRICAMENTE (2026-06-09)</div>
+    <table>
+      <tr><th>OPERACIÓN</th><th>DEX FILTER</th><th>RUTA REAL OBSERVADA</th><th>COSTO</th></tr>
+      <tr>
+        <td>BUY mSOL (non-Orca)</td>
+        <td class="mono d">excludeDexes=Orca%20V2,Orca%20CLMM,...</td>
+        <td class="d">ZeroFi → AlphaQ / HumidiFi</td>
+        <td class="o">~27bps</td>
+      </tr>
+      <tr>
+        <td>SELL mSOL (Orca)</td>
+        <td class="mono d">dexes=Orca%20V2,Orca%20CLMM,...</td>
+        <td class="d">Orca V2 pool Hme4Jnqh... directo</td>
+        <td class="o">30bps fee</td>
+      </tr>
+      <tr>
+        <td>BUY JitoSOL (non-Orca)</td>
+        <td class="mono d">excludeDexes=Orca%20V2,...</td>
+        <td class="d">Sanctum / misc venues</td>
+        <td class="o">~27bps</td>
+      </tr>
+      <tr>
+        <td>SELL JitoSOL (Orca)</td>
+        <td class="mono d">dexes=Orca%20V2,...</td>
+        <td class="d">Orca V2 pool JitoSOL/SOL</td>
+        <td class="o">30bps fee</td>
+      </tr>
+    </table>
+    <div class="wb">
+      ⚠ mSOL/SOL pair = NO viable (spread ~0.5bps, Sanctum/Marinade parity).
+      onlyDirectRoutes=true en sell = PEOR resultado ($99.426 vs $99.438).
+      DEX name "Orca Whirlpool" = no matchea rutas reales en Jupiter.
+    </div>
+  </div>
+
+  <div class="card fi">
+    <div class="ctitle">FUNCIONES CLAVE (main.rs)</div>
+    <table>
+      <tr><th style="width:220px">FUNCIÓN</th><th>LÍNEA</th><th>DESCRIPCIÓN</th></tr>
+      <tr><td class="g mono">main()</td><td class="y">761</td><td class="d">Tokio entry point. Config load, keypair, loop principal.</td></tr>
+      <tr><td class="g mono">get_sol_prices()</td><td class="y">184</td><td class="d">Orca on-chain sqrt_price + Jupiter probe SOL/USDC</td></tr>
+      <tr><td class="g mono">get_lst_prices()</td><td class="y">203</td><td class="d">Parallel probe: Orca price + non-Orca price para cualquier LST</td></tr>
+      <tr><td class="g mono">jup_acquire()</td><td class="y">218</td><td class="d">Rate limiter: 2000ms min gap → max 0.5 RPS (Jupiter free tier)</td></tr>
+      <tr><td class="g mono">probe_market_price()</td><td class="y">231</td><td class="d">Jupiter quote $10 con cache 60s TTL. Stale-on-429 fallback.</td></tr>
+      <tr><td class="g mono">parse_orca_pool()</td><td class="y">294</td><td class="d">Binary layout: sqrt_price@65, tick@81, vault_a@133, vault_b@213</td></tr>
+      <tr><td class="g mono">build_arb_leg()</td><td class="y">501</td><td class="d">Helper reusable: quote buy+sell, guard, retorna (buy_tx, sell_tx, profit) o None</td></tr>
+      <tr><td class="g mono">run_mode_a_bundle()</td><td class="y">552</td><td class="d">Epoch bundle: build legs mSOL+JitoSOL, bundle 5 TXs, send Jito</td></tr>
+      <tr><td class="g mono">check_mode_a()</td><td class="y">600</td><td class="d">Lee epoch_info RPC, dispara run_mode_a si slots_left &lt; 500</td></tr>
+      <tr><td class="g mono">run_mode_b()</td><td class="y">614</td><td class="d">Single pair arb: quote buy+sell, guard, bundle [buy,sell,tip]</td></tr>
+      <tr><td class="g mono">send_jito_bundle()</td><td class="y">460</td><td class="d">POST JSON-RPC sendBundle a mainnet.block-engine.jito.wtf</td></tr>
+      <tr><td class="g mono">sign_versioned_tx()</td><td class="y">731</td><td class="d">Deserializa bincode→VersionedTx, actualiza blockhash, firma, serialize</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     ESCORPIÓN
+══════════════════════════════════════════════════ -->
+<section id="escorpion">
+  <div class="sh fi">
+    <h2><span class="c">ESCORPIÓN</span></h2>
+    <p>Multi-Pool Monitor + Rebalancer — iman-escorpion.service — VPS 204.168.225.7</p>
+    <div class="line c"></div>
+  </div>
+
+  <div class="g4 fi">
+    <div class="stat"><span class="sv c">3</span><span class="sl">Pools Monitoreados</span></div>
+    <div class="stat"><span class="sv">10 bps</span><span class="sl">Rebalance Threshold</span></div>
+    <div class="stat"><span class="sv o">~100</span><span class="sl">Slots entre synth updates</span></div>
+    <div class="stat"><span class="sv y">0 bps</span><span class="sl">Div actual (all pools)</span></div>
+  </div>
+
+  <div class="card fi" style="margin-top:18px">
+    <div class="ctitle">LOOP PRINCIPAL</div>
+    <div class="fl">
+Para cada pool [SOL/USDC, mSOL/USDC, JitoSOL/SOL] — cada slot (~400ms):
+
+  <span class="fc">①</span> fetch oracle_account → <span class="fg">parse_pyth_price()</span>
+       price @ offset 208 (i64 LE), exp @ offset 20 (i32 LE)
+       → f64 USD price
+
+  <span class="fc">②</span> fetch pool_account → <span class="fg">parse_pool_state()</span>
+       reserve_a @ 288 (u64 LE), reserve_b @ 296 (u64 LE)
+       dec_a @ 819 (u8), dec_b @ 820 (u8)
+       net_exp = dec_a + 6 − dec_b
+       pool_price_raw = reserve_b × 10^net_exp / reserve_a
+       <span class="fo">pool_price = pool_price_raw / 1_000_000.0</span>  ← CRÍTICO ÷1e6
+
+  <span class="fc">③</span> div_bps = |oracle − pool| / oracle × 10,000
+
+       ┌─────────────────┬────────────────────────────────────────────┐
+       │ div &gt; 10bps?    │ build_rebalance_ix() + send_jito_bundle()  │
+       │ div ≤ 10bps?    │ log "[POOL] OK 0bps"                       │
+       └─────────────────┴────────────────────────────────────────────┘
+
+  <span class="fo">④</span> Cada ~100 slots (pool[0]=SOL/USDC only):
+       <span class="fg">build_magnetar_update_ix()</span> → send_jito_bundle([ix, tip])
+
+  <span class="fo">⑤</span> Cada ~100 slots (siempre):
+       read stake_pool Jito4APyf... (total_lamports@258, supply@266)
+       <span class="fg">build_synth_oracle_update_ix()</span> → send_jito_bundle([ix, tip])
+    </div>
+  </div>
+
+  <div class="g2 fi">
+    <div class="card c">
+      <div class="ctitle">PARSE FORMULA — BUG HISTÓRICO CORREGIDO</div>
+      <div class="cb">
+<span class="cm">// parse_pool_state() — línea 99</span>
+<span class="cm">// Bug: faltaba ÷1e6 → trigger 9999990000bps div en todos los pools</span>
+<span class="cm">// TRAMPA usa micro-units; oracles Pyth retornan USD directo</span>
+
+<span class="kw">let</span> reserve_a = read_u64_le(&data, <span class="nm">288</span>);
+<span class="kw">let</span> reserve_b = read_u64_le(&data, <span class="nm">296</span>);
+<span class="kw">let</span> dec_a = data[<span class="nm">819</span>]; <span class="cm">// 0→9 backward compat</span>
+<span class="kw">let</span> dec_b = data[<span class="nm">820</span>]; <span class="cm">// 0→6 backward compat</span>
+
+<span class="kw">let</span> net_exp = (dec_a <span class="kw">as</span> i32) + <span class="nm">6</span> - (dec_b <span class="kw">as</span> i32);
+<span class="kw">let</span> raw = (reserve_b <span class="kw">as</span> f64) * <span class="nm">10f64</span>.powi(net_exp)
+          / (reserve_a <span class="kw">as</span> f64);
+<span class="kw">let</span> pool_price = raw / <span class="nm">1_000_000.0</span>; <span class="cm">// ← FIX CRÍTICO</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ctitle">MAGNETAR UPDATE (IX 5) — ESTRUCTURA</div>
+      <div class="cb">
+<span class="cm">// build_magnetar_update_ix() — línea 175</span>
+<span class="cm">// 83 bytes: discriminator(1)+bump(1)+count(1)+Entry(80)</span>
+
+<span class="kw">struct</span> MagnetarEntry {   <span class="cm">// 80 bytes</span>
+    pool_pk:      [u8;<span class="nm">32</span>],  <span class="cm">// pool pubkey</span>
+    oracle_price: u64,      <span class="cm">// micro-USD</span>
+    pool_price:   u64,      <span class="cm">// micro-USD</span>
+    div_bps:      u16,      <span class="cm">// divergencia</span>
+    reserve_a:    u64,      <span class="cm">// token A</span>
+    reserve_b:    u64,      <span class="cm">// token B</span>
+    propina_24h:  u64,      <span class="cm">// fees 24h</span>
+}
+<span class="cm">// Solo pool[0] (SOL/USDC) actualiza MAGNETAR</span>
+<span class="cm">// Triggered cada 100 slots → on-chain tracking</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card fi">
+    <div class="ctitle">HERMES EXTENSION — POST-EPOCH (3 NUEVOS PARES)</div>
+    <p class="d" style="font-size:0.82rem;line-height:1.7;margin-bottom:14px">
+      Desbloquea JUP/SOL, bSOL/SOL, PYTH/SOL sin cambiar TRAMPA ni ANCLA.
+      ESCORPIÓN ya hace HTTP para JitoSOL (stake pool). Mismo patrón para Hermes V2.
+      SOL_USD ya disponible (pool 7Arc38Z monitor). División = synth oracle SOL-denominado.
+    </p>
+    <table>
+      <tr><th>TOKEN</th><th>HERMES V2 ID</th><th>PRECIO</th><th>FÓRMULA SYNTH</th><th>NUEVO PAR TRAMPA</th></tr>
+      <tr>
+        <td class="g">JUP</td>
+        <td class="mono d" style="font-size:0.65rem">0x0a0408d619e9380abad35060f9192039...</td>
+        <td class="y">$0.1566</td>
+        <td class="c">JUP_USD / SOL_USD</td>
+        <td>JUP/SOL</td>
+      </tr>
+      <tr>
+        <td class="g">PYTH</td>
+        <td class="mono d" style="font-size:0.65rem">0x0bbf28e9a841a1cc788f6a361b17ca07...</td>
+        <td class="y">$0.0321</td>
+        <td class="c">PYTH_USD / SOL_USD</td>
+        <td>PYTH/SOL</td>
+      </tr>
+      <tr>
+        <td class="g">bSOL</td>
+        <td class="mono d" style="font-size:0.65rem">0x89875379e70f8fbadc17aef315adf3a8...</td>
+        <td class="y">$84.96</td>
+        <td class="c">bSOL_USD / SOL_USD</td>
+        <td>bSOL/SOL</td>
+      </tr>
+    </table>
+    <div class="hb" style="margin-top:12px">
+      Latencia ~50ms desde VPS Hetzner. No requiere cambiar ningún programa on-chain.
+      Resultado: MAGNETAR 3 → 6 pools. CRONÓMETRO puede añadir 3 legs más al epoch bundle.
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     POOLS
+══════════════════════════════════════════════════ -->
+<section id="pools">
+  <div class="sh fi">
+    <h2>PISCINAS <span class="g">LIVE</span></h2>
+    <p>3 pools activos en mainnet-beta · FpFXNWCm5qM4t9GKttp9Jkx8YpYfxgW5Cu37T8pdr8oE</p>
+    <div class="line"></div>
+  </div>
+
+  <div class="g3 fi">
+    <div class="pc">
+      <div class="pn">SOL / USDC</div>
+      <span class="b bl">LIVE</span>
+      <table style="margin-top:12px;font-size:0.75rem">
+        <tr><td class="d" style="width:90px">Pool PDA</td><td><span class="mono c">7Arc38Z415VqT2sc8skNVmebGE1RCKyrctJo2sGd6XUs</span></td></tr>
+        <tr><td class="d">Oracle</td><td><span class="mono" style="font-size:0.65rem">H6ARHf6YXhGYeQfUzQNGk6rDNnLBQKrenN712K4AQJEG</span></td></tr>
+        <tr><td class="d">Tipo oracle</td><td class="g">Pyth V1 SOL/USD</td></tr>
+        <tr><td class="d">Seed</td><td>0.5 SOL + $59.62 USDC</td></tr>
+        <tr><td class="d">Spread actual</td><td class="g">~1.7 bps</td></tr>
+      </table>
+    </div>
+    <div class="pc">
+      <div class="pn">mSOL / USDC</div>
+      <span class="b bl">LIVE</span>
+      <table style="margin-top:12px;font-size:0.75rem">
+        <tr><td class="d" style="width:90px">Pool PDA</td><td><span class="mono c">B4n16UwDe7k6UujuoSqsd7L54VnUVw46GwqCnT6dq268</span></td></tr>
+        <tr><td class="d">Oracle</td><td><span class="mono" style="font-size:0.65rem">E4v1BBgoso9s64TQvmyownAVJbhbEPGyzA3qn4n46qj9</span></td></tr>
+        <tr><td class="d">Tipo oracle</td><td class="g">Pyth V1 mSOL/USD</td></tr>
+        <tr><td class="d">Seed</td><td>0.333 mSOL + $48 USDC</td></tr>
+        <tr><td class="d">Spread actual</td><td class="o">~62 bps ↑ (pre-epoch)</td></tr>
+        <tr><td class="d">mSOL mint</td><td><span class="mono d" style="font-size:0.62rem">mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So</span></td></tr>
+      </table>
+    </div>
+    <div class="pc">
+      <div class="pn">JitoSOL / SOL</div>
+      <span class="b bl">LIVE</span> <span class="b bm" style="margin-left:4px">SYNTH ORACLE</span>
+      <table style="margin-top:12px;font-size:0.75rem">
+        <tr><td class="d" style="width:90px">Pool PDA</td><td><span class="mono c">3JifN9CHEUGkDrfCv2TCa1LzvrfxQabbNuEZrGTnccTH</span></td></tr>
+        <tr><td class="d">Oracle PDA</td><td><span class="mono" style="font-size:0.65rem">EeiNMjxsnieNg2Na4kpVYctB1t23gZzciZoC82zgP6wM</span></td></tr>
+        <tr><td class="d">Tipo oracle</td><td class="o">Synth PDA (stake pool rate)</td></tr>
+        <tr><td class="d">Seed</td><td>0.2 JitoSOL + 0.257 WSOL</td></tr>
+        <tr><td class="d">Rate actual</td><td class="g">1.283807 SOL/JitoSOL</td></tr>
+        <tr><td class="d">Stake pool</td><td><span class="mono d" style="font-size:0.62rem">Jito4APyf642JPZPx3hGc6WWJ8zPKtRbRs4P815Awbb</span></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card fi">
+    <div class="ctitle">PAIR QUEUE — ESTADO COMPLETO</div>
+    <table>
+      <tr><th>PAR</th><th>ESTADO</th><th>ORACLE</th><th>BLOCKER / NOTA</th></tr>
+      <tr><td class="g">SOL/USDC</td><td><span class="b bl">LIVE</span></td><td class="d">Pyth V1 H6ARHf6Y...</td><td class="d">—</td></tr>
+      <tr><td class="g">mSOL/USDC</td><td><span class="b bl">LIVE</span></td><td class="d">Pyth V1 E4v1BBgo...</td><td class="d">—</td></tr>
+      <tr><td class="g">JitoSOL/SOL</td><td><span class="b bl">LIVE</span></td><td class="d">Synth PDA EeiNMjx...</td><td class="d">—</td></tr>
+      <tr><td class="c">JUP/SOL</td><td><span class="b bp">PENDING</span></td><td class="d">Hermes 0x0a0408...</td><td class="d">Post-epoch: ESCORPIÓN Hermes extension</td></tr>
+      <tr><td class="c">bSOL/SOL</td><td><span class="b bp">PENDING</span></td><td class="d">Hermes 0x89875...</td><td class="d">Post-epoch: oracle garbled, Hermes fix</td></tr>
+      <tr><td class="c">PYTH/SOL</td><td><span class="b bp">PENDING</span></td><td class="d">Hermes 0x0bbf28...</td><td class="d">Post-epoch: oracle nrYkQQQ not found, Hermes fix</td></tr>
+      <tr><td class="d">JitoSOL/USDC</td><td><span class="b bd">BLOCKED</span></td><td class="d">Pyth V2 only</td><td class="d">134 bytes (V2), no Pyth V1 USD feed</td></tr>
+    </table>
+  </div>
+
+  <div class="card fi">
+    <div class="ctitle">CAPITAL — FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp</div>
+    <div class="g4">
+      <div class="stat"><span class="sv">3.34</span><span class="sl">SOL (gas)</span></div>
+      <div class="stat"><span class="sv c">$119.79</span><span class="sl">USDC (arb capital)</span></div>
+      <div class="stat"><span class="sv o">$100</span><span class="sl">Per trade Mode B</span></div>
+      <div class="stat"><span class="sv y">$200</span><span class="sl">Per bundle Mode A</span></div>
+    </div>
+    <div class="hb" style="margin-top:14px">
+      Keypair: /Users/velon/.keys/payer-candidate-2.json (local) · /root/.keys/fvxmbh.json (VPS)
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     MATEMÁTICAS
+══════════════════════════════════════════════════ -->
+<section id="math">
+  <div class="sh fi">
+    <h2>MATEMÁTICAS <span class="y">+ VALOR</span></h2>
+    <p>Spread, fees, breakeven, epoch spike, captura de valor</p>
+    <div class="line y"></div>
+  </div>
+
+  <div class="card fi">
+    <div class="ctitle">BREAKEVEN — ¿POR QUÉ 65 BPS? (MEDIDO EMPÍRICAMENTE)</div>
+    <div class="mth">
+<span class="cm">// Round-trip cost medido en mainnet (2026-06-09)</span>
+
+<span class="v">buy_cost</span>   = <span class="n">27</span> bps  <span class="cm">// slippage + fees non-Orca venues en $100</span>
+<span class="v">sell_cost</span>  = <span class="n">30</span> bps  <span class="cm">// Orca V2 fee fija (siempre 30bps)</span>
+<span class="v">total_cost</span> = <span class="n">57</span> bps  <span class="cm">// round-trip en $100 exec</span>
+
+<span class="cm">// Profitability (net_usd = net_bps / 10000 × $100):</span>
+spread = <span class="n">40</span>bps → net = −17bps → <span style="color:var(--red)">−$0.17</span>  (below breakeven)
+spread = <span class="n">57</span>bps → net =  0bps → <span class="cm">$0.00</span>  (break-even exacto)
+spread = <span class="n">65</span>bps → net =  8bps → <span class="r">+$0.08</span>  (threshold, 8bps buffer)
+spread = <span class="n">100</span>bps → net = 43bps → <span class="r">+$0.43</span>  (normal epoch spike)
+spread = <span class="n">150</span>bps → net = 93bps → <span class="r">+$0.93</span>  (fuerte epoch spike)
+spread = <span class="n">200</span>bps → net =143bps → <span class="r">+$1.43</span>  (extremo)
+
+<span class="cm">// Comparación $10 exec (probes):</span>
+<span class="v">total_cost_10</span> = <span class="n">35.5</span> bps  <span class="cm">// menor impacto en thin venues</span>
+<span class="cm">// Break-even $10 exec: spread > 40bps (probes están cerca del threshold)</span>
+    </div>
+
+    <div style="margin-top:18px">
+      <div style="display:flex;justify-content:space-between;font-size:0.7rem;color:var(--dim);margin-bottom:8px">
+        <span>Spread actual: <span id="sv" class="o">62.2 bps</span></span>
+        <span>Threshold: <span class="o">65 bps</span></span>
+        <span>Epoch spike esperado: <span class="g">100–200 bps</span></span>
+      </div>
+      <div class="smeter">
+        <div class="sbg">
+          <div class="sbar" id="sb" style="width:41.5%"></div>
+          <div class="stline"></div>
+          <div class="stlabel">65bps</div>
+        </div>
+        <div class="smarks">
+          <span>0</span><span>50 bps</span><span>100 bps</span><span>150 bps</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card fi">
+    <div class="ctitle">EPOCH SPIKE — ¿POR QUÉ SUBE EL SPREAD?</div>
+    <div class="g2">
+      <div>
+        <div class="mc">
+          <div class="mt">Mecánica del spike</div>
+          <div class="md">Al final del epoch (~432,000 slots), los stakers reciben recompensas LST. JitoSOL y mSOL actualizan su tasa SOL/token. Precio en Orca no se actualiza instantáneamente → diverge del mercado por 3-10 slots. Bots Jupiter arbitran, pool se ajusta. Ventana breve pero predecible cada ~48h.</div>
+        </div>
+        <div class="mc c" style="margin-top:10px">
+          <div class="mt">Timing CRONÓMETRO</div>
+          <div class="md">Epoch ≈ 432,000 slots × 400ms ≈ ~48h. Bot detecta slots_left &lt; 500 (~200s antes). Polling cambia 500ms → 400ms. Spike dura 3-10 slots → ventana 1.2s-4s. A 10s polling normal, llegarías 25 slots tarde.</div>
+        </div>
+      </div>
+      <div class="mth">
+<span class="cm">// Mode A — Capital chain (mismo slot, secuencial)</span>
+
+Inicio: <span class="n">119.79</span> USDC en FVxMBH
+
+TX1: −<span class="n">100</span> USDC → +X mSOL     <span class="cm">(buy non-Orca)</span>
+TX2: +<span class="n">100.40</span> USDC ← X mSOL   <span class="cm">(sell Orca, profit_1 = +$<span class="r">0.40</span>)</span>
+TX3: −<span class="n">100</span> USDC → +Y JitoSOL   <span class="cm">(usa $100.40 de TX2)</span>
+TX4: +<span class="n">100.40</span> USDC ← Y JitoSOL  <span class="cm">(profit_2 = +$<span class="r">0.40</span>)</span>
+TX5: tip <span class="n">100k</span> lamports
+
+Final: <span class="r">120.59</span> USDC (<span class="r">+$0.80 net</span>)
+<span class="cm">// all-or-nothing: si TX1 falla → bundle entero revierte</span>
+<span class="cm">// Estado compartido: USDC de TX2 disponible para TX3</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card fi">
+    <div class="ctitle">TRAMPA FEE — CAPTURA MATEMÁTICA</div>
+    <div class="mth">
+<span class="cm">// Bot externo intenta arbitrar TRAMPA:</span>
+
+<span class="v">div_bps</span>     = |oracle_price − pool_price| / oracle × <span class="n">10,000</span>
+<span class="v">propina_fee</span> = base_fee + propina_pct × div_bps / <span class="n">10,000</span>
+            = <span class="n">25</span> + <span class="n">0.75</span> × div_bps
+
+<span class="cm">// Fee vs arb ganancia:</span>
+div=<span class="n">30</span>bps  → fee=47.5bps → bot net = <span style="color:var(--red)">30−47.5 = −17.5bps</span>
+div=<span class="n">50</span>bps  → fee=62.5bps → bot net = <span style="color:var(--red)">50−62.5 = −12.5bps</span>
+div=<span class="n">100</span>bps → fee=100bps  → bot net = <span class="cm">  0bps (break-even exacto)</span>
+div=<span class="n">200</span>bps → fee=175bps  → bot net = <span class="r">+25bps</span> pero CONCENTRADOR rechaza (>200bps)
+
+<span class="cm">// ∴ Bot SIEMPRE negativo dentro del CONCENTRADOR range (div &lt; 200bps)</span>
+<span class="cm">// TRAMPA captura 100% del arb spread + base fee</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     ROADMAP
+══════════════════════════════════════════════════ -->
+<section id="roadmap">
+  <div class="sh fi">
+    <h2>ROADMAP</h2>
+    <p>Próximos pasos post-epoch + expansión del sistema</p>
+    <div class="line"></div>
+  </div>
+
+  <div class="g2 fi">
+    <div class="card g">
+      <div class="ctitle">INMEDIATO — POST-EPOCH</div>
+      <div class="tl">
+        <div class="ti">
+          <div class="td"></div>
+          <div class="tlb">PRIORIDAD 1 — DESBLOQUEADOR</div>
+          <div class="tlc"><strong class="g">ESCORPIÓN Hermes Extension</strong><br>
+          <span class="d">GET Hermes V2 → parse JUP/USD, bSOL/USD, PYTH/USD → divide by SOL_USD → instruction 8 synth PDA. Mismo patrón que JitoSOL. MAGNETAR 3→6 pools. CRONÓMETRO +3 legs epoch bundle.</span></div>
+        </div>
+        <div class="ti">
+          <div class="td"></div>
+          <div class="tlb">PRIORIDAD 2</div>
+          <div class="tlc"><strong class="g">SOL exec routing verify</strong><br>
+          <span class="d">Confirmar ORCA_EXEC_DEXES=Orca CLMM,Orca Whirlpool funciona cuando spread SOL/USDC &gt; 65bps. Empírico, como se hizo con mSOL.</span></div>
+        </div>
+        <div class="ti">
+          <div class="td"></div>
+          <div class="tlb">PRIORIDAD 3</div>
+          <div class="tlc"><strong class="g">Jupiter PR</strong><br>
+          <span class="d">/tmp/jup-fork/ — cargo check + push + open PR. Agrega soporte Jupiter para rutas TRAMPA pools. Desbloquea volumen externo.</span></div>
+        </div>
+        <div class="ti">
+          <div class="td"></div>
+          <div class="tlb">PRIORIDAD 4 (BAJA)</div>
+          <div class="tlc"><strong class="g">POZO flash loan</strong><br>
+          <span class="d">ADuge9aM... wired. Blocker: ix_sysvar introspection, borrow+repay must be same TX que Jupiter versioned TX. Aumenta capital arb más allá de $119.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card c">
+      <div class="ctitle">MEDIANO PLAZO — EXPANSIÓN</div>
+      <div class="tl">
+        <div class="ti">
+          <div class="td" style="background:var(--cyan);box-shadow:var(--glow-c)"></div>
+          <div class="tlb">3 NUEVOS POOLS TRAMPA</div>
+          <div class="tlc"><strong class="c">JUP/SOL + bSOL/SOL + PYTH/SOL</strong><br>
+          <span class="d">Con synth oracles via Hermes. GUSANO auto-deploy desde USDC acumulado (258.76 USDC en gusano_state.json). Misma mecánica TRAMPA para 3 LSTs nuevos.</span></div>
+        </div>
+        <div class="ti">
+          <div class="td" style="background:var(--cyan);box-shadow:var(--glow-c)"></div>
+          <div class="tlb">CRONÓMETRO EXPANSION</div>
+          <div class="tlc"><strong class="c">+3 pares al scanner</strong><br>
+          <span class="d">JUP, bSOL, PYTH arb en epoch boundary. Mode A bundle potencialmente 7+ TXs si Jito aumenta límite, o 2 bundles separados por epoch.</span></div>
+        </div>
+        <div class="ti">
+          <div class="td" style="background:var(--cyan);box-shadow:var(--glow-c)"></div>
+          <div class="tlb">CAPITAL COMPOUNDING</div>
+          <div class="tlc"><strong class="c">Fee harvest → re-seed</strong><br>
+          <span class="d">TRAMPA fee vault → collect_fees → fund_pool nuevos pares. Loop cerrado: fees capturados se convierten en liquidez para más trampas.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card fi">
+    <div class="ctitle">BUGS CRÍTICOS CORREGIDOS ESTA SESIÓN (2026-06-09)</div>
+    <table>
+      <tr><th>#</th><th>BUG</th><th>FIX</th></tr>
+      <tr><td class="y">8</td><td>SYNTH_ORACLE_RENT = 1,754,880 (incorrecto)</td><td class="g">Corregido a 2,561,280 (240 bytes real)</td></tr>
+      <tr><td class="y">9</td><td>mSOL mint en gusano.ts era address incorrecta</td><td class="g">Fijado a mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So</td></tr>
+      <tr><td class="y">10</td><td>Jupiter API: quote-api.jup.ag dead</td><td class="g">Migrado a api.jup.ag/swap/v1/</td></tr>
+      <tr><td class="y">11</td><td>WSOL ATA para FVxMBH no existía</td><td class="g">fund-jitosol-pool.ts crea+funde ATA</td></tr>
+      <tr><td class="y">12</td><td>ESCORPIÓN parse_pool_state: faltaba ÷1e6 → 9999990000bps en todos los pools</td><td class="g">Añadido pool_price_raw / 1_000_000.0</td></tr>
+      <tr><td class="y">13</td><td>MIN_SPREAD_BPS=15 (menor al breakeven 57bps) → API waste sin trades</td><td class="g">Fijado a 65bps con buffer 8bps</td></tr>
+      <tr><td class="y">14</td><td>Mode A polling cada 10s → llegaba 25 slots tarde al spike</td><td class="g">400ms sleep cuando near_epoch=true</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     DEPLOY
+══════════════════════════════════════════════════ -->
+<section id="deploy">
+  <div class="sh fi">
+    <h2>DEPLOY <span class="o">+ OPS</span></h2>
+    <p>Build, redeploy, logs, troubleshooting — GitHub: VtotheN/iman-v3</p>
+    <div class="line o"></div>
+  </div>
+
+  <div class="g2 fi">
+    <div class="card">
+      <div class="ctitle">CRONÓMETRO — BUILD + DEPLOY</div>
+      <div class="cb">
+<span class="cm"># Build + sync + restart (desde local)</span>
+cd /Users/velon/Desktop/iman/cronometro
+./deploy.sh live
+
+<span class="cm"># Service management (VPS)</span>
+ssh root@204.168.225.7
+systemctl status iman-cronometro
+journalctl -u iman-cronometro -f
+systemctl restart iman-cronometro
+
+<span class="cm"># Config live (iman-cronometro.service)</span>
+MIN_SPREAD_BPS=65
+ARB_USDC_AMOUNT=100000000   <span class="cm"># $100</span>
+DRY_RUN=false
+USE_FLASH=false
+TIP_LAMPORTS=100000
+KEYPAIR_PATH=/root/.keys/fvxmbh.json
+RPC_URL=https://solana.publicnode.com
+      </div>
+    </div>
+    <div class="card">
+      <div class="ctitle">ESCORPIÓN — REDEPLOY</div>
+      <div class="cb">
+<span class="cm"># Rsync source → VPS + build + restart</span>
+rsync -avz --exclude target/ escorpion/ \
+  root@204.168.225.7:/root/escorpion-src/
+
+ssh root@204.168.225.7 "
+  . ~/.cargo/env && cd /root/escorpion-src
+  cat > .cargo/config.toml << 'EOF'
+[build]
+target = \"x86_64-unknown-linux-gnu\"
+EOF
+  cargo build --release
+  systemctl stop iman-escorpion
+  cp target/x86_64-unknown-linux-gnu/release/iman-escorpion \
+     /root/iman-escorpion/target/release/iman-escorpion
+  systemctl start iman-escorpion
+"
+
+<span class="cm"># Logs</span>
+ssh root@204.168.225.7 'journalctl -u iman-escorpion -f'
+      </div>
+    </div>
+  </div>
+
+  <div class="card fi">
+    <div class="ctitle">TRAMPA v5 — BUILD + REDEPLOY</div>
+    <div class="cb">
+<span class="cm"># Build BPF (desde repo local)</span>
+cargo build-sbf --manifest-path programs/trampa/Cargo.toml
+
+<span class="cm"># Upgrade en mainnet (idempotente si bytecode == deployed)</span>
+solana program deploy \
+  --program-id FpFXNWCm5qM4t9GKttp9Jkx8YpYfxgW5Cu37T8pdr8oE \
+  --keypair /Users/velon/.keys/payer-candidate-2.json \
+  --url mainnet-beta \
+  target/deploy/trampa.so
+
+<span class="cm"># Synth oracle init/refresh</span>
+npx ts-node scripts/init-synth-oracle.ts
+
+<span class="cm"># Verificar pool state on-chain</span>
+solana account 3JifN9CHEUGkDrfCv2TCa1LzvrfxQabbNuEZrGTnccTH \
+  --url mainnet-beta --output json | head -20
+    </div>
+  </div>
+
+  <div class="card fi">
+    <div class="ctitle">GITHUB — VtotheN/iman-v3</div>
+    <div class="cb">
+<span class="cm"># Remote: https://github.com/VtotheN/iman-v3.git</span>
+<span class="cm"># Branch: main</span>
+
+<span class="cm"># Commits sesión 2026-06-09:</span>
+<span class="fn">0e4ed01</span>  mode_a: 400ms polling in epoch window (near_epoch state var)
+<span class="fn">e65168e</span>  65bps threshold + Mode A bundle mSOL+JitoSOL epoch capture
+<span class="fn">94470c7</span>  CRONÓMETRO bot initial (Jupiter arb + Jito bundle + epoch detection)
+
+<span class="cm"># Commits anteriores (deploy TRAMPA v5):</span>
+<span class="fn">...</span>  JitoSOL/SOL pool LIVE (synth oracle + fund_pool)
+<span class="fn">...</span>  TRAMPA v5 mainnet deploy (instruction 8 + synth oracle)
+<span class="fn">...</span>  mSOL/USDC pool deploy
+<span class="fn">...</span>  SOL/USDC pool initial deploy
+    </div>
+  </div>
+
+  <div class="card fi">
+    <div class="ctitle">ADDRESSES — QUICK REFERENCE</div>
+    <table>
+      <tr><th>COMPONENTE</th><th>ADDRESS</th><th>TIPO</th></tr>
+      <tr><td class="g">TRAMPA v5</td><td class="mono" style="font-size:0.68rem">FpFXNWCm5qM4t9GKttp9Jkx8YpYfxgW5Cu37T8pdr8oE</td><td class="d">Program ID</td></tr>
+      <tr><td>FVxMBH (payer)</td><td class="mono" style="font-size:0.68rem">FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp</td><td class="d">Authority / Keypair</td></tr>
+      <tr><td class="c">Pool SOL/USDC</td><td class="mono" style="font-size:0.68rem">7Arc38Z415VqT2sc8skNVmebGE1RCKyrctJo2sGd6XUs</td><td class="d">Pool PDA</td></tr>
+      <tr><td class="c">Pool mSOL/USDC</td><td class="mono" style="font-size:0.68rem">B4n16UwDe7k6UujuoSqsd7L54VnUVw46GwqCnT6dq268</td><td class="d">Pool PDA</td></tr>
+      <tr><td class="c">Pool JitoSOL/SOL</td><td class="mono" style="font-size:0.68rem">3JifN9CHEUGkDrfCv2TCa1LzvrfxQabbNuEZrGTnccTH</td><td class="d">Pool PDA</td></tr>
+      <tr><td class="o">Synth Oracle</td><td class="mono" style="font-size:0.68rem">EeiNMjxsnieNg2Na4kpVYctB1t23gZzciZoC82zgP6wM</td><td class="d">Synth PDA (JitoSOL)</td></tr>
+      <tr><td>Jito Stake Pool</td><td class="mono" style="font-size:0.68rem">Jito4APyf642JPZPx3hGc6WWJ8zPKtRbRs4P815Awbb</td><td class="d">SPL Stake Pool</td></tr>
+      <tr><td>POZO (flash)</td><td class="mono" style="font-size:0.68rem">ADuge9aMsakJ29NUjisBU15bDkd2n72dUxDu97GLK82v</td><td class="d">Flash Loan Program</td></tr>
+      <tr><td>VPS</td><td class="mono">204.168.225.7</td><td class="d">Hetzner (redemptionarc-1)</td></tr>
+    </table>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     SIMBIONTE v2
+══════════════════════════════════════════════════ -->
+<section id="simbionte">
+  <div class="sh fi">
+    <h2><span class="g">SIMBIONTE</span> <span class="c">v2</span></h2>
+    <p>Vault SOL↔synthSOL — peg 1:1 — Pinocchio — 5D95zU3JEu314PjDs13udV8H4Z7JL1zaaTHVbTwJAst8</p>
+    <div class="line"></div>
+  </div>
+
+  <div class="g4 fi">
+    <div class="stat"><span class="sv">2.160</span><span class="sl">SOL en Vault</span></div>
+    <div class="stat"><span class="sv c">7,600</span><span class="sl">synthSOL Supply</span></div>
+    <div class="stat"><span class="sv g">100%</span><span class="sl">Coverage backing</span></div>
+    <div class="stat"><span class="sv o">4</span><span class="sl">Instrucciones</span></div>
+  </div>
+
+  <div class="card g fi" style="margin-top:18px">
+    <div class="ctitle">ARQUITECTURA DEL PEG</div>
+    <div class="fl">
+<span class="fg">Usuario deposita SOL</span>          <span class="fd">→ vault_pda recibe SOL</span>
+<span class="fd">    │</span>
+<span class="fd">    ▼</span>
+<span class="fc">SIMBIONTE ix 0 deposit_sol</span>
+<span class="fd">    ├── incrementa backed_state.total_backed += amount</span>
+<span class="fd">    ├── CPI MintTo: acuña synthSOL 1:1 a destination_ata</span>
+<span class="fd">    └── synthSOL = recibo transferible del SOL depositado</span>
+
+<span class="fg">Usuario quema synthSOL</span>         <span class="fd">→ pide SOL devuelto</span>
+<span class="fd">    │</span>
+<span class="fd">    ▼</span>
+<span class="fc">SIMBIONTE ix 1 withdraw_sol</span>
+<span class="fd">    ├── LEE backed_state.total_backed</span>
+<span class="fd">    ├── GUARD: sol_out > backed → InsufficientFunds (vault indrenable)</span>
+<span class="fd">    ├── CPI Burn synthSOL</span>
+<span class="fd">    ├── transfiere SOL al usuario</span>
+<span class="fd">    └── backed_state.total_backed -= sol_out</span>
+
+<span class="fg">admin_mint (ix 2)</span>              <span class="fd">→ WHITELIST only</span>
+<span class="fd">    ├── mint synthSOL a display_vault PDA ATA (sin keypair)</span>
+<span class="fd">    └── NO toca backed_state ← tokens son display, no backing real</span>
+
+<span class="fg">init_backed_state (ix 3)</span>       <span class="fd">→ one-time, WHITELIST only</span>
+<span class="fd">    ├── crea backed_state PDA (8 bytes)</span>
+<span class="fd">    └── inicializa total_backed = vault_lamports - RENT_EXEMPT</span>
+    </div>
+  </div>
+
+  <div class="card fi">
+    <div class="ctitle">INSTRUCCIONES</div>
+    <div class="ixrow" style="color:var(--dim);font-size:0.62rem;letter-spacing:1px;padding-bottom:7px;border-bottom:1px solid #1a1a33">
+      <div>IX</div><div>NOMBRE</div><div>DESCRIPCIÓN</div><div>QUIÉN</div>
+    </div>
+    <div class="ixrow"><div class="ixn">0</div><div class="g mono">deposit_sol</div><div class="d">SOL → vault_pda. CPI MintTo synthSOL 1:1. backed_state += amount. 8 cuentas.</div><div class="d" style="font-size:0.7rem">anyone</div></div>
+    <div class="ixrow"><div class="ixn">1</div><div class="g mono">withdraw_sol</div><div class="d">Burn synthSOL. Guard: sol_out &lt;= total_backed (vault indrenable). CPI Burn + transfer SOL. backed_state -= sol_out.</div><div class="d" style="font-size:0.7rem">anyone</div></div>
+    <div class="ixrow" style="background:#00ff8806"><div class="ixn" style="background:#00ff8815;color:var(--green);border:1px solid var(--green)">2</div><div class="g mono">admin_mint</div><div class="d">WHITELIST only. Minta synthSOL a display_vault PDA ATA (no keypair, inmovible). NO actualiza backed_state. FDV boost sin capital.</div><div class="g" style="font-size:0.7rem">whitelist</div></div>
+    <div class="ixrow" style="background:#00e5ff06"><div class="ixn" style="background:#00e5ff15;color:var(--cyan);border:1px solid var(--cyan)">3</div><div class="c mono">init_backed_state</div><div class="d">One-time. Crea backed_state PDA (8 bytes, seeds=["backed_state"]). Init total_backed = vault − rent. WHITELIST only.</div><div class="c" style="font-size:0.7rem">whitelist</div></div>
+  </div>
+
+  <div class="g2 fi">
+    <div class="card g">
+      <div class="ctitle">CAPA 1 — BACKED_STATE PDA (redeem cap matemático)</div>
+      <div class="mc">
+        <div class="mt">Vault indrenable por diseño</div>
+        <div class="md">backed_state PDA (HCnWEkqU...) almacena el SOL realmente respaldado como u64.
+        withdraw_sol verifica sol_out &lt;= total_backed ANTES de ejecutar.
+        Aunque lleguen tokens unbacked al pool (imposible por Capa 2), el vault rechaza redenciones que excedan el backing.</div>
+        <div class="mf">backed_state.total_backed = 2.159502 SOL (inmutable sin deposit_sol)<br>withdraw_sol: if sol_out > backed → Err(InsufficientFunds)</div>
+      </div>
+      <div class="hb" style="margin-top:10px">
+        Matemática reemplaza memoria. Nadie puede drenar el vault ni accidentalmente ni por bug.
+      </div>
+    </div>
+    <div class="card c">
+      <div class="ctitle">CAPA 2 — DISPLAY_VAULT PDA (tokens físicamente inmovibles)</div>
+      <div class="mc c">
+        <div class="mt">PDA sin keypair = ATA intransferible</div>
+        <div class="md">display_vault PDA (417qgMJu...) no tiene keypair — nadie puede firmar desde él.
+        Su ATA (8z7FiZD4...) contiene 7,598 synthSOL display.
+        No existe instrucción en SIMBIONTE para transferir desde ese ATA.
+        Los tokens suben el supply (FDV), nunca salen al mercado.</div>
+        <div class="mf">display_ata: 7,598.0000 synthSOL (locked forever)<br>Transfer: imposible. Sin keypair. Sin instrucción.</div>
+      </div>
+      <div class="hb" style="margin-top:10px">
+        Seguridad por diseño, no por custodia. Aunque backed_state falle, los tokens no pueden circular.
+      </div>
+    </div>
+  </div>
+
+  <div class="card fi">
+    <div class="ctitle">ADDRESSES — SIMBIONTE v2 LIVE</div>
+    <table>
+      <tr><th>CUENTA</th><th>ADDRESS</th><th>NOTA</th></tr>
+      <tr><td class="g">SIMBIONTE v2 program</td><td class="mono g" style="font-size:0.68rem">5D95zU3JEu314PjDs13udV8H4Z7JL1zaaTHVbTwJAst8</td><td class="d">BPFLoaderUpgradeable, mainnet</td></tr>
+      <tr><td class="c">synthSOL mint (T22)</td><td class="mono c" style="font-size:0.68rem">7TE3SD7AFfsbegd5wrZ9RpEd793bRAtahPk32uaSpqrs</td><td class="d">9 decimals, TransferFee 5bps</td></tr>
+      <tr><td>vault_pda</td><td class="mono" style="font-size:0.68rem">9VaPQpnGdBe6cjcMehawUzwixN8dd7BUv2M8fo2ZW2Wm</td><td class="d">2.160 SOL, bump=255</td></tr>
+      <tr><td>mint_auth_pda</td><td class="mono" style="font-size:0.68rem">GjEyKRyrFaJHGVV1ojqQor1VR1VBThko2oj8Rq1P8B5P</td><td class="d">bump=255</td></tr>
+      <tr><td class="g">backed_state PDA</td><td class="mono g" style="font-size:0.68rem">HCnWEkqUQfZtpL1X9fCmbt1S6AuUWPyvRWKDqjtAhuyp</td><td class="d">2.159502 SOL backed, bump=255</td></tr>
+      <tr><td class="c">display_vault PDA</td><td class="mono c" style="font-size:0.68rem">417qgMJuFKftCxDiHLnhtbw6BdKGxgJCJhZxxzcVTDwe</td><td class="d">sin keypair, bump=252</td></tr>
+      <tr><td class="c">display_vault ATA</td><td class="mono c" style="font-size:0.68rem">8z7FiZD4gamhENnifVor8d2Gq8SYEh8cWdAHQ8J2qqY1</td><td class="d">7,598 synthSOL locked forever</td></tr>
+      <tr><td>Pool Raydium CPMM</td><td class="mono" style="font-size:0.68rem">FnRbEjyax1MMvoGpgaC4u54n3sTrJQT5iYZn8fVtw1ih</td><td class="d">synthSOL/USDC, $279 TVL</td></tr>
+      <tr><td>payer (whitelist)</td><td class="mono" style="font-size:0.68rem">FVxMBHVbyPqqo6ANaY4RM1h7JBJaRHuPTF9XehwaWztp</td><td class="d">spread=0, fee=0</td></tr>
+    </table>
+    <div style="margin-top:12px;font-size:0.72rem;color:var(--dim)">
+      <strong class="g">Deploy sig:</strong> <span class="mono" style="font-size:0.68rem">2CQFmA9SRJ6cBshmUpPNorTjpvFZQVSQ7xHxjB4wk9Bqe43EUhugSoC3xz3KoKmvqiGjBUyAnPULdQ3uJH14tJup</span><br>
+      <strong class="c">admin_mint sig:</strong> <span class="mono" style="font-size:0.68rem">2oto869PaTB9T7JNasaxXwdZRGaHUvyKoXYUcxP2Qmg5qKzks11iQ5TMWezTBd5LCMeZdA3uVFmZNUCNQbwGR3dm</span><br>
+      <strong>init_backed_state sig:</strong> <span class="mono" style="font-size:0.68rem">2k4M2Neoub6gFJDWM93WW7ERXH7ZJRUH3bsPKgifJubGZZgcZgiLnydXoyaPybYkjRh6oUM6wcwUc7u19FpMnG4U</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     FDV BOOST — THE IMPOSSIBLE #1
+══════════════════════════════════════════════════ -->
+<section id="fdvboost">
+  <div class="sh fi">
+    <h2><span class="y">FDV BOOST</span> <span style="color:#a855f7">★ THE IMPOSSIBLE #1</span></h2>
+    <p>FDV $142 → $500,319 sin capital. Ejecutado on-chain 11 Jun 2026.</p>
+    <div class="line y"></div>
+  </div>
+
+  <div class="g4 fi">
+    <div class="stat"><span class="sv y">$500k</span><span class="sl">FDV on DexScreener</span></div>
+    <div class="stat"><span class="sv g">7,600</span><span class="sl">synthSOL supply total</span></div>
+    <div class="stat"><span class="sv c">$0</span><span class="sl">Capital usado</span></div>
+    <div class="stat"><span class="sv o">3 TXs</span><span class="sl">Gas = costo total</span></div>
+  </div>
+
+  <div class="card fi" style="border-color:#ffd70033;background:#0d0d08;margin-top:18px">
+    <div class="ctitle" style="color:var(--yellow)">EL INSIGHT — ROMPIENDO EL IMPOSIBLE</div>
+    <div class="hb" style="border-color:#ffd70033;background:#0d0d0808">
+      <strong class="y">FDV = precio × total_supply.</strong>
+      El supply lo controla SIMBIONTE — código nuestro, no ley del runtime.
+      La regla "backing 1:1" la escribimos nosotros. Si la escribimos, podemos también escribir
+      una excepción: admin_mint para tokens display que nunca salen al mercado.
+    </div>
+    <div class="mc y" style="margin-top:12px">
+      <div class="mt">La distinción crítica que habilita el hack</div>
+      <div class="md">
+        <strong class="c">TVL / Liquidity</strong> = capital real parado en el pool → IMPOSIBLE fingir, requiere capital real<br>
+        <strong class="y">FDV</strong> = precio × supply → controlamos el supply, costo $0
+      </div>
+      <div class="mf" style="margin-top:8px">
+TVL $279      → requiere $279 USDC + synthSOL reales en el pool. No se puede inflar.
+FDV $500,319  → precio $65.83 × 7,600.16 supply = $500,319. Supply es código.
+      </div>
+    </div>
+    <div class="mc c" style="margin-top:10px">
+      <div class="mt">Mismo principio que "el u8 que era variable" (THE IMPOSSIBLE framework)</div>
+      <div class="md">El supuesto implícito era: "los tokens del supply son todos redimibles, backing 1:1 inmutable".
+      Buscamos el parámetro que creíamos fijo y resultó ser código. admin_mint = excepción controlada
+      que sube el supply sin tocar backed_state. FDV sube. Vault intacto.</div>
+    </div>
+  </div>
+
+  <div class="card fi">
+    <div class="ctitle">LO QUE SE EJECUTÓ ON-CHAIN (11 Jun 2026)</div>
+    <div class="g2">
+      <div>
+        <div class="mc">
+          <div class="mt">ANTES</div>
+          <div class="md">synthSOL supply: 2.1595 synthSOL<br>FDV en DexScreener: ~$142<br>Tokens: todos backed 1:1 por vault SOL</div>
+        </div>
+        <div class="mc c" style="margin-top:10px">
+          <div class="mt">DESPUÉS (3 TXs, solo gas)</div>
+          <div class="md">synthSOL supply: 7,600.16 synthSOL<br>FDV en DexScreener: ~$500,319<br>7,598 tokens: en display_vault PDA ATA, inmovibles<br>2.1595 tokens: backed reales, circulando</div>
+        </div>
+      </div>
+      <div>
+        <div class="mc y">
+          <div class="mt">TX 1 — init_backed_state</div>
+          <div class="md">Crea backed_state PDA, inicializa total_backed = vault_lamports - rent = 2.159502 SOL exacto. Este valor nunca cambia sin deposit_sol.</div>
+          <div class="mf">sig: 2k4M2Neoub6gFJDWM93WW...FpMnG4U</div>
+        </div>
+        <div class="mc" style="margin-top:10px">
+          <div class="mt">TX 2 — create display_vault ATA</div>
+          <div class="md">Crea Token-2022 ATA owned by display_vault PDA (417qgMJu...). Owner sin keypair.</div>
+        </div>
+        <div class="mc c" style="margin-top:10px">
+          <div class="mt">TX 3 — admin_mint 7,598 synthSOL</div>
+          <div class="md">SIMBIONTE ix 2: mint a display_vault ATA. NO toca backed_state. Supply sube, FDV sube, tokens no salen.</div>
+          <div class="mf">sig: 2oto869PaTB9T7JNasax...bwGR3dm</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card fi" style="border-color:#a855f733">
+    <div class="ctitle" style="color:#a855f7">BLINDAJE DE DOS CAPAS — POR QUÉ EL VAULT ES INDRENABLE</div>
+    <div class="hb" style="border-color:#a855f733;background:#0d080d08">
+      La protección NO es "nosotros custodiamos los tokens display".
+      Es protección por diseño: incluso si alguien tuviese los tokens, el código los bloquea.
+    </div>
+    <div class="g2" style="margin-top:14px">
+      <div class="mc">
+        <div class="mt">CAPA 1 — backed_state matemático</div>
+        <div class="md">backed_state PDA trackea SOL respaldado real: 2.159502 SOL.
+        withdraw_sol RECHAZA si sol_out &gt; total_backed.
+        No importa cuántos tokens display existan — solo pueden redimirse los backed reales.
+        La math está en el código, no en la memoria del operador.</div>
+        <div class="mf">HCnWEkqUQfZtpL1X9fCmbt1S6AuUWPyvRWKDqjtAhuyp<br>total_backed = 2,159,501,877 lamports</div>
+      </div>
+      <div class="mc c">
+        <div class="mt">CAPA 2 — display_vault PDA sin keypair</div>
+        <div class="md">display_vault (417qgMJu...) es un PDA — nadie tiene su keypair.
+        Su ATA (8z7FiZD4...) tiene 7,598 synthSOL.
+        No hay instrucción en SIMBIONTE para transferir desde ese ATA.
+        Los tokens no pueden salir. Ni accidentalmente ni por exploit.</div>
+        <div class="mf">417qgMJuFKftCxDiHLnhtbw6BdKGxgJCJhZxxzcVTDwe (bump=252)<br>8z7FiZD4gamhENnifVor8d2Gq8SYEh8cWdAHQ8J2qqY1 ← 7,598 locked</div>
+      </div>
+    </div>
+    <div class="wb" style="margin-top:14px">
+      <strong class="r">REGLA PERMANENTE:</strong> display_vault tokens = intocables.
+      Nunca add LP con ellos. Nunca pool them. backed_state los bloquea pero no tentés al destino.
+    </div>
+  </div>
+
+  <div class="card fi">
+    <div class="ctitle">ESTADO LIVE — IMÁN v3.1 (11 Jun 2026)</div>
+    <table>
+      <tr><th>COMPONENTE</th><th>ADDRESS / VALOR</th><th>STATUS</th></tr>
+      <tr><td class="g">synthSOL mint (T22)</td><td class="mono g" style="font-size:0.68rem">7TE3SD7AFfsbegd5wrZ9RpEd793bRAtahPk32uaSpqrs</td><td><span class="b bl">LIVE</span></td></tr>
+      <tr><td class="c">Pool Raydium CPMM</td><td class="mono c" style="font-size:0.68rem">FnRbEjyax1MMvoGpgaC4u54n3sTrJQT5iYZn8fVtw1ih</td><td><span class="b bl">$279 TVL</span></td></tr>
+      <tr><td>SIMBIONTE v2</td><td class="mono" style="font-size:0.68rem">5D95zU3JEu314PjDs13udV8H4Z7JL1zaaTHVbTwJAst8</td><td><span class="b bl">LIVE</span></td></tr>
+      <tr><td>CAMALEÓN (T22 hook)</td><td class="mono" style="font-size:0.68rem">DiyPV3KJ9wyzQjsNr9F3CTEJRY9Nzm9XFYRoXa2mxF2q</td><td><span class="b bl">LIVE</span></td></tr>
+      <tr><td class="g">FDV (DexScreener)</td><td class="y">~$500,319</td><td><span class="b bl">CONFIRMED</span></td></tr>
+      <tr><td>Vault coverage</td><td class="g">2.160 SOL / 100.04%</td><td><span class="b bl">SAFE</span></td></tr>
+      <tr><td>volume-gen</td><td class="d">$0.20/leg, 3/min — USDC→synthSOL→USDC</td><td><span class="b bm">RUNNING</span></td></tr>
+      <tr><td>dislocate</td><td class="d">38bps push, 10min cycles</td><td><span class="b bm">RUNNING</span></td></tr>
+      <tr><td>monitor-flow</td><td class="d">clasifica TXs POR_VOLUMEN vs POR_CEBO</td><td><span class="b bm">RUNNING</span></td></tr>
+      <tr><td class="r">TRAMPA v5</td><td class="d">FpFXNWCm5qM4t9GKttp9Jkx8YpYfxgW5Cu37T8pdr8oE</td><td><span class="b bd">LEGACY</span></td></tr>
+      <tr><td class="r">CRONÓMETRO</td><td class="d">cross-DEX arb bot</td><td><span class="b bd">MUERTO</span></td></tr>
+    </table>
+  </div>
+</section>
+
+</div><!-- /wrap -->
+
+<footer>
+  IMÁN v3.1 · BIBLIA DEL SISTEMA · mainnet-beta · 2026-06-11 ·
+  <span class="g">VtotheN/iman-v3</span> · commit 22a2da5 ·
+  SIMBIONTE v2: 5D95zU3J · synthSOL: 7TE3SD7A · FDV $500k
+</footer>
+
+<script>
+// ── NAVIGATION
+function show(id, el) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('on'));
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  el.classList.add('on');
+  setTimeout(fadeIn, 0);
+}
+
+// ── ANIMATED BACKGROUND
+const cv = document.getElementById('bg-canvas');
+const cx = cv.getContext('2d');
+function resize() { cv.width = innerWidth; cv.height = innerHeight; }
+resize();
+window.addEventListener('resize', resize);
+
+const PTS = [];
+for (let i = 0; i < 90; i++) {
+  PTS.push({
+    x: Math.random() * innerWidth,
+    y: Math.random() * innerHeight,
+    vx: (Math.random() - 0.5) * 0.28,
+    vy: (Math.random() - 0.5) * 0.28,
+    col: ['#00ff88','#00e5ff','#ff6b35'][Math.floor(Math.random()*3)]
+  });
+}
+function tick() {
+  cx.clearRect(0, 0, cv.width, cv.height);
+  for (const p of PTS) {
+    p.x = (p.x + p.vx + cv.width) % cv.width;
+    p.y = (p.y + p.vy + cv.height) % cv.height;
+  }
+  for (let i = 0; i < PTS.length; i++)
+    for (let j = i + 1; j < PTS.length; j++) {
+      const dx = PTS[i].x - PTS[j].x, dy = PTS[i].y - PTS[j].y;
+      const d = Math.hypot(dx, dy);
+      if (d < 110) {
+        cx.beginPath(); cx.moveTo(PTS[i].x, PTS[i].y); cx.lineTo(PTS[j].x, PTS[j].y);
+        cx.strokeStyle = `rgba(0,255,136,${(1-d/110)*0.12})`; cx.lineWidth=1; cx.stroke();
+      }
+    }
+  for (const p of PTS) {
+    cx.beginPath(); cx.arc(p.x, p.y, 1.5, 0, Math.PI*2);
+    cx.fillStyle = p.col; cx.fill();
+  }
+  requestAnimationFrame(tick);
+}
+tick();
+
+// ── FADE IN
+function fadeIn() {
+  document.querySelectorAll('.on .fi').forEach((el, i) =>
+    setTimeout(() => el.classList.add('v'), i * 70));
+}
+const obs = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('v')), {threshold:0.1});
+document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+fadeIn();
+
+// ── SPREAD ANIMATION
+let sv = 62.2, sd = 1;
+function anim() {
+  sv += (Math.random() - 0.4) * 0.6;
+  if (sv > 82) sd = -1; if (sv < 52) sd = 1;
+  sv = Math.max(50, Math.min(90, sv));
+  const bar = document.getElementById('sb'), lbl = document.getElementById('sv');
+  if (!bar) return setTimeout(anim, 900);
+  bar.style.width = (sv / 150 * 100) + '%';
+  if (sv > 65) {
+    bar.style.background = 'linear-gradient(90deg,#0a1a0a,var(--green))';
+    bar.style.boxShadow = '0 0 8px #00ff8855';
+  } else {
+    bar.style.background = 'linear-gradient(90deg,#2a1a0a,var(--orange))';
+    bar.style.boxShadow = 'none';
+  }
+  if (lbl) { lbl.textContent = sv.toFixed(1)+' bps'; lbl.style.color = sv>65?'var(--green)':'var(--orange)'; }
+  setTimeout(anim, 900);
+}
+anim();
+
+// ── PUBKEY COPY
+document.addEventListener('click', e => {
+  const el = e.target;
+  if (el.classList.contains('mono') && el.textContent.length > 30) {
+    navigator.clipboard.writeText(el.textContent.trim()).catch(()=>{});
+    const oc = el.style.color; el.style.color='var(--green)';
+    setTimeout(()=>el.style.color=oc, 300);
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+/Users/velon/Desktop/iman/escorpion/target/x86_64-apple-darwin/debug/deps/rpassword-3ba1b6950a2c0316.d: /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rpassword-7.5.4/src/lib.rs /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rpassword-7.5.4/src/config.rs /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rpassword-7.5.4/src/feedback.rs /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rpassword-7.5.4/src/unix.rs /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rpassword-7.5.4/src/utf8.rs
+
+/Users/velon/Desktop/iman/escorpion/target/x86_64-apple-darwin/debug/deps/librpassword-3ba1b6950a2c0316.rlib: /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rpassword-7.5.4/src/lib.rs /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rpassword-7.5.4/src/config.rs /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rpassword-7.5.4/src/feedback.rs /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rpassword-7.5.4/src/unix.rs /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rpassword-7.5.4/src/utf8.rs
+
+/Users/velon/Desktop/iman/escorpion/target/x86_64-apple-darwin/debug/deps/librpassword-3ba1b6950a2c0316.rmeta: /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rpassword-7.5.4/src/lib.rs /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rpassword-7.5.4/src/config.rs /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rpassword-7.5.4/src/feedback.rs /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rpassword-7.5.4/src/unix.rs /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rpassword-7.5.4/src/utf8.rs
+
+/Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rpassword-7.5.4/src/lib.rs:
+/Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rpassword-7.5.4/src/config.rs:
+/Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rpassword-7.5.4/src/feedback.rs:
+/Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rpassword-7.5.4/src/unix.rs:
+/Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rpassword-7.5.4/src/utf8.rs:

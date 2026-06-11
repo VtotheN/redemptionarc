@@ -1,0 +1,27 @@
+[Unit]
+Description=IMAN CRONOMETRO — cross-DEX arb + epoch spike bot
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/iman/cronometro
+
+Environment=RUST_LOG=iman_cronometro=info
+Environment=KEYPAIR_PATH=/root/.keys/fvxmbh.json
+Environment=RPC_URL=https://solana.publicnode.com
+Environment=MIN_SPREAD_BPS=58
+Environment=ARB_USDC_AMOUNT=100000000
+Environment=RAY_PROBE_USDC=10000000
+Environment=USE_FLASH=false
+Environment=TIP_LAMPORTS=100000
+Environment=DRY_RUN=false
+
+ExecStart=/root/iman/cronometro/target/x86_64-unknown-linux-gnu/release/iman-cronometro
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

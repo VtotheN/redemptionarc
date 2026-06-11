@@ -1,0 +1,10 @@
+/Users/velon/Desktop/iman/escorpion/target/x86_64-apple-darwin/release/deps/solana_udp_client-0cefee397da9bf30.d: /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-udp-client-1.18.26/src/lib.rs /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-udp-client-1.18.26/src/nonblocking/mod.rs /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-udp-client-1.18.26/src/nonblocking/udp_client.rs /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-udp-client-1.18.26/src/udp_client.rs
+
+/Users/velon/Desktop/iman/escorpion/target/x86_64-apple-darwin/release/deps/libsolana_udp_client-0cefee397da9bf30.rlib: /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-udp-client-1.18.26/src/lib.rs /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-udp-client-1.18.26/src/nonblocking/mod.rs /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-udp-client-1.18.26/src/nonblocking/udp_client.rs /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-udp-client-1.18.26/src/udp_client.rs
+
+/Users/velon/Desktop/iman/escorpion/target/x86_64-apple-darwin/release/deps/libsolana_udp_client-0cefee397da9bf30.rmeta: /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-udp-client-1.18.26/src/lib.rs /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-udp-client-1.18.26/src/nonblocking/mod.rs /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-udp-client-1.18.26/src/nonblocking/udp_client.rs /Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-udp-client-1.18.26/src/udp_client.rs
+
+/Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-udp-client-1.18.26/src/lib.rs:
+/Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-udp-client-1.18.26/src/nonblocking/mod.rs:
+/Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-udp-client-1.18.26/src/nonblocking/udp_client.rs:
+/Users/velon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/solana-udp-client-1.18.26/src/udp_client.rs:

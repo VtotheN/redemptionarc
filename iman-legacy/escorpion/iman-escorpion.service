@@ -1,0 +1,18 @@
+[Unit]
+Description=IMÁN ESCORPIÓN Rebalancer
+After=network-online.target
+
+[Service]
+User=root
+WorkingDirectory=/root/iman/escorpion
+ExecStart=/root/iman/escorpion/target/release/iman-escorpion
+Restart=on-failure
+RestartSec=5
+Environment=RUST_LOG=iman_escorpion=info
+Environment=RPC_URL=https://api.mainnet-beta.solana.com
+Environment=KEYPAIR_PATH=/root/.keys/fvxmbh.json
+Environment=DRY_RUN=true
+Environment=THRESHOLD_BPS=10
+
+[Install]
+WantedBy=multi-user.target

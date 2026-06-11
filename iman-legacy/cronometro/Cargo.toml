@@ -1,0 +1,26 @@
+[workspace]
+
+[package]
+name = "iman-cronometro"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "iman-cronometro"
+path = "src/main.rs"
+
+[dependencies]
+tokio       = { version = "1", features = ["full"] }
+reqwest     = { version = "0.12", features = ["json"] }
+serde       = { version = "1", features = ["derive"] }
+serde_json  = "1"
+solana-client                = "1.18"
+solana-sdk                   = "1.18"
+bincode                      = "1"
+spl-token                    = { version = "4", features = ["no-entrypoint"] }
+spl-associated-token-account = "3"
+base64      = "0.22"
+bs58        = "0.5"
+anyhow      = "1"
+tracing     = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }

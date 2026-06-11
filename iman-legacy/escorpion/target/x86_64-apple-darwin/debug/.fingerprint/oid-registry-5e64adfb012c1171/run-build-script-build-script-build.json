@@ -1,0 +1,1 @@
+{"rustc":13123747295654435574,"features":"","declared_features":"","target":0,"profile":0,"path":0,"deps":[[18132535737849993856,"build_script_build",false,5638644667184912460]],"local":[{"RerunIfChanged":{"output":"x86_64-apple-darwin/debug/build/oid-registry-5e64adfb012c1171/output","paths":["assets/oid_db.txt"]}}],"rustflags":[],"config":0,"compile_kind":0}

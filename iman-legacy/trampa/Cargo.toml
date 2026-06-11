@@ -1,0 +1,18 @@
+[package]
+name    = "trampa"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "trampa"
+
+[dependencies]
+pinocchio        = { workspace = true }
+pinocchio-token  = { workspace = true }
+pinocchio-system = { workspace = true }
+bytemuck         = { workspace = true }
+
+[features]
+default = []
+no-entrypoint = []
